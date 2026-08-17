@@ -1,4 +1,0 @@
-CMakeFiles/sqlite3-alt.dir/src/sqlite/u32.c.o: \
- /home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/u32.c \
- /usr/include/stdc-predef.h \
- /home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/u32.h
