@@ -8,8 +8,10 @@ typedef, kept building as a single shared library throughout.
   convention, what each script in `tools/clang-refactor/` does to the tree,
   and the build.
 - [Specifications/](Specifications/) — the SRS documents driving the next
-  stage of the refactor (currently: converting iterable constructs to an
-  iterator pattern).
+  stage of the refactor: converting iterable constructs to an iterator
+  pattern ([srs-002](Specifications/srs-002.md)), and a façade convention
+  for where a symbol lives and what's public vs. private
+  ([srs-003](Specifications/srs-003.md)).
 - [Logo](logo/) — the project mark, its rationale, and usage.
 - [../README.md](../README.md) — project overview and build instructions.
 

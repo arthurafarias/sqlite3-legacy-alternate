@@ -85,3 +85,14 @@ example is scaffolding, not yet applied to any real container in
 still an empty placeholder. Read the srs-002 example before starting on
 this pass; it's the nearest thing this repository has to a style guide for
 where the C-to-C++ conversion is going.
+
+[`srs-003.md`](Specifications/srs-003.md) is a second standing TODO,
+orthogonal to srs-002: given the one-file-per-symbol tree already exists,
+which symbols in a type's file pair get declared in the public header
+versus kept `static`/private, and where `const` singletons live depending
+on whether they're used from one translation unit or several. Its worked
+example, under
+[`srs-003.md.d/facade-pattern-example/`](Specifications/srs-003.md.d/facade-pattern-example/),
+goes one step further than srs-002's stubs: it's a small working
+sqlite3-shaped facade (`db`/`stmt`) with a standalone CMake target and a
+verification executable that actually builds, links, and runs against it.
