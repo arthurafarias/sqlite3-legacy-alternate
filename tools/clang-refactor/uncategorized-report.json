@@ -1,0 +1,1387 @@
+{
+  "actionName": {
+    "category": "single",
+    "decl_text": "const char *actionName(u8 action);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Parse.c"
+    ],
+    "header_line_end": 186,
+    "header_line_start": 186,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Parse.c"
+    ]
+  },
+  "allConstraintsUsed": {
+    "category": "single",
+    "decl_text": "int allConstraintsUsed(sqlite3_index_constraint_usage *aUsage, int nCons);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/WhereLoopBuilder.c"
+    ],
+    "header_line_end": 193,
+    "header_line_start": 193,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/WhereLoopBuilder.c"
+    ]
+  },
+  "allowedOp": {
+    "category": "single",
+    "decl_text": "int allowedOp(int op);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/SrcList.c"
+    ],
+    "header_line_end": 189,
+    "header_line_start": 189,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/SrcList.c"
+    ]
+  },
+  "analysisLoader": {
+    "category": "single",
+    "decl_text": "int analysisLoader(void *pData, int argc, char **argv, char **NotUsed);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ],
+    "header_line_end": 167,
+    "header_line_start": 167,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ]
+  },
+  "analyzeFilterKeyword": {
+    "category": "single",
+    "decl_text": "int analyzeFilterKeyword(const unsigned char *z, int lastToken);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Parse.c"
+    ],
+    "header_line_end": 202,
+    "header_line_start": 202,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Parse.c"
+    ]
+  },
+  "analyzeOverKeyword": {
+    "category": "single",
+    "decl_text": "int analyzeOverKeyword(const unsigned char *z, int lastToken);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Parse.c"
+    ],
+    "header_line_end": 201,
+    "header_line_start": 201,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Parse.c"
+    ]
+  },
+  "analyzeWindowKeyword": {
+    "category": "single",
+    "decl_text": "int analyzeWindowKeyword(const unsigned char *z);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Parse.c"
+    ],
+    "header_line_end": 200,
+    "header_line_start": 200,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Parse.c"
+    ]
+  },
+  "appendText": {
+    "category": "single",
+    "decl_text": "char *appendText(char *p, const char *z);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ],
+    "header_line_end": 210,
+    "header_line_start": 210,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ]
+  },
+  "binCollFunc": {
+    "category": "multi",
+    "decl_text": "int binCollFunc(void *NotUsed, int nKey1, const void *pKey1, int nKey2, const void *pKey2);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/CollSeq.c"
+    ],
+    "header_line_end": 203,
+    "header_line_start": 203,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/CollSeq.c",
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ]
+  },
+  "chacha_block": {
+    "category": "single",
+    "decl_text": "void chacha_block(u32 *out, const u32 *in);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ],
+    "header_line_end": 122,
+    "header_line_start": 122,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ]
+  },
+  "collationMatch": {
+    "category": "single",
+    "decl_text": "int collationMatch(const char *zColl, Index *pIndex);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Parse.c"
+    ],
+    "header_line_end": 171,
+    "header_line_start": 171,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Parse.c"
+    ]
+  },
+  "compare2pow63": {
+    "category": "single",
+    "decl_text": "int compare2pow63(const char *zNum, int incr);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ],
+    "header_line_end": 127,
+    "header_line_start": 127,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ]
+  },
+  "copyPayload": {
+    "category": "single",
+    "decl_text": "int copyPayload(void *pPayload, void *pBuf, int nByte, int eOp, DbPage *pDbPage);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/BtCursor.c"
+    ],
+    "header_line_end": 155,
+    "header_line_start": 155,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/BtCursor.c"
+    ]
+  },
+  "countLeadingZeros": {
+    "category": "multi",
+    "decl_text": "int countLeadingZeros(u64 m);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/FpDecode.c"
+    ],
+    "header_line_end": 126,
+    "header_line_start": 126,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/FpDecode.c",
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ]
+  },
+  "databaseName": {
+    "category": "single",
+    "decl_text": "const char *databaseName(const char *zName);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ],
+    "header_line_end": 209,
+    "header_line_start": 209,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ]
+  },
+  "decodeIntArray": {
+    "category": "single",
+    "decl_text": "void decodeIntArray(char *zIntArray, int nOut, tRowcnt *aOut, LogEst *aLog, Index *pIndex);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ],
+    "header_line_end": 166,
+    "header_line_start": 166,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ]
+  },
+  "degToRad": {
+    "category": "single",
+    "decl_text": "double degToRad(double x);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ],
+    "header_line_end": 177,
+    "header_line_start": 177,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ]
+  },
+  "estLog": {
+    "category": "multi",
+    "decl_text": "LogEst estLog(LogEst N);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/WhereInfo.c"
+    ],
+    "header_line_end": 191,
+    "header_line_start": 191,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/WhereInfo.c",
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/WhereLoopBuilder.c"
+    ]
+  },
+  "findCreateFileMode": {
+    "category": "single",
+    "decl_text": "int findCreateFileMode(const char *zPath, int flags, mode_t *pMode, uid_t *pUid, gid_t *pGid);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_vfs.c"
+    ],
+    "header_line_end": 148,
+    "header_line_start": 148,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_vfs.c"
+    ]
+  },
+  "findNextHostParameter": {
+    "category": "single",
+    "decl_text": "i64 findNextHostParameter(const char *zSql, i64 *pnToken);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Vdbe.c"
+    ],
+    "header_line_end": 161,
+    "header_line_start": 161,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Vdbe.c"
+    ]
+  },
+  "findReusableFd": {
+    "category": "single",
+    "decl_text": "UnixUnusedFd *findReusableFd(const char *zPath, int flags);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_vfs.c"
+    ],
+    "header_line_end": 146,
+    "header_line_start": 146,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_vfs.c"
+    ]
+  },
+  "freeSuperJournal": {
+    "category": "multi",
+    "decl_text": "void freeSuperJournal(char *zSuper);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Pager.c"
+    ],
+    "header_line_end": 154,
+    "header_line_start": 154,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Pager.c",
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_file.c"
+    ]
+  },
+  "full_fsync": {
+    "category": "multi",
+    "decl_text": "int full_fsync(int fd, int fullSync, int dataOnly);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/unix_syscall.c"
+    ],
+    "header_line_end": 142,
+    "header_line_start": 142,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_file.c",
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_vfs.c"
+    ]
+  },
+  "getAutoVacuum": {
+    "category": "single",
+    "decl_text": "int getAutoVacuum(const char *z);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Parse.c"
+    ],
+    "header_line_end": 184,
+    "header_line_start": 184,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Parse.c"
+    ]
+  },
+  "getConstraint": {
+    "category": "single",
+    "decl_text": "int getConstraint(const u8 *z);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_context.c"
+    ],
+    "header_line_end": 165,
+    "header_line_start": 165,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_context.c"
+    ]
+  },
+  "getConstraintToken": {
+    "category": "single",
+    "decl_text": "int getConstraintToken(const u8 *z, int *piToken);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_context.c"
+    ],
+    "header_line_end": 163,
+    "header_line_start": 163,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_context.c"
+    ]
+  },
+  "getDigits": {
+    "category": "multi",
+    "decl_text": "int getDigits(const char *zDate, const char *zFormat, ...);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/DateTime.c"
+    ],
+    "header_line_end": 111,
+    "header_line_start": 111,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Parse.c",
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_context.c"
+    ]
+  },
+  "getFileMode": {
+    "category": "single",
+    "decl_text": "int getFileMode(const char *zFile, mode_t *pMode, uid_t *pUid, gid_t *pGid);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_vfs.c"
+    ],
+    "header_line_end": 147,
+    "header_line_start": 147,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_vfs.c"
+    ]
+  },
+  "getLockingMode": {
+    "category": "single",
+    "decl_text": "int getLockingMode(const char *z);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Parse.c"
+    ],
+    "header_line_end": 183,
+    "header_line_start": 183,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Parse.c"
+    ]
+  },
+  "getSafetyLevel": {
+    "category": "multi",
+    "decl_text": "u8 getSafetyLevel(const char *z, int omitFull, u8 dflt);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Parse.c"
+    ],
+    "header_line_end": 182,
+    "header_line_start": 182,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Parse.c",
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ]
+  },
+  "getTempStore": {
+    "category": "single",
+    "decl_text": "int getTempStore(const char *z);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Parse.c"
+    ],
+    "header_line_end": 185,
+    "header_line_start": 185,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Parse.c"
+    ]
+  },
+  "getToken": {
+    "category": "single",
+    "decl_text": "int getToken(const unsigned char **pz);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Parse.c"
+    ],
+    "header_line_end": 199,
+    "header_line_start": 199,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Parse.c"
+    ]
+  },
+  "getWhitespace": {
+    "category": "single",
+    "decl_text": "int getWhitespace(const u8 *z);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_context.c"
+    ],
+    "header_line_end": 164,
+    "header_line_start": 164,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_context.c"
+    ]
+  },
+  "hasColumn": {
+    "category": "single",
+    "decl_text": "int hasColumn(const i16 *aiCol, int nCol, int x);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Parse.c"
+    ],
+    "header_line_end": 170,
+    "header_line_start": 170,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Parse.c"
+    ]
+  },
+  "identLength": {
+    "category": "single",
+    "decl_text": "i64 identLength(const char *z);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ],
+    "header_line_end": 168,
+    "header_line_start": 168,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ]
+  },
+  "identPut": {
+    "category": "single",
+    "decl_text": "void identPut(char *z, int *pIdx, char *zSignedIdent);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ],
+    "header_line_end": 169,
+    "header_line_start": 169,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ]
+  },
+  "inAnyUsingClause": {
+    "category": "single",
+    "decl_text": "int inAnyUsingClause(const char *zName, SrcItem *pBase, int N);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Walker.c"
+    ],
+    "header_line_end": 188,
+    "header_line_start": 188,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Walker.c"
+    ]
+  },
+  "invokeValueDestructor": {
+    "category": "single",
+    "decl_text": "int invokeValueDestructor(const void *p, void (*xDel)(void *), sqlite3_context *pCtx);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_context.c"
+    ],
+    "header_line_end": 160,
+    "header_line_start": 160,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_context.c"
+    ]
+  },
+  "isAllZero": {
+    "category": "multi",
+    "decl_text": "int isAllZero(const char *z, int n);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Mem.c"
+    ],
+    "header_line_end": 159,
+    "header_line_start": 159,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Mem.c",
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Vdbe.c"
+    ]
+  },
+  "isFatalError": {
+    "category": "single",
+    "decl_text": "int isFatalError(int rc);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_backup.c"
+    ],
+    "header_line_end": 156,
+    "header_line_start": 156,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_backup.c"
+    ]
+  },
+  "isNHex": {
+    "category": "single",
+    "decl_text": "int isNHex(const char *z, int N, u32 *pVal);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_context.c"
+    ],
+    "header_line_end": 173,
+    "header_line_start": 173,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_context.c"
+    ]
+  },
+  "isValidSchemaTableName": {
+    "category": "single",
+    "decl_text": "__attribute__((noinline)) int isValidSchemaTableName(const char *zTab, Table *pTab, const char *zDb);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Parse.c"
+    ],
+    "header_line_end": 162,
+    "header_line_start": 162,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Parse.c"
+    ]
+  },
+  "json5Whitespace": {
+    "category": "single",
+    "decl_text": "int json5Whitespace(const char *zIn);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/JsonParse.c"
+    ],
+    "header_line_end": 217,
+    "header_line_start": 217,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/JsonParse.c"
+    ]
+  },
+  "jsonAllAlphanum": {
+    "category": "single",
+    "decl_text": "int jsonAllAlphanum(const char *z, int n);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_context.c"
+    ],
+    "header_line_end": 223,
+    "header_line_start": 223,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_context.c"
+    ]
+  },
+  "jsonBlobOverwrite": {
+    "category": "single",
+    "decl_text": "int jsonBlobOverwrite(u8 *aOut, const u8 *aIns, u32 nIns, u32 d);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/JsonParse.c"
+    ],
+    "header_line_end": 219,
+    "header_line_start": 219,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/JsonParse.c"
+    ]
+  },
+  "jsonBytesToBypass": {
+    "category": "single",
+    "decl_text": "u32 jsonBytesToBypass(const char *z, u32 n);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/JsonParse.c"
+    ],
+    "header_line_end": 220,
+    "header_line_start": 220,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/JsonParse.c"
+    ]
+  },
+  "jsonHexToInt": {
+    "category": "single",
+    "decl_text": "u8 jsonHexToInt(int h);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/JsonParse.c"
+    ],
+    "header_line_end": 213,
+    "header_line_start": 213,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/JsonParse.c"
+    ]
+  },
+  "jsonHexToInt4": {
+    "category": "single",
+    "decl_text": "u32 jsonHexToInt4(const char *z);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/JsonParse.c"
+    ],
+    "header_line_end": 214,
+    "header_line_start": 214,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/JsonParse.c"
+    ]
+  },
+  "jsonIs2Hex": {
+    "category": "single",
+    "decl_text": "int jsonIs2Hex(const char *z);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/JsonParse.c"
+    ],
+    "header_line_end": 215,
+    "header_line_start": 215,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/JsonParse.c"
+    ]
+  },
+  "jsonIs4Hex": {
+    "category": "single",
+    "decl_text": "int jsonIs4Hex(const char *z);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/JsonParse.c"
+    ],
+    "header_line_end": 216,
+    "header_line_start": 216,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/JsonParse.c"
+    ]
+  },
+  "jsonIs4HexB": {
+    "category": "single",
+    "decl_text": "int jsonIs4HexB(const char *z, int *pOp);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/JsonParse.c"
+    ],
+    "header_line_end": 218,
+    "header_line_start": 218,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/JsonParse.c"
+    ]
+  },
+  "jsonLabelCompare": {
+    "category": "single",
+    "decl_text": "int jsonLabelCompare(const char *zLeft, u32 nLeft, int rawLeft, const char *zRight, u32 nRight, int rawRight);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/JsonParse.c"
+    ],
+    "header_line_end": 222,
+    "header_line_start": 222,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/JsonParse.c"
+    ]
+  },
+  "jsonLabelCompareEscaped": {
+    "category": "single",
+    "decl_text": "__attribute__((noinline)) int jsonLabelCompareEscaped(const char *zLeft, u32 nLeft, int rawLeft, const char *zRight, u32 nRight, int rawRight);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/JsonParse.c"
+    ],
+    "header_line_end": 221,
+    "header_line_start": 221,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/JsonParse.c"
+    ]
+  },
+  "jsonPrintf": {
+    "category": "multi",
+    "decl_text": "void jsonPrintf(int N, JsonString *p, const char *zFormat, ...);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/JsonParse.c"
+    ],
+    "header_line_end": 212,
+    "header_line_start": 212,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/JsonEachCursor.c",
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/JsonParse.c",
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/JsonString.c"
+    ]
+  },
+  "jsonUnescapeOneChar": {
+    "category": "single",
+    "decl_text": "u32 jsonUnescapeOneChar(const char *, u32, u32 *);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/JsonParse.c"
+    ],
+    "header_line_end": 211,
+    "header_line_start": 211,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/JsonParse.c"
+    ]
+  },
+  "keywordCode": {
+    "category": "single",
+    "decl_text": "i64 keywordCode(const char *z, i64 n, int *pType);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ],
+    "header_line_end": 198,
+    "header_line_start": 198,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ]
+  },
+  "logBadConnection": {
+    "category": "single",
+    "decl_text": "void logBadConnection(const char *zType);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ],
+    "header_line_end": 129,
+    "header_line_start": 129,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ]
+  },
+  "mallocWithAlarm": {
+    "category": "single",
+    "decl_text": "void mallocWithAlarm(int n, void **pp);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ],
+    "header_line_end": 120,
+    "header_line_start": 120,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ]
+  },
+  "nocaseCollatingFunc": {
+    "category": "single",
+    "decl_text": "int nocaseCollatingFunc(void *NotUsed, int nKey1, const void *pKey1, int nKey2, const void *pKey2);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ],
+    "header_line_end": 205,
+    "header_line_start": 205,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ]
+  },
+  "noopMutexAlloc": {
+    "category": "single",
+    "decl_text": "sqlite3_mutex *noopMutexAlloc(int id);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ],
+    "header_line_end": 116,
+    "header_line_start": 116,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ]
+  },
+  "noopMutexEnd": {
+    "category": "single",
+    "decl_text": "int noopMutexEnd(void);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ],
+    "header_line_end": 115,
+    "header_line_start": 115,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ]
+  },
+  "noopMutexInit": {
+    "category": "single",
+    "decl_text": "int noopMutexInit(void);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ],
+    "header_line_end": 114,
+    "header_line_start": 114,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ]
+  },
+  "openDatabase": {
+    "category": "single",
+    "decl_text": "int openDatabase(const char *zFilename, sqlite3 **ppDb, unsigned int flags, const char *zVfs);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ],
+    "header_line_end": 208,
+    "header_line_start": 208,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ]
+  },
+  "openDirectory": {
+    "category": "single",
+    "decl_text": "int openDirectory(const char *, int *);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/unix_syscall.c"
+    ],
+    "header_line_end": 132,
+    "header_line_start": 132,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/unix_syscall.c"
+    ]
+  },
+  "operatorMask": {
+    "category": "single",
+    "decl_text": "u16 operatorMask(int op);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/SrcList.c"
+    ],
+    "header_line_end": 190,
+    "header_line_start": 190,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/SrcList.c"
+    ]
+  },
+  "osLocaltime": {
+    "category": "single",
+    "decl_text": "int osLocaltime(time_t *t, struct tm *pTm);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/DateTime.c"
+    ],
+    "header_line_end": 113,
+    "header_line_start": 113,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/DateTime.c"
+    ]
+  },
+  "parserStackFree": {
+    "category": "single",
+    "decl_text": "void parserStackFree(void *pOld, Parse *pParse);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ],
+    "header_line_end": 195,
+    "header_line_start": 195,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ]
+  },
+  "parserStackRealloc": {
+    "category": "single",
+    "decl_text": "void *parserStackRealloc(void *pOld, sqlite3_uint64 newSize, Parse *pParse);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/yyParser.c"
+    ],
+    "header_line_end": 194,
+    "header_line_start": 194,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/yyParser.c"
+    ]
+  },
+  "patternCompare": {
+    "category": "multi",
+    "decl_text": "int patternCompare(const u8 *zPattern, const u8 *zString, const struct compareInfo *pInfo, u32 matchOther);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_context.c"
+    ],
+    "header_line_end": 172,
+    "header_line_start": 172,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c",
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_context.c"
+    ]
+  },
+  "pcache1Alloc": {
+    "category": "multi",
+    "decl_text": "void *pcache1Alloc(int nByte);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/PCache1.c"
+    ],
+    "header_line_end": 149,
+    "header_line_start": 149,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/PCache1.c",
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ]
+  },
+  "pcache1Create": {
+    "category": "single",
+    "decl_text": "sqlite3_pcache *pcache1Create(int szPage, int szExtra, int bPurgeable);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/PCache.c"
+    ],
+    "header_line_end": 153,
+    "header_line_start": 153,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/PCache.c"
+    ]
+  },
+  "pcache1Free": {
+    "category": "multi",
+    "decl_text": "void pcache1Free(void *p);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/PgHdr1.c"
+    ],
+    "header_line_end": 150,
+    "header_line_start": 150,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/PgHdr1.c",
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ]
+  },
+  "pcache1Init": {
+    "category": "single",
+    "decl_text": "int pcache1Init(void *NotUsed);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/PCache.c"
+    ],
+    "header_line_end": 151,
+    "header_line_start": 151,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/PCache.c"
+    ]
+  },
+  "pcache1Shutdown": {
+    "category": "single",
+    "decl_text": "void pcache1Shutdown(void *NotUsed);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/PCache.c"
+    ],
+    "header_line_end": 152,
+    "header_line_start": 152,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/PCache.c"
+    ]
+  },
+  "percentIsInfinity": {
+    "category": "single",
+    "decl_text": "int percentIsInfinity(double r);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_context.c"
+    ],
+    "header_line_end": 179,
+    "header_line_start": 179,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_context.c"
+    ]
+  },
+  "percentSameValue": {
+    "category": "single",
+    "decl_text": "int percentSameValue(double a, double b);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_context.c"
+    ],
+    "header_line_end": 180,
+    "header_line_start": 180,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_context.c"
+    ]
+  },
+  "percentSort": {
+    "category": "single",
+    "decl_text": "void percentSort(double *a, unsigned int n);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_context.c"
+    ],
+    "header_line_end": 181,
+    "header_line_start": 181,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_context.c"
+    ]
+  },
+  "posixOpen": {
+    "category": "single",
+    "decl_text": "int posixOpen(const char *zFile, int flags, int mode);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/unix_syscall.c"
+    ],
+    "header_line_end": 131,
+    "header_line_start": 131,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/unix_syscall.c"
+    ]
+  },
+  "powerOfTen": {
+    "category": "single",
+    "decl_text": "u64 powerOfTen(int p, u32 *pLo);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ],
+    "header_line_end": 123,
+    "header_line_start": 123,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ]
+  },
+  "pragmaLocate": {
+    "category": "multi",
+    "decl_text": "const PragmaName *pragmaLocate(const char *zName);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Parse.c"
+    ],
+    "header_line_end": 187,
+    "header_line_start": 187,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Parse.c",
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ]
+  },
+  "pthreadMutexAlloc": {
+    "category": "single",
+    "decl_text": "sqlite3_mutex *pthreadMutexAlloc(int iType);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ],
+    "header_line_end": 119,
+    "header_line_start": 119,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ]
+  },
+  "pthreadMutexEnd": {
+    "category": "single",
+    "decl_text": "int pthreadMutexEnd(void);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ],
+    "header_line_end": 118,
+    "header_line_start": 118,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ]
+  },
+  "pthreadMutexInit": {
+    "category": "single",
+    "decl_text": "int pthreadMutexInit(void);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ],
+    "header_line_end": 117,
+    "header_line_start": 117,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ]
+  },
+  "putVarint64": {
+    "category": "single",
+    "decl_text": "int __attribute__((noinline)) putVarint64(unsigned char *p, u64 v);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ],
+    "header_line_end": 128,
+    "header_line_start": 128,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ]
+  },
+  "pwr10to2": {
+    "category": "single",
+    "decl_text": "int pwr10to2(int p);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ],
+    "header_line_end": 124,
+    "header_line_start": 124,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ]
+  },
+  "pwr2to10": {
+    "category": "single",
+    "decl_text": "int pwr2to10(int p);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ],
+    "header_line_end": 125,
+    "header_line_start": 125,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ]
+  },
+  "radToDeg": {
+    "category": "single",
+    "decl_text": "double radToDeg(double x);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ],
+    "header_line_end": 178,
+    "header_line_start": 178,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ]
+  },
+  "renderLogMsg": {
+    "category": "single",
+    "decl_text": "void renderLogMsg(int iErrCode, const char *zFormat, va_list ap);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ],
+    "header_line_end": 121,
+    "header_line_start": 121,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ]
+  },
+  "robustFchown": {
+    "category": "multi",
+    "decl_text": "int robustFchown(int fd, uid_t uid, gid_t gid);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/unix_syscall.c"
+    ],
+    "header_line_end": 134,
+    "header_line_start": 134,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_vfs.c",
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/unixFile.c"
+    ]
+  },
+  "robust_ftruncate": {
+    "category": "multi",
+    "decl_text": "int robust_ftruncate(int h, sqlite3_int64 sz);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/unix_syscall.c"
+    ],
+    "header_line_end": 138,
+    "header_line_start": 138,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_file.c",
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/unixFile.c"
+    ]
+  },
+  "robust_open": {
+    "category": "multi",
+    "decl_text": "int robust_open(const char *z, int f, mode_t m);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/unix_syscall.c"
+    ],
+    "header_line_end": 135,
+    "header_line_start": 135,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_vfs.c",
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/unixFile.c",
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/unix_syscall.c"
+    ]
+  },
+  "rtrimCollFunc": {
+    "category": "single",
+    "decl_text": "int rtrimCollFunc(void *pUser, int nKey1, const void *pKey1, int nKey2, const void *pKey2);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ],
+    "header_line_end": 204,
+    "header_line_start": 204,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ]
+  },
+  "seekAndWriteFd": {
+    "category": "multi",
+    "decl_text": "int seekAndWriteFd(int fd, i64 iOff, const void *pBuf, int nBuf, int *piErrno);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/unix_syscall.c"
+    ],
+    "header_line_end": 141,
+    "header_line_start": 141,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_file.c",
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/unixFile.c"
+    ]
+  },
+  "serialGet": {
+    "category": "single",
+    "decl_text": "void serialGet(const unsigned char *buf, u32 serial_type, Mem *pMem);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Vdbe.c"
+    ],
+    "header_line_end": 157,
+    "header_line_start": 157,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Vdbe.c"
+    ]
+  },
+  "serialGet7": {
+    "category": "single",
+    "decl_text": "int serialGet7(const unsigned char *buf, Mem *pMem);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Vdbe.c"
+    ],
+    "header_line_end": 158,
+    "header_line_start": 158,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Vdbe.c"
+    ]
+  },
+  "sqliteDefaultBusyCallback": {
+    "category": "single",
+    "decl_text": "int sqliteDefaultBusyCallback(void *ptr, int count);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ],
+    "header_line_end": 206,
+    "header_line_start": 206,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ]
+  },
+  "sqliteErrorFromPosixError": {
+    "category": "single",
+    "decl_text": "int sqliteErrorFromPosixError(int posixError, int sqliteIOErr);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_file.c"
+    ],
+    "header_line_end": 139,
+    "header_line_start": 139,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_file.c"
+    ]
+  },
+  "strContainsChar": {
+    "category": "single",
+    "decl_text": "int strContainsChar(const u8 *zStr, int nStr, u32 ch);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_context.c"
+    ],
+    "header_line_end": 174,
+    "header_line_start": 174,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_context.c"
+    ]
+  },
+  "strHash": {
+    "category": "single",
+    "decl_text": "unsigned int strHash(const char *z);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Hash.c"
+    ],
+    "header_line_end": 130,
+    "header_line_start": 130,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Hash.c"
+    ]
+  },
+  "unixEnterMutex": {
+    "category": "multi",
+    "decl_text": "void unixEnterMutex(void);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/unix_syscall.c"
+    ],
+    "header_line_end": 136,
+    "header_line_start": 136,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_file.c",
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_vfs.c",
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/unixFile.c"
+    ]
+  },
+  "unixGetTempname": {
+    "category": "multi",
+    "decl_text": "int unixGetTempname(int nBuf, char *zBuf);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/unix_syscall.c"
+    ],
+    "header_line_end": 143,
+    "header_line_start": 143,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_file.c",
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_vfs.c"
+    ]
+  },
+  "unixGetpagesize": {
+    "category": "single",
+    "decl_text": "int unixGetpagesize(void);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/unix_syscall.c"
+    ],
+    "header_line_end": 133,
+    "header_line_start": 133,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/unix_syscall.c"
+    ]
+  },
+  "unixLeaveMutex": {
+    "category": "multi",
+    "decl_text": "void unixLeaveMutex(void);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/unix_syscall.c"
+    ],
+    "header_line_end": 137,
+    "header_line_start": 137,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_file.c",
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_vfs.c",
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/unixFile.c"
+    ]
+  },
+  "unixLogErrorAtLine": {
+    "category": "multi",
+    "decl_text": "int unixLogErrorAtLine(int errcode, const char *zFunc, const char *zPath, int iLine);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/unix_syscall.c"
+    ],
+    "header_line_end": 140,
+    "header_line_start": 140,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/DbPath.c",
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_file.c",
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_vfs.c",
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/unixFile.c",
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/unix_syscall.c"
+    ]
+  },
+  "unixTempFileDir": {
+    "category": "single",
+    "decl_text": "const char *unixTempFileDir(void);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/unix_syscall.c"
+    ],
+    "header_line_end": 145,
+    "header_line_start": 145,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/unix_syscall.c"
+    ]
+  },
+  "unixTempFileInit": {
+    "category": "single",
+    "decl_text": "void unixTempFileInit(void);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ],
+    "header_line_end": 144,
+    "header_line_start": 144,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ]
+  },
+  "uriParameter": {
+    "category": "single",
+    "decl_text": "const char *uriParameter(const char *zFilename, const char *zParam);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ],
+    "header_line_end": 207,
+    "header_line_start": 207,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ]
+  },
+  "validJulianDay": {
+    "category": "multi",
+    "decl_text": "int validJulianDay(sqlite3_int64 iJD);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/DateTime.c"
+    ],
+    "header_line_end": 112,
+    "header_line_start": 112,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/DateTime.c",
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_context.c"
+    ]
+  },
+  "whereUsablePartialIndex": {
+    "category": "single",
+    "decl_text": "int whereUsablePartialIndex(int iTab, u8 jointype, WhereClause *pWC, Expr *pWhere);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/WhereLoopBuilder.c"
+    ],
+    "header_line_end": 192,
+    "header_line_start": 192,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/WhereLoopBuilder.c"
+    ]
+  },
+  "xCeil": {
+    "category": "single",
+    "decl_text": "double xCeil(double x);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ],
+    "header_line_end": 175,
+    "header_line_start": 175,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ]
+  },
+  "xFloor": {
+    "category": "single",
+    "decl_text": "double xFloor(double x);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ],
+    "header_line_end": 176,
+    "header_line_start": 176,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ]
+  },
+  "yy_find_reduce_action": {
+    "category": "single",
+    "decl_text": "unsigned short int yy_find_reduce_action(unsigned short int stateno, unsigned short int iLookAhead);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/yyParser.c"
+    ],
+    "header_line_end": 197,
+    "header_line_start": 197,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/yyParser.c"
+    ]
+  },
+  "yy_find_shift_action": {
+    "category": "single",
+    "decl_text": "unsigned short int yy_find_shift_action(unsigned short int iLookAhead, unsigned short int stateno);",
+    "definition_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ],
+    "header_line_end": 196,
+    "header_line_start": 196,
+    "using_files": [
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
+    ]
+  }
+}

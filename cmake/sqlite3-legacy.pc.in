@@ -1,0 +1,13 @@
+# Package Information for pkg-config
+
+prefix=@CMAKE_INSTALL_PREFIX@
+exec_prefix=${prefix}
+libdir=@SQLITE_PC_LIBDIR@
+includedir=@SQLITE_PC_INCLUDEDIR@
+
+Name: SQLite (legacy)
+Description: SQL database engine -- legacy C implementation (SRS 002), frozen comparison baseline for sqlite-cpp
+Version: @SQLITE_VERSION_STRING@
+Libs: -L${libdir} -lsqlite3-legacy
+Libs.private: @SQLITE_PC_LIBS_PRIVATE@
+Cflags: -I${includedir}

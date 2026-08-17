@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

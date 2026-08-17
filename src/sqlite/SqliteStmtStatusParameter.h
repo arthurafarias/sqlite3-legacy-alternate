@@ -1,0 +1,22 @@
+#pragma once
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+/* Status Parameters for prepared statements (from sqlite3.h) */
+enum {
+  SQLITE_STMTSTATUS_FULLSCAN_STEP = 1,
+  SQLITE_STMTSTATUS_SORT          = 2,
+  SQLITE_STMTSTATUS_AUTOINDEX     = 3,
+  SQLITE_STMTSTATUS_VM_STEP       = 4,
+  SQLITE_STMTSTATUS_REPREPARE     = 5,
+  SQLITE_STMTSTATUS_RUN           = 6,
+  SQLITE_STMTSTATUS_FILTER_MISS   = 7,
+  SQLITE_STMTSTATUS_FILTER_HIT    = 8,
+  SQLITE_STMTSTATUS_MEMUSED       = 99,
+};
+
+#ifdef __cplusplus
+}
+#endif

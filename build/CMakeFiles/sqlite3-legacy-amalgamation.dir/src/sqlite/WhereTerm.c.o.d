@@ -1,0 +1,20 @@
+CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereTerm.c.o: \
+ /home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/WhereTerm.c \
+ /usr/include/stdc-predef.h \
+ /home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/WhereTerm.h \
+ /home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/BitMask.h \
+ /home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/u64.h \
+ /home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/LogEst.h \
+ /home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/u16.h \
+ /home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/u8.h \
+ /home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Column.h \
+ /home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Expr.h \
+ /home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/AggInfo.h \
+ /home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/u32.h \
+ /home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/i16.h \
+ /home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/ynVar.h \
+ /home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/SrcItem.h \
+ /home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Table.h \
+ /home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Pgno.h \
+ /home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/WhereAndInfo.h \
+ /home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/WhereClause.h
