@@ -582,6 +582,7 @@ extern C {
   extern const struct ExprList_item zeroItem;
   u8 getSafetyLevel(const char *z, int omitFull, u8 dflt);
   const PragmaName *pragmaLocate(const char *zName);
+  void sqlite3ParserInit(void *yypRawParser, Parse *pParse);
 
 #ifdef __cplusplus
 }

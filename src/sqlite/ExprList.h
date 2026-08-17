@@ -44,6 +44,7 @@ extern C {
   void sqlite3ExprListSetSortOrder(ExprList *, int, int);
   u32 sqlite3ExprListFlags(const ExprList *);
   int sqlite3ExprListCompare(const ExprList *, const ExprList *, int);
+  int sqlite3MatchEName(const struct ExprList_item *, const char *, const char *, const char *, int *);
 
   __attribute__((noinline)) void resolveSetExprSubtypeArg(ExprList * pList);
   void heightOfExprList(const ExprList *p, int *pnHeight);

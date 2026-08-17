@@ -13,6 +13,7 @@ extern C {
 
   void sqlite3DequoteToken(Token *);
   void sqlite3TokenInit(Token *, char *);
+  void sqlite3Parser(void *, int, Token);
 
 #ifdef __cplusplus
 }

@@ -18,6 +18,8 @@ struct sqlite3_file {
   const struct sqlite3_io_methods *pMethods;
 };
 
+sqlite3_file *sqlite3_database_file_object(const char *);
+
 void sqlite3OsClose(sqlite3_file *);
 int sqlite3OsRead(sqlite3_file *, void *, int amt, i64 offset);
 int sqlite3OsWrite(sqlite3_file *, const void *, int amt, i64 offset);

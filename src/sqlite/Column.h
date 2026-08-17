@@ -24,6 +24,7 @@ extern C {
   char *sqlite3ColumnType(Column *, char *);
   const char *sqlite3ColumnColl(Column *);
   const Mem *columnNullValue(void);
+  char sqlite3AffinityType(const char *, Column *);
 
 #ifdef __cplusplus
 }
