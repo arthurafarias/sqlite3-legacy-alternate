@@ -88,7 +88,7 @@ int hasAnchor(Select *p) {
 
 void recomputeColumnsUsed(Select *pSelect, SrcItem *pSrcItem) {
   Walker w;
-  if ((pSrcItem->pSTab == 0))
+  if (pSrcItem->pSTab == 0)
     return;
   memset(&w, 0, sizeof(w));
   w.xExprCallback = recomputeColumnsUsedExpr;
