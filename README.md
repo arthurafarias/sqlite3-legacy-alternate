@@ -1,12 +1,12 @@
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="docs/logo/mark-dark.svg">
-    <img src="docs/logo/mark-light.svg" alt="sqlite3-legacy-amalgamation" width="200">
+    <img src="docs/logo/mark-light.svg" alt="sqlite3-alt" width="200">
   </picture>
 </p>
 
-<h1 align="center">sqlite3-legacy-amalgamation</h1>
-<p align="center"><em>SQLite's single-file amalgamation, mechanically taken apart — one struct, function, or typedef per file.</em></p>
+<h1 align="center">sqlite3-alt</h1>
+<p align="center"><em>SQLite's under strict C architectural patterns.</em></p>
 
 ## What this is
 
@@ -71,19 +71,6 @@ computing precise per-file includes, forward-declaring struct-pointer
 members, enforcing naming conventions, and so on). See
 [docs/architecture.md](docs/architecture.md#the-refactor-toolchain) for what
 each one does.
-
-## Relationship to the parent `sqlite-cpp` workspace
-
-This directory sits inside a larger `sqlite-cpp` workspace that runs its
-own, differently-shaped refactor of SQLite (split by subsystem into
-`libsqlite-utils`, `libsqlite-backend-*`, `libsqlite-core-*`,
-`libsqlite-compiler-*`, advancing through a four-stage SRS pipeline). This
-project is a separate, independent decomposition — down to one file per
-symbol across the whole amalgamation rather than one library per subsystem
-— with its own git history and its own local `srs-001`/`srs-002` documents
-under [`docs/Specifications/`](docs/Specifications/). See
-[docs/index.md](docs/index.md#relationship-to-the-parent-workspace) for
-more detail.
 
 ## Documentation
 

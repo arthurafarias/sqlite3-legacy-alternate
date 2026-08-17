@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.24)
-project(sqlite3-legacy-amalgamation VERSION 3.53.4)
+project(sqlite3-alt VERSION 3.53.4)
 
 find_package(Threads REQUIRED)
 

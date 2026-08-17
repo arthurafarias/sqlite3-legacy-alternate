@@ -117,24 +117,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named sqlite3-legacy-amalgamation
+# Target rules for targets named sqlite3-alt
 
 # Build rule for target.
-sqlite3-legacy-amalgamation: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 sqlite3-legacy-amalgamation
-.PHONY : sqlite3-legacy-amalgamation
+sqlite3-alt: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 sqlite3-alt
+.PHONY : sqlite3-alt
 
 # fast build rule for target.
-sqlite3-legacy-amalgamation/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/build
-.PHONY : sqlite3-legacy-amalgamation/fast
+sqlite3-alt/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/build
+.PHONY : sqlite3-alt/fast
 
 src/sqlite/AggInfo.o: src/sqlite/AggInfo.c.o
 .PHONY : src/sqlite/AggInfo.o
 
 # target to build an object file
 src/sqlite/AggInfo.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/AggInfo.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/AggInfo.c.o
 .PHONY : src/sqlite/AggInfo.c.o
 
 src/sqlite/AggInfo.i: src/sqlite/AggInfo.c.i
@@ -142,7 +142,7 @@ src/sqlite/AggInfo.i: src/sqlite/AggInfo.c.i
 
 # target to preprocess a source file
 src/sqlite/AggInfo.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/AggInfo.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/AggInfo.c.i
 .PHONY : src/sqlite/AggInfo.c.i
 
 src/sqlite/AggInfo.s: src/sqlite/AggInfo.c.s
@@ -150,7 +150,7 @@ src/sqlite/AggInfo.s: src/sqlite/AggInfo.c.s
 
 # target to generate assembly for a file
 src/sqlite/AggInfo.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/AggInfo.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/AggInfo.c.s
 .PHONY : src/sqlite/AggInfo.c.s
 
 src/sqlite/AuthContext.o: src/sqlite/AuthContext.c.o
@@ -158,7 +158,7 @@ src/sqlite/AuthContext.o: src/sqlite/AuthContext.c.o
 
 # target to build an object file
 src/sqlite/AuthContext.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/AuthContext.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/AuthContext.c.o
 .PHONY : src/sqlite/AuthContext.c.o
 
 src/sqlite/AuthContext.i: src/sqlite/AuthContext.c.i
@@ -166,7 +166,7 @@ src/sqlite/AuthContext.i: src/sqlite/AuthContext.c.i
 
 # target to preprocess a source file
 src/sqlite/AuthContext.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/AuthContext.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/AuthContext.c.i
 .PHONY : src/sqlite/AuthContext.c.i
 
 src/sqlite/AuthContext.s: src/sqlite/AuthContext.c.s
@@ -174,7 +174,7 @@ src/sqlite/AuthContext.s: src/sqlite/AuthContext.c.s
 
 # target to generate assembly for a file
 src/sqlite/AuthContext.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/AuthContext.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/AuthContext.c.s
 .PHONY : src/sqlite/AuthContext.c.s
 
 src/sqlite/AutoincInfo.o: src/sqlite/AutoincInfo.c.o
@@ -182,7 +182,7 @@ src/sqlite/AutoincInfo.o: src/sqlite/AutoincInfo.c.o
 
 # target to build an object file
 src/sqlite/AutoincInfo.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/AutoincInfo.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/AutoincInfo.c.o
 .PHONY : src/sqlite/AutoincInfo.c.o
 
 src/sqlite/AutoincInfo.i: src/sqlite/AutoincInfo.c.i
@@ -190,7 +190,7 @@ src/sqlite/AutoincInfo.i: src/sqlite/AutoincInfo.c.i
 
 # target to preprocess a source file
 src/sqlite/AutoincInfo.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/AutoincInfo.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/AutoincInfo.c.i
 .PHONY : src/sqlite/AutoincInfo.c.i
 
 src/sqlite/AutoincInfo.s: src/sqlite/AutoincInfo.c.s
@@ -198,7 +198,7 @@ src/sqlite/AutoincInfo.s: src/sqlite/AutoincInfo.c.s
 
 # target to generate assembly for a file
 src/sqlite/AutoincInfo.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/AutoincInfo.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/AutoincInfo.c.s
 .PHONY : src/sqlite/AutoincInfo.c.s
 
 src/sqlite/AuxData.o: src/sqlite/AuxData.c.o
@@ -206,7 +206,7 @@ src/sqlite/AuxData.o: src/sqlite/AuxData.c.o
 
 # target to build an object file
 src/sqlite/AuxData.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/AuxData.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/AuxData.c.o
 .PHONY : src/sqlite/AuxData.c.o
 
 src/sqlite/AuxData.i: src/sqlite/AuxData.c.i
@@ -214,7 +214,7 @@ src/sqlite/AuxData.i: src/sqlite/AuxData.c.i
 
 # target to preprocess a source file
 src/sqlite/AuxData.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/AuxData.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/AuxData.c.i
 .PHONY : src/sqlite/AuxData.c.i
 
 src/sqlite/AuxData.s: src/sqlite/AuxData.c.s
@@ -222,7 +222,7 @@ src/sqlite/AuxData.s: src/sqlite/AuxData.c.s
 
 # target to generate assembly for a file
 src/sqlite/AuxData.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/AuxData.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/AuxData.c.s
 .PHONY : src/sqlite/AuxData.c.s
 
 src/sqlite/BenignMallocHooks.o: src/sqlite/BenignMallocHooks.c.o
@@ -230,7 +230,7 @@ src/sqlite/BenignMallocHooks.o: src/sqlite/BenignMallocHooks.c.o
 
 # target to build an object file
 src/sqlite/BenignMallocHooks.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/BenignMallocHooks.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/BenignMallocHooks.c.o
 .PHONY : src/sqlite/BenignMallocHooks.c.o
 
 src/sqlite/BenignMallocHooks.i: src/sqlite/BenignMallocHooks.c.i
@@ -238,7 +238,7 @@ src/sqlite/BenignMallocHooks.i: src/sqlite/BenignMallocHooks.c.i
 
 # target to preprocess a source file
 src/sqlite/BenignMallocHooks.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/BenignMallocHooks.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/BenignMallocHooks.c.i
 .PHONY : src/sqlite/BenignMallocHooks.c.i
 
 src/sqlite/BenignMallocHooks.s: src/sqlite/BenignMallocHooks.c.s
@@ -246,7 +246,7 @@ src/sqlite/BenignMallocHooks.s: src/sqlite/BenignMallocHooks.c.s
 
 # target to generate assembly for a file
 src/sqlite/BenignMallocHooks.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/BenignMallocHooks.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/BenignMallocHooks.c.s
 .PHONY : src/sqlite/BenignMallocHooks.c.s
 
 src/sqlite/BitMask.o: src/sqlite/BitMask.c.o
@@ -254,7 +254,7 @@ src/sqlite/BitMask.o: src/sqlite/BitMask.c.o
 
 # target to build an object file
 src/sqlite/BitMask.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/BitMask.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/BitMask.c.o
 .PHONY : src/sqlite/BitMask.c.o
 
 src/sqlite/BitMask.i: src/sqlite/BitMask.c.i
@@ -262,7 +262,7 @@ src/sqlite/BitMask.i: src/sqlite/BitMask.c.i
 
 # target to preprocess a source file
 src/sqlite/BitMask.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/BitMask.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/BitMask.c.i
 .PHONY : src/sqlite/BitMask.c.i
 
 src/sqlite/BitMask.s: src/sqlite/BitMask.c.s
@@ -270,7 +270,7 @@ src/sqlite/BitMask.s: src/sqlite/BitMask.c.s
 
 # target to generate assembly for a file
 src/sqlite/BitMask.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/BitMask.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/BitMask.c.s
 .PHONY : src/sqlite/BitMask.c.s
 
 src/sqlite/Bitvec.o: src/sqlite/Bitvec.c.o
@@ -278,7 +278,7 @@ src/sqlite/Bitvec.o: src/sqlite/Bitvec.c.o
 
 # target to build an object file
 src/sqlite/Bitvec.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Bitvec.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Bitvec.c.o
 .PHONY : src/sqlite/Bitvec.c.o
 
 src/sqlite/Bitvec.i: src/sqlite/Bitvec.c.i
@@ -286,7 +286,7 @@ src/sqlite/Bitvec.i: src/sqlite/Bitvec.c.i
 
 # target to preprocess a source file
 src/sqlite/Bitvec.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Bitvec.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Bitvec.c.i
 .PHONY : src/sqlite/Bitvec.c.i
 
 src/sqlite/Bitvec.s: src/sqlite/Bitvec.c.s
@@ -294,7 +294,7 @@ src/sqlite/Bitvec.s: src/sqlite/Bitvec.c.s
 
 # target to generate assembly for a file
 src/sqlite/Bitvec.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Bitvec.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Bitvec.c.s
 .PHONY : src/sqlite/Bitvec.c.s
 
 src/sqlite/BtCursor.o: src/sqlite/BtCursor.c.o
@@ -302,7 +302,7 @@ src/sqlite/BtCursor.o: src/sqlite/BtCursor.c.o
 
 # target to build an object file
 src/sqlite/BtCursor.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/BtCursor.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/BtCursor.c.o
 .PHONY : src/sqlite/BtCursor.c.o
 
 src/sqlite/BtCursor.i: src/sqlite/BtCursor.c.i
@@ -310,7 +310,7 @@ src/sqlite/BtCursor.i: src/sqlite/BtCursor.c.i
 
 # target to preprocess a source file
 src/sqlite/BtCursor.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/BtCursor.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/BtCursor.c.i
 .PHONY : src/sqlite/BtCursor.c.i
 
 src/sqlite/BtCursor.s: src/sqlite/BtCursor.c.s
@@ -318,7 +318,7 @@ src/sqlite/BtCursor.s: src/sqlite/BtCursor.c.s
 
 # target to generate assembly for a file
 src/sqlite/BtCursor.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/BtCursor.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/BtCursor.c.s
 .PHONY : src/sqlite/BtCursor.c.s
 
 src/sqlite/BtLock.o: src/sqlite/BtLock.c.o
@@ -326,7 +326,7 @@ src/sqlite/BtLock.o: src/sqlite/BtLock.c.o
 
 # target to build an object file
 src/sqlite/BtLock.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/BtLock.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/BtLock.c.o
 .PHONY : src/sqlite/BtLock.c.o
 
 src/sqlite/BtLock.i: src/sqlite/BtLock.c.i
@@ -334,7 +334,7 @@ src/sqlite/BtLock.i: src/sqlite/BtLock.c.i
 
 # target to preprocess a source file
 src/sqlite/BtLock.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/BtLock.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/BtLock.c.i
 .PHONY : src/sqlite/BtLock.c.i
 
 src/sqlite/BtLock.s: src/sqlite/BtLock.c.s
@@ -342,7 +342,7 @@ src/sqlite/BtLock.s: src/sqlite/BtLock.c.s
 
 # target to generate assembly for a file
 src/sqlite/BtLock.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/BtLock.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/BtLock.c.s
 .PHONY : src/sqlite/BtLock.c.s
 
 src/sqlite/BtShared.o: src/sqlite/BtShared.c.o
@@ -350,7 +350,7 @@ src/sqlite/BtShared.o: src/sqlite/BtShared.c.o
 
 # target to build an object file
 src/sqlite/BtShared.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/BtShared.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/BtShared.c.o
 .PHONY : src/sqlite/BtShared.c.o
 
 src/sqlite/BtShared.i: src/sqlite/BtShared.c.i
@@ -358,7 +358,7 @@ src/sqlite/BtShared.i: src/sqlite/BtShared.c.i
 
 # target to preprocess a source file
 src/sqlite/BtShared.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/BtShared.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/BtShared.c.i
 .PHONY : src/sqlite/BtShared.c.i
 
 src/sqlite/BtShared.s: src/sqlite/BtShared.c.s
@@ -366,7 +366,7 @@ src/sqlite/BtShared.s: src/sqlite/BtShared.c.s
 
 # target to generate assembly for a file
 src/sqlite/BtShared.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/BtShared.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/BtShared.c.s
 .PHONY : src/sqlite/BtShared.c.s
 
 src/sqlite/Btree.o: src/sqlite/Btree.c.o
@@ -374,7 +374,7 @@ src/sqlite/Btree.o: src/sqlite/Btree.c.o
 
 # target to build an object file
 src/sqlite/Btree.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Btree.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Btree.c.o
 .PHONY : src/sqlite/Btree.c.o
 
 src/sqlite/Btree.i: src/sqlite/Btree.c.i
@@ -382,7 +382,7 @@ src/sqlite/Btree.i: src/sqlite/Btree.c.i
 
 # target to preprocess a source file
 src/sqlite/Btree.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Btree.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Btree.c.i
 .PHONY : src/sqlite/Btree.c.i
 
 src/sqlite/Btree.s: src/sqlite/Btree.c.s
@@ -390,7 +390,7 @@ src/sqlite/Btree.s: src/sqlite/Btree.c.s
 
 # target to generate assembly for a file
 src/sqlite/Btree.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Btree.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Btree.c.s
 .PHONY : src/sqlite/Btree.c.s
 
 src/sqlite/BtreePayload.o: src/sqlite/BtreePayload.c.o
@@ -398,7 +398,7 @@ src/sqlite/BtreePayload.o: src/sqlite/BtreePayload.c.o
 
 # target to build an object file
 src/sqlite/BtreePayload.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/BtreePayload.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/BtreePayload.c.o
 .PHONY : src/sqlite/BtreePayload.c.o
 
 src/sqlite/BtreePayload.i: src/sqlite/BtreePayload.c.i
@@ -406,7 +406,7 @@ src/sqlite/BtreePayload.i: src/sqlite/BtreePayload.c.i
 
 # target to preprocess a source file
 src/sqlite/BtreePayload.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/BtreePayload.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/BtreePayload.c.i
 .PHONY : src/sqlite/BtreePayload.c.i
 
 src/sqlite/BtreePayload.s: src/sqlite/BtreePayload.c.s
@@ -414,7 +414,7 @@ src/sqlite/BtreePayload.s: src/sqlite/BtreePayload.c.s
 
 # target to generate assembly for a file
 src/sqlite/BtreePayload.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/BtreePayload.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/BtreePayload.c.s
 .PHONY : src/sqlite/BtreePayload.c.s
 
 src/sqlite/BusyHandler.o: src/sqlite/BusyHandler.c.o
@@ -422,7 +422,7 @@ src/sqlite/BusyHandler.o: src/sqlite/BusyHandler.c.o
 
 # target to build an object file
 src/sqlite/BusyHandler.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/BusyHandler.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/BusyHandler.c.o
 .PHONY : src/sqlite/BusyHandler.c.o
 
 src/sqlite/BusyHandler.i: src/sqlite/BusyHandler.c.i
@@ -430,7 +430,7 @@ src/sqlite/BusyHandler.i: src/sqlite/BusyHandler.c.i
 
 # target to preprocess a source file
 src/sqlite/BusyHandler.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/BusyHandler.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/BusyHandler.c.i
 .PHONY : src/sqlite/BusyHandler.c.i
 
 src/sqlite/BusyHandler.s: src/sqlite/BusyHandler.c.s
@@ -438,7 +438,7 @@ src/sqlite/BusyHandler.s: src/sqlite/BusyHandler.c.s
 
 # target to generate assembly for a file
 src/sqlite/BusyHandler.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/BusyHandler.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/BusyHandler.c.s
 .PHONY : src/sqlite/BusyHandler.c.s
 
 src/sqlite/CallCount.o: src/sqlite/CallCount.c.o
@@ -446,7 +446,7 @@ src/sqlite/CallCount.o: src/sqlite/CallCount.c.o
 
 # target to build an object file
 src/sqlite/CallCount.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/CallCount.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/CallCount.c.o
 .PHONY : src/sqlite/CallCount.c.o
 
 src/sqlite/CallCount.i: src/sqlite/CallCount.c.i
@@ -454,7 +454,7 @@ src/sqlite/CallCount.i: src/sqlite/CallCount.c.i
 
 # target to preprocess a source file
 src/sqlite/CallCount.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/CallCount.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/CallCount.c.i
 .PHONY : src/sqlite/CallCount.c.i
 
 src/sqlite/CallCount.s: src/sqlite/CallCount.c.s
@@ -462,7 +462,7 @@ src/sqlite/CallCount.s: src/sqlite/CallCount.c.s
 
 # target to generate assembly for a file
 src/sqlite/CallCount.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/CallCount.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/CallCount.c.s
 .PHONY : src/sqlite/CallCount.c.s
 
 src/sqlite/CellArray.o: src/sqlite/CellArray.c.o
@@ -470,7 +470,7 @@ src/sqlite/CellArray.o: src/sqlite/CellArray.c.o
 
 # target to build an object file
 src/sqlite/CellArray.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/CellArray.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/CellArray.c.o
 .PHONY : src/sqlite/CellArray.c.o
 
 src/sqlite/CellArray.i: src/sqlite/CellArray.c.i
@@ -478,7 +478,7 @@ src/sqlite/CellArray.i: src/sqlite/CellArray.c.i
 
 # target to preprocess a source file
 src/sqlite/CellArray.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/CellArray.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/CellArray.c.i
 .PHONY : src/sqlite/CellArray.c.i
 
 src/sqlite/CellArray.s: src/sqlite/CellArray.c.s
@@ -486,7 +486,7 @@ src/sqlite/CellArray.s: src/sqlite/CellArray.c.s
 
 # target to generate assembly for a file
 src/sqlite/CellArray.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/CellArray.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/CellArray.c.s
 .PHONY : src/sqlite/CellArray.c.s
 
 src/sqlite/CellInfo.o: src/sqlite/CellInfo.c.o
@@ -494,7 +494,7 @@ src/sqlite/CellInfo.o: src/sqlite/CellInfo.c.o
 
 # target to build an object file
 src/sqlite/CellInfo.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/CellInfo.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/CellInfo.c.o
 .PHONY : src/sqlite/CellInfo.c.o
 
 src/sqlite/CellInfo.i: src/sqlite/CellInfo.c.i
@@ -502,7 +502,7 @@ src/sqlite/CellInfo.i: src/sqlite/CellInfo.c.i
 
 # target to preprocess a source file
 src/sqlite/CellInfo.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/CellInfo.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/CellInfo.c.i
 .PHONY : src/sqlite/CellInfo.c.i
 
 src/sqlite/CellInfo.s: src/sqlite/CellInfo.c.s
@@ -510,7 +510,7 @@ src/sqlite/CellInfo.s: src/sqlite/CellInfo.c.s
 
 # target to generate assembly for a file
 src/sqlite/CellInfo.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/CellInfo.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/CellInfo.c.s
 .PHONY : src/sqlite/CellInfo.c.s
 
 src/sqlite/CheckOnCtx.o: src/sqlite/CheckOnCtx.c.o
@@ -518,7 +518,7 @@ src/sqlite/CheckOnCtx.o: src/sqlite/CheckOnCtx.c.o
 
 # target to build an object file
 src/sqlite/CheckOnCtx.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/CheckOnCtx.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/CheckOnCtx.c.o
 .PHONY : src/sqlite/CheckOnCtx.c.o
 
 src/sqlite/CheckOnCtx.i: src/sqlite/CheckOnCtx.c.i
@@ -526,7 +526,7 @@ src/sqlite/CheckOnCtx.i: src/sqlite/CheckOnCtx.c.i
 
 # target to preprocess a source file
 src/sqlite/CheckOnCtx.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/CheckOnCtx.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/CheckOnCtx.c.i
 .PHONY : src/sqlite/CheckOnCtx.c.i
 
 src/sqlite/CheckOnCtx.s: src/sqlite/CheckOnCtx.c.s
@@ -534,7 +534,7 @@ src/sqlite/CheckOnCtx.s: src/sqlite/CheckOnCtx.c.s
 
 # target to generate assembly for a file
 src/sqlite/CheckOnCtx.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/CheckOnCtx.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/CheckOnCtx.c.s
 .PHONY : src/sqlite/CheckOnCtx.c.s
 
 src/sqlite/CollSeq.o: src/sqlite/CollSeq.c.o
@@ -542,7 +542,7 @@ src/sqlite/CollSeq.o: src/sqlite/CollSeq.c.o
 
 # target to build an object file
 src/sqlite/CollSeq.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/CollSeq.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/CollSeq.c.o
 .PHONY : src/sqlite/CollSeq.c.o
 
 src/sqlite/CollSeq.i: src/sqlite/CollSeq.c.i
@@ -550,7 +550,7 @@ src/sqlite/CollSeq.i: src/sqlite/CollSeq.c.i
 
 # target to preprocess a source file
 src/sqlite/CollSeq.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/CollSeq.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/CollSeq.c.i
 .PHONY : src/sqlite/CollSeq.c.i
 
 src/sqlite/CollSeq.s: src/sqlite/CollSeq.c.s
@@ -558,7 +558,7 @@ src/sqlite/CollSeq.s: src/sqlite/CollSeq.c.s
 
 # target to generate assembly for a file
 src/sqlite/CollSeq.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/CollSeq.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/CollSeq.c.s
 .PHONY : src/sqlite/CollSeq.c.s
 
 src/sqlite/Column.o: src/sqlite/Column.c.o
@@ -566,7 +566,7 @@ src/sqlite/Column.o: src/sqlite/Column.c.o
 
 # target to build an object file
 src/sqlite/Column.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Column.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Column.c.o
 .PHONY : src/sqlite/Column.c.o
 
 src/sqlite/Column.i: src/sqlite/Column.c.i
@@ -574,7 +574,7 @@ src/sqlite/Column.i: src/sqlite/Column.c.i
 
 # target to preprocess a source file
 src/sqlite/Column.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Column.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Column.c.i
 .PHONY : src/sqlite/Column.c.i
 
 src/sqlite/Column.s: src/sqlite/Column.c.s
@@ -582,7 +582,7 @@ src/sqlite/Column.s: src/sqlite/Column.c.s
 
 # target to generate assembly for a file
 src/sqlite/Column.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Column.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Column.c.s
 .PHONY : src/sqlite/Column.c.s
 
 src/sqlite/CountCtx.o: src/sqlite/CountCtx.c.o
@@ -590,7 +590,7 @@ src/sqlite/CountCtx.o: src/sqlite/CountCtx.c.o
 
 # target to build an object file
 src/sqlite/CountCtx.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/CountCtx.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/CountCtx.c.o
 .PHONY : src/sqlite/CountCtx.c.o
 
 src/sqlite/CountCtx.i: src/sqlite/CountCtx.c.i
@@ -598,7 +598,7 @@ src/sqlite/CountCtx.i: src/sqlite/CountCtx.c.i
 
 # target to preprocess a source file
 src/sqlite/CountCtx.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/CountCtx.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/CountCtx.c.i
 .PHONY : src/sqlite/CountCtx.c.i
 
 src/sqlite/CountCtx.s: src/sqlite/CountCtx.c.s
@@ -606,7 +606,7 @@ src/sqlite/CountCtx.s: src/sqlite/CountCtx.c.s
 
 # target to generate assembly for a file
 src/sqlite/CountCtx.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/CountCtx.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/CountCtx.c.s
 .PHONY : src/sqlite/CountCtx.c.s
 
 src/sqlite/CoveringIndexCheck.o: src/sqlite/CoveringIndexCheck.c.o
@@ -614,7 +614,7 @@ src/sqlite/CoveringIndexCheck.o: src/sqlite/CoveringIndexCheck.c.o
 
 # target to build an object file
 src/sqlite/CoveringIndexCheck.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/CoveringIndexCheck.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/CoveringIndexCheck.c.o
 .PHONY : src/sqlite/CoveringIndexCheck.c.o
 
 src/sqlite/CoveringIndexCheck.i: src/sqlite/CoveringIndexCheck.c.i
@@ -622,7 +622,7 @@ src/sqlite/CoveringIndexCheck.i: src/sqlite/CoveringIndexCheck.c.i
 
 # target to preprocess a source file
 src/sqlite/CoveringIndexCheck.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/CoveringIndexCheck.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/CoveringIndexCheck.c.i
 .PHONY : src/sqlite/CoveringIndexCheck.c.i
 
 src/sqlite/CoveringIndexCheck.s: src/sqlite/CoveringIndexCheck.c.s
@@ -630,7 +630,7 @@ src/sqlite/CoveringIndexCheck.s: src/sqlite/CoveringIndexCheck.c.s
 
 # target to generate assembly for a file
 src/sqlite/CoveringIndexCheck.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/CoveringIndexCheck.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/CoveringIndexCheck.c.s
 .PHONY : src/sqlite/CoveringIndexCheck.c.s
 
 src/sqlite/Cte.o: src/sqlite/Cte.c.o
@@ -638,7 +638,7 @@ src/sqlite/Cte.o: src/sqlite/Cte.c.o
 
 # target to build an object file
 src/sqlite/Cte.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Cte.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Cte.c.o
 .PHONY : src/sqlite/Cte.c.o
 
 src/sqlite/Cte.i: src/sqlite/Cte.c.i
@@ -646,7 +646,7 @@ src/sqlite/Cte.i: src/sqlite/Cte.c.i
 
 # target to preprocess a source file
 src/sqlite/Cte.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Cte.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Cte.c.i
 .PHONY : src/sqlite/Cte.c.i
 
 src/sqlite/Cte.s: src/sqlite/Cte.c.s
@@ -654,7 +654,7 @@ src/sqlite/Cte.s: src/sqlite/Cte.c.s
 
 # target to generate assembly for a file
 src/sqlite/Cte.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Cte.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Cte.c.s
 .PHONY : src/sqlite/Cte.c.s
 
 src/sqlite/CteUse.o: src/sqlite/CteUse.c.o
@@ -662,7 +662,7 @@ src/sqlite/CteUse.o: src/sqlite/CteUse.c.o
 
 # target to build an object file
 src/sqlite/CteUse.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/CteUse.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/CteUse.c.o
 .PHONY : src/sqlite/CteUse.c.o
 
 src/sqlite/CteUse.i: src/sqlite/CteUse.c.i
@@ -670,7 +670,7 @@ src/sqlite/CteUse.i: src/sqlite/CteUse.c.i
 
 # target to preprocess a source file
 src/sqlite/CteUse.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/CteUse.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/CteUse.c.i
 .PHONY : src/sqlite/CteUse.c.i
 
 src/sqlite/CteUse.s: src/sqlite/CteUse.c.s
@@ -678,7 +678,7 @@ src/sqlite/CteUse.s: src/sqlite/CteUse.c.s
 
 # target to generate assembly for a file
 src/sqlite/CteUse.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/CteUse.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/CteUse.c.s
 .PHONY : src/sqlite/CteUse.c.s
 
 src/sqlite/DateTime.o: src/sqlite/DateTime.c.o
@@ -686,7 +686,7 @@ src/sqlite/DateTime.o: src/sqlite/DateTime.c.o
 
 # target to build an object file
 src/sqlite/DateTime.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/DateTime.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/DateTime.c.o
 .PHONY : src/sqlite/DateTime.c.o
 
 src/sqlite/DateTime.i: src/sqlite/DateTime.c.i
@@ -694,7 +694,7 @@ src/sqlite/DateTime.i: src/sqlite/DateTime.c.i
 
 # target to preprocess a source file
 src/sqlite/DateTime.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/DateTime.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/DateTime.c.i
 .PHONY : src/sqlite/DateTime.c.i
 
 src/sqlite/DateTime.s: src/sqlite/DateTime.c.s
@@ -702,7 +702,7 @@ src/sqlite/DateTime.s: src/sqlite/DateTime.c.s
 
 # target to generate assembly for a file
 src/sqlite/DateTime.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/DateTime.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/DateTime.c.s
 .PHONY : src/sqlite/DateTime.c.s
 
 src/sqlite/Db.o: src/sqlite/Db.c.o
@@ -710,7 +710,7 @@ src/sqlite/Db.o: src/sqlite/Db.c.o
 
 # target to build an object file
 src/sqlite/Db.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Db.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Db.c.o
 .PHONY : src/sqlite/Db.c.o
 
 src/sqlite/Db.i: src/sqlite/Db.c.i
@@ -718,7 +718,7 @@ src/sqlite/Db.i: src/sqlite/Db.c.i
 
 # target to preprocess a source file
 src/sqlite/Db.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Db.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Db.c.i
 .PHONY : src/sqlite/Db.c.i
 
 src/sqlite/Db.s: src/sqlite/Db.c.s
@@ -726,7 +726,7 @@ src/sqlite/Db.s: src/sqlite/Db.c.s
 
 # target to generate assembly for a file
 src/sqlite/Db.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Db.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Db.c.s
 .PHONY : src/sqlite/Db.c.s
 
 src/sqlite/DbClientData.o: src/sqlite/DbClientData.c.o
@@ -734,7 +734,7 @@ src/sqlite/DbClientData.o: src/sqlite/DbClientData.c.o
 
 # target to build an object file
 src/sqlite/DbClientData.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/DbClientData.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/DbClientData.c.o
 .PHONY : src/sqlite/DbClientData.c.o
 
 src/sqlite/DbClientData.i: src/sqlite/DbClientData.c.i
@@ -742,7 +742,7 @@ src/sqlite/DbClientData.i: src/sqlite/DbClientData.c.i
 
 # target to preprocess a source file
 src/sqlite/DbClientData.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/DbClientData.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/DbClientData.c.i
 .PHONY : src/sqlite/DbClientData.c.i
 
 src/sqlite/DbClientData.s: src/sqlite/DbClientData.c.s
@@ -750,7 +750,7 @@ src/sqlite/DbClientData.s: src/sqlite/DbClientData.c.s
 
 # target to generate assembly for a file
 src/sqlite/DbClientData.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/DbClientData.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/DbClientData.c.s
 .PHONY : src/sqlite/DbClientData.c.s
 
 src/sqlite/DbFixer.o: src/sqlite/DbFixer.c.o
@@ -758,7 +758,7 @@ src/sqlite/DbFixer.o: src/sqlite/DbFixer.c.o
 
 # target to build an object file
 src/sqlite/DbFixer.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/DbFixer.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/DbFixer.c.o
 .PHONY : src/sqlite/DbFixer.c.o
 
 src/sqlite/DbFixer.i: src/sqlite/DbFixer.c.i
@@ -766,7 +766,7 @@ src/sqlite/DbFixer.i: src/sqlite/DbFixer.c.i
 
 # target to preprocess a source file
 src/sqlite/DbFixer.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/DbFixer.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/DbFixer.c.i
 .PHONY : src/sqlite/DbFixer.c.i
 
 src/sqlite/DbFixer.s: src/sqlite/DbFixer.c.s
@@ -774,7 +774,7 @@ src/sqlite/DbFixer.s: src/sqlite/DbFixer.c.s
 
 # target to generate assembly for a file
 src/sqlite/DbFixer.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/DbFixer.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/DbFixer.c.s
 .PHONY : src/sqlite/DbFixer.c.s
 
 src/sqlite/DbPage.o: src/sqlite/DbPage.c.o
@@ -782,7 +782,7 @@ src/sqlite/DbPage.o: src/sqlite/DbPage.c.o
 
 # target to build an object file
 src/sqlite/DbPage.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/DbPage.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/DbPage.c.o
 .PHONY : src/sqlite/DbPage.c.o
 
 src/sqlite/DbPage.i: src/sqlite/DbPage.c.i
@@ -790,7 +790,7 @@ src/sqlite/DbPage.i: src/sqlite/DbPage.c.i
 
 # target to preprocess a source file
 src/sqlite/DbPage.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/DbPage.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/DbPage.c.i
 .PHONY : src/sqlite/DbPage.c.i
 
 src/sqlite/DbPage.s: src/sqlite/DbPage.c.s
@@ -798,7 +798,7 @@ src/sqlite/DbPage.s: src/sqlite/DbPage.c.s
 
 # target to generate assembly for a file
 src/sqlite/DbPage.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/DbPage.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/DbPage.c.s
 .PHONY : src/sqlite/DbPage.c.s
 
 src/sqlite/DbPath.o: src/sqlite/DbPath.c.o
@@ -806,7 +806,7 @@ src/sqlite/DbPath.o: src/sqlite/DbPath.c.o
 
 # target to build an object file
 src/sqlite/DbPath.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/DbPath.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/DbPath.c.o
 .PHONY : src/sqlite/DbPath.c.o
 
 src/sqlite/DbPath.i: src/sqlite/DbPath.c.i
@@ -814,7 +814,7 @@ src/sqlite/DbPath.i: src/sqlite/DbPath.c.i
 
 # target to preprocess a source file
 src/sqlite/DbPath.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/DbPath.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/DbPath.c.i
 .PHONY : src/sqlite/DbPath.c.i
 
 src/sqlite/DbPath.s: src/sqlite/DbPath.c.s
@@ -822,7 +822,7 @@ src/sqlite/DbPath.s: src/sqlite/DbPath.c.s
 
 # target to generate assembly for a file
 src/sqlite/DbPath.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/DbPath.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/DbPath.c.s
 .PHONY : src/sqlite/DbPath.c.s
 
 src/sqlite/DblquoteStr.o: src/sqlite/DblquoteStr.c.o
@@ -830,7 +830,7 @@ src/sqlite/DblquoteStr.o: src/sqlite/DblquoteStr.c.o
 
 # target to build an object file
 src/sqlite/DblquoteStr.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/DblquoteStr.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/DblquoteStr.c.o
 .PHONY : src/sqlite/DblquoteStr.c.o
 
 src/sqlite/DblquoteStr.i: src/sqlite/DblquoteStr.c.i
@@ -838,7 +838,7 @@ src/sqlite/DblquoteStr.i: src/sqlite/DblquoteStr.c.i
 
 # target to preprocess a source file
 src/sqlite/DblquoteStr.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/DblquoteStr.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/DblquoteStr.c.i
 .PHONY : src/sqlite/DblquoteStr.c.i
 
 src/sqlite/DblquoteStr.s: src/sqlite/DblquoteStr.c.s
@@ -846,7 +846,7 @@ src/sqlite/DblquoteStr.s: src/sqlite/DblquoteStr.c.s
 
 # target to generate assembly for a file
 src/sqlite/DblquoteStr.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/DblquoteStr.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/DblquoteStr.c.s
 .PHONY : src/sqlite/DblquoteStr.c.s
 
 src/sqlite/DistinctCtx.o: src/sqlite/DistinctCtx.c.o
@@ -854,7 +854,7 @@ src/sqlite/DistinctCtx.o: src/sqlite/DistinctCtx.c.o
 
 # target to build an object file
 src/sqlite/DistinctCtx.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/DistinctCtx.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/DistinctCtx.c.o
 .PHONY : src/sqlite/DistinctCtx.c.o
 
 src/sqlite/DistinctCtx.i: src/sqlite/DistinctCtx.c.i
@@ -862,7 +862,7 @@ src/sqlite/DistinctCtx.i: src/sqlite/DistinctCtx.c.i
 
 # target to preprocess a source file
 src/sqlite/DistinctCtx.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/DistinctCtx.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/DistinctCtx.c.i
 .PHONY : src/sqlite/DistinctCtx.c.i
 
 src/sqlite/DistinctCtx.s: src/sqlite/DistinctCtx.c.s
@@ -870,7 +870,7 @@ src/sqlite/DistinctCtx.s: src/sqlite/DistinctCtx.c.s
 
 # target to generate assembly for a file
 src/sqlite/DistinctCtx.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/DistinctCtx.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/DistinctCtx.c.s
 .PHONY : src/sqlite/DistinctCtx.c.s
 
 src/sqlite/EdupBuf.o: src/sqlite/EdupBuf.c.o
@@ -878,7 +878,7 @@ src/sqlite/EdupBuf.o: src/sqlite/EdupBuf.c.o
 
 # target to build an object file
 src/sqlite/EdupBuf.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/EdupBuf.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/EdupBuf.c.o
 .PHONY : src/sqlite/EdupBuf.c.o
 
 src/sqlite/EdupBuf.i: src/sqlite/EdupBuf.c.i
@@ -886,7 +886,7 @@ src/sqlite/EdupBuf.i: src/sqlite/EdupBuf.c.i
 
 # target to preprocess a source file
 src/sqlite/EdupBuf.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/EdupBuf.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/EdupBuf.c.i
 .PHONY : src/sqlite/EdupBuf.c.i
 
 src/sqlite/EdupBuf.s: src/sqlite/EdupBuf.c.s
@@ -894,7 +894,7 @@ src/sqlite/EdupBuf.s: src/sqlite/EdupBuf.c.s
 
 # target to generate assembly for a file
 src/sqlite/EdupBuf.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/EdupBuf.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/EdupBuf.c.s
 .PHONY : src/sqlite/EdupBuf.c.s
 
 src/sqlite/Expr.o: src/sqlite/Expr.c.o
@@ -902,7 +902,7 @@ src/sqlite/Expr.o: src/sqlite/Expr.c.o
 
 # target to build an object file
 src/sqlite/Expr.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Expr.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Expr.c.o
 .PHONY : src/sqlite/Expr.c.o
 
 src/sqlite/Expr.i: src/sqlite/Expr.c.i
@@ -910,7 +910,7 @@ src/sqlite/Expr.i: src/sqlite/Expr.c.i
 
 # target to preprocess a source file
 src/sqlite/Expr.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Expr.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Expr.c.i
 .PHONY : src/sqlite/Expr.c.i
 
 src/sqlite/Expr.s: src/sqlite/Expr.c.s
@@ -918,7 +918,7 @@ src/sqlite/Expr.s: src/sqlite/Expr.c.s
 
 # target to generate assembly for a file
 src/sqlite/Expr.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Expr.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Expr.c.s
 .PHONY : src/sqlite/Expr.c.s
 
 src/sqlite/ExprList.o: src/sqlite/ExprList.c.o
@@ -926,7 +926,7 @@ src/sqlite/ExprList.o: src/sqlite/ExprList.c.o
 
 # target to build an object file
 src/sqlite/ExprList.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/ExprList.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/ExprList.c.o
 .PHONY : src/sqlite/ExprList.c.o
 
 src/sqlite/ExprList.i: src/sqlite/ExprList.c.i
@@ -934,7 +934,7 @@ src/sqlite/ExprList.i: src/sqlite/ExprList.c.i
 
 # target to preprocess a source file
 src/sqlite/ExprList.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/ExprList.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/ExprList.c.i
 .PHONY : src/sqlite/ExprList.c.i
 
 src/sqlite/ExprList.s: src/sqlite/ExprList.c.s
@@ -942,7 +942,7 @@ src/sqlite/ExprList.s: src/sqlite/ExprList.c.s
 
 # target to generate assembly for a file
 src/sqlite/ExprList.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/ExprList.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/ExprList.c.s
 .PHONY : src/sqlite/ExprList.c.s
 
 src/sqlite/FKey.o: src/sqlite/FKey.c.o
@@ -950,7 +950,7 @@ src/sqlite/FKey.o: src/sqlite/FKey.c.o
 
 # target to build an object file
 src/sqlite/FKey.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/FKey.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/FKey.c.o
 .PHONY : src/sqlite/FKey.c.o
 
 src/sqlite/FKey.i: src/sqlite/FKey.c.i
@@ -958,7 +958,7 @@ src/sqlite/FKey.i: src/sqlite/FKey.c.i
 
 # target to preprocess a source file
 src/sqlite/FKey.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/FKey.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/FKey.c.i
 .PHONY : src/sqlite/FKey.c.i
 
 src/sqlite/FKey.s: src/sqlite/FKey.c.s
@@ -966,7 +966,7 @@ src/sqlite/FKey.s: src/sqlite/FKey.c.s
 
 # target to generate assembly for a file
 src/sqlite/FKey.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/FKey.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/FKey.c.s
 .PHONY : src/sqlite/FKey.c.s
 
 src/sqlite/FileChunk.o: src/sqlite/FileChunk.c.o
@@ -974,7 +974,7 @@ src/sqlite/FileChunk.o: src/sqlite/FileChunk.c.o
 
 # target to build an object file
 src/sqlite/FileChunk.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/FileChunk.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/FileChunk.c.o
 .PHONY : src/sqlite/FileChunk.c.o
 
 src/sqlite/FileChunk.i: src/sqlite/FileChunk.c.i
@@ -982,7 +982,7 @@ src/sqlite/FileChunk.i: src/sqlite/FileChunk.c.i
 
 # target to preprocess a source file
 src/sqlite/FileChunk.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/FileChunk.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/FileChunk.c.i
 .PHONY : src/sqlite/FileChunk.c.i
 
 src/sqlite/FileChunk.s: src/sqlite/FileChunk.c.s
@@ -990,7 +990,7 @@ src/sqlite/FileChunk.s: src/sqlite/FileChunk.c.s
 
 # target to generate assembly for a file
 src/sqlite/FileChunk.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/FileChunk.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/FileChunk.c.s
 .PHONY : src/sqlite/FileChunk.c.s
 
 src/sqlite/FilePoint.o: src/sqlite/FilePoint.c.o
@@ -998,7 +998,7 @@ src/sqlite/FilePoint.o: src/sqlite/FilePoint.c.o
 
 # target to build an object file
 src/sqlite/FilePoint.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/FilePoint.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/FilePoint.c.o
 .PHONY : src/sqlite/FilePoint.c.o
 
 src/sqlite/FilePoint.i: src/sqlite/FilePoint.c.i
@@ -1006,7 +1006,7 @@ src/sqlite/FilePoint.i: src/sqlite/FilePoint.c.i
 
 # target to preprocess a source file
 src/sqlite/FilePoint.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/FilePoint.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/FilePoint.c.i
 .PHONY : src/sqlite/FilePoint.c.i
 
 src/sqlite/FilePoint.s: src/sqlite/FilePoint.c.s
@@ -1014,7 +1014,7 @@ src/sqlite/FilePoint.s: src/sqlite/FilePoint.c.s
 
 # target to generate assembly for a file
 src/sqlite/FilePoint.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/FilePoint.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/FilePoint.c.s
 .PHONY : src/sqlite/FilePoint.c.s
 
 src/sqlite/FpDecode.o: src/sqlite/FpDecode.c.o
@@ -1022,7 +1022,7 @@ src/sqlite/FpDecode.o: src/sqlite/FpDecode.c.o
 
 # target to build an object file
 src/sqlite/FpDecode.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/FpDecode.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/FpDecode.c.o
 .PHONY : src/sqlite/FpDecode.c.o
 
 src/sqlite/FpDecode.i: src/sqlite/FpDecode.c.i
@@ -1030,7 +1030,7 @@ src/sqlite/FpDecode.i: src/sqlite/FpDecode.c.i
 
 # target to preprocess a source file
 src/sqlite/FpDecode.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/FpDecode.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/FpDecode.c.i
 .PHONY : src/sqlite/FpDecode.c.i
 
 src/sqlite/FpDecode.s: src/sqlite/FpDecode.c.s
@@ -1038,7 +1038,7 @@ src/sqlite/FpDecode.s: src/sqlite/FpDecode.c.s
 
 # target to generate assembly for a file
 src/sqlite/FpDecode.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/FpDecode.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/FpDecode.c.s
 .PHONY : src/sqlite/FpDecode.c.s
 
 src/sqlite/Fts5Context.o: src/sqlite/Fts5Context.c.o
@@ -1046,7 +1046,7 @@ src/sqlite/Fts5Context.o: src/sqlite/Fts5Context.c.o
 
 # target to build an object file
 src/sqlite/Fts5Context.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Fts5Context.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Fts5Context.c.o
 .PHONY : src/sqlite/Fts5Context.c.o
 
 src/sqlite/Fts5Context.i: src/sqlite/Fts5Context.c.i
@@ -1054,7 +1054,7 @@ src/sqlite/Fts5Context.i: src/sqlite/Fts5Context.c.i
 
 # target to preprocess a source file
 src/sqlite/Fts5Context.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Fts5Context.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Fts5Context.c.i
 .PHONY : src/sqlite/Fts5Context.c.i
 
 src/sqlite/Fts5Context.s: src/sqlite/Fts5Context.c.s
@@ -1062,7 +1062,7 @@ src/sqlite/Fts5Context.s: src/sqlite/Fts5Context.c.s
 
 # target to generate assembly for a file
 src/sqlite/Fts5Context.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Fts5Context.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Fts5Context.c.s
 .PHONY : src/sqlite/Fts5Context.c.s
 
 src/sqlite/Fts5ExtensionApi.o: src/sqlite/Fts5ExtensionApi.c.o
@@ -1070,7 +1070,7 @@ src/sqlite/Fts5ExtensionApi.o: src/sqlite/Fts5ExtensionApi.c.o
 
 # target to build an object file
 src/sqlite/Fts5ExtensionApi.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Fts5ExtensionApi.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Fts5ExtensionApi.c.o
 .PHONY : src/sqlite/Fts5ExtensionApi.c.o
 
 src/sqlite/Fts5ExtensionApi.i: src/sqlite/Fts5ExtensionApi.c.i
@@ -1078,7 +1078,7 @@ src/sqlite/Fts5ExtensionApi.i: src/sqlite/Fts5ExtensionApi.c.i
 
 # target to preprocess a source file
 src/sqlite/Fts5ExtensionApi.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Fts5ExtensionApi.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Fts5ExtensionApi.c.i
 .PHONY : src/sqlite/Fts5ExtensionApi.c.i
 
 src/sqlite/Fts5ExtensionApi.s: src/sqlite/Fts5ExtensionApi.c.s
@@ -1086,7 +1086,7 @@ src/sqlite/Fts5ExtensionApi.s: src/sqlite/Fts5ExtensionApi.c.s
 
 # target to generate assembly for a file
 src/sqlite/Fts5ExtensionApi.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Fts5ExtensionApi.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Fts5ExtensionApi.c.s
 .PHONY : src/sqlite/Fts5ExtensionApi.c.s
 
 src/sqlite/Fts5PhraseIter.o: src/sqlite/Fts5PhraseIter.c.o
@@ -1094,7 +1094,7 @@ src/sqlite/Fts5PhraseIter.o: src/sqlite/Fts5PhraseIter.c.o
 
 # target to build an object file
 src/sqlite/Fts5PhraseIter.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Fts5PhraseIter.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Fts5PhraseIter.c.o
 .PHONY : src/sqlite/Fts5PhraseIter.c.o
 
 src/sqlite/Fts5PhraseIter.i: src/sqlite/Fts5PhraseIter.c.i
@@ -1102,7 +1102,7 @@ src/sqlite/Fts5PhraseIter.i: src/sqlite/Fts5PhraseIter.c.i
 
 # target to preprocess a source file
 src/sqlite/Fts5PhraseIter.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Fts5PhraseIter.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Fts5PhraseIter.c.i
 .PHONY : src/sqlite/Fts5PhraseIter.c.i
 
 src/sqlite/Fts5PhraseIter.s: src/sqlite/Fts5PhraseIter.c.s
@@ -1110,7 +1110,7 @@ src/sqlite/Fts5PhraseIter.s: src/sqlite/Fts5PhraseIter.c.s
 
 # target to generate assembly for a file
 src/sqlite/Fts5PhraseIter.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Fts5PhraseIter.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Fts5PhraseIter.c.s
 .PHONY : src/sqlite/Fts5PhraseIter.c.s
 
 src/sqlite/Fts5Tokenizer.o: src/sqlite/Fts5Tokenizer.c.o
@@ -1118,7 +1118,7 @@ src/sqlite/Fts5Tokenizer.o: src/sqlite/Fts5Tokenizer.c.o
 
 # target to build an object file
 src/sqlite/Fts5Tokenizer.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Fts5Tokenizer.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Fts5Tokenizer.c.o
 .PHONY : src/sqlite/Fts5Tokenizer.c.o
 
 src/sqlite/Fts5Tokenizer.i: src/sqlite/Fts5Tokenizer.c.i
@@ -1126,7 +1126,7 @@ src/sqlite/Fts5Tokenizer.i: src/sqlite/Fts5Tokenizer.c.i
 
 # target to preprocess a source file
 src/sqlite/Fts5Tokenizer.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Fts5Tokenizer.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Fts5Tokenizer.c.i
 .PHONY : src/sqlite/Fts5Tokenizer.c.i
 
 src/sqlite/Fts5Tokenizer.s: src/sqlite/Fts5Tokenizer.c.s
@@ -1134,7 +1134,7 @@ src/sqlite/Fts5Tokenizer.s: src/sqlite/Fts5Tokenizer.c.s
 
 # target to generate assembly for a file
 src/sqlite/Fts5Tokenizer.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Fts5Tokenizer.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Fts5Tokenizer.c.s
 .PHONY : src/sqlite/Fts5Tokenizer.c.s
 
 src/sqlite/FuncDef.o: src/sqlite/FuncDef.c.o
@@ -1142,7 +1142,7 @@ src/sqlite/FuncDef.o: src/sqlite/FuncDef.c.o
 
 # target to build an object file
 src/sqlite/FuncDef.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/FuncDef.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/FuncDef.c.o
 .PHONY : src/sqlite/FuncDef.c.o
 
 src/sqlite/FuncDef.i: src/sqlite/FuncDef.c.i
@@ -1150,7 +1150,7 @@ src/sqlite/FuncDef.i: src/sqlite/FuncDef.c.i
 
 # target to preprocess a source file
 src/sqlite/FuncDef.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/FuncDef.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/FuncDef.c.i
 .PHONY : src/sqlite/FuncDef.c.i
 
 src/sqlite/FuncDef.s: src/sqlite/FuncDef.c.s
@@ -1158,7 +1158,7 @@ src/sqlite/FuncDef.s: src/sqlite/FuncDef.c.s
 
 # target to generate assembly for a file
 src/sqlite/FuncDef.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/FuncDef.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/FuncDef.c.s
 .PHONY : src/sqlite/FuncDef.c.s
 
 src/sqlite/FuncDefHash.o: src/sqlite/FuncDefHash.c.o
@@ -1166,7 +1166,7 @@ src/sqlite/FuncDefHash.o: src/sqlite/FuncDefHash.c.o
 
 # target to build an object file
 src/sqlite/FuncDefHash.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/FuncDefHash.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/FuncDefHash.c.o
 .PHONY : src/sqlite/FuncDefHash.c.o
 
 src/sqlite/FuncDefHash.i: src/sqlite/FuncDefHash.c.i
@@ -1174,7 +1174,7 @@ src/sqlite/FuncDefHash.i: src/sqlite/FuncDefHash.c.i
 
 # target to preprocess a source file
 src/sqlite/FuncDefHash.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/FuncDefHash.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/FuncDefHash.c.i
 .PHONY : src/sqlite/FuncDefHash.c.i
 
 src/sqlite/FuncDefHash.s: src/sqlite/FuncDefHash.c.s
@@ -1182,7 +1182,7 @@ src/sqlite/FuncDefHash.s: src/sqlite/FuncDefHash.c.s
 
 # target to generate assembly for a file
 src/sqlite/FuncDefHash.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/FuncDefHash.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/FuncDefHash.c.s
 .PHONY : src/sqlite/FuncDefHash.c.s
 
 src/sqlite/FuncDestructor.o: src/sqlite/FuncDestructor.c.o
@@ -1190,7 +1190,7 @@ src/sqlite/FuncDestructor.o: src/sqlite/FuncDestructor.c.o
 
 # target to build an object file
 src/sqlite/FuncDestructor.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/FuncDestructor.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/FuncDestructor.c.o
 .PHONY : src/sqlite/FuncDestructor.c.o
 
 src/sqlite/FuncDestructor.i: src/sqlite/FuncDestructor.c.i
@@ -1198,7 +1198,7 @@ src/sqlite/FuncDestructor.i: src/sqlite/FuncDestructor.c.i
 
 # target to preprocess a source file
 src/sqlite/FuncDestructor.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/FuncDestructor.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/FuncDestructor.c.i
 .PHONY : src/sqlite/FuncDestructor.c.i
 
 src/sqlite/FuncDestructor.s: src/sqlite/FuncDestructor.c.s
@@ -1206,7 +1206,7 @@ src/sqlite/FuncDestructor.s: src/sqlite/FuncDestructor.c.s
 
 # target to generate assembly for a file
 src/sqlite/FuncDestructor.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/FuncDestructor.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/FuncDestructor.c.s
 .PHONY : src/sqlite/FuncDestructor.c.s
 
 src/sqlite/GroupConcatCtx.o: src/sqlite/GroupConcatCtx.c.o
@@ -1214,7 +1214,7 @@ src/sqlite/GroupConcatCtx.o: src/sqlite/GroupConcatCtx.c.o
 
 # target to build an object file
 src/sqlite/GroupConcatCtx.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/GroupConcatCtx.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/GroupConcatCtx.c.o
 .PHONY : src/sqlite/GroupConcatCtx.c.o
 
 src/sqlite/GroupConcatCtx.i: src/sqlite/GroupConcatCtx.c.i
@@ -1222,7 +1222,7 @@ src/sqlite/GroupConcatCtx.i: src/sqlite/GroupConcatCtx.c.i
 
 # target to preprocess a source file
 src/sqlite/GroupConcatCtx.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/GroupConcatCtx.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/GroupConcatCtx.c.i
 .PHONY : src/sqlite/GroupConcatCtx.c.i
 
 src/sqlite/GroupConcatCtx.s: src/sqlite/GroupConcatCtx.c.s
@@ -1230,7 +1230,7 @@ src/sqlite/GroupConcatCtx.s: src/sqlite/GroupConcatCtx.c.s
 
 # target to generate assembly for a file
 src/sqlite/GroupConcatCtx.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/GroupConcatCtx.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/GroupConcatCtx.c.s
 .PHONY : src/sqlite/GroupConcatCtx.c.s
 
 src/sqlite/Hash.o: src/sqlite/Hash.c.o
@@ -1238,7 +1238,7 @@ src/sqlite/Hash.o: src/sqlite/Hash.c.o
 
 # target to build an object file
 src/sqlite/Hash.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Hash.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Hash.c.o
 .PHONY : src/sqlite/Hash.c.o
 
 src/sqlite/Hash.i: src/sqlite/Hash.c.i
@@ -1246,7 +1246,7 @@ src/sqlite/Hash.i: src/sqlite/Hash.c.i
 
 # target to preprocess a source file
 src/sqlite/Hash.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Hash.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Hash.c.i
 .PHONY : src/sqlite/Hash.c.i
 
 src/sqlite/Hash.s: src/sqlite/Hash.c.s
@@ -1254,7 +1254,7 @@ src/sqlite/Hash.s: src/sqlite/Hash.c.s
 
 # target to generate assembly for a file
 src/sqlite/Hash.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Hash.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Hash.c.s
 .PHONY : src/sqlite/Hash.c.s
 
 src/sqlite/HashElem.o: src/sqlite/HashElem.c.o
@@ -1262,7 +1262,7 @@ src/sqlite/HashElem.o: src/sqlite/HashElem.c.o
 
 # target to build an object file
 src/sqlite/HashElem.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/HashElem.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/HashElem.c.o
 .PHONY : src/sqlite/HashElem.c.o
 
 src/sqlite/HashElem.i: src/sqlite/HashElem.c.i
@@ -1270,7 +1270,7 @@ src/sqlite/HashElem.i: src/sqlite/HashElem.c.i
 
 # target to preprocess a source file
 src/sqlite/HashElem.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/HashElem.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/HashElem.c.i
 .PHONY : src/sqlite/HashElem.c.i
 
 src/sqlite/HashElem.s: src/sqlite/HashElem.c.s
@@ -1278,7 +1278,7 @@ src/sqlite/HashElem.s: src/sqlite/HashElem.c.s
 
 # target to generate assembly for a file
 src/sqlite/HashElem.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/HashElem.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/HashElem.c.s
 .PHONY : src/sqlite/HashElem.c.s
 
 src/sqlite/HiddenIndexInfo.o: src/sqlite/HiddenIndexInfo.c.o
@@ -1286,7 +1286,7 @@ src/sqlite/HiddenIndexInfo.o: src/sqlite/HiddenIndexInfo.c.o
 
 # target to build an object file
 src/sqlite/HiddenIndexInfo.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/HiddenIndexInfo.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/HiddenIndexInfo.c.o
 .PHONY : src/sqlite/HiddenIndexInfo.c.o
 
 src/sqlite/HiddenIndexInfo.i: src/sqlite/HiddenIndexInfo.c.i
@@ -1294,7 +1294,7 @@ src/sqlite/HiddenIndexInfo.i: src/sqlite/HiddenIndexInfo.c.i
 
 # target to preprocess a source file
 src/sqlite/HiddenIndexInfo.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/HiddenIndexInfo.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/HiddenIndexInfo.c.i
 .PHONY : src/sqlite/HiddenIndexInfo.c.i
 
 src/sqlite/HiddenIndexInfo.s: src/sqlite/HiddenIndexInfo.c.s
@@ -1302,7 +1302,7 @@ src/sqlite/HiddenIndexInfo.s: src/sqlite/HiddenIndexInfo.c.s
 
 # target to generate assembly for a file
 src/sqlite/HiddenIndexInfo.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/HiddenIndexInfo.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/HiddenIndexInfo.c.s
 .PHONY : src/sqlite/HiddenIndexInfo.c.s
 
 src/sqlite/IdList.o: src/sqlite/IdList.c.o
@@ -1310,7 +1310,7 @@ src/sqlite/IdList.o: src/sqlite/IdList.c.o
 
 # target to build an object file
 src/sqlite/IdList.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/IdList.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/IdList.c.o
 .PHONY : src/sqlite/IdList.c.o
 
 src/sqlite/IdList.i: src/sqlite/IdList.c.i
@@ -1318,7 +1318,7 @@ src/sqlite/IdList.i: src/sqlite/IdList.c.i
 
 # target to preprocess a source file
 src/sqlite/IdList.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/IdList.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/IdList.c.i
 .PHONY : src/sqlite/IdList.c.i
 
 src/sqlite/IdList.s: src/sqlite/IdList.c.s
@@ -1326,7 +1326,7 @@ src/sqlite/IdList.s: src/sqlite/IdList.c.s
 
 # target to generate assembly for a file
 src/sqlite/IdList.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/IdList.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/IdList.c.s
 .PHONY : src/sqlite/IdList.c.s
 
 src/sqlite/IdxCover.o: src/sqlite/IdxCover.c.o
@@ -1334,7 +1334,7 @@ src/sqlite/IdxCover.o: src/sqlite/IdxCover.c.o
 
 # target to build an object file
 src/sqlite/IdxCover.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/IdxCover.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/IdxCover.c.o
 .PHONY : src/sqlite/IdxCover.c.o
 
 src/sqlite/IdxCover.i: src/sqlite/IdxCover.c.i
@@ -1342,7 +1342,7 @@ src/sqlite/IdxCover.i: src/sqlite/IdxCover.c.i
 
 # target to preprocess a source file
 src/sqlite/IdxCover.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/IdxCover.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/IdxCover.c.i
 .PHONY : src/sqlite/IdxCover.c.i
 
 src/sqlite/IdxCover.s: src/sqlite/IdxCover.c.s
@@ -1350,7 +1350,7 @@ src/sqlite/IdxCover.s: src/sqlite/IdxCover.c.s
 
 # target to generate assembly for a file
 src/sqlite/IdxCover.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/IdxCover.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/IdxCover.c.s
 .PHONY : src/sqlite/IdxCover.c.s
 
 src/sqlite/IncrMerger.o: src/sqlite/IncrMerger.c.o
@@ -1358,7 +1358,7 @@ src/sqlite/IncrMerger.o: src/sqlite/IncrMerger.c.o
 
 # target to build an object file
 src/sqlite/IncrMerger.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/IncrMerger.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/IncrMerger.c.o
 .PHONY : src/sqlite/IncrMerger.c.o
 
 src/sqlite/IncrMerger.i: src/sqlite/IncrMerger.c.i
@@ -1366,7 +1366,7 @@ src/sqlite/IncrMerger.i: src/sqlite/IncrMerger.c.i
 
 # target to preprocess a source file
 src/sqlite/IncrMerger.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/IncrMerger.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/IncrMerger.c.i
 .PHONY : src/sqlite/IncrMerger.c.i
 
 src/sqlite/IncrMerger.s: src/sqlite/IncrMerger.c.s
@@ -1374,7 +1374,7 @@ src/sqlite/IncrMerger.s: src/sqlite/IncrMerger.c.s
 
 # target to generate assembly for a file
 src/sqlite/IncrMerger.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/IncrMerger.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/IncrMerger.c.s
 .PHONY : src/sqlite/IncrMerger.c.s
 
 src/sqlite/Incrblob.o: src/sqlite/Incrblob.c.o
@@ -1382,7 +1382,7 @@ src/sqlite/Incrblob.o: src/sqlite/Incrblob.c.o
 
 # target to build an object file
 src/sqlite/Incrblob.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Incrblob.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Incrblob.c.o
 .PHONY : src/sqlite/Incrblob.c.o
 
 src/sqlite/Incrblob.i: src/sqlite/Incrblob.c.i
@@ -1390,7 +1390,7 @@ src/sqlite/Incrblob.i: src/sqlite/Incrblob.c.i
 
 # target to preprocess a source file
 src/sqlite/Incrblob.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Incrblob.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Incrblob.c.i
 .PHONY : src/sqlite/Incrblob.c.i
 
 src/sqlite/Incrblob.s: src/sqlite/Incrblob.c.s
@@ -1398,7 +1398,7 @@ src/sqlite/Incrblob.s: src/sqlite/Incrblob.c.s
 
 # target to generate assembly for a file
 src/sqlite/Incrblob.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Incrblob.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Incrblob.c.s
 .PHONY : src/sqlite/Incrblob.c.s
 
 src/sqlite/Index.o: src/sqlite/Index.c.o
@@ -1406,7 +1406,7 @@ src/sqlite/Index.o: src/sqlite/Index.c.o
 
 # target to build an object file
 src/sqlite/Index.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Index.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Index.c.o
 .PHONY : src/sqlite/Index.c.o
 
 src/sqlite/Index.i: src/sqlite/Index.c.i
@@ -1414,7 +1414,7 @@ src/sqlite/Index.i: src/sqlite/Index.c.i
 
 # target to preprocess a source file
 src/sqlite/Index.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Index.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Index.c.i
 .PHONY : src/sqlite/Index.c.i
 
 src/sqlite/Index.s: src/sqlite/Index.c.s
@@ -1422,7 +1422,7 @@ src/sqlite/Index.s: src/sqlite/Index.c.s
 
 # target to generate assembly for a file
 src/sqlite/Index.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Index.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Index.c.s
 .PHONY : src/sqlite/Index.c.s
 
 src/sqlite/IndexIterator.o: src/sqlite/IndexIterator.c.o
@@ -1430,7 +1430,7 @@ src/sqlite/IndexIterator.o: src/sqlite/IndexIterator.c.o
 
 # target to build an object file
 src/sqlite/IndexIterator.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/IndexIterator.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/IndexIterator.c.o
 .PHONY : src/sqlite/IndexIterator.c.o
 
 src/sqlite/IndexIterator.i: src/sqlite/IndexIterator.c.i
@@ -1438,7 +1438,7 @@ src/sqlite/IndexIterator.i: src/sqlite/IndexIterator.c.i
 
 # target to preprocess a source file
 src/sqlite/IndexIterator.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/IndexIterator.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/IndexIterator.c.i
 .PHONY : src/sqlite/IndexIterator.c.i
 
 src/sqlite/IndexIterator.s: src/sqlite/IndexIterator.c.s
@@ -1446,7 +1446,7 @@ src/sqlite/IndexIterator.s: src/sqlite/IndexIterator.c.s
 
 # target to generate assembly for a file
 src/sqlite/IndexIterator.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/IndexIterator.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/IndexIterator.c.s
 .PHONY : src/sqlite/IndexIterator.c.s
 
 src/sqlite/IndexListTerm.o: src/sqlite/IndexListTerm.c.o
@@ -1454,7 +1454,7 @@ src/sqlite/IndexListTerm.o: src/sqlite/IndexListTerm.c.o
 
 # target to build an object file
 src/sqlite/IndexListTerm.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/IndexListTerm.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/IndexListTerm.c.o
 .PHONY : src/sqlite/IndexListTerm.c.o
 
 src/sqlite/IndexListTerm.i: src/sqlite/IndexListTerm.c.i
@@ -1462,7 +1462,7 @@ src/sqlite/IndexListTerm.i: src/sqlite/IndexListTerm.c.i
 
 # target to preprocess a source file
 src/sqlite/IndexListTerm.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/IndexListTerm.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/IndexListTerm.c.i
 .PHONY : src/sqlite/IndexListTerm.c.i
 
 src/sqlite/IndexListTerm.s: src/sqlite/IndexListTerm.c.s
@@ -1470,7 +1470,7 @@ src/sqlite/IndexListTerm.s: src/sqlite/IndexListTerm.c.s
 
 # target to generate assembly for a file
 src/sqlite/IndexListTerm.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/IndexListTerm.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/IndexListTerm.c.s
 .PHONY : src/sqlite/IndexListTerm.c.s
 
 src/sqlite/IndexSample.o: src/sqlite/IndexSample.c.o
@@ -1478,7 +1478,7 @@ src/sqlite/IndexSample.o: src/sqlite/IndexSample.c.o
 
 # target to build an object file
 src/sqlite/IndexSample.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/IndexSample.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/IndexSample.c.o
 .PHONY : src/sqlite/IndexSample.c.o
 
 src/sqlite/IndexSample.i: src/sqlite/IndexSample.c.i
@@ -1486,7 +1486,7 @@ src/sqlite/IndexSample.i: src/sqlite/IndexSample.c.i
 
 # target to preprocess a source file
 src/sqlite/IndexSample.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/IndexSample.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/IndexSample.c.i
 .PHONY : src/sqlite/IndexSample.c.i
 
 src/sqlite/IndexSample.s: src/sqlite/IndexSample.c.s
@@ -1494,7 +1494,7 @@ src/sqlite/IndexSample.s: src/sqlite/IndexSample.c.s
 
 # target to generate assembly for a file
 src/sqlite/IndexSample.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/IndexSample.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/IndexSample.c.s
 .PHONY : src/sqlite/IndexSample.c.s
 
 src/sqlite/IndexedExpr.o: src/sqlite/IndexedExpr.c.o
@@ -1502,7 +1502,7 @@ src/sqlite/IndexedExpr.o: src/sqlite/IndexedExpr.c.o
 
 # target to build an object file
 src/sqlite/IndexedExpr.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/IndexedExpr.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/IndexedExpr.c.o
 .PHONY : src/sqlite/IndexedExpr.c.o
 
 src/sqlite/IndexedExpr.i: src/sqlite/IndexedExpr.c.i
@@ -1510,7 +1510,7 @@ src/sqlite/IndexedExpr.i: src/sqlite/IndexedExpr.c.i
 
 # target to preprocess a source file
 src/sqlite/IndexedExpr.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/IndexedExpr.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/IndexedExpr.c.i
 .PHONY : src/sqlite/IndexedExpr.c.i
 
 src/sqlite/IndexedExpr.s: src/sqlite/IndexedExpr.c.s
@@ -1518,7 +1518,7 @@ src/sqlite/IndexedExpr.s: src/sqlite/IndexedExpr.c.s
 
 # target to generate assembly for a file
 src/sqlite/IndexedExpr.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/IndexedExpr.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/IndexedExpr.c.s
 .PHONY : src/sqlite/IndexedExpr.c.s
 
 src/sqlite/InitData.o: src/sqlite/InitData.c.o
@@ -1526,7 +1526,7 @@ src/sqlite/InitData.o: src/sqlite/InitData.c.o
 
 # target to build an object file
 src/sqlite/InitData.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/InitData.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/InitData.c.o
 .PHONY : src/sqlite/InitData.c.o
 
 src/sqlite/InitData.i: src/sqlite/InitData.c.i
@@ -1534,7 +1534,7 @@ src/sqlite/InitData.i: src/sqlite/InitData.c.i
 
 # target to preprocess a source file
 src/sqlite/InitData.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/InitData.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/InitData.c.i
 .PHONY : src/sqlite/InitData.c.i
 
 src/sqlite/InitData.s: src/sqlite/InitData.c.s
@@ -1542,7 +1542,7 @@ src/sqlite/InitData.s: src/sqlite/InitData.c.s
 
 # target to generate assembly for a file
 src/sqlite/InitData.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/InitData.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/InitData.c.s
 .PHONY : src/sqlite/InitData.c.s
 
 src/sqlite/IntegrityCk.o: src/sqlite/IntegrityCk.c.o
@@ -1550,7 +1550,7 @@ src/sqlite/IntegrityCk.o: src/sqlite/IntegrityCk.c.o
 
 # target to build an object file
 src/sqlite/IntegrityCk.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/IntegrityCk.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/IntegrityCk.c.o
 .PHONY : src/sqlite/IntegrityCk.c.o
 
 src/sqlite/IntegrityCk.i: src/sqlite/IntegrityCk.c.i
@@ -1558,7 +1558,7 @@ src/sqlite/IntegrityCk.i: src/sqlite/IntegrityCk.c.i
 
 # target to preprocess a source file
 src/sqlite/IntegrityCk.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/IntegrityCk.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/IntegrityCk.c.i
 .PHONY : src/sqlite/IntegrityCk.c.i
 
 src/sqlite/IntegrityCk.s: src/sqlite/IntegrityCk.c.s
@@ -1566,7 +1566,7 @@ src/sqlite/IntegrityCk.s: src/sqlite/IntegrityCk.c.s
 
 # target to generate assembly for a file
 src/sqlite/IntegrityCk.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/IntegrityCk.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/IntegrityCk.c.s
 .PHONY : src/sqlite/IntegrityCk.c.s
 
 src/sqlite/JsonCache.o: src/sqlite/JsonCache.c.o
@@ -1574,7 +1574,7 @@ src/sqlite/JsonCache.o: src/sqlite/JsonCache.c.o
 
 # target to build an object file
 src/sqlite/JsonCache.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/JsonCache.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/JsonCache.c.o
 .PHONY : src/sqlite/JsonCache.c.o
 
 src/sqlite/JsonCache.i: src/sqlite/JsonCache.c.i
@@ -1582,7 +1582,7 @@ src/sqlite/JsonCache.i: src/sqlite/JsonCache.c.i
 
 # target to preprocess a source file
 src/sqlite/JsonCache.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/JsonCache.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/JsonCache.c.i
 .PHONY : src/sqlite/JsonCache.c.i
 
 src/sqlite/JsonCache.s: src/sqlite/JsonCache.c.s
@@ -1590,7 +1590,7 @@ src/sqlite/JsonCache.s: src/sqlite/JsonCache.c.s
 
 # target to generate assembly for a file
 src/sqlite/JsonCache.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/JsonCache.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/JsonCache.c.s
 .PHONY : src/sqlite/JsonCache.c.s
 
 src/sqlite/JsonEachConnection.o: src/sqlite/JsonEachConnection.c.o
@@ -1598,7 +1598,7 @@ src/sqlite/JsonEachConnection.o: src/sqlite/JsonEachConnection.c.o
 
 # target to build an object file
 src/sqlite/JsonEachConnection.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/JsonEachConnection.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/JsonEachConnection.c.o
 .PHONY : src/sqlite/JsonEachConnection.c.o
 
 src/sqlite/JsonEachConnection.i: src/sqlite/JsonEachConnection.c.i
@@ -1606,7 +1606,7 @@ src/sqlite/JsonEachConnection.i: src/sqlite/JsonEachConnection.c.i
 
 # target to preprocess a source file
 src/sqlite/JsonEachConnection.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/JsonEachConnection.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/JsonEachConnection.c.i
 .PHONY : src/sqlite/JsonEachConnection.c.i
 
 src/sqlite/JsonEachConnection.s: src/sqlite/JsonEachConnection.c.s
@@ -1614,7 +1614,7 @@ src/sqlite/JsonEachConnection.s: src/sqlite/JsonEachConnection.c.s
 
 # target to generate assembly for a file
 src/sqlite/JsonEachConnection.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/JsonEachConnection.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/JsonEachConnection.c.s
 .PHONY : src/sqlite/JsonEachConnection.c.s
 
 src/sqlite/JsonEachCursor.o: src/sqlite/JsonEachCursor.c.o
@@ -1622,7 +1622,7 @@ src/sqlite/JsonEachCursor.o: src/sqlite/JsonEachCursor.c.o
 
 # target to build an object file
 src/sqlite/JsonEachCursor.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/JsonEachCursor.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/JsonEachCursor.c.o
 .PHONY : src/sqlite/JsonEachCursor.c.o
 
 src/sqlite/JsonEachCursor.i: src/sqlite/JsonEachCursor.c.i
@@ -1630,7 +1630,7 @@ src/sqlite/JsonEachCursor.i: src/sqlite/JsonEachCursor.c.i
 
 # target to preprocess a source file
 src/sqlite/JsonEachCursor.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/JsonEachCursor.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/JsonEachCursor.c.i
 .PHONY : src/sqlite/JsonEachCursor.c.i
 
 src/sqlite/JsonEachCursor.s: src/sqlite/JsonEachCursor.c.s
@@ -1638,7 +1638,7 @@ src/sqlite/JsonEachCursor.s: src/sqlite/JsonEachCursor.c.s
 
 # target to generate assembly for a file
 src/sqlite/JsonEachCursor.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/JsonEachCursor.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/JsonEachCursor.c.s
 .PHONY : src/sqlite/JsonEachCursor.c.s
 
 src/sqlite/JsonParent.o: src/sqlite/JsonParent.c.o
@@ -1646,7 +1646,7 @@ src/sqlite/JsonParent.o: src/sqlite/JsonParent.c.o
 
 # target to build an object file
 src/sqlite/JsonParent.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/JsonParent.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/JsonParent.c.o
 .PHONY : src/sqlite/JsonParent.c.o
 
 src/sqlite/JsonParent.i: src/sqlite/JsonParent.c.i
@@ -1654,7 +1654,7 @@ src/sqlite/JsonParent.i: src/sqlite/JsonParent.c.i
 
 # target to preprocess a source file
 src/sqlite/JsonParent.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/JsonParent.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/JsonParent.c.i
 .PHONY : src/sqlite/JsonParent.c.i
 
 src/sqlite/JsonParent.s: src/sqlite/JsonParent.c.s
@@ -1662,7 +1662,7 @@ src/sqlite/JsonParent.s: src/sqlite/JsonParent.c.s
 
 # target to generate assembly for a file
 src/sqlite/JsonParent.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/JsonParent.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/JsonParent.c.s
 .PHONY : src/sqlite/JsonParent.c.s
 
 src/sqlite/JsonParse.o: src/sqlite/JsonParse.c.o
@@ -1670,7 +1670,7 @@ src/sqlite/JsonParse.o: src/sqlite/JsonParse.c.o
 
 # target to build an object file
 src/sqlite/JsonParse.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/JsonParse.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/JsonParse.c.o
 .PHONY : src/sqlite/JsonParse.c.o
 
 src/sqlite/JsonParse.i: src/sqlite/JsonParse.c.i
@@ -1678,7 +1678,7 @@ src/sqlite/JsonParse.i: src/sqlite/JsonParse.c.i
 
 # target to preprocess a source file
 src/sqlite/JsonParse.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/JsonParse.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/JsonParse.c.i
 .PHONY : src/sqlite/JsonParse.c.i
 
 src/sqlite/JsonParse.s: src/sqlite/JsonParse.c.s
@@ -1686,7 +1686,7 @@ src/sqlite/JsonParse.s: src/sqlite/JsonParse.c.s
 
 # target to generate assembly for a file
 src/sqlite/JsonParse.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/JsonParse.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/JsonParse.c.s
 .PHONY : src/sqlite/JsonParse.c.s
 
 src/sqlite/JsonPretty.o: src/sqlite/JsonPretty.c.o
@@ -1694,7 +1694,7 @@ src/sqlite/JsonPretty.o: src/sqlite/JsonPretty.c.o
 
 # target to build an object file
 src/sqlite/JsonPretty.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/JsonPretty.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/JsonPretty.c.o
 .PHONY : src/sqlite/JsonPretty.c.o
 
 src/sqlite/JsonPretty.i: src/sqlite/JsonPretty.c.i
@@ -1702,7 +1702,7 @@ src/sqlite/JsonPretty.i: src/sqlite/JsonPretty.c.i
 
 # target to preprocess a source file
 src/sqlite/JsonPretty.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/JsonPretty.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/JsonPretty.c.i
 .PHONY : src/sqlite/JsonPretty.c.i
 
 src/sqlite/JsonPretty.s: src/sqlite/JsonPretty.c.s
@@ -1710,7 +1710,7 @@ src/sqlite/JsonPretty.s: src/sqlite/JsonPretty.c.s
 
 # target to generate assembly for a file
 src/sqlite/JsonPretty.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/JsonPretty.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/JsonPretty.c.s
 .PHONY : src/sqlite/JsonPretty.c.s
 
 src/sqlite/JsonString.o: src/sqlite/JsonString.c.o
@@ -1718,7 +1718,7 @@ src/sqlite/JsonString.o: src/sqlite/JsonString.c.o
 
 # target to build an object file
 src/sqlite/JsonString.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/JsonString.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/JsonString.c.o
 .PHONY : src/sqlite/JsonString.c.o
 
 src/sqlite/JsonString.i: src/sqlite/JsonString.c.i
@@ -1726,7 +1726,7 @@ src/sqlite/JsonString.i: src/sqlite/JsonString.c.i
 
 # target to preprocess a source file
 src/sqlite/JsonString.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/JsonString.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/JsonString.c.i
 .PHONY : src/sqlite/JsonString.c.i
 
 src/sqlite/JsonString.s: src/sqlite/JsonString.c.s
@@ -1734,7 +1734,7 @@ src/sqlite/JsonString.s: src/sqlite/JsonString.c.s
 
 # target to generate assembly for a file
 src/sqlite/JsonString.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/JsonString.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/JsonString.c.s
 .PHONY : src/sqlite/JsonString.c.s
 
 src/sqlite/KeyClass.o: src/sqlite/KeyClass.c.o
@@ -1742,7 +1742,7 @@ src/sqlite/KeyClass.o: src/sqlite/KeyClass.c.o
 
 # target to build an object file
 src/sqlite/KeyClass.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/KeyClass.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/KeyClass.c.o
 .PHONY : src/sqlite/KeyClass.c.o
 
 src/sqlite/KeyClass.i: src/sqlite/KeyClass.c.i
@@ -1750,7 +1750,7 @@ src/sqlite/KeyClass.i: src/sqlite/KeyClass.c.i
 
 # target to preprocess a source file
 src/sqlite/KeyClass.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/KeyClass.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/KeyClass.c.i
 .PHONY : src/sqlite/KeyClass.c.i
 
 src/sqlite/KeyClass.s: src/sqlite/KeyClass.c.s
@@ -1758,7 +1758,7 @@ src/sqlite/KeyClass.s: src/sqlite/KeyClass.c.s
 
 # target to generate assembly for a file
 src/sqlite/KeyClass.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/KeyClass.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/KeyClass.c.s
 .PHONY : src/sqlite/KeyClass.c.s
 
 src/sqlite/KeyInfo.o: src/sqlite/KeyInfo.c.o
@@ -1766,7 +1766,7 @@ src/sqlite/KeyInfo.o: src/sqlite/KeyInfo.c.o
 
 # target to build an object file
 src/sqlite/KeyInfo.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/KeyInfo.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/KeyInfo.c.o
 .PHONY : src/sqlite/KeyInfo.c.o
 
 src/sqlite/KeyInfo.i: src/sqlite/KeyInfo.c.i
@@ -1774,7 +1774,7 @@ src/sqlite/KeyInfo.i: src/sqlite/KeyInfo.c.i
 
 # target to preprocess a source file
 src/sqlite/KeyInfo.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/KeyInfo.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/KeyInfo.c.i
 .PHONY : src/sqlite/KeyInfo.c.i
 
 src/sqlite/KeyInfo.s: src/sqlite/KeyInfo.c.s
@@ -1782,7 +1782,7 @@ src/sqlite/KeyInfo.s: src/sqlite/KeyInfo.c.s
 
 # target to generate assembly for a file
 src/sqlite/KeyInfo.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/KeyInfo.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/KeyInfo.c.s
 .PHONY : src/sqlite/KeyInfo.c.s
 
 src/sqlite/LastValueCtx.o: src/sqlite/LastValueCtx.c.o
@@ -1790,7 +1790,7 @@ src/sqlite/LastValueCtx.o: src/sqlite/LastValueCtx.c.o
 
 # target to build an object file
 src/sqlite/LastValueCtx.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/LastValueCtx.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/LastValueCtx.c.o
 .PHONY : src/sqlite/LastValueCtx.c.o
 
 src/sqlite/LastValueCtx.i: src/sqlite/LastValueCtx.c.i
@@ -1798,7 +1798,7 @@ src/sqlite/LastValueCtx.i: src/sqlite/LastValueCtx.c.i
 
 # target to preprocess a source file
 src/sqlite/LastValueCtx.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/LastValueCtx.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/LastValueCtx.c.i
 .PHONY : src/sqlite/LastValueCtx.c.i
 
 src/sqlite/LastValueCtx.s: src/sqlite/LastValueCtx.c.s
@@ -1806,7 +1806,7 @@ src/sqlite/LastValueCtx.s: src/sqlite/LastValueCtx.c.s
 
 # target to generate assembly for a file
 src/sqlite/LastValueCtx.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/LastValueCtx.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/LastValueCtx.c.s
 .PHONY : src/sqlite/LastValueCtx.c.s
 
 src/sqlite/LogEst.o: src/sqlite/LogEst.c.o
@@ -1814,7 +1814,7 @@ src/sqlite/LogEst.o: src/sqlite/LogEst.c.o
 
 # target to build an object file
 src/sqlite/LogEst.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/LogEst.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/LogEst.c.o
 .PHONY : src/sqlite/LogEst.c.o
 
 src/sqlite/LogEst.i: src/sqlite/LogEst.c.i
@@ -1822,7 +1822,7 @@ src/sqlite/LogEst.i: src/sqlite/LogEst.c.i
 
 # target to preprocess a source file
 src/sqlite/LogEst.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/LogEst.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/LogEst.c.i
 .PHONY : src/sqlite/LogEst.c.i
 
 src/sqlite/LogEst.s: src/sqlite/LogEst.c.s
@@ -1830,7 +1830,7 @@ src/sqlite/LogEst.s: src/sqlite/LogEst.c.s
 
 # target to generate assembly for a file
 src/sqlite/LogEst.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/LogEst.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/LogEst.c.s
 .PHONY : src/sqlite/LogEst.c.s
 
 src/sqlite/Lookaside.o: src/sqlite/Lookaside.c.o
@@ -1838,7 +1838,7 @@ src/sqlite/Lookaside.o: src/sqlite/Lookaside.c.o
 
 # target to build an object file
 src/sqlite/Lookaside.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Lookaside.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Lookaside.c.o
 .PHONY : src/sqlite/Lookaside.c.o
 
 src/sqlite/Lookaside.i: src/sqlite/Lookaside.c.i
@@ -1846,7 +1846,7 @@ src/sqlite/Lookaside.i: src/sqlite/Lookaside.c.i
 
 # target to preprocess a source file
 src/sqlite/Lookaside.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Lookaside.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Lookaside.c.i
 .PHONY : src/sqlite/Lookaside.c.i
 
 src/sqlite/Lookaside.s: src/sqlite/Lookaside.c.s
@@ -1854,7 +1854,7 @@ src/sqlite/Lookaside.s: src/sqlite/Lookaside.c.s
 
 # target to generate assembly for a file
 src/sqlite/Lookaside.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Lookaside.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Lookaside.c.s
 .PHONY : src/sqlite/Lookaside.c.s
 
 src/sqlite/LookasideSlot.o: src/sqlite/LookasideSlot.c.o
@@ -1862,7 +1862,7 @@ src/sqlite/LookasideSlot.o: src/sqlite/LookasideSlot.c.o
 
 # target to build an object file
 src/sqlite/LookasideSlot.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/LookasideSlot.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/LookasideSlot.c.o
 .PHONY : src/sqlite/LookasideSlot.c.o
 
 src/sqlite/LookasideSlot.i: src/sqlite/LookasideSlot.c.i
@@ -1870,7 +1870,7 @@ src/sqlite/LookasideSlot.i: src/sqlite/LookasideSlot.c.i
 
 # target to preprocess a source file
 src/sqlite/LookasideSlot.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/LookasideSlot.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/LookasideSlot.c.i
 .PHONY : src/sqlite/LookasideSlot.c.i
 
 src/sqlite/LookasideSlot.s: src/sqlite/LookasideSlot.c.s
@@ -1878,7 +1878,7 @@ src/sqlite/LookasideSlot.s: src/sqlite/LookasideSlot.c.s
 
 # target to generate assembly for a file
 src/sqlite/LookasideSlot.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/LookasideSlot.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/LookasideSlot.c.s
 .PHONY : src/sqlite/LookasideSlot.c.s
 
 src/sqlite/Mem.o: src/sqlite/Mem.c.o
@@ -1886,7 +1886,7 @@ src/sqlite/Mem.o: src/sqlite/Mem.c.o
 
 # target to build an object file
 src/sqlite/Mem.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Mem.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Mem.c.o
 .PHONY : src/sqlite/Mem.c.o
 
 src/sqlite/Mem.i: src/sqlite/Mem.c.i
@@ -1894,7 +1894,7 @@ src/sqlite/Mem.i: src/sqlite/Mem.c.i
 
 # target to preprocess a source file
 src/sqlite/Mem.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Mem.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Mem.c.i
 .PHONY : src/sqlite/Mem.c.i
 
 src/sqlite/Mem.s: src/sqlite/Mem.c.s
@@ -1902,7 +1902,7 @@ src/sqlite/Mem.s: src/sqlite/Mem.c.s
 
 # target to generate assembly for a file
 src/sqlite/Mem.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Mem.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Mem.c.s
 .PHONY : src/sqlite/Mem.c.s
 
 src/sqlite/Mem0Global.o: src/sqlite/Mem0Global.c.o
@@ -1910,7 +1910,7 @@ src/sqlite/Mem0Global.o: src/sqlite/Mem0Global.c.o
 
 # target to build an object file
 src/sqlite/Mem0Global.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Mem0Global.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Mem0Global.c.o
 .PHONY : src/sqlite/Mem0Global.c.o
 
 src/sqlite/Mem0Global.i: src/sqlite/Mem0Global.c.i
@@ -1918,7 +1918,7 @@ src/sqlite/Mem0Global.i: src/sqlite/Mem0Global.c.i
 
 # target to preprocess a source file
 src/sqlite/Mem0Global.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Mem0Global.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Mem0Global.c.i
 .PHONY : src/sqlite/Mem0Global.c.i
 
 src/sqlite/Mem0Global.s: src/sqlite/Mem0Global.c.s
@@ -1926,7 +1926,7 @@ src/sqlite/Mem0Global.s: src/sqlite/Mem0Global.c.s
 
 # target to generate assembly for a file
 src/sqlite/Mem0Global.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Mem0Global.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Mem0Global.c.s
 .PHONY : src/sqlite/Mem0Global.c.s
 
 src/sqlite/MemFS.o: src/sqlite/MemFS.c.o
@@ -1934,7 +1934,7 @@ src/sqlite/MemFS.o: src/sqlite/MemFS.c.o
 
 # target to build an object file
 src/sqlite/MemFS.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/MemFS.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/MemFS.c.o
 .PHONY : src/sqlite/MemFS.c.o
 
 src/sqlite/MemFS.i: src/sqlite/MemFS.c.i
@@ -1942,7 +1942,7 @@ src/sqlite/MemFS.i: src/sqlite/MemFS.c.i
 
 # target to preprocess a source file
 src/sqlite/MemFS.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/MemFS.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/MemFS.c.i
 .PHONY : src/sqlite/MemFS.c.i
 
 src/sqlite/MemFS.s: src/sqlite/MemFS.c.s
@@ -1950,7 +1950,7 @@ src/sqlite/MemFS.s: src/sqlite/MemFS.c.s
 
 # target to generate assembly for a file
 src/sqlite/MemFS.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/MemFS.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/MemFS.c.s
 .PHONY : src/sqlite/MemFS.c.s
 
 src/sqlite/MemFile.o: src/sqlite/MemFile.c.o
@@ -1958,7 +1958,7 @@ src/sqlite/MemFile.o: src/sqlite/MemFile.c.o
 
 # target to build an object file
 src/sqlite/MemFile.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/MemFile.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/MemFile.c.o
 .PHONY : src/sqlite/MemFile.c.o
 
 src/sqlite/MemFile.i: src/sqlite/MemFile.c.i
@@ -1966,7 +1966,7 @@ src/sqlite/MemFile.i: src/sqlite/MemFile.c.i
 
 # target to preprocess a source file
 src/sqlite/MemFile.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/MemFile.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/MemFile.c.i
 .PHONY : src/sqlite/MemFile.c.i
 
 src/sqlite/MemFile.s: src/sqlite/MemFile.c.s
@@ -1974,7 +1974,7 @@ src/sqlite/MemFile.s: src/sqlite/MemFile.c.s
 
 # target to generate assembly for a file
 src/sqlite/MemFile.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/MemFile.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/MemFile.c.s
 .PHONY : src/sqlite/MemFile.c.s
 
 src/sqlite/MemJournal.o: src/sqlite/MemJournal.c.o
@@ -1982,7 +1982,7 @@ src/sqlite/MemJournal.o: src/sqlite/MemJournal.c.o
 
 # target to build an object file
 src/sqlite/MemJournal.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/MemJournal.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/MemJournal.c.o
 .PHONY : src/sqlite/MemJournal.c.o
 
 src/sqlite/MemJournal.i: src/sqlite/MemJournal.c.i
@@ -1990,7 +1990,7 @@ src/sqlite/MemJournal.i: src/sqlite/MemJournal.c.i
 
 # target to preprocess a source file
 src/sqlite/MemJournal.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/MemJournal.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/MemJournal.c.i
 .PHONY : src/sqlite/MemJournal.c.i
 
 src/sqlite/MemJournal.s: src/sqlite/MemJournal.c.s
@@ -1998,7 +1998,7 @@ src/sqlite/MemJournal.s: src/sqlite/MemJournal.c.s
 
 # target to generate assembly for a file
 src/sqlite/MemJournal.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/MemJournal.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/MemJournal.c.s
 .PHONY : src/sqlite/MemJournal.c.s
 
 src/sqlite/MemPage.o: src/sqlite/MemPage.c.o
@@ -2006,7 +2006,7 @@ src/sqlite/MemPage.o: src/sqlite/MemPage.c.o
 
 # target to build an object file
 src/sqlite/MemPage.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/MemPage.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/MemPage.c.o
 .PHONY : src/sqlite/MemPage.c.o
 
 src/sqlite/MemPage.i: src/sqlite/MemPage.c.i
@@ -2014,7 +2014,7 @@ src/sqlite/MemPage.i: src/sqlite/MemPage.c.i
 
 # target to preprocess a source file
 src/sqlite/MemPage.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/MemPage.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/MemPage.c.i
 .PHONY : src/sqlite/MemPage.c.i
 
 src/sqlite/MemPage.s: src/sqlite/MemPage.c.s
@@ -2022,7 +2022,7 @@ src/sqlite/MemPage.s: src/sqlite/MemPage.c.s
 
 # target to generate assembly for a file
 src/sqlite/MemPage.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/MemPage.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/MemPage.c.s
 .PHONY : src/sqlite/MemPage.c.s
 
 src/sqlite/MemStore.o: src/sqlite/MemStore.c.o
@@ -2030,7 +2030,7 @@ src/sqlite/MemStore.o: src/sqlite/MemStore.c.o
 
 # target to build an object file
 src/sqlite/MemStore.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/MemStore.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/MemStore.c.o
 .PHONY : src/sqlite/MemStore.c.o
 
 src/sqlite/MemStore.i: src/sqlite/MemStore.c.i
@@ -2038,7 +2038,7 @@ src/sqlite/MemStore.i: src/sqlite/MemStore.c.i
 
 # target to preprocess a source file
 src/sqlite/MemStore.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/MemStore.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/MemStore.c.i
 .PHONY : src/sqlite/MemStore.c.i
 
 src/sqlite/MemStore.s: src/sqlite/MemStore.c.s
@@ -2046,7 +2046,7 @@ src/sqlite/MemStore.s: src/sqlite/MemStore.c.s
 
 # target to generate assembly for a file
 src/sqlite/MemStore.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/MemStore.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/MemStore.c.s
 .PHONY : src/sqlite/MemStore.c.s
 
 src/sqlite/MergeEngine.o: src/sqlite/MergeEngine.c.o
@@ -2054,7 +2054,7 @@ src/sqlite/MergeEngine.o: src/sqlite/MergeEngine.c.o
 
 # target to build an object file
 src/sqlite/MergeEngine.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/MergeEngine.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/MergeEngine.c.o
 .PHONY : src/sqlite/MergeEngine.c.o
 
 src/sqlite/MergeEngine.i: src/sqlite/MergeEngine.c.i
@@ -2062,7 +2062,7 @@ src/sqlite/MergeEngine.i: src/sqlite/MergeEngine.c.i
 
 # target to preprocess a source file
 src/sqlite/MergeEngine.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/MergeEngine.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/MergeEngine.c.i
 .PHONY : src/sqlite/MergeEngine.c.i
 
 src/sqlite/MergeEngine.s: src/sqlite/MergeEngine.c.s
@@ -2070,7 +2070,7 @@ src/sqlite/MergeEngine.s: src/sqlite/MergeEngine.c.s
 
 # target to generate assembly for a file
 src/sqlite/MergeEngine.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/MergeEngine.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/MergeEngine.c.s
 .PHONY : src/sqlite/MergeEngine.c.s
 
 src/sqlite/Module.o: src/sqlite/Module.c.o
@@ -2078,7 +2078,7 @@ src/sqlite/Module.o: src/sqlite/Module.c.o
 
 # target to build an object file
 src/sqlite/Module.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Module.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Module.c.o
 .PHONY : src/sqlite/Module.c.o
 
 src/sqlite/Module.i: src/sqlite/Module.c.i
@@ -2086,7 +2086,7 @@ src/sqlite/Module.i: src/sqlite/Module.c.i
 
 # target to preprocess a source file
 src/sqlite/Module.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Module.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Module.c.i
 .PHONY : src/sqlite/Module.c.i
 
 src/sqlite/Module.s: src/sqlite/Module.c.s
@@ -2094,7 +2094,7 @@ src/sqlite/Module.s: src/sqlite/Module.c.s
 
 # target to generate assembly for a file
 src/sqlite/Module.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Module.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Module.c.s
 .PHONY : src/sqlite/Module.c.s
 
 src/sqlite/NameContext.o: src/sqlite/NameContext.c.o
@@ -2102,7 +2102,7 @@ src/sqlite/NameContext.o: src/sqlite/NameContext.c.o
 
 # target to build an object file
 src/sqlite/NameContext.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/NameContext.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/NameContext.c.o
 .PHONY : src/sqlite/NameContext.c.o
 
 src/sqlite/NameContext.i: src/sqlite/NameContext.c.i
@@ -2110,7 +2110,7 @@ src/sqlite/NameContext.i: src/sqlite/NameContext.c.i
 
 # target to preprocess a source file
 src/sqlite/NameContext.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/NameContext.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/NameContext.c.i
 .PHONY : src/sqlite/NameContext.c.i
 
 src/sqlite/NameContext.s: src/sqlite/NameContext.c.s
@@ -2118,7 +2118,7 @@ src/sqlite/NameContext.s: src/sqlite/NameContext.c.s
 
 # target to generate assembly for a file
 src/sqlite/NameContext.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/NameContext.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/NameContext.c.s
 .PHONY : src/sqlite/NameContext.c.s
 
 src/sqlite/NanInfName.o: src/sqlite/NanInfName.c.o
@@ -2126,7 +2126,7 @@ src/sqlite/NanInfName.o: src/sqlite/NanInfName.c.o
 
 # target to build an object file
 src/sqlite/NanInfName.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/NanInfName.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/NanInfName.c.o
 .PHONY : src/sqlite/NanInfName.c.o
 
 src/sqlite/NanInfName.i: src/sqlite/NanInfName.c.i
@@ -2134,7 +2134,7 @@ src/sqlite/NanInfName.i: src/sqlite/NanInfName.c.i
 
 # target to preprocess a source file
 src/sqlite/NanInfName.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/NanInfName.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/NanInfName.c.i
 .PHONY : src/sqlite/NanInfName.c.i
 
 src/sqlite/NanInfName.s: src/sqlite/NanInfName.c.s
@@ -2142,7 +2142,7 @@ src/sqlite/NanInfName.s: src/sqlite/NanInfName.c.s
 
 # target to generate assembly for a file
 src/sqlite/NanInfName.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/NanInfName.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/NanInfName.c.s
 .PHONY : src/sqlite/NanInfName.c.s
 
 src/sqlite/NthValueCtx.o: src/sqlite/NthValueCtx.c.o
@@ -2150,7 +2150,7 @@ src/sqlite/NthValueCtx.o: src/sqlite/NthValueCtx.c.o
 
 # target to build an object file
 src/sqlite/NthValueCtx.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/NthValueCtx.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/NthValueCtx.c.o
 .PHONY : src/sqlite/NthValueCtx.c.o
 
 src/sqlite/NthValueCtx.i: src/sqlite/NthValueCtx.c.i
@@ -2158,7 +2158,7 @@ src/sqlite/NthValueCtx.i: src/sqlite/NthValueCtx.c.i
 
 # target to preprocess a source file
 src/sqlite/NthValueCtx.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/NthValueCtx.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/NthValueCtx.c.i
 .PHONY : src/sqlite/NthValueCtx.c.i
 
 src/sqlite/NthValueCtx.s: src/sqlite/NthValueCtx.c.s
@@ -2166,7 +2166,7 @@ src/sqlite/NthValueCtx.s: src/sqlite/NthValueCtx.c.s
 
 # target to generate assembly for a file
 src/sqlite/NthValueCtx.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/NthValueCtx.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/NthValueCtx.c.s
 .PHONY : src/sqlite/NthValueCtx.c.s
 
 src/sqlite/NtileCtx.o: src/sqlite/NtileCtx.c.o
@@ -2174,7 +2174,7 @@ src/sqlite/NtileCtx.o: src/sqlite/NtileCtx.c.o
 
 # target to build an object file
 src/sqlite/NtileCtx.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/NtileCtx.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/NtileCtx.c.o
 .PHONY : src/sqlite/NtileCtx.c.o
 
 src/sqlite/NtileCtx.i: src/sqlite/NtileCtx.c.i
@@ -2182,7 +2182,7 @@ src/sqlite/NtileCtx.i: src/sqlite/NtileCtx.c.i
 
 # target to preprocess a source file
 src/sqlite/NtileCtx.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/NtileCtx.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/NtileCtx.c.i
 .PHONY : src/sqlite/NtileCtx.c.i
 
 src/sqlite/NtileCtx.s: src/sqlite/NtileCtx.c.s
@@ -2190,7 +2190,7 @@ src/sqlite/NtileCtx.s: src/sqlite/NtileCtx.c.s
 
 # target to generate assembly for a file
 src/sqlite/NtileCtx.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/NtileCtx.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/NtileCtx.c.s
 .PHONY : src/sqlite/NtileCtx.c.s
 
 src/sqlite/OnOrUsing.o: src/sqlite/OnOrUsing.c.o
@@ -2198,7 +2198,7 @@ src/sqlite/OnOrUsing.o: src/sqlite/OnOrUsing.c.o
 
 # target to build an object file
 src/sqlite/OnOrUsing.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/OnOrUsing.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/OnOrUsing.c.o
 .PHONY : src/sqlite/OnOrUsing.c.o
 
 src/sqlite/OnOrUsing.i: src/sqlite/OnOrUsing.c.i
@@ -2206,7 +2206,7 @@ src/sqlite/OnOrUsing.i: src/sqlite/OnOrUsing.c.i
 
 # target to preprocess a source file
 src/sqlite/OnOrUsing.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/OnOrUsing.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/OnOrUsing.c.i
 .PHONY : src/sqlite/OnOrUsing.c.i
 
 src/sqlite/OnOrUsing.s: src/sqlite/OnOrUsing.c.s
@@ -2214,7 +2214,7 @@ src/sqlite/OnOrUsing.s: src/sqlite/OnOrUsing.c.s
 
 # target to generate assembly for a file
 src/sqlite/OnOrUsing.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/OnOrUsing.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/OnOrUsing.c.s
 .PHONY : src/sqlite/OnOrUsing.c.s
 
 src/sqlite/Op.o: src/sqlite/Op.c.o
@@ -2222,7 +2222,7 @@ src/sqlite/Op.o: src/sqlite/Op.c.o
 
 # target to build an object file
 src/sqlite/Op.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Op.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Op.c.o
 .PHONY : src/sqlite/Op.c.o
 
 src/sqlite/Op.i: src/sqlite/Op.c.i
@@ -2230,7 +2230,7 @@ src/sqlite/Op.i: src/sqlite/Op.c.i
 
 # target to preprocess a source file
 src/sqlite/Op.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Op.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Op.c.i
 .PHONY : src/sqlite/Op.c.i
 
 src/sqlite/Op.s: src/sqlite/Op.c.s
@@ -2238,7 +2238,7 @@ src/sqlite/Op.s: src/sqlite/Op.c.s
 
 # target to generate assembly for a file
 src/sqlite/Op.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Op.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Op.c.s
 .PHONY : src/sqlite/Op.c.s
 
 src/sqlite/PCache.o: src/sqlite/PCache.c.o
@@ -2246,7 +2246,7 @@ src/sqlite/PCache.o: src/sqlite/PCache.c.o
 
 # target to build an object file
 src/sqlite/PCache.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PCache.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PCache.c.o
 .PHONY : src/sqlite/PCache.c.o
 
 src/sqlite/PCache.i: src/sqlite/PCache.c.i
@@ -2254,7 +2254,7 @@ src/sqlite/PCache.i: src/sqlite/PCache.c.i
 
 # target to preprocess a source file
 src/sqlite/PCache.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PCache.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PCache.c.i
 .PHONY : src/sqlite/PCache.c.i
 
 src/sqlite/PCache.s: src/sqlite/PCache.c.s
@@ -2262,7 +2262,7 @@ src/sqlite/PCache.s: src/sqlite/PCache.c.s
 
 # target to generate assembly for a file
 src/sqlite/PCache.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PCache.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PCache.c.s
 .PHONY : src/sqlite/PCache.c.s
 
 src/sqlite/PCache1.o: src/sqlite/PCache1.c.o
@@ -2270,7 +2270,7 @@ src/sqlite/PCache1.o: src/sqlite/PCache1.c.o
 
 # target to build an object file
 src/sqlite/PCache1.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PCache1.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PCache1.c.o
 .PHONY : src/sqlite/PCache1.c.o
 
 src/sqlite/PCache1.i: src/sqlite/PCache1.c.i
@@ -2278,7 +2278,7 @@ src/sqlite/PCache1.i: src/sqlite/PCache1.c.i
 
 # target to preprocess a source file
 src/sqlite/PCache1.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PCache1.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PCache1.c.i
 .PHONY : src/sqlite/PCache1.c.i
 
 src/sqlite/PCache1.s: src/sqlite/PCache1.c.s
@@ -2286,7 +2286,7 @@ src/sqlite/PCache1.s: src/sqlite/PCache1.c.s
 
 # target to generate assembly for a file
 src/sqlite/PCache1.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PCache1.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PCache1.c.s
 .PHONY : src/sqlite/PCache1.c.s
 
 src/sqlite/PCacheGlobal.o: src/sqlite/PCacheGlobal.c.o
@@ -2294,7 +2294,7 @@ src/sqlite/PCacheGlobal.o: src/sqlite/PCacheGlobal.c.o
 
 # target to build an object file
 src/sqlite/PCacheGlobal.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PCacheGlobal.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PCacheGlobal.c.o
 .PHONY : src/sqlite/PCacheGlobal.c.o
 
 src/sqlite/PCacheGlobal.i: src/sqlite/PCacheGlobal.c.i
@@ -2302,7 +2302,7 @@ src/sqlite/PCacheGlobal.i: src/sqlite/PCacheGlobal.c.i
 
 # target to preprocess a source file
 src/sqlite/PCacheGlobal.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PCacheGlobal.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PCacheGlobal.c.i
 .PHONY : src/sqlite/PCacheGlobal.c.i
 
 src/sqlite/PCacheGlobal.s: src/sqlite/PCacheGlobal.c.s
@@ -2310,7 +2310,7 @@ src/sqlite/PCacheGlobal.s: src/sqlite/PCacheGlobal.c.s
 
 # target to generate assembly for a file
 src/sqlite/PCacheGlobal.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PCacheGlobal.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PCacheGlobal.c.s
 .PHONY : src/sqlite/PCacheGlobal.c.s
 
 src/sqlite/PGroup.o: src/sqlite/PGroup.c.o
@@ -2318,7 +2318,7 @@ src/sqlite/PGroup.o: src/sqlite/PGroup.c.o
 
 # target to build an object file
 src/sqlite/PGroup.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PGroup.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PGroup.c.o
 .PHONY : src/sqlite/PGroup.c.o
 
 src/sqlite/PGroup.i: src/sqlite/PGroup.c.i
@@ -2326,7 +2326,7 @@ src/sqlite/PGroup.i: src/sqlite/PGroup.c.i
 
 # target to preprocess a source file
 src/sqlite/PGroup.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PGroup.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PGroup.c.i
 .PHONY : src/sqlite/PGroup.c.i
 
 src/sqlite/PGroup.s: src/sqlite/PGroup.c.s
@@ -2334,7 +2334,7 @@ src/sqlite/PGroup.s: src/sqlite/PGroup.c.s
 
 # target to generate assembly for a file
 src/sqlite/PGroup.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PGroup.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PGroup.c.s
 .PHONY : src/sqlite/PGroup.c.s
 
 src/sqlite/Pager.o: src/sqlite/Pager.c.o
@@ -2342,7 +2342,7 @@ src/sqlite/Pager.o: src/sqlite/Pager.c.o
 
 # target to build an object file
 src/sqlite/Pager.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Pager.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Pager.c.o
 .PHONY : src/sqlite/Pager.c.o
 
 src/sqlite/Pager.i: src/sqlite/Pager.c.i
@@ -2350,7 +2350,7 @@ src/sqlite/Pager.i: src/sqlite/Pager.c.i
 
 # target to preprocess a source file
 src/sqlite/Pager.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Pager.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Pager.c.i
 .PHONY : src/sqlite/Pager.c.i
 
 src/sqlite/Pager.s: src/sqlite/Pager.c.s
@@ -2358,7 +2358,7 @@ src/sqlite/Pager.s: src/sqlite/Pager.c.s
 
 # target to generate assembly for a file
 src/sqlite/Pager.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Pager.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Pager.c.s
 .PHONY : src/sqlite/Pager.c.s
 
 src/sqlite/PagerSavepoint.o: src/sqlite/PagerSavepoint.c.o
@@ -2366,7 +2366,7 @@ src/sqlite/PagerSavepoint.o: src/sqlite/PagerSavepoint.c.o
 
 # target to build an object file
 src/sqlite/PagerSavepoint.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PagerSavepoint.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PagerSavepoint.c.o
 .PHONY : src/sqlite/PagerSavepoint.c.o
 
 src/sqlite/PagerSavepoint.i: src/sqlite/PagerSavepoint.c.i
@@ -2374,7 +2374,7 @@ src/sqlite/PagerSavepoint.i: src/sqlite/PagerSavepoint.c.i
 
 # target to preprocess a source file
 src/sqlite/PagerSavepoint.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PagerSavepoint.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PagerSavepoint.c.i
 .PHONY : src/sqlite/PagerSavepoint.c.i
 
 src/sqlite/PagerSavepoint.s: src/sqlite/PagerSavepoint.c.s
@@ -2382,7 +2382,7 @@ src/sqlite/PagerSavepoint.s: src/sqlite/PagerSavepoint.c.s
 
 # target to generate assembly for a file
 src/sqlite/PagerSavepoint.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PagerSavepoint.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PagerSavepoint.c.s
 .PHONY : src/sqlite/PagerSavepoint.c.s
 
 src/sqlite/Parse.o: src/sqlite/Parse.c.o
@@ -2390,7 +2390,7 @@ src/sqlite/Parse.o: src/sqlite/Parse.c.o
 
 # target to build an object file
 src/sqlite/Parse.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Parse.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Parse.c.o
 .PHONY : src/sqlite/Parse.c.o
 
 src/sqlite/Parse.i: src/sqlite/Parse.c.i
@@ -2398,7 +2398,7 @@ src/sqlite/Parse.i: src/sqlite/Parse.c.i
 
 # target to preprocess a source file
 src/sqlite/Parse.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Parse.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Parse.c.i
 .PHONY : src/sqlite/Parse.c.i
 
 src/sqlite/Parse.s: src/sqlite/Parse.c.s
@@ -2406,7 +2406,7 @@ src/sqlite/Parse.s: src/sqlite/Parse.c.s
 
 # target to generate assembly for a file
 src/sqlite/Parse.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Parse.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Parse.c.s
 .PHONY : src/sqlite/Parse.c.s
 
 src/sqlite/ParseCleanup.o: src/sqlite/ParseCleanup.c.o
@@ -2414,7 +2414,7 @@ src/sqlite/ParseCleanup.o: src/sqlite/ParseCleanup.c.o
 
 # target to build an object file
 src/sqlite/ParseCleanup.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/ParseCleanup.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/ParseCleanup.c.o
 .PHONY : src/sqlite/ParseCleanup.c.o
 
 src/sqlite/ParseCleanup.i: src/sqlite/ParseCleanup.c.i
@@ -2422,7 +2422,7 @@ src/sqlite/ParseCleanup.i: src/sqlite/ParseCleanup.c.i
 
 # target to preprocess a source file
 src/sqlite/ParseCleanup.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/ParseCleanup.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/ParseCleanup.c.i
 .PHONY : src/sqlite/ParseCleanup.c.i
 
 src/sqlite/ParseCleanup.s: src/sqlite/ParseCleanup.c.s
@@ -2430,7 +2430,7 @@ src/sqlite/ParseCleanup.s: src/sqlite/ParseCleanup.c.s
 
 # target to generate assembly for a file
 src/sqlite/ParseCleanup.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/ParseCleanup.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/ParseCleanup.c.s
 .PHONY : src/sqlite/ParseCleanup.c.s
 
 src/sqlite/Percentile.o: src/sqlite/Percentile.c.o
@@ -2438,7 +2438,7 @@ src/sqlite/Percentile.o: src/sqlite/Percentile.c.o
 
 # target to build an object file
 src/sqlite/Percentile.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Percentile.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Percentile.c.o
 .PHONY : src/sqlite/Percentile.c.o
 
 src/sqlite/Percentile.i: src/sqlite/Percentile.c.i
@@ -2446,7 +2446,7 @@ src/sqlite/Percentile.i: src/sqlite/Percentile.c.i
 
 # target to preprocess a source file
 src/sqlite/Percentile.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Percentile.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Percentile.c.i
 .PHONY : src/sqlite/Percentile.c.i
 
 src/sqlite/Percentile.s: src/sqlite/Percentile.c.s
@@ -2454,7 +2454,7 @@ src/sqlite/Percentile.s: src/sqlite/Percentile.c.s
 
 # target to generate assembly for a file
 src/sqlite/Percentile.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Percentile.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Percentile.c.s
 .PHONY : src/sqlite/Percentile.c.s
 
 src/sqlite/PgFreeslot.o: src/sqlite/PgFreeslot.c.o
@@ -2462,7 +2462,7 @@ src/sqlite/PgFreeslot.o: src/sqlite/PgFreeslot.c.o
 
 # target to build an object file
 src/sqlite/PgFreeslot.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PgFreeslot.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PgFreeslot.c.o
 .PHONY : src/sqlite/PgFreeslot.c.o
 
 src/sqlite/PgFreeslot.i: src/sqlite/PgFreeslot.c.i
@@ -2470,7 +2470,7 @@ src/sqlite/PgFreeslot.i: src/sqlite/PgFreeslot.c.i
 
 # target to preprocess a source file
 src/sqlite/PgFreeslot.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PgFreeslot.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PgFreeslot.c.i
 .PHONY : src/sqlite/PgFreeslot.c.i
 
 src/sqlite/PgFreeslot.s: src/sqlite/PgFreeslot.c.s
@@ -2478,7 +2478,7 @@ src/sqlite/PgFreeslot.s: src/sqlite/PgFreeslot.c.s
 
 # target to generate assembly for a file
 src/sqlite/PgFreeslot.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PgFreeslot.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PgFreeslot.c.s
 .PHONY : src/sqlite/PgFreeslot.c.s
 
 src/sqlite/PgHdr.o: src/sqlite/PgHdr.c.o
@@ -2486,7 +2486,7 @@ src/sqlite/PgHdr.o: src/sqlite/PgHdr.c.o
 
 # target to build an object file
 src/sqlite/PgHdr.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PgHdr.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PgHdr.c.o
 .PHONY : src/sqlite/PgHdr.c.o
 
 src/sqlite/PgHdr.i: src/sqlite/PgHdr.c.i
@@ -2494,7 +2494,7 @@ src/sqlite/PgHdr.i: src/sqlite/PgHdr.c.i
 
 # target to preprocess a source file
 src/sqlite/PgHdr.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PgHdr.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PgHdr.c.i
 .PHONY : src/sqlite/PgHdr.c.i
 
 src/sqlite/PgHdr.s: src/sqlite/PgHdr.c.s
@@ -2502,7 +2502,7 @@ src/sqlite/PgHdr.s: src/sqlite/PgHdr.c.s
 
 # target to generate assembly for a file
 src/sqlite/PgHdr.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PgHdr.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PgHdr.c.s
 .PHONY : src/sqlite/PgHdr.c.s
 
 src/sqlite/PgHdr1.o: src/sqlite/PgHdr1.c.o
@@ -2510,7 +2510,7 @@ src/sqlite/PgHdr1.o: src/sqlite/PgHdr1.c.o
 
 # target to build an object file
 src/sqlite/PgHdr1.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PgHdr1.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PgHdr1.c.o
 .PHONY : src/sqlite/PgHdr1.c.o
 
 src/sqlite/PgHdr1.i: src/sqlite/PgHdr1.c.i
@@ -2518,7 +2518,7 @@ src/sqlite/PgHdr1.i: src/sqlite/PgHdr1.c.i
 
 # target to preprocess a source file
 src/sqlite/PgHdr1.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PgHdr1.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PgHdr1.c.i
 .PHONY : src/sqlite/PgHdr1.c.i
 
 src/sqlite/PgHdr1.s: src/sqlite/PgHdr1.c.s
@@ -2526,7 +2526,7 @@ src/sqlite/PgHdr1.s: src/sqlite/PgHdr1.c.s
 
 # target to generate assembly for a file
 src/sqlite/PgHdr1.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PgHdr1.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PgHdr1.c.s
 .PHONY : src/sqlite/PgHdr1.c.s
 
 src/sqlite/Pgno.o: src/sqlite/Pgno.c.o
@@ -2534,7 +2534,7 @@ src/sqlite/Pgno.o: src/sqlite/Pgno.c.o
 
 # target to build an object file
 src/sqlite/Pgno.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Pgno.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Pgno.c.o
 .PHONY : src/sqlite/Pgno.c.o
 
 src/sqlite/Pgno.i: src/sqlite/Pgno.c.i
@@ -2542,7 +2542,7 @@ src/sqlite/Pgno.i: src/sqlite/Pgno.c.i
 
 # target to preprocess a source file
 src/sqlite/Pgno.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Pgno.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Pgno.c.i
 .PHONY : src/sqlite/Pgno.c.i
 
 src/sqlite/Pgno.s: src/sqlite/Pgno.c.s
@@ -2550,7 +2550,7 @@ src/sqlite/Pgno.s: src/sqlite/Pgno.c.s
 
 # target to generate assembly for a file
 src/sqlite/Pgno.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Pgno.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Pgno.c.s
 .PHONY : src/sqlite/Pgno.c.s
 
 src/sqlite/PmaReader.o: src/sqlite/PmaReader.c.o
@@ -2558,7 +2558,7 @@ src/sqlite/PmaReader.o: src/sqlite/PmaReader.c.o
 
 # target to build an object file
 src/sqlite/PmaReader.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PmaReader.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PmaReader.c.o
 .PHONY : src/sqlite/PmaReader.c.o
 
 src/sqlite/PmaReader.i: src/sqlite/PmaReader.c.i
@@ -2566,7 +2566,7 @@ src/sqlite/PmaReader.i: src/sqlite/PmaReader.c.i
 
 # target to preprocess a source file
 src/sqlite/PmaReader.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PmaReader.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PmaReader.c.i
 .PHONY : src/sqlite/PmaReader.c.i
 
 src/sqlite/PmaReader.s: src/sqlite/PmaReader.c.s
@@ -2574,7 +2574,7 @@ src/sqlite/PmaReader.s: src/sqlite/PmaReader.c.s
 
 # target to generate assembly for a file
 src/sqlite/PmaReader.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PmaReader.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PmaReader.c.s
 .PHONY : src/sqlite/PmaReader.c.s
 
 src/sqlite/PmaWriter.o: src/sqlite/PmaWriter.c.o
@@ -2582,7 +2582,7 @@ src/sqlite/PmaWriter.o: src/sqlite/PmaWriter.c.o
 
 # target to build an object file
 src/sqlite/PmaWriter.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PmaWriter.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PmaWriter.c.o
 .PHONY : src/sqlite/PmaWriter.c.o
 
 src/sqlite/PmaWriter.i: src/sqlite/PmaWriter.c.i
@@ -2590,7 +2590,7 @@ src/sqlite/PmaWriter.i: src/sqlite/PmaWriter.c.i
 
 # target to preprocess a source file
 src/sqlite/PmaWriter.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PmaWriter.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PmaWriter.c.i
 .PHONY : src/sqlite/PmaWriter.c.i
 
 src/sqlite/PmaWriter.s: src/sqlite/PmaWriter.c.s
@@ -2598,7 +2598,7 @@ src/sqlite/PmaWriter.s: src/sqlite/PmaWriter.c.s
 
 # target to generate assembly for a file
 src/sqlite/PmaWriter.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PmaWriter.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PmaWriter.c.s
 .PHONY : src/sqlite/PmaWriter.c.s
 
 src/sqlite/PragmaName.o: src/sqlite/PragmaName.c.o
@@ -2606,7 +2606,7 @@ src/sqlite/PragmaName.o: src/sqlite/PragmaName.c.o
 
 # target to build an object file
 src/sqlite/PragmaName.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PragmaName.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PragmaName.c.o
 .PHONY : src/sqlite/PragmaName.c.o
 
 src/sqlite/PragmaName.i: src/sqlite/PragmaName.c.i
@@ -2614,7 +2614,7 @@ src/sqlite/PragmaName.i: src/sqlite/PragmaName.c.i
 
 # target to preprocess a source file
 src/sqlite/PragmaName.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PragmaName.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PragmaName.c.i
 .PHONY : src/sqlite/PragmaName.c.i
 
 src/sqlite/PragmaName.s: src/sqlite/PragmaName.c.s
@@ -2622,7 +2622,7 @@ src/sqlite/PragmaName.s: src/sqlite/PragmaName.c.s
 
 # target to generate assembly for a file
 src/sqlite/PragmaName.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PragmaName.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PragmaName.c.s
 .PHONY : src/sqlite/PragmaName.c.s
 
 src/sqlite/PragmaVtab.o: src/sqlite/PragmaVtab.c.o
@@ -2630,7 +2630,7 @@ src/sqlite/PragmaVtab.o: src/sqlite/PragmaVtab.c.o
 
 # target to build an object file
 src/sqlite/PragmaVtab.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PragmaVtab.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PragmaVtab.c.o
 .PHONY : src/sqlite/PragmaVtab.c.o
 
 src/sqlite/PragmaVtab.i: src/sqlite/PragmaVtab.c.i
@@ -2638,7 +2638,7 @@ src/sqlite/PragmaVtab.i: src/sqlite/PragmaVtab.c.i
 
 # target to preprocess a source file
 src/sqlite/PragmaVtab.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PragmaVtab.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PragmaVtab.c.i
 .PHONY : src/sqlite/PragmaVtab.c.i
 
 src/sqlite/PragmaVtab.s: src/sqlite/PragmaVtab.c.s
@@ -2646,7 +2646,7 @@ src/sqlite/PragmaVtab.s: src/sqlite/PragmaVtab.c.s
 
 # target to generate assembly for a file
 src/sqlite/PragmaVtab.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PragmaVtab.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PragmaVtab.c.s
 .PHONY : src/sqlite/PragmaVtab.c.s
 
 src/sqlite/PragmaVtabCursor.o: src/sqlite/PragmaVtabCursor.c.o
@@ -2654,7 +2654,7 @@ src/sqlite/PragmaVtabCursor.o: src/sqlite/PragmaVtabCursor.c.o
 
 # target to build an object file
 src/sqlite/PragmaVtabCursor.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PragmaVtabCursor.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PragmaVtabCursor.c.o
 .PHONY : src/sqlite/PragmaVtabCursor.c.o
 
 src/sqlite/PragmaVtabCursor.i: src/sqlite/PragmaVtabCursor.c.i
@@ -2662,7 +2662,7 @@ src/sqlite/PragmaVtabCursor.i: src/sqlite/PragmaVtabCursor.c.i
 
 # target to preprocess a source file
 src/sqlite/PragmaVtabCursor.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PragmaVtabCursor.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PragmaVtabCursor.c.i
 .PHONY : src/sqlite/PragmaVtabCursor.c.i
 
 src/sqlite/PragmaVtabCursor.s: src/sqlite/PragmaVtabCursor.c.s
@@ -2670,7 +2670,7 @@ src/sqlite/PragmaVtabCursor.s: src/sqlite/PragmaVtabCursor.c.s
 
 # target to generate assembly for a file
 src/sqlite/PragmaVtabCursor.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PragmaVtabCursor.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PragmaVtabCursor.c.s
 .PHONY : src/sqlite/PragmaVtabCursor.c.s
 
 src/sqlite/PreUpdate.o: src/sqlite/PreUpdate.c.o
@@ -2678,7 +2678,7 @@ src/sqlite/PreUpdate.o: src/sqlite/PreUpdate.c.o
 
 # target to build an object file
 src/sqlite/PreUpdate.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PreUpdate.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PreUpdate.c.o
 .PHONY : src/sqlite/PreUpdate.c.o
 
 src/sqlite/PreUpdate.i: src/sqlite/PreUpdate.c.i
@@ -2686,7 +2686,7 @@ src/sqlite/PreUpdate.i: src/sqlite/PreUpdate.c.i
 
 # target to preprocess a source file
 src/sqlite/PreUpdate.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PreUpdate.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PreUpdate.c.i
 .PHONY : src/sqlite/PreUpdate.c.i
 
 src/sqlite/PreUpdate.s: src/sqlite/PreUpdate.c.s
@@ -2694,7 +2694,7 @@ src/sqlite/PreUpdate.s: src/sqlite/PreUpdate.c.s
 
 # target to generate assembly for a file
 src/sqlite/PreUpdate.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PreUpdate.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PreUpdate.c.s
 .PHONY : src/sqlite/PreUpdate.c.s
 
 src/sqlite/PrintfArguments.o: src/sqlite/PrintfArguments.c.o
@@ -2702,7 +2702,7 @@ src/sqlite/PrintfArguments.o: src/sqlite/PrintfArguments.c.o
 
 # target to build an object file
 src/sqlite/PrintfArguments.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PrintfArguments.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PrintfArguments.c.o
 .PHONY : src/sqlite/PrintfArguments.c.o
 
 src/sqlite/PrintfArguments.i: src/sqlite/PrintfArguments.c.i
@@ -2710,7 +2710,7 @@ src/sqlite/PrintfArguments.i: src/sqlite/PrintfArguments.c.i
 
 # target to preprocess a source file
 src/sqlite/PrintfArguments.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PrintfArguments.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PrintfArguments.c.i
 .PHONY : src/sqlite/PrintfArguments.c.i
 
 src/sqlite/PrintfArguments.s: src/sqlite/PrintfArguments.c.s
@@ -2718,7 +2718,7 @@ src/sqlite/PrintfArguments.s: src/sqlite/PrintfArguments.c.s
 
 # target to generate assembly for a file
 src/sqlite/PrintfArguments.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/PrintfArguments.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/PrintfArguments.c.s
 .PHONY : src/sqlite/PrintfArguments.c.s
 
 src/sqlite/RCStr.o: src/sqlite/RCStr.c.o
@@ -2726,7 +2726,7 @@ src/sqlite/RCStr.o: src/sqlite/RCStr.c.o
 
 # target to build an object file
 src/sqlite/RCStr.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/RCStr.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/RCStr.c.o
 .PHONY : src/sqlite/RCStr.c.o
 
 src/sqlite/RCStr.i: src/sqlite/RCStr.c.i
@@ -2734,7 +2734,7 @@ src/sqlite/RCStr.i: src/sqlite/RCStr.c.i
 
 # target to preprocess a source file
 src/sqlite/RCStr.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/RCStr.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/RCStr.c.i
 .PHONY : src/sqlite/RCStr.c.i
 
 src/sqlite/RCStr.s: src/sqlite/RCStr.c.s
@@ -2742,7 +2742,7 @@ src/sqlite/RCStr.s: src/sqlite/RCStr.c.s
 
 # target to generate assembly for a file
 src/sqlite/RCStr.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/RCStr.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/RCStr.c.s
 .PHONY : src/sqlite/RCStr.c.s
 
 src/sqlite/RefSrcList.o: src/sqlite/RefSrcList.c.o
@@ -2750,7 +2750,7 @@ src/sqlite/RefSrcList.o: src/sqlite/RefSrcList.c.o
 
 # target to build an object file
 src/sqlite/RefSrcList.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/RefSrcList.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/RefSrcList.c.o
 .PHONY : src/sqlite/RefSrcList.c.o
 
 src/sqlite/RefSrcList.i: src/sqlite/RefSrcList.c.i
@@ -2758,7 +2758,7 @@ src/sqlite/RefSrcList.i: src/sqlite/RefSrcList.c.i
 
 # target to preprocess a source file
 src/sqlite/RefSrcList.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/RefSrcList.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/RefSrcList.c.i
 .PHONY : src/sqlite/RefSrcList.c.i
 
 src/sqlite/RefSrcList.s: src/sqlite/RefSrcList.c.s
@@ -2766,7 +2766,7 @@ src/sqlite/RefSrcList.s: src/sqlite/RefSrcList.c.s
 
 # target to generate assembly for a file
 src/sqlite/RefSrcList.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/RefSrcList.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/RefSrcList.c.s
 .PHONY : src/sqlite/RefSrcList.c.s
 
 src/sqlite/RenameCtx.o: src/sqlite/RenameCtx.c.o
@@ -2774,7 +2774,7 @@ src/sqlite/RenameCtx.o: src/sqlite/RenameCtx.c.o
 
 # target to build an object file
 src/sqlite/RenameCtx.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/RenameCtx.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/RenameCtx.c.o
 .PHONY : src/sqlite/RenameCtx.c.o
 
 src/sqlite/RenameCtx.i: src/sqlite/RenameCtx.c.i
@@ -2782,7 +2782,7 @@ src/sqlite/RenameCtx.i: src/sqlite/RenameCtx.c.i
 
 # target to preprocess a source file
 src/sqlite/RenameCtx.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/RenameCtx.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/RenameCtx.c.i
 .PHONY : src/sqlite/RenameCtx.c.i
 
 src/sqlite/RenameCtx.s: src/sqlite/RenameCtx.c.s
@@ -2790,7 +2790,7 @@ src/sqlite/RenameCtx.s: src/sqlite/RenameCtx.c.s
 
 # target to generate assembly for a file
 src/sqlite/RenameCtx.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/RenameCtx.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/RenameCtx.c.s
 .PHONY : src/sqlite/RenameCtx.c.s
 
 src/sqlite/RenameToken.o: src/sqlite/RenameToken.c.o
@@ -2798,7 +2798,7 @@ src/sqlite/RenameToken.o: src/sqlite/RenameToken.c.o
 
 # target to build an object file
 src/sqlite/RenameToken.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/RenameToken.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/RenameToken.c.o
 .PHONY : src/sqlite/RenameToken.c.o
 
 src/sqlite/RenameToken.i: src/sqlite/RenameToken.c.i
@@ -2806,7 +2806,7 @@ src/sqlite/RenameToken.i: src/sqlite/RenameToken.c.i
 
 # target to preprocess a source file
 src/sqlite/RenameToken.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/RenameToken.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/RenameToken.c.i
 .PHONY : src/sqlite/RenameToken.c.i
 
 src/sqlite/RenameToken.s: src/sqlite/RenameToken.c.s
@@ -2814,7 +2814,7 @@ src/sqlite/RenameToken.s: src/sqlite/RenameToken.c.s
 
 # target to generate assembly for a file
 src/sqlite/RenameToken.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/RenameToken.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/RenameToken.c.s
 .PHONY : src/sqlite/RenameToken.c.s
 
 src/sqlite/Returning.o: src/sqlite/Returning.c.o
@@ -2822,7 +2822,7 @@ src/sqlite/Returning.o: src/sqlite/Returning.c.o
 
 # target to build an object file
 src/sqlite/Returning.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Returning.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Returning.c.o
 .PHONY : src/sqlite/Returning.c.o
 
 src/sqlite/Returning.i: src/sqlite/Returning.c.i
@@ -2830,7 +2830,7 @@ src/sqlite/Returning.i: src/sqlite/Returning.c.i
 
 # target to preprocess a source file
 src/sqlite/Returning.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Returning.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Returning.c.i
 .PHONY : src/sqlite/Returning.c.i
 
 src/sqlite/Returning.s: src/sqlite/Returning.c.s
@@ -2838,7 +2838,7 @@ src/sqlite/Returning.s: src/sqlite/Returning.c.s
 
 # target to generate assembly for a file
 src/sqlite/Returning.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Returning.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Returning.c.s
 .PHONY : src/sqlite/Returning.c.s
 
 src/sqlite/ReusableSpace.o: src/sqlite/ReusableSpace.c.o
@@ -2846,7 +2846,7 @@ src/sqlite/ReusableSpace.o: src/sqlite/ReusableSpace.c.o
 
 # target to build an object file
 src/sqlite/ReusableSpace.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/ReusableSpace.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/ReusableSpace.c.o
 .PHONY : src/sqlite/ReusableSpace.c.o
 
 src/sqlite/ReusableSpace.i: src/sqlite/ReusableSpace.c.i
@@ -2854,7 +2854,7 @@ src/sqlite/ReusableSpace.i: src/sqlite/ReusableSpace.c.i
 
 # target to preprocess a source file
 src/sqlite/ReusableSpace.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/ReusableSpace.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/ReusableSpace.c.i
 .PHONY : src/sqlite/ReusableSpace.c.i
 
 src/sqlite/ReusableSpace.s: src/sqlite/ReusableSpace.c.s
@@ -2862,7 +2862,7 @@ src/sqlite/ReusableSpace.s: src/sqlite/ReusableSpace.c.s
 
 # target to generate assembly for a file
 src/sqlite/ReusableSpace.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/ReusableSpace.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/ReusableSpace.c.s
 .PHONY : src/sqlite/ReusableSpace.c.s
 
 src/sqlite/RowLoadInfo.o: src/sqlite/RowLoadInfo.c.o
@@ -2870,7 +2870,7 @@ src/sqlite/RowLoadInfo.o: src/sqlite/RowLoadInfo.c.o
 
 # target to build an object file
 src/sqlite/RowLoadInfo.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/RowLoadInfo.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/RowLoadInfo.c.o
 .PHONY : src/sqlite/RowLoadInfo.c.o
 
 src/sqlite/RowLoadInfo.i: src/sqlite/RowLoadInfo.c.i
@@ -2878,7 +2878,7 @@ src/sqlite/RowLoadInfo.i: src/sqlite/RowLoadInfo.c.i
 
 # target to preprocess a source file
 src/sqlite/RowLoadInfo.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/RowLoadInfo.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/RowLoadInfo.c.i
 .PHONY : src/sqlite/RowLoadInfo.c.i
 
 src/sqlite/RowLoadInfo.s: src/sqlite/RowLoadInfo.c.s
@@ -2886,7 +2886,7 @@ src/sqlite/RowLoadInfo.s: src/sqlite/RowLoadInfo.c.s
 
 # target to generate assembly for a file
 src/sqlite/RowLoadInfo.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/RowLoadInfo.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/RowLoadInfo.c.s
 .PHONY : src/sqlite/RowLoadInfo.c.s
 
 src/sqlite/RowSet.o: src/sqlite/RowSet.c.o
@@ -2894,7 +2894,7 @@ src/sqlite/RowSet.o: src/sqlite/RowSet.c.o
 
 # target to build an object file
 src/sqlite/RowSet.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/RowSet.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/RowSet.c.o
 .PHONY : src/sqlite/RowSet.c.o
 
 src/sqlite/RowSet.i: src/sqlite/RowSet.c.i
@@ -2902,7 +2902,7 @@ src/sqlite/RowSet.i: src/sqlite/RowSet.c.i
 
 # target to preprocess a source file
 src/sqlite/RowSet.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/RowSet.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/RowSet.c.i
 .PHONY : src/sqlite/RowSet.c.i
 
 src/sqlite/RowSet.s: src/sqlite/RowSet.c.s
@@ -2910,7 +2910,7 @@ src/sqlite/RowSet.s: src/sqlite/RowSet.c.s
 
 # target to generate assembly for a file
 src/sqlite/RowSet.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/RowSet.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/RowSet.c.s
 .PHONY : src/sqlite/RowSet.c.s
 
 src/sqlite/RowSetChunk.o: src/sqlite/RowSetChunk.c.o
@@ -2918,7 +2918,7 @@ src/sqlite/RowSetChunk.o: src/sqlite/RowSetChunk.c.o
 
 # target to build an object file
 src/sqlite/RowSetChunk.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/RowSetChunk.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/RowSetChunk.c.o
 .PHONY : src/sqlite/RowSetChunk.c.o
 
 src/sqlite/RowSetChunk.i: src/sqlite/RowSetChunk.c.i
@@ -2926,7 +2926,7 @@ src/sqlite/RowSetChunk.i: src/sqlite/RowSetChunk.c.i
 
 # target to preprocess a source file
 src/sqlite/RowSetChunk.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/RowSetChunk.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/RowSetChunk.c.i
 .PHONY : src/sqlite/RowSetChunk.c.i
 
 src/sqlite/RowSetChunk.s: src/sqlite/RowSetChunk.c.s
@@ -2934,7 +2934,7 @@ src/sqlite/RowSetChunk.s: src/sqlite/RowSetChunk.c.s
 
 # target to generate assembly for a file
 src/sqlite/RowSetChunk.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/RowSetChunk.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/RowSetChunk.c.s
 .PHONY : src/sqlite/RowSetChunk.c.s
 
 src/sqlite/RowSetEntry.o: src/sqlite/RowSetEntry.c.o
@@ -2942,7 +2942,7 @@ src/sqlite/RowSetEntry.o: src/sqlite/RowSetEntry.c.o
 
 # target to build an object file
 src/sqlite/RowSetEntry.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/RowSetEntry.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/RowSetEntry.c.o
 .PHONY : src/sqlite/RowSetEntry.c.o
 
 src/sqlite/RowSetEntry.i: src/sqlite/RowSetEntry.c.i
@@ -2950,7 +2950,7 @@ src/sqlite/RowSetEntry.i: src/sqlite/RowSetEntry.c.i
 
 # target to preprocess a source file
 src/sqlite/RowSetEntry.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/RowSetEntry.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/RowSetEntry.c.i
 .PHONY : src/sqlite/RowSetEntry.c.i
 
 src/sqlite/RowSetEntry.s: src/sqlite/RowSetEntry.c.s
@@ -2958,7 +2958,7 @@ src/sqlite/RowSetEntry.s: src/sqlite/RowSetEntry.c.s
 
 # target to generate assembly for a file
 src/sqlite/RowSetEntry.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/RowSetEntry.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/RowSetEntry.c.s
 .PHONY : src/sqlite/RowSetEntry.c.s
 
 src/sqlite/SQLiteThread.o: src/sqlite/SQLiteThread.c.o
@@ -2966,7 +2966,7 @@ src/sqlite/SQLiteThread.o: src/sqlite/SQLiteThread.c.o
 
 # target to build an object file
 src/sqlite/SQLiteThread.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/SQLiteThread.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/SQLiteThread.c.o
 .PHONY : src/sqlite/SQLiteThread.c.o
 
 src/sqlite/SQLiteThread.i: src/sqlite/SQLiteThread.c.i
@@ -2974,7 +2974,7 @@ src/sqlite/SQLiteThread.i: src/sqlite/SQLiteThread.c.i
 
 # target to preprocess a source file
 src/sqlite/SQLiteThread.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/SQLiteThread.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/SQLiteThread.c.i
 .PHONY : src/sqlite/SQLiteThread.c.i
 
 src/sqlite/SQLiteThread.s: src/sqlite/SQLiteThread.c.s
@@ -2982,7 +2982,7 @@ src/sqlite/SQLiteThread.s: src/sqlite/SQLiteThread.c.s
 
 # target to generate assembly for a file
 src/sqlite/SQLiteThread.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/SQLiteThread.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/SQLiteThread.c.s
 .PHONY : src/sqlite/SQLiteThread.c.s
 
 src/sqlite/Savepoint.o: src/sqlite/Savepoint.c.o
@@ -2990,7 +2990,7 @@ src/sqlite/Savepoint.o: src/sqlite/Savepoint.c.o
 
 # target to build an object file
 src/sqlite/Savepoint.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Savepoint.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Savepoint.c.o
 .PHONY : src/sqlite/Savepoint.c.o
 
 src/sqlite/Savepoint.i: src/sqlite/Savepoint.c.i
@@ -2998,7 +2998,7 @@ src/sqlite/Savepoint.i: src/sqlite/Savepoint.c.i
 
 # target to preprocess a source file
 src/sqlite/Savepoint.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Savepoint.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Savepoint.c.i
 .PHONY : src/sqlite/Savepoint.c.i
 
 src/sqlite/Savepoint.s: src/sqlite/Savepoint.c.s
@@ -3006,7 +3006,7 @@ src/sqlite/Savepoint.s: src/sqlite/Savepoint.c.s
 
 # target to generate assembly for a file
 src/sqlite/Savepoint.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Savepoint.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Savepoint.c.s
 .PHONY : src/sqlite/Savepoint.c.s
 
 src/sqlite/ScanStatus.o: src/sqlite/ScanStatus.c.o
@@ -3014,7 +3014,7 @@ src/sqlite/ScanStatus.o: src/sqlite/ScanStatus.c.o
 
 # target to build an object file
 src/sqlite/ScanStatus.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/ScanStatus.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/ScanStatus.c.o
 .PHONY : src/sqlite/ScanStatus.c.o
 
 src/sqlite/ScanStatus.i: src/sqlite/ScanStatus.c.i
@@ -3022,7 +3022,7 @@ src/sqlite/ScanStatus.i: src/sqlite/ScanStatus.c.i
 
 # target to preprocess a source file
 src/sqlite/ScanStatus.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/ScanStatus.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/ScanStatus.c.i
 .PHONY : src/sqlite/ScanStatus.c.i
 
 src/sqlite/ScanStatus.s: src/sqlite/ScanStatus.c.s
@@ -3030,7 +3030,7 @@ src/sqlite/ScanStatus.s: src/sqlite/ScanStatus.c.s
 
 # target to generate assembly for a file
 src/sqlite/ScanStatus.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/ScanStatus.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/ScanStatus.c.s
 .PHONY : src/sqlite/ScanStatus.c.s
 
 src/sqlite/Schema.o: src/sqlite/Schema.c.o
@@ -3038,7 +3038,7 @@ src/sqlite/Schema.o: src/sqlite/Schema.c.o
 
 # target to build an object file
 src/sqlite/Schema.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Schema.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Schema.c.o
 .PHONY : src/sqlite/Schema.c.o
 
 src/sqlite/Schema.i: src/sqlite/Schema.c.i
@@ -3046,7 +3046,7 @@ src/sqlite/Schema.i: src/sqlite/Schema.c.i
 
 # target to preprocess a source file
 src/sqlite/Schema.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Schema.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Schema.c.i
 .PHONY : src/sqlite/Schema.c.i
 
 src/sqlite/Schema.s: src/sqlite/Schema.c.s
@@ -3054,7 +3054,7 @@ src/sqlite/Schema.s: src/sqlite/Schema.c.s
 
 # target to generate assembly for a file
 src/sqlite/Schema.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Schema.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Schema.c.s
 .PHONY : src/sqlite/Schema.c.s
 
 src/sqlite/Select.o: src/sqlite/Select.c.o
@@ -3062,7 +3062,7 @@ src/sqlite/Select.o: src/sqlite/Select.c.o
 
 # target to build an object file
 src/sqlite/Select.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Select.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Select.c.o
 .PHONY : src/sqlite/Select.c.o
 
 src/sqlite/Select.i: src/sqlite/Select.c.i
@@ -3070,7 +3070,7 @@ src/sqlite/Select.i: src/sqlite/Select.c.i
 
 # target to preprocess a source file
 src/sqlite/Select.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Select.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Select.c.i
 .PHONY : src/sqlite/Select.c.i
 
 src/sqlite/Select.s: src/sqlite/Select.c.s
@@ -3078,7 +3078,7 @@ src/sqlite/Select.s: src/sqlite/Select.c.s
 
 # target to generate assembly for a file
 src/sqlite/Select.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Select.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Select.c.s
 .PHONY : src/sqlite/Select.c.s
 
 src/sqlite/SelectDest.o: src/sqlite/SelectDest.c.o
@@ -3086,7 +3086,7 @@ src/sqlite/SelectDest.o: src/sqlite/SelectDest.c.o
 
 # target to build an object file
 src/sqlite/SelectDest.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/SelectDest.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/SelectDest.c.o
 .PHONY : src/sqlite/SelectDest.c.o
 
 src/sqlite/SelectDest.i: src/sqlite/SelectDest.c.i
@@ -3094,7 +3094,7 @@ src/sqlite/SelectDest.i: src/sqlite/SelectDest.c.i
 
 # target to preprocess a source file
 src/sqlite/SelectDest.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/SelectDest.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/SelectDest.c.i
 .PHONY : src/sqlite/SelectDest.c.i
 
 src/sqlite/SelectDest.s: src/sqlite/SelectDest.c.s
@@ -3102,7 +3102,7 @@ src/sqlite/SelectDest.s: src/sqlite/SelectDest.c.s
 
 # target to generate assembly for a file
 src/sqlite/SelectDest.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/SelectDest.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/SelectDest.c.s
 .PHONY : src/sqlite/SelectDest.c.s
 
 src/sqlite/SortCtx.o: src/sqlite/SortCtx.c.o
@@ -3110,7 +3110,7 @@ src/sqlite/SortCtx.o: src/sqlite/SortCtx.c.o
 
 # target to build an object file
 src/sqlite/SortCtx.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/SortCtx.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/SortCtx.c.o
 .PHONY : src/sqlite/SortCtx.c.o
 
 src/sqlite/SortCtx.i: src/sqlite/SortCtx.c.i
@@ -3118,7 +3118,7 @@ src/sqlite/SortCtx.i: src/sqlite/SortCtx.c.i
 
 # target to preprocess a source file
 src/sqlite/SortCtx.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/SortCtx.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/SortCtx.c.i
 .PHONY : src/sqlite/SortCtx.c.i
 
 src/sqlite/SortCtx.s: src/sqlite/SortCtx.c.s
@@ -3126,7 +3126,7 @@ src/sqlite/SortCtx.s: src/sqlite/SortCtx.c.s
 
 # target to generate assembly for a file
 src/sqlite/SortCtx.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/SortCtx.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/SortCtx.c.s
 .PHONY : src/sqlite/SortCtx.c.s
 
 src/sqlite/SortSubtask.o: src/sqlite/SortSubtask.c.o
@@ -3134,7 +3134,7 @@ src/sqlite/SortSubtask.o: src/sqlite/SortSubtask.c.o
 
 # target to build an object file
 src/sqlite/SortSubtask.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/SortSubtask.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/SortSubtask.c.o
 .PHONY : src/sqlite/SortSubtask.c.o
 
 src/sqlite/SortSubtask.i: src/sqlite/SortSubtask.c.i
@@ -3142,7 +3142,7 @@ src/sqlite/SortSubtask.i: src/sqlite/SortSubtask.c.i
 
 # target to preprocess a source file
 src/sqlite/SortSubtask.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/SortSubtask.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/SortSubtask.c.i
 .PHONY : src/sqlite/SortSubtask.c.i
 
 src/sqlite/SortSubtask.s: src/sqlite/SortSubtask.c.s
@@ -3150,7 +3150,7 @@ src/sqlite/SortSubtask.s: src/sqlite/SortSubtask.c.s
 
 # target to generate assembly for a file
 src/sqlite/SortSubtask.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/SortSubtask.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/SortSubtask.c.s
 .PHONY : src/sqlite/SortSubtask.c.s
 
 src/sqlite/SorterFile.o: src/sqlite/SorterFile.c.o
@@ -3158,7 +3158,7 @@ src/sqlite/SorterFile.o: src/sqlite/SorterFile.c.o
 
 # target to build an object file
 src/sqlite/SorterFile.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/SorterFile.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/SorterFile.c.o
 .PHONY : src/sqlite/SorterFile.c.o
 
 src/sqlite/SorterFile.i: src/sqlite/SorterFile.c.i
@@ -3166,7 +3166,7 @@ src/sqlite/SorterFile.i: src/sqlite/SorterFile.c.i
 
 # target to preprocess a source file
 src/sqlite/SorterFile.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/SorterFile.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/SorterFile.c.i
 .PHONY : src/sqlite/SorterFile.c.i
 
 src/sqlite/SorterFile.s: src/sqlite/SorterFile.c.s
@@ -3174,7 +3174,7 @@ src/sqlite/SorterFile.s: src/sqlite/SorterFile.c.s
 
 # target to generate assembly for a file
 src/sqlite/SorterFile.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/SorterFile.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/SorterFile.c.s
 .PHONY : src/sqlite/SorterFile.c.s
 
 src/sqlite/SorterList.o: src/sqlite/SorterList.c.o
@@ -3182,7 +3182,7 @@ src/sqlite/SorterList.o: src/sqlite/SorterList.c.o
 
 # target to build an object file
 src/sqlite/SorterList.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/SorterList.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/SorterList.c.o
 .PHONY : src/sqlite/SorterList.c.o
 
 src/sqlite/SorterList.i: src/sqlite/SorterList.c.i
@@ -3190,7 +3190,7 @@ src/sqlite/SorterList.i: src/sqlite/SorterList.c.i
 
 # target to preprocess a source file
 src/sqlite/SorterList.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/SorterList.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/SorterList.c.i
 .PHONY : src/sqlite/SorterList.c.i
 
 src/sqlite/SorterList.s: src/sqlite/SorterList.c.s
@@ -3198,7 +3198,7 @@ src/sqlite/SorterList.s: src/sqlite/SorterList.c.s
 
 # target to generate assembly for a file
 src/sqlite/SorterList.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/SorterList.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/SorterList.c.s
 .PHONY : src/sqlite/SorterList.c.s
 
 src/sqlite/SorterRecord.o: src/sqlite/SorterRecord.c.o
@@ -3206,7 +3206,7 @@ src/sqlite/SorterRecord.o: src/sqlite/SorterRecord.c.o
 
 # target to build an object file
 src/sqlite/SorterRecord.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/SorterRecord.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/SorterRecord.c.o
 .PHONY : src/sqlite/SorterRecord.c.o
 
 src/sqlite/SorterRecord.i: src/sqlite/SorterRecord.c.i
@@ -3214,7 +3214,7 @@ src/sqlite/SorterRecord.i: src/sqlite/SorterRecord.c.i
 
 # target to preprocess a source file
 src/sqlite/SorterRecord.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/SorterRecord.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/SorterRecord.c.i
 .PHONY : src/sqlite/SorterRecord.c.i
 
 src/sqlite/SorterRecord.s: src/sqlite/SorterRecord.c.s
@@ -3222,7 +3222,7 @@ src/sqlite/SorterRecord.s: src/sqlite/SorterRecord.c.s
 
 # target to generate assembly for a file
 src/sqlite/SorterRecord.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/SorterRecord.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/SorterRecord.c.s
 .PHONY : src/sqlite/SorterRecord.c.s
 
 src/sqlite/Sqlite3Config.o: src/sqlite/Sqlite3Config.c.o
@@ -3230,7 +3230,7 @@ src/sqlite/Sqlite3Config.o: src/sqlite/Sqlite3Config.c.o
 
 # target to build an object file
 src/sqlite/Sqlite3Config.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Sqlite3Config.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Sqlite3Config.c.o
 .PHONY : src/sqlite/Sqlite3Config.c.o
 
 src/sqlite/Sqlite3Config.i: src/sqlite/Sqlite3Config.c.i
@@ -3238,7 +3238,7 @@ src/sqlite/Sqlite3Config.i: src/sqlite/Sqlite3Config.c.i
 
 # target to preprocess a source file
 src/sqlite/Sqlite3Config.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Sqlite3Config.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Sqlite3Config.c.i
 .PHONY : src/sqlite/Sqlite3Config.c.i
 
 src/sqlite/Sqlite3Config.s: src/sqlite/Sqlite3Config.c.s
@@ -3246,7 +3246,7 @@ src/sqlite/Sqlite3Config.s: src/sqlite/Sqlite3Config.c.s
 
 # target to generate assembly for a file
 src/sqlite/Sqlite3Config.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Sqlite3Config.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Sqlite3Config.c.s
 .PHONY : src/sqlite/Sqlite3Config.c.s
 
 src/sqlite/SrcItem.o: src/sqlite/SrcItem.c.o
@@ -3254,7 +3254,7 @@ src/sqlite/SrcItem.o: src/sqlite/SrcItem.c.o
 
 # target to build an object file
 src/sqlite/SrcItem.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/SrcItem.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/SrcItem.c.o
 .PHONY : src/sqlite/SrcItem.c.o
 
 src/sqlite/SrcItem.i: src/sqlite/SrcItem.c.i
@@ -3262,7 +3262,7 @@ src/sqlite/SrcItem.i: src/sqlite/SrcItem.c.i
 
 # target to preprocess a source file
 src/sqlite/SrcItem.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/SrcItem.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/SrcItem.c.i
 .PHONY : src/sqlite/SrcItem.c.i
 
 src/sqlite/SrcItem.s: src/sqlite/SrcItem.c.s
@@ -3270,7 +3270,7 @@ src/sqlite/SrcItem.s: src/sqlite/SrcItem.c.s
 
 # target to generate assembly for a file
 src/sqlite/SrcItem.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/SrcItem.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/SrcItem.c.s
 .PHONY : src/sqlite/SrcItem.c.s
 
 src/sqlite/SrcList.o: src/sqlite/SrcList.c.o
@@ -3278,7 +3278,7 @@ src/sqlite/SrcList.o: src/sqlite/SrcList.c.o
 
 # target to build an object file
 src/sqlite/SrcList.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/SrcList.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/SrcList.c.o
 .PHONY : src/sqlite/SrcList.c.o
 
 src/sqlite/SrcList.i: src/sqlite/SrcList.c.i
@@ -3286,7 +3286,7 @@ src/sqlite/SrcList.i: src/sqlite/SrcList.c.i
 
 # target to preprocess a source file
 src/sqlite/SrcList.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/SrcList.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/SrcList.c.i
 .PHONY : src/sqlite/SrcList.c.i
 
 src/sqlite/SrcList.s: src/sqlite/SrcList.c.s
@@ -3294,7 +3294,7 @@ src/sqlite/SrcList.s: src/sqlite/SrcList.c.s
 
 # target to generate assembly for a file
 src/sqlite/SrcList.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/SrcList.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/SrcList.c.s
 .PHONY : src/sqlite/SrcList.c.s
 
 src/sqlite/StatAccum.o: src/sqlite/StatAccum.c.o
@@ -3302,7 +3302,7 @@ src/sqlite/StatAccum.o: src/sqlite/StatAccum.c.o
 
 # target to build an object file
 src/sqlite/StatAccum.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/StatAccum.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/StatAccum.c.o
 .PHONY : src/sqlite/StatAccum.c.o
 
 src/sqlite/StatAccum.i: src/sqlite/StatAccum.c.i
@@ -3310,7 +3310,7 @@ src/sqlite/StatAccum.i: src/sqlite/StatAccum.c.i
 
 # target to preprocess a source file
 src/sqlite/StatAccum.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/StatAccum.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/StatAccum.c.i
 .PHONY : src/sqlite/StatAccum.c.i
 
 src/sqlite/StatAccum.s: src/sqlite/StatAccum.c.s
@@ -3318,7 +3318,7 @@ src/sqlite/StatAccum.s: src/sqlite/StatAccum.c.s
 
 # target to generate assembly for a file
 src/sqlite/StatAccum.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/StatAccum.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/StatAccum.c.s
 .PHONY : src/sqlite/StatAccum.c.s
 
 src/sqlite/StatSample.o: src/sqlite/StatSample.c.o
@@ -3326,7 +3326,7 @@ src/sqlite/StatSample.o: src/sqlite/StatSample.c.o
 
 # target to build an object file
 src/sqlite/StatSample.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/StatSample.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/StatSample.c.o
 .PHONY : src/sqlite/StatSample.c.o
 
 src/sqlite/StatSample.i: src/sqlite/StatSample.c.i
@@ -3334,7 +3334,7 @@ src/sqlite/StatSample.i: src/sqlite/StatSample.c.i
 
 # target to preprocess a source file
 src/sqlite/StatSample.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/StatSample.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/StatSample.c.i
 .PHONY : src/sqlite/StatSample.c.i
 
 src/sqlite/StatSample.s: src/sqlite/StatSample.c.s
@@ -3342,7 +3342,7 @@ src/sqlite/StatSample.s: src/sqlite/StatSample.c.s
 
 # target to generate assembly for a file
 src/sqlite/StatSample.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/StatSample.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/StatSample.c.s
 .PHONY : src/sqlite/StatSample.c.s
 
 src/sqlite/StrAccum.o: src/sqlite/StrAccum.c.o
@@ -3350,7 +3350,7 @@ src/sqlite/StrAccum.o: src/sqlite/StrAccum.c.o
 
 # target to build an object file
 src/sqlite/StrAccum.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/StrAccum.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/StrAccum.c.o
 .PHONY : src/sqlite/StrAccum.c.o
 
 src/sqlite/StrAccum.i: src/sqlite/StrAccum.c.i
@@ -3358,7 +3358,7 @@ src/sqlite/StrAccum.i: src/sqlite/StrAccum.c.i
 
 # target to preprocess a source file
 src/sqlite/StrAccum.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/StrAccum.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/StrAccum.c.i
 .PHONY : src/sqlite/StrAccum.c.i
 
 src/sqlite/StrAccum.s: src/sqlite/StrAccum.c.s
@@ -3366,7 +3366,7 @@ src/sqlite/StrAccum.s: src/sqlite/StrAccum.c.s
 
 # target to generate assembly for a file
 src/sqlite/StrAccum.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/StrAccum.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/StrAccum.c.s
 .PHONY : src/sqlite/StrAccum.c.s
 
 src/sqlite/SubProgram.o: src/sqlite/SubProgram.c.o
@@ -3374,7 +3374,7 @@ src/sqlite/SubProgram.o: src/sqlite/SubProgram.c.o
 
 # target to build an object file
 src/sqlite/SubProgram.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/SubProgram.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/SubProgram.c.o
 .PHONY : src/sqlite/SubProgram.c.o
 
 src/sqlite/SubProgram.i: src/sqlite/SubProgram.c.i
@@ -3382,7 +3382,7 @@ src/sqlite/SubProgram.i: src/sqlite/SubProgram.c.i
 
 # target to preprocess a source file
 src/sqlite/SubProgram.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/SubProgram.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/SubProgram.c.i
 .PHONY : src/sqlite/SubProgram.c.i
 
 src/sqlite/SubProgram.s: src/sqlite/SubProgram.c.s
@@ -3390,7 +3390,7 @@ src/sqlite/SubProgram.s: src/sqlite/SubProgram.c.s
 
 # target to generate assembly for a file
 src/sqlite/SubProgram.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/SubProgram.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/SubProgram.c.s
 .PHONY : src/sqlite/SubProgram.c.s
 
 src/sqlite/Subquery.o: src/sqlite/Subquery.c.o
@@ -3398,7 +3398,7 @@ src/sqlite/Subquery.o: src/sqlite/Subquery.c.o
 
 # target to build an object file
 src/sqlite/Subquery.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Subquery.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Subquery.c.o
 .PHONY : src/sqlite/Subquery.c.o
 
 src/sqlite/Subquery.i: src/sqlite/Subquery.c.i
@@ -3406,7 +3406,7 @@ src/sqlite/Subquery.i: src/sqlite/Subquery.c.i
 
 # target to preprocess a source file
 src/sqlite/Subquery.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Subquery.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Subquery.c.i
 .PHONY : src/sqlite/Subquery.c.i
 
 src/sqlite/Subquery.s: src/sqlite/Subquery.c.s
@@ -3414,7 +3414,7 @@ src/sqlite/Subquery.s: src/sqlite/Subquery.c.s
 
 # target to generate assembly for a file
 src/sqlite/Subquery.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Subquery.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Subquery.c.s
 .PHONY : src/sqlite/Subquery.c.s
 
 src/sqlite/SubrtnSig.o: src/sqlite/SubrtnSig.c.o
@@ -3422,7 +3422,7 @@ src/sqlite/SubrtnSig.o: src/sqlite/SubrtnSig.c.o
 
 # target to build an object file
 src/sqlite/SubrtnSig.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/SubrtnSig.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/SubrtnSig.c.o
 .PHONY : src/sqlite/SubrtnSig.c.o
 
 src/sqlite/SubrtnSig.i: src/sqlite/SubrtnSig.c.i
@@ -3430,7 +3430,7 @@ src/sqlite/SubrtnSig.i: src/sqlite/SubrtnSig.c.i
 
 # target to preprocess a source file
 src/sqlite/SubrtnSig.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/SubrtnSig.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/SubrtnSig.c.i
 .PHONY : src/sqlite/SubrtnSig.c.i
 
 src/sqlite/SubrtnSig.s: src/sqlite/SubrtnSig.c.s
@@ -3438,7 +3438,7 @@ src/sqlite/SubrtnSig.s: src/sqlite/SubrtnSig.c.s
 
 # target to generate assembly for a file
 src/sqlite/SubrtnSig.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/SubrtnSig.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/SubrtnSig.c.s
 .PHONY : src/sqlite/SubrtnSig.c.s
 
 src/sqlite/SubstContext.o: src/sqlite/SubstContext.c.o
@@ -3446,7 +3446,7 @@ src/sqlite/SubstContext.o: src/sqlite/SubstContext.c.o
 
 # target to build an object file
 src/sqlite/SubstContext.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/SubstContext.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/SubstContext.c.o
 .PHONY : src/sqlite/SubstContext.c.o
 
 src/sqlite/SubstContext.i: src/sqlite/SubstContext.c.i
@@ -3454,7 +3454,7 @@ src/sqlite/SubstContext.i: src/sqlite/SubstContext.c.i
 
 # target to preprocess a source file
 src/sqlite/SubstContext.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/SubstContext.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/SubstContext.c.i
 .PHONY : src/sqlite/SubstContext.c.i
 
 src/sqlite/SubstContext.s: src/sqlite/SubstContext.c.s
@@ -3462,7 +3462,7 @@ src/sqlite/SubstContext.s: src/sqlite/SubstContext.c.s
 
 # target to generate assembly for a file
 src/sqlite/SubstContext.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/SubstContext.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/SubstContext.c.s
 .PHONY : src/sqlite/SubstContext.c.s
 
 src/sqlite/SumCtx.o: src/sqlite/SumCtx.c.o
@@ -3470,7 +3470,7 @@ src/sqlite/SumCtx.o: src/sqlite/SumCtx.c.o
 
 # target to build an object file
 src/sqlite/SumCtx.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/SumCtx.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/SumCtx.c.o
 .PHONY : src/sqlite/SumCtx.c.o
 
 src/sqlite/SumCtx.i: src/sqlite/SumCtx.c.i
@@ -3478,7 +3478,7 @@ src/sqlite/SumCtx.i: src/sqlite/SumCtx.c.i
 
 # target to preprocess a source file
 src/sqlite/SumCtx.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/SumCtx.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/SumCtx.c.i
 .PHONY : src/sqlite/SumCtx.c.i
 
 src/sqlite/SumCtx.s: src/sqlite/SumCtx.c.s
@@ -3486,7 +3486,7 @@ src/sqlite/SumCtx.s: src/sqlite/SumCtx.c.s
 
 # target to generate assembly for a file
 src/sqlite/SumCtx.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/SumCtx.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/SumCtx.c.s
 .PHONY : src/sqlite/SumCtx.c.s
 
 src/sqlite/TabResult.o: src/sqlite/TabResult.c.o
@@ -3494,7 +3494,7 @@ src/sqlite/TabResult.o: src/sqlite/TabResult.c.o
 
 # target to build an object file
 src/sqlite/TabResult.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/TabResult.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/TabResult.c.o
 .PHONY : src/sqlite/TabResult.c.o
 
 src/sqlite/TabResult.i: src/sqlite/TabResult.c.i
@@ -3502,7 +3502,7 @@ src/sqlite/TabResult.i: src/sqlite/TabResult.c.i
 
 # target to preprocess a source file
 src/sqlite/TabResult.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/TabResult.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/TabResult.c.i
 .PHONY : src/sqlite/TabResult.c.i
 
 src/sqlite/TabResult.s: src/sqlite/TabResult.c.s
@@ -3510,7 +3510,7 @@ src/sqlite/TabResult.s: src/sqlite/TabResult.c.s
 
 # target to generate assembly for a file
 src/sqlite/TabResult.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/TabResult.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/TabResult.c.s
 .PHONY : src/sqlite/TabResult.c.s
 
 src/sqlite/Table.o: src/sqlite/Table.c.o
@@ -3518,7 +3518,7 @@ src/sqlite/Table.o: src/sqlite/Table.c.o
 
 # target to build an object file
 src/sqlite/Table.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Table.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Table.c.o
 .PHONY : src/sqlite/Table.c.o
 
 src/sqlite/Table.i: src/sqlite/Table.c.i
@@ -3526,7 +3526,7 @@ src/sqlite/Table.i: src/sqlite/Table.c.i
 
 # target to preprocess a source file
 src/sqlite/Table.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Table.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Table.c.i
 .PHONY : src/sqlite/Table.c.i
 
 src/sqlite/Table.s: src/sqlite/Table.c.s
@@ -3534,7 +3534,7 @@ src/sqlite/Table.s: src/sqlite/Table.c.s
 
 # target to generate assembly for a file
 src/sqlite/Table.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Table.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Table.c.s
 .PHONY : src/sqlite/Table.c.s
 
 src/sqlite/TableLock.o: src/sqlite/TableLock.c.o
@@ -3542,7 +3542,7 @@ src/sqlite/TableLock.o: src/sqlite/TableLock.c.o
 
 # target to build an object file
 src/sqlite/TableLock.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/TableLock.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/TableLock.c.o
 .PHONY : src/sqlite/TableLock.c.o
 
 src/sqlite/TableLock.i: src/sqlite/TableLock.c.i
@@ -3550,7 +3550,7 @@ src/sqlite/TableLock.i: src/sqlite/TableLock.c.i
 
 # target to preprocess a source file
 src/sqlite/TableLock.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/TableLock.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/TableLock.c.i
 .PHONY : src/sqlite/TableLock.c.i
 
 src/sqlite/TableLock.s: src/sqlite/TableLock.c.s
@@ -3558,7 +3558,7 @@ src/sqlite/TableLock.s: src/sqlite/TableLock.c.s
 
 # target to generate assembly for a file
 src/sqlite/TableLock.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/TableLock.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/TableLock.c.s
 .PHONY : src/sqlite/TableLock.c.s
 
 src/sqlite/Token.o: src/sqlite/Token.c.o
@@ -3566,7 +3566,7 @@ src/sqlite/Token.o: src/sqlite/Token.c.o
 
 # target to build an object file
 src/sqlite/Token.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Token.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Token.c.o
 .PHONY : src/sqlite/Token.c.o
 
 src/sqlite/Token.i: src/sqlite/Token.c.i
@@ -3574,7 +3574,7 @@ src/sqlite/Token.i: src/sqlite/Token.c.i
 
 # target to preprocess a source file
 src/sqlite/Token.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Token.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Token.c.i
 .PHONY : src/sqlite/Token.c.i
 
 src/sqlite/Token.s: src/sqlite/Token.c.s
@@ -3582,7 +3582,7 @@ src/sqlite/Token.s: src/sqlite/Token.c.s
 
 # target to generate assembly for a file
 src/sqlite/Token.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Token.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Token.c.s
 .PHONY : src/sqlite/Token.c.s
 
 src/sqlite/TreeView.o: src/sqlite/TreeView.c.o
@@ -3590,7 +3590,7 @@ src/sqlite/TreeView.o: src/sqlite/TreeView.c.o
 
 # target to build an object file
 src/sqlite/TreeView.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/TreeView.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/TreeView.c.o
 .PHONY : src/sqlite/TreeView.c.o
 
 src/sqlite/TreeView.i: src/sqlite/TreeView.c.i
@@ -3598,7 +3598,7 @@ src/sqlite/TreeView.i: src/sqlite/TreeView.c.i
 
 # target to preprocess a source file
 src/sqlite/TreeView.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/TreeView.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/TreeView.c.i
 .PHONY : src/sqlite/TreeView.c.i
 
 src/sqlite/TreeView.s: src/sqlite/TreeView.c.s
@@ -3606,7 +3606,7 @@ src/sqlite/TreeView.s: src/sqlite/TreeView.c.s
 
 # target to generate assembly for a file
 src/sqlite/TreeView.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/TreeView.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/TreeView.c.s
 .PHONY : src/sqlite/TreeView.c.s
 
 src/sqlite/Trigger.o: src/sqlite/Trigger.c.o
@@ -3614,7 +3614,7 @@ src/sqlite/Trigger.o: src/sqlite/Trigger.c.o
 
 # target to build an object file
 src/sqlite/Trigger.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Trigger.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Trigger.c.o
 .PHONY : src/sqlite/Trigger.c.o
 
 src/sqlite/Trigger.i: src/sqlite/Trigger.c.i
@@ -3622,7 +3622,7 @@ src/sqlite/Trigger.i: src/sqlite/Trigger.c.i
 
 # target to preprocess a source file
 src/sqlite/Trigger.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Trigger.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Trigger.c.i
 .PHONY : src/sqlite/Trigger.c.i
 
 src/sqlite/Trigger.s: src/sqlite/Trigger.c.s
@@ -3630,7 +3630,7 @@ src/sqlite/Trigger.s: src/sqlite/Trigger.c.s
 
 # target to generate assembly for a file
 src/sqlite/Trigger.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Trigger.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Trigger.c.s
 .PHONY : src/sqlite/Trigger.c.s
 
 src/sqlite/TriggerPrg.o: src/sqlite/TriggerPrg.c.o
@@ -3638,7 +3638,7 @@ src/sqlite/TriggerPrg.o: src/sqlite/TriggerPrg.c.o
 
 # target to build an object file
 src/sqlite/TriggerPrg.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/TriggerPrg.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/TriggerPrg.c.o
 .PHONY : src/sqlite/TriggerPrg.c.o
 
 src/sqlite/TriggerPrg.i: src/sqlite/TriggerPrg.c.i
@@ -3646,7 +3646,7 @@ src/sqlite/TriggerPrg.i: src/sqlite/TriggerPrg.c.i
 
 # target to preprocess a source file
 src/sqlite/TriggerPrg.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/TriggerPrg.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/TriggerPrg.c.i
 .PHONY : src/sqlite/TriggerPrg.c.i
 
 src/sqlite/TriggerPrg.s: src/sqlite/TriggerPrg.c.s
@@ -3654,7 +3654,7 @@ src/sqlite/TriggerPrg.s: src/sqlite/TriggerPrg.c.s
 
 # target to generate assembly for a file
 src/sqlite/TriggerPrg.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/TriggerPrg.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/TriggerPrg.c.s
 .PHONY : src/sqlite/TriggerPrg.c.s
 
 src/sqlite/TriggerStep.o: src/sqlite/TriggerStep.c.o
@@ -3662,7 +3662,7 @@ src/sqlite/TriggerStep.o: src/sqlite/TriggerStep.c.o
 
 # target to build an object file
 src/sqlite/TriggerStep.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/TriggerStep.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/TriggerStep.c.o
 .PHONY : src/sqlite/TriggerStep.c.o
 
 src/sqlite/TriggerStep.i: src/sqlite/TriggerStep.c.i
@@ -3670,7 +3670,7 @@ src/sqlite/TriggerStep.i: src/sqlite/TriggerStep.c.i
 
 # target to preprocess a source file
 src/sqlite/TriggerStep.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/TriggerStep.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/TriggerStep.c.i
 .PHONY : src/sqlite/TriggerStep.c.i
 
 src/sqlite/TriggerStep.s: src/sqlite/TriggerStep.c.s
@@ -3678,7 +3678,7 @@ src/sqlite/TriggerStep.s: src/sqlite/TriggerStep.c.s
 
 # target to generate assembly for a file
 src/sqlite/TriggerStep.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/TriggerStep.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/TriggerStep.c.s
 .PHONY : src/sqlite/TriggerStep.c.s
 
 src/sqlite/UnixUnusedFd.o: src/sqlite/UnixUnusedFd.c.o
@@ -3686,7 +3686,7 @@ src/sqlite/UnixUnusedFd.o: src/sqlite/UnixUnusedFd.c.o
 
 # target to build an object file
 src/sqlite/UnixUnusedFd.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/UnixUnusedFd.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/UnixUnusedFd.c.o
 .PHONY : src/sqlite/UnixUnusedFd.c.o
 
 src/sqlite/UnixUnusedFd.i: src/sqlite/UnixUnusedFd.c.i
@@ -3694,7 +3694,7 @@ src/sqlite/UnixUnusedFd.i: src/sqlite/UnixUnusedFd.c.i
 
 # target to preprocess a source file
 src/sqlite/UnixUnusedFd.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/UnixUnusedFd.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/UnixUnusedFd.c.i
 .PHONY : src/sqlite/UnixUnusedFd.c.i
 
 src/sqlite/UnixUnusedFd.s: src/sqlite/UnixUnusedFd.c.s
@@ -3702,7 +3702,7 @@ src/sqlite/UnixUnusedFd.s: src/sqlite/UnixUnusedFd.c.s
 
 # target to generate assembly for a file
 src/sqlite/UnixUnusedFd.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/UnixUnusedFd.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/UnixUnusedFd.c.s
 .PHONY : src/sqlite/UnixUnusedFd.c.s
 
 src/sqlite/UnpackedRecord.o: src/sqlite/UnpackedRecord.c.o
@@ -3710,7 +3710,7 @@ src/sqlite/UnpackedRecord.o: src/sqlite/UnpackedRecord.c.o
 
 # target to build an object file
 src/sqlite/UnpackedRecord.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/UnpackedRecord.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/UnpackedRecord.c.o
 .PHONY : src/sqlite/UnpackedRecord.c.o
 
 src/sqlite/UnpackedRecord.i: src/sqlite/UnpackedRecord.c.i
@@ -3718,7 +3718,7 @@ src/sqlite/UnpackedRecord.i: src/sqlite/UnpackedRecord.c.i
 
 # target to preprocess a source file
 src/sqlite/UnpackedRecord.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/UnpackedRecord.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/UnpackedRecord.c.i
 .PHONY : src/sqlite/UnpackedRecord.c.i
 
 src/sqlite/UnpackedRecord.s: src/sqlite/UnpackedRecord.c.s
@@ -3726,7 +3726,7 @@ src/sqlite/UnpackedRecord.s: src/sqlite/UnpackedRecord.c.s
 
 # target to generate assembly for a file
 src/sqlite/UnpackedRecord.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/UnpackedRecord.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/UnpackedRecord.c.s
 .PHONY : src/sqlite/UnpackedRecord.c.s
 
 src/sqlite/Upsert.o: src/sqlite/Upsert.c.o
@@ -3734,7 +3734,7 @@ src/sqlite/Upsert.o: src/sqlite/Upsert.c.o
 
 # target to build an object file
 src/sqlite/Upsert.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Upsert.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Upsert.c.o
 .PHONY : src/sqlite/Upsert.c.o
 
 src/sqlite/Upsert.i: src/sqlite/Upsert.c.i
@@ -3742,7 +3742,7 @@ src/sqlite/Upsert.i: src/sqlite/Upsert.c.i
 
 # target to preprocess a source file
 src/sqlite/Upsert.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Upsert.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Upsert.c.i
 .PHONY : src/sqlite/Upsert.c.i
 
 src/sqlite/Upsert.s: src/sqlite/Upsert.c.s
@@ -3750,7 +3750,7 @@ src/sqlite/Upsert.s: src/sqlite/Upsert.c.s
 
 # target to generate assembly for a file
 src/sqlite/Upsert.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Upsert.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Upsert.c.s
 .PHONY : src/sqlite/Upsert.c.s
 
 src/sqlite/VList.o: src/sqlite/VList.c.o
@@ -3758,7 +3758,7 @@ src/sqlite/VList.o: src/sqlite/VList.c.o
 
 # target to build an object file
 src/sqlite/VList.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/VList.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/VList.c.o
 .PHONY : src/sqlite/VList.c.o
 
 src/sqlite/VList.i: src/sqlite/VList.c.i
@@ -3766,7 +3766,7 @@ src/sqlite/VList.i: src/sqlite/VList.c.i
 
 # target to preprocess a source file
 src/sqlite/VList.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/VList.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/VList.c.i
 .PHONY : src/sqlite/VList.c.i
 
 src/sqlite/VList.s: src/sqlite/VList.c.s
@@ -3774,7 +3774,7 @@ src/sqlite/VList.s: src/sqlite/VList.c.s
 
 # target to generate assembly for a file
 src/sqlite/VList.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/VList.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/VList.c.s
 .PHONY : src/sqlite/VList.c.s
 
 src/sqlite/VTable.o: src/sqlite/VTable.c.o
@@ -3782,7 +3782,7 @@ src/sqlite/VTable.o: src/sqlite/VTable.c.o
 
 # target to build an object file
 src/sqlite/VTable.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/VTable.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/VTable.c.o
 .PHONY : src/sqlite/VTable.c.o
 
 src/sqlite/VTable.i: src/sqlite/VTable.c.i
@@ -3790,7 +3790,7 @@ src/sqlite/VTable.i: src/sqlite/VTable.c.i
 
 # target to preprocess a source file
 src/sqlite/VTable.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/VTable.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/VTable.c.i
 .PHONY : src/sqlite/VTable.c.i
 
 src/sqlite/VTable.s: src/sqlite/VTable.c.s
@@ -3798,7 +3798,7 @@ src/sqlite/VTable.s: src/sqlite/VTable.c.s
 
 # target to generate assembly for a file
 src/sqlite/VTable.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/VTable.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/VTable.c.s
 .PHONY : src/sqlite/VTable.c.s
 
 src/sqlite/ValueList.o: src/sqlite/ValueList.c.o
@@ -3806,7 +3806,7 @@ src/sqlite/ValueList.o: src/sqlite/ValueList.c.o
 
 # target to build an object file
 src/sqlite/ValueList.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/ValueList.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/ValueList.c.o
 .PHONY : src/sqlite/ValueList.c.o
 
 src/sqlite/ValueList.i: src/sqlite/ValueList.c.i
@@ -3814,7 +3814,7 @@ src/sqlite/ValueList.i: src/sqlite/ValueList.c.i
 
 # target to preprocess a source file
 src/sqlite/ValueList.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/ValueList.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/ValueList.c.i
 .PHONY : src/sqlite/ValueList.c.i
 
 src/sqlite/ValueList.s: src/sqlite/ValueList.c.s
@@ -3822,7 +3822,7 @@ src/sqlite/ValueList.s: src/sqlite/ValueList.c.s
 
 # target to generate assembly for a file
 src/sqlite/ValueList.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/ValueList.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/ValueList.c.s
 .PHONY : src/sqlite/ValueList.c.s
 
 src/sqlite/ValueNewStat4Ctx.o: src/sqlite/ValueNewStat4Ctx.c.o
@@ -3830,7 +3830,7 @@ src/sqlite/ValueNewStat4Ctx.o: src/sqlite/ValueNewStat4Ctx.c.o
 
 # target to build an object file
 src/sqlite/ValueNewStat4Ctx.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/ValueNewStat4Ctx.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/ValueNewStat4Ctx.c.o
 .PHONY : src/sqlite/ValueNewStat4Ctx.c.o
 
 src/sqlite/ValueNewStat4Ctx.i: src/sqlite/ValueNewStat4Ctx.c.i
@@ -3838,7 +3838,7 @@ src/sqlite/ValueNewStat4Ctx.i: src/sqlite/ValueNewStat4Ctx.c.i
 
 # target to preprocess a source file
 src/sqlite/ValueNewStat4Ctx.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/ValueNewStat4Ctx.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/ValueNewStat4Ctx.c.i
 .PHONY : src/sqlite/ValueNewStat4Ctx.c.i
 
 src/sqlite/ValueNewStat4Ctx.s: src/sqlite/ValueNewStat4Ctx.c.s
@@ -3846,7 +3846,7 @@ src/sqlite/ValueNewStat4Ctx.s: src/sqlite/ValueNewStat4Ctx.c.s
 
 # target to generate assembly for a file
 src/sqlite/ValueNewStat4Ctx.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/ValueNewStat4Ctx.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/ValueNewStat4Ctx.c.s
 .PHONY : src/sqlite/ValueNewStat4Ctx.c.s
 
 src/sqlite/Vdbe.o: src/sqlite/Vdbe.c.o
@@ -3854,7 +3854,7 @@ src/sqlite/Vdbe.o: src/sqlite/Vdbe.c.o
 
 # target to build an object file
 src/sqlite/Vdbe.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Vdbe.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Vdbe.c.o
 .PHONY : src/sqlite/Vdbe.c.o
 
 src/sqlite/Vdbe.i: src/sqlite/Vdbe.c.i
@@ -3862,7 +3862,7 @@ src/sqlite/Vdbe.i: src/sqlite/Vdbe.c.i
 
 # target to preprocess a source file
 src/sqlite/Vdbe.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Vdbe.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Vdbe.c.i
 .PHONY : src/sqlite/Vdbe.c.i
 
 src/sqlite/Vdbe.s: src/sqlite/Vdbe.c.s
@@ -3870,7 +3870,7 @@ src/sqlite/Vdbe.s: src/sqlite/Vdbe.c.s
 
 # target to generate assembly for a file
 src/sqlite/Vdbe.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Vdbe.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Vdbe.c.s
 .PHONY : src/sqlite/Vdbe.c.s
 
 src/sqlite/VdbeCursor.o: src/sqlite/VdbeCursor.c.o
@@ -3878,7 +3878,7 @@ src/sqlite/VdbeCursor.o: src/sqlite/VdbeCursor.c.o
 
 # target to build an object file
 src/sqlite/VdbeCursor.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/VdbeCursor.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/VdbeCursor.c.o
 .PHONY : src/sqlite/VdbeCursor.c.o
 
 src/sqlite/VdbeCursor.i: src/sqlite/VdbeCursor.c.i
@@ -3886,7 +3886,7 @@ src/sqlite/VdbeCursor.i: src/sqlite/VdbeCursor.c.i
 
 # target to preprocess a source file
 src/sqlite/VdbeCursor.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/VdbeCursor.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/VdbeCursor.c.i
 .PHONY : src/sqlite/VdbeCursor.c.i
 
 src/sqlite/VdbeCursor.s: src/sqlite/VdbeCursor.c.s
@@ -3894,7 +3894,7 @@ src/sqlite/VdbeCursor.s: src/sqlite/VdbeCursor.c.s
 
 # target to generate assembly for a file
 src/sqlite/VdbeCursor.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/VdbeCursor.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/VdbeCursor.c.s
 .PHONY : src/sqlite/VdbeCursor.c.s
 
 src/sqlite/VdbeFrame.o: src/sqlite/VdbeFrame.c.o
@@ -3902,7 +3902,7 @@ src/sqlite/VdbeFrame.o: src/sqlite/VdbeFrame.c.o
 
 # target to build an object file
 src/sqlite/VdbeFrame.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/VdbeFrame.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/VdbeFrame.c.o
 .PHONY : src/sqlite/VdbeFrame.c.o
 
 src/sqlite/VdbeFrame.i: src/sqlite/VdbeFrame.c.i
@@ -3910,7 +3910,7 @@ src/sqlite/VdbeFrame.i: src/sqlite/VdbeFrame.c.i
 
 # target to preprocess a source file
 src/sqlite/VdbeFrame.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/VdbeFrame.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/VdbeFrame.c.i
 .PHONY : src/sqlite/VdbeFrame.c.i
 
 src/sqlite/VdbeFrame.s: src/sqlite/VdbeFrame.c.s
@@ -3918,7 +3918,7 @@ src/sqlite/VdbeFrame.s: src/sqlite/VdbeFrame.c.s
 
 # target to generate assembly for a file
 src/sqlite/VdbeFrame.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/VdbeFrame.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/VdbeFrame.c.s
 .PHONY : src/sqlite/VdbeFrame.c.s
 
 src/sqlite/VdbeOp.o: src/sqlite/VdbeOp.c.o
@@ -3926,7 +3926,7 @@ src/sqlite/VdbeOp.o: src/sqlite/VdbeOp.c.o
 
 # target to build an object file
 src/sqlite/VdbeOp.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/VdbeOp.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/VdbeOp.c.o
 .PHONY : src/sqlite/VdbeOp.c.o
 
 src/sqlite/VdbeOp.i: src/sqlite/VdbeOp.c.i
@@ -3934,7 +3934,7 @@ src/sqlite/VdbeOp.i: src/sqlite/VdbeOp.c.i
 
 # target to preprocess a source file
 src/sqlite/VdbeOp.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/VdbeOp.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/VdbeOp.c.i
 .PHONY : src/sqlite/VdbeOp.c.i
 
 src/sqlite/VdbeOp.s: src/sqlite/VdbeOp.c.s
@@ -3942,7 +3942,7 @@ src/sqlite/VdbeOp.s: src/sqlite/VdbeOp.c.s
 
 # target to generate assembly for a file
 src/sqlite/VdbeOp.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/VdbeOp.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/VdbeOp.c.s
 .PHONY : src/sqlite/VdbeOp.c.s
 
 src/sqlite/VdbeOpList.o: src/sqlite/VdbeOpList.c.o
@@ -3950,7 +3950,7 @@ src/sqlite/VdbeOpList.o: src/sqlite/VdbeOpList.c.o
 
 # target to build an object file
 src/sqlite/VdbeOpList.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/VdbeOpList.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/VdbeOpList.c.o
 .PHONY : src/sqlite/VdbeOpList.c.o
 
 src/sqlite/VdbeOpList.i: src/sqlite/VdbeOpList.c.i
@@ -3958,7 +3958,7 @@ src/sqlite/VdbeOpList.i: src/sqlite/VdbeOpList.c.i
 
 # target to preprocess a source file
 src/sqlite/VdbeOpList.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/VdbeOpList.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/VdbeOpList.c.i
 .PHONY : src/sqlite/VdbeOpList.c.i
 
 src/sqlite/VdbeOpList.s: src/sqlite/VdbeOpList.c.s
@@ -3966,7 +3966,7 @@ src/sqlite/VdbeOpList.s: src/sqlite/VdbeOpList.c.s
 
 # target to generate assembly for a file
 src/sqlite/VdbeOpList.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/VdbeOpList.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/VdbeOpList.c.s
 .PHONY : src/sqlite/VdbeOpList.c.s
 
 src/sqlite/VdbeSorter.o: src/sqlite/VdbeSorter.c.o
@@ -3974,7 +3974,7 @@ src/sqlite/VdbeSorter.o: src/sqlite/VdbeSorter.c.o
 
 # target to build an object file
 src/sqlite/VdbeSorter.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/VdbeSorter.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/VdbeSorter.c.o
 .PHONY : src/sqlite/VdbeSorter.c.o
 
 src/sqlite/VdbeSorter.i: src/sqlite/VdbeSorter.c.i
@@ -3982,7 +3982,7 @@ src/sqlite/VdbeSorter.i: src/sqlite/VdbeSorter.c.i
 
 # target to preprocess a source file
 src/sqlite/VdbeSorter.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/VdbeSorter.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/VdbeSorter.c.i
 .PHONY : src/sqlite/VdbeSorter.c.i
 
 src/sqlite/VdbeSorter.s: src/sqlite/VdbeSorter.c.s
@@ -3990,7 +3990,7 @@ src/sqlite/VdbeSorter.s: src/sqlite/VdbeSorter.c.s
 
 # target to generate assembly for a file
 src/sqlite/VdbeSorter.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/VdbeSorter.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/VdbeSorter.c.s
 .PHONY : src/sqlite/VdbeSorter.c.s
 
 src/sqlite/VdbeTxtBlbCache.o: src/sqlite/VdbeTxtBlbCache.c.o
@@ -3998,7 +3998,7 @@ src/sqlite/VdbeTxtBlbCache.o: src/sqlite/VdbeTxtBlbCache.c.o
 
 # target to build an object file
 src/sqlite/VdbeTxtBlbCache.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/VdbeTxtBlbCache.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/VdbeTxtBlbCache.c.o
 .PHONY : src/sqlite/VdbeTxtBlbCache.c.o
 
 src/sqlite/VdbeTxtBlbCache.i: src/sqlite/VdbeTxtBlbCache.c.i
@@ -4006,7 +4006,7 @@ src/sqlite/VdbeTxtBlbCache.i: src/sqlite/VdbeTxtBlbCache.c.i
 
 # target to preprocess a source file
 src/sqlite/VdbeTxtBlbCache.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/VdbeTxtBlbCache.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/VdbeTxtBlbCache.c.i
 .PHONY : src/sqlite/VdbeTxtBlbCache.c.i
 
 src/sqlite/VdbeTxtBlbCache.s: src/sqlite/VdbeTxtBlbCache.c.s
@@ -4014,7 +4014,7 @@ src/sqlite/VdbeTxtBlbCache.s: src/sqlite/VdbeTxtBlbCache.c.s
 
 # target to generate assembly for a file
 src/sqlite/VdbeTxtBlbCache.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/VdbeTxtBlbCache.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/VdbeTxtBlbCache.c.s
 .PHONY : src/sqlite/VdbeTxtBlbCache.c.s
 
 src/sqlite/VtabCtx.o: src/sqlite/VtabCtx.c.o
@@ -4022,7 +4022,7 @@ src/sqlite/VtabCtx.o: src/sqlite/VtabCtx.c.o
 
 # target to build an object file
 src/sqlite/VtabCtx.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/VtabCtx.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/VtabCtx.c.o
 .PHONY : src/sqlite/VtabCtx.c.o
 
 src/sqlite/VtabCtx.i: src/sqlite/VtabCtx.c.i
@@ -4030,7 +4030,7 @@ src/sqlite/VtabCtx.i: src/sqlite/VtabCtx.c.i
 
 # target to preprocess a source file
 src/sqlite/VtabCtx.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/VtabCtx.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/VtabCtx.c.i
 .PHONY : src/sqlite/VtabCtx.c.i
 
 src/sqlite/VtabCtx.s: src/sqlite/VtabCtx.c.s
@@ -4038,7 +4038,7 @@ src/sqlite/VtabCtx.s: src/sqlite/VtabCtx.c.s
 
 # target to generate assembly for a file
 src/sqlite/VtabCtx.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/VtabCtx.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/VtabCtx.c.s
 .PHONY : src/sqlite/VtabCtx.c.s
 
 src/sqlite/Wal.o: src/sqlite/Wal.c.o
@@ -4046,7 +4046,7 @@ src/sqlite/Wal.o: src/sqlite/Wal.c.o
 
 # target to build an object file
 src/sqlite/Wal.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Wal.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Wal.c.o
 .PHONY : src/sqlite/Wal.c.o
 
 src/sqlite/Wal.i: src/sqlite/Wal.c.i
@@ -4054,7 +4054,7 @@ src/sqlite/Wal.i: src/sqlite/Wal.c.i
 
 # target to preprocess a source file
 src/sqlite/Wal.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Wal.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Wal.c.i
 .PHONY : src/sqlite/Wal.c.i
 
 src/sqlite/Wal.s: src/sqlite/Wal.c.s
@@ -4062,7 +4062,7 @@ src/sqlite/Wal.s: src/sqlite/Wal.c.s
 
 # target to generate assembly for a file
 src/sqlite/Wal.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Wal.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Wal.c.s
 .PHONY : src/sqlite/Wal.c.s
 
 src/sqlite/WalCkptInfo.o: src/sqlite/WalCkptInfo.c.o
@@ -4070,7 +4070,7 @@ src/sqlite/WalCkptInfo.o: src/sqlite/WalCkptInfo.c.o
 
 # target to build an object file
 src/sqlite/WalCkptInfo.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WalCkptInfo.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WalCkptInfo.c.o
 .PHONY : src/sqlite/WalCkptInfo.c.o
 
 src/sqlite/WalCkptInfo.i: src/sqlite/WalCkptInfo.c.i
@@ -4078,7 +4078,7 @@ src/sqlite/WalCkptInfo.i: src/sqlite/WalCkptInfo.c.i
 
 # target to preprocess a source file
 src/sqlite/WalCkptInfo.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WalCkptInfo.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WalCkptInfo.c.i
 .PHONY : src/sqlite/WalCkptInfo.c.i
 
 src/sqlite/WalCkptInfo.s: src/sqlite/WalCkptInfo.c.s
@@ -4086,7 +4086,7 @@ src/sqlite/WalCkptInfo.s: src/sqlite/WalCkptInfo.c.s
 
 # target to generate assembly for a file
 src/sqlite/WalCkptInfo.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WalCkptInfo.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WalCkptInfo.c.s
 .PHONY : src/sqlite/WalCkptInfo.c.s
 
 src/sqlite/WalHashLoc.o: src/sqlite/WalHashLoc.c.o
@@ -4094,7 +4094,7 @@ src/sqlite/WalHashLoc.o: src/sqlite/WalHashLoc.c.o
 
 # target to build an object file
 src/sqlite/WalHashLoc.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WalHashLoc.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WalHashLoc.c.o
 .PHONY : src/sqlite/WalHashLoc.c.o
 
 src/sqlite/WalHashLoc.i: src/sqlite/WalHashLoc.c.i
@@ -4102,7 +4102,7 @@ src/sqlite/WalHashLoc.i: src/sqlite/WalHashLoc.c.i
 
 # target to preprocess a source file
 src/sqlite/WalHashLoc.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WalHashLoc.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WalHashLoc.c.i
 .PHONY : src/sqlite/WalHashLoc.c.i
 
 src/sqlite/WalHashLoc.s: src/sqlite/WalHashLoc.c.s
@@ -4110,7 +4110,7 @@ src/sqlite/WalHashLoc.s: src/sqlite/WalHashLoc.c.s
 
 # target to generate assembly for a file
 src/sqlite/WalHashLoc.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WalHashLoc.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WalHashLoc.c.s
 .PHONY : src/sqlite/WalHashLoc.c.s
 
 src/sqlite/WalIndexHdr.o: src/sqlite/WalIndexHdr.c.o
@@ -4118,7 +4118,7 @@ src/sqlite/WalIndexHdr.o: src/sqlite/WalIndexHdr.c.o
 
 # target to build an object file
 src/sqlite/WalIndexHdr.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WalIndexHdr.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WalIndexHdr.c.o
 .PHONY : src/sqlite/WalIndexHdr.c.o
 
 src/sqlite/WalIndexHdr.i: src/sqlite/WalIndexHdr.c.i
@@ -4126,7 +4126,7 @@ src/sqlite/WalIndexHdr.i: src/sqlite/WalIndexHdr.c.i
 
 # target to preprocess a source file
 src/sqlite/WalIndexHdr.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WalIndexHdr.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WalIndexHdr.c.i
 .PHONY : src/sqlite/WalIndexHdr.c.i
 
 src/sqlite/WalIndexHdr.s: src/sqlite/WalIndexHdr.c.s
@@ -4134,7 +4134,7 @@ src/sqlite/WalIndexHdr.s: src/sqlite/WalIndexHdr.c.s
 
 # target to generate assembly for a file
 src/sqlite/WalIndexHdr.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WalIndexHdr.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WalIndexHdr.c.s
 .PHONY : src/sqlite/WalIndexHdr.c.s
 
 src/sqlite/WalIterator.o: src/sqlite/WalIterator.c.o
@@ -4142,7 +4142,7 @@ src/sqlite/WalIterator.o: src/sqlite/WalIterator.c.o
 
 # target to build an object file
 src/sqlite/WalIterator.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WalIterator.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WalIterator.c.o
 .PHONY : src/sqlite/WalIterator.c.o
 
 src/sqlite/WalIterator.i: src/sqlite/WalIterator.c.i
@@ -4150,7 +4150,7 @@ src/sqlite/WalIterator.i: src/sqlite/WalIterator.c.i
 
 # target to preprocess a source file
 src/sqlite/WalIterator.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WalIterator.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WalIterator.c.i
 .PHONY : src/sqlite/WalIterator.c.i
 
 src/sqlite/WalIterator.s: src/sqlite/WalIterator.c.s
@@ -4158,7 +4158,7 @@ src/sqlite/WalIterator.s: src/sqlite/WalIterator.c.s
 
 # target to generate assembly for a file
 src/sqlite/WalIterator.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WalIterator.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WalIterator.c.s
 .PHONY : src/sqlite/WalIterator.c.s
 
 src/sqlite/WalWriter.o: src/sqlite/WalWriter.c.o
@@ -4166,7 +4166,7 @@ src/sqlite/WalWriter.o: src/sqlite/WalWriter.c.o
 
 # target to build an object file
 src/sqlite/WalWriter.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WalWriter.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WalWriter.c.o
 .PHONY : src/sqlite/WalWriter.c.o
 
 src/sqlite/WalWriter.i: src/sqlite/WalWriter.c.i
@@ -4174,7 +4174,7 @@ src/sqlite/WalWriter.i: src/sqlite/WalWriter.c.i
 
 # target to preprocess a source file
 src/sqlite/WalWriter.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WalWriter.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WalWriter.c.i
 .PHONY : src/sqlite/WalWriter.c.i
 
 src/sqlite/WalWriter.s: src/sqlite/WalWriter.c.s
@@ -4182,7 +4182,7 @@ src/sqlite/WalWriter.s: src/sqlite/WalWriter.c.s
 
 # target to generate assembly for a file
 src/sqlite/WalWriter.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WalWriter.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WalWriter.c.s
 .PHONY : src/sqlite/WalWriter.c.s
 
 src/sqlite/Walker.o: src/sqlite/Walker.c.o
@@ -4190,7 +4190,7 @@ src/sqlite/Walker.o: src/sqlite/Walker.c.o
 
 # target to build an object file
 src/sqlite/Walker.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Walker.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Walker.c.o
 .PHONY : src/sqlite/Walker.c.o
 
 src/sqlite/Walker.i: src/sqlite/Walker.c.i
@@ -4198,7 +4198,7 @@ src/sqlite/Walker.i: src/sqlite/Walker.c.i
 
 # target to preprocess a source file
 src/sqlite/Walker.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Walker.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Walker.c.i
 .PHONY : src/sqlite/Walker.c.i
 
 src/sqlite/Walker.s: src/sqlite/Walker.c.s
@@ -4206,7 +4206,7 @@ src/sqlite/Walker.s: src/sqlite/Walker.c.s
 
 # target to generate assembly for a file
 src/sqlite/Walker.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Walker.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Walker.c.s
 .PHONY : src/sqlite/Walker.c.s
 
 src/sqlite/WhereAndInfo.o: src/sqlite/WhereAndInfo.c.o
@@ -4214,7 +4214,7 @@ src/sqlite/WhereAndInfo.o: src/sqlite/WhereAndInfo.c.o
 
 # target to build an object file
 src/sqlite/WhereAndInfo.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereAndInfo.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereAndInfo.c.o
 .PHONY : src/sqlite/WhereAndInfo.c.o
 
 src/sqlite/WhereAndInfo.i: src/sqlite/WhereAndInfo.c.i
@@ -4222,7 +4222,7 @@ src/sqlite/WhereAndInfo.i: src/sqlite/WhereAndInfo.c.i
 
 # target to preprocess a source file
 src/sqlite/WhereAndInfo.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereAndInfo.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereAndInfo.c.i
 .PHONY : src/sqlite/WhereAndInfo.c.i
 
 src/sqlite/WhereAndInfo.s: src/sqlite/WhereAndInfo.c.s
@@ -4230,7 +4230,7 @@ src/sqlite/WhereAndInfo.s: src/sqlite/WhereAndInfo.c.s
 
 # target to generate assembly for a file
 src/sqlite/WhereAndInfo.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereAndInfo.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereAndInfo.c.s
 .PHONY : src/sqlite/WhereAndInfo.c.s
 
 src/sqlite/WhereClause.o: src/sqlite/WhereClause.c.o
@@ -4238,7 +4238,7 @@ src/sqlite/WhereClause.o: src/sqlite/WhereClause.c.o
 
 # target to build an object file
 src/sqlite/WhereClause.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereClause.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereClause.c.o
 .PHONY : src/sqlite/WhereClause.c.o
 
 src/sqlite/WhereClause.i: src/sqlite/WhereClause.c.i
@@ -4246,7 +4246,7 @@ src/sqlite/WhereClause.i: src/sqlite/WhereClause.c.i
 
 # target to preprocess a source file
 src/sqlite/WhereClause.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereClause.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereClause.c.i
 .PHONY : src/sqlite/WhereClause.c.i
 
 src/sqlite/WhereClause.s: src/sqlite/WhereClause.c.s
@@ -4254,7 +4254,7 @@ src/sqlite/WhereClause.s: src/sqlite/WhereClause.c.s
 
 # target to generate assembly for a file
 src/sqlite/WhereClause.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereClause.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereClause.c.s
 .PHONY : src/sqlite/WhereClause.c.s
 
 src/sqlite/WhereConst.o: src/sqlite/WhereConst.c.o
@@ -4262,7 +4262,7 @@ src/sqlite/WhereConst.o: src/sqlite/WhereConst.c.o
 
 # target to build an object file
 src/sqlite/WhereConst.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereConst.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereConst.c.o
 .PHONY : src/sqlite/WhereConst.c.o
 
 src/sqlite/WhereConst.i: src/sqlite/WhereConst.c.i
@@ -4270,7 +4270,7 @@ src/sqlite/WhereConst.i: src/sqlite/WhereConst.c.i
 
 # target to preprocess a source file
 src/sqlite/WhereConst.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereConst.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereConst.c.i
 .PHONY : src/sqlite/WhereConst.c.i
 
 src/sqlite/WhereConst.s: src/sqlite/WhereConst.c.s
@@ -4278,7 +4278,7 @@ src/sqlite/WhereConst.s: src/sqlite/WhereConst.c.s
 
 # target to generate assembly for a file
 src/sqlite/WhereConst.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereConst.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereConst.c.s
 .PHONY : src/sqlite/WhereConst.c.s
 
 src/sqlite/WhereInfo.o: src/sqlite/WhereInfo.c.o
@@ -4286,7 +4286,7 @@ src/sqlite/WhereInfo.o: src/sqlite/WhereInfo.c.o
 
 # target to build an object file
 src/sqlite/WhereInfo.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereInfo.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereInfo.c.o
 .PHONY : src/sqlite/WhereInfo.c.o
 
 src/sqlite/WhereInfo.i: src/sqlite/WhereInfo.c.i
@@ -4294,7 +4294,7 @@ src/sqlite/WhereInfo.i: src/sqlite/WhereInfo.c.i
 
 # target to preprocess a source file
 src/sqlite/WhereInfo.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereInfo.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereInfo.c.i
 .PHONY : src/sqlite/WhereInfo.c.i
 
 src/sqlite/WhereInfo.s: src/sqlite/WhereInfo.c.s
@@ -4302,7 +4302,7 @@ src/sqlite/WhereInfo.s: src/sqlite/WhereInfo.c.s
 
 # target to generate assembly for a file
 src/sqlite/WhereInfo.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereInfo.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereInfo.c.s
 .PHONY : src/sqlite/WhereInfo.c.s
 
 src/sqlite/WhereLevel.o: src/sqlite/WhereLevel.c.o
@@ -4310,7 +4310,7 @@ src/sqlite/WhereLevel.o: src/sqlite/WhereLevel.c.o
 
 # target to build an object file
 src/sqlite/WhereLevel.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereLevel.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereLevel.c.o
 .PHONY : src/sqlite/WhereLevel.c.o
 
 src/sqlite/WhereLevel.i: src/sqlite/WhereLevel.c.i
@@ -4318,7 +4318,7 @@ src/sqlite/WhereLevel.i: src/sqlite/WhereLevel.c.i
 
 # target to preprocess a source file
 src/sqlite/WhereLevel.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereLevel.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereLevel.c.i
 .PHONY : src/sqlite/WhereLevel.c.i
 
 src/sqlite/WhereLevel.s: src/sqlite/WhereLevel.c.s
@@ -4326,7 +4326,7 @@ src/sqlite/WhereLevel.s: src/sqlite/WhereLevel.c.s
 
 # target to generate assembly for a file
 src/sqlite/WhereLevel.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereLevel.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereLevel.c.s
 .PHONY : src/sqlite/WhereLevel.c.s
 
 src/sqlite/WhereLoop.o: src/sqlite/WhereLoop.c.o
@@ -4334,7 +4334,7 @@ src/sqlite/WhereLoop.o: src/sqlite/WhereLoop.c.o
 
 # target to build an object file
 src/sqlite/WhereLoop.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereLoop.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereLoop.c.o
 .PHONY : src/sqlite/WhereLoop.c.o
 
 src/sqlite/WhereLoop.i: src/sqlite/WhereLoop.c.i
@@ -4342,7 +4342,7 @@ src/sqlite/WhereLoop.i: src/sqlite/WhereLoop.c.i
 
 # target to preprocess a source file
 src/sqlite/WhereLoop.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereLoop.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereLoop.c.i
 .PHONY : src/sqlite/WhereLoop.c.i
 
 src/sqlite/WhereLoop.s: src/sqlite/WhereLoop.c.s
@@ -4350,7 +4350,7 @@ src/sqlite/WhereLoop.s: src/sqlite/WhereLoop.c.s
 
 # target to generate assembly for a file
 src/sqlite/WhereLoop.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereLoop.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereLoop.c.s
 .PHONY : src/sqlite/WhereLoop.c.s
 
 src/sqlite/WhereLoopBuilder.o: src/sqlite/WhereLoopBuilder.c.o
@@ -4358,7 +4358,7 @@ src/sqlite/WhereLoopBuilder.o: src/sqlite/WhereLoopBuilder.c.o
 
 # target to build an object file
 src/sqlite/WhereLoopBuilder.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereLoopBuilder.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereLoopBuilder.c.o
 .PHONY : src/sqlite/WhereLoopBuilder.c.o
 
 src/sqlite/WhereLoopBuilder.i: src/sqlite/WhereLoopBuilder.c.i
@@ -4366,7 +4366,7 @@ src/sqlite/WhereLoopBuilder.i: src/sqlite/WhereLoopBuilder.c.i
 
 # target to preprocess a source file
 src/sqlite/WhereLoopBuilder.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereLoopBuilder.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereLoopBuilder.c.i
 .PHONY : src/sqlite/WhereLoopBuilder.c.i
 
 src/sqlite/WhereLoopBuilder.s: src/sqlite/WhereLoopBuilder.c.s
@@ -4374,7 +4374,7 @@ src/sqlite/WhereLoopBuilder.s: src/sqlite/WhereLoopBuilder.c.s
 
 # target to generate assembly for a file
 src/sqlite/WhereLoopBuilder.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereLoopBuilder.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereLoopBuilder.c.s
 .PHONY : src/sqlite/WhereLoopBuilder.c.s
 
 src/sqlite/WhereMaskSet.o: src/sqlite/WhereMaskSet.c.o
@@ -4382,7 +4382,7 @@ src/sqlite/WhereMaskSet.o: src/sqlite/WhereMaskSet.c.o
 
 # target to build an object file
 src/sqlite/WhereMaskSet.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereMaskSet.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereMaskSet.c.o
 .PHONY : src/sqlite/WhereMaskSet.c.o
 
 src/sqlite/WhereMaskSet.i: src/sqlite/WhereMaskSet.c.i
@@ -4390,7 +4390,7 @@ src/sqlite/WhereMaskSet.i: src/sqlite/WhereMaskSet.c.i
 
 # target to preprocess a source file
 src/sqlite/WhereMaskSet.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereMaskSet.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereMaskSet.c.i
 .PHONY : src/sqlite/WhereMaskSet.c.i
 
 src/sqlite/WhereMaskSet.s: src/sqlite/WhereMaskSet.c.s
@@ -4398,7 +4398,7 @@ src/sqlite/WhereMaskSet.s: src/sqlite/WhereMaskSet.c.s
 
 # target to generate assembly for a file
 src/sqlite/WhereMaskSet.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereMaskSet.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereMaskSet.c.s
 .PHONY : src/sqlite/WhereMaskSet.c.s
 
 src/sqlite/WhereMemBlock.o: src/sqlite/WhereMemBlock.c.o
@@ -4406,7 +4406,7 @@ src/sqlite/WhereMemBlock.o: src/sqlite/WhereMemBlock.c.o
 
 # target to build an object file
 src/sqlite/WhereMemBlock.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereMemBlock.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereMemBlock.c.o
 .PHONY : src/sqlite/WhereMemBlock.c.o
 
 src/sqlite/WhereMemBlock.i: src/sqlite/WhereMemBlock.c.i
@@ -4414,7 +4414,7 @@ src/sqlite/WhereMemBlock.i: src/sqlite/WhereMemBlock.c.i
 
 # target to preprocess a source file
 src/sqlite/WhereMemBlock.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereMemBlock.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereMemBlock.c.i
 .PHONY : src/sqlite/WhereMemBlock.c.i
 
 src/sqlite/WhereMemBlock.s: src/sqlite/WhereMemBlock.c.s
@@ -4422,7 +4422,7 @@ src/sqlite/WhereMemBlock.s: src/sqlite/WhereMemBlock.c.s
 
 # target to generate assembly for a file
 src/sqlite/WhereMemBlock.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereMemBlock.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereMemBlock.c.s
 .PHONY : src/sqlite/WhereMemBlock.c.s
 
 src/sqlite/WhereOrCost.o: src/sqlite/WhereOrCost.c.o
@@ -4430,7 +4430,7 @@ src/sqlite/WhereOrCost.o: src/sqlite/WhereOrCost.c.o
 
 # target to build an object file
 src/sqlite/WhereOrCost.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereOrCost.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereOrCost.c.o
 .PHONY : src/sqlite/WhereOrCost.c.o
 
 src/sqlite/WhereOrCost.i: src/sqlite/WhereOrCost.c.i
@@ -4438,7 +4438,7 @@ src/sqlite/WhereOrCost.i: src/sqlite/WhereOrCost.c.i
 
 # target to preprocess a source file
 src/sqlite/WhereOrCost.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereOrCost.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereOrCost.c.i
 .PHONY : src/sqlite/WhereOrCost.c.i
 
 src/sqlite/WhereOrCost.s: src/sqlite/WhereOrCost.c.s
@@ -4446,7 +4446,7 @@ src/sqlite/WhereOrCost.s: src/sqlite/WhereOrCost.c.s
 
 # target to generate assembly for a file
 src/sqlite/WhereOrCost.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereOrCost.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereOrCost.c.s
 .PHONY : src/sqlite/WhereOrCost.c.s
 
 src/sqlite/WhereOrInfo.o: src/sqlite/WhereOrInfo.c.o
@@ -4454,7 +4454,7 @@ src/sqlite/WhereOrInfo.o: src/sqlite/WhereOrInfo.c.o
 
 # target to build an object file
 src/sqlite/WhereOrInfo.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereOrInfo.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereOrInfo.c.o
 .PHONY : src/sqlite/WhereOrInfo.c.o
 
 src/sqlite/WhereOrInfo.i: src/sqlite/WhereOrInfo.c.i
@@ -4462,7 +4462,7 @@ src/sqlite/WhereOrInfo.i: src/sqlite/WhereOrInfo.c.i
 
 # target to preprocess a source file
 src/sqlite/WhereOrInfo.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereOrInfo.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereOrInfo.c.i
 .PHONY : src/sqlite/WhereOrInfo.c.i
 
 src/sqlite/WhereOrInfo.s: src/sqlite/WhereOrInfo.c.s
@@ -4470,7 +4470,7 @@ src/sqlite/WhereOrInfo.s: src/sqlite/WhereOrInfo.c.s
 
 # target to generate assembly for a file
 src/sqlite/WhereOrInfo.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereOrInfo.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereOrInfo.c.s
 .PHONY : src/sqlite/WhereOrInfo.c.s
 
 src/sqlite/WhereOrSet.o: src/sqlite/WhereOrSet.c.o
@@ -4478,7 +4478,7 @@ src/sqlite/WhereOrSet.o: src/sqlite/WhereOrSet.c.o
 
 # target to build an object file
 src/sqlite/WhereOrSet.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereOrSet.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereOrSet.c.o
 .PHONY : src/sqlite/WhereOrSet.c.o
 
 src/sqlite/WhereOrSet.i: src/sqlite/WhereOrSet.c.i
@@ -4486,7 +4486,7 @@ src/sqlite/WhereOrSet.i: src/sqlite/WhereOrSet.c.i
 
 # target to preprocess a source file
 src/sqlite/WhereOrSet.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereOrSet.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereOrSet.c.i
 .PHONY : src/sqlite/WhereOrSet.c.i
 
 src/sqlite/WhereOrSet.s: src/sqlite/WhereOrSet.c.s
@@ -4494,7 +4494,7 @@ src/sqlite/WhereOrSet.s: src/sqlite/WhereOrSet.c.s
 
 # target to generate assembly for a file
 src/sqlite/WhereOrSet.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereOrSet.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereOrSet.c.s
 .PHONY : src/sqlite/WhereOrSet.c.s
 
 src/sqlite/WherePath.o: src/sqlite/WherePath.c.o
@@ -4502,7 +4502,7 @@ src/sqlite/WherePath.o: src/sqlite/WherePath.c.o
 
 # target to build an object file
 src/sqlite/WherePath.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WherePath.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WherePath.c.o
 .PHONY : src/sqlite/WherePath.c.o
 
 src/sqlite/WherePath.i: src/sqlite/WherePath.c.i
@@ -4510,7 +4510,7 @@ src/sqlite/WherePath.i: src/sqlite/WherePath.c.i
 
 # target to preprocess a source file
 src/sqlite/WherePath.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WherePath.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WherePath.c.i
 .PHONY : src/sqlite/WherePath.c.i
 
 src/sqlite/WherePath.s: src/sqlite/WherePath.c.s
@@ -4518,7 +4518,7 @@ src/sqlite/WherePath.s: src/sqlite/WherePath.c.s
 
 # target to generate assembly for a file
 src/sqlite/WherePath.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WherePath.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WherePath.c.s
 .PHONY : src/sqlite/WherePath.c.s
 
 src/sqlite/WhereRightJoin.o: src/sqlite/WhereRightJoin.c.o
@@ -4526,7 +4526,7 @@ src/sqlite/WhereRightJoin.o: src/sqlite/WhereRightJoin.c.o
 
 # target to build an object file
 src/sqlite/WhereRightJoin.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereRightJoin.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereRightJoin.c.o
 .PHONY : src/sqlite/WhereRightJoin.c.o
 
 src/sqlite/WhereRightJoin.i: src/sqlite/WhereRightJoin.c.i
@@ -4534,7 +4534,7 @@ src/sqlite/WhereRightJoin.i: src/sqlite/WhereRightJoin.c.i
 
 # target to preprocess a source file
 src/sqlite/WhereRightJoin.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereRightJoin.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereRightJoin.c.i
 .PHONY : src/sqlite/WhereRightJoin.c.i
 
 src/sqlite/WhereRightJoin.s: src/sqlite/WhereRightJoin.c.s
@@ -4542,7 +4542,7 @@ src/sqlite/WhereRightJoin.s: src/sqlite/WhereRightJoin.c.s
 
 # target to generate assembly for a file
 src/sqlite/WhereRightJoin.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereRightJoin.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereRightJoin.c.s
 .PHONY : src/sqlite/WhereRightJoin.c.s
 
 src/sqlite/WhereScan.o: src/sqlite/WhereScan.c.o
@@ -4550,7 +4550,7 @@ src/sqlite/WhereScan.o: src/sqlite/WhereScan.c.o
 
 # target to build an object file
 src/sqlite/WhereScan.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereScan.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereScan.c.o
 .PHONY : src/sqlite/WhereScan.c.o
 
 src/sqlite/WhereScan.i: src/sqlite/WhereScan.c.i
@@ -4558,7 +4558,7 @@ src/sqlite/WhereScan.i: src/sqlite/WhereScan.c.i
 
 # target to preprocess a source file
 src/sqlite/WhereScan.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereScan.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereScan.c.i
 .PHONY : src/sqlite/WhereScan.c.i
 
 src/sqlite/WhereScan.s: src/sqlite/WhereScan.c.s
@@ -4566,7 +4566,7 @@ src/sqlite/WhereScan.s: src/sqlite/WhereScan.c.s
 
 # target to generate assembly for a file
 src/sqlite/WhereScan.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereScan.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereScan.c.s
 .PHONY : src/sqlite/WhereScan.c.s
 
 src/sqlite/WhereTerm.o: src/sqlite/WhereTerm.c.o
@@ -4574,7 +4574,7 @@ src/sqlite/WhereTerm.o: src/sqlite/WhereTerm.c.o
 
 # target to build an object file
 src/sqlite/WhereTerm.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereTerm.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereTerm.c.o
 .PHONY : src/sqlite/WhereTerm.c.o
 
 src/sqlite/WhereTerm.i: src/sqlite/WhereTerm.c.i
@@ -4582,7 +4582,7 @@ src/sqlite/WhereTerm.i: src/sqlite/WhereTerm.c.i
 
 # target to preprocess a source file
 src/sqlite/WhereTerm.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereTerm.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereTerm.c.i
 .PHONY : src/sqlite/WhereTerm.c.i
 
 src/sqlite/WhereTerm.s: src/sqlite/WhereTerm.c.s
@@ -4590,7 +4590,7 @@ src/sqlite/WhereTerm.s: src/sqlite/WhereTerm.c.s
 
 # target to generate assembly for a file
 src/sqlite/WhereTerm.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WhereTerm.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WhereTerm.c.s
 .PHONY : src/sqlite/WhereTerm.c.s
 
 src/sqlite/Window.o: src/sqlite/Window.c.o
@@ -4598,7 +4598,7 @@ src/sqlite/Window.o: src/sqlite/Window.c.o
 
 # target to build an object file
 src/sqlite/Window.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Window.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Window.c.o
 .PHONY : src/sqlite/Window.c.o
 
 src/sqlite/Window.i: src/sqlite/Window.c.i
@@ -4606,7 +4606,7 @@ src/sqlite/Window.i: src/sqlite/Window.c.i
 
 # target to preprocess a source file
 src/sqlite/Window.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Window.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Window.c.i
 .PHONY : src/sqlite/Window.c.i
 
 src/sqlite/Window.s: src/sqlite/Window.c.s
@@ -4614,7 +4614,7 @@ src/sqlite/Window.s: src/sqlite/Window.c.s
 
 # target to generate assembly for a file
 src/sqlite/Window.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/Window.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/Window.c.s
 .PHONY : src/sqlite/Window.c.s
 
 src/sqlite/WindowCodeArg.o: src/sqlite/WindowCodeArg.c.o
@@ -4622,7 +4622,7 @@ src/sqlite/WindowCodeArg.o: src/sqlite/WindowCodeArg.c.o
 
 # target to build an object file
 src/sqlite/WindowCodeArg.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WindowCodeArg.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WindowCodeArg.c.o
 .PHONY : src/sqlite/WindowCodeArg.c.o
 
 src/sqlite/WindowCodeArg.i: src/sqlite/WindowCodeArg.c.i
@@ -4630,7 +4630,7 @@ src/sqlite/WindowCodeArg.i: src/sqlite/WindowCodeArg.c.i
 
 # target to preprocess a source file
 src/sqlite/WindowCodeArg.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WindowCodeArg.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WindowCodeArg.c.i
 .PHONY : src/sqlite/WindowCodeArg.c.i
 
 src/sqlite/WindowCodeArg.s: src/sqlite/WindowCodeArg.c.s
@@ -4638,7 +4638,7 @@ src/sqlite/WindowCodeArg.s: src/sqlite/WindowCodeArg.c.s
 
 # target to generate assembly for a file
 src/sqlite/WindowCodeArg.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WindowCodeArg.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WindowCodeArg.c.s
 .PHONY : src/sqlite/WindowCodeArg.c.s
 
 src/sqlite/WindowCsrAndReg.o: src/sqlite/WindowCsrAndReg.c.o
@@ -4646,7 +4646,7 @@ src/sqlite/WindowCsrAndReg.o: src/sqlite/WindowCsrAndReg.c.o
 
 # target to build an object file
 src/sqlite/WindowCsrAndReg.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WindowCsrAndReg.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WindowCsrAndReg.c.o
 .PHONY : src/sqlite/WindowCsrAndReg.c.o
 
 src/sqlite/WindowCsrAndReg.i: src/sqlite/WindowCsrAndReg.c.i
@@ -4654,7 +4654,7 @@ src/sqlite/WindowCsrAndReg.i: src/sqlite/WindowCsrAndReg.c.i
 
 # target to preprocess a source file
 src/sqlite/WindowCsrAndReg.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WindowCsrAndReg.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WindowCsrAndReg.c.i
 .PHONY : src/sqlite/WindowCsrAndReg.c.i
 
 src/sqlite/WindowCsrAndReg.s: src/sqlite/WindowCsrAndReg.c.s
@@ -4662,7 +4662,7 @@ src/sqlite/WindowCsrAndReg.s: src/sqlite/WindowCsrAndReg.c.s
 
 # target to generate assembly for a file
 src/sqlite/WindowCsrAndReg.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WindowCsrAndReg.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WindowCsrAndReg.c.s
 .PHONY : src/sqlite/WindowCsrAndReg.c.s
 
 src/sqlite/WindowFunctionNames.o: src/sqlite/WindowFunctionNames.c.o
@@ -4670,7 +4670,7 @@ src/sqlite/WindowFunctionNames.o: src/sqlite/WindowFunctionNames.c.o
 
 # target to build an object file
 src/sqlite/WindowFunctionNames.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WindowFunctionNames.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WindowFunctionNames.c.o
 .PHONY : src/sqlite/WindowFunctionNames.c.o
 
 src/sqlite/WindowFunctionNames.i: src/sqlite/WindowFunctionNames.c.i
@@ -4678,7 +4678,7 @@ src/sqlite/WindowFunctionNames.i: src/sqlite/WindowFunctionNames.c.i
 
 # target to preprocess a source file
 src/sqlite/WindowFunctionNames.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WindowFunctionNames.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WindowFunctionNames.c.i
 .PHONY : src/sqlite/WindowFunctionNames.c.i
 
 src/sqlite/WindowFunctionNames.s: src/sqlite/WindowFunctionNames.c.s
@@ -4686,7 +4686,7 @@ src/sqlite/WindowFunctionNames.s: src/sqlite/WindowFunctionNames.c.s
 
 # target to generate assembly for a file
 src/sqlite/WindowFunctionNames.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WindowFunctionNames.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WindowFunctionNames.c.s
 .PHONY : src/sqlite/WindowFunctionNames.c.s
 
 src/sqlite/WindowRewrite.o: src/sqlite/WindowRewrite.c.o
@@ -4694,7 +4694,7 @@ src/sqlite/WindowRewrite.o: src/sqlite/WindowRewrite.c.o
 
 # target to build an object file
 src/sqlite/WindowRewrite.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WindowRewrite.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WindowRewrite.c.o
 .PHONY : src/sqlite/WindowRewrite.c.o
 
 src/sqlite/WindowRewrite.i: src/sqlite/WindowRewrite.c.i
@@ -4702,7 +4702,7 @@ src/sqlite/WindowRewrite.i: src/sqlite/WindowRewrite.c.i
 
 # target to preprocess a source file
 src/sqlite/WindowRewrite.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WindowRewrite.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WindowRewrite.c.i
 .PHONY : src/sqlite/WindowRewrite.c.i
 
 src/sqlite/WindowRewrite.s: src/sqlite/WindowRewrite.c.s
@@ -4710,7 +4710,7 @@ src/sqlite/WindowRewrite.s: src/sqlite/WindowRewrite.c.s
 
 # target to generate assembly for a file
 src/sqlite/WindowRewrite.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/WindowRewrite.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/WindowRewrite.c.s
 .PHONY : src/sqlite/WindowRewrite.c.s
 
 src/sqlite/With.o: src/sqlite/With.c.o
@@ -4718,7 +4718,7 @@ src/sqlite/With.o: src/sqlite/With.c.o
 
 # target to build an object file
 src/sqlite/With.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/With.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/With.c.o
 .PHONY : src/sqlite/With.c.o
 
 src/sqlite/With.i: src/sqlite/With.c.i
@@ -4726,7 +4726,7 @@ src/sqlite/With.i: src/sqlite/With.c.i
 
 # target to preprocess a source file
 src/sqlite/With.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/With.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/With.c.i
 .PHONY : src/sqlite/With.c.i
 
 src/sqlite/With.s: src/sqlite/With.c.s
@@ -4734,7 +4734,7 @@ src/sqlite/With.s: src/sqlite/With.c.s
 
 # target to generate assembly for a file
 src/sqlite/With.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/With.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/With.c.s
 .PHONY : src/sqlite/With.c.s
 
 src/sqlite/YyAction.o: src/sqlite/YyAction.c.o
@@ -4742,7 +4742,7 @@ src/sqlite/YyAction.o: src/sqlite/YyAction.c.o
 
 # target to build an object file
 src/sqlite/YyAction.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/YyAction.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/YyAction.c.o
 .PHONY : src/sqlite/YyAction.c.o
 
 src/sqlite/YyAction.i: src/sqlite/YyAction.c.i
@@ -4750,7 +4750,7 @@ src/sqlite/YyAction.i: src/sqlite/YyAction.c.i
 
 # target to preprocess a source file
 src/sqlite/YyAction.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/YyAction.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/YyAction.c.i
 .PHONY : src/sqlite/YyAction.c.i
 
 src/sqlite/YyAction.s: src/sqlite/YyAction.c.s
@@ -4758,7 +4758,7 @@ src/sqlite/YyAction.s: src/sqlite/YyAction.c.s
 
 # target to generate assembly for a file
 src/sqlite/YyAction.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/YyAction.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/YyAction.c.s
 .PHONY : src/sqlite/YyAction.c.s
 
 src/sqlite/analysisInfo.o: src/sqlite/analysisInfo.c.o
@@ -4766,7 +4766,7 @@ src/sqlite/analysisInfo.o: src/sqlite/analysisInfo.c.o
 
 # target to build an object file
 src/sqlite/analysisInfo.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/analysisInfo.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/analysisInfo.c.o
 .PHONY : src/sqlite/analysisInfo.c.o
 
 src/sqlite/analysisInfo.i: src/sqlite/analysisInfo.c.i
@@ -4774,7 +4774,7 @@ src/sqlite/analysisInfo.i: src/sqlite/analysisInfo.c.i
 
 # target to preprocess a source file
 src/sqlite/analysisInfo.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/analysisInfo.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/analysisInfo.c.i
 .PHONY : src/sqlite/analysisInfo.c.i
 
 src/sqlite/analysisInfo.s: src/sqlite/analysisInfo.c.s
@@ -4782,7 +4782,7 @@ src/sqlite/analysisInfo.s: src/sqlite/analysisInfo.c.s
 
 # target to generate assembly for a file
 src/sqlite/analysisInfo.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/analysisInfo.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/analysisInfo.c.s
 .PHONY : src/sqlite/analysisInfo.c.s
 
 src/sqlite/bft.o: src/sqlite/bft.c.o
@@ -4790,7 +4790,7 @@ src/sqlite/bft.o: src/sqlite/bft.c.o
 
 # target to build an object file
 src/sqlite/bft.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/bft.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/bft.c.o
 .PHONY : src/sqlite/bft.c.o
 
 src/sqlite/bft.i: src/sqlite/bft.c.i
@@ -4798,7 +4798,7 @@ src/sqlite/bft.i: src/sqlite/bft.c.i
 
 # target to preprocess a source file
 src/sqlite/bft.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/bft.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/bft.c.i
 .PHONY : src/sqlite/bft.c.i
 
 src/sqlite/bft.s: src/sqlite/bft.c.s
@@ -4806,7 +4806,7 @@ src/sqlite/bft.s: src/sqlite/bft.c.s
 
 # target to generate assembly for a file
 src/sqlite/bft.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/bft.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/bft.c.s
 .PHONY : src/sqlite/bft.c.s
 
 src/sqlite/compareInfo.o: src/sqlite/compareInfo.c.o
@@ -4814,7 +4814,7 @@ src/sqlite/compareInfo.o: src/sqlite/compareInfo.c.o
 
 # target to build an object file
 src/sqlite/compareInfo.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/compareInfo.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/compareInfo.c.o
 .PHONY : src/sqlite/compareInfo.c.o
 
 src/sqlite/compareInfo.i: src/sqlite/compareInfo.c.i
@@ -4822,7 +4822,7 @@ src/sqlite/compareInfo.i: src/sqlite/compareInfo.c.i
 
 # target to preprocess a source file
 src/sqlite/compareInfo.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/compareInfo.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/compareInfo.c.i
 .PHONY : src/sqlite/compareInfo.c.i
 
 src/sqlite/compareInfo.s: src/sqlite/compareInfo.c.s
@@ -4830,7 +4830,7 @@ src/sqlite/compareInfo.s: src/sqlite/compareInfo.c.s
 
 # target to generate assembly for a file
 src/sqlite/compareInfo.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/compareInfo.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/compareInfo.c.s
 .PHONY : src/sqlite/compareInfo.c.s
 
 src/sqlite/et_info.o: src/sqlite/et_info.c.o
@@ -4838,7 +4838,7 @@ src/sqlite/et_info.o: src/sqlite/et_info.c.o
 
 # target to build an object file
 src/sqlite/et_info.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/et_info.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/et_info.c.o
 .PHONY : src/sqlite/et_info.c.o
 
 src/sqlite/et_info.i: src/sqlite/et_info.c.i
@@ -4846,7 +4846,7 @@ src/sqlite/et_info.i: src/sqlite/et_info.c.i
 
 # target to preprocess a source file
 src/sqlite/et_info.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/et_info.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/et_info.c.i
 .PHONY : src/sqlite/et_info.c.i
 
 src/sqlite/et_info.s: src/sqlite/et_info.c.s
@@ -4854,7 +4854,7 @@ src/sqlite/et_info.s: src/sqlite/et_info.c.s
 
 # target to generate assembly for a file
 src/sqlite/et_info.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/et_info.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/et_info.c.s
 .PHONY : src/sqlite/et_info.c.s
 
 src/sqlite/fts5_api.o: src/sqlite/fts5_api.c.o
@@ -4862,7 +4862,7 @@ src/sqlite/fts5_api.o: src/sqlite/fts5_api.c.o
 
 # target to build an object file
 src/sqlite/fts5_api.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/fts5_api.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/fts5_api.c.o
 .PHONY : src/sqlite/fts5_api.c.o
 
 src/sqlite/fts5_api.i: src/sqlite/fts5_api.c.i
@@ -4870,7 +4870,7 @@ src/sqlite/fts5_api.i: src/sqlite/fts5_api.c.i
 
 # target to preprocess a source file
 src/sqlite/fts5_api.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/fts5_api.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/fts5_api.c.i
 .PHONY : src/sqlite/fts5_api.c.i
 
 src/sqlite/fts5_api.s: src/sqlite/fts5_api.c.s
@@ -4878,7 +4878,7 @@ src/sqlite/fts5_api.s: src/sqlite/fts5_api.c.s
 
 # target to generate assembly for a file
 src/sqlite/fts5_api.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/fts5_api.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/fts5_api.c.s
 .PHONY : src/sqlite/fts5_api.c.s
 
 src/sqlite/fts5_extension_function.o: src/sqlite/fts5_extension_function.c.o
@@ -4886,7 +4886,7 @@ src/sqlite/fts5_extension_function.o: src/sqlite/fts5_extension_function.c.o
 
 # target to build an object file
 src/sqlite/fts5_extension_function.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/fts5_extension_function.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/fts5_extension_function.c.o
 .PHONY : src/sqlite/fts5_extension_function.c.o
 
 src/sqlite/fts5_extension_function.i: src/sqlite/fts5_extension_function.c.i
@@ -4894,7 +4894,7 @@ src/sqlite/fts5_extension_function.i: src/sqlite/fts5_extension_function.c.i
 
 # target to preprocess a source file
 src/sqlite/fts5_extension_function.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/fts5_extension_function.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/fts5_extension_function.c.i
 .PHONY : src/sqlite/fts5_extension_function.c.i
 
 src/sqlite/fts5_extension_function.s: src/sqlite/fts5_extension_function.c.s
@@ -4902,7 +4902,7 @@ src/sqlite/fts5_extension_function.s: src/sqlite/fts5_extension_function.c.s
 
 # target to generate assembly for a file
 src/sqlite/fts5_extension_function.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/fts5_extension_function.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/fts5_extension_function.c.s
 .PHONY : src/sqlite/fts5_extension_function.c.s
 
 src/sqlite/fts5_tokenizer.o: src/sqlite/fts5_tokenizer.c.o
@@ -4910,7 +4910,7 @@ src/sqlite/fts5_tokenizer.o: src/sqlite/fts5_tokenizer.c.o
 
 # target to build an object file
 src/sqlite/fts5_tokenizer.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/fts5_tokenizer.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/fts5_tokenizer.c.o
 .PHONY : src/sqlite/fts5_tokenizer.c.o
 
 src/sqlite/fts5_tokenizer.i: src/sqlite/fts5_tokenizer.c.i
@@ -4918,7 +4918,7 @@ src/sqlite/fts5_tokenizer.i: src/sqlite/fts5_tokenizer.c.i
 
 # target to preprocess a source file
 src/sqlite/fts5_tokenizer.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/fts5_tokenizer.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/fts5_tokenizer.c.i
 .PHONY : src/sqlite/fts5_tokenizer.c.i
 
 src/sqlite/fts5_tokenizer.s: src/sqlite/fts5_tokenizer.c.s
@@ -4926,7 +4926,7 @@ src/sqlite/fts5_tokenizer.s: src/sqlite/fts5_tokenizer.c.s
 
 # target to generate assembly for a file
 src/sqlite/fts5_tokenizer.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/fts5_tokenizer.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/fts5_tokenizer.c.s
 .PHONY : src/sqlite/fts5_tokenizer.c.s
 
 src/sqlite/fts5_tokenizer_v2.o: src/sqlite/fts5_tokenizer_v2.c.o
@@ -4934,7 +4934,7 @@ src/sqlite/fts5_tokenizer_v2.o: src/sqlite/fts5_tokenizer_v2.c.o
 
 # target to build an object file
 src/sqlite/fts5_tokenizer_v2.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/fts5_tokenizer_v2.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/fts5_tokenizer_v2.c.o
 .PHONY : src/sqlite/fts5_tokenizer_v2.c.o
 
 src/sqlite/fts5_tokenizer_v2.i: src/sqlite/fts5_tokenizer_v2.c.i
@@ -4942,7 +4942,7 @@ src/sqlite/fts5_tokenizer_v2.i: src/sqlite/fts5_tokenizer_v2.c.i
 
 # target to preprocess a source file
 src/sqlite/fts5_tokenizer_v2.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/fts5_tokenizer_v2.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/fts5_tokenizer_v2.c.i
 .PHONY : src/sqlite/fts5_tokenizer_v2.c.i
 
 src/sqlite/fts5_tokenizer_v2.s: src/sqlite/fts5_tokenizer_v2.c.s
@@ -4950,7 +4950,7 @@ src/sqlite/fts5_tokenizer_v2.s: src/sqlite/fts5_tokenizer_v2.c.s
 
 # target to generate assembly for a file
 src/sqlite/fts5_tokenizer_v2.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/fts5_tokenizer_v2.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/fts5_tokenizer_v2.c.s
 .PHONY : src/sqlite/fts5_tokenizer_v2.c.s
 
 src/sqlite/i16.o: src/sqlite/i16.c.o
@@ -4958,7 +4958,7 @@ src/sqlite/i16.o: src/sqlite/i16.c.o
 
 # target to build an object file
 src/sqlite/i16.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/i16.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/i16.c.o
 .PHONY : src/sqlite/i16.c.o
 
 src/sqlite/i16.i: src/sqlite/i16.c.i
@@ -4966,7 +4966,7 @@ src/sqlite/i16.i: src/sqlite/i16.c.i
 
 # target to preprocess a source file
 src/sqlite/i16.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/i16.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/i16.c.i
 .PHONY : src/sqlite/i16.c.i
 
 src/sqlite/i16.s: src/sqlite/i16.c.s
@@ -4974,7 +4974,7 @@ src/sqlite/i16.s: src/sqlite/i16.c.s
 
 # target to generate assembly for a file
 src/sqlite/i16.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/i16.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/i16.c.s
 .PHONY : src/sqlite/i16.c.s
 
 src/sqlite/i32.o: src/sqlite/i32.c.o
@@ -4982,7 +4982,7 @@ src/sqlite/i32.o: src/sqlite/i32.c.o
 
 # target to build an object file
 src/sqlite/i32.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/i32.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/i32.c.o
 .PHONY : src/sqlite/i32.c.o
 
 src/sqlite/i32.i: src/sqlite/i32.c.i
@@ -4990,7 +4990,7 @@ src/sqlite/i32.i: src/sqlite/i32.c.i
 
 # target to preprocess a source file
 src/sqlite/i32.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/i32.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/i32.c.i
 .PHONY : src/sqlite/i32.c.i
 
 src/sqlite/i32.s: src/sqlite/i32.c.s
@@ -4998,7 +4998,7 @@ src/sqlite/i32.s: src/sqlite/i32.c.s
 
 # target to generate assembly for a file
 src/sqlite/i32.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/i32.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/i32.c.s
 .PHONY : src/sqlite/i32.c.s
 
 src/sqlite/i64.o: src/sqlite/i64.c.o
@@ -5006,7 +5006,7 @@ src/sqlite/i64.o: src/sqlite/i64.c.o
 
 # target to build an object file
 src/sqlite/i64.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/i64.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/i64.c.o
 .PHONY : src/sqlite/i64.c.o
 
 src/sqlite/i64.i: src/sqlite/i64.c.i
@@ -5014,7 +5014,7 @@ src/sqlite/i64.i: src/sqlite/i64.c.i
 
 # target to preprocess a source file
 src/sqlite/i64.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/i64.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/i64.c.i
 .PHONY : src/sqlite/i64.c.i
 
 src/sqlite/i64.s: src/sqlite/i64.c.s
@@ -5022,7 +5022,7 @@ src/sqlite/i64.s: src/sqlite/i64.c.s
 
 # target to generate assembly for a file
 src/sqlite/i64.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/i64.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/i64.c.s
 .PHONY : src/sqlite/i64.c.s
 
 src/sqlite/i8.o: src/sqlite/i8.c.o
@@ -5030,7 +5030,7 @@ src/sqlite/i8.o: src/sqlite/i8.c.o
 
 # target to build an object file
 src/sqlite/i8.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/i8.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/i8.c.o
 .PHONY : src/sqlite/i8.c.o
 
 src/sqlite/i8.i: src/sqlite/i8.c.i
@@ -5038,7 +5038,7 @@ src/sqlite/i8.i: src/sqlite/i8.c.i
 
 # target to preprocess a source file
 src/sqlite/i8.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/i8.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/i8.c.i
 .PHONY : src/sqlite/i8.c.i
 
 src/sqlite/i8.s: src/sqlite/i8.c.s
@@ -5046,7 +5046,7 @@ src/sqlite/i8.s: src/sqlite/i8.c.s
 
 # target to generate assembly for a file
 src/sqlite/i8.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/i8.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/i8.c.s
 .PHONY : src/sqlite/i8.c.s
 
 src/sqlite/sqlite3.o: src/sqlite/sqlite3.c.o
@@ -5054,7 +5054,7 @@ src/sqlite/sqlite3.o: src/sqlite/sqlite3.c.o
 
 # target to build an object file
 src/sqlite/sqlite3.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3.c.o
 .PHONY : src/sqlite/sqlite3.c.o
 
 src/sqlite/sqlite3.i: src/sqlite/sqlite3.c.i
@@ -5062,7 +5062,7 @@ src/sqlite/sqlite3.i: src/sqlite/sqlite3.c.i
 
 # target to preprocess a source file
 src/sqlite/sqlite3.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3.c.i
 .PHONY : src/sqlite/sqlite3.c.i
 
 src/sqlite/sqlite3.s: src/sqlite/sqlite3.c.s
@@ -5070,7 +5070,7 @@ src/sqlite/sqlite3.s: src/sqlite/sqlite3.c.s
 
 # target to generate assembly for a file
 src/sqlite/sqlite3.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3.c.s
 .PHONY : src/sqlite/sqlite3.c.s
 
 src/sqlite/sqlite3AutoExtList.o: src/sqlite/sqlite3AutoExtList.c.o
@@ -5078,7 +5078,7 @@ src/sqlite/sqlite3AutoExtList.o: src/sqlite/sqlite3AutoExtList.c.o
 
 # target to build an object file
 src/sqlite/sqlite3AutoExtList.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3AutoExtList.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3AutoExtList.c.o
 .PHONY : src/sqlite/sqlite3AutoExtList.c.o
 
 src/sqlite/sqlite3AutoExtList.i: src/sqlite/sqlite3AutoExtList.c.i
@@ -5086,7 +5086,7 @@ src/sqlite/sqlite3AutoExtList.i: src/sqlite/sqlite3AutoExtList.c.i
 
 # target to preprocess a source file
 src/sqlite/sqlite3AutoExtList.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3AutoExtList.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3AutoExtList.c.i
 .PHONY : src/sqlite/sqlite3AutoExtList.c.i
 
 src/sqlite/sqlite3AutoExtList.s: src/sqlite/sqlite3AutoExtList.c.s
@@ -5094,7 +5094,7 @@ src/sqlite/sqlite3AutoExtList.s: src/sqlite/sqlite3AutoExtList.c.s
 
 # target to generate assembly for a file
 src/sqlite/sqlite3AutoExtList.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3AutoExtList.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3AutoExtList.c.s
 .PHONY : src/sqlite/sqlite3AutoExtList.c.s
 
 src/sqlite/sqlite3StatType.o: src/sqlite/sqlite3StatType.c.o
@@ -5102,7 +5102,7 @@ src/sqlite/sqlite3StatType.o: src/sqlite/sqlite3StatType.c.o
 
 # target to build an object file
 src/sqlite/sqlite3StatType.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3StatType.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3StatType.c.o
 .PHONY : src/sqlite/sqlite3StatType.c.o
 
 src/sqlite/sqlite3StatType.i: src/sqlite/sqlite3StatType.c.i
@@ -5110,7 +5110,7 @@ src/sqlite/sqlite3StatType.i: src/sqlite/sqlite3StatType.c.i
 
 # target to preprocess a source file
 src/sqlite/sqlite3StatType.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3StatType.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3StatType.c.i
 .PHONY : src/sqlite/sqlite3StatType.c.i
 
 src/sqlite/sqlite3StatType.s: src/sqlite/sqlite3StatType.c.s
@@ -5118,7 +5118,7 @@ src/sqlite/sqlite3StatType.s: src/sqlite/sqlite3StatType.c.s
 
 # target to generate assembly for a file
 src/sqlite/sqlite3StatType.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3StatType.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3StatType.c.s
 .PHONY : src/sqlite/sqlite3StatType.c.s
 
 src/sqlite/sqlite3_api_routines.o: src/sqlite/sqlite3_api_routines.c.o
@@ -5126,7 +5126,7 @@ src/sqlite/sqlite3_api_routines.o: src/sqlite/sqlite3_api_routines.c.o
 
 # target to build an object file
 src/sqlite/sqlite3_api_routines.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_api_routines.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_api_routines.c.o
 .PHONY : src/sqlite/sqlite3_api_routines.c.o
 
 src/sqlite/sqlite3_api_routines.i: src/sqlite/sqlite3_api_routines.c.i
@@ -5134,7 +5134,7 @@ src/sqlite/sqlite3_api_routines.i: src/sqlite/sqlite3_api_routines.c.i
 
 # target to preprocess a source file
 src/sqlite/sqlite3_api_routines.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_api_routines.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_api_routines.c.i
 .PHONY : src/sqlite/sqlite3_api_routines.c.i
 
 src/sqlite/sqlite3_api_routines.s: src/sqlite/sqlite3_api_routines.c.s
@@ -5142,7 +5142,7 @@ src/sqlite/sqlite3_api_routines.s: src/sqlite/sqlite3_api_routines.c.s
 
 # target to generate assembly for a file
 src/sqlite/sqlite3_api_routines.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_api_routines.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_api_routines.c.s
 .PHONY : src/sqlite/sqlite3_api_routines.c.s
 
 src/sqlite/sqlite3_backup.o: src/sqlite/sqlite3_backup.c.o
@@ -5150,7 +5150,7 @@ src/sqlite/sqlite3_backup.o: src/sqlite/sqlite3_backup.c.o
 
 # target to build an object file
 src/sqlite/sqlite3_backup.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_backup.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_backup.c.o
 .PHONY : src/sqlite/sqlite3_backup.c.o
 
 src/sqlite/sqlite3_backup.i: src/sqlite/sqlite3_backup.c.i
@@ -5158,7 +5158,7 @@ src/sqlite/sqlite3_backup.i: src/sqlite/sqlite3_backup.c.i
 
 # target to preprocess a source file
 src/sqlite/sqlite3_backup.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_backup.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_backup.c.i
 .PHONY : src/sqlite/sqlite3_backup.c.i
 
 src/sqlite/sqlite3_backup.s: src/sqlite/sqlite3_backup.c.s
@@ -5166,7 +5166,7 @@ src/sqlite/sqlite3_backup.s: src/sqlite/sqlite3_backup.c.s
 
 # target to generate assembly for a file
 src/sqlite/sqlite3_backup.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_backup.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_backup.c.s
 .PHONY : src/sqlite/sqlite3_backup.c.s
 
 src/sqlite/sqlite3_blob.o: src/sqlite/sqlite3_blob.c.o
@@ -5174,7 +5174,7 @@ src/sqlite/sqlite3_blob.o: src/sqlite/sqlite3_blob.c.o
 
 # target to build an object file
 src/sqlite/sqlite3_blob.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_blob.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_blob.c.o
 .PHONY : src/sqlite/sqlite3_blob.c.o
 
 src/sqlite/sqlite3_blob.i: src/sqlite/sqlite3_blob.c.i
@@ -5182,7 +5182,7 @@ src/sqlite/sqlite3_blob.i: src/sqlite/sqlite3_blob.c.i
 
 # target to preprocess a source file
 src/sqlite/sqlite3_blob.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_blob.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_blob.c.i
 .PHONY : src/sqlite/sqlite3_blob.c.i
 
 src/sqlite/sqlite3_blob.s: src/sqlite/sqlite3_blob.c.s
@@ -5190,7 +5190,7 @@ src/sqlite/sqlite3_blob.s: src/sqlite/sqlite3_blob.c.s
 
 # target to generate assembly for a file
 src/sqlite/sqlite3_blob.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_blob.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_blob.c.s
 .PHONY : src/sqlite/sqlite3_blob.c.s
 
 src/sqlite/sqlite3_callback.o: src/sqlite/sqlite3_callback.c.o
@@ -5198,7 +5198,7 @@ src/sqlite/sqlite3_callback.o: src/sqlite/sqlite3_callback.c.o
 
 # target to build an object file
 src/sqlite/sqlite3_callback.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_callback.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_callback.c.o
 .PHONY : src/sqlite/sqlite3_callback.c.o
 
 src/sqlite/sqlite3_callback.i: src/sqlite/sqlite3_callback.c.i
@@ -5206,7 +5206,7 @@ src/sqlite/sqlite3_callback.i: src/sqlite/sqlite3_callback.c.i
 
 # target to preprocess a source file
 src/sqlite/sqlite3_callback.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_callback.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_callback.c.i
 .PHONY : src/sqlite/sqlite3_callback.c.i
 
 src/sqlite/sqlite3_callback.s: src/sqlite/sqlite3_callback.c.s
@@ -5214,7 +5214,7 @@ src/sqlite/sqlite3_callback.s: src/sqlite/sqlite3_callback.c.s
 
 # target to generate assembly for a file
 src/sqlite/sqlite3_callback.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_callback.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_callback.c.s
 .PHONY : src/sqlite/sqlite3_callback.c.s
 
 src/sqlite/sqlite3_context.o: src/sqlite/sqlite3_context.c.o
@@ -5222,7 +5222,7 @@ src/sqlite/sqlite3_context.o: src/sqlite/sqlite3_context.c.o
 
 # target to build an object file
 src/sqlite/sqlite3_context.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_context.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_context.c.o
 .PHONY : src/sqlite/sqlite3_context.c.o
 
 src/sqlite/sqlite3_context.i: src/sqlite/sqlite3_context.c.i
@@ -5230,7 +5230,7 @@ src/sqlite/sqlite3_context.i: src/sqlite/sqlite3_context.c.i
 
 # target to preprocess a source file
 src/sqlite/sqlite3_context.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_context.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_context.c.i
 .PHONY : src/sqlite/sqlite3_context.c.i
 
 src/sqlite/sqlite3_context.s: src/sqlite/sqlite3_context.c.s
@@ -5238,7 +5238,7 @@ src/sqlite/sqlite3_context.s: src/sqlite/sqlite3_context.c.s
 
 # target to generate assembly for a file
 src/sqlite/sqlite3_context.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_context.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_context.c.s
 .PHONY : src/sqlite/sqlite3_context.c.s
 
 src/sqlite/sqlite3_destructor_type.o: src/sqlite/sqlite3_destructor_type.c.o
@@ -5246,7 +5246,7 @@ src/sqlite/sqlite3_destructor_type.o: src/sqlite/sqlite3_destructor_type.c.o
 
 # target to build an object file
 src/sqlite/sqlite3_destructor_type.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_destructor_type.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_destructor_type.c.o
 .PHONY : src/sqlite/sqlite3_destructor_type.c.o
 
 src/sqlite/sqlite3_destructor_type.i: src/sqlite/sqlite3_destructor_type.c.i
@@ -5254,7 +5254,7 @@ src/sqlite/sqlite3_destructor_type.i: src/sqlite/sqlite3_destructor_type.c.i
 
 # target to preprocess a source file
 src/sqlite/sqlite3_destructor_type.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_destructor_type.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_destructor_type.c.i
 .PHONY : src/sqlite/sqlite3_destructor_type.c.i
 
 src/sqlite/sqlite3_destructor_type.s: src/sqlite/sqlite3_destructor_type.c.s
@@ -5262,7 +5262,7 @@ src/sqlite/sqlite3_destructor_type.s: src/sqlite/sqlite3_destructor_type.c.s
 
 # target to generate assembly for a file
 src/sqlite/sqlite3_destructor_type.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_destructor_type.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_destructor_type.c.s
 .PHONY : src/sqlite/sqlite3_destructor_type.c.s
 
 src/sqlite/sqlite3_file.o: src/sqlite/sqlite3_file.c.o
@@ -5270,7 +5270,7 @@ src/sqlite/sqlite3_file.o: src/sqlite/sqlite3_file.c.o
 
 # target to build an object file
 src/sqlite/sqlite3_file.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_file.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_file.c.o
 .PHONY : src/sqlite/sqlite3_file.c.o
 
 src/sqlite/sqlite3_file.i: src/sqlite/sqlite3_file.c.i
@@ -5278,7 +5278,7 @@ src/sqlite/sqlite3_file.i: src/sqlite/sqlite3_file.c.i
 
 # target to preprocess a source file
 src/sqlite/sqlite3_file.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_file.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_file.c.i
 .PHONY : src/sqlite/sqlite3_file.c.i
 
 src/sqlite/sqlite3_file.s: src/sqlite/sqlite3_file.c.s
@@ -5286,7 +5286,7 @@ src/sqlite/sqlite3_file.s: src/sqlite/sqlite3_file.c.s
 
 # target to generate assembly for a file
 src/sqlite/sqlite3_file.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_file.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_file.c.s
 .PHONY : src/sqlite/sqlite3_file.c.s
 
 src/sqlite/sqlite3_filename.o: src/sqlite/sqlite3_filename.c.o
@@ -5294,7 +5294,7 @@ src/sqlite/sqlite3_filename.o: src/sqlite/sqlite3_filename.c.o
 
 # target to build an object file
 src/sqlite/sqlite3_filename.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_filename.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_filename.c.o
 .PHONY : src/sqlite/sqlite3_filename.c.o
 
 src/sqlite/sqlite3_filename.i: src/sqlite/sqlite3_filename.c.i
@@ -5302,7 +5302,7 @@ src/sqlite/sqlite3_filename.i: src/sqlite/sqlite3_filename.c.i
 
 # target to preprocess a source file
 src/sqlite/sqlite3_filename.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_filename.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_filename.c.i
 .PHONY : src/sqlite/sqlite3_filename.c.i
 
 src/sqlite/sqlite3_filename.s: src/sqlite/sqlite3_filename.c.s
@@ -5310,7 +5310,7 @@ src/sqlite/sqlite3_filename.s: src/sqlite/sqlite3_filename.c.s
 
 # target to generate assembly for a file
 src/sqlite/sqlite3_filename.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_filename.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_filename.c.s
 .PHONY : src/sqlite/sqlite3_filename.c.s
 
 src/sqlite/sqlite3_hard_heap.o: src/sqlite/sqlite3_hard_heap.c.o
@@ -5318,7 +5318,7 @@ src/sqlite/sqlite3_hard_heap.o: src/sqlite/sqlite3_hard_heap.c.o
 
 # target to build an object file
 src/sqlite/sqlite3_hard_heap.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_hard_heap.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_hard_heap.c.o
 .PHONY : src/sqlite/sqlite3_hard_heap.c.o
 
 src/sqlite/sqlite3_hard_heap.i: src/sqlite/sqlite3_hard_heap.c.i
@@ -5326,7 +5326,7 @@ src/sqlite/sqlite3_hard_heap.i: src/sqlite/sqlite3_hard_heap.c.i
 
 # target to preprocess a source file
 src/sqlite/sqlite3_hard_heap.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_hard_heap.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_hard_heap.c.i
 .PHONY : src/sqlite/sqlite3_hard_heap.c.i
 
 src/sqlite/sqlite3_hard_heap.s: src/sqlite/sqlite3_hard_heap.c.s
@@ -5334,7 +5334,7 @@ src/sqlite/sqlite3_hard_heap.s: src/sqlite/sqlite3_hard_heap.c.s
 
 # target to generate assembly for a file
 src/sqlite/sqlite3_hard_heap.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_hard_heap.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_hard_heap.c.s
 .PHONY : src/sqlite/sqlite3_hard_heap.c.s
 
 src/sqlite/sqlite3_index_info.o: src/sqlite/sqlite3_index_info.c.o
@@ -5342,7 +5342,7 @@ src/sqlite/sqlite3_index_info.o: src/sqlite/sqlite3_index_info.c.o
 
 # target to build an object file
 src/sqlite/sqlite3_index_info.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_index_info.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_index_info.c.o
 .PHONY : src/sqlite/sqlite3_index_info.c.o
 
 src/sqlite/sqlite3_index_info.i: src/sqlite/sqlite3_index_info.c.i
@@ -5350,7 +5350,7 @@ src/sqlite/sqlite3_index_info.i: src/sqlite/sqlite3_index_info.c.i
 
 # target to preprocess a source file
 src/sqlite/sqlite3_index_info.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_index_info.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_index_info.c.i
 .PHONY : src/sqlite/sqlite3_index_info.c.i
 
 src/sqlite/sqlite3_index_info.s: src/sqlite/sqlite3_index_info.c.s
@@ -5358,7 +5358,7 @@ src/sqlite/sqlite3_index_info.s: src/sqlite/sqlite3_index_info.c.s
 
 # target to generate assembly for a file
 src/sqlite/sqlite3_index_info.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_index_info.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_index_info.c.s
 .PHONY : src/sqlite/sqlite3_index_info.c.s
 
 src/sqlite/sqlite3_int64.o: src/sqlite/sqlite3_int64.c.o
@@ -5366,7 +5366,7 @@ src/sqlite/sqlite3_int64.o: src/sqlite/sqlite3_int64.c.o
 
 # target to build an object file
 src/sqlite/sqlite3_int64.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_int64.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_int64.c.o
 .PHONY : src/sqlite/sqlite3_int64.c.o
 
 src/sqlite/sqlite3_int64.i: src/sqlite/sqlite3_int64.c.i
@@ -5374,7 +5374,7 @@ src/sqlite/sqlite3_int64.i: src/sqlite/sqlite3_int64.c.i
 
 # target to preprocess a source file
 src/sqlite/sqlite3_int64.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_int64.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_int64.c.i
 .PHONY : src/sqlite/sqlite3_int64.c.i
 
 src/sqlite/sqlite3_int64.s: src/sqlite/sqlite3_int64.c.s
@@ -5382,7 +5382,7 @@ src/sqlite/sqlite3_int64.s: src/sqlite/sqlite3_int64.c.s
 
 # target to generate assembly for a file
 src/sqlite/sqlite3_int64.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_int64.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_int64.c.s
 .PHONY : src/sqlite/sqlite3_int64.c.s
 
 src/sqlite/sqlite3_io_methods.o: src/sqlite/sqlite3_io_methods.c.o
@@ -5390,7 +5390,7 @@ src/sqlite/sqlite3_io_methods.o: src/sqlite/sqlite3_io_methods.c.o
 
 # target to build an object file
 src/sqlite/sqlite3_io_methods.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_io_methods.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_io_methods.c.o
 .PHONY : src/sqlite/sqlite3_io_methods.c.o
 
 src/sqlite/sqlite3_io_methods.i: src/sqlite/sqlite3_io_methods.c.i
@@ -5398,7 +5398,7 @@ src/sqlite/sqlite3_io_methods.i: src/sqlite/sqlite3_io_methods.c.i
 
 # target to preprocess a source file
 src/sqlite/sqlite3_io_methods.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_io_methods.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_io_methods.c.i
 .PHONY : src/sqlite/sqlite3_io_methods.c.i
 
 src/sqlite/sqlite3_io_methods.s: src/sqlite/sqlite3_io_methods.c.s
@@ -5406,7 +5406,7 @@ src/sqlite/sqlite3_io_methods.s: src/sqlite/sqlite3_io_methods.c.s
 
 # target to generate assembly for a file
 src/sqlite/sqlite3_io_methods.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_io_methods.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_io_methods.c.s
 .PHONY : src/sqlite/sqlite3_io_methods.c.s
 
 src/sqlite/sqlite3_libversion.o: src/sqlite/sqlite3_libversion.c.o
@@ -5414,7 +5414,7 @@ src/sqlite/sqlite3_libversion.o: src/sqlite/sqlite3_libversion.c.o
 
 # target to build an object file
 src/sqlite/sqlite3_libversion.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_libversion.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_libversion.c.o
 .PHONY : src/sqlite/sqlite3_libversion.c.o
 
 src/sqlite/sqlite3_libversion.i: src/sqlite/sqlite3_libversion.c.i
@@ -5422,7 +5422,7 @@ src/sqlite/sqlite3_libversion.i: src/sqlite/sqlite3_libversion.c.i
 
 # target to preprocess a source file
 src/sqlite/sqlite3_libversion.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_libversion.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_libversion.c.i
 .PHONY : src/sqlite/sqlite3_libversion.c.i
 
 src/sqlite/sqlite3_libversion.s: src/sqlite/sqlite3_libversion.c.s
@@ -5430,7 +5430,7 @@ src/sqlite/sqlite3_libversion.s: src/sqlite/sqlite3_libversion.c.s
 
 # target to generate assembly for a file
 src/sqlite/sqlite3_libversion.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_libversion.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_libversion.c.s
 .PHONY : src/sqlite/sqlite3_libversion.c.s
 
 src/sqlite/sqlite3_libversion_number.o: src/sqlite/sqlite3_libversion_number.c.o
@@ -5438,7 +5438,7 @@ src/sqlite/sqlite3_libversion_number.o: src/sqlite/sqlite3_libversion_number.c.o
 
 # target to build an object file
 src/sqlite/sqlite3_libversion_number.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_libversion_number.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_libversion_number.c.o
 .PHONY : src/sqlite/sqlite3_libversion_number.c.o
 
 src/sqlite/sqlite3_libversion_number.i: src/sqlite/sqlite3_libversion_number.c.i
@@ -5446,7 +5446,7 @@ src/sqlite/sqlite3_libversion_number.i: src/sqlite/sqlite3_libversion_number.c.i
 
 # target to preprocess a source file
 src/sqlite/sqlite3_libversion_number.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_libversion_number.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_libversion_number.c.i
 .PHONY : src/sqlite/sqlite3_libversion_number.c.i
 
 src/sqlite/sqlite3_libversion_number.s: src/sqlite/sqlite3_libversion_number.c.s
@@ -5454,7 +5454,7 @@ src/sqlite/sqlite3_libversion_number.s: src/sqlite/sqlite3_libversion_number.c.s
 
 # target to generate assembly for a file
 src/sqlite/sqlite3_libversion_number.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_libversion_number.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_libversion_number.c.s
 .PHONY : src/sqlite/sqlite3_libversion_number.c.s
 
 src/sqlite/sqlite3_mem_methods.o: src/sqlite/sqlite3_mem_methods.c.o
@@ -5462,7 +5462,7 @@ src/sqlite/sqlite3_mem_methods.o: src/sqlite/sqlite3_mem_methods.c.o
 
 # target to build an object file
 src/sqlite/sqlite3_mem_methods.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_mem_methods.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_mem_methods.c.o
 .PHONY : src/sqlite/sqlite3_mem_methods.c.o
 
 src/sqlite/sqlite3_mem_methods.i: src/sqlite/sqlite3_mem_methods.c.i
@@ -5470,7 +5470,7 @@ src/sqlite/sqlite3_mem_methods.i: src/sqlite/sqlite3_mem_methods.c.i
 
 # target to preprocess a source file
 src/sqlite/sqlite3_mem_methods.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_mem_methods.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_mem_methods.c.i
 .PHONY : src/sqlite/sqlite3_mem_methods.c.i
 
 src/sqlite/sqlite3_mem_methods.s: src/sqlite/sqlite3_mem_methods.c.s
@@ -5478,7 +5478,7 @@ src/sqlite/sqlite3_mem_methods.s: src/sqlite/sqlite3_mem_methods.c.s
 
 # target to generate assembly for a file
 src/sqlite/sqlite3_mem_methods.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_mem_methods.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_mem_methods.c.s
 .PHONY : src/sqlite/sqlite3_mem_methods.c.s
 
 src/sqlite/sqlite3_module.o: src/sqlite/sqlite3_module.c.o
@@ -5486,7 +5486,7 @@ src/sqlite/sqlite3_module.o: src/sqlite/sqlite3_module.c.o
 
 # target to build an object file
 src/sqlite/sqlite3_module.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_module.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_module.c.o
 .PHONY : src/sqlite/sqlite3_module.c.o
 
 src/sqlite/sqlite3_module.i: src/sqlite/sqlite3_module.c.i
@@ -5494,7 +5494,7 @@ src/sqlite/sqlite3_module.i: src/sqlite/sqlite3_module.c.i
 
 # target to preprocess a source file
 src/sqlite/sqlite3_module.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_module.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_module.c.i
 .PHONY : src/sqlite/sqlite3_module.c.i
 
 src/sqlite/sqlite3_module.s: src/sqlite/sqlite3_module.c.s
@@ -5502,7 +5502,7 @@ src/sqlite/sqlite3_module.s: src/sqlite/sqlite3_module.c.s
 
 # target to generate assembly for a file
 src/sqlite/sqlite3_module.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_module.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_module.c.s
 .PHONY : src/sqlite/sqlite3_module.c.s
 
 src/sqlite/sqlite3_mutex.o: src/sqlite/sqlite3_mutex.c.o
@@ -5510,7 +5510,7 @@ src/sqlite/sqlite3_mutex.o: src/sqlite/sqlite3_mutex.c.o
 
 # target to build an object file
 src/sqlite/sqlite3_mutex.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_mutex.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_mutex.c.o
 .PHONY : src/sqlite/sqlite3_mutex.c.o
 
 src/sqlite/sqlite3_mutex.i: src/sqlite/sqlite3_mutex.c.i
@@ -5518,7 +5518,7 @@ src/sqlite/sqlite3_mutex.i: src/sqlite/sqlite3_mutex.c.i
 
 # target to preprocess a source file
 src/sqlite/sqlite3_mutex.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_mutex.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_mutex.c.i
 .PHONY : src/sqlite/sqlite3_mutex.c.i
 
 src/sqlite/sqlite3_mutex.s: src/sqlite/sqlite3_mutex.c.s
@@ -5526,7 +5526,7 @@ src/sqlite/sqlite3_mutex.s: src/sqlite/sqlite3_mutex.c.s
 
 # target to generate assembly for a file
 src/sqlite/sqlite3_mutex.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_mutex.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_mutex.c.s
 .PHONY : src/sqlite/sqlite3_mutex.c.s
 
 src/sqlite/sqlite3_mutex_methods.o: src/sqlite/sqlite3_mutex_methods.c.o
@@ -5534,7 +5534,7 @@ src/sqlite/sqlite3_mutex_methods.o: src/sqlite/sqlite3_mutex_methods.c.o
 
 # target to build an object file
 src/sqlite/sqlite3_mutex_methods.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_mutex_methods.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_mutex_methods.c.o
 .PHONY : src/sqlite/sqlite3_mutex_methods.c.o
 
 src/sqlite/sqlite3_mutex_methods.i: src/sqlite/sqlite3_mutex_methods.c.i
@@ -5542,7 +5542,7 @@ src/sqlite/sqlite3_mutex_methods.i: src/sqlite/sqlite3_mutex_methods.c.i
 
 # target to preprocess a source file
 src/sqlite/sqlite3_mutex_methods.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_mutex_methods.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_mutex_methods.c.i
 .PHONY : src/sqlite/sqlite3_mutex_methods.c.i
 
 src/sqlite/sqlite3_mutex_methods.s: src/sqlite/sqlite3_mutex_methods.c.s
@@ -5550,7 +5550,7 @@ src/sqlite/sqlite3_mutex_methods.s: src/sqlite/sqlite3_mutex_methods.c.s
 
 # target to generate assembly for a file
 src/sqlite/sqlite3_mutex_methods.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_mutex_methods.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_mutex_methods.c.s
 .PHONY : src/sqlite/sqlite3_mutex_methods.c.s
 
 src/sqlite/sqlite3_pcache.o: src/sqlite/sqlite3_pcache.c.o
@@ -5558,7 +5558,7 @@ src/sqlite/sqlite3_pcache.o: src/sqlite/sqlite3_pcache.c.o
 
 # target to build an object file
 src/sqlite/sqlite3_pcache.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_pcache.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_pcache.c.o
 .PHONY : src/sqlite/sqlite3_pcache.c.o
 
 src/sqlite/sqlite3_pcache.i: src/sqlite/sqlite3_pcache.c.i
@@ -5566,7 +5566,7 @@ src/sqlite/sqlite3_pcache.i: src/sqlite/sqlite3_pcache.c.i
 
 # target to preprocess a source file
 src/sqlite/sqlite3_pcache.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_pcache.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_pcache.c.i
 .PHONY : src/sqlite/sqlite3_pcache.c.i
 
 src/sqlite/sqlite3_pcache.s: src/sqlite/sqlite3_pcache.c.s
@@ -5574,7 +5574,7 @@ src/sqlite/sqlite3_pcache.s: src/sqlite/sqlite3_pcache.c.s
 
 # target to generate assembly for a file
 src/sqlite/sqlite3_pcache.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_pcache.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_pcache.c.s
 .PHONY : src/sqlite/sqlite3_pcache.c.s
 
 src/sqlite/sqlite3_pcache_methods.o: src/sqlite/sqlite3_pcache_methods.c.o
@@ -5582,7 +5582,7 @@ src/sqlite/sqlite3_pcache_methods.o: src/sqlite/sqlite3_pcache_methods.c.o
 
 # target to build an object file
 src/sqlite/sqlite3_pcache_methods.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_pcache_methods.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_pcache_methods.c.o
 .PHONY : src/sqlite/sqlite3_pcache_methods.c.o
 
 src/sqlite/sqlite3_pcache_methods.i: src/sqlite/sqlite3_pcache_methods.c.i
@@ -5590,7 +5590,7 @@ src/sqlite/sqlite3_pcache_methods.i: src/sqlite/sqlite3_pcache_methods.c.i
 
 # target to preprocess a source file
 src/sqlite/sqlite3_pcache_methods.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_pcache_methods.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_pcache_methods.c.i
 .PHONY : src/sqlite/sqlite3_pcache_methods.c.i
 
 src/sqlite/sqlite3_pcache_methods.s: src/sqlite/sqlite3_pcache_methods.c.s
@@ -5598,7 +5598,7 @@ src/sqlite/sqlite3_pcache_methods.s: src/sqlite/sqlite3_pcache_methods.c.s
 
 # target to generate assembly for a file
 src/sqlite/sqlite3_pcache_methods.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_pcache_methods.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_pcache_methods.c.s
 .PHONY : src/sqlite/sqlite3_pcache_methods.c.s
 
 src/sqlite/sqlite3_pcache_methods2.o: src/sqlite/sqlite3_pcache_methods2.c.o
@@ -5606,7 +5606,7 @@ src/sqlite/sqlite3_pcache_methods2.o: src/sqlite/sqlite3_pcache_methods2.c.o
 
 # target to build an object file
 src/sqlite/sqlite3_pcache_methods2.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_pcache_methods2.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_pcache_methods2.c.o
 .PHONY : src/sqlite/sqlite3_pcache_methods2.c.o
 
 src/sqlite/sqlite3_pcache_methods2.i: src/sqlite/sqlite3_pcache_methods2.c.i
@@ -5614,7 +5614,7 @@ src/sqlite/sqlite3_pcache_methods2.i: src/sqlite/sqlite3_pcache_methods2.c.i
 
 # target to preprocess a source file
 src/sqlite/sqlite3_pcache_methods2.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_pcache_methods2.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_pcache_methods2.c.i
 .PHONY : src/sqlite/sqlite3_pcache_methods2.c.i
 
 src/sqlite/sqlite3_pcache_methods2.s: src/sqlite/sqlite3_pcache_methods2.c.s
@@ -5622,7 +5622,7 @@ src/sqlite/sqlite3_pcache_methods2.s: src/sqlite/sqlite3_pcache_methods2.c.s
 
 # target to generate assembly for a file
 src/sqlite/sqlite3_pcache_methods2.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_pcache_methods2.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_pcache_methods2.c.s
 .PHONY : src/sqlite/sqlite3_pcache_methods2.c.s
 
 src/sqlite/sqlite3_pcache_page.o: src/sqlite/sqlite3_pcache_page.c.o
@@ -5630,7 +5630,7 @@ src/sqlite/sqlite3_pcache_page.o: src/sqlite/sqlite3_pcache_page.c.o
 
 # target to build an object file
 src/sqlite/sqlite3_pcache_page.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_pcache_page.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_pcache_page.c.o
 .PHONY : src/sqlite/sqlite3_pcache_page.c.o
 
 src/sqlite/sqlite3_pcache_page.i: src/sqlite/sqlite3_pcache_page.c.i
@@ -5638,7 +5638,7 @@ src/sqlite/sqlite3_pcache_page.i: src/sqlite/sqlite3_pcache_page.c.i
 
 # target to preprocess a source file
 src/sqlite/sqlite3_pcache_page.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_pcache_page.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_pcache_page.c.i
 .PHONY : src/sqlite/sqlite3_pcache_page.c.i
 
 src/sqlite/sqlite3_pcache_page.s: src/sqlite/sqlite3_pcache_page.c.s
@@ -5646,7 +5646,7 @@ src/sqlite/sqlite3_pcache_page.s: src/sqlite/sqlite3_pcache_page.c.s
 
 # target to generate assembly for a file
 src/sqlite/sqlite3_pcache_page.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_pcache_page.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_pcache_page.c.s
 .PHONY : src/sqlite/sqlite3_pcache_page.c.s
 
 src/sqlite/sqlite3_rtree_dbl.o: src/sqlite/sqlite3_rtree_dbl.c.o
@@ -5654,7 +5654,7 @@ src/sqlite/sqlite3_rtree_dbl.o: src/sqlite/sqlite3_rtree_dbl.c.o
 
 # target to build an object file
 src/sqlite/sqlite3_rtree_dbl.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_rtree_dbl.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_rtree_dbl.c.o
 .PHONY : src/sqlite/sqlite3_rtree_dbl.c.o
 
 src/sqlite/sqlite3_rtree_dbl.i: src/sqlite/sqlite3_rtree_dbl.c.i
@@ -5662,7 +5662,7 @@ src/sqlite/sqlite3_rtree_dbl.i: src/sqlite/sqlite3_rtree_dbl.c.i
 
 # target to preprocess a source file
 src/sqlite/sqlite3_rtree_dbl.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_rtree_dbl.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_rtree_dbl.c.i
 .PHONY : src/sqlite/sqlite3_rtree_dbl.c.i
 
 src/sqlite/sqlite3_rtree_dbl.s: src/sqlite/sqlite3_rtree_dbl.c.s
@@ -5670,7 +5670,7 @@ src/sqlite/sqlite3_rtree_dbl.s: src/sqlite/sqlite3_rtree_dbl.c.s
 
 # target to generate assembly for a file
 src/sqlite/sqlite3_rtree_dbl.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_rtree_dbl.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_rtree_dbl.c.s
 .PHONY : src/sqlite/sqlite3_rtree_dbl.c.s
 
 src/sqlite/sqlite3_rtree_geometry.o: src/sqlite/sqlite3_rtree_geometry.c.o
@@ -5678,7 +5678,7 @@ src/sqlite/sqlite3_rtree_geometry.o: src/sqlite/sqlite3_rtree_geometry.c.o
 
 # target to build an object file
 src/sqlite/sqlite3_rtree_geometry.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_rtree_geometry.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_rtree_geometry.c.o
 .PHONY : src/sqlite/sqlite3_rtree_geometry.c.o
 
 src/sqlite/sqlite3_rtree_geometry.i: src/sqlite/sqlite3_rtree_geometry.c.i
@@ -5686,7 +5686,7 @@ src/sqlite/sqlite3_rtree_geometry.i: src/sqlite/sqlite3_rtree_geometry.c.i
 
 # target to preprocess a source file
 src/sqlite/sqlite3_rtree_geometry.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_rtree_geometry.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_rtree_geometry.c.i
 .PHONY : src/sqlite/sqlite3_rtree_geometry.c.i
 
 src/sqlite/sqlite3_rtree_geometry.s: src/sqlite/sqlite3_rtree_geometry.c.s
@@ -5694,7 +5694,7 @@ src/sqlite/sqlite3_rtree_geometry.s: src/sqlite/sqlite3_rtree_geometry.c.s
 
 # target to generate assembly for a file
 src/sqlite/sqlite3_rtree_geometry.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_rtree_geometry.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_rtree_geometry.c.s
 .PHONY : src/sqlite/sqlite3_rtree_geometry.c.s
 
 src/sqlite/sqlite3_rtree_query_info.o: src/sqlite/sqlite3_rtree_query_info.c.o
@@ -5702,7 +5702,7 @@ src/sqlite/sqlite3_rtree_query_info.o: src/sqlite/sqlite3_rtree_query_info.c.o
 
 # target to build an object file
 src/sqlite/sqlite3_rtree_query_info.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_rtree_query_info.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_rtree_query_info.c.o
 .PHONY : src/sqlite/sqlite3_rtree_query_info.c.o
 
 src/sqlite/sqlite3_rtree_query_info.i: src/sqlite/sqlite3_rtree_query_info.c.i
@@ -5710,7 +5710,7 @@ src/sqlite/sqlite3_rtree_query_info.i: src/sqlite/sqlite3_rtree_query_info.c.i
 
 # target to preprocess a source file
 src/sqlite/sqlite3_rtree_query_info.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_rtree_query_info.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_rtree_query_info.c.i
 .PHONY : src/sqlite/sqlite3_rtree_query_info.c.i
 
 src/sqlite/sqlite3_rtree_query_info.s: src/sqlite/sqlite3_rtree_query_info.c.s
@@ -5718,7 +5718,7 @@ src/sqlite/sqlite3_rtree_query_info.s: src/sqlite/sqlite3_rtree_query_info.c.s
 
 # target to generate assembly for a file
 src/sqlite/sqlite3_rtree_query_info.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_rtree_query_info.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_rtree_query_info.c.s
 .PHONY : src/sqlite/sqlite3_rtree_query_info.c.s
 
 src/sqlite/sqlite3_snapshot.o: src/sqlite/sqlite3_snapshot.c.o
@@ -5726,7 +5726,7 @@ src/sqlite/sqlite3_snapshot.o: src/sqlite/sqlite3_snapshot.c.o
 
 # target to build an object file
 src/sqlite/sqlite3_snapshot.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_snapshot.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_snapshot.c.o
 .PHONY : src/sqlite/sqlite3_snapshot.c.o
 
 src/sqlite/sqlite3_snapshot.i: src/sqlite/sqlite3_snapshot.c.i
@@ -5734,7 +5734,7 @@ src/sqlite/sqlite3_snapshot.i: src/sqlite/sqlite3_snapshot.c.i
 
 # target to preprocess a source file
 src/sqlite/sqlite3_snapshot.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_snapshot.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_snapshot.c.i
 .PHONY : src/sqlite/sqlite3_snapshot.c.i
 
 src/sqlite/sqlite3_snapshot.s: src/sqlite/sqlite3_snapshot.c.s
@@ -5742,7 +5742,7 @@ src/sqlite/sqlite3_snapshot.s: src/sqlite/sqlite3_snapshot.c.s
 
 # target to generate assembly for a file
 src/sqlite/sqlite3_snapshot.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_snapshot.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_snapshot.c.s
 .PHONY : src/sqlite/sqlite3_snapshot.c.s
 
 src/sqlite/sqlite3_soft_heap.o: src/sqlite/sqlite3_soft_heap.c.o
@@ -5750,7 +5750,7 @@ src/sqlite/sqlite3_soft_heap.o: src/sqlite/sqlite3_soft_heap.c.o
 
 # target to build an object file
 src/sqlite/sqlite3_soft_heap.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_soft_heap.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_soft_heap.c.o
 .PHONY : src/sqlite/sqlite3_soft_heap.c.o
 
 src/sqlite/sqlite3_soft_heap.i: src/sqlite/sqlite3_soft_heap.c.i
@@ -5758,7 +5758,7 @@ src/sqlite/sqlite3_soft_heap.i: src/sqlite/sqlite3_soft_heap.c.i
 
 # target to preprocess a source file
 src/sqlite/sqlite3_soft_heap.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_soft_heap.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_soft_heap.c.i
 .PHONY : src/sqlite/sqlite3_soft_heap.c.i
 
 src/sqlite/sqlite3_soft_heap.s: src/sqlite/sqlite3_soft_heap.c.s
@@ -5766,7 +5766,7 @@ src/sqlite/sqlite3_soft_heap.s: src/sqlite/sqlite3_soft_heap.c.s
 
 # target to generate assembly for a file
 src/sqlite/sqlite3_soft_heap.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_soft_heap.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_soft_heap.c.s
 .PHONY : src/sqlite/sqlite3_soft_heap.c.s
 
 src/sqlite/sqlite3_sourceid.o: src/sqlite/sqlite3_sourceid.c.o
@@ -5774,7 +5774,7 @@ src/sqlite/sqlite3_sourceid.o: src/sqlite/sqlite3_sourceid.c.o
 
 # target to build an object file
 src/sqlite/sqlite3_sourceid.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_sourceid.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_sourceid.c.o
 .PHONY : src/sqlite/sqlite3_sourceid.c.o
 
 src/sqlite/sqlite3_sourceid.i: src/sqlite/sqlite3_sourceid.c.i
@@ -5782,7 +5782,7 @@ src/sqlite/sqlite3_sourceid.i: src/sqlite/sqlite3_sourceid.c.i
 
 # target to preprocess a source file
 src/sqlite/sqlite3_sourceid.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_sourceid.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_sourceid.c.i
 .PHONY : src/sqlite/sqlite3_sourceid.c.i
 
 src/sqlite/sqlite3_sourceid.s: src/sqlite/sqlite3_sourceid.c.s
@@ -5790,7 +5790,7 @@ src/sqlite/sqlite3_sourceid.s: src/sqlite/sqlite3_sourceid.c.s
 
 # target to generate assembly for a file
 src/sqlite/sqlite3_sourceid.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_sourceid.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_sourceid.c.s
 .PHONY : src/sqlite/sqlite3_sourceid.c.s
 
 src/sqlite/sqlite3_stmt.o: src/sqlite/sqlite3_stmt.c.o
@@ -5798,7 +5798,7 @@ src/sqlite/sqlite3_stmt.o: src/sqlite/sqlite3_stmt.c.o
 
 # target to build an object file
 src/sqlite/sqlite3_stmt.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_stmt.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_stmt.c.o
 .PHONY : src/sqlite/sqlite3_stmt.c.o
 
 src/sqlite/sqlite3_stmt.i: src/sqlite/sqlite3_stmt.c.i
@@ -5806,7 +5806,7 @@ src/sqlite/sqlite3_stmt.i: src/sqlite/sqlite3_stmt.c.i
 
 # target to preprocess a source file
 src/sqlite/sqlite3_stmt.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_stmt.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_stmt.c.i
 .PHONY : src/sqlite/sqlite3_stmt.c.i
 
 src/sqlite/sqlite3_stmt.s: src/sqlite/sqlite3_stmt.c.s
@@ -5814,7 +5814,7 @@ src/sqlite/sqlite3_stmt.s: src/sqlite/sqlite3_stmt.c.s
 
 # target to generate assembly for a file
 src/sqlite/sqlite3_stmt.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_stmt.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_stmt.c.s
 .PHONY : src/sqlite/sqlite3_stmt.c.s
 
 src/sqlite/sqlite3_str.o: src/sqlite/sqlite3_str.c.o
@@ -5822,7 +5822,7 @@ src/sqlite/sqlite3_str.o: src/sqlite/sqlite3_str.c.o
 
 # target to build an object file
 src/sqlite/sqlite3_str.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_str.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_str.c.o
 .PHONY : src/sqlite/sqlite3_str.c.o
 
 src/sqlite/sqlite3_str.i: src/sqlite/sqlite3_str.c.i
@@ -5830,7 +5830,7 @@ src/sqlite/sqlite3_str.i: src/sqlite/sqlite3_str.c.i
 
 # target to preprocess a source file
 src/sqlite/sqlite3_str.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_str.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_str.c.i
 .PHONY : src/sqlite/sqlite3_str.c.i
 
 src/sqlite/sqlite3_str.s: src/sqlite/sqlite3_str.c.s
@@ -5838,7 +5838,7 @@ src/sqlite/sqlite3_str.s: src/sqlite/sqlite3_str.c.s
 
 # target to generate assembly for a file
 src/sqlite/sqlite3_str.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_str.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_str.c.s
 .PHONY : src/sqlite/sqlite3_str.c.s
 
 src/sqlite/sqlite3_syscall_ptr.o: src/sqlite/sqlite3_syscall_ptr.c.o
@@ -5846,7 +5846,7 @@ src/sqlite/sqlite3_syscall_ptr.o: src/sqlite/sqlite3_syscall_ptr.c.o
 
 # target to build an object file
 src/sqlite/sqlite3_syscall_ptr.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_syscall_ptr.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_syscall_ptr.c.o
 .PHONY : src/sqlite/sqlite3_syscall_ptr.c.o
 
 src/sqlite/sqlite3_syscall_ptr.i: src/sqlite/sqlite3_syscall_ptr.c.i
@@ -5854,7 +5854,7 @@ src/sqlite/sqlite3_syscall_ptr.i: src/sqlite/sqlite3_syscall_ptr.c.i
 
 # target to preprocess a source file
 src/sqlite/sqlite3_syscall_ptr.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_syscall_ptr.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_syscall_ptr.c.i
 .PHONY : src/sqlite/sqlite3_syscall_ptr.c.i
 
 src/sqlite/sqlite3_syscall_ptr.s: src/sqlite/sqlite3_syscall_ptr.c.s
@@ -5862,7 +5862,7 @@ src/sqlite/sqlite3_syscall_ptr.s: src/sqlite/sqlite3_syscall_ptr.c.s
 
 # target to generate assembly for a file
 src/sqlite/sqlite3_syscall_ptr.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_syscall_ptr.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_syscall_ptr.c.s
 .PHONY : src/sqlite/sqlite3_syscall_ptr.c.s
 
 src/sqlite/sqlite3_uint64.o: src/sqlite/sqlite3_uint64.c.o
@@ -5870,7 +5870,7 @@ src/sqlite/sqlite3_uint64.o: src/sqlite/sqlite3_uint64.c.o
 
 # target to build an object file
 src/sqlite/sqlite3_uint64.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_uint64.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_uint64.c.o
 .PHONY : src/sqlite/sqlite3_uint64.c.o
 
 src/sqlite/sqlite3_uint64.i: src/sqlite/sqlite3_uint64.c.i
@@ -5878,7 +5878,7 @@ src/sqlite/sqlite3_uint64.i: src/sqlite/sqlite3_uint64.c.i
 
 # target to preprocess a source file
 src/sqlite/sqlite3_uint64.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_uint64.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_uint64.c.i
 .PHONY : src/sqlite/sqlite3_uint64.c.i
 
 src/sqlite/sqlite3_uint64.s: src/sqlite/sqlite3_uint64.c.s
@@ -5886,7 +5886,7 @@ src/sqlite/sqlite3_uint64.s: src/sqlite/sqlite3_uint64.c.s
 
 # target to generate assembly for a file
 src/sqlite/sqlite3_uint64.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_uint64.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_uint64.c.s
 .PHONY : src/sqlite/sqlite3_uint64.c.s
 
 src/sqlite/sqlite3_value.o: src/sqlite/sqlite3_value.c.o
@@ -5894,7 +5894,7 @@ src/sqlite/sqlite3_value.o: src/sqlite/sqlite3_value.c.o
 
 # target to build an object file
 src/sqlite/sqlite3_value.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_value.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_value.c.o
 .PHONY : src/sqlite/sqlite3_value.c.o
 
 src/sqlite/sqlite3_value.i: src/sqlite/sqlite3_value.c.i
@@ -5902,7 +5902,7 @@ src/sqlite/sqlite3_value.i: src/sqlite/sqlite3_value.c.i
 
 # target to preprocess a source file
 src/sqlite/sqlite3_value.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_value.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_value.c.i
 .PHONY : src/sqlite/sqlite3_value.c.i
 
 src/sqlite/sqlite3_value.s: src/sqlite/sqlite3_value.c.s
@@ -5910,7 +5910,7 @@ src/sqlite/sqlite3_value.s: src/sqlite/sqlite3_value.c.s
 
 # target to generate assembly for a file
 src/sqlite/sqlite3_value.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_value.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_value.c.s
 .PHONY : src/sqlite/sqlite3_value.c.s
 
 src/sqlite/sqlite3_version.o: src/sqlite/sqlite3_version.c.o
@@ -5918,7 +5918,7 @@ src/sqlite/sqlite3_version.o: src/sqlite/sqlite3_version.c.o
 
 # target to build an object file
 src/sqlite/sqlite3_version.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_version.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_version.c.o
 .PHONY : src/sqlite/sqlite3_version.c.o
 
 src/sqlite/sqlite3_version.i: src/sqlite/sqlite3_version.c.i
@@ -5926,7 +5926,7 @@ src/sqlite/sqlite3_version.i: src/sqlite/sqlite3_version.c.i
 
 # target to preprocess a source file
 src/sqlite/sqlite3_version.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_version.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_version.c.i
 .PHONY : src/sqlite/sqlite3_version.c.i
 
 src/sqlite/sqlite3_version.s: src/sqlite/sqlite3_version.c.s
@@ -5934,7 +5934,7 @@ src/sqlite/sqlite3_version.s: src/sqlite/sqlite3_version.c.s
 
 # target to generate assembly for a file
 src/sqlite/sqlite3_version.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_version.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_version.c.s
 .PHONY : src/sqlite/sqlite3_version.c.s
 
 src/sqlite/sqlite3_vfs.o: src/sqlite/sqlite3_vfs.c.o
@@ -5942,7 +5942,7 @@ src/sqlite/sqlite3_vfs.o: src/sqlite/sqlite3_vfs.c.o
 
 # target to build an object file
 src/sqlite/sqlite3_vfs.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_vfs.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_vfs.c.o
 .PHONY : src/sqlite/sqlite3_vfs.c.o
 
 src/sqlite/sqlite3_vfs.i: src/sqlite/sqlite3_vfs.c.i
@@ -5950,7 +5950,7 @@ src/sqlite/sqlite3_vfs.i: src/sqlite/sqlite3_vfs.c.i
 
 # target to preprocess a source file
 src/sqlite/sqlite3_vfs.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_vfs.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_vfs.c.i
 .PHONY : src/sqlite/sqlite3_vfs.c.i
 
 src/sqlite/sqlite3_vfs.s: src/sqlite/sqlite3_vfs.c.s
@@ -5958,7 +5958,7 @@ src/sqlite/sqlite3_vfs.s: src/sqlite/sqlite3_vfs.c.s
 
 # target to generate assembly for a file
 src/sqlite/sqlite3_vfs.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_vfs.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_vfs.c.s
 .PHONY : src/sqlite/sqlite3_vfs.c.s
 
 src/sqlite/sqlite3_vtab.o: src/sqlite/sqlite3_vtab.c.o
@@ -5966,7 +5966,7 @@ src/sqlite/sqlite3_vtab.o: src/sqlite/sqlite3_vtab.c.o
 
 # target to build an object file
 src/sqlite/sqlite3_vtab.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_vtab.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_vtab.c.o
 .PHONY : src/sqlite/sqlite3_vtab.c.o
 
 src/sqlite/sqlite3_vtab.i: src/sqlite/sqlite3_vtab.c.i
@@ -5974,7 +5974,7 @@ src/sqlite/sqlite3_vtab.i: src/sqlite/sqlite3_vtab.c.i
 
 # target to preprocess a source file
 src/sqlite/sqlite3_vtab.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_vtab.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_vtab.c.i
 .PHONY : src/sqlite/sqlite3_vtab.c.i
 
 src/sqlite/sqlite3_vtab.s: src/sqlite/sqlite3_vtab.c.s
@@ -5982,7 +5982,7 @@ src/sqlite/sqlite3_vtab.s: src/sqlite/sqlite3_vtab.c.s
 
 # target to generate assembly for a file
 src/sqlite/sqlite3_vtab.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_vtab.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_vtab.c.s
 .PHONY : src/sqlite/sqlite3_vtab.c.s
 
 src/sqlite/sqlite3_vtab_cursor.o: src/sqlite/sqlite3_vtab_cursor.c.o
@@ -5990,7 +5990,7 @@ src/sqlite/sqlite3_vtab_cursor.o: src/sqlite/sqlite3_vtab_cursor.c.o
 
 # target to build an object file
 src/sqlite/sqlite3_vtab_cursor.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_vtab_cursor.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_vtab_cursor.c.o
 .PHONY : src/sqlite/sqlite3_vtab_cursor.c.o
 
 src/sqlite/sqlite3_vtab_cursor.i: src/sqlite/sqlite3_vtab_cursor.c.i
@@ -5998,7 +5998,7 @@ src/sqlite/sqlite3_vtab_cursor.i: src/sqlite/sqlite3_vtab_cursor.c.i
 
 # target to preprocess a source file
 src/sqlite/sqlite3_vtab_cursor.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_vtab_cursor.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_vtab_cursor.c.i
 .PHONY : src/sqlite/sqlite3_vtab_cursor.c.i
 
 src/sqlite/sqlite3_vtab_cursor.s: src/sqlite/sqlite3_vtab_cursor.c.s
@@ -6006,7 +6006,7 @@ src/sqlite/sqlite3_vtab_cursor.s: src/sqlite/sqlite3_vtab_cursor.c.s
 
 # target to generate assembly for a file
 src/sqlite/sqlite3_vtab_cursor.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_vtab_cursor.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_vtab_cursor.c.s
 .PHONY : src/sqlite/sqlite3_vtab_cursor.c.s
 
 src/sqlite/sqlite3_xauth.o: src/sqlite/sqlite3_xauth.c.o
@@ -6014,7 +6014,7 @@ src/sqlite/sqlite3_xauth.o: src/sqlite/sqlite3_xauth.c.o
 
 # target to build an object file
 src/sqlite/sqlite3_xauth.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_xauth.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_xauth.c.o
 .PHONY : src/sqlite/sqlite3_xauth.c.o
 
 src/sqlite/sqlite3_xauth.i: src/sqlite/sqlite3_xauth.c.i
@@ -6022,7 +6022,7 @@ src/sqlite/sqlite3_xauth.i: src/sqlite/sqlite3_xauth.c.i
 
 # target to preprocess a source file
 src/sqlite/sqlite3_xauth.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_xauth.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_xauth.c.i
 .PHONY : src/sqlite/sqlite3_xauth.c.i
 
 src/sqlite/sqlite3_xauth.s: src/sqlite/sqlite3_xauth.c.s
@@ -6030,7 +6030,7 @@ src/sqlite/sqlite3_xauth.s: src/sqlite/sqlite3_xauth.c.s
 
 # target to generate assembly for a file
 src/sqlite/sqlite3_xauth.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite3_xauth.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_xauth.c.s
 .PHONY : src/sqlite/sqlite3_xauth.c.s
 
 src/sqlite/sqlite_int64.o: src/sqlite/sqlite_int64.c.o
@@ -6038,7 +6038,7 @@ src/sqlite/sqlite_int64.o: src/sqlite/sqlite_int64.c.o
 
 # target to build an object file
 src/sqlite/sqlite_int64.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite_int64.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite_int64.c.o
 .PHONY : src/sqlite/sqlite_int64.c.o
 
 src/sqlite/sqlite_int64.i: src/sqlite/sqlite_int64.c.i
@@ -6046,7 +6046,7 @@ src/sqlite/sqlite_int64.i: src/sqlite/sqlite_int64.c.i
 
 # target to preprocess a source file
 src/sqlite/sqlite_int64.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite_int64.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite_int64.c.i
 .PHONY : src/sqlite/sqlite_int64.c.i
 
 src/sqlite/sqlite_int64.s: src/sqlite/sqlite_int64.c.s
@@ -6054,7 +6054,7 @@ src/sqlite/sqlite_int64.s: src/sqlite/sqlite_int64.c.s
 
 # target to generate assembly for a file
 src/sqlite/sqlite_int64.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite_int64.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite_int64.c.s
 .PHONY : src/sqlite/sqlite_int64.c.s
 
 src/sqlite/sqlite_uint64.o: src/sqlite/sqlite_uint64.c.o
@@ -6062,7 +6062,7 @@ src/sqlite/sqlite_uint64.o: src/sqlite/sqlite_uint64.c.o
 
 # target to build an object file
 src/sqlite/sqlite_uint64.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite_uint64.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite_uint64.c.o
 .PHONY : src/sqlite/sqlite_uint64.c.o
 
 src/sqlite/sqlite_uint64.i: src/sqlite/sqlite_uint64.c.i
@@ -6070,7 +6070,7 @@ src/sqlite/sqlite_uint64.i: src/sqlite/sqlite_uint64.c.i
 
 # target to preprocess a source file
 src/sqlite/sqlite_uint64.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite_uint64.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite_uint64.c.i
 .PHONY : src/sqlite/sqlite_uint64.c.i
 
 src/sqlite/sqlite_uint64.s: src/sqlite/sqlite_uint64.c.s
@@ -6078,7 +6078,7 @@ src/sqlite/sqlite_uint64.s: src/sqlite/sqlite_uint64.c.s
 
 # target to generate assembly for a file
 src/sqlite/sqlite_uint64.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/sqlite_uint64.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite_uint64.c.s
 .PHONY : src/sqlite/sqlite_uint64.c.s
 
 src/sqlite/u16.o: src/sqlite/u16.c.o
@@ -6086,7 +6086,7 @@ src/sqlite/u16.o: src/sqlite/u16.c.o
 
 # target to build an object file
 src/sqlite/u16.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/u16.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/u16.c.o
 .PHONY : src/sqlite/u16.c.o
 
 src/sqlite/u16.i: src/sqlite/u16.c.i
@@ -6094,7 +6094,7 @@ src/sqlite/u16.i: src/sqlite/u16.c.i
 
 # target to preprocess a source file
 src/sqlite/u16.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/u16.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/u16.c.i
 .PHONY : src/sqlite/u16.c.i
 
 src/sqlite/u16.s: src/sqlite/u16.c.s
@@ -6102,7 +6102,7 @@ src/sqlite/u16.s: src/sqlite/u16.c.s
 
 # target to generate assembly for a file
 src/sqlite/u16.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/u16.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/u16.c.s
 .PHONY : src/sqlite/u16.c.s
 
 src/sqlite/u32.o: src/sqlite/u32.c.o
@@ -6110,7 +6110,7 @@ src/sqlite/u32.o: src/sqlite/u32.c.o
 
 # target to build an object file
 src/sqlite/u32.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/u32.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/u32.c.o
 .PHONY : src/sqlite/u32.c.o
 
 src/sqlite/u32.i: src/sqlite/u32.c.i
@@ -6118,7 +6118,7 @@ src/sqlite/u32.i: src/sqlite/u32.c.i
 
 # target to preprocess a source file
 src/sqlite/u32.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/u32.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/u32.c.i
 .PHONY : src/sqlite/u32.c.i
 
 src/sqlite/u32.s: src/sqlite/u32.c.s
@@ -6126,7 +6126,7 @@ src/sqlite/u32.s: src/sqlite/u32.c.s
 
 # target to generate assembly for a file
 src/sqlite/u32.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/u32.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/u32.c.s
 .PHONY : src/sqlite/u32.c.s
 
 src/sqlite/u64.o: src/sqlite/u64.c.o
@@ -6134,7 +6134,7 @@ src/sqlite/u64.o: src/sqlite/u64.c.o
 
 # target to build an object file
 src/sqlite/u64.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/u64.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/u64.c.o
 .PHONY : src/sqlite/u64.c.o
 
 src/sqlite/u64.i: src/sqlite/u64.c.i
@@ -6142,7 +6142,7 @@ src/sqlite/u64.i: src/sqlite/u64.c.i
 
 # target to preprocess a source file
 src/sqlite/u64.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/u64.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/u64.c.i
 .PHONY : src/sqlite/u64.c.i
 
 src/sqlite/u64.s: src/sqlite/u64.c.s
@@ -6150,7 +6150,7 @@ src/sqlite/u64.s: src/sqlite/u64.c.s
 
 # target to generate assembly for a file
 src/sqlite/u64.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/u64.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/u64.c.s
 .PHONY : src/sqlite/u64.c.s
 
 src/sqlite/u8.o: src/sqlite/u8.c.o
@@ -6158,7 +6158,7 @@ src/sqlite/u8.o: src/sqlite/u8.c.o
 
 # target to build an object file
 src/sqlite/u8.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/u8.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/u8.c.o
 .PHONY : src/sqlite/u8.c.o
 
 src/sqlite/u8.i: src/sqlite/u8.c.i
@@ -6166,7 +6166,7 @@ src/sqlite/u8.i: src/sqlite/u8.c.i
 
 # target to preprocess a source file
 src/sqlite/u8.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/u8.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/u8.c.i
 .PHONY : src/sqlite/u8.c.i
 
 src/sqlite/u8.s: src/sqlite/u8.c.s
@@ -6174,7 +6174,7 @@ src/sqlite/u8.s: src/sqlite/u8.c.s
 
 # target to generate assembly for a file
 src/sqlite/u8.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/u8.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/u8.c.s
 .PHONY : src/sqlite/u8.c.s
 
 src/sqlite/unixFile.o: src/sqlite/unixFile.c.o
@@ -6182,7 +6182,7 @@ src/sqlite/unixFile.o: src/sqlite/unixFile.c.o
 
 # target to build an object file
 src/sqlite/unixFile.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/unixFile.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/unixFile.c.o
 .PHONY : src/sqlite/unixFile.c.o
 
 src/sqlite/unixFile.i: src/sqlite/unixFile.c.i
@@ -6190,7 +6190,7 @@ src/sqlite/unixFile.i: src/sqlite/unixFile.c.i
 
 # target to preprocess a source file
 src/sqlite/unixFile.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/unixFile.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/unixFile.c.i
 .PHONY : src/sqlite/unixFile.c.i
 
 src/sqlite/unixFile.s: src/sqlite/unixFile.c.s
@@ -6198,7 +6198,7 @@ src/sqlite/unixFile.s: src/sqlite/unixFile.c.s
 
 # target to generate assembly for a file
 src/sqlite/unixFile.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/unixFile.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/unixFile.c.s
 .PHONY : src/sqlite/unixFile.c.s
 
 src/sqlite/unixFileId.o: src/sqlite/unixFileId.c.o
@@ -6206,7 +6206,7 @@ src/sqlite/unixFileId.o: src/sqlite/unixFileId.c.o
 
 # target to build an object file
 src/sqlite/unixFileId.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/unixFileId.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/unixFileId.c.o
 .PHONY : src/sqlite/unixFileId.c.o
 
 src/sqlite/unixFileId.i: src/sqlite/unixFileId.c.i
@@ -6214,7 +6214,7 @@ src/sqlite/unixFileId.i: src/sqlite/unixFileId.c.i
 
 # target to preprocess a source file
 src/sqlite/unixFileId.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/unixFileId.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/unixFileId.c.i
 .PHONY : src/sqlite/unixFileId.c.i
 
 src/sqlite/unixFileId.s: src/sqlite/unixFileId.c.s
@@ -6222,7 +6222,7 @@ src/sqlite/unixFileId.s: src/sqlite/unixFileId.c.s
 
 # target to generate assembly for a file
 src/sqlite/unixFileId.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/unixFileId.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/unixFileId.c.s
 .PHONY : src/sqlite/unixFileId.c.s
 
 src/sqlite/unixInodeInfo.o: src/sqlite/unixInodeInfo.c.o
@@ -6230,7 +6230,7 @@ src/sqlite/unixInodeInfo.o: src/sqlite/unixInodeInfo.c.o
 
 # target to build an object file
 src/sqlite/unixInodeInfo.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/unixInodeInfo.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/unixInodeInfo.c.o
 .PHONY : src/sqlite/unixInodeInfo.c.o
 
 src/sqlite/unixInodeInfo.i: src/sqlite/unixInodeInfo.c.i
@@ -6238,7 +6238,7 @@ src/sqlite/unixInodeInfo.i: src/sqlite/unixInodeInfo.c.i
 
 # target to preprocess a source file
 src/sqlite/unixInodeInfo.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/unixInodeInfo.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/unixInodeInfo.c.i
 .PHONY : src/sqlite/unixInodeInfo.c.i
 
 src/sqlite/unixInodeInfo.s: src/sqlite/unixInodeInfo.c.s
@@ -6246,7 +6246,7 @@ src/sqlite/unixInodeInfo.s: src/sqlite/unixInodeInfo.c.s
 
 # target to generate assembly for a file
 src/sqlite/unixInodeInfo.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/unixInodeInfo.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/unixInodeInfo.c.s
 .PHONY : src/sqlite/unixInodeInfo.c.s
 
 src/sqlite/unixShm.o: src/sqlite/unixShm.c.o
@@ -6254,7 +6254,7 @@ src/sqlite/unixShm.o: src/sqlite/unixShm.c.o
 
 # target to build an object file
 src/sqlite/unixShm.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/unixShm.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/unixShm.c.o
 .PHONY : src/sqlite/unixShm.c.o
 
 src/sqlite/unixShm.i: src/sqlite/unixShm.c.i
@@ -6262,7 +6262,7 @@ src/sqlite/unixShm.i: src/sqlite/unixShm.c.i
 
 # target to preprocess a source file
 src/sqlite/unixShm.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/unixShm.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/unixShm.c.i
 .PHONY : src/sqlite/unixShm.c.i
 
 src/sqlite/unixShm.s: src/sqlite/unixShm.c.s
@@ -6270,7 +6270,7 @@ src/sqlite/unixShm.s: src/sqlite/unixShm.c.s
 
 # target to generate assembly for a file
 src/sqlite/unixShm.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/unixShm.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/unixShm.c.s
 .PHONY : src/sqlite/unixShm.c.s
 
 src/sqlite/unixShmNode.o: src/sqlite/unixShmNode.c.o
@@ -6278,7 +6278,7 @@ src/sqlite/unixShmNode.o: src/sqlite/unixShmNode.c.o
 
 # target to build an object file
 src/sqlite/unixShmNode.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/unixShmNode.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/unixShmNode.c.o
 .PHONY : src/sqlite/unixShmNode.c.o
 
 src/sqlite/unixShmNode.i: src/sqlite/unixShmNode.c.i
@@ -6286,7 +6286,7 @@ src/sqlite/unixShmNode.i: src/sqlite/unixShmNode.c.i
 
 # target to preprocess a source file
 src/sqlite/unixShmNode.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/unixShmNode.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/unixShmNode.c.i
 .PHONY : src/sqlite/unixShmNode.c.i
 
 src/sqlite/unixShmNode.s: src/sqlite/unixShmNode.c.s
@@ -6294,7 +6294,7 @@ src/sqlite/unixShmNode.s: src/sqlite/unixShmNode.c.s
 
 # target to generate assembly for a file
 src/sqlite/unixShmNode.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/unixShmNode.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/unixShmNode.c.s
 .PHONY : src/sqlite/unixShmNode.c.s
 
 src/sqlite/unix_syscall.o: src/sqlite/unix_syscall.c.o
@@ -6302,7 +6302,7 @@ src/sqlite/unix_syscall.o: src/sqlite/unix_syscall.c.o
 
 # target to build an object file
 src/sqlite/unix_syscall.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/unix_syscall.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/unix_syscall.c.o
 .PHONY : src/sqlite/unix_syscall.c.o
 
 src/sqlite/unix_syscall.i: src/sqlite/unix_syscall.c.i
@@ -6310,7 +6310,7 @@ src/sqlite/unix_syscall.i: src/sqlite/unix_syscall.c.i
 
 # target to preprocess a source file
 src/sqlite/unix_syscall.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/unix_syscall.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/unix_syscall.c.i
 .PHONY : src/sqlite/unix_syscall.c.i
 
 src/sqlite/unix_syscall.s: src/sqlite/unix_syscall.c.s
@@ -6318,7 +6318,7 @@ src/sqlite/unix_syscall.s: src/sqlite/unix_syscall.c.s
 
 # target to generate assembly for a file
 src/sqlite/unix_syscall.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/unix_syscall.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/unix_syscall.c.s
 .PHONY : src/sqlite/unix_syscall.c.s
 
 src/sqlite/vxworksFileId.o: src/sqlite/vxworksFileId.c.o
@@ -6326,7 +6326,7 @@ src/sqlite/vxworksFileId.o: src/sqlite/vxworksFileId.c.o
 
 # target to build an object file
 src/sqlite/vxworksFileId.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/vxworksFileId.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/vxworksFileId.c.o
 .PHONY : src/sqlite/vxworksFileId.c.o
 
 src/sqlite/vxworksFileId.i: src/sqlite/vxworksFileId.c.i
@@ -6334,7 +6334,7 @@ src/sqlite/vxworksFileId.i: src/sqlite/vxworksFileId.c.i
 
 # target to preprocess a source file
 src/sqlite/vxworksFileId.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/vxworksFileId.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/vxworksFileId.c.i
 .PHONY : src/sqlite/vxworksFileId.c.i
 
 src/sqlite/vxworksFileId.s: src/sqlite/vxworksFileId.c.s
@@ -6342,7 +6342,7 @@ src/sqlite/vxworksFileId.s: src/sqlite/vxworksFileId.c.s
 
 # target to generate assembly for a file
 src/sqlite/vxworksFileId.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/vxworksFileId.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/vxworksFileId.c.s
 .PHONY : src/sqlite/vxworksFileId.c.s
 
 src/sqlite/yDbMask.o: src/sqlite/yDbMask.c.o
@@ -6350,7 +6350,7 @@ src/sqlite/yDbMask.o: src/sqlite/yDbMask.c.o
 
 # target to build an object file
 src/sqlite/yDbMask.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/yDbMask.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/yDbMask.c.o
 .PHONY : src/sqlite/yDbMask.c.o
 
 src/sqlite/yDbMask.i: src/sqlite/yDbMask.c.i
@@ -6358,7 +6358,7 @@ src/sqlite/yDbMask.i: src/sqlite/yDbMask.c.i
 
 # target to preprocess a source file
 src/sqlite/yDbMask.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/yDbMask.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/yDbMask.c.i
 .PHONY : src/sqlite/yDbMask.c.i
 
 src/sqlite/yDbMask.s: src/sqlite/yDbMask.c.s
@@ -6366,7 +6366,7 @@ src/sqlite/yDbMask.s: src/sqlite/yDbMask.c.s
 
 # target to generate assembly for a file
 src/sqlite/yDbMask.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/yDbMask.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/yDbMask.c.s
 .PHONY : src/sqlite/yDbMask.c.s
 
 src/sqlite/ynVar.o: src/sqlite/ynVar.c.o
@@ -6374,7 +6374,7 @@ src/sqlite/ynVar.o: src/sqlite/ynVar.c.o
 
 # target to build an object file
 src/sqlite/ynVar.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/ynVar.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/ynVar.c.o
 .PHONY : src/sqlite/ynVar.c.o
 
 src/sqlite/ynVar.i: src/sqlite/ynVar.c.i
@@ -6382,7 +6382,7 @@ src/sqlite/ynVar.i: src/sqlite/ynVar.c.i
 
 # target to preprocess a source file
 src/sqlite/ynVar.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/ynVar.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/ynVar.c.i
 .PHONY : src/sqlite/ynVar.c.i
 
 src/sqlite/ynVar.s: src/sqlite/ynVar.c.s
@@ -6390,7 +6390,7 @@ src/sqlite/ynVar.s: src/sqlite/ynVar.c.s
 
 # target to generate assembly for a file
 src/sqlite/ynVar.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/ynVar.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/ynVar.c.s
 .PHONY : src/sqlite/ynVar.c.s
 
 src/sqlite/yyParser.o: src/sqlite/yyParser.c.o
@@ -6398,7 +6398,7 @@ src/sqlite/yyParser.o: src/sqlite/yyParser.c.o
 
 # target to build an object file
 src/sqlite/yyParser.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/yyParser.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/yyParser.c.o
 .PHONY : src/sqlite/yyParser.c.o
 
 src/sqlite/yyParser.i: src/sqlite/yyParser.c.i
@@ -6406,7 +6406,7 @@ src/sqlite/yyParser.i: src/sqlite/yyParser.c.i
 
 # target to preprocess a source file
 src/sqlite/yyParser.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/yyParser.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/yyParser.c.i
 .PHONY : src/sqlite/yyParser.c.i
 
 src/sqlite/yyParser.s: src/sqlite/yyParser.c.s
@@ -6414,7 +6414,7 @@ src/sqlite/yyParser.s: src/sqlite/yyParser.c.s
 
 # target to generate assembly for a file
 src/sqlite/yyParser.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-legacy-amalgamation.dir/build.make CMakeFiles/sqlite3-legacy-amalgamation.dir/src/sqlite/yyParser.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sqlite3-alt.dir/build.make CMakeFiles/sqlite3-alt.dir/src/sqlite/yyParser.c.s
 .PHONY : src/sqlite/yyParser.c.s
 
 # Help Target
@@ -6425,7 +6425,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... sqlite3-legacy-amalgamation"
+	@echo "... sqlite3-alt"
 	@echo "... src/sqlite/AggInfo.o"
 	@echo "... src/sqlite/AggInfo.i"
 	@echo "... src/sqlite/AggInfo.s"

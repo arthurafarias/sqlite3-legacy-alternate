@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "libsqlite3-legacy-amalgamation.so"
+			"path" : "libsqlite3-alt.so"
 		}
 	],
 	"backtrace" : 1,
@@ -67,7 +67,7 @@
 			"defines" : 
 			[
 				{
-					"define" : "sqlite3_legacy_amalgamation_EXPORTS"
+					"define" : "sqlite3_alt_EXPORTS"
 				}
 			],
 			"includes" : 
@@ -345,7 +345,7 @@
 			]
 		}
 	],
-	"id" : "sqlite3-legacy-amalgamation::@6890427a1f51a3e7e1df",
+	"id" : "sqlite3-alt::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -372,8 +372,8 @@
 			"fragment" : "/usr/lib/libm.so"
 		}
 	],
-	"name" : "sqlite3-legacy-amalgamation",
-	"nameOnDisk" : "libsqlite3-legacy-amalgamation.so",
+	"name" : "sqlite3-alt",
+	"nameOnDisk" : "libsqlite3-alt.so",
 	"paths" : 
 	{
 		"build" : ".",
