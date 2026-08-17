@@ -1,0 +1,4 @@
+CMakeFiles/sqlite3-alt.dir/src/sqlite/sqlite3_callback.c.o: \
+ /home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_callback.c \
+ /usr/include/stdc-predef.h \
+ /home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3_callback.h
