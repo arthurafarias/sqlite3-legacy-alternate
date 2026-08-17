@@ -4,6 +4,9 @@
 extern C {
 #endif
 
+#include "sqlite/sqlite3_index_constraint.h"
+#include "sqlite/sqlite3_index_constraint_usage.h"
+#include "sqlite/sqlite3_index_orderby.h"
 #include "sqlite/sqlite3_int64.h"
 #include "sqlite/sqlite3_uint64.h"
 #include "sqlite/sqlite3_value.h"
@@ -13,22 +16,11 @@ extern C {
   struct sqlite3_index_info {
 
     int nConstraint;
-    struct sqlite3_index_constraint {
-      int iColumn;
-      unsigned char op;
-      unsigned char usable;
-      int iTermOffset;
-    } *aConstraint;
+    sqlite3_index_constraint *aConstraint;
     int nOrderBy;
-    struct sqlite3_index_orderby {
-      int iColumn;
-      unsigned char desc;
-    } *aOrderBy;
+    sqlite3_index_orderby *aOrderBy;
 
-    struct sqlite3_index_constraint_usage {
-      int argvIndex;
-      unsigned char omit;
-    } *aConstraintUsage;
+    sqlite3_index_constraint_usage *aConstraintUsage;
     int idxNum;
     char *idxStr;
     int needToFreeIdxStr;

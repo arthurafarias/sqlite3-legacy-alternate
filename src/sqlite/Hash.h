@@ -1,8 +1,10 @@
 
 #pragma once
 #ifdef __cplusplus
-extern C {
+extern "C" {
 #endif
+
+#include "sqlite/_ht.h"
 
   typedef struct HashElem HashElem;
   typedef struct Hash Hash;
@@ -10,10 +12,7 @@ extern C {
     unsigned int htsize;
     unsigned int count;
     HashElem *first;
-    struct _ht {
-      unsigned int count;
-      HashElem *chain;
-    } *ht;
+    _ht *ht;
   };
 
   void sqlite3HashInit(Hash *);

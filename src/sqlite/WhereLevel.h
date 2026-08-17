@@ -1,10 +1,11 @@
 
 #pragma once
 #ifdef __cplusplus
-extern C {
+extern "C" {
 #endif
 
 #include "sqlite/BitMask.h"
+#include "sqlite/InLoop.h"
 #include "sqlite/u32.h"
 #include "sqlite/u8.h"
   typedef struct Index Index;
@@ -38,13 +39,7 @@ extern C {
     union {
       struct {
         int nIn;
-        struct InLoop {
-          int iCur;
-          int addrInTop;
-          int iBase;
-          int nPrefix;
-          u8 eEndLoopOp;
-        } *aInLoop;
+        InLoop *aInLoop;
       } in;
       Index *pCoveringIdx;
     } u;

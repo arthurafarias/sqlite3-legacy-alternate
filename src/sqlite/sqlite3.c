@@ -198,6 +198,11 @@ static double radToDeg(double x);
 static void renderLogMsg(int iErrCode, const char *zFormat, va_list ap);
 static int rtrimCollFunc(void *pUser, int nKey1, const void *pKey1, int nKey2, const void *pKey2);
 static int sqliteDefaultBusyCallback(void *ptr, int count);
+static int sqlite3KeywordCode(const unsigned char *, int);
+static void sqlite3MallocAlarm(int nByte);
+static u64 sqlite3Multiply160(u64 a, u32 aLo, u64 b, u32 *pLo);
+static void sqlite3RegisterJsonFunctions(void);
+static sqlite3_int64 sqlite3StatusValue(int);
 static void unixTempFileInit(void);
 static const char *uriParameter(const char *zFilename, const char *zParam);
 static double xCeil(double x);
@@ -1251,7 +1256,7 @@ const char sqlite3StdTypeAffinity[] = {0x43, 0x41, 0x44, 0x44, 0x45, 0x42};
 
 const char *sqlite3StdType[] = {"ANY", "BLOB", "INT", "INTEGER", "REAL", "TEXT"};
 
-sqlite3_int64 sqlite3StatusValue(int op) {
+static sqlite3_int64 sqlite3StatusValue(int op) {
   ;
 
   return sqlite3Stat.nowValue[op];
@@ -1511,7 +1516,7 @@ int sqlite3_db_status(sqlite3 *db, int op, int *pCurrent, int *pHighwtr, int res
   return rc;
 }
 
-void sqlite3RegisterDateTimeFunctions(void) {
+static void sqlite3RegisterDateTimeFunctions(void) {
   static FuncDef aDateTimeFuncs[] = {
 
       {-1, 0x00800000 | 0x2000 | 1 | 0x0800, (void *)&sqlite3Config, 0, juliandayFunc, 0, 0, 0, "julianday", {0}},
@@ -1530,7 +1535,7 @@ void sqlite3RegisterDateTimeFunctions(void) {
   sqlite3InsertBuiltinFuncs(aDateTimeFuncs, ((int)(sizeof(aDateTimeFuncs) / sizeof(aDateTimeFuncs[0]))));
 }
 
-int sqlite3OsInit(void) {
+static int sqlite3OsInit(void) {
   void *p = sqlite3_malloc(10);
   if (p == 0)
     return 7;
@@ -1584,7 +1589,7 @@ int sqlite3MutexInit(void) {
   return rc;
 }
 
-int sqlite3MutexEnd(void) {
+static int sqlite3MutexEnd(void) {
   int rc = 0;
   if (sqlite3Config.mutex.xMutexEnd) {
     rc = sqlite3Config.mutex.xMutexEnd();
@@ -1705,7 +1710,7 @@ sqlite3_int64 sqlite3_hard_heap_limit64(sqlite3_int64 n) {
   return priorLimit;
 }
 
-int sqlite3MallocInit(void) {
+static int sqlite3MallocInit(void) {
   int rc;
   if (sqlite3Config.m.xMalloc == 0) {
     sqlite3MemSetDefault();
@@ -1723,14 +1728,14 @@ int sqlite3MallocInit(void) {
 
 int sqlite3HeapNearlyFull(void) { return __atomic_load_n((&mem0.nearlyFull), 0); }
 
-void sqlite3MallocEnd(void) {
+static void sqlite3MallocEnd(void) {
   if (sqlite3Config.m.xShutdown) {
     sqlite3Config.m.xShutdown(sqlite3Config.m.pAppData);
   }
   memset(&mem0, 0, sizeof(mem0));
 }
 
-void sqlite3MallocAlarm(int nByte) {
+static void sqlite3MallocAlarm(int nByte) {
   if (mem0.alarmThreshold <= 0)
     return;
   sqlite3_mutex_leave(mem0.mutex);
@@ -2232,9 +2237,9 @@ struct sqlite3PrngType sqlite3Prng;
 
 struct sqlite3PrngType sqlite3SavedPrng;
 
-void sqlite3PrngSaveState(void) { memcpy(&sqlite3SavedPrng, &sqlite3Prng, sizeof(sqlite3Prng)); }
+static void sqlite3PrngSaveState(void) { memcpy(&sqlite3SavedPrng, &sqlite3Prng, sizeof(sqlite3Prng)); }
 
-void sqlite3PrngRestoreState(void) { memcpy(&sqlite3Prng, &sqlite3SavedPrng, sizeof(sqlite3Prng)); }
+static void sqlite3PrngRestoreState(void) { memcpy(&sqlite3Prng, &sqlite3SavedPrng, sizeof(sqlite3Prng)); }
 
 const unsigned char sqlite3Utf8Trans1[] = {
     0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f, 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f, 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x00, 0x01, 0x02, 0x03, 0x00, 0x01, 0x00, 0x00,
@@ -2334,7 +2339,7 @@ char *sqlite3Utf16to8(sqlite3 *db, const void *z, int nByte, u8 enc) {
   return m.z;
 }
 
-int sqlite3Utf16ByteLen(const void *zIn, int nByte, int nChar) {
+static int sqlite3Utf16ByteLen(const void *zIn, int nByte, int nChar) {
   int c;
   unsigned char const *z = zIn;
   unsigned char const *zEnd = &z[nByte - 1];
@@ -2545,14 +2550,14 @@ u8 sqlite3StrIHash(const char *z) {
   return h;
 }
 
-u64 sqlite3Multiply128(u64 a, u64 b, u64 *pLo) {
+static u64 sqlite3Multiply128(u64 a, u64 b, u64 *pLo) {
 
   __uint128_t r = (__uint128_t)a * b;
   *pLo = (u64)r;
   return (u64)(r >> 64);
 }
 
-u64 sqlite3Multiply160(u64 a, u32 aLo, u64 b, u32 *pLo) {
+static u64 sqlite3Multiply160(u64 a, u32 aLo, u64 b, u32 *pLo) {
 
   __uint128_t r = (__uint128_t)a * b;
   r += ((__uint128_t)aLo * b) >> 32;
@@ -2968,7 +2973,7 @@ int sqlite3Atoi(const char *z) {
   return x;
 }
 
-int sqlite3GetUInt32(const char *z, u32 *pI) {
+static int sqlite3GetUInt32(const char *z, u32 *pI) {
   u64 v = 0;
   int i;
   for (i = 0; (sqlite3CtypeMap[(unsigned char)(z[i])] & 0x04); i++) {
@@ -3530,7 +3535,7 @@ end_deserialize:
   return rc;
 }
 
-int sqlite3MemdbInit(void) {
+static int sqlite3MemdbInit(void) {
   sqlite3_vfs *pLower = sqlite3_vfs_find(0);
   unsigned int sz;
   if ((pLower == 0))
@@ -3544,7 +3549,7 @@ int sqlite3MemdbInit(void) {
   return sqlite3_vfs_register(&memdb_vfs, 0);
 }
 
-int sqlite3PcacheInitialize(void) {
+static int sqlite3PcacheInitialize(void) {
   if (sqlite3Config.pcache2.xInit == 0) {
 
     sqlite3PCacheSetDefault();
@@ -3552,7 +3557,7 @@ int sqlite3PcacheInitialize(void) {
   return sqlite3Config.pcache2.xInit(sqlite3Config.pcache2.pArg);
 }
 
-void sqlite3PcacheShutdown(void) {
+static void sqlite3PcacheShutdown(void) {
   if (sqlite3Config.pcache2.xShutdown) {
 
     sqlite3Config.pcache2.xShutdown(sqlite3Config.pcache2.pArg);
@@ -3576,13 +3581,13 @@ int sqlite3PcacheOpen(int szPage, int szExtra, int bPurgeable, int (*xStress)(vo
   return sqlite3PcacheSetPageSize(p, szPage);
 }
 
-int sqlite3HeaderSizePcache(void) { return (((sizeof(PgHdr)) + 7) & ~7); }
+static int sqlite3HeaderSizePcache(void) { return (((sizeof(PgHdr)) + 7) & ~7); }
 
 void *sqlite3PageMalloc(int sz) { return pcache1Alloc(sz); }
 
 void sqlite3PageFree(void *p) { pcache1Free(p); }
 
-int sqlite3HeaderSizePcache1(void) { return (((sizeof(PgHdr1)) + 7) & ~7); }
+static int sqlite3HeaderSizePcache1(void) { return (((sizeof(PgHdr1)) + 7) & ~7); }
 
 sqlite3_mutex *sqlite3Pcache1Mutex(void) { return (pcache1_g).mutex; }
 
@@ -3816,7 +3821,7 @@ integrity_ck_cleanup:
   return sCheck.rc;
 }
 
-int sqlite3HeaderSizeBtree(void) { return (((sizeof(MemPage)) + 7) & ~7); }
+static int sqlite3HeaderSizeBtree(void) { return (((sizeof(MemPage)) + 7) & ~7); }
 
 Btree *findBtree(sqlite3 *pErrorDb, sqlite3 *pDb, const char *zDb) {
   int i = sqlite3FindDbName(pDb, zDb);
@@ -5766,7 +5771,7 @@ int alterRtrimConstraint(sqlite3 *db, const char *pCons, int nCons) {
   return iEnd;
 }
 
-void sqlite3AlterFunctions(void) {
+static void sqlite3AlterFunctions(void) {
   static FuncDef aAlterTableFuncs[] = {
       {9, 0x00800000 | 0x00040000 | 1 | 0x0800, 0, 0, renameColumnFunc, 0, 0, 0, "sqlite_rename_column", {0}}, {7, 0x00800000 | 0x00040000 | 1 | 0x0800, 0, 0, renameTableFunc, 0, 0, 0, "sqlite_rename_table", {0}}, {7, 0x00800000 | 0x00040000 | 1 | 0x0800, 0, 0, renameTableTest, 0, 0, 0, "sqlite_rename_test", {0}}, {3, 0x00800000 | 0x00040000 | 1 | 0x0800, 0, 0, dropColumnFunc, 0, 0, 0, "sqlite_drop_column", {0}}, {2, 0x00800000 | 0x00040000 | 1 | 0x0800, 0, 0, renameQuotefixFunc, 0, 0, 0, "sqlite_rename_quotefix", {0}}, {2, 0x00800000 | 0x00040000 | 1 | 0x0800, 0, 0, dropConstraintFunc, 0, 0, 0, "sqlite_drop_constraint", {0}}, {2, 0x00800000 | 0x00040000 | 1 | 0x0800, 0, 0, failConstraintFunc, 0, 0, 0, "sqlite_fail", {0}}, {3, 0x00800000 | 0x00040000 | 1 | 0x0800, 0, 0, addConstraintFunc, 0, 0, 0, "sqlite_add_constraint", {0}}, {2, 0x00800000 | 0x00040000 | 1 | 0x0800, 0, 0, findConstraintFunc, 0, 0, 0, "sqlite_find_constraint", {0}},
   };
@@ -6845,7 +6850,7 @@ int sqlite3IsLikeFunction(sqlite3 *db, Expr *pExpr, int *pIsNocase, char *aWc) {
   return 1;
 }
 
-void sqlite3RegisterBuiltinFunctions(void) {
+static void sqlite3RegisterBuiltinFunctions(void) {
 
   static FuncDef aBuiltinFunc[] = {
 
@@ -9829,7 +9834,7 @@ void sqlite3Parser(void *yyp, int yymajor, Token yyminor
 
 int sqlite3ParserFallback(int iToken) { return yyFallback[iToken]; }
 
-int sqlite3KeywordCode(const unsigned char *z, int n) {
+static int sqlite3KeywordCode(const unsigned char *z, int n) {
   int id = 60;
   if (n >= 2)
     keywordCode((char *)z, n, &id);
@@ -13154,7 +13159,7 @@ int jsonEachConnect(sqlite3 *db, void *pAux, int argc, const char *const *argv, 
   return rc;
 }
 
-void sqlite3RegisterJsonFunctions(void) {
+static void sqlite3RegisterJsonFunctions(void) {
 
   static FuncDef aJsonFunc[] = {
 

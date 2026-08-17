@@ -617,7 +617,7 @@ int pager_playback_one_page(Pager *pPager, i64 *pOffset, Bitvec *pDone, int isMa
   return rc;
 }
 
-int pagerIsSuperJrnlName(const char *zSuper) {
+static int pagerIsSuperJrnlName(const char *zSuper) {
   const int nSuper = sqlite3Strlen30(zSuper);
   int ii;
 
@@ -894,7 +894,7 @@ end_playback:
   return rc;
 }
 
-int pagerUndoCallback(void *pCtx, Pgno iPg) {
+static int pagerUndoCallback(void *pCtx, Pgno iPg) {
   int rc = 0;
   Pager *pPager = (Pager *)pCtx;
   PgHdr *pPg;

@@ -175,7 +175,6 @@ extern C {
   int sqlite3VdbeRecordCompare(int, const void *, UnpackedRecord *);
   int sqlite3VdbeRecordCompareWithSkip(int, const void *, UnpackedRecord *, int);
   u32 sqlite3VdbeSerialTypeLen(u32);
-  u8 sqlite3VdbeOneByteSerialTypeLen(u8);
   void sqlite3VdbeSerialGet(const unsigned char *, u32, Mem *);
   void sqlite3VdbeValueListFree(void *);
   void vdbeMemRenderNum(int sz, char *zBuf, Mem *p);
@@ -190,7 +189,6 @@ extern C {
   void closeAllCursors(Vdbe * p);
   __attribute__((noinline)) int vdbeCloseStatement(Vdbe * p, int eOp);
   __attribute__((noinline)) int vdbeFkError(Vdbe * p);
-  i64 vdbeRecordDecodeInt(u32 serial_type, const u8 *aKey);
   int vdbeRecordCompareInt(int nKey1, const void *pKey1, UnpackedRecord *pPKey2);
   int vdbeRecordCompareString(int nKey1, const void *pKey1, UnpackedRecord *pPKey2);
   int vdbeSkipField(Bitmask mask, int iCol, Mem *pMem1, Mem *pMem2, int bIntegrity);

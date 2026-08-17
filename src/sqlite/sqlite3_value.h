@@ -1,10 +1,11 @@
 
 #pragma once
 #ifdef __cplusplus
-extern C {
+extern "C" {
 #endif
 
 #include "sqlite/FuncDef.h"
+#include "sqlite/MemValue.h"
 #include "sqlite/i64.h"
 #include "sqlite/sqlite3_int64.h"
 #include "sqlite/u16.h"
@@ -15,13 +16,7 @@ extern C {
   typedef struct sqlite3 sqlite3;
   typedef struct sqlite3_value sqlite3_value;
   struct sqlite3_value {
-    union MemValue {
-      double r;
-      i64 i;
-      int nZero;
-      const char *zPType;
-      FuncDef *pDef;
-    } u;
+    MemValue u;
     char *z;
     int n;
     u16 flags;
@@ -53,24 +48,6 @@ extern C {
   int sqlite3_value_encoding(sqlite3_value *);
   unsigned int sqlite3_value_subtype(sqlite3_value *);
   sqlite3_value *sqlite3_value_dup(const sqlite3_value *);
-  void sqlite3_value_free(sqlite3_value *);
-  const void *sqlite3_value_blob(sqlite3_value *);
-  double sqlite3_value_double(sqlite3_value *);
-  int sqlite3_value_int(sqlite3_value *);
-  sqlite3_int64 sqlite3_value_int64(sqlite3_value *);
-  void *sqlite3_value_pointer(sqlite3_value *, const char *);
-  const unsigned char *sqlite3_value_text(sqlite3_value *);
-  const void *sqlite3_value_text16(sqlite3_value *);
-  const void *sqlite3_value_text16le(sqlite3_value *);
-  const void *sqlite3_value_text16be(sqlite3_value *);
-  int sqlite3_value_bytes(sqlite3_value *);
-  int sqlite3_value_bytes16(sqlite3_value *);
-  int sqlite3_value_type(sqlite3_value *);
-  int sqlite3_value_numeric_type(sqlite3_value *);
-  int sqlite3_value_nochange(sqlite3_value *);
-  int sqlite3_value_frombind(sqlite3_value *);
-  int sqlite3_value_encoding(sqlite3_value *);
-  unsigned int sqlite3_value_subtype(sqlite3_value *);
   void sqlite3_value_free(sqlite3_value *);
   int sqlite3_vtab_in_first(sqlite3_value * pVal, sqlite3_value * *ppOut);
   int sqlite3_vtab_in_next(sqlite3_value * pVal, sqlite3_value * *ppOut);

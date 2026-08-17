@@ -12,3 +12,12 @@ target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/sr
 target_compile_features(${PROJECT_NAME} PRIVATE c_std_23)
 find_library(SQLITE3_LEGACY_AMALGAMATION_MATH_LIB m)
 target_link_libraries(${PROJECT_NAME} PRIVATE Threads::Threads ${SQLITE3_LEGACY_AMALGAMATION_MATH_LIB})
+
+# SRS-003 verification executable: a minimal sqlite3 application built
+# against nothing but the public sqlite3 C API, proving the façade
+# visibility pass still produces a working, linkable library.
+add_executable(${PROJECT_NAME}-verify verify/main.c)
+target_link_libraries(${PROJECT_NAME}-verify PRIVATE ${PROJECT_NAME})
+
+enable_testing()
+add_test(NAME ${PROJECT_NAME}-verify COMMAND ${PROJECT_NAME}-verify)

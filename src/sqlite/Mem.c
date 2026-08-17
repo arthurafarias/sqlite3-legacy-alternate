@@ -49,7 +49,7 @@ void *sqlite3MemMalloc(int nByte) {
   return (void *)p;
 }
 
-void sqlite3MemFree(void *pPrior) {
+static void sqlite3MemFree(void *pPrior) {
 
   sqlite3_int64 *p = (sqlite3_int64 *)pPrior;
 
@@ -57,7 +57,7 @@ void sqlite3MemFree(void *pPrior) {
   free(p);
 }
 
-int sqlite3MemSize(void *pPrior) {
+static int sqlite3MemSize(void *pPrior) {
 
   sqlite3_int64 *p;
 
@@ -82,15 +82,15 @@ void *sqlite3MemRealloc(void *pPrior, int nByte) {
   return (void *)p;
 }
 
-int sqlite3MemRoundup(int n) { return (((n) + 7) & ~7); }
+static int sqlite3MemRoundup(int n) { return (((n) + 7) & ~7); }
 
-int sqlite3MemInit(void *NotUsed) {
+static int sqlite3MemInit(void *NotUsed) {
 
   (void)(NotUsed);
   return 0;
 }
 
-void sqlite3MemShutdown(void *NotUsed) {
+static void sqlite3MemShutdown(void *NotUsed) {
   (void)(NotUsed);
   return;
 }

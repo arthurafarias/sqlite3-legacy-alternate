@@ -1,17 +1,17 @@
 
 #pragma once
 #ifdef __cplusplus
-extern C {
+extern "C" {
 #endif
+
+#include "sqlite/IdList_item.h"
 
   typedef struct ExprList ExprList;
   typedef struct IdList IdList;
 
   struct IdList {
     int nId;
-    struct IdList_item {
-      char *zName;
-    } a[];
+    IdList_item a[];
   };
 
   int sqlite3IdListIndex(IdList *, const char *);

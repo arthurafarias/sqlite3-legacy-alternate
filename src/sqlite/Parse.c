@@ -440,7 +440,7 @@ static int analyzeFilterKeyword(const unsigned char *z, int lastToken) {
 }
 
 
-int parseTimezone(const char *zDate, DateTime *p) {
+static int parseTimezone(const char *zDate, DateTime *p) {
   int sgn = 0;
   int nHr, nMn;
   int c;

@@ -106,7 +106,7 @@ int vdbeSorterFlushPMA(VdbeSorter *pSorter) {
   return rc;
 }
 
-int vdbeSorterTreeDepth(int nPMA) {
+static int vdbeSorterTreeDepth(int nPMA) {
   int nDepth = 0;
   i64 nDiv = 16;
   while (nDiv < (i64)nPMA) {

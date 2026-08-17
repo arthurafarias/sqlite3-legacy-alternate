@@ -39,7 +39,6 @@ extern C {
   SorterCompare vdbeSorterGetCompare(VdbeSorter * p);
   void *vdbeSorterFlushThread(void *pCtx);
   int vdbeSorterFlushPMA(VdbeSorter * pSorter);
-  int vdbeSorterTreeDepth(int nPMA);
   int vdbeSorterMergeTreeBuild(VdbeSorter * pSorter, MergeEngine * *ppOut);
   int vdbeSorterSetupMerge(VdbeSorter * pSorter);
   void *vdbeSorterRowkey(const VdbeSorter *pSorter, int *pnKey);

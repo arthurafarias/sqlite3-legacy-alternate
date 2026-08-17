@@ -10,6 +10,7 @@ extern "C" {
 #include "sqlite/Pgno.h"
 #include "sqlite/VList.h"
 #include "sqlite/i64.h"
+#include "sqlite/sqlite3InitInfo.h"
 #include "sqlite/sqlite3_filename.h"
 #include "sqlite/sqlite3_int64.h"
 #include "sqlite/sqlite3_value.h"
@@ -173,15 +174,7 @@ struct sqlite3 {
   i64 nTotalChange;
   int aLimit[(12 + 1)];
   int nMaxSorterMmap;
-  struct sqlite3InitInfo {
-    Pgno newTnum;
-    u8 iDb;
-    u8 busy;
-    unsigned orphanTrigger : 1;
-    unsigned imposterTable : 2;
-    unsigned reopenMemdb : 1;
-    const char **azInit;
-  } init;
+  sqlite3InitInfo init;
   int nVdbeActive;
   int nVdbeRead;
   int nVdbeWrite;
@@ -631,14 +624,8 @@ int sqlite3_strglob(const char *zGlob, const char *zStr);
 int sqlite3_strlike(const char *zGlob, const char *zStr, unsigned int cEsc);
 void sqlite3_log(int iErrCode, const char *zFormat, ...);
 extern u32 sqlite3WhereTrace;
-int sqlite3OsInit(void);
-int sqlite3HeaderSizeBtree(void);
-int sqlite3PcacheInitialize(void);
-void sqlite3PcacheShutdown(void);
 int sqlite3PcacheOpen(int szPage, int szExtra, int bPurgeable, int (*xStress)(void *, PgHdr *), void *pStress, PCache *pToInit);
 int sqlite3PcacheSize(void);
-int sqlite3HeaderSizePcache(void);
-int sqlite3HeaderSizePcache1(void);
 int sqlite3ReportError(int iErr, int lineno, const char *zType);
 int sqlite3CorruptError(int);
 int sqlite3MisuseError(int);
@@ -646,8 +633,6 @@ int sqlite3CantopenError(int);
 int sqlite3IsIdChar(u8);
 int sqlite3StrICmp(const char *, const char *);
 int sqlite3Strlen30(const char *);
-int sqlite3MallocInit(void);
-void sqlite3MallocEnd(void);
 void *sqlite3Malloc(u64);
 void *sqlite3MallocZero(u64);
 void *sqlite3Realloc(void *, u64);
@@ -659,9 +644,7 @@ sqlite3_mutex_methods const *sqlite3DefaultMutex(void);
 sqlite3_mutex_methods const *sqlite3NoopMutex(void);
 sqlite3_mutex *sqlite3MutexAlloc(int);
 int sqlite3MutexInit(void);
-int sqlite3MutexEnd(void);
 void sqlite3MemoryBarrier(void);
-sqlite3_int64 sqlite3StatusValue(int);
 void sqlite3StatusUp(int, int);
 void sqlite3StatusDown(int, int);
 void sqlite3StatusHighwater(int, int);
@@ -670,28 +653,20 @@ sqlite3_mutex *sqlite3MallocMutex(void);
 int sqlite3IsNaN(double);
 int sqlite3IsOverflow(double);
 void sqlite3Dequote(char *);
-int sqlite3KeywordCode(const unsigned char *, int);
 int sqlite3InitCallback(void *, int, char **, char **);
 int sqlite3FaultSim(int);
 const char *sqlite3PreferredTableName(const char *);
 int sqlite3RunVacuum(char **, sqlite3 *, int, sqlite3_value *);
-void sqlite3PrngSaveState(void);
-void sqlite3PrngRestoreState(void);
 u32 sqlite3IsTrueOrFalse(const char *);
 int sqlite3IsRowid(const char *);
 FuncDef *sqlite3FunctionSearch(int, const char *);
 int sqlite3AppendOneUtf8Character(char *, u32);
-void sqlite3RegisterBuiltinFunctions(void);
-void sqlite3RegisterDateTimeFunctions(void);
-void sqlite3RegisterJsonFunctions(void);
 int sqlite3RealSameAsInt(double, sqlite3_int64);
 i64 sqlite3RealToI64(double);
 int sqlite3Int64ToText(i64, char *);
 int sqlite3AtoF(const char *z, double *);
 int sqlite3GetInt32(const char *, int *);
-int sqlite3GetUInt32(const char *, u32 *);
 int sqlite3Atoi(const char *);
-int sqlite3Utf16ByteLen(const void *pData, int nByte, int nChar);
 int sqlite3Utf8CharLen(const char *pData, int nByte);
 u32 sqlite3Utf8Read(const u8 **);
 int sqlite3Utf8ReadLimited(const u8 *, int, u32 *);
@@ -703,14 +678,12 @@ int sqlite3VarintLen(u64 v);
 int sqlite3Atoi64(const char *, i64 *, int, u8);
 int sqlite3DecOrHexToI64(const char *, i64 *);
 u8 sqlite3HexToInt(int h);
-int sqlite3MemdbInit(void);
 const char *sqlite3ErrStr(int);
 int sqlite3AddInt64(i64 *, i64);
 int sqlite3SubInt64(i64 *, i64);
 int sqlite3MulInt64(i64 *, i64);
 int sqlite3AbsInt32(int);
 u8 sqlite3GetBoolean(const char *z, u8);
-void sqlite3AlterFunctions(void);
 i64 sqlite3GetToken(const unsigned char *, int *);
 u8 sqlite3StrIHash(const char *);
 
@@ -734,12 +707,9 @@ extern const char sqlite3StdTypeAffinity[6];
 extern const char *sqlite3StdType[6];
 int sqlite3IntFloatCompare(i64, double);
 const char *sqlite3OpcodeName(int);
-void sqlite3MallocAlarm(int nByte);
 extern struct sqlite3PrngType sqlite3Prng;
 extern struct sqlite3PrngType sqlite3SavedPrng;
 extern const unsigned char sqlite3Utf8Trans1[64];
-u64 sqlite3Multiply128(u64 a, u64 b, u64 *pLo);
-u64 sqlite3Multiply160(u64 a, u32 aLo, u64 b, u32 *pLo);
 void sqlite3Fp2Convert10(u64 m, int e, int n, u64 *pD, int *pP);
 double sqlite3Fp10Convert2(u64 d, int p);
 

@@ -87,7 +87,7 @@ volatile WalIndexHdr *walIndexHdr(Wal *pWal) {
   return (volatile WalIndexHdr *)pWal->apWiData[0];
 }
 
-void walChecksumBytes(int nativeCksum, u8 *a, int nByte, const u32 *aIn, u32 *aOut) {
+static void walChecksumBytes(int nativeCksum, u8 *a, int nByte, const u32 *aIn, u32 *aOut) {
   u32 s1, s2;
   u32 *aData = (u32 *)a;
   u32 *aEnd = (u32 *)&a[nByte];
@@ -255,9 +255,9 @@ void walUnlockExclusive(Wal *pWal, int lockIdx, int n) {
   ;
 }
 
-int walHash(u32 iPage) { return (iPage * 383) & ((4096 * 2) - 1); }
+static int walHash(u32 iPage) { return (iPage * 383) & ((4096 * 2) - 1); }
 
-int walNextHash(int iPriorHash) { return (iPriorHash + 1) & ((4096 * 2) - 1); }
+static int walNextHash(int iPriorHash) { return (iPriorHash + 1) & ((4096 * 2) - 1); }
 
 int walHashGet(Wal *pWal, int iHash, WalHashLoc *pLoc) {
   int rc;
@@ -278,7 +278,7 @@ int walHashGet(Wal *pWal, int iHash, WalHashLoc *pLoc) {
   return rc;
 }
 
-int walFramePage(u32 iFrame) {
+static int walFramePage(u32 iFrame) {
   int iHash = (iFrame + 4096 - (4096 - ((sizeof(WalIndexHdr) * 2 + sizeof(WalCkptInfo)) / sizeof(u32))) - 1) / 4096;
 
   return iHash;
@@ -548,7 +548,7 @@ void sqlite3WalLimit(Wal *pWal, i64 iLimit) {
     pWal->mxWalSize = iLimit;
 }
 
-void walMerge(const u32 *aContent, ht_slot *aLeft, int nLeft, ht_slot **paRight, int *pnRight, ht_slot *aTmp) {
+static void walMerge(const u32 *aContent, ht_slot *aLeft, int nLeft, ht_slot **paRight, int *pnRight, ht_slot *aTmp) {
   int iLeft = 0;
   int iRight = 0;
   int iOut = 0;
@@ -580,7 +580,7 @@ void walMerge(const u32 *aContent, ht_slot *aLeft, int nLeft, ht_slot **paRight,
   memcpy(aLeft, aTmp, sizeof(aTmp[0]) * iOut);
 }
 
-void walMergesort(const u32 *aContent, ht_slot *aBuffer, ht_slot *aList, int *pnList) {
+static void walMergesort(const u32 *aContent, ht_slot *aBuffer, ht_slot *aList, int *pnList) {
   struct Sublist {
     int nList;
     ht_slot *aList;

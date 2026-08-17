@@ -1411,7 +1411,7 @@ u32 sqlite3VdbeSerialTypeLen(u32 serial_type) {
   }
 }
 
-u8 sqlite3VdbeOneByteSerialTypeLen(u8 serial_type) { return sqlite3SmallTypeSizes[serial_type]; }
+static u8 sqlite3VdbeOneByteSerialTypeLen(u8 serial_type) { return sqlite3SmallTypeSizes[serial_type]; }
 
 void sqlite3VdbeSerialGet(const unsigned char *buf, u32 serial_type, Mem *pMem) {
   switch (serial_type) {
@@ -1529,7 +1529,7 @@ void sqlite3VdbeRecordUnpack(int nKey, const void *pKey, UnpackedRecord *p) {
   p->nField = u;
 }
 
-i64 vdbeRecordDecodeInt(u32 serial_type, const u8 *aKey) {
+static i64 vdbeRecordDecodeInt(u32 serial_type, const u8 *aKey) {
   u32 y;
 
   switch (serial_type) {

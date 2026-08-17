@@ -1,10 +1,11 @@
 
 #pragma once
 #ifdef __cplusplus
-extern C {
+extern "C" {
 #endif
 
 #include "sqlite/Trigger.h"
+#include "sqlite/sColMap.h"
 #include "sqlite/u8.h"
 
   typedef struct Table Table;
@@ -21,10 +22,7 @@ extern C {
     u8 isDeferred;
     u8 aAction[2];
     Trigger *apTrigger[2];
-    struct sColMap {
-      int iFrom;
-      char *zCol;
-    } aCol[];
+    sColMap aCol[];
   };
 
 #ifdef __cplusplus

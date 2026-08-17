@@ -397,7 +397,6 @@ extern C {
   int sqlite3ExprCheckHeight(Parse *, int);
   Expr *sqlite3ExprForVectorField(Parse *, Expr *, int, int);
   void sqlite3VectorErrorMsg(Parse *, Expr *);
-  int parseTimezone(const char *zDate, DateTime *p);
   int parseHhMmSs(const char *zDate, DateTime *p);
   int parseYyyyMmDd(const char *zDate, DateTime *p);
   __attribute__((noinline)) void resizeResolveLabel(Parse * p, Vdbe * v, int j);

@@ -86,13 +86,19 @@ still an empty placeholder. Read the srs-002 example before starting on
 this pass; it's the nearest thing this repository has to a style guide for
 where the C-to-C++ conversion is going.
 
-[`srs-003.md`](Specifications/srs-003.md) is a second standing TODO,
-orthogonal to srs-002: given the one-file-per-symbol tree already exists,
-which symbols in a type's file pair get declared in the public header
-versus kept `static`/private, and where `const` singletons live depending
-on whether they're used from one translation unit or several. Its worked
-example, under
+[`srs-003.md`](Specifications/srs-003.md) is a second convention, orthogonal
+to srs-002: given the one-file-per-symbol tree already exists, which
+symbols in a type's file pair get declared in the public header versus kept
+`static`/private, and where `const` singletons live depending on whether
+they're used from one translation unit or several. Its worked example,
+under
 [`srs-003.md.d/facade-pattern-example/`](Specifications/srs-003.md.d/facade-pattern-example/),
 goes one step further than srs-002's stubs: it's a small working
 sqlite3-shaped facade (`db`/`stmt`) with a standalone CMake target and a
 verification executable that actually builds, links, and runs against it.
+Unlike srs-002, srs-003 has been applied tree-wide across `src/sqlite/` —
+see srs-003.md for what that pass changed — and is checked against the real
+library (not just the toy example) by
+[`verify/main.c`](../verify/main.c), a minimal sqlite3 application wired
+into the root `CMakeLists.txt` as the `sqlite3-legacy-alternate-verify`
+target/ctest case.
