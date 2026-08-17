@@ -23,6 +23,9 @@ convert piece by piece than a 230,000-line single file. See
 [docs/architecture.md](docs/architecture.md) for how the decomposition works
 and what's already been applied.
 
+This is a full reorganize and rewrite in a way it maintains the sqlite3 api
+compatibility without a lack of sqlite3 already consolidated performance.
+
 ## Status
 
 - **Decomposition**: 262 `.c` files / 322 `.h` files under `src/sqlite/`,
