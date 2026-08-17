@@ -2,10 +2,8 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 #include "list_find_predicate.h"
 #include <stdlib.h>
-
 typedef struct list_node list_node;
 
 struct list {

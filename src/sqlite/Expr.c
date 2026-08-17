@@ -1,9 +1,7 @@
 #define _GNU_SOURCE 1
-
 #include <string.h>
-
+#include <stddef.h>
 #include "sqlite/Expr.h"
-
 #include "sqlite/Column.h"
 #include "sqlite/ExprList.h"
 #include "sqlite/IdxCover.h"
@@ -26,9 +24,24 @@
 #include "sqlite/u64.h"
 #include "sqlite/u8.h"
 #include "sqlite/ynVar.h"
-void sqlite3DequoteExpr(Expr *p) {
+#include "sqlite/SqliteAffinity.h"
+#include "sqlite/SqliteCheckConstraintFlags.h"
+#include "sqlite/SqliteColumnFlags.h"
+#include "sqlite/SqliteDbFlags.h"
+#include "sqlite/SqliteExprDupFlags.h"
+#include "sqlite/SqliteExprFlags.h"
+#include "sqlite/SqliteFundamentalDatatype.h"
+#include "sqlite/SqliteIndexColumnCode.h"
+#include "sqlite/SqliteIndexConstraintOp.h"
+#include "sqlite/SqliteJoinType.h"
+#include "sqlite/SqliteSelectFlags.h"
+#include "sqlite/SqliteTableFlags.h"
+#include "sqlite/SqliteTableType.h"
+#include "sqlite/SqliteTokenType.h"
+#include "sqlite/SqliteWhereTermFlags.h"
 
-  p->flags |= p->u.zToken[0] == '"' ? 0x4000000 | 0x000080 : 0x4000000;
+void sqlite3DequoteExpr(Expr *p) {
+  p->flags |= p->u.zToken[0] == '"' ? EP_Quoted | EP_DblQuoted : EP_Quoted;
   sqlite3Dequote(p->u.zToken);
 }
 
@@ -50,13 +63,9 @@ Bitmask sqlite3ExprColUsed(Expr *pExpr) {
 
   pExTab = pExpr->y.pTab;
 
-  if ((pExTab->tabFlags & 0x00000060) != 0 && (pExTab->aCol[n].colFlags & 0x0060) != 0) {
-    ;
-    ;
+  if ((pExTab->tabFlags & TF_HasGenerated) != 0 && (pExTab->aCol[n].colFlags & COLFLAG_GENERATED) != 0) {
     return pExTab->nCol >= ((int)(sizeof(Bitmask) * 8)) ? ((Bitmask)-1) : (((Bitmask)1) << (pExTab->nCol)) - 1;
   } else {
-    ;
-    ;
     if (n >= ((int)(sizeof(Bitmask) * 8)))
       n = ((int)(sizeof(Bitmask) * 8)) - 1;
     return ((Bitmask)1) << n;
@@ -65,7 +74,7 @@ Bitmask sqlite3ExprColUsed(Expr *pExpr) {
 
 int exprProbability(Expr *p) {
   double r = -1.0;
-  if (p->op != 154)
+  if (p->op != TK_FLOAT)
     return -1;
 
   sqlite3AtoF(p->u.zToken, &r);
@@ -79,84 +88,32 @@ char sqlite3ExprAffinity(const Expr *pExpr) {
   int op;
   op = pExpr->op;
   while (1) {
-    if (op == 168 || (op == 170 && pExpr->y.pTab != 0)) {
-
-      ((void)(0))
-
-          ;
-
-      ((void)(0))
-
-          ;
+    if (op == TK_COLUMN || (op == TK_AGG_COLUMN && pExpr->y.pTab != 0)) {
       return sqlite3TableColumnAffinity(pExpr->y.pTab, pExpr->iColumn);
     }
-    if (op == 139) {
-
-      ((void)(0))
-
-          ;
-
-      ((void)(0))
-
-          ;
-
-      ((void)(0))
-
-          ;
-
-      ((void)(0))
-
-          ;
+    if (op == TK_SELECT) {
       return sqlite3ExprAffinity(pExpr->x.pSelect->pEList->a[0].pExpr);
     }
 
-    if (op == 36) {
-
-      ((void)(0))
-
-          ;
+    if (op == TK_CAST) {
       return sqlite3AffinityType(pExpr->u.zToken, 0);
     }
 
-    if (op == 178) {
-
-      ((void)(0))
-
-          ;
-
-      ((void)(0))
-
-          ;
-
-      ((void)(0))
-
-          ;
-
-      ((void)(0))
-
-          ;
+    if (op == TK_SELECT_COLUMN) {
       return sqlite3ExprAffinity(pExpr->pLeft->x.pSelect->pEList->a[pExpr->iColumn].pExpr);
     }
-    if (op == 177 || (op == 172 && pExpr->affExpr == 0x58)) {
-
-      ((void)(0))
-
-          ;
+    if (op == TK_VECTOR || (op == TK_FUNCTION && pExpr->affExpr == SQLITE_AFF_DEFER)) {
       return sqlite3ExprAffinity(pExpr->x.pList->a[0].pExpr);
     }
-    if ((((pExpr)->flags & (u32)(0x002000 | 0x040000)) != 0)) {
-
-      ((void)(0))
-
-          ;
+    if ((((pExpr)->flags & (u32)(EP_Skip | EP_IfNullRow)) != 0)) {
       pExpr = pExpr->pLeft;
       op = pExpr->op;
       continue;
     }
-    if (op != 176)
+    if (op != TK_REGISTER)
       break;
     op = pExpr->op2;
-    if ((op == 176))
+    if (op == TK_REGISTER)
       break;
   }
   return pExpr->affExpr;
@@ -165,99 +122,76 @@ char sqlite3ExprAffinity(const Expr *pExpr) {
 int sqlite3ExprDataType(const Expr *pExpr) {
   while (pExpr) {
     switch (pExpr->op) {
-    case 114:
-    case 179:
-    case 173: {
-      pExpr = pExpr->pLeft;
-      break;
-    }
-    case 122: {
-      pExpr = 0;
-      break;
-    }
-    case 118: {
-      return 0x02;
-    }
-    case 155: {
-      return 0x04;
-    }
-    case 112: {
-      return 0x06;
-    }
-    case 157:
-    case 169:
-    case 172: {
-      return 0x07;
-    }
-    case 168:
-    case 170:
-    case 139:
-    case 36:
-    case 178:
-    case 177: {
-      int aff = sqlite3ExprAffinity(pExpr);
-      if (aff >= 0x43)
-        return 0x05;
-      if (aff == 0x42)
+      case TK_COLLATE:
+      case TK_IF_NULL_ROW:
+      case TK_UPLUS: {
+        pExpr = pExpr->pLeft;
+        break;
+      }
+      case TK_NULL: {
+        pExpr = 0;
+        break;
+      }
+      case TK_STRING: {
+        return 0x02;
+      }
+      case TK_BLOB: {
+        return 0x04;
+      }
+      case TK_CONCAT: {
         return 0x06;
-      return 0x07;
-    }
-    case 158: {
-      int res = 0;
-      int ii;
-      ExprList *pList = pExpr->x.pList;
-
-      ((void)(0))
-
-          ;
-
-      ((void)(0))
-
-          ;
-      for (ii = 1; ii < pList->nExpr; ii += 2) {
-        res |= sqlite3ExprDataType(pList->a[ii].pExpr);
       }
-      if (pList->nExpr % 2) {
-        res |= sqlite3ExprDataType(pList->a[pList->nExpr - 1].pExpr);
+      case TK_VARIABLE:
+      case TK_AGG_FUNCTION:
+      case TK_FUNCTION: {
+        return 0x07;
       }
-      return res;
-    }
-    default: {
-      return 0x01;
-    }
+      case TK_COLUMN:
+      case TK_AGG_COLUMN:
+      case TK_SELECT:
+      case TK_CAST:
+      case TK_SELECT_COLUMN:
+      case TK_VECTOR: {
+        int aff = sqlite3ExprAffinity(pExpr);
+        if (aff >= SQLITE_AFF_NUMERIC)
+          return 0x05;
+        if (aff == SQLITE_AFF_TEXT)
+          return 0x06;
+        return 0x07;
+      }
+      case TK_CASE: {
+        int res = 0;
+        int ii;
+        ExprList *pList = pExpr->x.pList;
+
+        for (ii = 1; ii < pList->nExpr; ii += 2) {
+          res |= sqlite3ExprDataType(pList->a[ii].pExpr);
+        }
+        if (pList->nExpr % 2) {
+          res |= sqlite3ExprDataType(pList->a[pList->nExpr - 1].pExpr);
+        }
+        return res;
+      }
+      default: {
+        return 0x01;
+      }
     }
   }
   return 0x00;
 }
 
 Expr *sqlite3ExprSkipCollate(Expr *pExpr) {
-  while (pExpr && (((pExpr)->flags & (u32)(0x002000)) != 0)) {
-
-    ((void)(0))
-
-        ;
+  while (pExpr && (((pExpr)->flags & (u32)(EP_Skip)) != 0)) {
     pExpr = pExpr->pLeft;
   }
   return pExpr;
 }
 
 Expr *sqlite3ExprSkipCollateAndLikely(Expr *pExpr) {
-  while (pExpr && (((pExpr)->flags & (u32)(0x002000 | 0x080000)) != 0)) {
-    if ((((pExpr)->flags & (u32)(0x080000)) != 0)) {
-
-      ((void)(0))
-
-          ;
-
-      ((void)(0))
-
-          ;
-
-      ((void)(0))
-
-          ;
+  while (pExpr && (((pExpr)->flags & (u32)(EP_Skip | EP_Unlikely)) != 0)) {
+    if ((((pExpr)->flags & (u32)(EP_Unlikely)) != 0)) {
       pExpr = pExpr->x.pList->a[0].pExpr;
-    } else if (pExpr->op == 114) {
+    } else if (pExpr->op == TK_COLLATE) {
       pExpr = pExpr->pLeft;
     } else {
       break;
@@ -268,19 +202,14 @@ Expr *sqlite3ExprSkipCollateAndLikely(Expr *pExpr) {
 
 char sqlite3CompareAffinity(const Expr *pExpr, char aff2) {
   char aff1 = sqlite3ExprAffinity(pExpr);
-  if (aff1 > 0x40 && aff2 > 0x40) {
-
-    if (((aff1) >= 0x43) || ((aff2) >= 0x43)) {
-      return 0x43;
+  if (aff1 > SQLITE_AFF_NONE && aff2 > SQLITE_AFF_NONE) {
+    if (((aff1) >= SQLITE_AFF_NUMERIC) || ((aff2) >= SQLITE_AFF_NUMERIC)) {
+      return SQLITE_AFF_NUMERIC;
     } else {
-      return 0x41;
+      return SQLITE_AFF_BLOB;
     }
   } else {
-
-    ((void)(0))
-
-        ;
-    return (aff1 <= 0x40 ? aff2 : aff1) | 0x40;
+    return (aff1 <= SQLITE_AFF_NONE ? aff2 : aff1) | SQLITE_AFF_NONE;
   }
 }
 
@@ -290,23 +219,23 @@ char comparisonAffinity(const Expr *pExpr) {
   aff = sqlite3ExprAffinity(pExpr->pLeft);
   if (pExpr->pRight) {
     aff = sqlite3CompareAffinity(pExpr->pRight, aff);
-  } else if ((((pExpr)->flags & 0x001000) != 0)) {
+  } else if ((((pExpr)->flags & EP_xIsSelect) != 0)) {
     aff = sqlite3CompareAffinity(pExpr->x.pSelect->pEList->a[0].pExpr, aff);
   } else if (aff == 0) {
-    aff = 0x41;
+    aff = SQLITE_AFF_BLOB;
   }
   return aff;
 }
 
 int sqlite3IndexAffinityOk(const Expr *pExpr, char idx_affinity) {
   char aff = comparisonAffinity(pExpr);
-  if (aff < 0x42) {
+  if (aff < SQLITE_AFF_TEXT) {
     return 1;
   }
-  if (aff == 0x42) {
-    return idx_affinity == 0x42;
+  if (aff == SQLITE_AFF_TEXT) {
+    return idx_affinity == SQLITE_AFF_TEXT;
   }
-  return ((idx_affinity) >= 0x43);
+  return ((idx_affinity) >= SQLITE_AFF_NUMERIC);
 }
 
 u8 binaryCompareP5(const Expr *pExpr1, const Expr *pExpr2, int jumpIfNull) {
@@ -315,23 +244,17 @@ u8 binaryCompareP5(const Expr *pExpr1, const Expr *pExpr2, int jumpIfNull) {
   return aff;
 }
 
-int sqlite3ExprIsVector(const Expr *pExpr) { return sqlite3ExprVectorSize(pExpr) > 1; }
+int sqlite3ExprIsVector(const Expr *pExpr) {
+  return sqlite3ExprVectorSize(pExpr) > 1;
+}
 
 int sqlite3ExprVectorSize(const Expr *pExpr) {
   u8 op = pExpr->op;
-  if (op == 176)
+  if (op == TK_REGISTER)
     op = pExpr->op2;
-  if (op == 177) {
-
-    ((void)(0))
-
-        ;
+  if (op == TK_VECTOR) {
     return pExpr->x.pList->nExpr;
-  } else if (op == 139) {
-
-    ((void)(0))
-
-        ;
+  } else if (op == TK_SELECT) {
     return pExpr->x.pSelect->pEList->nExpr;
   } else {
     return 1;
@@ -339,23 +262,10 @@ int sqlite3ExprVectorSize(const Expr *pExpr) {
 }
 
 Expr *sqlite3VectorFieldSubexpr(Expr *pVector, int i) {
-
   if (sqlite3ExprIsVector(pVector)) {
-
-    ((void)(0))
-
-        ;
-    if (pVector->op == 139 || pVector->op2 == 139) {
-
-      ((void)(0))
-
-          ;
+    if (pVector->op == TK_SELECT || pVector->op2 == TK_SELECT) {
       return pVector->x.pSelect->pEList->a[i].pExpr;
     } else {
-
-      ((void)(0))
-
-          ;
       return pVector->x.pList->a[i].pExpr;
     }
   }
@@ -375,11 +285,11 @@ void exprSetHeight(Expr *p) {
   if ((p->pRight) && p->pRight->nHeight > nHeight) {
     nHeight = p->pRight->nHeight;
   }
-  if ((((p)->flags & 0x001000) != 0)) {
+  if ((((p)->flags & EP_xIsSelect) != 0)) {
     heightOfSelect(p->x.pSelect, &nHeight);
   } else if (p->x.pList) {
     heightOfExprList(p->x.pList, &nHeight);
-    p->flags |= (0x000200 | 0x400000 | 0x000008) & sqlite3ExprListFlags(p->x.pList);
+    p->flags |= (EP_Collate | EP_Subquery | EP_HasFunc) & sqlite3ExprListFlags(p->x.pList);
   }
   p->nHeight = nHeight + 1;
 }
@@ -387,93 +297,29 @@ void exprSetHeight(Expr *p) {
 void sqlite3ExprSetErrorOffset(Expr *pExpr, int iOfst) {
   if (pExpr == 0)
     return;
-  if (((((pExpr)->flags & (0x000002 | 0x000001)) != 0)))
+  if (((((pExpr)->flags & (EP_InnerON | EP_OuterON)) != 0)))
     return;
   pExpr->w.iOfst = iOfst;
 }
 
 int exprStructSize(const Expr *p) {
-  if ((((p)->flags & (u32)(0x010000)) != 0))
-    return
-
-        __builtin_offsetof(
-
-            Expr
-
-            ,
-
-            pLeft
-
-        )
-
-            ;
-  if ((((p)->flags & (u32)(0x004000)) != 0))
-    return
-
-        __builtin_offsetof(
-
-            Expr
-
-            ,
-
-            iTable
-
-        )
-
-            ;
+  if ((((p)->flags & (u32)(EP_TokenOnly)) != 0))
+    return offsetof(Expr, pLeft);
+  if ((((p)->flags & (u32)(EP_Reduced)) != 0))
+    return offsetof(Expr, iTable);
   return sizeof(Expr);
 }
 
 int dupedExprStructSize(const Expr *p, int flags) {
   int nSize;
 
-  if (0 == flags || (((p)->flags & (u32)(0x020000)) != 0)) {
+  if (0 == flags || (((p)->flags & (u32)(EP_FullSize)) != 0)) {
     nSize = sizeof(Expr);
   } else {
-
-    ((void)(0))
-
-        ;
-
-    ((void)(0))
-
-        ;
-
-    ((void)(0))
-
-        ;
     if (p->pLeft || p->x.pList) {
-      nSize =
-
-          __builtin_offsetof(
-
-              Expr
-
-              ,
-
-              iTable
-
-              )
-
-          | 0x004000;
+      nSize = offsetof(Expr, iTable) | EP_Reduced;
     } else {
-
-      ((void)(0))
-
-          ;
-      nSize =
-
-          __builtin_offsetof(
-
-              Expr
-
-              ,
-
-              pLeft
-
-              )
-
-          | 0x010000;
+      nSize = offsetof(Expr, pLeft) | EP_TokenOnly;
     }
   }
   return nSize;
@@ -481,7 +327,7 @@ int dupedExprStructSize(const Expr *p, int flags) {
 
 int dupedExprNodeSize(const Expr *p, int flags) {
   int nByte = dupedExprStructSize(p, flags) & 0xfff;
-  if (!(((p)->flags & (u32)(0x000800)) != 0) && p->u.zToken) {
+  if (!(((p)->flags & (u32)(EP_IntValue)) != 0) && p->u.zToken) {
     nByte += (strlen(p->u.zToken) & 0x3fffffff) + 1;
   }
   return (((nByte) + 7) & ~7);
@@ -490,7 +336,7 @@ int dupedExprNodeSize(const Expr *p, int flags) {
 int dupedExprSize(const Expr *p) {
   int nByte;
 
-  nByte = dupedExprNodeSize(p, 0x0001);
+  nByte = dupedExprNodeSize(p, EXPRDUP_REDUCE);
   if (p->pLeft)
     nByte += dupedExprSize(p->pLeft);
   if (p->pRight)
@@ -502,8 +348,8 @@ int dupedExprSize(const Expr *p) {
 int sqlite3ExprIdToTrueFalse(Expr *pExpr) {
   u32 v;
 
-  if (!(((pExpr)->flags & (u32)(0x4000000 | 0x000800)) != 0) && (v = sqlite3IsTrueOrFalse(pExpr->u.zToken)) != 0) {
-    pExpr->op = 171;
+  if (!(((pExpr)->flags & (u32)(EP_Quoted | EP_IntValue)) != 0) && (v = sqlite3IsTrueOrFalse(pExpr->u.zToken)) != 0) {
+    pExpr->op = TK_TRUEFALSE;
     (pExpr)->flags |= (u32)(v);
     return 1;
   }
@@ -517,21 +363,22 @@ int sqlite3ExprTruthValue(const Expr *pExpr) {
 }
 
 Expr *sqlite3ExprSimplifiedAndOr(Expr *pExpr) {
-
-  if (pExpr->op == 44 || pExpr->op == 43) {
+  if (pExpr->op == TK_AND || pExpr->op == TK_OR) {
     Expr *pRight = sqlite3ExprSimplifiedAndOr(pExpr->pRight);
     Expr *pLeft = sqlite3ExprSimplifiedAndOr(pExpr->pLeft);
-    if ((((pLeft)->flags & (0x000001 | 0x10000000)) == 0x10000000) || (((pRight)->flags & (0x000001 | 0x20000000)) == 0x20000000)) {
-      pExpr = pExpr->op == 44 ? pRight : pLeft;
-    } else if ((((pRight)->flags & (0x000001 | 0x10000000)) == 0x10000000) || (((pLeft)->flags & (0x000001 | 0x20000000)) == 0x20000000)) {
-      pExpr = pExpr->op == 44 ? pLeft : pRight;
+    if ((((pLeft)->flags & (EP_OuterON | EP_IsTrue)) == EP_IsTrue) ||
+        (((pRight)->flags & (EP_OuterON | EP_IsFalse)) == EP_IsFalse)) {
+      pExpr = pExpr->op == TK_AND ? pRight : pLeft;
+    } else if ((((pRight)->flags & (EP_OuterON | EP_IsTrue)) == EP_IsTrue) ||
+               (((pLeft)->flags & (EP_OuterON | EP_IsFalse)) == EP_IsFalse)) {
+      pExpr = pExpr->op == TK_AND ? pLeft : pRight;
     }
   }
   return pExpr;
 }
 
 int exprEvalRhsFirst(Expr *pExpr) {
-  if ((((pExpr->pLeft)->flags & (u32)(0x400000)) != 0) && !(((pExpr->pRight)->flags & (u32)(0x400000)) != 0)) {
+  if ((((pExpr->pLeft)->flags & (u32)(EP_Subquery)) != 0) && !(((pExpr->pRight)->flags & (u32)(EP_Subquery)) != 0)) {
     return 1;
   } else {
     return 0;
@@ -555,23 +402,23 @@ int sqlite3ExprIsTableConstant(Expr *p, int iCur, int bAllowSubq) {
 
 int sqlite3ExprIsSingleTableConstraint(Expr *pExpr, const SrcList *pSrcList, int iSrc, int bAllowSubq) {
   const SrcItem *pSrc = &pSrcList->a[iSrc];
-  if (pSrc->fg.jointype & 0x40) {
+  if (pSrc->fg.jointype & JT_LTORJ) {
     return 0;
   }
-  if (pSrc->fg.jointype & 0x08) {
-    if (!(((pExpr)->flags & (u32)(0x000001)) != 0))
+  if (pSrc->fg.jointype & JT_LEFT) {
+    if (!(((pExpr)->flags & (u32)(EP_OuterON)) != 0))
       return 0;
     if (pExpr->w.iJoin != pSrc->iCursor)
       return 0;
   } else {
-    if ((((pExpr)->flags & (u32)(0x000001)) != 0))
+    if ((((pExpr)->flags & (u32)(EP_OuterON)) != 0))
       return 0;
   }
-  if ((((pExpr)->flags & (u32)(0x000001 | 0x000002)) != 0) && (pSrcList->a[0].fg.jointype & 0x40) != 0) {
+  if ((((pExpr)->flags & (u32)(EP_OuterON | EP_InnerON)) != 0) && (pSrcList->a[0].fg.jointype & JT_LTORJ) != 0) {
     int jj;
     for (jj = 0; jj < iSrc; jj++) {
       if (pExpr->w.iJoin == pSrcList->a[jj].iCursor) {
-        if ((pSrcList->a[jj].fg.jointype & 0x40) != 0) {
+        if ((pSrcList->a[jj].fg.jointype & JT_LTORJ) != 0) {
           return 0;
         }
         break;
@@ -582,58 +429,56 @@ int sqlite3ExprIsSingleTableConstraint(Expr *pExpr, const SrcList *pSrcList, int
   return sqlite3ExprIsTableConstant(pExpr, pSrc->iCursor, bAllowSubq);
 }
 
-int sqlite3ExprIsConstantOrFunction(Expr *p, u8 isInit) { return exprIsConst(0, p, 4 + isInit); }
+int sqlite3ExprIsConstantOrFunction(Expr *p, u8 isInit) {
+  return exprIsConst(0, p, 4 + isInit);
+}
 
 int sqlite3ExprIsInteger(const Expr *p, int *pValue, Parse *pParse) {
   int rc = 0;
-  if ((p == 0))
+  if (p == 0)
     return 0;
 
-  if (p->flags & 0x000800) {
+  if (p->flags & EP_IntValue) {
     *pValue = p->u.iValue;
     return 1;
   }
   switch (p->op) {
-  case 173: {
-    rc = sqlite3ExprIsInteger(p->pLeft, pValue, 0);
-    break;
-  }
-  case 174: {
-    int v = 0;
-    if (sqlite3ExprIsInteger(p->pLeft, &v, 0)) {
-
-      ((void)(0))
-
-          ;
-      *pValue = -v;
-      rc = 1;
+    case TK_UPLUS: {
+      rc = sqlite3ExprIsInteger(p->pLeft, pValue, 0);
+      break;
     }
-    break;
-  }
-  case 157: {
-    sqlite3_value *pVal;
-    if (pParse == 0)
-      break;
-    if ((pParse->pVdbe == 0))
-      break;
-    if ((pParse->db->flags & 0x00800000) != 0)
-      break;
-    sqlite3VdbeSetVarmask(pParse->pVdbe, p->iColumn);
-    pVal = sqlite3VdbeGetBoundValue(pParse->pReprepare, p->iColumn, 0x41);
-    if (pVal) {
-      if (sqlite3_value_type(pVal) == 1) {
-        sqlite3_int64 vv = sqlite3_value_int64(pVal);
-        if (vv == (vv & 0x7fffffff)) {
-          *pValue = (int)vv;
-          rc = 1;
-        }
+    case TK_UMINUS: {
+      int v = 0;
+      if (sqlite3ExprIsInteger(p->pLeft, &v, 0)) {
+        *pValue = -v;
+        rc = 1;
       }
-      sqlite3ValueFree(pVal);
+      break;
     }
-    break;
-  }
-  default:
-    break;
+    case TK_VARIABLE: {
+      sqlite3_value *pVal;
+      if (pParse == 0)
+        break;
+      if (pParse->pVdbe == 0)
+        break;
+      if ((pParse->db->flags & SQLITE_EnableQPSG) != 0)
+        break;
+      sqlite3VdbeSetVarmask(pParse->pVdbe, p->iColumn);
+      pVal = sqlite3VdbeGetBoundValue(pParse->pReprepare, p->iColumn, SQLITE_AFF_BLOB);
+      if (pVal) {
+        if (sqlite3_value_type(pVal) == SQLITE_INTEGER) {
+          sqlite3_int64 vv = sqlite3_value_int64(pVal);
+          if (vv == (vv & 0x7fffffff)) {
+            *pValue = (int)vv;
+            rc = 1;
+          }
+        }
+        sqlite3ValueFree(pVal);
+      }
+      break;
+    }
+    default:
+      break;
   }
   return rc;
 }
@@ -641,71 +486,59 @@ int sqlite3ExprIsInteger(const Expr *p, int *pValue, Parse *pParse) {
 int sqlite3ExprCanBeNull(const Expr *p) {
   u8 op;
 
-  while (p->op == 173 || p->op == 174) {
+  while (p->op == TK_UPLUS || p->op == TK_UMINUS) {
     p = p->pLeft;
-
-    ((void)(0))
-
-        ;
   }
   op = p->op;
-  if (op == 176)
+  if (op == TK_REGISTER)
     op = p->op2;
   switch (op) {
-  case 156:
-  case 118:
-  case 154:
-  case 155:
-    return 0;
-  case 168:
-
-    ((void)(0))
-
-        ;
-    return (((p)->flags & (u32)(0x200000)) != 0) || (p->y.pTab == 0)
-
-           || (p->iColumn >= 0 && p->y.pTab->aCol != 0 && (p->iColumn < p->y.pTab->nCol) && p->y.pTab->aCol[p->iColumn].notNull == 0);
-  default:
-    return 1;
+    case TK_INTEGER:
+    case TK_STRING:
+    case TK_FLOAT:
+    case TK_BLOB:
+      return 0;
+    case TK_COLUMN:
+      return (((p)->flags & (u32)(EP_CanBeNull)) != 0) || (p->y.pTab == 0) ||
+             (p->iColumn >= 0 && p->y.pTab->aCol != 0 && (p->iColumn < p->y.pTab->nCol) &&
+              p->y.pTab->aCol[p->iColumn].notNull == 0);
+    default:
+      return 1;
   }
 }
 
 int sqlite3ExprNeedsNoAffinityChange(const Expr *p, char aff) {
   u8 op;
   int unaryMinus = 0;
-  if (aff == 0x41)
+  if (aff == SQLITE_AFF_BLOB)
     return 1;
-  while (p->op == 173 || p->op == 174) {
-    if (p->op == 174)
+  while (p->op == TK_UPLUS || p->op == TK_UMINUS) {
+    if (p->op == TK_UMINUS)
       unaryMinus = 1;
     p = p->pLeft;
   }
   op = p->op;
-  if (op == 176)
+  if (op == TK_REGISTER)
     op = p->op2;
   switch (op) {
-  case 156: {
-    return aff >= 0x43;
-  }
-  case 154: {
-    return aff >= 0x43;
-  }
-  case 118: {
-    return !unaryMinus && aff == 0x42;
-  }
-  case 155: {
-    return !unaryMinus;
-  }
-  case 168: {
-
-    ((void)(0))
-
-        ;
-    return aff >= 0x43 && p->iColumn < 0;
-  }
-  default: {
-    return 0;
-  }
+    case TK_INTEGER: {
+      return aff >= SQLITE_AFF_NUMERIC;
+    }
+    case TK_FLOAT: {
+      return aff >= SQLITE_AFF_NUMERIC;
+    }
+    case TK_STRING: {
+      return !unaryMinus && aff == SQLITE_AFF_TEXT;
+    }
+    case TK_BLOB: {
+      return !unaryMinus;
+    }
+    case TK_COLUMN: {
+      return aff >= SQLITE_AFF_NUMERIC && p->iColumn < 0;
+    }
+    default: {
+      return 0;
+    }
   }
 }
 
@@ -715,16 +548,14 @@ Select *isCandidateForInOpt(const Expr *pX) {
   ExprList *pEList;
   Table *pTab;
   int i;
-  if (!(((pX)->flags & 0x001000) != 0))
+  if (!(((pX)->flags & EP_xIsSelect) != 0))
     return 0;
-  if ((((pX)->flags & (u32)(0x000040)) != 0))
+  if ((((pX)->flags & (u32)(EP_VarSelect)) != 0))
     return 0;
   p = pX->x.pSelect;
   if (p->pPrior)
     return 0;
-  if (p->selFlags & (0x0000001 | 0x0000008)) {
-    ;
-    ;
+  if (p->selFlags & (SF_Distinct | SF_Aggregate)) {
     return 0;
   }
 
@@ -740,46 +571,40 @@ Select *isCandidateForInOpt(const Expr *pX) {
     return 0;
   pTab = pSrc->a[0].pSTab;
 
-  if (((pTab)->eTabType == 1))
+  if ((pTab)->eTabType == TABTYP_VTAB)
     return 0;
   pEList = p->pEList;
 
   for (i = 0; i < pEList->nExpr; i++) {
     Expr *pRes = pEList->a[i].pExpr;
-    if (pRes->op != 168)
+    if (pRes->op != TK_COLUMN)
       return 0;
-
-    ((void)(0))
-
-        ;
   }
   return p;
 }
 
 void sqlite3ExprToRegister(Expr *pExpr, int iReg) {
   Expr *p = sqlite3ExprSkipCollateAndLikely(pExpr);
-  if ((p == 0))
+  if (p == 0)
     return;
-  if (p->op == 176) {
-
-    ((void)(0))
-
-        ;
+  if (p->op == TK_REGISTER) {
   } else {
     p->op2 = p->op;
-    p->op = 176;
+    p->op = TK_REGISTER;
     p->iTable = iReg;
-    (p)->flags &= ~(u32)(0x002000);
+    (p)->flags &= ~(u32)(EP_Skip);
   }
 }
 
-int sqlite3ExprCompareSkip(Expr *pA, Expr *pB, int iTab) { return sqlite3ExprCompare(0, sqlite3ExprSkipCollate(pA), sqlite3ExprSkipCollate(pB), iTab); }
+int sqlite3ExprCompareSkip(Expr *pA, Expr *pB, int iTab) {
+  return sqlite3ExprCompare(0, sqlite3ExprSkipCollate(pA), sqlite3ExprSkipCollate(pB), iTab);
+}
 
 int sqlite3ExprIsNotTrue(Expr *pExpr) {
   int v;
-  if (pExpr->op == 122)
+  if (pExpr->op == TK_NULL)
     return 1;
-  if (pExpr->op == 171 && sqlite3ExprTruthValue(pExpr) == 0)
+  if (pExpr->op == TK_TRUEFALSE && sqlite3ExprTruthValue(pExpr) == 0)
     return 1;
   v = 1;
   if (sqlite3ExprIsInteger(pExpr, &v, 0) && v == 0)
@@ -792,10 +617,10 @@ int sqlite3ExprImpliesNonNullRow(Expr *p, int iTab, int isRJ) {
   p = sqlite3ExprSkipCollateAndLikely(p);
   if (p == 0)
     return 0;
-  if (p->op == 52) {
+  if (p->op == TK_NOTNULL) {
     p = p->pLeft;
   } else {
-    while (p->op == 44) {
+    while (p->op == TK_AND) {
       if (sqlite3ExprImpliesNonNullRow(p->pLeft, iTab, isRJ))
         return 1;
       p = p->pRight;
@@ -824,10 +649,10 @@ int sqlite3ExprCoveredByIndex(Expr *pExpr, int iCur, Index *pIdx) {
 }
 
 void sqlite3StringToId(Expr *p) {
-  if (p->op == 118) {
-    p->op = 60;
-  } else if (p->op == 114 && p->pLeft->op == 118) {
-    p->pLeft->op = 60;
+  if (p->op == TK_STRING) {
+    p->op = TK_ID;
+  } else if (p->op == TK_COLLATE && p->pLeft->op == TK_STRING) {
+    p->pLeft->op = TK_ID;
   }
 }
 
@@ -839,26 +664,17 @@ int sqlite3ExprReferencesUpdatedColumn(Expr *pExpr, int *aiChng, int chngRowid) 
   w.u.aiCol = aiChng;
   sqlite3WalkExpr(&w, pExpr);
   if (!chngRowid) {
-    ;
-    w.eCode &= ~0x02;
+    w.eCode &= ~CKCNSTRNT_ROWID;
   };
-  ;
-  ;
-  ;
   return w.eCode != 0;
 }
 
 void sqlite3SetJoinExpr(Expr *p, int iTable, u32 joinFlag) {
-
   while (p) {
     (p)->flags |= (u32)(joinFlag);
 
-    ((void)(0))
-
-        ;
-    ;
     p->w.iJoin = iTable;
-    if ((((p)->flags & 0x001000) == 0)) {
+    if ((((p)->flags & EP_xIsSelect) == 0)) {
       if (p->x.pList) {
         int i;
         for (i = 0; i < p->x.pList->nExpr; i++) {
@@ -873,23 +689,15 @@ void sqlite3SetJoinExpr(Expr *p, int iTable, u32 joinFlag) {
 
 void unsetJoinExpr(Expr *p, int iTable, int nullable) {
   while (p) {
-    if (iTable < 0 || ((((p)->flags & (u32)(0x000001)) != 0) && p->w.iJoin == iTable)) {
-      (p)->flags &= ~(u32)(0x000001 | 0x000002);
+    if (iTable < 0 || ((((p)->flags & (u32)(EP_OuterON)) != 0) && p->w.iJoin == iTable)) {
+      (p)->flags &= ~(u32)(EP_OuterON | EP_InnerON);
       if (iTable >= 0)
-        (p)->flags |= (u32)(0x000002);
+        (p)->flags |= (u32)(EP_InnerON);
     }
-    if (p->op == 168 && p->iTable == iTable && !nullable) {
-      (p)->flags &= ~(u32)(0x200000);
+    if (p->op == TK_COLUMN && p->iTable == iTable && !nullable) {
+      (p)->flags &= ~(u32)(EP_CanBeNull);
     }
-    if (p->op == 172) {
-
-      ((void)(0))
-
-          ;
-
-      ((void)(0))
-
-          ;
+    if (p->op == TK_FUNCTION) {
       if (p->x.pList) {
         int i;
         for (i = 0; i < p->x.pList->nExpr; i++) {
@@ -906,8 +714,8 @@ void updateRangeAffinityStr(Expr *pRight, int n, char *zAff) {
   int i;
   for (i = 0; i < n; i++) {
     Expr *p = sqlite3VectorFieldSubexpr(pRight, i);
-    if (sqlite3CompareAffinity(p, zAff[i]) == 0x41 || sqlite3ExprNeedsNoAffinityChange(p, zAff[i])) {
-      zAff[i] = 0x41;
+    if (sqlite3CompareAffinity(p, zAff[i]) == SQLITE_AFF_BLOB || sqlite3ExprNeedsNoAffinityChange(p, zAff[i])) {
+      zAff[i] = SQLITE_AFF_BLOB;
     }
   }
 }
@@ -915,17 +723,17 @@ void updateRangeAffinityStr(Expr *pRight, int n, char *zAff) {
 void whereApplyPartialIndexConstraints(Expr *pTruth, int iTabCur, WhereClause *pWC) {
   int i;
   WhereTerm *pTerm;
-  while (pTruth->op == 44) {
+  while (pTruth->op == TK_AND) {
     whereApplyPartialIndexConstraints(pTruth->pLeft, iTabCur, pWC);
     pTruth = pTruth->pRight;
   }
   for (i = 0, pTerm = pWC->a; i < pWC->nTerm; i++, pTerm++) {
     Expr *pExpr;
-    if (pTerm->wtFlags & 0x0004)
+    if (pTerm->wtFlags & TERM_CODED)
       continue;
     pExpr = pTerm->pExpr;
     if (sqlite3ExprCompare(0, pExpr, pTruth, iTabCur) == 0) {
-      pTerm->wtFlags |= 0x0004;
+      pTerm->wtFlags |= TERM_CODED;
     }
   }
 }
@@ -934,7 +742,10 @@ int sqlite3ExprIsLikeOperator(const Expr *pExpr) {
   static const struct {
     const char *zOp;
     unsigned char eOp;
-  } aOp[] = {{"match", 64}, {"glob", 66}, {"like", 65}, {"regexp", 67}};
+  } aOp[] = {{"match", SQLITE_INDEX_CONSTRAINT_MATCH},
+             {"glob", SQLITE_INDEX_CONSTRAINT_GLOB},
+             {"like", SQLITE_INDEX_CONSTRAINT_LIKE},
+             {"regexp", SQLITE_INDEX_CONSTRAINT_REGEXP}};
   int i;
 
   for (i = 0; i < ((int)(sizeof(aOp) / sizeof(aOp[0]))); i++) {
@@ -946,15 +757,15 @@ int sqlite3ExprIsLikeOperator(const Expr *pExpr) {
 }
 
 void transferJoinMarkings(Expr *pDerived, Expr *pBase) {
-  if (pDerived && (((pBase)->flags & (u32)(0x000001 | 0x000002)) != 0)) {
-    pDerived->flags |= pBase->flags & (0x000001 | 0x000002);
+  if (pDerived && (((pBase)->flags & (u32)(EP_OuterON | EP_InnerON)) != 0)) {
+    pDerived->flags |= pBase->flags & (EP_OuterON | EP_InnerON);
     pDerived->w.iJoin = pBase->w.iJoin;
   }
 }
 
 Expr *whereRightSubexprIsColumn(Expr *p) {
   p = sqlite3ExprSkipCollateAndLikely(p->pRight);
-  if ((p != 0) && p->op == 168 && !(((p)->flags & (u32)(0x000020)) != 0)) {
+  if ((p != 0) && p->op == TK_COLUMN && !(((p)->flags & (u32)(EP_FixedCol)) != 0)) {
     return p;
   }
   return 0;
@@ -974,7 +785,7 @@ int estLikePatternLength(Expr *p, u16 eCode) {
 int exprIsCoveredByIndex(const Expr *pExpr, const Index *pIdx, int iTabCur) {
   int i;
   for (i = 0; i < pIdx->nColumn; i++) {
-    if (pIdx->aiColumn[i] == (-2) && sqlite3ExprCompare(0, pExpr, pIdx->aColExpr->a[i].pExpr, iTabCur) == 0) {
+    if (pIdx->aiColumn[i] == XN_EXPR && sqlite3ExprCompare(0, pExpr, pIdx->aColExpr->a[i].pExpr, iTabCur) == 0) {
       return 1;
     }
   }

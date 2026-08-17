@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 #include "sqlite/etByte.h"
 typedef struct et_info et_info;
 

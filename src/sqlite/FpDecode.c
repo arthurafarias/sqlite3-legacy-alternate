@@ -1,14 +1,12 @@
 #define _GNU_SOURCE 1
-
 #include <string.h>
-
 #include "sqlite/FpDecode.h"
-
 #include "sqlite/sqlite3.h"
 #include "sqlite/u16.h"
 #include "sqlite/u64.h"
-int countLeadingZeros(u64 m) { return __builtin_clzll(m); }
-
+int countLeadingZeros(u64 m) {
+  return __builtin_clzll(m);
+}
 
 void sqlite3FpDecode(FpDecode *p, double r, int iRound, int mxRound) {
   int i;
@@ -58,30 +56,11 @@ void sqlite3FpDecode(FpDecode *p, double r, int iRound, int mxRound) {
   while (v >= 10) {
     int kk = (v % 100) * 2;
 
-    ((void)(0))
-
-        ;
-
-    ((void)(0))
-
-        ;
-
-    ((void)(0))
-
-        ;
     *(u16 *)(&zBuf[i - 2]) = *(u16 *)&sqlite3DigitPairs.a[kk];
     i -= 2;
     v /= 100;
   }
   if (v) {
-
-    ((void)(0))
-
-        ;
-
-    ((void)(0))
-
-        ;
     zBuf[--i] = v + '0';
   }
 
@@ -102,7 +81,6 @@ void sqlite3FpDecode(FpDecode *p, double r, int iRound, int mxRound) {
     if (iRound > mxRound)
       iRound = mxRound;
     if (iRound == 17) {
-
       if (z[15] == '9' && z[14] == '9') {
         int jj, kk;
         u64 v2;
@@ -123,9 +101,6 @@ void sqlite3FpDecode(FpDecode *p, double r, int iRound, int mxRound) {
         int jj, kk;
         u64 v2;
 
-        ((void)(0))
-
-            ;
         for (jj = 13; z[jj - 1] == '0'; jj--) {
         }
         v2 = z[0] - '0';
@@ -159,10 +134,6 @@ void sqlite3FpDecode(FpDecode *p, double r, int iRound, int mxRound) {
 
   while (z[n - 1] == '0') {
     n--;
-
-    ((void)(0))
-
-        ;
   }
   p->n = n;
   p->z = z;

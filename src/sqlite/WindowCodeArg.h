@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/WindowCsrAndReg.h"
   typedef struct Parse Parse;
   typedef struct Vdbe Vdbe;

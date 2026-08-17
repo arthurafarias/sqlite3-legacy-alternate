@@ -1,10 +1,7 @@
 #pragma once
-
 #ifdef __cplusplus
-
 #extern "C" {
 #endif
-
 #include "sqlite/Btree.h"
 #include "sqlite/Pager.h"
 #include "sqlite/i64.h"

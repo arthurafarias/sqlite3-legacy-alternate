@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/u8.h"
   typedef struct Module Module;
   typedef struct sqlite3 sqlite3;

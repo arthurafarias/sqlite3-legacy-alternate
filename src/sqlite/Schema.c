@@ -1,9 +1,6 @@
 #define _GNU_SOURCE 1
-
 #include <string.h>
-
 #include "sqlite/Schema.h"
-
 #include "sqlite/Hash.h"
 #include "sqlite/HashElem.h"
 #include "sqlite/Table.h"

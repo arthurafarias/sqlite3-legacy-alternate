@@ -1,9 +1,6 @@
 #define _GNU_SOURCE 1
-
 #include <string.h>
-
 #include "sqlite/Index.h"
-
 #include "sqlite/Column.h"
 #include "sqlite/Expr.h"
 #include "sqlite/ExprList.h"
@@ -36,9 +33,6 @@ void estimateIndexWidth(Index *pIdx) {
   for (i = 0; i < pIdx->nColumn; i++) {
     i16 x = pIdx->aiColumn[i];
 
-    ((void)(0))
-
-        ;
     wIndex += x < 0 ? 1 : aCol[x].szEst;
   }
   pIdx->szIdxRow = sqlite3LogEst(wIndex * 4);
@@ -47,14 +41,9 @@ void estimateIndexWidth(Index *pIdx) {
 int isDupColumn(Index *pIdx, int nKey, Index *pPk, int iCol) {
   int i, j;
 
-  ;
   j = pPk->aiColumn[iCol];
 
   for (i = 0; i < nKey; i++) {
-
-    ((void)(0))
-
-        ;
     if (pIdx->aiColumn[i] == j && sqlite3StrICmp(pIdx->azColl[i], pPk->azColl[iCol]) == 0) {
       return 1;
     }
@@ -69,8 +58,6 @@ void recomputeColumnsNotIndexed(Index *pIdx) {
   for (j = pIdx->nColumn - 1; j >= 0; j--) {
     int x = pIdx->aiColumn[j];
     if (x >= 0 && (pTab->aCol[x].colFlags & 0x0020) == 0) {
-      ;
-      ;
       if (x < ((int)(sizeof(Bitmask) * 8)) - 1)
         m |= (((Bitmask)1) << (x));
     }
@@ -79,11 +66,11 @@ void recomputeColumnsNotIndexed(Index *pIdx) {
 }
 
 void sqlite3DefaultRowEst(Index *pIdx) {
-
   static const LogEst aVal[] = {33, 32, 30, 28, 26};
   LogEst *a = pIdx->aiRowLogEst;
   LogEst x;
-  int nCopy = ((((int)(sizeof(aVal) / sizeof(aVal[0])))) < (pIdx->nKeyCol) ? (((int)(sizeof(aVal) / sizeof(aVal[0])))) : (pIdx->nKeyCol));
+  int nCopy = ((((int)(sizeof(aVal) / sizeof(aVal[0])))) < (pIdx->nKeyCol) ? (((int)(sizeof(aVal) / sizeof(aVal[0]))))
+                                                                           : (pIdx->nKeyCol));
   int i;
 
   x = pIdx->pTable->nRowLogEst;
@@ -93,20 +80,12 @@ void sqlite3DefaultRowEst(Index *pIdx) {
   }
   if (pIdx->pPartIdxWhere != 0) {
     x -= 10;
-
-    ((void)(0))
-
-        ;
   }
   a[0] = x;
 
   memcpy(&a[1], aVal, nCopy * sizeof(LogEst));
   for (i = nCopy + 1; i <= pIdx->nKeyCol; i++) {
     a[i] = 23;
-
-    ((void)(0))
-
-        ;
   }
 
   if (((pIdx)->onError != 0))
@@ -127,10 +106,6 @@ int xferCompatibleIndex(Index *pDest, Index *pSrc) {
       return 0;
     }
     if (pSrc->aiColumn[i] == (-2)) {
-
-      ((void)(0))
-
-          ;
       if (sqlite3ExprCompare(0, pSrc->aColExpr->a[i].pExpr, pDest->aColExpr->a[i].pExpr, -1) != 0) {
         return 0;
       }
@@ -192,10 +167,6 @@ int indexColumnNotNull(Index *pIdx, int iCol) {
   } else if (j == (-1)) {
     return 1;
   } else {
-
-    ((void)(0))
-
-        ;
     return 0;
   }
 }

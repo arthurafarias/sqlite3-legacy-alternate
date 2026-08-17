@@ -1,5 +1,4 @@
 #define _GNU_SOURCE 1
-
 #include <dlfcn.h>
 #include <errno.h>
 #include <stddef.h>
@@ -11,9 +10,7 @@
 #include <sys/time.h>
 #include <time.h>
 #include <unistd.h>
-
 #include "sqlite/sqlite3_vfs.h"
-
 #include "sqlite/SqliteUnixSyscallIndex.h"
 #include "sqlite/BtCursor.h"
 #include "sqlite/BtLock.h"
@@ -54,7 +51,13 @@
 #include "sqlite/unixInodeInfo.h"
 #include "sqlite/unix_syscall.h"
 #include "sqlite/uptr.h"
-
+#include "sqlite/SqliteAccessFlags.h"
+#include "sqlite/SqliteDeserializeFlags.h"
+#include "sqlite/SqliteFileControlOpcode.h"
+#include "sqlite/SqliteIoCap.h"
+#include "sqlite/SqliteMutexType.h"
+#include "sqlite/SqliteOpenFlags.h"
+#include "sqlite/SqliteResultCode.h"
 /* Private helpers, formerly declared in _Uncategorized.h. */
 static int findCreateFileMode(const char *zPath, int flags, mode_t *pMode, uid_t *pUid, gid_t *pGid);
 static UnixUnusedFd *findReusableFd(const char *zPath, int flags);
@@ -70,7 +73,8 @@ static UnixUnusedFd *findReusableFd(const char *zPath, int flags) {
 
   unixEnterMutex();
 
-  if (inodeList != 0 && 0 == ((int (*)(const char *, struct stat *))aSyscall[SQLITE_SYSCALL_STAT].pCurrent)(zPath, &sStat)) {
+  if (inodeList != 0 &&
+      0 == ((int (*)(const char *, struct stat *))aSyscall[SQLITE_SYSCALL_STAT].pCurrent)(zPath, &sStat)) {
     unixInodeInfo *pInode;
 
     pInode = inodeList;
@@ -80,11 +84,8 @@ static UnixUnusedFd *findReusableFd(const char *zPath, int flags) {
     if (pInode) {
       UnixUnusedFd **pp;
 
-      ((void)(0))
-
-          ;
       sqlite3_mutex_enter(pInode->pLockMutex);
-      flags &= (0x00000001 | 0x00000002);
+      flags &= (SQLITE_OPEN_READONLY | SQLITE_OPEN_READWRITE);
       for (pp = &pInode->pUnused; *pp && (*pp)->flags != flags; pp = &((*pp)->pNext))
         ;
       pUnused = *pp;
@@ -101,7 +102,7 @@ static UnixUnusedFd *findReusableFd(const char *zPath, int flags) {
 
 static int getFileMode(const char *zFile, mode_t *pMode, uid_t *pUid, gid_t *pGid) {
   struct stat sStat;
-  int rc = 0;
+  int rc = SQLITE_OK;
   if (0 == ((int (*)(const char *, struct stat *))aSyscall[SQLITE_SYSCALL_STAT].pCurrent)(zFile, &sStat)) {
     *pMode = sStat.st_mode & 0777;
     *pUid = sStat.st_uid;
@@ -113,11 +114,11 @@ static int getFileMode(const char *zFile, mode_t *pMode, uid_t *pUid, gid_t *pGi
 }
 
 static int findCreateFileMode(const char *zPath, int flags, mode_t *pMode, uid_t *pUid, gid_t *pGid) {
-  int rc = 0;
+  int rc = SQLITE_OK;
   *pMode = 0;
   *pUid = 0;
   *pGid = 0;
-  if (flags & (0x00080000 | 0x00000800)) {
+  if (flags & (SQLITE_OPEN_WAL | SQLITE_OPEN_MAIN_JOURNAL)) {
     char zDb[512 + 1];
     int nDb;
 
@@ -131,10 +132,9 @@ static int findCreateFileMode(const char *zPath, int flags, mode_t *pMode, uid_t
       }
       nDb--;
     }
-  } else if (flags & 0x00000008) {
+  } else if (flags & SQLITE_OPEN_DELETEONCLOSE) {
     *pMode = 0600;
-  } else if (flags & 0x00000040) {
-
+  } else if (flags & SQLITE_OPEN_URI) {
     const char *z = sqlite3_uri_parameter(zPath, "modeof");
     if (z) {
       rc = getFileMode(z, pMode, pUid, pGid);
@@ -143,10 +143,8 @@ static int findCreateFileMode(const char *zPath, int flags, mode_t *pMode, uid_t
   return rc;
 }
 
-
 int sqlite3OsOpen(sqlite3_vfs *pVfs, const char *zPath, sqlite3_file *pFile, int flags, int *pFlagsOut) {
   int rc;
-  ;
 
   rc = pVfs->xOpen(pVfs, zPath, pFile, flags & 0x1087f7f, pFlagsOut);
 
@@ -154,29 +152,33 @@ int sqlite3OsOpen(sqlite3_vfs *pVfs, const char *zPath, sqlite3_file *pFile, int
 }
 
 int sqlite3OsDelete(sqlite3_vfs *pVfs, const char *zPath, int dirSync) {
-  ;
-
-  return pVfs->xDelete != 0 ? pVfs->xDelete(pVfs, zPath, dirSync) : 0;
+  return pVfs->xDelete != 0 ? pVfs->xDelete(pVfs, zPath, dirSync) : SQLITE_OK;
 }
 
 int sqlite3OsAccess(sqlite3_vfs *pVfs, const char *zPath, int flags, int *pResOut) {
-  ;
   return pVfs->xAccess(pVfs, zPath, flags, pResOut);
 }
 
 int sqlite3OsFullPathname(sqlite3_vfs *pVfs, const char *zPath, int nPathOut, char *zPathOut) {
-  ;
   zPathOut[0] = 0;
   return pVfs->xFullPathname(pVfs, zPath, nPathOut, zPathOut);
 }
 
-void *sqlite3OsDlOpen(sqlite3_vfs *pVfs, const char *zPath) { return pVfs->xDlOpen(pVfs, zPath); }
+void *sqlite3OsDlOpen(sqlite3_vfs *pVfs, const char *zPath) {
+  return pVfs->xDlOpen(pVfs, zPath);
+}
 
-void sqlite3OsDlError(sqlite3_vfs *pVfs, int nByte, char *zBufOut) { pVfs->xDlError(pVfs, nByte, zBufOut); }
+void sqlite3OsDlError(sqlite3_vfs *pVfs, int nByte, char *zBufOut) {
+  pVfs->xDlError(pVfs, nByte, zBufOut);
+}
 
-void (*sqlite3OsDlSym(sqlite3_vfs *pVfs, void *pHdle, const char *zSym))(void) { return pVfs->xDlSym(pVfs, pHdle, zSym); }
+void (*sqlite3OsDlSym(sqlite3_vfs *pVfs, void *pHdle, const char *zSym))(void) {
+  return pVfs->xDlSym(pVfs, pHdle, zSym);
+}
 
-void sqlite3OsDlClose(sqlite3_vfs *pVfs, void *pHandle) { pVfs->xDlClose(pVfs, pHandle); }
+void sqlite3OsDlClose(sqlite3_vfs *pVfs, void *pHandle) {
+  pVfs->xDlClose(pVfs, pHandle);
+}
 
 int sqlite3OsRandomness(sqlite3_vfs *pVfs, int nByte, char *zBufOut) {
   if (sqlite3Config.iPrngSeed) {
@@ -184,15 +186,19 @@ int sqlite3OsRandomness(sqlite3_vfs *pVfs, int nByte, char *zBufOut) {
     if ((nByte > (signed)sizeof(unsigned)))
       nByte = sizeof(unsigned int);
     memcpy(zBufOut, &sqlite3Config.iPrngSeed, nByte);
-    return 0;
+    return SQLITE_OK;
   } else {
     return pVfs->xRandomness(pVfs, nByte, zBufOut);
   }
 }
 
-int sqlite3OsSleep(sqlite3_vfs *pVfs, int nMicro) { return pVfs->xSleep(pVfs, nMicro); }
+int sqlite3OsSleep(sqlite3_vfs *pVfs, int nMicro) {
+  return pVfs->xSleep(pVfs, nMicro);
+}
 
-int sqlite3OsGetLastError(sqlite3_vfs *pVfs) { return pVfs->xGetLastError ? pVfs->xGetLastError(pVfs, 0, 0) : 0; }
+int sqlite3OsGetLastError(sqlite3_vfs *pVfs) {
+  return pVfs->xGetLastError ? pVfs->xGetLastError(pVfs, 0, 0) : 0;
+}
 
 int sqlite3OsCurrentTimeInt64(sqlite3_vfs *pVfs, sqlite3_int64 *pTimeOut) {
   int rc;
@@ -213,7 +219,7 @@ int sqlite3OsOpenMalloc(sqlite3_vfs *pVfs, const char *zFile, sqlite3_file **ppF
   pFile = (sqlite3_file *)sqlite3MallocZero(pVfs->szOsFile);
   if (pFile) {
     rc = sqlite3OsOpen(pVfs, zFile, pFile, flags, pOutFlags);
-    if (rc != 0) {
+    if (rc != SQLITE_OK) {
       sqlite3_free(pFile);
       *ppFile = 0;
     } else {
@@ -238,7 +244,7 @@ sqlite3_vfs *sqlite3_vfs_find(const char *zVfs) {
   if (rc)
     return 0;
 
-  mutex = sqlite3MutexAlloc(2);
+  mutex = sqlite3MutexAlloc(SQLITE_MUTEX_STATIC_MAIN);
 
   sqlite3_mutex_enter(mutex);
   for (pVfs = vfsList; pVfs; pVfs = pVfs->pNext) {
@@ -252,9 +258,7 @@ sqlite3_vfs *sqlite3_vfs_find(const char *zVfs) {
 }
 
 void vfsUnlink(sqlite3_vfs *pVfs) {
-
   if (pVfs == 0) {
-
   } else if (vfsList == pVfs) {
     vfsList = pVfs->pNext;
   } else if (vfsList) {
@@ -275,7 +279,7 @@ int sqlite3_vfs_register(sqlite3_vfs *pVfs, int makeDflt) {
   if (rc)
     return rc;
 
-  mutex = sqlite3MutexAlloc(2);
+  mutex = sqlite3MutexAlloc(SQLITE_MUTEX_STATIC_MAIN);
   sqlite3_mutex_enter(mutex);
   vfsUnlink(pVfs);
   if (makeDflt || vfsList == 0) {
@@ -287,7 +291,7 @@ int sqlite3_vfs_register(sqlite3_vfs *pVfs, int makeDflt) {
   }
 
   sqlite3_mutex_leave(mutex);
-  return 0;
+  return SQLITE_OK;
 }
 
 int sqlite3_vfs_unregister(sqlite3_vfs *pVfs) {
@@ -297,34 +301,32 @@ int sqlite3_vfs_unregister(sqlite3_vfs *pVfs) {
   if (rc)
     return rc;
 
-  mutex = sqlite3MutexAlloc(2);
+  mutex = sqlite3MutexAlloc(SQLITE_MUTEX_STATIC_MAIN);
   sqlite3_mutex_enter(mutex);
   vfsUnlink(pVfs);
   sqlite3_mutex_leave(mutex);
-  return 0;
+  return SQLITE_OK;
 }
 
 int unixSetSystemCall(sqlite3_vfs *pNotUsed, const char *zName, sqlite3_syscall_ptr pNewFunc) {
   unsigned int i;
-  int rc = 12;
+  int rc = SQLITE_NOTFOUND;
 
   (void)(pNotUsed);
   if (zName == 0) {
-
-    rc = 0;
+    rc = SQLITE_OK;
     for (i = 0; i < sizeof(aSyscall) / sizeof(aSyscall[SQLITE_SYSCALL_OPEN]); i++) {
       if (aSyscall[i].pDefault) {
         aSyscall[i].pCurrent = aSyscall[i].pDefault;
       }
     }
   } else {
-
     for (i = 0; i < sizeof(aSyscall) / sizeof(aSyscall[SQLITE_SYSCALL_OPEN]); i++) {
       if (strcmp(zName, aSyscall[i].zName) == 0) {
         if (aSyscall[i].pDefault == 0) {
           aSyscall[i].pDefault = aSyscall[i].pCurrent;
         }
-        rc = 0;
+        rc = SQLITE_OK;
         if (pNewFunc == 0)
           pNewFunc = aSyscall[i].pDefault;
         aSyscall[i].pCurrent = pNewFunc;
@@ -368,7 +370,6 @@ int fillInUnixFile(sqlite3_vfs *pVfs, int h, sqlite3_file *pId, const char *zFil
   unixFile *pNew = (unixFile *)pId;
   int rc = 0;
 
-  ;
   pNew->h = h;
   pNew->pVfs = pVfs;
   pNew->zPath = zFilename;
@@ -389,13 +390,10 @@ int fillInUnixFile(sqlite3_vfs *pVfs, int h, sqlite3_file *pId, const char *zFil
     pLockingStyle = (**(finder_type *)pVfs->pAppData)(zFilename, pNew);
   }
 
-  if (pLockingStyle == &posixIoMethods
-
-  ) {
+  if (pLockingStyle == &posixIoMethods) {
     unixEnterMutex();
     rc = findInodeInfo(pNew, &pNew->pInode);
-    if (rc != 0) {
-
+    if (rc != SQLITE_OK) {
       robust_close(pNew, h, 46355);
       h = -1;
     }
@@ -403,13 +401,9 @@ int fillInUnixFile(sqlite3_vfs *pVfs, int h, sqlite3_file *pId, const char *zFil
   }
 
   else if (pLockingStyle == &dotlockIoMethods) {
-
     char *zLockFile;
     int nFilename;
 
-    ((void)(0))
-
-        ;
     nFilename = (int)strlen(zFilename) + 6;
     zLockFile = (char *)sqlite3_malloc64(nFilename);
     if (zLockFile == 0) {
@@ -430,7 +424,6 @@ int fillInUnixFile(sqlite3_vfs *pVfs, int h, sqlite3_file *pId, const char *zFil
       robust_close(pNew, h, 46447);
   } else {
     pId->pMethods = pLockingStyle;
-    ;
     verifyDbFile(pNew);
   }
   return rc;
@@ -442,16 +435,17 @@ int unixOpen(sqlite3_vfs *pVfs, const char *zPath, sqlite3_file *pFile, int flag
   int openFlags = 0;
   int eType = flags & 0x0FFF00;
   int noLock;
-  int rc = 0;
+  int rc = SQLITE_OK;
   int ctrlFlags = 0;
 
-  int isExclusive = (flags & 0x00000010);
-  int isDelete = (flags & 0x00000008);
-  int isCreate = (flags & 0x00000004);
-  int isReadonly = (flags & 0x00000001);
-  int isReadWrite = (flags & 0x00000002);
+  int isExclusive = (flags & SQLITE_OPEN_EXCLUSIVE);
+  int isDelete = (flags & SQLITE_OPEN_DELETEONCLOSE);
+  int isCreate = (flags & SQLITE_OPEN_CREATE);
+  int isReadonly = (flags & SQLITE_OPEN_READONLY);
+  int isReadWrite = (flags & SQLITE_OPEN_READWRITE);
 
-  int isNewJrnl = (isCreate && (eType == 0x00004000 || eType == 0x00000800 || eType == 0x00080000));
+  int isNewJrnl = (isCreate && (eType == SQLITE_OPEN_SUPER_JOURNAL || eType == SQLITE_OPEN_MAIN_JOURNAL ||
+                                eType == SQLITE_OPEN_WAL));
 
   char zTmpname[512 + 2];
   const char *zName = zPath;
@@ -462,7 +456,7 @@ int unixOpen(sqlite3_vfs *pVfs, const char *zPath, sqlite3_file *pFile, int flag
   }
   memset(p, 0, sizeof(unixFile));
 
-  if (eType == 0x00000100) {
+  if (eType == SQLITE_OPEN_MAIN_DB) {
     UnixUnusedFd *pUnused;
     pUnused = findReusableFd(zName, flags);
     if (pUnused) {
@@ -475,129 +469,44 @@ int unixOpen(sqlite3_vfs *pVfs, const char *zPath, sqlite3_file *pFile, int flag
     }
     p->pPreallocatedUnused = pUnused;
 
-    ((void)(0))
-
-        ;
-
   } else if (!zName) {
-
-    ((void)(0))
-
-        ;
     rc = unixGetTempname(pVfs->mxPathname, zTmpname);
-    if (rc != 0) {
+    if (rc != SQLITE_OK) {
       return rc;
     }
     zName = zTmpname;
-
-    ((void)(0))
-
-        ;
   }
 
   if (isReadonly)
-    openFlags |=
-
-        00
-
-        ;
+    openFlags |= 00;
   if (isReadWrite)
-    openFlags |=
-
-        02
-
-        ;
+    openFlags |= 02;
   if (isCreate)
-    openFlags |=
-
-        0100
-
-        ;
+    openFlags |= 0100;
   if (isExclusive)
-    openFlags |= (
-
-        0200
-
-        |
-
-        0400000
-
-    );
-  openFlags |= (
-
-      0
-
-      | 0 |
-
-      0400000
-
-  );
+    openFlags |= (0200 | 0400000);
+  openFlags |= (0 | 0 | 0400000);
 
   if (fd < 0) {
     mode_t openMode;
     uid_t uid;
     gid_t gid;
     rc = findCreateFileMode(zName, flags, &openMode, &uid, &gid);
-    if (rc != 0) {
-
-      ((void)(0))
-
-          ;
-
-      ((void)(0))
-
-          ;
+    if (rc != SQLITE_OK) {
       return rc;
     }
     fd = robust_open(zName, openFlags, openMode);
-    ;
 
-    ((void)(0))
-
-        ;
     if (fd < 0) {
-      if (isNewJrnl &&
-
-          (*__errno_location())
-
-              ==
-
-              13
-
-          && ((int (*)(const char *, int))aSyscall[SQLITE_SYSCALL_ACCESS].pCurrent)(zName,
-
-                                                                0
-
-                                                                )) {
-
+      if (isNewJrnl && (*__errno_location()) == 13 &&
+          ((int (*)(const char *, int))aSyscall[SQLITE_SYSCALL_ACCESS].pCurrent)(zName, 0)) {
         rc = (8 | (6 << 8));
-      } else if (
-
-          (*__errno_location())
-
-              !=
-
-              21
-
-          && isReadWrite) {
-
+      } else if ((*__errno_location()) != 21 && isReadWrite) {
         UnixUnusedFd *pReadonly = 0;
-        flags &= ~(0x00000002 | 0x00000004);
-        openFlags &= ~(
-
-            02
-
-            |
-
-            0100
-
-        );
-        flags |= 0x00000001;
-        openFlags |=
-
-            00
-
-            ;
+        flags &= ~(SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE);
+        openFlags &= ~(02 | 0100);
+        flags |= SQLITE_OPEN_READONLY;
+        openFlags |= 00;
         isReadonly = 1;
         pReadonly = findReusableFd(zName, flags);
         if (pReadonly) {
@@ -610,12 +519,12 @@ int unixOpen(sqlite3_vfs *pVfs, const char *zPath, sqlite3_file *pFile, int flag
     }
     if (fd < 0) {
       int rc2 = unixLogErrorAtLine(sqlite3CantopenError(46904), "open", zName, 46904);
-      if (rc == 0)
+      if (rc == SQLITE_OK)
         rc = rc2;
       goto open_finished;
     }
 
-    if (openMode && (flags & (0x00080000 | 0x00000800)) != 0) {
+    if (openMode && (flags & (SQLITE_OPEN_WAL | SQLITE_OPEN_MAIN_JOURNAL)) != 0) {
       robustFchown(fd, uid, gid);
     }
   }
@@ -626,11 +535,10 @@ int unixOpen(sqlite3_vfs *pVfs, const char *zPath, sqlite3_file *pFile, int flag
 
   if (p->pPreallocatedUnused) {
     p->pPreallocatedUnused->fd = fd;
-    p->pPreallocatedUnused->flags = flags & (0x00000001 | 0x00000002);
+    p->pPreallocatedUnused->flags = flags & (SQLITE_OPEN_READONLY | SQLITE_OPEN_READWRITE);
   }
 
   if (isDelete) {
-
     ((int (*)(const char *))aSyscall[SQLITE_SYSCALL_UNLINK].pCurrent)(zName);
   }
 
@@ -638,37 +546,28 @@ int unixOpen(sqlite3_vfs *pVfs, const char *zPath, sqlite3_file *pFile, int flag
     ctrlFlags |= 0x20;
   if (isReadonly)
     ctrlFlags |= 0x02;
-  noLock = eType != 0x00000100;
+  noLock = eType != SQLITE_OPEN_MAIN_DB;
   if (noLock)
     ctrlFlags |= 0x80;
   if (isNewJrnl)
     ctrlFlags |= 0x08;
-  if (flags & 0x00000040)
+  if (flags & SQLITE_OPEN_URI)
     ctrlFlags |= 0x40;
 
   rc = fillInUnixFile(pVfs, fd, pFile, zPath, ctrlFlags);
 
 open_finished:
-  if (rc != 0) {
+  if (rc != SQLITE_OK) {
     sqlite3_free(p->pPreallocatedUnused);
   }
   return rc;
 }
 
 int unixDelete(sqlite3_vfs *NotUsed, const char *zPath, int dirSync) {
-  int rc = 0;
+  int rc = SQLITE_OK;
   (void)(NotUsed);
-  ;
   if (((int (*)(const char *))aSyscall[SQLITE_SYSCALL_UNLINK].pCurrent)(zPath) == (-1)) {
-    if (
-
-        (*__errno_location())
-
-        ==
-
-        2
-
-    ) {
+    if ((*__errno_location()) == 2) {
       rc = (10 | (23 << 8));
     } else {
       rc = unixLogErrorAtLine((10 | (10 << 8)), "unlink", zPath, 47046);
@@ -679,17 +578,13 @@ int unixDelete(sqlite3_vfs *NotUsed, const char *zPath, int dirSync) {
   if ((dirSync & 1) != 0) {
     int fd;
     rc = ((int (*)(const char *, int *))aSyscall[SQLITE_SYSCALL_OPENDIRECTORY].pCurrent)(zPath, &fd);
-    if (rc == 0) {
+    if (rc == SQLITE_OK) {
       if (full_fsync(fd, 0, 0)) {
         rc = unixLogErrorAtLine((10 | (5 << 8)), "fsync", zPath, 47056);
       }
       robust_close(0, fd, 47058);
     } else {
-
-      ((void)(0))
-
-          ;
-      rc = 0;
+      rc = SQLITE_OK;
     }
   }
 
@@ -698,32 +593,15 @@ int unixDelete(sqlite3_vfs *NotUsed, const char *zPath, int dirSync) {
 
 int unixAccess(sqlite3_vfs *NotUsed, const char *zPath, int flags, int *pResOut) {
   (void)(NotUsed);
-  ;
 
-  if (flags == 0) {
+  if (flags == SQLITE_ACCESS_EXISTS) {
     struct stat buf;
-    *pResOut = 0 == ((int (*)(const char *, struct stat *))aSyscall[SQLITE_SYSCALL_STAT].pCurrent)(zPath, &buf) && (!
-
-                                                                                                  ((((
-
-                                                                                                        buf.st_mode
-
-                                                                                                        )) &
-                                                                                                    0170000) == (0100000))
-
-                                                                                                  || buf.st_size > 0);
+    *pResOut = 0 == ((int (*)(const char *, struct stat *))aSyscall[SQLITE_SYSCALL_STAT].pCurrent)(zPath, &buf) &&
+               (!((((buf.st_mode)) & 0170000) == (0100000)) || buf.st_size > 0);
   } else {
-    *pResOut = ((int (*)(const char *, int))aSyscall[SQLITE_SYSCALL_ACCESS].pCurrent)(zPath,
-
-                                                                  2
-
-                                                                      |
-
-                                                                      4
-
-                                                                  ) == 0;
+    *pResOut = ((int (*)(const char *, int))aSyscall[SQLITE_SYSCALL_ACCESS].pCurrent)(zPath, 2 | 4) == 0;
   }
-  return 0;
+  return SQLITE_OK;
 }
 
 int unixFullPathname(sqlite3_vfs *pVfs, const char *zPath, int nOut, char *zOut) {
@@ -735,11 +613,7 @@ int unixFullPathname(sqlite3_vfs *pVfs, const char *zPath, int nOut, char *zOut)
   path.nOut = nOut;
   path.zOut = zOut;
   if (zPath[0] != '/') {
-    char zPwd[
-
-        4096
-
-        + 2];
+    char zPwd[4096 + 2];
     if (((char *(*)(char *, size_t))aSyscall[SQLITE_SYSCALL_GETCWD].pCurrent)(zPwd, sizeof(zPwd) - 2) == 0) {
       return unixLogErrorAtLine(sqlite3CantopenError(47221), "getcwd", zPath, 47221);
     }
@@ -751,20 +625,12 @@ int unixFullPathname(sqlite3_vfs *pVfs, const char *zPath, int nOut, char *zOut)
     return sqlite3CantopenError(47227);
   if (path.nSymlink)
     return (0 | (2 << 8));
-  return 0;
+  return SQLITE_OK;
 }
 
 void *unixDlOpen(sqlite3_vfs *NotUsed, const char *zFilename) {
   (void)(NotUsed);
-  return dlopen(zFilename,
-
-                0x00002
-
-                    |
-
-                    0x00100
-
-  );
+  return dlopen(zFilename, 0x00002 | 0x00100);
 }
 
 void unixDlError(sqlite3_vfs *NotUsed, int nBuf, char *zBufOut) {
@@ -779,7 +645,6 @@ void unixDlError(sqlite3_vfs *NotUsed, int nBuf, char *zBufOut) {
 }
 
 void (*unixDlSym(sqlite3_vfs *NotUsed, void *p, const char *zSym))(void) {
-
   void (*(*x)(void *, const char *))(void);
   (void)(NotUsed);
   x = (void (*(*)(void *, const char *))(void))dlsym;
@@ -799,34 +664,18 @@ int unixRandomness(sqlite3_vfs *NotUsed, int nBuf, char *zBuf) {
 
   {
     int fd, got;
-    fd = robust_open("/dev/urandom",
-
-                     00
-
-                     ,
-                     0);
+    fd = robust_open("/dev/urandom", 00, 0);
     if (fd < 0) {
       time_t t;
       time(&t);
       memcpy(zBuf, &t, sizeof(t));
       memcpy(&zBuf[sizeof(t)], &randomnessPid, sizeof(randomnessPid));
 
-      ((void)(0))
-
-          ;
       nBuf = sizeof(t) + sizeof(randomnessPid);
     } else {
       do {
         got = ((ssize_t (*)(int, void *, size_t))aSyscall[SQLITE_SYSCALL_READ].pCurrent)(fd, zBuf, nBuf);
-      } while (got < 0 &&
-
-               (*__errno_location())
-
-                   ==
-
-                   4
-
-      );
+      } while (got < 0 && (*__errno_location()) == 4);
       robust_close(0, fd, 47328);
     }
   }
@@ -835,16 +684,11 @@ int unixRandomness(sqlite3_vfs *NotUsed, int nBuf, char *zBuf) {
 }
 
 int unixSleep(sqlite3_vfs *NotUsed, int microseconds) {
-
   struct timespec sp;
   sp.tv_sec = microseconds / 1000000;
   sp.tv_nsec = (microseconds % 1000000) * 1000;
 
-  nanosleep(&sp,
-
-            ((void *)0)
-
-  );
+  nanosleep(&sp, ((void *)0));
 
   (void)(NotUsed);
   return microseconds;
@@ -852,7 +696,7 @@ int unixSleep(sqlite3_vfs *NotUsed, int microseconds) {
 
 int unixCurrentTimeInt64(sqlite3_vfs *NotUsed, sqlite3_int64 *piNow) {
   static const sqlite3_int64 unixEpoch = 24405875 * (sqlite3_int64)8640000;
-  int rc = 0;
+  int rc = SQLITE_OK;
 
   struct timeval sNow;
   (void)gettimeofday(&sNow, 0);
@@ -875,15 +719,32 @@ int unixGetLastError(sqlite3_vfs *NotUsed, int NotUsed2, char *NotUsed3) {
   (void)(NotUsed);
   (void)(NotUsed2);
   (void)(NotUsed3);
-  return
-
-      (*__errno_location())
-
-          ;
+  return (*__errno_location());
 }
 
 sqlite3_vfs memdb_vfs = {
-    2, 0, 1024, 0, "memdb", 0, memdbOpen, 0, memdbAccess, memdbFullPathname, memdbDlOpen, memdbDlError, memdbDlSym, memdbDlClose, memdbRandomness, memdbSleep, 0, memdbGetLastError, memdbCurrentTimeInt64, 0, 0, 0,
+    2,
+    0,
+    1024,
+    0,
+    "memdb",
+    0,
+    memdbOpen,
+    0,
+    memdbAccess,
+    memdbFullPathname,
+    memdbDlOpen,
+    memdbDlError,
+    memdbDlSym,
+    memdbDlClose,
+    memdbRandomness,
+    memdbSleep,
+    0,
+    memdbGetLastError,
+    memdbCurrentTimeInt64,
+    0,
+    0,
+    0,
 };
 
 int memdbOpen(sqlite3_vfs *pVfs, const char *zName, sqlite3_file *pFd, int flags, int *pOutFlags) {
@@ -897,7 +758,7 @@ int memdbOpen(sqlite3_vfs *pVfs, const char *zName, sqlite3_file *pFd, int flags
   if (szName > 1 && (zName[0] == '/' || zName[0] == '\\')) {
     int i;
 
-    sqlite3_mutex *pVfsMutex = sqlite3MutexAlloc(11);
+    sqlite3_mutex *pVfsMutex = sqlite3MutexAlloc(SQLITE_MUTEX_STATIC_VFS1);
 
     sqlite3_mutex_enter(pVfsMutex);
     for (i = 0; i < memdb_g.nMemStore; i++) {
@@ -911,27 +772,27 @@ int memdbOpen(sqlite3_vfs *pVfs, const char *zName, sqlite3_file *pFd, int flags
       p = sqlite3Malloc(sizeof(*p) + (i64)szName + 3);
       if (p == 0) {
         sqlite3_mutex_leave(pVfsMutex);
-        return 7;
+        return SQLITE_NOMEM;
       }
       apNew = sqlite3Realloc(memdb_g.apMemStore, sizeof(apNew[0]) * (1 + (i64)memdb_g.nMemStore));
       if (apNew == 0) {
         sqlite3_free(p);
         sqlite3_mutex_leave(pVfsMutex);
-        return 7;
+        return SQLITE_NOMEM;
       }
       apNew[memdb_g.nMemStore++] = p;
       memdb_g.apMemStore = apNew;
       memset(p, 0, sizeof(*p));
-      p->mFlags = 2 | 1;
+      p->mFlags = SQLITE_DESERIALIZE_RESIZEABLE | SQLITE_DESERIALIZE_FREEONCLOSE;
       p->szMax = sqlite3Config.mxMemdbSize;
       p->zFName = (char *)&p[1];
       memcpy(p->zFName, zName, szName + 1);
-      p->pMutex = sqlite3_mutex_alloc(0);
+      p->pMutex = sqlite3_mutex_alloc(SQLITE_MUTEX_FAST);
       if (p->pMutex == 0) {
         memdb_g.nMemStore--;
         sqlite3_free(p);
         sqlite3_mutex_leave(pVfsMutex);
-        return 7;
+        return SQLITE_NOMEM;
       }
       p->nRef = 1;
       memdbEnter(p);
@@ -943,19 +804,19 @@ int memdbOpen(sqlite3_vfs *pVfs, const char *zName, sqlite3_file *pFd, int flags
   } else {
     p = sqlite3Malloc(sizeof(*p));
     if (p == 0) {
-      return 7;
+      return SQLITE_NOMEM;
     }
     memset(p, 0, sizeof(*p));
-    p->mFlags = 2 | 1;
+    p->mFlags = SQLITE_DESERIALIZE_RESIZEABLE | SQLITE_DESERIALIZE_FREEONCLOSE;
     p->szMax = sqlite3Config.mxMemdbSize;
   }
   pFile->pStore = p;
   if (pOutFlags != 0) {
-    *pOutFlags = flags | 0x00000080;
+    *pOutFlags = flags | SQLITE_OPEN_MEMORY;
   }
   pFd->pMethods = &memdb_io_methods;
   memdbLeave(p);
-  return 0;
+  return SQLITE_OK;
 }
 
 int memdbAccess(sqlite3_vfs *pVfs, const char *zPath, int flags, int *pResOut) {
@@ -963,37 +824,56 @@ int memdbAccess(sqlite3_vfs *pVfs, const char *zPath, int flags, int *pResOut) {
   (void)(zPath);
   (void)(flags);
   *pResOut = 0;
-  return 0;
+  return SQLITE_OK;
 }
 
 int memdbFullPathname(sqlite3_vfs *pVfs, const char *zPath, int nOut, char *zOut) {
   (void)(pVfs);
   sqlite3_snprintf(nOut, zOut, "%s", zPath);
-  return 0;
+  return SQLITE_OK;
 }
 
-void *memdbDlOpen(sqlite3_vfs *pVfs, const char *zPath) { return ((sqlite3_vfs *)((pVfs)->pAppData))->xDlOpen(((sqlite3_vfs *)((pVfs)->pAppData)), zPath); }
+void *memdbDlOpen(sqlite3_vfs *pVfs, const char *zPath) {
+  return ((sqlite3_vfs *)((pVfs)->pAppData))->xDlOpen(((sqlite3_vfs *)((pVfs)->pAppData)), zPath);
+}
 
-void memdbDlError(sqlite3_vfs *pVfs, int nByte, char *zErrMsg) { ((sqlite3_vfs *)((pVfs)->pAppData))->xDlError(((sqlite3_vfs *)((pVfs)->pAppData)), nByte, zErrMsg); }
+void memdbDlError(sqlite3_vfs *pVfs, int nByte, char *zErrMsg) {
+  ((sqlite3_vfs *)((pVfs)->pAppData))->xDlError(((sqlite3_vfs *)((pVfs)->pAppData)), nByte, zErrMsg);
+}
 
-void (*memdbDlSym(sqlite3_vfs *pVfs, void *p, const char *zSym))(void) { return ((sqlite3_vfs *)((pVfs)->pAppData))->xDlSym(((sqlite3_vfs *)((pVfs)->pAppData)), p, zSym); }
+void (*memdbDlSym(sqlite3_vfs *pVfs, void *p, const char *zSym))(void) {
+  return ((sqlite3_vfs *)((pVfs)->pAppData))->xDlSym(((sqlite3_vfs *)((pVfs)->pAppData)), p, zSym);
+}
 
-void memdbDlClose(sqlite3_vfs *pVfs, void *pHandle) { ((sqlite3_vfs *)((pVfs)->pAppData))->xDlClose(((sqlite3_vfs *)((pVfs)->pAppData)), pHandle); }
+void memdbDlClose(sqlite3_vfs *pVfs, void *pHandle) {
+  ((sqlite3_vfs *)((pVfs)->pAppData))->xDlClose(((sqlite3_vfs *)((pVfs)->pAppData)), pHandle);
+}
 
-int memdbRandomness(sqlite3_vfs *pVfs, int nByte, char *zBufOut) { return ((sqlite3_vfs *)((pVfs)->pAppData))->xRandomness(((sqlite3_vfs *)((pVfs)->pAppData)), nByte, zBufOut); }
+int memdbRandomness(sqlite3_vfs *pVfs, int nByte, char *zBufOut) {
+  return ((sqlite3_vfs *)((pVfs)->pAppData))->xRandomness(((sqlite3_vfs *)((pVfs)->pAppData)), nByte, zBufOut);
+}
 
-int memdbSleep(sqlite3_vfs *pVfs, int nMicro) { return ((sqlite3_vfs *)((pVfs)->pAppData))->xSleep(((sqlite3_vfs *)((pVfs)->pAppData)), nMicro); }
+int memdbSleep(sqlite3_vfs *pVfs, int nMicro) {
+  return ((sqlite3_vfs *)((pVfs)->pAppData))->xSleep(((sqlite3_vfs *)((pVfs)->pAppData)), nMicro);
+}
 
-int memdbGetLastError(sqlite3_vfs *pVfs, int a, char *b) { return ((sqlite3_vfs *)((pVfs)->pAppData))->xGetLastError(((sqlite3_vfs *)((pVfs)->pAppData)), a, b); }
+int memdbGetLastError(sqlite3_vfs *pVfs, int a, char *b) {
+  return ((sqlite3_vfs *)((pVfs)->pAppData))->xGetLastError(((sqlite3_vfs *)((pVfs)->pAppData)), a, b);
+}
 
-int memdbCurrentTimeInt64(sqlite3_vfs *pVfs, sqlite3_int64 *p) { return ((sqlite3_vfs *)((pVfs)->pAppData))->xCurrentTimeInt64(((sqlite3_vfs *)((pVfs)->pAppData)), p); }
+int memdbCurrentTimeInt64(sqlite3_vfs *pVfs, sqlite3_int64 *p) {
+  return ((sqlite3_vfs *)((pVfs)->pAppData))->xCurrentTimeInt64(((sqlite3_vfs *)((pVfs)->pAppData)), p);
+}
 
-int sqlite3IsMemdb(const sqlite3_vfs *pVfs) { return pVfs == &memdb_vfs; }
+int sqlite3IsMemdb(const sqlite3_vfs *pVfs) {
+  return pVfs == &memdb_vfs;
+}
 
-int sqlite3PagerOpen(sqlite3_vfs *pVfs, Pager **ppPager, const char *zFilename, int nExtra, int flags, int vfsFlags, void (*xReinit)(DbPage *)) {
+int sqlite3PagerOpen(sqlite3_vfs *pVfs, Pager **ppPager, const char *zFilename, int nExtra, int flags, int vfsFlags,
+                     void (*xReinit)(DbPage *)) {
   u8 *pPtr;
   Pager *pPager = 0;
-  int rc = 0;
+  int rc = SQLITE_OK;
   int tempFile = 0;
   int memDb = 0;
   int memJM = 0;
@@ -1031,12 +911,12 @@ int sqlite3PagerOpen(sqlite3_vfs *pVfs, Pager **ppPager, const char *zFilename, 
     }
     zPathname[0] = 0;
     rc = sqlite3OsFullPathname(pVfs, zFilename, nPathname, zPathname);
-    if (rc != 0) {
+    if (rc != SQLITE_OK) {
       if (rc == (0 | (2 << 8))) {
-        if (vfsFlags & 0x01000000) {
+        if (vfsFlags & SQLITE_OPEN_NOFOLLOW) {
           rc = (14 | (6 << 8));
         } else {
-          rc = 0;
+          rc = SQLITE_OK;
         }
       }
     }
@@ -1048,24 +928,18 @@ int sqlite3PagerOpen(sqlite3_vfs *pVfs, Pager **ppPager, const char *zFilename, 
     }
     nUriByte = (int)(&z[1] - zUri);
 
-    ((void)(0))
-
-        ;
-    if (rc == 0 && nPathname + 8 > pVfs->mxPathname) {
-
+    if (rc == SQLITE_OK && nPathname + 8 > pVfs->mxPathname) {
       rc = sqlite3CantopenError(64498);
     }
-    if (rc != 0) {
+    if (rc != SQLITE_OK) {
       sqlite3DbFree(0, zPathname);
       return rc;
     }
   }
 
-  pPtr = (u8 *)sqlite3MallocZero((((sizeof(*pPager)) + 7) & ~7) + (((pcacheSize) + 7) & ~7) + (((pVfs->szOsFile) + 7) & ~7) + (u64)journalFileSize * 2 + 8 + 4 + (u64)nPathname + 1 + (u64)nUriByte + (u64)nPathname + 8 + 1 +
-
-                                 (u64)nPathname + 4 + 1 +
-
-                                 3);
+  pPtr = (u8 *)sqlite3MallocZero((((sizeof(*pPager)) + 7) & ~7) + (((pcacheSize) + 7) & ~7) +
+                                 (((pVfs->szOsFile) + 7) & ~7) + (u64)journalFileSize * 2 + 8 + 4 + (u64)nPathname + 1 +
+                                 (u64)nUriByte + (u64)nPathname + 8 + 1 + (u64)nPathname + 4 + 1 + 3);
 
   if (!pPtr) {
     sqlite3DbFree(0, zPathname);
@@ -1131,20 +1005,14 @@ int sqlite3PagerOpen(sqlite3_vfs *pVfs, Pager **ppPager, const char *zFilename, 
     int fout = 0;
     rc = sqlite3OsOpen(pVfs, pPager->zFilename, pPager->fd, vfsFlags, &fout);
 
-    ((void)(0))
+    pPager->memVfs = memJM = (fout & SQLITE_OPEN_MEMORY) != 0;
+    readOnly = (fout & SQLITE_OPEN_READONLY) != 0;
 
-        ;
-    pPager->memVfs = memJM = (fout & 0x00000080) != 0;
-    readOnly = (fout & 0x00000001) != 0;
-
-    if (rc == 0) {
+    if (rc == SQLITE_OK) {
       int iDc = sqlite3OsDeviceCharacteristics(pPager->fd);
       if (!readOnly) {
         setSectorSize(pPager);
 
-        ((void)(0))
-
-            ;
         if (szPageDflt < pPager->sectorSize) {
           if (pPager->sectorSize > 8192) {
             szPageDflt = 8192;
@@ -1154,47 +1022,36 @@ int sqlite3PagerOpen(sqlite3_vfs *pVfs, Pager **ppPager, const char *zFilename, 
         }
       }
       pPager->noLock = sqlite3_uri_boolean(pPager->zFilename, "nolock", 0);
-      if ((iDc & 0x00002000) != 0 || sqlite3_uri_boolean(pPager->zFilename, "immutable", 0)) {
-        vfsFlags |= 0x00000001;
+      if ((iDc & SQLITE_IOCAP_IMMUTABLE) != 0 || sqlite3_uri_boolean(pPager->zFilename, "immutable", 0)) {
+        vfsFlags |= SQLITE_OPEN_READONLY;
         goto act_like_temp_file;
       }
     }
   } else {
-
   act_like_temp_file:
     tempFile = 1;
     pPager->eState = 1;
     pPager->eLock = 4;
     pPager->noLock = 1;
-    readOnly = (vfsFlags & 0x00000001);
+    readOnly = (vfsFlags & SQLITE_OPEN_READONLY);
   }
 
-  if (rc == 0) {
-
-    ((void)(0))
-
-        ;
+  if (rc == SQLITE_OK) {
     rc = sqlite3PagerSetPagesize(pPager, &szPageDflt, -1);
-    ;
   }
 
-  if (rc == 0) {
+  if (rc == SQLITE_OK) {
     nExtra = (((nExtra) + 7) & ~7);
 
-    ((void)(0))
-
-        ;
     rc = sqlite3PcacheOpen(szPageDflt, nExtra, !memDb, !memDb ? pagerStress : 0, (void *)pPager, pPager->pPCache);
   }
 
-  if (rc != 0) {
+  if (rc != SQLITE_OK) {
     sqlite3OsClose(pPager->fd);
     sqlite3PageFree(pPager->pTmpSpace);
     sqlite3_free(pPager);
     return rc;
   }
-
-  ;
 
   pPager->useJournal = (u8)useJournal;
 
@@ -1223,10 +1080,11 @@ int sqlite3PagerOpen(sqlite3_vfs *pVfs, Pager **ppPager, const char *zFilename, 
   setGetterMethod(pPager);
 
   *ppPager = pPager;
-  return 0;
+  return SQLITE_OK;
 }
 
-int sqlite3WalOpen(sqlite3_vfs *pVfs, sqlite3_file *pDbFd, const char *zWalName, int bNoShm, i64 mxWalSize, Wal **ppWal) {
+int sqlite3WalOpen(sqlite3_vfs *pVfs, sqlite3_file *pDbFd, const char *zWalName, int bNoShm, i64 mxWalSize,
+                   Wal **ppWal) {
   int rc;
   Wal *pRet;
   int flags;
@@ -1247,26 +1105,25 @@ int sqlite3WalOpen(sqlite3_vfs *pVfs, sqlite3_file *pDbFd, const char *zWalName,
   pRet->padToSectorBoundary = 1;
   pRet->exclusiveMode = (bNoShm ? 2 : 0);
 
-  flags = (0x00000002 | 0x00000004 | 0x00080000);
+  flags = (SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE | SQLITE_OPEN_WAL);
   rc = sqlite3OsOpen(pVfs, zWalName, pRet->pWalFd, flags, &flags);
-  if (rc == 0 && flags & 0x00000001) {
+  if (rc == SQLITE_OK && flags & SQLITE_OPEN_READONLY) {
     pRet->readOnly = 1;
   }
 
-  if (rc != 0) {
+  if (rc != SQLITE_OK) {
     walIndexClose(pRet, 0);
     sqlite3OsClose(pRet->pWalFd);
     sqlite3_free(pRet);
   } else {
     int iDC = sqlite3OsDeviceCharacteristics(pDbFd);
-    if (iDC & 0x00000400) {
+    if (iDC & SQLITE_IOCAP_SEQUENTIAL) {
       pRet->syncHeader = 0;
     }
-    if (iDC & 0x00001000) {
+    if (iDC & SQLITE_IOCAP_POWERSAFE_OVERWRITE) {
       pRet->padToSectorBoundary = 0;
     }
     *ppWal = pRet;
-    ;
   }
   return rc;
 }
@@ -1275,19 +1132,20 @@ int sqlite3BtreeOpen(sqlite3_vfs *pVfs, const char *zFilename, sqlite3 *db, Btre
   BtShared *pBt = 0;
   Btree *p;
   sqlite3_mutex *mutexOpen = 0;
-  int rc = 0;
+  int rc = SQLITE_OK;
   u8 nReserve;
   unsigned char zDbHeader[100];
 
   const int isTempDb = zFilename == 0 || zFilename[0] == 0;
 
-  const int isMemdb = (zFilename && strcmp(zFilename, ":memory:") == 0) || (isTempDb && sqlite3TempInMemory(db)) || (vfsFlags & 0x00000080) != 0;
+  const int isMemdb = (zFilename && strcmp(zFilename, ":memory:") == 0) || (isTempDb && sqlite3TempInMemory(db)) ||
+                      (vfsFlags & SQLITE_OPEN_MEMORY) != 0;
 
   if (isMemdb) {
     flags |= 2;
   }
-  if ((vfsFlags & 0x00000100) != 0 && (isMemdb || isTempDb)) {
-    vfsFlags = (vfsFlags & ~0x00000100) | 0x00000200;
+  if ((vfsFlags & SQLITE_OPEN_MAIN_DB) != 0 && (isMemdb || isTempDb)) {
+    vfsFlags = (vfsFlags & ~SQLITE_OPEN_MAIN_DB) | SQLITE_OPEN_TEMP_DB;
   }
   p = sqlite3MallocZero(sizeof(Btree));
   if (!p) {
@@ -1299,8 +1157,8 @@ int sqlite3BtreeOpen(sqlite3_vfs *pVfs, const char *zFilename, sqlite3 *db, Btre
   p->lock.pBtree = p;
   p->lock.iTable = 1;
 
-  if (isTempDb == 0 && (isMemdb == 0 || (vfsFlags & 0x00000040) != 0)) {
-    if (vfsFlags & 0x00020000) {
+  if (isTempDb == 0 && (isMemdb == 0 || (vfsFlags & SQLITE_OPEN_URI) != 0)) {
+    if (vfsFlags & SQLITE_OPEN_SHAREDCACHE) {
       int nFilename = sqlite3Strlen30(zFilename) + 1;
       int nFullPathname = pVfs->mxPathname + 1;
       char *zFullPathname = sqlite3Malloc(((nFullPathname) > (nFilename) ? (nFullPathname) : (nFilename)));
@@ -1317,7 +1175,7 @@ int sqlite3BtreeOpen(sqlite3_vfs *pVfs, const char *zFilename, sqlite3 *db, Btre
         rc = sqlite3OsFullPathname(pVfs, zFilename, nFullPathname, zFullPathname);
         if (rc) {
           if (rc == (0 | (2 << 8))) {
-            rc = 0;
+            rc = SQLITE_OK;
           } else {
             sqlite3_free(zFullPathname);
             sqlite3_free(p);
@@ -1326,16 +1184,12 @@ int sqlite3BtreeOpen(sqlite3_vfs *pVfs, const char *zFilename, sqlite3 *db, Btre
         }
       }
 
-      mutexOpen = sqlite3MutexAlloc(4);
+      mutexOpen = sqlite3MutexAlloc(SQLITE_MUTEX_STATIC_OPEN);
       sqlite3_mutex_enter(mutexOpen);
-      mutexShared = sqlite3MutexAlloc(2);
+      mutexShared = sqlite3MutexAlloc(SQLITE_MUTEX_STATIC_MAIN);
       sqlite3_mutex_enter(mutexShared);
 
       for (pBt = sqlite3SharedCacheList; pBt; pBt = pBt->pNext) {
-
-        ((void)(0))
-
-            ;
         if (0 == strcmp(zFullPathname, sqlite3PagerFilename(pBt->pPager, 0)) && sqlite3PagerVfs(pBt->pPager) == pVfs) {
           int iDb;
           for (iDb = db->nDb - 1; iDb >= 0; iDb--) {
@@ -1345,7 +1199,7 @@ int sqlite3BtreeOpen(sqlite3_vfs *pVfs, const char *zFilename, sqlite3 *db, Btre
               sqlite3_mutex_leave(mutexOpen);
               sqlite3_free(zFullPathname);
               sqlite3_free(p);
-              return 19;
+              return SQLITE_CONSTRAINT;
             }
           }
           p->pBt = pBt;
@@ -1359,27 +1213,6 @@ int sqlite3BtreeOpen(sqlite3_vfs *pVfs, const char *zFilename, sqlite3 *db, Btre
   }
 
   if (pBt == 0) {
-
-    ((void)(0))
-
-        ;
-
-    ((void)(0))
-
-        ;
-
-    ((void)(0))
-
-        ;
-
-    ((void)(0))
-
-        ;
-
-    ((void)(0))
-
-        ;
-
     memset(&zDbHeader[16], 0, 8);
 
     pBt = sqlite3MallocZero(sizeof(*pBt));
@@ -1388,11 +1221,11 @@ int sqlite3BtreeOpen(sqlite3_vfs *pVfs, const char *zFilename, sqlite3 *db, Btre
       goto btree_open_out;
     }
     rc = sqlite3PagerOpen(pVfs, &pBt->pPager, zFilename, sizeof(MemPage), flags, vfsFlags, pageReinit);
-    if (rc == 0) {
+    if (rc == SQLITE_OK) {
       sqlite3PagerSetMmapLimit(pBt->pPager, db->szMmap);
       rc = sqlite3PagerReadFileheader(pBt->pPager, sizeof(zDbHeader), zDbHeader);
     }
-    if (rc != 0) {
+    if (rc != SQLITE_OK) {
       goto btree_open_out;
     }
     pBt->openFlags = (u8)flags;
@@ -1416,7 +1249,6 @@ int sqlite3BtreeOpen(sqlite3_vfs *pVfs, const char *zFilename, sqlite3 *db, Btre
 
       nReserve = 0;
     } else {
-
       nReserve = zDbHeader[20];
       pBt->btsFlags |= 0x0002;
 
@@ -1428,16 +1260,12 @@ int sqlite3BtreeOpen(sqlite3_vfs *pVfs, const char *zFilename, sqlite3 *db, Btre
       goto btree_open_out;
     pBt->usableSize = pBt->pageSize - nReserve;
 
-    ((void)(0))
-
-        ;
-
     pBt->nRef = 1;
     if (p->sharable) {
       sqlite3_mutex *mutexShared;
-      mutexShared = sqlite3MutexAlloc(2);
+      mutexShared = sqlite3MutexAlloc(SQLITE_MUTEX_STATIC_MAIN);
       if (1 && sqlite3Config.bCoreMutex) {
-        pBt->mutex = sqlite3MutexAlloc(0);
+        pBt->mutex = sqlite3MutexAlloc(SQLITE_MUTEX_FAST);
         if (pBt->mutex == 0) {
           rc = 7;
           goto btree_open_out;
@@ -1481,7 +1309,7 @@ int sqlite3BtreeOpen(sqlite3_vfs *pVfs, const char *zFilename, sqlite3 *db, Btre
   *ppBtree = p;
 
 btree_open_out:
-  if (rc != 0) {
+  if (rc != SQLITE_OK) {
     if (pBt && pBt->pPager) {
       sqlite3PagerClose(pBt->pPager, 0);
     }
@@ -1497,14 +1325,10 @@ btree_open_out:
 
     pFile = sqlite3PagerFile(pBt->pPager);
     if (pFile->pMethods) {
-      sqlite3OsFileControlHint(pFile, 30, (void *)&pBt->db);
+      sqlite3OsFileControlHint(pFile, SQLITE_FCNTL_PDB, (void *)&pBt->db);
     }
   }
   if (mutexOpen) {
-
-    ((void)(0))
-
-        ;
     sqlite3_mutex_leave(mutexOpen);
   }
 
@@ -1523,10 +1347,6 @@ int sqlite3JournalOpen(sqlite3_vfs *pVfs, const char *zName, sqlite3_file *pJfd,
     p->nChunkSize = nSpill;
   } else {
     p->nChunkSize = 8 + 1024 - sizeof(FileChunk);
-
-    ((void)(0))
-
-        ;
   }
 
   pJfd->pMethods = (const sqlite3_io_methods *)&MemJournalMethods;
@@ -1534,7 +1354,9 @@ int sqlite3JournalOpen(sqlite3_vfs *pVfs, const char *zName, sqlite3_file *pJfd,
   p->flags = flags;
   p->zJournal = zName;
   p->pVfs = pVfs;
-  return 0;
+  return SQLITE_OK;
 }
 
-int sqlite3JournalSize(sqlite3_vfs *pVfs) { return ((pVfs->szOsFile) > ((int)sizeof(MemJournal)) ? (pVfs->szOsFile) : ((int)sizeof(MemJournal))); }
+int sqlite3JournalSize(sqlite3_vfs *pVfs) {
+  return ((pVfs->szOsFile) > ((int)sizeof(MemJournal)) ? (pVfs->szOsFile) : ((int)sizeof(MemJournal)));
+}

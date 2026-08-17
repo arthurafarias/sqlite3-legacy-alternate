@@ -3,11 +3,9 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/sqlite3_int64.h"
 #include "sqlite/sqlite3_value.h"
 #include "sqlite/u16.h"
-
   typedef struct BtreePayload BtreePayload;
 
   struct BtreePayload {

@@ -1,9 +1,6 @@
 #define _GNU_SOURCE 1
-
 #include <string.h>
-
 #include "sqlite/WhereOrSet.h"
-
 #include "sqlite/LogEst.h"
 #include "sqlite/WhereOrCost.h"
 #include "sqlite/u16.h"

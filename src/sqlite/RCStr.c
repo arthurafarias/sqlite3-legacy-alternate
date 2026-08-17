@@ -1,7 +1,5 @@
 #define _GNU_SOURCE 1
-
 #include "sqlite/RCStr.h"
-
 #include "sqlite/sqlite3.h"
 #include "sqlite/u64.h"
 char *sqlite3RCStrRef(char *z) {

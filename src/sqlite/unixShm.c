@@ -1,7 +1,5 @@
 #define _GNU_SOURCE 1
-
 #include "sqlite/unixShm.h"
-
 #include "sqlite/SqliteUnixSyscallIndex.h"
 #include "sqlite/sqlite3_syscall_ptr.h"
 #include "sqlite/unix_syscall.h"

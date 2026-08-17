@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
   typedef struct PgHdr1 PgHdr1;
   typedef struct sqlite3_pcache_page sqlite3_pcache_page;
 

@@ -3,9 +3,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 #include "sqlite/u8.h"
-
 typedef struct compareInfo compareInfo;
 
 struct compareInfo {

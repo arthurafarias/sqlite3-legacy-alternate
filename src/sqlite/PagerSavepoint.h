@@ -1,10 +1,8 @@
 
 #pragma once
-
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/Pgno.h"
 #include "sqlite/i64.h"
 #include "sqlite/u32.h"

@@ -2,7 +2,6 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 #include "sqlite/i64.h"
 #include "sqlite/sqlite3_str.h"
 #include "sqlite/u8.h"
@@ -24,7 +23,7 @@ __attribute__((noinline)) char *strAccumFinishRealloc(StrAccum *p);
 void explainAppendTerm(StrAccum *pStr, Index *pIdx, int nTerm, int iTerm, int bAnd, const char *zOp);
 void explainIndexRange(StrAccum *pStr, WhereLoop *pLoop);
 
-  extern const char hexdigits[16];
+extern const char hexdigits[16];
 
 #ifdef __cplusplus
 }

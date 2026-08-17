@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/sqlite3_pcache_page.h"
 #include "sqlite/u16.h"
   typedef struct PCache1 PCache1;

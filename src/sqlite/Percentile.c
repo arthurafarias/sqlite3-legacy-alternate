@@ -1,7 +1,5 @@
 #define _GNU_SOURCE 1
-
 #include "sqlite/Percentile.h"
-
 #include "sqlite/i64.h"
 #include "sqlite/u64.h"
 i64 percentBinarySearch(Percentile *p, double y, int bExact) {

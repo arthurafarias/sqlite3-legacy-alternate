@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/DbPage.h"
 #include "sqlite/InitData.h"
 #include "sqlite/StrAccum.h"
@@ -15,7 +14,6 @@ extern C {
 #include "sqlite/sqlite3_sourceid.h"
 #include "sqlite/yDbMask.h"
 #include "sqlite/ynVar.h"
-
   typedef struct FuncDestructor FuncDestructor;
 
   struct FuncDestructor {

@@ -1,7 +1,5 @@
 #define _GNU_SOURCE 1
-
 #include "sqlite/sqlite3_index_info.h"
-
 #include "sqlite/CollSeq.h"
 #include "sqlite/Expr.h"
 #include "sqlite/HiddenIndexInfo.h"
@@ -12,6 +10,7 @@
 #include "sqlite/sqlite3_value.h"
 #include "sqlite/u32.h"
 #include "sqlite/u8.h"
+#include "sqlite/SqliteResultCode.h"
 void freeIdxStr(sqlite3_index_info *pIdxInfo) {
   if (pIdxInfo->needToFreeIdxStr) {
     sqlite3_free(pIdxInfo->idxStr);
@@ -52,21 +51,20 @@ int sqlite3_vtab_in(sqlite3_index_info *pIdxInfo, int iCons, int bHandle) {
 int sqlite3_vtab_rhs_value(sqlite3_index_info *pIdxInfo, int iCons, sqlite3_value **ppVal) {
   HiddenIndexInfo *pH = (HiddenIndexInfo *)&pIdxInfo[1];
   sqlite3_value *pVal = 0;
-  int rc = 0;
+  int rc = SQLITE_OK;
   if (iCons < 0 || iCons >= pIdxInfo->nConstraint) {
     rc = sqlite3MisuseError(173456);
   } else {
     if (pH->aRhs[iCons] == 0) {
       WhereTerm *pTerm = termFromWhereClause(pH->pWC, pIdxInfo->aConstraint[iCons].iTermOffset);
       rc = sqlite3ValueFromExpr(pH->pParse->db, pTerm->pExpr->pRight, ((pH->pParse->db)->enc), 0x41, &pH->aRhs[iCons]);
-      ;
     }
     pVal = pH->aRhs[iCons];
   }
   *ppVal = pVal;
 
-  if (rc == 0 && pVal == 0) {
-    rc = 12;
+  if (rc == SQLITE_OK && pVal == 0) {
+    rc = SQLITE_NOTFOUND;
   }
 
   return rc;

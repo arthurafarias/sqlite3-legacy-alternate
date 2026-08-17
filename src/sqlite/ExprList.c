@@ -1,9 +1,6 @@
 #define _GNU_SOURCE 1
-
 #include <string.h>
-
 #include "sqlite/ExprList.h"
-
 #include "sqlite/Expr.h"
 #include "sqlite/Parse.h"
 #include "sqlite/Select.h"
@@ -20,23 +17,12 @@ __attribute__((noinline)) void resolveSetExprSubtypeArg(ExprList *pList) {
     while (1) {
       (pExpr)->flags |= (u32)(0x80000000);
       if (pExpr->op == 139) {
-
-        ((void)(0))
-
-            ;
-
-        ((void)(0))
-
-            ;
         resolveSetExprSubtypeArg(pExpr->x.pSelect->pEList);
         break;
       }
       if (pExpr->op == 173) {
         pExpr = pExpr->pLeft;
 
-        ((void)(0))
-
-            ;
       } else {
         break;
       }
@@ -80,9 +66,6 @@ u32 sqlite3ExprListFlags(const ExprList *pList) {
   for (i = 0; i < pList->nExpr; i++) {
     Expr *pExpr = pList->a[i].pExpr;
 
-    ((void)(0))
-
-        ;
     m |= pExpr->flags;
   }
   return m;
@@ -109,21 +92,15 @@ int sqlite3ExprListCompare(const ExprList *pA, const ExprList *pB, int iTab) {
 }
 
 void renameSetENames(ExprList *pEList, int val) {
-
   if (pEList) {
     int i;
     for (i = 0; i < pEList->nExpr; i++) {
-
-      ((void)(0))
-
-          ;
       pEList->a[i].fg.eEName = val & 0x3;
     }
   }
 }
 
 int sqlite3CopySortOrder(ExprList *p1, ExprList *p2) {
-
   if (p2 && p1->nExpr == p2->nExpr) {
     int ii;
     for (ii = 0; ii < p1->nExpr; ii++) {

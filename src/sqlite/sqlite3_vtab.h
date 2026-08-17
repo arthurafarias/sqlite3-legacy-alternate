@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
   typedef struct sqlite3_index_info sqlite3_index_info;
   typedef struct sqlite3_vtab_cursor sqlite3_vtab_cursor;
   typedef struct sqlite3_vtab sqlite3_vtab;

@@ -1,11 +1,8 @@
 #pragma once
-
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 #include <stdbool.h>
-
 typedef struct list list;
 typedef struct list_iterator list_iterator;
 

@@ -1,9 +1,6 @@
 #define _GNU_SOURCE 1
-
 #include <string.h>
-
 #include "sqlite/SubstContext.h"
-
 #include "sqlite/CollSeq.h"
 #include "sqlite/Expr.h"
 #include "sqlite/ExprList.h"
@@ -21,11 +18,9 @@ Expr *substExpr(SubstContext *pSubst, Expr *pExpr) {
   if (pExpr == 0)
     return 0;
   if ((((pExpr)->flags & (u32)(0x000001 | 0x000002)) != 0) && pExpr->w.iJoin == pSubst->iTable) {
-    ;
     pExpr->w.iJoin = pSubst->iNewTable;
   }
   if (pExpr->op == 168 && pExpr->iTable == pSubst->iTable && !(((pExpr)->flags & (u32)(0x000020)) != 0)) {
-
     {
       Expr *pNew;
       int iColumn;
@@ -33,17 +28,6 @@ Expr *substExpr(SubstContext *pSubst, Expr *pExpr) {
       Expr ifNullRow;
       iColumn = pExpr->iColumn;
 
-      ((void)(0))
-
-          ;
-
-      ((void)(0))
-
-          ;
-
-      ((void)(0))
-
-          ;
       pCopy = pSubst->pEList->a[iColumn].pExpr;
       if (sqlite3ExprIsVector(pCopy)) {
         sqlite3VectorErrorMsg(pSubst->pParse, pCopy);
@@ -136,9 +120,6 @@ void substSelect(SubstContext *pSubst, Select *p, int doPrior) {
     p->pWhere = substExpr(pSubst, p->pWhere);
     pSrc = p->pSrc;
 
-    ((void)(0))
-
-        ;
     for (i = pSrc->nSrc, pItem = pSrc->a; i > 0; i--, pItem++) {
       if (pItem->fg.isSubquery) {
         substSelect(pSubst, pItem->u4.pSubq->pSelect, 1);

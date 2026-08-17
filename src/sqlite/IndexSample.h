@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/tRowcnt.h"
   typedef struct IndexSample IndexSample;
 

@@ -1,11 +1,8 @@
 #pragma once
-
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 #include "sqlite/u8.h"
-
 typedef struct aXformType_t aXformType_t;
 
 struct aXformType_t {

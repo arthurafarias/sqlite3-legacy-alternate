@@ -3,13 +3,11 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/sqlite3_int64.h"
 #include "sqlite/u32.h"
   typedef struct BtCursor BtCursor;
 
   typedef struct sqlite3_blob sqlite3_blob;
-  struct sqlite3_blob {};
 
   int sqlite3_blob_reopen(sqlite3_blob *, sqlite3_int64);
   int sqlite3_blob_close(sqlite3_blob *);

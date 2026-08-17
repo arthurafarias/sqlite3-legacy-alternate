@@ -1,10 +1,8 @@
 
 #pragma once
-
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/TriggerStep.h"
 #include "sqlite/u8.h"
   typedef struct Table Table;

@@ -1,7 +1,5 @@
 #define _GNU_SOURCE 1
-
 #include "sqlite/sqlite3_api_routines.h"
-
 #include "sqlite/sqlite3.h"
 #include "sqlite/sqlite3_backup.h"
 #include "sqlite/sqlite3_blob.h"
@@ -18,9 +16,7 @@
 #include "sqlite/sqlite3_value.h"
 #include "sqlite/sqlite3_vfs.h"
 const sqlite3_api_routines sqlite3Apis = {sqlite3_aggregate_context,
-
                                           sqlite3_aggregate_count,
-
                                           sqlite3_bind_blob,
                                           sqlite3_bind_double,
                                           sqlite3_bind_int,
@@ -75,9 +71,7 @@ const sqlite3_api_routines sqlite3Apis = {sqlite3_aggregate_context,
                                           sqlite3_errmsg,
                                           sqlite3_errmsg16,
                                           sqlite3_exec,
-
                                           sqlite3_expired,
-
                                           sqlite3_finalize,
                                           sqlite3_free,
                                           sqlite3_free_table,
@@ -117,14 +111,10 @@ const sqlite3_api_routines sqlite3Apis = {sqlite3_aggregate_context,
                                           sqlite3_snprintf,
                                           sqlite3_step,
                                           sqlite3_table_column_metadata,
-
                                           sqlite3_thread_cleanup,
-
                                           sqlite3_total_changes,
                                           sqlite3_trace,
-
                                           sqlite3_transfer_bindings,
-
                                           sqlite3_update_hook,
                                           sqlite3_user_data,
                                           sqlite3_value_blob,
@@ -140,15 +130,11 @@ const sqlite3_api_routines sqlite3Apis = {sqlite3_aggregate_context,
                                           sqlite3_value_text16le,
                                           sqlite3_value_type,
                                           sqlite3_vmprintf,
-
                                           sqlite3_overload_function,
-
                                           sqlite3_prepare_v2,
                                           sqlite3_prepare16_v2,
                                           sqlite3_clear_bindings,
-
                                           sqlite3_create_module_v2,
-
                                           sqlite3_bind_zeroblob,
                                           sqlite3_blob_bytes,
                                           sqlite3_blob_close,
@@ -159,13 +145,11 @@ const sqlite3_api_routines sqlite3Apis = {sqlite3_aggregate_context,
                                           sqlite3_file_control,
                                           sqlite3_memory_highwater,
                                           sqlite3_memory_used,
-
                                           sqlite3_mutex_alloc,
                                           sqlite3_mutex_enter,
                                           sqlite3_mutex_free,
                                           sqlite3_mutex_leave,
                                           sqlite3_mutex_try,
-
                                           sqlite3_open_v2,
                                           sqlite3_release_memory,
                                           sqlite3_result_error_nomem,
@@ -175,29 +159,24 @@ const sqlite3_api_routines sqlite3Apis = {sqlite3_aggregate_context,
                                           sqlite3_vfs_find,
                                           sqlite3_vfs_register,
                                           sqlite3_vfs_unregister,
-
                                           sqlite3_threadsafe,
                                           sqlite3_result_zeroblob,
                                           sqlite3_result_error_code,
                                           sqlite3_test_control,
                                           sqlite3_randomness,
                                           sqlite3_context_db_handle,
-
                                           sqlite3_extended_result_codes,
                                           sqlite3_limit,
                                           sqlite3_next_stmt,
                                           sqlite3_sql,
                                           sqlite3_status,
-
                                           sqlite3_backup_finish,
                                           sqlite3_backup_init,
                                           sqlite3_backup_pagecount,
                                           sqlite3_backup_remaining,
                                           sqlite3_backup_step,
-
                                           sqlite3_compileoption_get,
                                           sqlite3_compileoption_used,
-
                                           sqlite3_create_function_v2,
                                           sqlite3_db_config,
                                           sqlite3_db_mutex,
@@ -208,13 +187,10 @@ const sqlite3_api_routines sqlite3Apis = {sqlite3_aggregate_context,
                                           sqlite3_sourceid,
                                           sqlite3_stmt_status,
                                           sqlite3_strnicmp,
-
                                           0,
-
                                           sqlite3_wal_autocheckpoint,
                                           sqlite3_wal_checkpoint,
                                           sqlite3_wal_hook,
-
                                           sqlite3_blob_reopen,
                                           sqlite3_vtab_config,
                                           sqlite3_vtab_on_conflict,
@@ -231,7 +207,6 @@ const sqlite3_api_routines sqlite3Apis = {sqlite3_aggregate_context,
                                           sqlite3_uri_parameter,
                                           sqlite3_vsnprintf,
                                           sqlite3_wal_checkpoint_v2,
-
                                           sqlite3_auto_extension,
                                           sqlite3_bind_blob64,
                                           sqlite3_bind_text64,
@@ -244,36 +219,27 @@ const sqlite3_api_routines sqlite3Apis = {sqlite3_aggregate_context,
                                           sqlite3_result_blob64,
                                           sqlite3_result_text64,
                                           sqlite3_strglob,
-
                                           (sqlite3_value * (*)(const sqlite3_value *)) sqlite3_value_dup,
                                           sqlite3_value_free,
                                           sqlite3_result_zeroblob64,
                                           sqlite3_bind_zeroblob64,
-
                                           sqlite3_value_subtype,
                                           sqlite3_result_subtype,
-
                                           sqlite3_status64,
                                           sqlite3_strlike,
                                           sqlite3_db_cacheflush,
-
                                           sqlite3_system_errno,
-
                                           sqlite3_trace_v2,
                                           sqlite3_expanded_sql,
-
                                           sqlite3_set_last_insert_rowid,
-
                                           sqlite3_prepare_v3,
                                           sqlite3_prepare16_v3,
                                           sqlite3_bind_pointer,
                                           sqlite3_result_pointer,
                                           sqlite3_value_pointer,
-
                                           sqlite3_vtab_nochange,
                                           sqlite3_value_nochange,
                                           sqlite3_vtab_collation,
-
                                           sqlite3_keyword_count,
                                           sqlite3_keyword_name,
                                           sqlite3_keyword_check,
@@ -288,64 +254,41 @@ const sqlite3_api_routines sqlite3Apis = {sqlite3_aggregate_context,
                                           sqlite3_str_errcode,
                                           sqlite3_str_length,
                                           sqlite3_str_value,
-
                                           sqlite3_create_window_function,
-
                                           0,
-
                                           sqlite3_stmt_isexplain,
                                           sqlite3_value_frombind,
-
                                           sqlite3_drop_modules,
-
                                           sqlite3_hard_heap_limit64,
                                           sqlite3_uri_key,
                                           sqlite3_filename_database,
                                           sqlite3_filename_journal,
                                           sqlite3_filename_wal,
-
                                           sqlite3_create_filename,
                                           sqlite3_free_filename,
                                           sqlite3_database_file_object,
-
                                           sqlite3_txn_state,
-
                                           sqlite3_changes64,
                                           sqlite3_total_changes64,
-
                                           sqlite3_autovacuum_pages,
-
                                           sqlite3_error_offset,
-
                                           sqlite3_vtab_rhs_value,
                                           sqlite3_vtab_distinct,
                                           sqlite3_vtab_in,
                                           sqlite3_vtab_in_first,
                                           sqlite3_vtab_in_next,
-
                                           sqlite3_deserialize,
                                           sqlite3_serialize,
-
                                           sqlite3_db_name,
-
                                           sqlite3_value_encoding,
-
                                           sqlite3_is_interrupted,
-
                                           sqlite3_stmt_explain,
-
                                           sqlite3_get_clientdata,
                                           sqlite3_set_clientdata,
-
                                           sqlite3_setlk_timeout,
-
                                           sqlite3_set_errmsg,
                                           sqlite3_db_status64,
-
                                           sqlite3_str_truncate,
                                           sqlite3_str_free,
-
                                           0,
-                                          0
-
-};
+                                          0};

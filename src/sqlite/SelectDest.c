@@ -1,7 +1,5 @@
 #define _GNU_SOURCE 1
-
 #include "sqlite/SelectDest.h"
-
 #include "sqlite/u8.h"
 void sqlite3SelectDestInit(SelectDest *pDest, int eDest, int iParm) {
   pDest->eDest = (u8)eDest;

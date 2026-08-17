@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/u16.h"
 #include "sqlite/u8.h"
   typedef struct sqlite3_value Mem;
@@ -24,6 +23,7 @@ extern C {
   char *sqlite3ColumnType(Column *, char *);
   const char *sqlite3ColumnColl(Column *);
   const Mem *columnNullValue(void);
+  char sqlite3AffinityType(const char *, Column *);
 
 #ifdef __cplusplus
 }

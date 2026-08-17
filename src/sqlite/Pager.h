@@ -1,11 +1,9 @@
 
 #pragma once
-
 #include "sqlite/PagerSavepoint.h"
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/DbPage.h"
 #include "sqlite/Pgno.h"
 #include "sqlite/i16.h"
@@ -170,10 +168,8 @@ extern C {
   void pagerUnlockAndRollback(Pager * pPager);
   u32 pager_cksum(Pager * pPager, const u8 *aData);
   int pager_playback_one_page(Pager * pPager, i64 * pOffset, Bitvec * pDone, int isMainJrnl, int isSavepnt);
-  int pagerIsSuperJrnlName(const char *zSuper);
   int pager_delsuper(Pager * pPager, const char *zSuper);
   void setSectorSize(Pager * pPager);
-  int pagerUndoCallback(void *pCtx, Pgno iPg);
   int pagerRollbackWal(Pager * pPager);
   int pagerWalFrames(Pager * pPager, PgHdr * pList, Pgno nTruncate, int isCommit);
   int pagerBeginReadTransaction(Pager * pPager);

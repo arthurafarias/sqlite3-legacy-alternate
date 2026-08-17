@@ -1,9 +1,6 @@
 #define _GNU_SOURCE 1
-
 #include <string.h>
-
 #include "sqlite/sqlite3_vtab.h"
-
 #include "sqlite/JsonEachConnection.h"
 #include "sqlite/JsonEachCursor.h"
 #include "sqlite/JsonString.h"
@@ -15,10 +12,12 @@
 #include "sqlite/sqlite3_vtab_cursor.h"
 #include "sqlite/u64.h"
 #include "sqlite/u8.h"
+#include "sqlite/SqliteIndexConstraintOp.h"
+#include "sqlite/SqliteResultCode.h"
 int pragmaVtabDisconnect(sqlite3_vtab *pVtab) {
   PragmaVtab *pTab = (PragmaVtab *)pVtab;
   sqlite3_free(pTab);
-  return 0;
+  return SQLITE_OK;
 }
 
 int pragmaVtabBestIndex(sqlite3_vtab *tab, sqlite3_index_info *pIdxInfo) {
@@ -29,7 +28,7 @@ int pragmaVtabBestIndex(sqlite3_vtab *tab, sqlite3_index_info *pIdxInfo) {
 
   pIdxInfo->estimatedCost = (double)1;
   if (pTab->nHidden == 0) {
-    return 0;
+    return SQLITE_OK;
   }
   pConstraint = pIdxInfo->aConstraint;
   seen[0] = 0;
@@ -37,21 +36,18 @@ int pragmaVtabBestIndex(sqlite3_vtab *tab, sqlite3_index_info *pIdxInfo) {
   for (i = 0; i < pIdxInfo->nConstraint; i++, pConstraint++) {
     if (pConstraint->iColumn < pTab->iHidden)
       continue;
-    if (pConstraint->op != 2)
+    if (pConstraint->op != SQLITE_INDEX_CONSTRAINT_EQ)
       continue;
     if (pConstraint->usable == 0)
-      return 19;
+      return SQLITE_CONSTRAINT;
     j = pConstraint->iColumn - pTab->iHidden;
 
-    ((void)(0))
-
-        ;
     seen[j] = i + 1;
   }
   if (seen[0] == 0) {
     pIdxInfo->estimatedCost = (double)2147483647;
     pIdxInfo->estimatedRows = 2147483647;
-    return 0;
+    return SQLITE_OK;
   }
   j = seen[0] - 1;
   pIdxInfo->aConstraintUsage[j].argvIndex = 1;
@@ -63,24 +59,24 @@ int pragmaVtabBestIndex(sqlite3_vtab *tab, sqlite3_index_info *pIdxInfo) {
     pIdxInfo->aConstraintUsage[j].argvIndex = 2;
     pIdxInfo->aConstraintUsage[j].omit = 1;
   }
-  return 0;
+  return SQLITE_OK;
 }
 
 int pragmaVtabOpen(sqlite3_vtab *pVtab, sqlite3_vtab_cursor **ppCursor) {
   PragmaVtabCursor *pCsr;
   pCsr = (PragmaVtabCursor *)sqlite3_malloc(sizeof(*pCsr));
   if (pCsr == 0)
-    return 7;
+    return SQLITE_NOMEM;
   memset(pCsr, 0, sizeof(PragmaVtabCursor));
   pCsr->base.pVtab = pVtab;
   *ppCursor = &pCsr->base;
-  return 0;
+  return SQLITE_OK;
 }
 
 int jsonEachDisconnect(sqlite3_vtab *pVtab) {
   JsonEachConnection *p = (JsonEachConnection *)pVtab;
   sqlite3DbFree(p->db, pVtab);
-  return 0;
+  return SQLITE_OK;
 }
 
 int jsonEachOpen(sqlite3_vtab *p, sqlite3_vtab_cursor **ppCursor) {
@@ -90,13 +86,13 @@ int jsonEachOpen(sqlite3_vtab *p, sqlite3_vtab_cursor **ppCursor) {
   (void)(p);
   pCur = sqlite3DbMallocZero(pVtab->db, sizeof(*pCur));
   if (pCur == 0)
-    return 7;
+    return SQLITE_NOMEM;
   pCur->db = pVtab->db;
   pCur->eMode = pVtab->eMode;
   pCur->bRecursive = pVtab->bRecursive;
   jsonStringZero(&pCur->path);
   *ppCursor = &pCur->base;
-  return 0;
+  return SQLITE_OK;
 }
 
 int jsonEachBestIndex(sqlite3_vtab *tab, sqlite3_index_info *pIdxInfo) {
@@ -116,14 +112,10 @@ int jsonEachBestIndex(sqlite3_vtab *tab, sqlite3_index_info *pIdxInfo) {
       continue;
     iCol = pConstraint->iColumn - 8;
 
-    ((void)(0))
-
-        ;
-    ;
     iMask = 1 << iCol;
     if (pConstraint->usable == 0) {
       unusableMask |= iMask;
-    } else if (pConstraint->op == 2) {
+    } else if (pConstraint->op == SQLITE_INDEX_CONSTRAINT_EQ) {
       aIdx[iCol] = i;
       idxMask |= iMask;
     }
@@ -133,11 +125,9 @@ int jsonEachBestIndex(sqlite3_vtab *tab, sqlite3_index_info *pIdxInfo) {
   }
 
   if ((unusableMask & ~idxMask) != 0) {
-
-    return 19;
+    return SQLITE_CONSTRAINT;
   }
   if (aIdx[0] < 0) {
-
     pIdxInfo->idxNum = 0;
   } else {
     pIdxInfo->estimatedCost = 1.0;
@@ -153,5 +143,5 @@ int jsonEachBestIndex(sqlite3_vtab *tab, sqlite3_index_info *pIdxInfo) {
       pIdxInfo->idxNum = 3;
     }
   }
-  return 0;
+  return SQLITE_OK;
 }

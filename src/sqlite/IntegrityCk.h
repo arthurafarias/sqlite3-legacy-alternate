@@ -4,7 +4,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/StrAccum.h"
 #include "sqlite/i64.h"
 #include "sqlite/u32.h"

@@ -1,9 +1,7 @@
 #pragma once
-
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 #include "sqlite/i64.h"
 #include "sqlite/sqlite3_int64.h"
 #include "sqlite/sqlite_int64.h"
@@ -17,6 +15,8 @@ typedef struct sqlite3_io_methods sqlite3_io_methods;
 struct sqlite3_file {
   const struct sqlite3_io_methods *pMethods;
 };
+
+sqlite3_file *sqlite3_database_file_object(const char *);
 
 void sqlite3OsClose(sqlite3_file *);
 int sqlite3OsRead(sqlite3_file *, void *, int amt, i64 offset);

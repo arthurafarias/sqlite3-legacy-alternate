@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/Bool.h"
 #include "sqlite/Pgno.h"
 #include "sqlite/i16.h"
@@ -71,7 +70,8 @@ extern C {
   int sqlite3VdbeSorterRewind(const VdbeCursor *, int *);
   int sqlite3VdbeSorterWrite(const VdbeCursor *, Mem *);
   int sqlite3VdbeSorterCompare(const VdbeCursor *, Mem *, int, int *);
-  __attribute__((noinline)) int vdbeColumnFromOverflow(VdbeCursor * pC, int iCol, u32 t, i64 iOffset, u32 cacheStatus, u32 colCacheCtr, Mem *pDest);
+  __attribute__((noinline)) int vdbeColumnFromOverflow(VdbeCursor * pC, int iCol, u32 t, i64 iOffset, u32 cacheStatus,
+                                                       u32 colCacheCtr, Mem *pDest);
 
 #ifdef __cplusplus
 }

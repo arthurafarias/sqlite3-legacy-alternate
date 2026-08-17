@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/LogEst.h"
   typedef struct ScanStatus ScanStatus;
   struct ScanStatus {

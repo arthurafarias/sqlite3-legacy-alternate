@@ -3,9 +3,7 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include <pthread.h>
-
   typedef struct SQLiteThread SQLiteThread;
 
   struct SQLiteThread {

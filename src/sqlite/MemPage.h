@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/DbPage.h"
 #include "sqlite/Pgno.h"
 #include "sqlite/RecordCompare.h"
@@ -65,7 +64,6 @@ extern C {
   void ptrmapPutOvflPtr(MemPage * pPage, MemPage * pSrc, u8 * pCell, int *pRC);
   int defragmentPage(MemPage * pPage, int nMaxFrag);
   u8 *pageFindSlot(MemPage * pPg, int nByte, int *pRc);
-  __attribute__((always_inline)) inline int allocateSpace(MemPage * pPage, int nByte, int *pIdx);
   int freeSpace(MemPage * pPage, int iStart, int iSize);
   int decodeFlags(MemPage * pPage, int flagByte);
   int btreeComputeFreeSpace(MemPage * pPage);
@@ -81,7 +79,8 @@ extern C {
   void dropCell(MemPage * pPage, int idx, int sz, int *pRC);
   int insertCell(MemPage * pPage, int i, u8 *pCell, int sz, u8 *pTemp, Pgno iChild);
   int insertCellFast(MemPage * pPage, int i, u8 *pCell, int sz);
-  int pageInsertArray(MemPage * pPg, u8 * pBegin, u8 * *ppData, u8 * pCellptr, int iFirst, int nCell, CellArray *pCArray);
+  int pageInsertArray(MemPage * pPg, u8 * pBegin, u8 * *ppData, u8 * pCellptr, int iFirst, int nCell,
+                      CellArray *pCArray);
   int pageFreeArray(MemPage * pPg, int iFirst, int nCell, CellArray *pCArray);
   int editPage(MemPage * pPg, int iOld, int iNew, int nNew, CellArray *pCArray);
   int balance_quick(MemPage * pParent, MemPage * pPage, u8 * pSpace);

@@ -1,9 +1,6 @@
 #define _GNU_SOURCE 1
-
 #include <string.h>
-
 #include "sqlite/VdbeCursor.h"
-
 #include "sqlite/Bool.h"
 #include "sqlite/BtCursor.h"
 #include "sqlite/KeyInfo.h"
@@ -24,6 +21,9 @@
 #include "sqlite/u32.h"
 #include "sqlite/u64.h"
 #include "sqlite/u8.h"
+#include "sqlite/SqliteLimitCategory.h"
+#include "sqlite/SqliteResultCode.h"
+#include "sqlite/SqliteTextEncoding.h"
 int __attribute__((noinline)) sqlite3VdbeFinishMoveto(VdbeCursor *p) {
   int res, rc;
 
@@ -35,7 +35,7 @@ int __attribute__((noinline)) sqlite3VdbeFinishMoveto(VdbeCursor *p) {
 
   p->deferredMoveto = 0;
   p->cacheStatus = 0;
-  return 0;
+  return SQLITE_OK;
 }
 
 int __attribute__((noinline)) sqlite3VdbeHandleMovedCursor(VdbeCursor *p) {
@@ -49,38 +49,38 @@ int __attribute__((noinline)) sqlite3VdbeHandleMovedCursor(VdbeCursor *p) {
 }
 
 int sqlite3VdbeCursorRestore(VdbeCursor *p) {
-
   if (sqlite3BtreeCursorHasMoved(p->uc.pCursor)) {
     return sqlite3VdbeHandleMovedCursor(p);
   }
-  return 0;
+  return SQLITE_OK;
 }
 
-__attribute__((noinline)) int vdbeColumnFromOverflow(VdbeCursor *pC, int iCol, u32 t, i64 iOffset, u32 cacheStatus, u32 colCacheCtr, Mem *pDest) {
+__attribute__((noinline)) int vdbeColumnFromOverflow(VdbeCursor *pC, int iCol, u32 t, i64 iOffset, u32 cacheStatus,
+                                                     u32 colCacheCtr, Mem *pDest) {
   int rc;
   sqlite3 *db = pDest->db;
   int encoding = pDest->enc;
   int len = sqlite3VdbeSerialTypeLen(t);
 
-  if (len > db->aLimit[0])
-    return 18;
+  if (len > db->aLimit[SQLITE_LIMIT_LENGTH])
+    return SQLITE_TOOBIG;
   if (len > 4000 && pC->pKeyInfo == 0) {
-
     VdbeTxtBlbCache *pCache;
     char *pBuf;
     if (pC->colCache == 0) {
       pC->pCache = sqlite3DbMallocZero(db, sizeof(VdbeTxtBlbCache));
       if (pC->pCache == 0)
-        return 7;
+        return SQLITE_NOMEM;
       pC->colCache = 1;
     }
     pCache = pC->pCache;
-    if (pCache->pCValue == 0 || pCache->iCol != iCol || pCache->cacheStatus != cacheStatus || pCache->colCacheCtr != colCacheCtr || pCache->iOffset != sqlite3BtreeOffset(pC->uc.pCursor)) {
+    if (pCache->pCValue == 0 || pCache->iCol != iCol || pCache->cacheStatus != cacheStatus ||
+        pCache->colCacheCtr != colCacheCtr || pCache->iOffset != sqlite3BtreeOffset(pC->uc.pCursor)) {
       if (pCache->pCValue)
         sqlite3RCStrUnref(pCache->pCValue);
       pBuf = pCache->pCValue = sqlite3RCStrNew(len + 3);
       if (pBuf == 0)
-        return 7;
+        return SQLITE_NOMEM;
       rc = sqlite3BtreePayload(pC->uc.pCursor, iOffset, len, pBuf);
       if (rc)
         return rc;
@@ -95,9 +95,6 @@ __attribute__((noinline)) int vdbeColumnFromOverflow(VdbeCursor *pC, int iCol, u
       pBuf = pCache->pCValue;
     }
 
-    ((void)(0))
-
-        ;
     sqlite3RCStrRef(pBuf);
     if (t & 1) {
       rc = sqlite3VdbeMemSetStr(pDest, pBuf, len, encoding, sqlite3RCStrUnref);
@@ -110,7 +107,7 @@ __attribute__((noinline)) int vdbeColumnFromOverflow(VdbeCursor *pC, int iCol, u
     if (rc)
       return rc;
     sqlite3VdbeSerialGet((const u8 *)pDest->z, t, pDest);
-    if ((t & 1) != 0 && encoding == 1) {
+    if ((t & 1) != 0 && encoding == SQLITE_UTF8) {
       pDest->z[len] = 0;
       pDest->flags |= 0x0200;
     }
@@ -121,7 +118,7 @@ __attribute__((noinline)) int vdbeColumnFromOverflow(VdbeCursor *pC, int iCol, u
 
 int sqlite3VdbeSorterWrite(const VdbeCursor *pCsr, Mem *pVal) {
   VdbeSorter *pSorter;
-  int rc = 0;
+  int rc = SQLITE_OK;
   SorterRecord *pNew;
   int bFlush;
   i64 nReq;
@@ -146,16 +143,13 @@ int sqlite3VdbeSorterWrite(const VdbeCursor *pCsr, Mem *pVal) {
     if (pSorter->list.aMemory) {
       bFlush = pSorter->iMemory && (pSorter->iMemory + nReq) > pSorter->mxPmaSize;
     } else {
-      bFlush = ((pSorter->list.szPMA > pSorter->mxPmaSize) || (pSorter->list.szPMA > pSorter->mnPmaSize && sqlite3HeapNearlyFull()));
+      bFlush = ((pSorter->list.szPMA > pSorter->mxPmaSize) ||
+                (pSorter->list.szPMA > pSorter->mnPmaSize && sqlite3HeapNearlyFull()));
     }
     if (bFlush) {
       rc = vdbeSorterFlushPMA(pSorter);
       pSorter->list.szPMA = 0;
       pSorter->iMemory = 0;
-
-      ((void)(0))
-
-          ;
     }
   }
 
@@ -230,14 +224,11 @@ int sqlite3VdbeSorterRewind(const VdbeCursor *pCsr, int *pbEof) {
 
   rc = vdbeSorterJoinAll(pSorter, rc);
 
-  ;
-
-  if (rc == 0) {
+  if (rc == SQLITE_OK) {
     rc = vdbeSorterSetupMerge(pSorter);
     *pbEof = 0;
   }
 
-  ;
   return rc;
 }
 
@@ -255,7 +246,7 @@ int sqlite3VdbeSorterRowkey(const VdbeCursor *pCsr, Mem *pOut) {
   ((pOut)->flags = ((pOut)->flags & ~(0x0dbf | 0x0400)) | 0x0010);
   memcpy(pOut->z, pKey, nKey);
 
-  return 0;
+  return SQLITE_OK;
 }
 
 int sqlite3VdbeSorterCompare(const VdbeCursor *pCsr, Mem *pVal, int nKeyCol, int *pRes) {
@@ -281,10 +272,10 @@ int sqlite3VdbeSorterCompare(const VdbeCursor *pCsr, Mem *pVal, int nKeyCol, int
   for (i = 0; i < nKeyCol; i++) {
     if (r2->aMem[i].flags & 0x0001) {
       *pRes = -1;
-      return 0;
+      return SQLITE_OK;
     }
   }
 
   *pRes = sqlite3VdbeRecordCompare(pVal->n, pVal->z, r2);
-  return 0;
+  return SQLITE_OK;
 }

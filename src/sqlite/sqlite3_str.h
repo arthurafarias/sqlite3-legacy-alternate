@@ -3,13 +3,10 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include <stdarg.h>
-
 #include "sqlite/sqlite3_int64.h"
 #include "sqlite/u32.h"
 #include "sqlite/u8.h"
-
   typedef struct sqlite3 sqlite3;
   typedef struct sqlite3_str sqlite3_str;
 

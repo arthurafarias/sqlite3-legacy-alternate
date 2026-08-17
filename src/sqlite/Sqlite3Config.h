@@ -1,10 +1,8 @@
 
 #pragma once
-
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 #include "sqlite/sqlite3_int64.h"
 #include "sqlite/sqlite3_mem_methods.h"
 #include "sqlite/sqlite3_mutex_methods.h"

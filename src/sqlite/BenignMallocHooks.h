@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
   typedef struct BenignMallocHooks BenignMallocHooks;
 
   struct BenignMallocHooks {

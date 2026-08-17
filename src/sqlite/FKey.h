@@ -1,31 +1,27 @@
 
 #pragma once
 #ifdef __cplusplus
-extern C {
+extern "C" {
 #endif
-
 #include "sqlite/Trigger.h"
+#include "sqlite/sColMap.h"
 #include "sqlite/u8.h"
+typedef struct Table Table;
+typedef struct FKey FKey;
 
-  typedef struct Table Table;
-  typedef struct FKey FKey;
+struct FKey {
+  Table *pFrom;
+  FKey *pNextFrom;
+  char *zTo;
+  FKey *pNextTo;
+  FKey *pPrevTo;
+  int nCol;
 
-  struct FKey {
-    Table *pFrom;
-    FKey *pNextFrom;
-    char *zTo;
-    FKey *pNextTo;
-    FKey *pPrevTo;
-    int nCol;
-
-    u8 isDeferred;
-    u8 aAction[2];
-    Trigger *apTrigger[2];
-    struct sColMap {
-      int iFrom;
-      char *zCol;
-    } aCol[];
-  };
+  u8 isDeferred;
+  u8 aAction[2];
+  Trigger *apTrigger[2];
+  sColMap aCol[];
+};
 
 #ifdef __cplusplus
 }

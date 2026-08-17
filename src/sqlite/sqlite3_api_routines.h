@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/sqlite3_callback.h"
 #include "sqlite/sqlite3_int64.h"
 #include "sqlite/sqlite3_stmt.h"
@@ -69,10 +68,17 @@ extern C {
     void *(*commit_hook)(sqlite3 *, int (*)(void *), void *);
     int (*complete)(const char *sql);
     int (*complete16)(const void *sql);
-    int (*create_collation)(sqlite3 *, const char *, int, void *, int (*)(void *, int, const void *, int, const void *));
-    int (*create_collation16)(sqlite3 *, const void *, int, void *, int (*)(void *, int, const void *, int, const void *));
-    int (*create_function)(sqlite3 *, const char *, int, int, void *, void (*xFunc)(sqlite3_context *, int, sqlite3_value **), void (*xStep)(sqlite3_context *, int, sqlite3_value **), void (*xFinal)(sqlite3_context *));
-    int (*create_function16)(sqlite3 *, const void *, int, int, void *, void (*xFunc)(sqlite3_context *, int, sqlite3_value **), void (*xStep)(sqlite3_context *, int, sqlite3_value **), void (*xFinal)(sqlite3_context *));
+    int (*create_collation)(sqlite3 *, const char *, int, void *,
+                            int (*)(void *, int, const void *, int, const void *));
+    int (*create_collation16)(sqlite3 *, const void *, int, void *,
+                              int (*)(void *, int, const void *, int, const void *));
+    int (*create_function)(sqlite3 *, const char *, int, int, void *,
+                           void (*xFunc)(sqlite3_context *, int, sqlite3_value **),
+                           void (*xStep)(sqlite3_context *, int, sqlite3_value **), void (*xFinal)(sqlite3_context *));
+    int (*create_function16)(sqlite3 *, const void *, int, int, void *,
+                             void (*xFunc)(sqlite3_context *, int, sqlite3_value **),
+                             void (*xStep)(sqlite3_context *, int, sqlite3_value **),
+                             void (*xFinal)(sqlite3_context *));
     int (*create_module)(sqlite3 *, const char *, const sqlite3_module *, void *);
     int (*data_count)(sqlite3_stmt *pStmt);
     sqlite3 *(*db_handle)(sqlite3_stmt *);
@@ -117,11 +123,13 @@ extern C {
     void (*result_text16le)(sqlite3_context *, const void *, int, void (*)(void *));
     void (*result_value)(sqlite3_context *, sqlite3_value *);
     void *(*rollback_hook)(sqlite3 *, void (*)(void *), void *);
-    int (*set_authorizer)(sqlite3 *, int (*)(void *, int, const char *, const char *, const char *, const char *), void *);
+    int (*set_authorizer)(sqlite3 *, int (*)(void *, int, const char *, const char *, const char *, const char *),
+                          void *);
     void (*set_auxdata)(sqlite3_context *, int, void *, void (*)(void *));
     char *(*xsnprintf)(int, char *, const char *, ...);
     int (*step)(sqlite3_stmt *);
-    int (*table_column_metadata)(sqlite3 *, const char *, const char *, const char *, char const **, char const **, int *, int *, int *);
+    int (*table_column_metadata)(sqlite3 *, const char *, const char *, const char *, char const **, char const **,
+                                 int *, int *, int *);
     void (*thread_cleanup)(void);
     int (*total_changes)(sqlite3 *);
     void *(*trace)(sqlite3 *, void (*xTrace)(void *, const char *), void *);
@@ -156,7 +164,8 @@ extern C {
     int (*blob_open)(sqlite3 *, const char *, const char *, const char *, sqlite3_int64, int, sqlite3_blob **);
     int (*blob_read)(sqlite3_blob *, void *, int, int);
     int (*blob_write)(sqlite3_blob *, const void *, int, int);
-    int (*create_collation_v2)(sqlite3 *, const char *, int, void *, int (*)(void *, int, const void *, int, const void *), void (*)(void *));
+    int (*create_collation_v2)(sqlite3 *, const char *, int, void *,
+                               int (*)(void *, int, const void *, int, const void *), void (*)(void *));
     int (*file_control)(sqlite3 *, const char *, int, void *);
     sqlite3_int64 (*memory_highwater)(int);
     sqlite3_int64 (*memory_used)(void);
@@ -192,7 +201,10 @@ extern C {
     int (*backup_step)(sqlite3_backup *, int);
     const char *(*compileoption_get)(int);
     int (*compileoption_used)(const char *);
-    int (*create_function_v2)(sqlite3 *, const char *, int, int, void *, void (*xFunc)(sqlite3_context *, int, sqlite3_value **), void (*xStep)(sqlite3_context *, int, sqlite3_value **), void (*xFinal)(sqlite3_context *), void (*xDestroy)(void *));
+    int (*create_function_v2)(sqlite3 *, const char *, int, int, void *,
+                              void (*xFunc)(sqlite3_context *, int, sqlite3_value **),
+                              void (*xStep)(sqlite3_context *, int, sqlite3_value **),
+                              void (*xFinal)(sqlite3_context *), void (*xDestroy)(void *));
     int (*db_config)(sqlite3 *, int, ...);
     sqlite3_mutex *(*db_mutex)(sqlite3 *);
     int (*db_status)(sqlite3 *, int, int *, int *, int);
@@ -280,7 +292,10 @@ extern C {
     int (*str_length)(sqlite3_str *);
     char *(*str_value)(sqlite3_str *);
 
-    int (*create_window_function)(sqlite3 *, const char *, int, int, void *, void (*xStep)(sqlite3_context *, int, sqlite3_value **), void (*xFinal)(sqlite3_context *), void (*xValue)(sqlite3_context *), void (*xInv)(sqlite3_context *, int, sqlite3_value **), void (*xDestroy)(void *));
+    int (*create_window_function)(sqlite3 *, const char *, int, int, void *,
+                                  void (*xStep)(sqlite3_context *, int, sqlite3_value **),
+                                  void (*xFinal)(sqlite3_context *), void (*xValue)(sqlite3_context *),
+                                  void (*xInv)(sqlite3_context *, int, sqlite3_value **), void (*xDestroy)(void *));
 
     const char *(*normalized_sql)(sqlite3_stmt *);
 
@@ -304,7 +319,8 @@ extern C {
     sqlite3_int64 (*changes64)(sqlite3 *);
     sqlite3_int64 (*total_changes64)(sqlite3 *);
 
-    int (*autovacuum_pages)(sqlite3 *, unsigned int (*)(void *, const char *, unsigned int, unsigned int, unsigned int), void *, void (*)(void *));
+    int (*autovacuum_pages)(sqlite3 *, unsigned int (*)(void *, const char *, unsigned int, unsigned int, unsigned int),
+                            void *, void (*)(void *));
 
     int (*error_offset)(sqlite3 *);
     int (*vtab_rhs_value)(sqlite3_index_info *, int, sqlite3_value **);

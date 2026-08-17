@@ -1,9 +1,6 @@
 #define _GNU_SOURCE 1
-
 #include <string.h>
-
 #include "sqlite/Hash.h"
-
 #include "sqlite/HashElem.h"
 #include "sqlite/sqlite3.h"
 #include "sqlite/u64.h"
@@ -13,7 +10,6 @@ static unsigned int strHash(const char *z);
 static unsigned int strHash(const char *z) {
   unsigned int h = 0;
   while (z[0]) {
-
     h += 0xdf & (unsigned char)*(z++);
 
     h *= 0x9e3779b1;
@@ -21,9 +17,7 @@ static unsigned int strHash(const char *z) {
   return h;
 }
 
-
 void sqlite3HashInit(Hash *pNew) {
-
   pNew->first = 0;
   pNew->count = 0;
   pNew->htsize = 0;
@@ -120,10 +114,6 @@ HashElem *findElementWithHash(const Hash *pH, const char *pKey, unsigned int *pH
   if (pHash)
     *pHash = h;
   while (count) {
-
-    ((void)(0))
-
-        ;
     if (h == elem->h && sqlite3StrICmp(elem->pKey, pKey) == 0) {
       return elem;
     }
@@ -149,27 +139,18 @@ void removeElement(Hash *pH, HashElem *elem) {
       pEntry->chain = elem->next;
     }
 
-    ((void)(0))
-
-        ;
     pEntry->count--;
   }
   sqlite3_free(elem);
   pH->count--;
   if (pH->count == 0) {
-
-    ((void)(0))
-
-        ;
-
-    ((void)(0))
-
-        ;
     sqlite3HashClear(pH);
   }
 }
 
-void *sqlite3HashFind(const Hash *pH, const char *pKey) { return findElementWithHash(pH, pKey, 0)->data; }
+void *sqlite3HashFind(const Hash *pH, const char *pKey) {
+  return findElementWithHash(pH, pKey, 0)->data;
+}
 
 void *sqlite3HashInsert(Hash *pH, const char *pKey, void *data) {
   unsigned int h;

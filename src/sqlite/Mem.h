@@ -1,11 +1,8 @@
 #pragma once
-
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 #include "sqlite/i64.h"
-
 #include "sqlite/CollSeq.h"
 #include "sqlite/sqlite3_value.h"
 #include "sqlite/u16.h"
@@ -58,12 +55,7 @@ int sqlite3VdbeMemTranslate(Mem *, u8);
 int sqlite3VdbeMemHandleBom(Mem *pMem);
 int sqlite3VdbeMemExpandBlob(Mem *);
 void *sqlite3MemMalloc(int nByte);
-void sqlite3MemFree(void *pPrior);
-int sqlite3MemSize(void *pPrior);
 void *sqlite3MemRealloc(void *pPrior, int nByte);
-int sqlite3MemRoundup(int n);
-int sqlite3MemInit(void *NotUsed);
-void sqlite3MemShutdown(void *NotUsed);
 __attribute__((noinline)) int vdbeMemAddTerminator(Mem *pMem);
 __attribute__((noinline)) void vdbeMemClearExternAndSetNull(Mem *p);
 __attribute__((noinline)) void vdbeMemClear(Mem *p);
@@ -74,7 +66,8 @@ __attribute__((noinline)) void vdbeReleaseAndSetInt64(Mem *pMem, i64 val);
 __attribute__((noinline)) void vdbeClrCopy(Mem *pTo, const Mem *pFrom, int eType);
 void initMemArray(Mem *p, int N, sqlite3 *db, u16 flags);
 void releaseMemArray(Mem *p, int N);
-__attribute__((noinline)) int vdbeCompareMemStringWithEncodingChange(const Mem *pMem1, const Mem *pMem2, const CollSeq *pColl, u8 *prcErr);
+__attribute__((noinline)) int vdbeCompareMemStringWithEncodingChange(const Mem *pMem1, const Mem *pMem2,
+                                                                     const CollSeq *pColl, u8 *prcErr);
 int vdbeCompareMemString(const Mem *pMem1, const Mem *pMem2, const CollSeq *pColl, u8 *prcErr);
 int alsoAnInt(Mem *pRec, double rValue, i64 *piValue);
 void applyNumericAffinity(Mem *pRec, int bTryForInt);
@@ -85,7 +78,7 @@ __attribute__((noinline)) Mem *out2PrereleaseWithClear(Mem *pOut);
 u64 filterHash(const Mem *aMem, const Op *pOp);
 const char *vdbeMemTypeName(Mem *pMem);
 
-  int isAllZero(const char *z, int n);
+int isAllZero(const char *z, int n);
 
 #ifdef __cplusplus
 }

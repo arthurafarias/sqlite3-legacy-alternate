@@ -3,9 +3,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 #include "sqlite/u32.h"
-
 typedef struct TabResult TabResult;
 
 struct TabResult {

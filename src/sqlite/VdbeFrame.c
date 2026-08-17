@@ -1,7 +1,5 @@
 #define _GNU_SOURCE 1
-
 #include "sqlite/VdbeFrame.h"
-
 #include "sqlite/AuxData.h"
 #include "sqlite/Mem.h"
 #include "sqlite/Op.h"

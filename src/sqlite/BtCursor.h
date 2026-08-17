@@ -1,17 +1,14 @@
 
 #pragma once
-
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/CellInfo.h"
 #include "sqlite/Pgno.h"
 #include "sqlite/i64.h"
 #include "sqlite/i8.h"
 #include "sqlite/u16.h"
 #include "sqlite/u8.h"
-
 #include "sqlite/BitMask.h"
 #include "sqlite/sqlite3_int64.h"
 #include "sqlite/u32.h"

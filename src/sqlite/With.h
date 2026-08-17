@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/Cte.h"
   typedef struct SrcItem SrcItem;
 

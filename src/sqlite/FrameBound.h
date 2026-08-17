@@ -1,9 +1,7 @@
 #pragma once
-
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 #include "Expr.h"
 typedef struct Expr Expr;
 

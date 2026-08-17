@@ -3,13 +3,10 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/u32.h"
 #include "sqlite/u8.h"
-
 #include "sqlite/AutoincInfo.h"
 #include "sqlite/Token.h"
-
 #include "sqlite/BitMask.h"
 #include "sqlite/LogEst.h"
 #include "sqlite/Pgno.h"
@@ -295,7 +292,8 @@ extern C {
   void sqlite3GenerateRowIndexDelete(Parse *, Table *, int, int, int *, int);
   int sqlite3GenerateIndexKey(Parse *, Index *, int, int, int, int *, Index *, int);
   void sqlite3ResolvePartIdxLabel(Parse *, int);
-  void sqlite3GenerateConstraintChecks(Parse *, Table *, int *, int, int, int, int, u8, u8, int, int *, int *, Upsert *);
+  void sqlite3GenerateConstraintChecks(Parse *, Table *, int *, int, int, int, int, u8, u8, int, int *, int *,
+                                       Upsert *);
   void sqlite3CompleteInsertion(Parse *, Table *, int, int, int, int *, int, int, int);
   int sqlite3OpenTableAndIndices(Parse *, Table *, int, u8, int, u8 *, int *, int *);
   void sqlite3BeginWriteOperation(Parse *, int, int);
@@ -314,8 +312,10 @@ extern C {
   Trigger *sqlite3TriggerList(Parse *, Table *);
   void sqlite3CodeRowTrigger(Parse *, Trigger *, int, ExprList *, int, Table *, int, int, int);
   void sqlite3CodeRowTriggerDirect(Parse *, Trigger *, Table *, int, int, int);
-  TriggerStep *sqlite3TriggerInsertStep(Parse *, SrcList *, IdList *, Select *, u8, Upsert *, const char *, const char *);
-  TriggerStep *sqlite3TriggerUpdateStep(Parse *, SrcList *, SrcList *, ExprList *, Expr *, u8, const char *, const char *);
+  TriggerStep *sqlite3TriggerInsertStep(Parse *, SrcList *, IdList *, Select *, u8, Upsert *, const char *,
+                                        const char *);
+  TriggerStep *sqlite3TriggerUpdateStep(Parse *, SrcList *, SrcList *, ExprList *, Expr *, u8, const char *,
+                                        const char *);
   TriggerStep *sqlite3TriggerDeleteStep(Parse *, SrcList *, Expr *, const char *, const char *);
   u32 sqlite3TriggerColmask(Parse *, Trigger *, ExprList *, int, int, Table *, int);
   int sqlite3JoinType(Parse *, Token *, Token *, Token *);
@@ -341,7 +341,8 @@ extern C {
   void sqlite3AlterRenameTable(Parse *, SrcList *, Token *);
   void sqlite3AlterRenameColumn(Parse *, SrcList *, Token *, Token *);
   void sqlite3AlterDropConstraint(Parse *, SrcList *, Token *, Token *);
-  void sqlite3AlterAddConstraint(Parse * pParse, SrcList * pSrc, Token * pFirst, Token * pName, const char *zExpr, int nExpr, Expr *pExpr);
+  void sqlite3AlterAddConstraint(Parse * pParse, SrcList * pSrc, Token * pFirst, Token * pName, const char *zExpr,
+                                 int nExpr, Expr *pExpr);
   void sqlite3AlterSetNotNull(Parse *, SrcList *, Token *, Token *);
   void sqlite3NestedParse(Parse *, const char *, ...);
   void sqlite3CodeRhsOfIN(Parse *, Expr *, int, int);
@@ -397,7 +398,6 @@ extern C {
   int sqlite3ExprCheckHeight(Parse *, int);
   Expr *sqlite3ExprForVectorField(Parse *, Expr *, int, int);
   void sqlite3VectorErrorMsg(Parse *, Expr *);
-  int parseTimezone(const char *zDate, DateTime *p);
   int parseHhMmSs(const char *zDate, DateTime *p);
   int parseYyyyMmDd(const char *zDate, DateTime *p);
   __attribute__((noinline)) void resizeResolveLabel(Parse * p, Vdbe * v, int j);
@@ -411,7 +411,8 @@ extern C {
   int resolveCompoundOrderBy(Parse * pParse, Select * pSelect);
   void exprCodeBetween(Parse *, Expr *, int, void (*)(Parse *, Expr *, int, int), int);
   int exprCodeVector(Parse * pParse, Expr * p, int *piToFree);
-  int codeCompare(Parse * pParse, Expr * pLeft, Expr * pRight, int opcode, int in1, int in2, int dest, int jumpIfNull, int isCommuted);
+  int codeCompare(Parse * pParse, Expr * pLeft, Expr * pRight, int opcode, int in1, int in2, int dest, int jumpIfNull,
+                  int isCommuted);
   int exprCodeSubselect(Parse * pParse, Expr * pExpr);
   int exprVectorRegister(Parse * pParse, Expr * pVector, int iField, int regSelect, Expr **ppExpr, int *pRegFree);
   void codeVectorCompare(Parse * pParse, Expr * pExpr, int dest, u8 op, u8 p5);
@@ -453,7 +454,8 @@ extern C {
   void loadAnalysis(Parse * pParse, int iDb);
   void analyzeDatabase(Parse * pParse, int iDb);
   void analyzeTable(Parse * pParse, Table * pTab, Index * pOnlyIdx);
-  void codeAttach(Parse * pParse, int type, FuncDef const *pFunc, Expr *pAuthArg, Expr *pFilename, Expr *pDbname, Expr *pKey);
+  void codeAttach(Parse * pParse, int type, FuncDef const *pFunc, Expr *pAuthArg, Expr *pFilename, Expr *pDbname,
+                  Expr *pKey);
   void sqliteAuthBadReturnCode(Parse * pParse);
   __attribute__((noinline)) void lockTable(Parse * pParse, int iDb, Pgno iTab, u8 isWriteLock, const char *zName);
   void codeTableLocks(Parse * pParse);
@@ -469,9 +471,11 @@ extern C {
   void sqlite3CodeVerifySchemaAtToplevel(Parse * pToplevel, int iDb);
   int vtabIsReadOnly(Parse * pParse, Table * pTab);
   int tabIsReadOnly(Parse * pParse, Table * pTab);
-  void fkLookupParent(Parse * pParse, int iDb, Table *pTab, Index *pIdx, FKey *pFKey, int *aiCol, int regData, int nIncr, int isIgnore);
+  void fkLookupParent(Parse * pParse, int iDb, Table *pTab, Index *pIdx, FKey *pFKey, int *aiCol, int regData,
+                      int nIncr, int isIgnore);
   Expr *exprTableRegister(Parse * pParse, Table * pTab, int regBase, i16 iCol);
-  void fkScanChildren(Parse * pParse, SrcList * pSrc, Table * pTab, Index * pIdx, FKey * pFKey, int *aiCol, int regData, int nIncr);
+  void fkScanChildren(Parse * pParse, SrcList * pSrc, Table * pTab, Index * pIdx, FKey * pFKey, int *aiCol, int regData,
+                      int nIncr);
   int isSetNullAction(Parse * pParse, FKey * pFKey);
   Trigger *fkActionTrigger(Parse * pParse, Table * pTab, FKey * pFKey, ExprList * pChanges);
   int readsTable(Parse * p, int iDb, Table *pTab);
@@ -487,10 +491,12 @@ extern C {
   int sqlite3ProcessJoin(Parse * pParse, Select * p);
   void innerLoopLoadRow(Parse * pParse, Select * pSelect, RowLoadInfo * pInfo);
   int makeSorterRecord(Parse * pParse, SortCtx * pSort, Select * pSelect, int regBase, int nBase);
-  void pushOntoSorter(Parse * pParse, SortCtx * pSort, Select * pSelect, int regData, int regOrigData, int nData, int nPrefixReg);
+  void pushOntoSorter(Parse * pParse, SortCtx * pSort, Select * pSelect, int regData, int regOrigData, int nData,
+                      int nPrefixReg);
   int codeDistinct(Parse * pParse, int eTnctType, int iTab, int addrRepeat, ExprList *pEList, int regElem);
   void fixDistinctOpenEph(Parse * pParse, int eTnctType, int iVal, int iOpenEphAddr);
-  void selectInnerLoop(Parse * pParse, Select * p, int srcTab, SortCtx *pSort, DistinctCtx *pDistinct, SelectDest *pDest, int iContinue, int iBreak);
+  void selectInnerLoop(Parse * pParse, Select * p, int srcTab, SortCtx *pSort, DistinctCtx *pDistinct,
+                       SelectDest *pDest, int iContinue, int iBreak);
   void explainTempTable(Parse * pParse, const char *zUsage);
   void generateSortTail(Parse * pParse, Select * p, SortCtx * pSort, int nColumn, SelectDest *pDest);
   void generateColumnTypes(Parse * pParse, SrcList * pTabList, ExprList * pEList);
@@ -501,7 +507,8 @@ extern C {
   int multiSelectByMerge(Parse * pParse, Select * p, SelectDest * pDest);
   int multiSelectValues(Parse * pParse, Select * p, SelectDest * pDest);
   int multiSelect(Parse * pParse, Select * p, SelectDest * pDest);
-  int generateOutputSubroutine(Parse * pParse, Select * p, SelectDest * pIn, SelectDest * pDest, int regReturn, int regPrev, KeyInfo *pKeyInfo, int iBreak);
+  int generateOutputSubroutine(Parse * pParse, Select * p, SelectDest * pIn, SelectDest * pDest, int regReturn,
+                               int regPrev, KeyInfo *pKeyInfo, int iBreak);
   void srclistRenumberCursors(Parse * pParse, int *aCsrMap, SrcList *pSrc, int iExcept);
   void renumberCursors(Parse * pParse, Select * p, int iExcept, int *aCsrMap);
   int flattenSubquery(Parse * pParse, Select * p, int iFrom, int isAgg);
@@ -523,7 +530,8 @@ extern C {
   int fromClauseTermCanBeCoroutine(Parse * pParse, SrcList * pTabList, int i, int selFlags);
   __attribute__((noinline)) void existsToJoin(Parse * pParse, Select * p, Expr * pWhere);
   TriggerStep *triggerStepAllocate(Parse * pParse, u8 op, SrcList * pTabList, const char *zStart, const char *zEnd);
-  __attribute__((noinline)) Trigger *triggersReallyExist(Parse * pParse, Table * pTab, int op, ExprList *pChanges, int *pMask);
+  __attribute__((noinline)) Trigger *triggersReallyExist(Parse * pParse, Table * pTab, int op, ExprList *pChanges,
+                                                         int *pMask);
   int isAsteriskTerm(Parse * pParse, Expr * pTerm);
   ExprList *sqlite3ExpandReturning(Parse * pParse, ExprList * pList, Table * pTab);
   void codeReturningTrigger(Parse * pParse, Trigger * pTrigger, Table * pTab, int regIn);
@@ -531,23 +539,28 @@ extern C {
   void transferParseError(Parse * pTo, Parse * pFrom);
   TriggerPrg *codeRowTrigger(Parse * pParse, Trigger * pTrigger, Table * pTab, int orconf);
   TriggerPrg *getRowTrigger(Parse * pParse, Trigger * pTrigger, Table * pTab, int orconf);
-  void updateVirtualTable(Parse * pParse, SrcList * pSrc, Table * pTab, ExprList * pChanges, Expr * pRowidExpr, int *aXRef, Expr *pWhere, int onError);
+  void updateVirtualTable(Parse * pParse, SrcList * pSrc, Table * pTab, ExprList * pChanges, Expr * pRowidExpr,
+                          int *aXRef, Expr *pWhere, int onError);
   Expr *exprRowColumn(Parse * pParse, int iCol);
-  void updateFromSelect(Parse * pParse, int iEph, Index *pPk, ExprList *pChanges, SrcList *pTabList, Expr *pWhere, ExprList *pOrderBy, Expr *pLimit);
+  void updateFromSelect(Parse * pParse, int iEph, Index *pPk, ExprList *pChanges, SrcList *pTabList, Expr *pWhere,
+                        ExprList *pOrderBy, Expr *pLimit);
   void addModuleArgument(Parse * pParse, Table * pTable, char *zArg);
   void addArgumentToVtab(Parse * pParse);
   int sqlite3WhereExplainOneScan(Parse * pParse, SrcList * pTabList, WhereLevel * pLevel, u16 wctrlFlags);
   int sqlite3WhereExplainBloomFilter(const Parse *pParse, const WhereInfo *pWInfo, const WhereLevel *pLevel);
   void sqlite3WhereAddExplainText(Parse * pParse, int addr, SrcList *pTabList, WhereLevel *pLevel, u16 wctrlFlags);
-  Bitmask sqlite3WhereCodeOneLoopStart(Parse * pParse, Vdbe * v, WhereInfo * pWInfo, int iLevel, WhereLevel *pLevel, Bitmask notReady);
+  Bitmask sqlite3WhereCodeOneLoopStart(Parse * pParse, Vdbe * v, WhereInfo * pWInfo, int iLevel, WhereLevel *pLevel,
+                                       Bitmask notReady);
   void sqlite3WhereTabFuncArgs(Parse *, SrcItem *, WhereClause *);
   void codeApplyAffinity(Parse * pParse, int base, int n, char *zAff);
   Expr *removeUnindexableInClauseTerms(Parse * pParse, int iEq, WhereLoop *pLoop, Expr *pX);
-  __attribute__((noinline)) void codeINTerm(Parse * pParse, WhereTerm * pTerm, WhereLevel * pLevel, int iEq, int bRev, int iTarget);
+  __attribute__((noinline)) void codeINTerm(Parse * pParse, WhereTerm * pTerm, WhereLevel * pLevel, int iEq, int bRev,
+                                            int iTarget);
   int codeEqualityTerm(Parse * pParse, WhereTerm * pTerm, WhereLevel * pLevel, int iEq, int bRev, int iTarget);
   int codeAllEqualityTerms(Parse * pParse, WhereLevel * pLevel, int bRev, int nExtraReg, char **pzAff);
   void codeExprOrVector(Parse * pParse, Expr * p, int iReg, int nReg);
-  __attribute__((noinline)) void filterPullDown(Parse * pParse, WhereInfo * pWInfo, int iLevel, int addrNxt, Bitmask notReady);
+  __attribute__((noinline)) void filterPullDown(Parse * pParse, WhereInfo * pWInfo, int iLevel, int addrNxt,
+                                                Bitmask notReady);
   u16 exprCommute(Parse * pParse, Expr * pExpr);
   int isLikeOrGlob(Parse * pParse, Expr * pExpr, Expr * *ppPrefix, int *pisComplete, int *pnoCase);
   int termIsEquivalence(Parse * pParse, Expr * pExpr, SrcList * pSrc);
@@ -555,14 +568,17 @@ extern C {
   int findIndexCol(Parse * pParse, ExprList * pList, int iBase, Index *pIdx, int iCol);
   int isDistinctRedundant(Parse * pParse, SrcList * pTabList, WhereClause * pWC, ExprList * pDistinct);
   void translateColumnToCopy(Parse * pParse, int iStart, int iTabCur, int iRegister, int iAutoidxCur);
-  __attribute__((noinline)) void constructAutomaticIndex(Parse * pParse, WhereClause * pWC, const Bitmask notReady, WhereLevel *pLevel);
+  __attribute__((noinline)) void constructAutomaticIndex(Parse * pParse, WhereClause * pWC, const Bitmask notReady,
+                                                         WhereLevel *pLevel);
   int vtabBestIndex(Parse * pParse, Table * pTab, sqlite3_index_info * p);
-  int whereRangeScanEst(Parse * pParse, WhereLoopBuilder * pBuilder, WhereTerm * pLower, WhereTerm * pUpper, WhereLoop * pLoop);
+  int whereRangeScanEst(Parse * pParse, WhereLoopBuilder * pBuilder, WhereTerm * pLower, WhereTerm * pUpper,
+                        WhereLoop * pLoop);
   int whereRangeVectorLen(Parse * pParse, int iCur, Index *pIdx, int nEq, WhereTerm *pTerm);
   void wherePartIdxExpr(Parse * pParse, Index * pIdx, Expr * pPart, Bitmask * pMask, int iIdxCur, SrcItem *pItem);
   __attribute__((noinline)) void whereAddIndexedExpr(Parse * pParse, Index * pIdx, int iIdxCur, SrcItem *pTabItem);
   Window *windowFind(Parse * pParse, Window * pList, const char *zName);
-  void selectWindowRewriteEList(Parse * pParse, Window * pWin, SrcList * pSrc, ExprList * pEList, Table * pTab, ExprList * *ppSub);
+  void selectWindowRewriteEList(Parse * pParse, Window * pWin, SrcList * pSrc, ExprList * pEList, Table * pTab,
+                                ExprList * *ppSub);
   ExprList *exprListAppendList(Parse * pParse, ExprList * pList, ExprList * pAppend, int bIntToNull);
   Expr *sqlite3WindowOffsetExpr(Parse * pParse, Expr * pExpr);
   void windowCheckValue(Parse * pParse, int reg, int eCond);
@@ -582,6 +598,7 @@ extern C {
   extern const struct ExprList_item zeroItem;
   u8 getSafetyLevel(const char *z, int omitFull, u8 dflt);
   const PragmaName *pragmaLocate(const char *zName);
+  void sqlite3ParserInit(void *yypRawParser, Parse *pParse);
 
 #ifdef __cplusplus
 }

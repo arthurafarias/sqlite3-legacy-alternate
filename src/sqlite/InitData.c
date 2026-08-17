@@ -1,21 +1,20 @@
 #define _GNU_SOURCE 1
-
 #include "sqlite/InitData.h"
-
 #include "sqlite/sqlite3.h"
 #include "sqlite/u32.h"
 #include "sqlite/u64.h"
 #include "sqlite/u8.h"
+#include "sqlite/SqliteResultCode.h"
 void corruptSchema(InitData *pData, char **azObj, const char *zExtra) {
   sqlite3 *db = pData->db;
   if (db->mallocFailed) {
     pData->rc = 7;
   } else if (pData->pzErrMsg[0] != 0) {
-
   } else if (pData->mInitFlags & (0x0007)) {
     static const char *azAlterType[] = {"rename", "drop column", "add column", "drop constraint"};
-    *pData->pzErrMsg = sqlite3MPrintf(db, "error in %s %s after %s: %s", azObj[0], azObj[1], azAlterType[(pData->mInitFlags & 0x0007) - 1], zExtra);
-    pData->rc = 1;
+    *pData->pzErrMsg = sqlite3MPrintf(db, "error in %s %s after %s: %s", azObj[0], azObj[1],
+                                      azAlterType[(pData->mInitFlags & 0x0007) - 1], zExtra);
+    pData->rc = SQLITE_ERROR;
   } else if (db->flags & 0x00000001) {
     pData->rc = sqlite3CorruptError(147952);
   } else {

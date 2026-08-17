@@ -1,44 +1,32 @@
 #define _GNU_SOURCE 1
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-
 #include "sqlite/DateTime.h"
-
 #include "sqlite/Sqlite3Config.h"
 #include "sqlite/i64.h"
 #include "sqlite/sqlite3.h"
 #include "sqlite/sqlite3_context.h"
 #include "sqlite/sqlite3_int64.h"
 #include "sqlite/u16.h"
+#include "sqlite/SqliteResultCode.h"
 /* Private helpers, formerly declared in _Uncategorized.h. */
 static int osLocaltime(time_t *t, struct tm *pTm);
 
 int getDigits(const char *zDate, const char *zFormat, ...) {
-
   static const u16 aMx[] = {12, 14, 24, 31, 59, 14712};
   va_list ap;
   int cnt = 0;
   char nextC;
 
-  va_start(
-
-      ap, zFormat
-
-  )
-
-      ;
+  va_start(ap, zFormat);
   do {
     char N = zFormat[0] - '0';
     char min = zFormat[1] - '0';
     int val = 0;
     u16 max;
 
-    ((void)(0))
-
-        ;
     max = aMx[zFormat[2] - 'a'];
     nextC = zFormat[3];
     val = 0;
@@ -52,36 +40,19 @@ int getDigits(const char *zDate, const char *zFormat, ...) {
     if (val < (int)min || val > (int)max || (nextC != 0 && nextC != *zDate)) {
       goto end_getDigits;
     }
-    *
-
-        va_arg(
-
-            ap
-
-            ,
-
-            int *
-
-            )
-
-        = val;
+    *va_arg(ap, int *) = val;
     zDate++;
     cnt++;
     zFormat += 4;
   } while (nextC);
 end_getDigits:
-
-  va_end(
-
-      ap
-
-  )
-
-      ;
+  va_end(ap);
   return cnt;
 }
 
-int validJulianDay(sqlite3_int64 iJD) { return iJD >= 0 && iJD <= ((((i64)0x1a640) << 32) | 0x1072fdff); }
+int validJulianDay(sqlite3_int64 iJD) {
+  return iJD >= 0 && iJD <= ((((i64)0x1a640) << 32) | 0x1072fdff);
+}
 
 static int osLocaltime(time_t *t, struct tm *pTm) {
   int rc;
@@ -98,7 +69,6 @@ static int osLocaltime(time_t *t, struct tm *pTm) {
 
   return rc;
 }
-
 
 void datetimeError(DateTime *p) {
   memset(p, 0, sizeof(*p));
@@ -147,7 +117,6 @@ void computeJD(DateTime *p) {
 }
 
 void computeFloor(DateTime *p) {
-
   if (p->D <= 28) {
     p->nFloor = 0;
   } else if ((1 << p->M) & 0x15aa) {
@@ -231,7 +200,6 @@ int toLocaltime(DateTime *p, sqlite3_context *pCtx) {
 
   computeJD(p);
   if (p->iJD < 2108667600 * (i64)100000 || p->iJD > 2130141456 * (i64)100000) {
-
     DateTime x = *p;
     computeYMD_HMS(&x);
     iYearDiff = (2000 + x.Y % 4) - x.Y;
@@ -245,7 +213,7 @@ int toLocaltime(DateTime *p, sqlite3_context *pCtx) {
   }
   if (osLocaltime(&t, &sLocal)) {
     sqlite3_result_error(pCtx, "local time unavailable", -1);
-    return 1;
+    return SQLITE_ERROR;
   }
   p->Y = sLocal.tm_year + 1900 - iYearDiff;
   p->M = sLocal.tm_mon + 1;
@@ -259,7 +227,7 @@ int toLocaltime(DateTime *p, sqlite3_context *pCtx) {
   p->rawS = 0;
   p->tz = 0;
   p->isError = 0;
-  return 0;
+  return SQLITE_OK;
 }
 
 void autoAdjustDate(DateTime *p) {
@@ -284,6 +252,10 @@ int daysAfterJan01(DateTime *pDate) {
   return (int)((pDate->iJD - jan01.iJD + 43200000) / 86400000);
 }
 
-int daysAfterMonday(DateTime *pDate) { return (int)((pDate->iJD + 43200000) / 86400000) % 7; }
+int daysAfterMonday(DateTime *pDate) {
+  return (int)((pDate->iJD + 43200000) / 86400000) % 7;
+}
 
-int daysAfterSunday(DateTime *pDate) { return (int)((pDate->iJD + 129600000) / 86400000) % 7; }
+int daysAfterSunday(DateTime *pDate) {
+  return (int)((pDate->iJD + 129600000) / 86400000) % 7;
+}

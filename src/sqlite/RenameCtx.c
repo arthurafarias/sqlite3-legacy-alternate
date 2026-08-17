@@ -1,7 +1,5 @@
 #define _GNU_SOURCE 1
-
 #include "sqlite/RenameCtx.h"
-
 #include "sqlite/RenameToken.h"
 #include "sqlite/Token.h"
 RenameToken *renameColumnTokenNext(RenameCtx *pCtx) {

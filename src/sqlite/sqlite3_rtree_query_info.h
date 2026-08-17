@@ -3,11 +3,9 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/sqlite3_int64.h"
 #include "sqlite/sqlite3_rtree_dbl.h"
 #include "sqlite/sqlite3_value.h"
-
   typedef struct sqlite3_rtree_query_info sqlite3_rtree_query_info;
 
   struct sqlite3_rtree_query_info {

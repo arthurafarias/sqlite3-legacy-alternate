@@ -1,7 +1,5 @@
 #define _GNU_SOURCE 1
-
 #include "sqlite/UnpackedRecord.h"
-
 #include "sqlite/CollSeq.h"
 #include "sqlite/KeyInfo.h"
 #include "sqlite/Mem.h"
@@ -13,7 +11,6 @@
 #include "sqlite/u16.h"
 #include "sqlite/u8.h"
 RecordCompare sqlite3VdbeFindCompare(UnpackedRecord *p) {
-
   if (p->pKeyInfo->nAllField <= 13) {
     int flags = p->aMem[0].flags;
     if (p->pKeyInfo->aSortFlags[0]) {
@@ -30,13 +27,7 @@ RecordCompare sqlite3VdbeFindCompare(UnpackedRecord *p) {
       p->u.i = p->aMem[0].u.i;
       return vdbeRecordCompareInt;
     };
-    ;
-    ;
     if ((flags & (0x0008 | 0x0020 | 0x0001 | 0x0010)) == 0 && p->pKeyInfo->aColl[0] == 0) {
-
-      ((void)(0))
-
-          ;
       p->u.z = p->aMem[0].z;
       p->n = p->aMem[0].n;
       return vdbeRecordCompareString;

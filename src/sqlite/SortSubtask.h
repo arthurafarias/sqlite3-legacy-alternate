@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/SorterCompare.h"
 #include "sqlite/SorterFile.h"
 #include "sqlite/SorterList.h"
@@ -35,10 +34,14 @@ extern C {
   int vdbeSorterMapFile(SortSubtask * pTask, SorterFile * pFile, u8 * *pp);
   int vdbePmaReaderSeek(SortSubtask * pTask, PmaReader * pReadr, SorterFile * pFile, i64 iOff);
   int vdbePmaReaderInit(SortSubtask * pTask, SorterFile * pFile, i64 iStart, PmaReader * pReadr, i64 * pnByte);
-  int vdbeSorterCompareTail(SortSubtask * pTask, int *pbKey2Cached, const void *pKey1, int nKey1, const void *pKey2, int nKey2);
-  int vdbeSorterCompare(SortSubtask * pTask, int *pbKey2Cached, const void *pKey1, int nKey1, const void *pKey2, int nKey2);
-  int vdbeSorterCompareText(SortSubtask * pTask, int *pbKey2Cached, const void *pKey1, int nKey1, const void *pKey2, int nKey2);
-  int vdbeSorterCompareInt(SortSubtask * pTask, int *pbKey2Cached, const void *pKey1, int nKey1, const void *pKey2, int nKey2);
+  int vdbeSorterCompareTail(SortSubtask * pTask, int *pbKey2Cached, const void *pKey1, int nKey1, const void *pKey2,
+                            int nKey2);
+  int vdbeSorterCompare(SortSubtask * pTask, int *pbKey2Cached, const void *pKey1, int nKey1, const void *pKey2,
+                        int nKey2);
+  int vdbeSorterCompareText(SortSubtask * pTask, int *pbKey2Cached, const void *pKey1, int nKey1, const void *pKey2,
+                            int nKey2);
+  int vdbeSorterCompareInt(SortSubtask * pTask, int *pbKey2Cached, const void *pKey1, int nKey1, const void *pKey2,
+                           int nKey2);
   int vdbeSorterJoinThread(SortSubtask * pTask);
   int vdbeSorterCreateThread(SortSubtask * pTask, void *(*xTask)(void *), void *pIn);
   int vdbeSortAllocUnpacked(SortSubtask * pTask);

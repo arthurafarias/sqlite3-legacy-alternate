@@ -1,10 +1,8 @@
 
 #pragma once
-
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/AggInfo.h"
 #include "sqlite/BitMask.h"
 #include "sqlite/i16.h"

@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
   typedef struct PmaReader PmaReader;
   typedef struct SortSubtask SortSubtask;
   typedef struct MergeEngine MergeEngine;

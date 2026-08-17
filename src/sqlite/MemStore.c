@@ -1,22 +1,26 @@
 #define _GNU_SOURCE 1
-
 #include "sqlite/MemStore.h"
-
 #include "sqlite/sqlite3.h"
 #include "sqlite/sqlite3_int64.h"
 #include "sqlite/sqlite3_mutex.h"
 #include "sqlite/u64.h"
-void memdbEnter(MemStore *p) { sqlite3_mutex_enter(p->pMutex); }
+#include "sqlite/SqliteDeserializeFlags.h"
+#include "sqlite/SqliteResultCode.h"
+void memdbEnter(MemStore *p) {
+  sqlite3_mutex_enter(p->pMutex);
+}
 
-void memdbLeave(MemStore *p) { sqlite3_mutex_leave(p->pMutex); }
+void memdbLeave(MemStore *p) {
+  sqlite3_mutex_leave(p->pMutex);
+}
 
 int memdbEnlarge(MemStore *p, sqlite3_int64 newSz) {
   unsigned char *pNew;
-  if ((p->mFlags & 2) == 0 || (p->nMmap > 0)) {
-    return 13;
+  if ((p->mFlags & SQLITE_DESERIALIZE_RESIZEABLE) == 0 || (p->nMmap > 0)) {
+    return SQLITE_FULL;
   }
   if (newSz > p->szMax) {
-    return 13;
+    return SQLITE_FULL;
   }
   newSz *= 2;
   if (newSz > p->szMax)
@@ -26,5 +30,5 @@ int memdbEnlarge(MemStore *p, sqlite3_int64 newSz) {
     return (10 | (12 << 8));
   p->aData = pNew;
   p->szAlloc = newSz;
-  return 0;
+  return SQLITE_OK;
 }

@@ -3,11 +3,9 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/Fts5Context.h"
 #include "sqlite/Fts5PhraseIter.h"
 #include "sqlite/sqlite3_int64.h"
-
   typedef struct Fts5ExtensionApi Fts5ExtensionApi;
 
   struct Fts5ExtensionApi {
@@ -19,7 +17,8 @@ extern C {
     int (*xRowCount)(Fts5Context *, sqlite3_int64 *pnRow);
     int (*xColumnTotalSize)(Fts5Context *, int iCol, sqlite3_int64 *pnToken);
 
-    int (*xTokenize)(Fts5Context *, const char *pText, int nText, void *pCtx, int (*xToken)(void *, int, const char *, int, int, int));
+    int (*xTokenize)(Fts5Context *, const char *pText, int nText, void *pCtx,
+                     int (*xToken)(void *, int, const char *, int, int, int));
 
     int (*xPhraseCount)(Fts5Context *);
     int (*xPhraseSize)(Fts5Context *, int iPhrase);
@@ -31,7 +30,8 @@ extern C {
     int (*xColumnText)(Fts5Context *, int iCol, const char **pz, int *pn);
     int (*xColumnSize)(Fts5Context *, int iCol, int *pnToken);
 
-    int (*xQueryPhrase)(Fts5Context *, int iPhrase, void *pUserData, int (*)(const Fts5ExtensionApi *, Fts5Context *, void *));
+    int (*xQueryPhrase)(Fts5Context *, int iPhrase, void *pUserData,
+                        int (*)(const Fts5ExtensionApi *, Fts5Context *, void *));
     int (*xSetAuxdata)(Fts5Context *, void *pAux, void (*xDelete)(void *));
     void *(*xGetAuxdata)(Fts5Context *, int bClear);
 
@@ -45,7 +45,8 @@ extern C {
     int (*xInstToken)(Fts5Context *, int iIdx, int iToken, const char **, int *);
 
     int (*xColumnLocale)(Fts5Context *, int iCol, const char **pz, int *pn);
-    int (*xTokenize_v2)(Fts5Context *, const char *pText, int nText, const char *pLocale, int nLocale, void *pCtx, int (*xToken)(void *, int, const char *, int, int, int));
+    int (*xTokenize_v2)(Fts5Context *, const char *pText, int nText, const char *pLocale, int nLocale, void *pCtx,
+                        int (*xToken)(void *, int, const char *, int, int, int));
   };
 
 #ifdef __cplusplus

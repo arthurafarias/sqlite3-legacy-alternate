@@ -1,9 +1,6 @@
 #define _GNU_SOURCE 1
-
 #include <string.h>
-
 #include "sqlite/RowSetEntry.h"
-
 #include "sqlite/i64.h"
 struct RowSetEntry *rowSetEntryMerge(struct RowSetEntry *pA, struct RowSetEntry *pB) {
   struct RowSetEntry head;
@@ -12,14 +9,6 @@ struct RowSetEntry *rowSetEntryMerge(struct RowSetEntry *pA, struct RowSetEntry 
   pTail = &head;
 
   for (;;) {
-
-    ((void)(0))
-
-        ;
-
-    ((void)(0))
-
-        ;
     if (pA->v <= pB->v) {
       if (pA->v < pB->v)
         pTail = pTail->pRight = pA;
@@ -65,7 +54,6 @@ struct RowSetEntry *rowSetEntrySort(struct RowSetEntry *pIn) {
 }
 
 void rowSetTreeToList(struct RowSetEntry *pIn, struct RowSetEntry **ppFirst, struct RowSetEntry **ppLast) {
-
   if (pIn->pLeft) {
     struct RowSetEntry *p;
     rowSetTreeToList(pIn->pLeft, ppFirst, &p);
@@ -84,15 +72,12 @@ struct RowSetEntry *rowSetNDeepTree(struct RowSetEntry **ppList, int iDepth) {
   struct RowSetEntry *p;
   struct RowSetEntry *pLeft;
   if (*ppList == 0) {
-
     return 0;
   }
   if (iDepth > 1) {
-
     pLeft = rowSetNDeepTree(ppList, iDepth - 1);
     p = *ppList;
     if (p == 0) {
-
       return pLeft;
     }
     p->pLeft = pLeft;

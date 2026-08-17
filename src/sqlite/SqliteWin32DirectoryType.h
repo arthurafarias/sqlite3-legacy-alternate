@@ -1,9 +1,7 @@
 #pragma once
-
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 /* Win32 Directory Types (from sqlite3.h) */
 enum {
   SQLITE_WIN32_DATA_DIRECTORY_TYPE = 1,

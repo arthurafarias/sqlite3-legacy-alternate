@@ -3,9 +3,7 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/YYMINORTYPE.h"
-
   typedef struct yyStackEntry yyStackEntry;
 
   struct yyStackEntry {

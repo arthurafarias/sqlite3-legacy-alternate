@@ -3,10 +3,8 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/sqlite3_int64.h"
 #include "sqlite/sqlite3_value.h"
-
   typedef struct PrintfArguments PrintfArguments;
 
   struct PrintfArguments {

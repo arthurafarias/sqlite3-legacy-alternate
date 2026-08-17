@@ -1,7 +1,5 @@
 #define _GNU_SOURCE 1
-
 #include "sqlite/PrintfArguments.h"
-
 #include "sqlite/sqlite3_int64.h"
 #include "sqlite/sqlite3_value.h"
 sqlite3_int64 getIntArg(PrintfArguments *p) {

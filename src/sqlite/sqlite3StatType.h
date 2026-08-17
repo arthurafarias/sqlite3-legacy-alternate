@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/sqlite3StatValueType.h"
   typedef struct sqlite3StatType sqlite3StatType;
 

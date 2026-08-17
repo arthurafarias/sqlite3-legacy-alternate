@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
   typedef struct sqlite3 sqlite3;
   typedef struct analysisInfo analysisInfo;
 

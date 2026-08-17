@@ -1,7 +1,5 @@
 #define _GNU_SOURCE 1
-
 #include "sqlite/IncrMerger.h"
-
 #include "sqlite/MergeEngine.h"
 #include "sqlite/PmaReader.h"
 #include "sqlite/PmaWriter.h"
@@ -14,9 +12,9 @@
 #include "sqlite/sqlite3_file.h"
 #include "sqlite/u64.h"
 #include "sqlite/u8.h"
+#include "sqlite/SqliteResultCode.h"
 void vdbeIncrFree(IncrMerger *pIncr) {
   if (pIncr) {
-
     if (pIncr->bUseThread) {
       vdbeSorterJoinThread(pIncr->pTask);
       if (pIncr->aFile[0].pFd)
@@ -31,7 +29,7 @@ void vdbeIncrFree(IncrMerger *pIncr) {
 }
 
 int vdbeIncrPopulate(IncrMerger *pIncr) {
-  int rc = 0;
+  int rc = SQLITE_OK;
   int rc2;
   i64 iStart = pIncr->iStartOff;
   SorterFile *pOut = &pIncr->aFile[1];
@@ -39,10 +37,8 @@ int vdbeIncrPopulate(IncrMerger *pIncr) {
   MergeEngine *pMerger = pIncr->pMerger;
   PmaWriter writer;
 
-  ;
-
   vdbePmaWriterInit(pOut->pFd, &writer, pTask->pSorter->pgsz, iStart);
-  while (rc == 0) {
+  while (rc == SQLITE_OK) {
     int dummy;
     PmaReader *pReader = &pMerger->aReadr[pMerger->aTree[1]];
     int nKey = pReader->nKey;
@@ -56,16 +52,12 @@ int vdbeIncrPopulate(IncrMerger *pIncr) {
     vdbePmaWriteVarint(&writer, nKey);
     vdbePmaWriteBlob(&writer, pReader->aKey, nKey);
 
-    ((void)(0))
-
-        ;
     rc = vdbeMergeEngineStep(pIncr->pMerger, &dummy);
   }
 
   rc2 = vdbePmaWriterFinish(&writer, &pOut->iEof, &pTask->nSpill);
-  if (rc == 0)
+  if (rc == SQLITE_OK)
     rc = rc2;
-  ;
   return rc;
 }
 
@@ -76,27 +68,25 @@ int vdbeIncrBgPopulate(IncrMerger *pIncr) {
 }
 
 int vdbeIncrSwap(IncrMerger *pIncr) {
-  int rc = 0;
+  int rc = SQLITE_OK;
 
   if (pIncr->bUseThread) {
     rc = vdbeSorterJoinThread(pIncr->pTask);
 
-    if (rc == 0) {
+    if (rc == SQLITE_OK) {
       SorterFile f0 = pIncr->aFile[0];
       pIncr->aFile[0] = pIncr->aFile[1];
       pIncr->aFile[1] = f0;
     }
 
-    if (rc == 0) {
+    if (rc == SQLITE_OK) {
       if (pIncr->aFile[0].iEof == pIncr->iStartOff) {
         pIncr->bEof = 1;
       } else {
         rc = vdbeIncrBgPopulate(pIncr);
       }
     }
-  } else
-
-  {
+  } else {
     rc = vdbeIncrPopulate(pIncr);
     pIncr->aFile[0] = pIncr->aFile[1];
     if (pIncr->aFile[0].iEof == pIncr->iStartOff) {

@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/i64.h"
 #include "sqlite/sqlite3_int64.h"
   typedef struct UnixUnusedFd UnixUnusedFd;
@@ -13,6 +12,7 @@ extern C {
   typedef struct unixShm unixShm;
   typedef struct unixShmNode unixShmNode;
   typedef struct unixFile unixFile;
+  struct flock;
   struct unixFile {
     sqlite3_io_methods const *pMethod;
     sqlite3_vfs *pVfs;

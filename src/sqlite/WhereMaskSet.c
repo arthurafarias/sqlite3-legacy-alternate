@@ -1,7 +1,5 @@
 #define _GNU_SOURCE 1
-
 #include "sqlite/WhereMaskSet.h"
-
 #include "sqlite/Expr.h"
 #include "sqlite/ExprList.h"
 #include "sqlite/Select.h"
@@ -47,9 +45,6 @@ __attribute__((noinline)) Bitmask sqlite3WhereExprUsageFull(WhereMaskSet *pMaskS
   if (p->pRight) {
     mask |= sqlite3WhereExprUsageNN(pMaskSet, p->pRight);
 
-    ((void)(0))
-
-        ;
   } else if ((((p)->flags & 0x001000) != 0)) {
     if ((((p)->flags & (u32)(0x000040)) != 0))
       pMaskSet->bVarSelect = 1;
@@ -59,10 +54,6 @@ __attribute__((noinline)) Bitmask sqlite3WhereExprUsageFull(WhereMaskSet *pMaskS
   }
 
   if ((p->op == 172 || p->op == 169) && (((p)->flags & 0x1000000) != 0)) {
-
-    ((void)(0))
-
-        ;
     mask |= sqlite3WhereExprListUsage(pMaskSet, p->y.pWin->pPartition);
     mask |= sqlite3WhereExprListUsage(pMaskSet, p->y.pWin->pOrderBy);
     mask |= sqlite3WhereExprUsage(pMaskSet, p->y.pWin->pFilter);
@@ -75,16 +66,14 @@ Bitmask sqlite3WhereExprUsageNN(WhereMaskSet *pMaskSet, Expr *p) {
   if (p->op == 168 && !(((p)->flags & (u32)(0x000020)) != 0)) {
     return sqlite3WhereGetMask(pMaskSet, p->iTable);
   } else if ((((p)->flags & (u32)(0x010000 | 0x800000)) != 0)) {
-
-    ((void)(0))
-
-        ;
     return 0;
   }
   return sqlite3WhereExprUsageFull(pMaskSet, p);
 }
 
-Bitmask sqlite3WhereExprUsage(WhereMaskSet *pMaskSet, Expr *p) { return p ? sqlite3WhereExprUsageNN(pMaskSet, p) : 0; }
+Bitmask sqlite3WhereExprUsage(WhereMaskSet *pMaskSet, Expr *p) {
+  return p ? sqlite3WhereExprUsageNN(pMaskSet, p) : 0;
+}
 
 Bitmask sqlite3WhereExprListUsage(WhereMaskSet *pMaskSet, ExprList *pList) {
   int i;
@@ -111,4 +100,6 @@ Bitmask sqlite3WhereGetMask(WhereMaskSet *pMaskSet, int iCursor) {
   return 0;
 }
 
-void createMask(WhereMaskSet *pMaskSet, int iCursor) { pMaskSet->ix[pMaskSet->n++] = iCursor; }
+void createMask(WhereMaskSet *pMaskSet, int iCursor) {
+  pMaskSet->ix[pMaskSet->n++] = iCursor;
+}

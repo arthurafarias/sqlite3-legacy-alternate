@@ -1,15 +1,12 @@
 
 #pragma once
 #include "sqlite/Btree.h"
-
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/Pgno.h"
 #include "sqlite/u32.h"
 #include "sqlite/u8.h"
-
   typedef struct sqlite3 sqlite3;
   typedef struct Btree Btree;
 

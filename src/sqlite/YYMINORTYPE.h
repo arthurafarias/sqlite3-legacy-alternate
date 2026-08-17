@@ -1,9 +1,7 @@
 #pragma once
-
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 #include "sqlite/Cte.h"
 #include "sqlite/Expr.h"
 #include "sqlite/ExprList.h"
@@ -20,7 +18,6 @@ extern "C" {
 #include "sqlite/With.h"
 #include "sqlite/u32.h"
 #include "sqlite/u8.h"
-
 typedef union YYMINORTYPE YYMINORTYPE;
 
 union YYMINORTYPE {

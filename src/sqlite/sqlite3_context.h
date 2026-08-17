@@ -3,9 +3,7 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/Mem.h"
-
 #include "sqlite/compareInfo.h"
 #include "sqlite/i64.h"
 #include "sqlite/sqlite3_destructor_type.h"
@@ -63,7 +61,8 @@ extern C {
   void sqlite3_result_text16(sqlite3_context *, const void *, int, void (*)(void *));
   void sqlite3_result_text16be(sqlite3_context *, const void *, int, void (*)(void *));
   void sqlite3_result_text16le(sqlite3_context *, const void *, int, void (*)(void *));
-  void sqlite3_result_text64(sqlite3_context *, const char *z, sqlite3_uint64 n, void (*)(void *), unsigned char encoding);
+  void sqlite3_result_text64(sqlite3_context *, const char *z, sqlite3_uint64 n, void (*)(void *),
+                             unsigned char encoding);
   void sqlite3_result_value(sqlite3_context *, sqlite3_value *);
   void sqlite3_result_zeroblob(sqlite3_context *, int n);
   void sqlite3_set_auxdata(sqlite3_context *, int N, void *, void (*)(void *));
@@ -91,7 +90,8 @@ extern C {
   void setResultStrOrError(sqlite3_context * pCtx, const char *z, int n, u8 enc, void (*xDel)(void *));
   __attribute__((noinline)) void *createAggContext(sqlite3_context * p, int nByte);
   void errorMPrintf(sqlite3_context * pCtx, const char *zFmt, ...);
-  void renameColumnParseError(sqlite3_context * pCtx, const char *zWhen, sqlite3_value *pType, sqlite3_value *pObject, Parse *pParse);
+  void renameColumnParseError(sqlite3_context * pCtx, const char *zWhen, sqlite3_value *pType, sqlite3_value *pObject,
+                              Parse *pParse);
   int renameEditSql(sqlite3_context * pCtx, RenameCtx * pRename, const char *zSql, const char *zNew, int bQuote);
   void renameColumnFunc(sqlite3_context * context, int NotUsed, sqlite3_value **argv);
   void renameTableFunc(sqlite3_context * context, int NotUsed, sqlite3_value **argv);

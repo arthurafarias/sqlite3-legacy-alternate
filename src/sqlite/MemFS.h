@@ -2,7 +2,6 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 typedef struct MemStore MemStore;
 
 typedef struct sqlite3_vfs MemVfs;

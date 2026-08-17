@@ -1,7 +1,5 @@
 #define _GNU_SOURCE 1
-
 #include "sqlite/Incrblob.h"
-
 #include "sqlite/BtCursor.h"
 #include "sqlite/Mem.h"
 #include "sqlite/Vdbe.h"
@@ -12,6 +10,7 @@
 #include "sqlite/sqlite3_stmt.h"
 #include "sqlite/u16.h"
 #include "sqlite/u32.h"
+#include "sqlite/SqliteResultCode.h"
 int blobSeekToRow(Incrblob *p, sqlite3_int64 iRow, char **pzErr) {
   int rc;
   char *zErr = 0;
@@ -22,30 +21,18 @@ int blobSeekToRow(Incrblob *p, sqlite3_int64 iRow, char **pzErr) {
   if (v->pc > 4) {
     v->pc = 4;
 
-    ((void)(0))
-
-        ;
     rc = sqlite3VdbeExec(v);
   } else {
     rc = sqlite3_step(p->pStmt);
   }
-  if (rc == 100) {
+  if (rc == SQLITE_ROW) {
     VdbeCursor *pC = v->apCsr[0];
     u32 type;
 
-    ((void)(0))
-
-        ;
-
-    ((void)(0))
-
-        ;
     type = pC->nHdrParsed > p->iCol ? pC->aType[p->iCol] : 0;
-    ;
-    ;
     if (type < 12) {
       zErr = sqlite3MPrintf(p->db, "cannot open value of type %s", type == 0 ? "null" : type == 7 ? "real" : "integer");
-      rc = 1;
+      rc = SQLITE_ERROR;
       sqlite3_finalize(p->pStmt);
       p->pStmt = 0;
     } else {
@@ -56,14 +43,14 @@ int blobSeekToRow(Incrblob *p, sqlite3_int64 iRow, char **pzErr) {
     }
   }
 
-  if (rc == 100) {
-    rc = 0;
+  if (rc == SQLITE_ROW) {
+    rc = SQLITE_OK;
   } else if (p->pStmt) {
     rc = sqlite3_finalize(p->pStmt);
     p->pStmt = 0;
-    if (rc == 0) {
+    if (rc == SQLITE_OK) {
       zErr = sqlite3MPrintf(p->db, "no such rowid: %lld", iRow);
-      rc = 1;
+      rc = SQLITE_ERROR;
     } else {
       zErr = sqlite3MPrintf(p->db, "%s", sqlite3_errmsg(p->db));
     }

@@ -2,7 +2,6 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 typedef struct sqlite3_io_methods sqlite3_io_methods;
 typedef struct unixFile unixFile;
 

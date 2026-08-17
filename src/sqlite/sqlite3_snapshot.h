@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
   typedef struct sqlite3_snapshot sqlite3_snapshot;
   struct sqlite3_snapshot {
     unsigned char hidden[48];

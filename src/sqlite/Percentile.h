@@ -3,10 +3,8 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 #include "sqlite/i64.h"
 #include "sqlite/u64.h"
-
 typedef struct Percentile Percentile;
 
 struct Percentile {

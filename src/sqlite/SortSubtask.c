@@ -1,10 +1,7 @@
 #define _GNU_SOURCE 1
-
 #include <stdint.h>
 #include <string.h>
-
 #include "sqlite/SortSubtask.h"
-
 #include "sqlite/IncrMerger.h"
 #include "sqlite/KeyInfo.h"
 #include "sqlite/MergeEngine.h"
@@ -26,13 +23,13 @@
 #include "sqlite/u32.h"
 #include "sqlite/u64.h"
 #include "sqlite/u8.h"
+#include "sqlite/SqliteResultCode.h"
 int vdbeSorterMapFile(SortSubtask *pTask, SorterFile *pFile, u8 **pp) {
-  int rc = 0;
+  int rc = SQLITE_OK;
   if (pFile->iEof <= (i64)(pTask->pSorter->db->nMaxSorterMmap)) {
     sqlite3_file *pFd = pFile->pFd;
     if (pFd->pMethods->iVersion >= 3) {
       rc = sqlite3OsFetch(pFd, 0, (int)pFile->iEof, (void **)pp);
-      ;
     }
   }
   return rc;
@@ -52,7 +49,7 @@ int vdbePmaReaderSeek(SortSubtask *pTask, PmaReader *pReadr, SorterFile *pFile, 
   pReadr->pFd = pFile->pFd;
 
   rc = vdbeSorterMapFile(pTask, pFile, &pReadr->aMap);
-  if (rc == 0 && pReadr->aMap == 0) {
+  if (rc == SQLITE_OK && pReadr->aMap == 0) {
     int pgsz = pTask->pSorter->pgsz;
     int iBuf = pReadr->iReadOff % pgsz;
     if (pReadr->aBuffer == 0) {
@@ -61,13 +58,12 @@ int vdbePmaReaderSeek(SortSubtask *pTask, PmaReader *pReadr, SorterFile *pFile, 
         rc = 7;
       pReadr->nBuffer = pgsz;
     }
-    if (rc == 0 && iBuf) {
+    if (rc == SQLITE_OK && iBuf) {
       int nRead = pgsz - iBuf;
       if ((pReadr->iReadOff + nRead) > pReadr->iEof) {
         nRead = (int)(pReadr->iEof - pReadr->iReadOff);
       }
       rc = sqlite3OsRead(pReadr->pFd, &pReadr->aBuffer[iBuf], nRead, pReadr->iReadOff);
-      ;
     }
   }
 
@@ -78,20 +74,21 @@ int vdbePmaReaderInit(SortSubtask *pTask, SorterFile *pFile, i64 iStart, PmaRead
   int rc;
 
   rc = vdbePmaReaderSeek(pTask, pReadr, pFile, iStart);
-  if (rc == 0) {
+  if (rc == SQLITE_OK) {
     u64 nByte = 0;
     rc = vdbePmaReadVarint(pReadr, &nByte);
     pReadr->iEof = pReadr->iReadOff + nByte;
     *pnByte += nByte;
   }
 
-  if (rc == 0) {
+  if (rc == SQLITE_OK) {
     rc = vdbePmaReaderNext(pReadr);
   }
   return rc;
 }
 
-int vdbeSorterCompareTail(SortSubtask *pTask, int *pbKey2Cached, const void *pKey1, int nKey1, const void *pKey2, int nKey2) {
+int vdbeSorterCompareTail(SortSubtask *pTask, int *pbKey2Cached, const void *pKey1, int nKey1, const void *pKey2,
+                          int nKey2) {
   UnpackedRecord *r2 = pTask->pUnpacked;
   if (*pbKey2Cached == 0) {
     sqlite3VdbeRecordUnpack(nKey2, pKey2, r2);
@@ -100,7 +97,8 @@ int vdbeSorterCompareTail(SortSubtask *pTask, int *pbKey2Cached, const void *pKe
   return sqlite3VdbeRecordCompareWithSkip(nKey1, pKey1, r2, 1);
 }
 
-int vdbeSorterCompare(SortSubtask *pTask, int *pbKey2Cached, const void *pKey1, int nKey1, const void *pKey2, int nKey2) {
+int vdbeSorterCompare(SortSubtask *pTask, int *pbKey2Cached, const void *pKey1, int nKey1, const void *pKey2,
+                      int nKey2) {
   UnpackedRecord *r2 = pTask->pUnpacked;
   if (!*pbKey2Cached) {
     sqlite3VdbeRecordUnpack(nKey2, pKey2, r2);
@@ -109,7 +107,8 @@ int vdbeSorterCompare(SortSubtask *pTask, int *pbKey2Cached, const void *pKey1, 
   return sqlite3VdbeRecordCompare(nKey1, pKey1, r2);
 }
 
-int vdbeSorterCompareText(SortSubtask *pTask, int *pbKey2Cached, const void *pKey1, int nKey1, const void *pKey2, int nKey2) {
+int vdbeSorterCompareText(SortSubtask *pTask, int *pbKey2Cached, const void *pKey1, int nKey1, const void *pKey2,
+                          int nKey2) {
   const u8 *const p1 = (const u8 *const)pKey1;
   const u8 *const p2 = (const u8 *const)pKey2;
   const u8 *const v1 = &p1[p1[0]];
@@ -135,14 +134,6 @@ int vdbeSorterCompareText(SortSubtask *pTask, int *pbKey2Cached, const void *pKe
       res = vdbeSorterCompareTail(pTask, pbKey2Cached, pKey1, nKey1, pKey2, nKey2);
     }
   } else {
-
-    ((void)(0))
-
-        ;
-
-    ((void)(0))
-
-        ;
     if (pTask->pSorter->pKeyInfo->aSortFlags[0]) {
       res = res * -1;
     }
@@ -151,7 +142,8 @@ int vdbeSorterCompareText(SortSubtask *pTask, int *pbKey2Cached, const void *pKe
   return res;
 }
 
-int vdbeSorterCompareInt(SortSubtask *pTask, int *pbKey2Cached, const void *pKey1, int nKey1, const void *pKey2, int nKey2) {
+int vdbeSorterCompareInt(SortSubtask *pTask, int *pbKey2Cached, const void *pKey1, int nKey1, const void *pKey2,
+                         int nKey2) {
   const u8 *const p1 = (const u8 *const)pKey1;
   const u8 *const p2 = (const u8 *const)pKey2;
   const int s1 = p1[1];
@@ -161,7 +153,6 @@ int vdbeSorterCompareInt(SortSubtask *pTask, int *pbKey2Cached, const void *pKey
   int res;
 
   if (s1 == s2) {
-
     static const u8 aLen[] = {0, 1, 2, 3, 4, 6, 8, 0, 0, 0};
     const u8 n = aLen[s1];
     int i;
@@ -185,10 +176,6 @@ int vdbeSorterCompareInt(SortSubtask *pTask, int *pbKey2Cached, const void *pKey
       res = s1 - s2;
     }
 
-    ((void)(0))
-
-        ;
-
     if (res > 0) {
       if (*v1 & 0x80)
         res = -1;
@@ -203,10 +190,6 @@ int vdbeSorterCompareInt(SortSubtask *pTask, int *pbKey2Cached, const void *pKey
       res = vdbeSorterCompareTail(pTask, pbKey2Cached, pKey1, nKey1, pKey2, nKey2);
     }
   } else if (pTask->pSorter->pKeyInfo->aSortFlags[0]) {
-
-    ((void)(0))
-
-        ;
     res = res * -1;
   }
 
@@ -214,25 +197,21 @@ int vdbeSorterCompareInt(SortSubtask *pTask, int *pbKey2Cached, const void *pKey
 }
 
 int vdbeSorterJoinThread(SortSubtask *pTask) {
-  int rc = 0;
+  int rc = SQLITE_OK;
   if (pTask->pThread) {
-
     void *pRet = ((void *)(intptr_t)(1));
-    ;
     (void)sqlite3ThreadJoin(pTask->pThread, &pRet);
-    ;
     rc = ((int)(intptr_t)(pRet));
 
-    ((void)(0))
-
-        ;
     pTask->bDone = 0;
     pTask->pThread = 0;
   }
   return rc;
 }
 
-int vdbeSorterCreateThread(SortSubtask *pTask, void *(*xTask)(void *), void *pIn) { return sqlite3ThreadCreate(&pTask->pThread, xTask, pIn); }
+int vdbeSorterCreateThread(SortSubtask *pTask, void *(*xTask)(void *), void *pIn) {
+  return sqlite3ThreadCreate(&pTask->pThread, xTask, pIn);
+}
 
 int vdbeSortAllocUnpacked(SortSubtask *pTask) {
   if (pTask->pUnpacked == 0) {
@@ -242,7 +221,7 @@ int vdbeSortAllocUnpacked(SortSubtask *pTask) {
     pTask->pUnpacked->nField = pTask->pSorter->pKeyInfo->nKeyField;
     pTask->pUnpacked->errCode = 0;
   }
-  return 0;
+  return SQLITE_OK;
 }
 
 SorterRecord *vdbeSorterMerge(SortSubtask *pTask, SorterRecord *p1, SorterRecord *p2) {
@@ -252,7 +231,8 @@ SorterRecord *vdbeSorterMerge(SortSubtask *pTask, SorterRecord *p1, SorterRecord
 
   for (;;) {
     int res;
-    res = pTask->xCompare(pTask, &bCached, ((void *)((SorterRecord *)(p1) + 1)), p1->nVal, ((void *)((SorterRecord *)(p2) + 1)), p2->nVal);
+    res = pTask->xCompare(pTask, &bCached, ((void *)((SorterRecord *)(p1) + 1)), p1->nVal,
+                          ((void *)((SorterRecord *)(p2) + 1)), p2->nVal);
 
     if (res <= 0) {
       *pp = p1;
@@ -283,7 +263,7 @@ int vdbeSorterSort(SortSubtask *pTask, SorterList *pList) {
   SorterRecord *aSlot[64];
 
   rc = vdbeSortAllocUnpacked(pTask);
-  if (rc != 0)
+  if (rc != SQLITE_OK)
     return rc;
 
   p = pList->pList;
@@ -296,10 +276,6 @@ int vdbeSorterSort(SortSubtask *pTask, SorterList *pList) {
       if ((u8 *)p == pList->aMemory) {
         pNext = 0;
       } else {
-
-        ((void)(0))
-
-            ;
         pNext = (SorterRecord *)&pList->aMemory[p->u.iNext];
       }
     } else {
@@ -310,9 +286,6 @@ int vdbeSorterSort(SortSubtask *pTask, SorterList *pList) {
     for (i = 0; aSlot[i]; i++) {
       p = vdbeSorterMerge(pTask, p, aSlot[i]);
 
-      ((void)(0))
-
-          ;
       aSlot[i] = 0;
     }
     aSlot[i] = p;
@@ -332,37 +305,24 @@ int vdbeSorterSort(SortSubtask *pTask, SorterList *pList) {
 
 int vdbeSorterListToPMA(SortSubtask *pTask, SorterList *pList) {
   sqlite3 *db = pTask->pSorter->db;
-  int rc = 0;
+  int rc = SQLITE_OK;
   PmaWriter writer;
 
-  ;
   memset(&writer, 0, sizeof(PmaWriter));
 
   if (pTask->file.pFd == 0) {
     rc = vdbeSorterOpenTempFile(db, 0, &pTask->file.pFd);
-
-    ((void)(0))
-
-        ;
-
-    ((void)(0))
-
-        ;
-
-    ((void)(0))
-
-        ;
   }
 
-  if (rc == 0) {
+  if (rc == SQLITE_OK) {
     vdbeSorterExtendFile(db, pTask->file.pFd, pTask->file.iEof + pList->szPMA + 9);
   }
 
-  if (rc == 0) {
+  if (rc == SQLITE_OK) {
     rc = vdbeSorterSort(pTask, pList);
   }
 
-  if (rc == 0) {
+  if (rc == SQLITE_OK) {
     SorterRecord *p;
     SorterRecord *pNext = 0;
 
@@ -380,18 +340,17 @@ int vdbeSorterListToPMA(SortSubtask *pTask, SorterList *pList) {
     rc = vdbePmaWriterFinish(&writer, &pTask->file.iEof, &pTask->nSpill);
   }
 
-  ;
-
   return rc;
 }
 
 int vdbeIncrMergerNew(SortSubtask *pTask, MergeEngine *pMerger, IncrMerger **ppOut) {
-  int rc = 0;
+  int rc = SQLITE_OK;
   IncrMerger *pIncr = *ppOut = (IncrMerger *)(sqlite3FaultSim(100) ? 0 : sqlite3MallocZero(sizeof(*pIncr)));
   if (pIncr) {
     pIncr->pMerger = pMerger;
     pIncr->pTask = pTask;
-    pIncr->mxSz = ((pTask->pSorter->mxKeysize + 9) > (pTask->pSorter->mxPmaSize / 2) ? (pTask->pSorter->mxKeysize + 9) : (pTask->pSorter->mxPmaSize / 2));
+    pIncr->mxSz = ((pTask->pSorter->mxKeysize + 9) > (pTask->pSorter->mxPmaSize / 2) ? (pTask->pSorter->mxKeysize + 9)
+                                                                                     : (pTask->pSorter->mxPmaSize / 2));
     pTask->file2.iEof += pIncr->mxSz;
   } else {
     vdbeMergeEngineFree(pMerger);
@@ -402,7 +361,7 @@ int vdbeIncrMergerNew(SortSubtask *pTask, MergeEngine *pMerger, IncrMerger **ppO
 }
 
 int vdbeMergeEngineInit(SortSubtask *pTask, MergeEngine *pMerger, int eMode) {
-  int rc = 0;
+  int rc = SQLITE_OK;
   int i;
   int nTree;
 
@@ -411,12 +370,11 @@ int vdbeMergeEngineInit(SortSubtask *pTask, MergeEngine *pMerger, int eMode) {
   nTree = pMerger->nTree;
   for (i = 0; i < nTree; i++) {
     if (8 > 0 && eMode == 2) {
-
       rc = vdbePmaReaderNext(&pMerger->aReadr[nTree - i - 1]);
     } else {
       rc = vdbePmaReaderIncrInit(&pMerger->aReadr[i], 0);
     }
-    if (rc != 0)
+    if (rc != SQLITE_OK)
       return rc;
   }
 
@@ -430,20 +388,20 @@ int vdbeMergeEngineLevel0(SortSubtask *pTask, int nPMA, i64 *piOffset, MergeEngi
   MergeEngine *pNew;
   i64 iOff = *piOffset;
   int i;
-  int rc = 0;
+  int rc = SQLITE_OK;
 
   *ppOut = pNew = vdbeMergeEngineNew(nPMA);
   if (pNew == 0)
     rc = 7;
 
-  for (i = 0; i < nPMA && rc == 0; i++) {
+  for (i = 0; i < nPMA && rc == SQLITE_OK; i++) {
     i64 nDummy = 0;
     PmaReader *pReadr = &pNew->aReadr[i];
     rc = vdbePmaReaderInit(pTask, &pTask->file, iOff, pReadr, &nDummy);
     iOff = pReadr->iEof;
   }
 
-  if (rc != 0) {
+  if (rc != SQLITE_OK) {
     vdbeMergeEngineFree(pNew);
     *ppOut = 0;
   }
@@ -452,7 +410,7 @@ int vdbeMergeEngineLevel0(SortSubtask *pTask, int nPMA, i64 *piOffset, MergeEngi
 }
 
 int vdbeSorterAddToTree(SortSubtask *pTask, int nDepth, int iSeq, MergeEngine *pRoot, MergeEngine *pLeaf) {
-  int rc = 0;
+  int rc = SQLITE_OK;
   int nDiv = 1;
   int i;
   MergeEngine *p = pRoot;
@@ -464,7 +422,7 @@ int vdbeSorterAddToTree(SortSubtask *pTask, int nDepth, int iSeq, MergeEngine *p
     nDiv = nDiv * 16;
   }
 
-  for (i = 1; i < nDepth && rc == 0; i++) {
+  for (i = 1; i < nDepth && rc == SQLITE_OK; i++) {
     int iIter = (iSeq / nDiv) % 16;
     PmaReader *pReadr = &p->aReadr[iIter];
 
@@ -476,13 +434,13 @@ int vdbeSorterAddToTree(SortSubtask *pTask, int nDepth, int iSeq, MergeEngine *p
         rc = vdbeIncrMergerNew(pTask, pNew, &pReadr->pIncr);
       }
     }
-    if (rc == 0) {
+    if (rc == SQLITE_OK) {
       p = pReadr->pIncr->pMerger;
       nDiv = nDiv / 16;
     }
   }
 
-  if (rc == 0) {
+  if (rc == SQLITE_OK) {
     p->aReadr[iSeq % 16].pIncr = pIncr;
   } else {
     vdbeIncrFree(pIncr);

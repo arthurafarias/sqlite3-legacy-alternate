@@ -1,9 +1,6 @@
 #define _GNU_SOURCE 1
-
 #include <stdio.h>
-
 #include "sqlite/IntegrityCk.h"
-
 #include "sqlite/BtShared.h"
 #include "sqlite/Btree.h"
 #include "sqlite/CellInfo.h"
@@ -18,8 +15,9 @@
 #include "sqlite/u16.h"
 #include "sqlite/u32.h"
 #include "sqlite/u8.h"
+#include "sqlite/SqliteResultCode.h"
 void checkOom(IntegrityCk *pCheck) {
-  pCheck->rc = 7;
+  pCheck->rc = SQLITE_NOMEM;
   pCheck->mxErr = 0;
   if (pCheck->nErr == 0)
     pCheck->nErr++;
@@ -28,19 +26,15 @@ void checkOom(IntegrityCk *pCheck) {
 void checkProgress(IntegrityCk *pCheck) {
   sqlite3 *db = pCheck->db;
   if (__atomic_load_n((&db->u1.isInterrupted), 0)) {
-    pCheck->rc = 9;
+    pCheck->rc = SQLITE_INTERRUPT;
     pCheck->nErr++;
     pCheck->mxErr = 0;
   }
 
   if (db->xProgress) {
-
-    ((void)(0))
-
-        ;
     pCheck->nStep++;
     if ((pCheck->nStep % db->nProgressOps) == 0 && db->xProgress(db->pProgressArg)) {
-      pCheck->rc = 9;
+      pCheck->rc = SQLITE_INTERRUPT;
       pCheck->nErr++;
       pCheck->mxErr = 0;
     }
@@ -55,13 +49,7 @@ void checkAppendMsg(IntegrityCk *pCheck, const char *zFormat, ...) {
   pCheck->mxErr--;
   pCheck->nErr++;
 
-  va_start(
-
-      ap, zFormat
-
-  )
-
-      ;
+  va_start(ap, zFormat);
   if (pCheck->errMsg.nChar) {
     sqlite3_str_append(&pCheck->errMsg, "\n", 1);
   }
@@ -70,21 +58,19 @@ void checkAppendMsg(IntegrityCk *pCheck, const char *zFormat, ...) {
   }
   sqlite3_str_vappendf(&pCheck->errMsg, zFormat, ap);
 
-  va_end(
-
-      ap
-
-  )
-
-      ;
-  if (pCheck->errMsg.accError == 7) {
+  va_end(ap);
+  if (pCheck->errMsg.accError == SQLITE_NOMEM) {
     checkOom(pCheck);
   }
 }
 
-int getPageReferenced(IntegrityCk *pCheck, Pgno iPg) { return (pCheck->aPgRef[iPg / 8] & (1 << (iPg & 0x07))); }
+int getPageReferenced(IntegrityCk *pCheck, Pgno iPg) {
+  return (pCheck->aPgRef[iPg / 8] & (1 << (iPg & 0x07)));
+}
 
-void setPageReferenced(IntegrityCk *pCheck, Pgno iPg) { pCheck->aPgRef[iPg / 8] |= (1 << (iPg & 0x07)); }
+void setPageReferenced(IntegrityCk *pCheck, Pgno iPg) {
+  pCheck->aPgRef[iPg / 8] |= (1 << (iPg & 0x07));
+}
 
 int checkRef(IntegrityCk *pCheck, Pgno iPage) {
   if (iPage > pCheck->nCkPage || iPage == 0) {
@@ -105,15 +91,16 @@ void checkPtrmap(IntegrityCk *pCheck, Pgno iChild, u8 eType, Pgno iParent) {
   Pgno iPtrmapParent;
 
   rc = ptrmapGet(pCheck->pBt, iChild, &ePtrmapType, &iPtrmapParent);
-  if (rc != 0) {
-    if (rc == 7 || rc == (10 | (12 << 8)))
+  if (rc != SQLITE_OK) {
+    if (rc == SQLITE_NOMEM || rc == (10 | (12 << 8)))
       checkOom(pCheck);
     checkAppendMsg(pCheck, "Failed to read ptrmap key=%u", iChild);
     return;
   }
 
   if (ePtrmapType != eType || iPtrmapParent != iParent) {
-    checkAppendMsg(pCheck, "Bad ptr map entry key=%u expected=(%u,%u) got=(%u,%u)", iChild, eType, iParent, ePtrmapType, iPtrmapParent);
+    checkAppendMsg(pCheck, "Bad ptr map entry key=%u expected=(%u,%u) got=(%u,%u)", iChild, eType, iParent, ePtrmapType,
+                   iPtrmapParent);
   }
 }
 
@@ -157,7 +144,6 @@ void checkList(IntegrityCk *pCheck, int isFreeList, Pgno iPage, u32 N) {
     }
 
     else {
-
       if (pCheck->pBt->autoVacuum && N > 0) {
         i = sqlite3Get4byte(pOvflData);
         checkPtrmap(pCheck, i, 4, iPage);
@@ -168,7 +154,8 @@ void checkList(IntegrityCk *pCheck, int isFreeList, Pgno iPage, u32 N) {
     sqlite3PagerUnref(pOvflPage);
   }
   if (N && nErrAtStart == pCheck->nErr) {
-    checkAppendMsg(pCheck, "%s is %u but should be %u", isFreeList ? "size" : "overflow list length", expected - N, expected);
+    checkAppendMsg(pCheck, "%s is %u but should be %u", isFreeList ? "size" : "overflow list length", expected - N,
+                   expected);
   }
 }
 
@@ -213,25 +200,17 @@ int checkTreePage(IntegrityCk *pCheck, Pgno iPage, i64 *piMinKey, i64 maxKey) {
   if ((rc = btreeGetPage(pBt, iPage, &pPage, 0)) != 0) {
     checkAppendMsg(pCheck, "unable to get the page. error code=%d", rc);
     if (rc == (10 | (12 << 8)))
-      pCheck->rc = 7;
+      pCheck->rc = SQLITE_NOMEM;
     goto end_of_check;
   }
 
   savedIsInit = pPage->isInit;
   pPage->isInit = 0;
   if ((rc = btreeInitPage(pPage)) != 0) {
-
-    ((void)(0))
-
-        ;
     checkAppendMsg(pCheck, "btreeInitPage() returns error code %d", rc);
     goto end_of_check;
   }
   if ((rc = btreeComputeFreeSpace(pPage)) != 0) {
-
-    ((void)(0))
-
-        ;
     checkAppendMsg(pCheck, "free space corruption", rc);
     goto end_of_check;
   }
@@ -252,7 +231,6 @@ int checkTreePage(IntegrityCk *pCheck, Pgno iPage, i64 *piMinKey, i64 maxKey) {
   pCellIdx = &data[cellStart + 2 * (nCell - 1)];
 
   if (!pPage->leaf) {
-
     pgno = sqlite3Get4byte(&data[hdr + 8]);
 
     if (pBt->autoVacuum) {
@@ -263,7 +241,6 @@ int checkTreePage(IntegrityCk *pCheck, Pgno iPage, i64 *piMinKey, i64 maxKey) {
     depth = checkTreePage(pCheck, pgno, &maxKey, maxKey);
     keyCanBeEqual = 0;
   } else {
-
     heap = pCheck->heap;
     heap[0] = 0;
   }
@@ -273,9 +250,6 @@ int checkTreePage(IntegrityCk *pCheck, Pgno iPage, i64 *piMinKey, i64 maxKey) {
 
     pCheck->v2 = i;
 
-    ((void)(0))
-
-        ;
     pc = __builtin_bswap16(*(u16 *)(pCellIdx));
     pCellIdx -= 2;
     if (pc < contentOffset || pc > usableSize - 4) {
@@ -303,9 +277,6 @@ int checkTreePage(IntegrityCk *pCheck, Pgno iPage, i64 *piMinKey, i64 maxKey) {
       u32 nPage;
       Pgno pgnoOvfl;
 
-      ((void)(0))
-
-          ;
       nPage = (info.nPayload - info.nLocal + usableSize - 5) / (usableSize - 4);
       pgnoOvfl = sqlite3Get4byte(&pCell[info.nSize - 4]);
 
@@ -317,7 +288,6 @@ int checkTreePage(IntegrityCk *pCheck, Pgno iPage, i64 *piMinKey, i64 maxKey) {
     }
 
     if (!pPage->leaf) {
-
       pgno = sqlite3Get4byte(pCell);
 
       if (pBt->autoVacuum) {
@@ -331,10 +301,6 @@ int checkTreePage(IntegrityCk *pCheck, Pgno iPage, i64 *piMinKey, i64 maxKey) {
         depth = d2;
       }
     } else {
-
-      ((void)(0))
-
-          ;
       btreeHeapInsert(heap, (pc << 16) | (pc + info.nSize - 1));
     }
   }
@@ -342,7 +308,6 @@ int checkTreePage(IntegrityCk *pCheck, Pgno iPage, i64 *piMinKey, i64 maxKey) {
 
   pCheck->zPfx = 0;
   if (doCoverageCheck && pCheck->mxErr > 0) {
-
     if (!pPage->leaf) {
       heap = pCheck->heap;
       heap[0] = 0;
@@ -351,44 +316,20 @@ int checkTreePage(IntegrityCk *pCheck, Pgno iPage, i64 *piMinKey, i64 maxKey) {
         pc = __builtin_bswap16(*(u16 *)(&data[cellStart + i * 2]));
         size = pPage->xCellSize(pPage, &data[pc]);
 
-        ((void)(0))
-
-            ;
         btreeHeapInsert(heap, (pc << 16) | (pc + size - 1));
       }
     }
-
-    ((void)(0))
-
-        ;
 
     i = ((&data[hdr + 1])[0] << 8 | (&data[hdr + 1])[1]);
     while (i > 0) {
       int size, j;
 
-      ((void)(0))
-
-          ;
       size = ((&data[i + 2])[0] << 8 | (&data[i + 2])[1]);
 
-      ((void)(0))
-
-          ;
-
-      ((void)(0))
-
-          ;
       btreeHeapInsert(heap, (((u32)i) << 16) | (i + size - 1));
 
       j = ((&data[i])[0] << 8 | (&data[i])[1]);
 
-      ((void)(0))
-
-          ;
-
-      ((void)(0))
-
-          ;
       i = j;
     }
 

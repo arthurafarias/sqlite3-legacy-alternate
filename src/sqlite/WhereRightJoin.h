@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
   typedef struct WhereRightJoin WhereRightJoin;
   struct WhereRightJoin {
     int iMatch;

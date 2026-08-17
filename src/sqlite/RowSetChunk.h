@@ -3,9 +3,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 #include "sqlite/RowSetEntry.h"
-
 typedef struct RowSetChunk RowSetChunk;
 
 struct RowSetChunk {

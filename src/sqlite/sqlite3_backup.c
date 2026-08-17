@@ -1,9 +1,6 @@
 #define _GNU_SOURCE 1
-
 #include <string.h>
-
 #include "sqlite/sqlite3_backup.h"
-
 #include "sqlite/BtShared.h"
 #include "sqlite/Btree.h"
 #include "sqlite/DbPage.h"
@@ -16,11 +13,14 @@
 #include "sqlite/sqlite3_mutex.h"
 #include "sqlite/u32.h"
 #include "sqlite/u8.h"
+#include "sqlite/SqliteResultCode.h"
+#include "sqlite/SqliteTxnState.h"
 /* Private helpers, formerly declared in _Uncategorized.h. */
 static int isFatalError(int rc);
 
-static int isFatalError(int rc) { return (rc != 0 && rc != 5 && (rc != 6)); }
-
+static int isFatalError(int rc) {
+  return (rc != SQLITE_OK && rc != SQLITE_BUSY && (rc != SQLITE_LOCKED));
+}
 
 int backupOnePage(sqlite3_backup *p, Pgno iSrcPg, const u8 *zSrcData, int bUpdate) {
   Pager *const pDestPager = sqlite3BtreePager(p->pDest);
@@ -28,15 +28,16 @@ int backupOnePage(sqlite3_backup *p, Pgno iSrcPg, const u8 *zSrcData, int bUpdat
   int nDestPgsz = sqlite3BtreeGetPageSize(p->pDest);
   const int nCopy = ((nSrcPgsz) < (nDestPgsz) ? (nSrcPgsz) : (nDestPgsz));
   const i64 iEnd = (i64)iSrcPg * (i64)nSrcPgsz;
-  int rc = 0;
+  int rc = SQLITE_OK;
   i64 iOff;
 
-  for (iOff = iEnd - (i64)nSrcPgsz; rc == 0 && iOff < iEnd; iOff += nDestPgsz) {
+  for (iOff = iEnd - (i64)nSrcPgsz; rc == SQLITE_OK && iOff < iEnd; iOff += nDestPgsz) {
     DbPage *pDestPg = 0;
     Pgno iDest = (Pgno)(iOff / nDestPgsz) + 1;
     if (iDest == ((Pgno)((sqlite3PendingByte / ((p->pDest->pBt)->pageSize)) + 1)))
       continue;
-    if (0 == (rc = sqlite3PagerGet(pDestPager, iDest, &pDestPg, 0)) && 0 == (rc = sqlite3PagerWrite(pDestPg))) {
+    if (SQLITE_OK == (rc = sqlite3PagerGet(pDestPager, iDest, &pDestPg, 0)) &&
+        SQLITE_OK == (rc = sqlite3PagerWrite(pDestPg))) {
       const u8 *zIn = &zSrcData[iOff % nSrcPgsz];
       u8 *zDestData = sqlite3PagerGetData(pDestPg);
       u8 *zOut = &zDestData[iOff % nDestPgsz];
@@ -84,12 +85,12 @@ int sqlite3_backup_step(sqlite3_backup *p, int nPage) {
     int bCloseTrans = 0;
 
     if (p->pDestDb && p->pSrc->pBt->inTransaction == 2) {
-      rc = 5;
+      rc = SQLITE_BUSY;
     } else {
-      rc = 0;
+      rc = SQLITE_OK;
     }
 
-    if (rc == 0 && 0 == sqlite3BtreeTxnState(p->pSrc)) {
+    if (rc == SQLITE_OK && SQLITE_TXN_NONE == sqlite3BtreeTxnState(p->pSrc)) {
       rc = sqlite3BtreeBeginTrans(p->pSrc, 0, 0);
       bCloseTrans = 1;
     }
@@ -98,65 +99,63 @@ int sqlite3_backup_step(sqlite3_backup *p, int nPage) {
       pDest = findBtree(p->pDestDb, p->pDestDb, p->zDestDb);
     }
     if (pDest == 0) {
-      rc = 1;
+      rc = SQLITE_ERROR;
     } else {
       pDestPager = sqlite3BtreePager(pDest);
     }
 
-    if (p->bDestLocked == 0 && rc == 0 && setDestPgsz(pDest, p->pSrc) == 7) {
-      rc = 7;
+    if (p->bDestLocked == 0 && rc == SQLITE_OK && setDestPgsz(pDest, p->pSrc) == SQLITE_NOMEM) {
+      rc = SQLITE_NOMEM;
     }
 
-    if (0 == rc && p->bDestLocked == 0 && 0 == (rc = sqlite3BtreeBeginTrans(pDest, 2, (int *)&p->iDestSchema))) {
+    if (SQLITE_OK == rc && p->bDestLocked == 0 &&
+        SQLITE_OK == (rc = sqlite3BtreeBeginTrans(pDest, 2, (int *)&p->iDestSchema))) {
       p->bDestLocked = 1;
       p->pDest = pDest;
     }
 
-    if (rc == 0) {
+    if (rc == SQLITE_OK) {
       pgszSrc = sqlite3BtreeGetPageSize(p->pSrc);
       pgszDest = sqlite3BtreeGetPageSize(p->pDest);
       destMode = sqlite3PagerGetJournalMode(sqlite3BtreePager(p->pDest));
       if ((destMode == 5 || sqlite3PagerIsMemdb(pDestPager)) && pgszSrc != pgszDest) {
-        rc = 8;
+        rc = SQLITE_READONLY;
       }
     }
 
     nSrcPage = (int)sqlite3BtreeLastPage(p->pSrc);
 
-    ((void)(0))
-
-        ;
     for (ii = 0; (nPage < 0 || ii < nPage) && p->iNext <= (Pgno)nSrcPage && !rc; ii++) {
       const Pgno iSrcPg = p->iNext;
       if (iSrcPg != ((Pgno)((sqlite3PendingByte / ((p->pSrc->pBt)->pageSize)) + 1))) {
         DbPage *pSrcPg;
         rc = sqlite3PagerGet(pSrcPager, iSrcPg, &pSrcPg, 0x02);
-        if (rc == 0) {
+        if (rc == SQLITE_OK) {
           rc = backupOnePage(p, iSrcPg, sqlite3PagerGetData(pSrcPg), 0);
           sqlite3PagerUnref(pSrcPg);
         }
       }
       p->iNext++;
     }
-    if (rc == 0) {
+    if (rc == SQLITE_OK) {
       p->nPagecount = nSrcPage;
       p->nRemaining = nSrcPage + 1 - p->iNext;
       if (p->iNext > (Pgno)nSrcPage) {
-        rc = 101;
+        rc = SQLITE_DONE;
       } else if (!p->isAttached) {
         attachBackupObject(p);
       }
     }
 
-    if (rc == 101) {
+    if (rc == SQLITE_DONE) {
       if (nSrcPage == 0) {
         rc = sqlite3BtreeNewDb(p->pDest);
         nSrcPage = 1;
       }
-      if (rc == 0 || rc == 101) {
+      if (rc == SQLITE_OK || rc == SQLITE_DONE) {
         rc = sqlite3BtreeUpdateMeta(p->pDest, 1, p->iDestSchema + 1);
       }
-      if (rc == 0) {
+      if (rc == SQLITE_OK) {
         if (p->pDestDb) {
           sqlite3ResetAllSchemasOfConnection(p->pDestDb);
         }
@@ -164,16 +163,9 @@ int sqlite3_backup_step(sqlite3_backup *p, int nPage) {
           rc = sqlite3BtreeSetVersion(p->pDest, 2);
         }
       }
-      if (rc == 0) {
+      if (rc == SQLITE_OK) {
         int nDestTruncate;
 
-        ((void)(0))
-
-            ;
-
-        ((void)(0))
-
-            ;
         if (pgszSrc < pgszDest) {
           int ratio = pgszDest / pgszSrc;
           nDestTruncate = (nSrcPage + ratio - 1) / ratio;
@@ -184,12 +176,7 @@ int sqlite3_backup_step(sqlite3_backup *p, int nPage) {
           nDestTruncate = nSrcPage * (pgszSrc / pgszDest);
         }
 
-        ((void)(0))
-
-            ;
-
         if (pgszSrc < pgszDest) {
-
           const i64 iSize = (i64)pgszSrc * (i64)nSrcPage;
           sqlite3_file *const pFile = sqlite3PagerFile(pDestPager);
           Pgno iPg;
@@ -197,45 +184,37 @@ int sqlite3_backup_step(sqlite3_backup *p, int nPage) {
           i64 iOff;
           i64 iEnd;
 
-          ((void)(0))
-
-              ;
-
-          ((void)(0))
-
-              ;
-
           sqlite3PagerPagecount(pDestPager, &nDstPage);
-          for (iPg = nDestTruncate; rc == 0 && iPg <= (Pgno)nDstPage; iPg++) {
+          for (iPg = nDestTruncate; rc == SQLITE_OK && iPg <= (Pgno)nDstPage; iPg++) {
             if (iPg != ((Pgno)((sqlite3PendingByte / ((p->pDest->pBt)->pageSize)) + 1))) {
               DbPage *pPg;
               rc = sqlite3PagerGet(pDestPager, iPg, &pPg, 0);
-              if (rc == 0) {
+              if (rc == SQLITE_OK) {
                 rc = sqlite3PagerWrite(pPg);
                 sqlite3PagerUnref(pPg);
               }
             }
           }
-          if (rc == 0) {
+          if (rc == SQLITE_OK) {
             rc = sqlite3PagerCommitPhaseOne(pDestPager, 0, 1);
           }
 
           iEnd = ((sqlite3PendingByte + pgszDest) < (iSize) ? (sqlite3PendingByte + pgszDest) : (iSize));
-          for (iOff = sqlite3PendingByte + pgszSrc; rc == 0 && iOff < iEnd; iOff += pgszSrc) {
+          for (iOff = sqlite3PendingByte + pgszSrc; rc == SQLITE_OK && iOff < iEnd; iOff += pgszSrc) {
             PgHdr *pSrcPg = 0;
             const Pgno iSrcPg = (Pgno)((iOff / pgszSrc) + 1);
             rc = sqlite3PagerGet(pSrcPager, iSrcPg, &pSrcPg, 0);
-            if (rc == 0) {
+            if (rc == SQLITE_OK) {
               u8 *zData = sqlite3PagerGetData(pSrcPg);
               rc = sqlite3OsWrite(pFile, zData, pgszSrc, iOff);
             }
             sqlite3PagerUnref(pSrcPg);
           }
-          if (rc == 0) {
+          if (rc == SQLITE_OK) {
             rc = backupTruncateFile(pFile, iSize);
           }
 
-          if (rc == 0) {
+          if (rc == SQLITE_OK) {
             rc = sqlite3PagerSync(pDestPager, 0);
           }
         } else {
@@ -243,20 +222,15 @@ int sqlite3_backup_step(sqlite3_backup *p, int nPage) {
           rc = sqlite3PagerCommitPhaseOne(pDestPager, 0, 0);
         }
 
-        if (0 == rc && 0 == (rc = sqlite3BtreeCommitPhaseTwo(p->pDest, 0))) {
-          rc = 101;
+        if (SQLITE_OK == rc && SQLITE_OK == (rc = sqlite3BtreeCommitPhaseTwo(p->pDest, 0))) {
+          rc = SQLITE_DONE;
         }
       }
     }
 
     if (bCloseTrans) {
-      ;
       sqlite3BtreeCommitPhaseOne(p->pSrc, 0);
       sqlite3BtreeCommitPhaseTwo(p->pSrc, 0);
-
-      ((void)(0))
-
-          ;
     }
 
     if (rc == (10 | (12 << 8))) {
@@ -278,7 +252,7 @@ int sqlite3_backup_finish(sqlite3_backup *p) {
   int rc;
 
   if (p == 0)
-    return 0;
+    return SQLITE_OK;
   pSrcDb = p->pSrcDb;
   sqlite3_mutex_enter(pSrcDb->mutex);
   sqlite3BtreeEnter(p->pSrc);
@@ -292,24 +266,17 @@ int sqlite3_backup_finish(sqlite3_backup *p) {
   if (p->isAttached) {
     pp = sqlite3PagerBackupPtr(sqlite3BtreePager(p->pSrc));
 
-    ((void)(0))
-
-        ;
     while (*pp != p) {
       pp = &(*pp)->pNext;
-
-      ((void)(0))
-
-          ;
     }
     *pp = p->pNext;
   }
 
   if (p->pDest) {
-    sqlite3BtreeRollback(p->pDest, 0, 0);
+    sqlite3BtreeRollback(p->pDest, SQLITE_OK, 0);
   }
 
-  rc = (p->rc == 101) ? 0 : p->rc;
+  rc = (p->rc == SQLITE_DONE) ? SQLITE_OK : p->rc;
   if (p->pDestDb) {
     sqlite3Error(p->pDestDb, rc);
 
@@ -317,39 +284,30 @@ int sqlite3_backup_finish(sqlite3_backup *p) {
   }
   sqlite3BtreeLeave(p->pSrc);
   if (p->pDestDb) {
-
     sqlite3_free(p);
   }
   sqlite3LeaveMutexAndCloseZombie(pSrcDb);
   return rc;
 }
 
-int sqlite3_backup_remaining(sqlite3_backup *p) { return p->nRemaining; }
+int sqlite3_backup_remaining(sqlite3_backup *p) {
+  return p->nRemaining;
+}
 
-int sqlite3_backup_pagecount(sqlite3_backup *p) { return p->nPagecount; }
+int sqlite3_backup_pagecount(sqlite3_backup *p) {
+  return p->nPagecount;
+}
 
 __attribute__((noinline)) void backupUpdate(sqlite3_backup *p, Pgno iPage, const u8 *aData) {
-
   do {
-
-    ((void)(0))
-
-        ;
     if (!isFatalError(p->rc) && iPage < p->iNext) {
-
       int rc;
 
-      ((void)(0))
-
-          ;
       sqlite3_mutex_enter(p->pDestDb->mutex);
       rc = backupOnePage(p, iPage, aData, 1);
       sqlite3_mutex_leave(p->pDestDb->mutex);
 
-      ((void)(0))
-
-          ;
-      if (rc != 0) {
+      if (rc != SQLITE_OK) {
         p->rc = rc;
       }
     }
@@ -364,10 +322,6 @@ void sqlite3BackupUpdate(sqlite3_backup *pBackup, Pgno iPage, const u8 *aData) {
 void sqlite3BackupRestart(sqlite3_backup *pBackup) {
   sqlite3_backup *p;
   for (p = pBackup; p; p = p->pNext) {
-
-    ((void)(0))
-
-        ;
     p->iNext = 1;
   }
 }

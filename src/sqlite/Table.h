@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/LogEst.h"
 #include "sqlite/Pgno.h"
 #include "sqlite/i16.h"

@@ -1,7 +1,5 @@
 #define _GNU_SOURCE 1
-
 #include "sqlite/WhereScan.h"
-
 #include "sqlite/CollSeq.h"
 #include "sqlite/Column.h"
 #include "sqlite/Expr.h"
@@ -31,21 +29,14 @@ WhereTerm *whereScanNext(WhereScan *pScan) {
     iColumn = pScan->aiColumn[pScan->iEquiv - 1];
     iCur = pScan->aiCur[pScan->iEquiv - 1];
 
-    ((void)(0))
-
-        ;
-
-    ((void)(0))
-
-        ;
     do {
       for (pTerm = pWC->a + k; k < pWC->nTerm; k++, pTerm++) {
-
-        ((void)(0))
-
-            ;
-        if (pTerm->leftCursor == iCur && pTerm->u.x.leftColumn == iColumn && (iColumn != (-2) || sqlite3ExprCompareSkip(pTerm->pExpr->pLeft, pScan->pIdxExpr, iCur) == 0) && (pScan->iEquiv <= 1 || !(((pTerm->pExpr)->flags & (u32)(0x000001)) != 0))) {
-          if ((pTerm->eOperator & 0x0800) != 0 && pScan->nEquiv < ((int)(sizeof(pScan->aiCur) / sizeof(pScan->aiCur[0]))) && (pX = whereRightSubexprIsColumn(pTerm->pExpr)) != 0) {
+        if (pTerm->leftCursor == iCur && pTerm->u.x.leftColumn == iColumn &&
+            (iColumn != (-2) || sqlite3ExprCompareSkip(pTerm->pExpr->pLeft, pScan->pIdxExpr, iCur) == 0) &&
+            (pScan->iEquiv <= 1 || !(((pTerm->pExpr)->flags & (u32)(0x000001)) != 0))) {
+          if ((pTerm->eOperator & 0x0800) != 0 &&
+              pScan->nEquiv < ((int)(sizeof(pScan->aiCur) / sizeof(pScan->aiCur[0]))) &&
+              (pX = whereRightSubexprIsColumn(pTerm->pExpr)) != 0) {
             int j;
             for (j = 0; j < pScan->nEquiv; j++) {
               if (pScan->aiCur[j] == pX->iTable && pScan->aiColumn[j] == pX->iColumn) {
@@ -59,7 +50,6 @@ WhereTerm *whereScanNext(WhereScan *pScan) {
             }
           }
           if ((pTerm->eOperator & pScan->opMask) != 0) {
-
             if (pScan->zCollName && (pTerm->eOperator & 0x0100) == 0) {
               const char *zCollName;
               Parse *pParse = pWC->pWInfo->pParse;
@@ -75,9 +65,6 @@ WhereTerm *whereScanNext(WhereScan *pScan) {
                   continue;
                 }
 
-                ((void)(0))
-
-                    ;
                 pColl = sqlite3ExprCompareCollSeq(pParse, pX);
                 zCollName = pColl ? pColl->zName : sqlite3StrBINARY;
               }
@@ -86,8 +73,8 @@ WhereTerm *whereScanNext(WhereScan *pScan) {
                 continue;
               }
             }
-            if ((pTerm->eOperator & (0x0002 | 0x0080)) != 0 && (pX = pTerm->pExpr->pRight, (pX != 0)) && pX->op == 168 && pX->iTable == pScan->aiCur[0] && pX->iColumn == pScan->aiColumn[0]) {
-              ;
+            if ((pTerm->eOperator & (0x0002 | 0x0080)) != 0 && (pX = pTerm->pExpr->pRight, (pX != 0)) &&
+                pX->op == 168 && pX->iTable == pScan->aiCur[0] && pX->iColumn == pScan->aiColumn[0]) {
               continue;
             }
             pScan->pWC = pWC;

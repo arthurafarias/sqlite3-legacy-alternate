@@ -1,15 +1,12 @@
 #pragma once
-
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 typedef struct sqlite3_io_methods sqlite3_io_methods;
 typedef struct sqlite3_file sqlite3_file;
 typedef struct sqlite3_filetypedef sqlite3_filetypedef;
 
 #include "sqlite/sqlite3_int64.h"
-
 struct sqlite3_io_methods {
   int iVersion;
   int (*xClose)(sqlite3_file *);

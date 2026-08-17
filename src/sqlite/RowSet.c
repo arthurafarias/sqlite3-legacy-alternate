@@ -1,7 +1,5 @@
 #define _GNU_SOURCE 1
-
 #include "sqlite/RowSet.h"
-
 #include "sqlite/RowSetChunk.h"
 #include "sqlite/RowSetEntry.h"
 #include "sqlite/i64.h"
@@ -30,9 +28,7 @@ void sqlite3RowSetDelete(void *pArg) {
 }
 
 struct RowSetEntry *rowSetEntryAlloc(RowSet *p) {
-
   if (p->nFresh == 0) {
-
     struct RowSetChunk *pNew;
     pNew = sqlite3DbMallocRawNN(p->db, sizeof(*pNew));
     if (pNew == 0) {
@@ -59,7 +55,6 @@ void sqlite3RowSetInsert(RowSet *p, i64 rowid) {
   pLast = p->pLast;
   if (pLast) {
     if (rowid <= pLast->v) {
-
       p->rsFlags &= ~0x01;
     }
     pLast->pRight = pEntry;
@@ -70,7 +65,6 @@ void sqlite3RowSetInsert(RowSet *p, i64 rowid) {
 }
 
 int sqlite3RowSetNext(RowSet *p, i64 *pRowid) {
-
   if ((p->rsFlags & 0x02) == 0) {
     if ((p->rsFlags & 0x01) == 0) {
       p->pEntry = rowSetEntrySort(p->pEntry);
@@ -82,7 +76,6 @@ int sqlite3RowSetNext(RowSet *p, i64 *pRowid) {
     *pRowid = p->pEntry->v;
     p->pEntry = p->pEntry->pRight;
     if (p->pEntry == 0) {
-
       sqlite3RowSetClear(p);
     }
     return 1;
@@ -99,7 +92,6 @@ int sqlite3RowSetTest(RowSet *pRowSet, int iBatch, sqlite3_int64 iRowid) {
     if (p) {
       struct RowSetEntry **ppPrevTree = &pRowSet->pForest;
       if ((pRowSet->rsFlags & 0x01) == 0) {
-
         p = rowSetEntrySort(p);
       }
       for (pTree = pRowSet->pForest; pTree; pTree = pTree->pRight) {

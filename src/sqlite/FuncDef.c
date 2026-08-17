@@ -1,7 +1,5 @@
 #define _GNU_SOURCE 1
-
 #include "sqlite/FuncDef.h"
-
 #include "sqlite/FuncDefHash.h"
 #include "sqlite/i16.h"
 #include "sqlite/sqlite3.h"
@@ -50,15 +48,8 @@ void sqlite3InsertBuiltinFuncs(FuncDef *aDef, int nDef) {
     int nName = sqlite3Strlen30(zName);
     int h = (((zName[0]) + (nName)) % 23);
 
-    ((void)(0))
-
-        ;
     pOther = sqlite3FunctionSearch(h, zName);
     if (pOther) {
-
-      ((void)(0))
-
-          ;
       aDef[i].pNext = pOther->pNext;
       pOther->pNext = &aDef[i];
     } else {

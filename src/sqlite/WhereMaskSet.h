@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/BitMask.h"
   typedef struct Expr Expr;
   typedef struct ExprList ExprList;

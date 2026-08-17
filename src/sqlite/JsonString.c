@@ -1,11 +1,8 @@
 #define _GNU_SOURCE 1
-
 #include <stddef.h>
 #include <stdint.h>
 #include <string.h>
-
 #include "sqlite/JsonString.h"
-
 #include "sqlite/JsonParse.h"
 #include "sqlite/RCStr.h"
 #include "sqlite/RowSet.h"
@@ -16,6 +13,9 @@
 #include "sqlite/u32.h"
 #include "sqlite/u64.h"
 #include "sqlite/u8.h"
+#include "sqlite/SqliteFundamentalDatatype.h"
+#include "sqlite/SqliteResultCode.h"
+#include "sqlite/SqliteTextEncoding.h"
 void jsonStringZero(JsonString *p) {
   p->zBuf = p->zSpace;
   p->nAlloc = sizeof(p->zSpace);
@@ -58,7 +58,7 @@ int jsonStringGrow(JsonString *p, u32 N) {
     zNew = sqlite3RCStrNew(nTotal);
     if (zNew == 0) {
       jsonStringOom(p);
-      return 7;
+      return SQLITE_NOMEM;
     }
     memcpy(zNew, p->zBuf, (size_t)p->nUsed);
     p->zBuf = zNew;
@@ -68,15 +68,14 @@ int jsonStringGrow(JsonString *p, u32 N) {
     if (p->zBuf == 0) {
       p->eErr |= 0x01;
       jsonStringZero(p);
-      return 7;
+      return SQLITE_NOMEM;
     }
   }
   p->nAlloc = nTotal;
-  return 0;
+  return SQLITE_OK;
 }
 
 __attribute__((noinline)) void jsonStringExpandAndAppend(JsonString *p, const char *zIn, u32 N) {
-
   if (jsonStringGrow(p, N))
     return;
   memcpy(p->zBuf + p->nUsed, zIn, N);
@@ -95,7 +94,6 @@ void jsonAppendRaw(JsonString *p, const char *zIn, u32 N) {
 }
 
 void jsonAppendRawNZ(JsonString *p, const char *zIn, u32 N) {
-
   if (N + p->nUsed >= p->nAlloc) {
     jsonStringExpandAndAppend(p, zIn, N);
   } else {
@@ -120,10 +118,6 @@ void jsonAppendChar(JsonString *p, char c) {
 
 void jsonStringTrimOneChar(JsonString *p) {
   if (p->eErr == 0) {
-
-    ((void)(0))
-
-        ;
     p->nUsed--;
   }
 }
@@ -145,7 +139,8 @@ void jsonAppendSeparator(JsonString *p) {
 }
 
 void jsonAppendControlChar(JsonString *p, u8 c) {
-  static const char aSpecial[] = {0, 0, 0, 0, 0, 0, 0, 0, 'b', 't', 'n', 0, 'f', 'r', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+  static const char aSpecial[] = {0, 0, 0, 0, 0, 0, 0, 0, 'b', 't', 'n', 0, 'f', 'r', 0, 0,
+                                  0, 0, 0, 0, 0, 0, 0, 0, 0,   0,   0,   0, 0,   0,   0, 0};
 
   if (aSpecial[c]) {
     p->zBuf[p->nUsed] = '\\';
@@ -233,54 +228,53 @@ void jsonAppendString(JsonString *p, const char *zIn, u32 N) {
 
 void jsonAppendSqlValue(JsonString *p, sqlite3_value *pValue) {
   switch (sqlite3_value_type(pValue)) {
-  case 5: {
-    jsonAppendRawNZ(p, "null", 4);
-    break;
-  }
-  case 2: {
-    jsonPrintf(100, p, "%!0.17g", sqlite3_value_double(pValue));
-    break;
-  }
-  case 1: {
-    const char *z = (const char *)sqlite3_value_text(pValue);
-    u32 n = (u32)sqlite3_value_bytes(pValue);
-    jsonAppendRaw(p, z, n);
-    break;
-  }
-  case 3: {
-    const char *z = (const char *)sqlite3_value_text(pValue);
-    u32 n = (u32)sqlite3_value_bytes(pValue);
-    if (sqlite3_value_subtype(pValue) == 74) {
+    case SQLITE_NULL: {
+      jsonAppendRawNZ(p, "null", 4);
+      break;
+    }
+    case SQLITE_FLOAT: {
+      jsonPrintf(100, p, "%!0.17g", sqlite3_value_double(pValue));
+      break;
+    }
+    case SQLITE_INTEGER: {
+      const char *z = (const char *)sqlite3_value_text(pValue);
+      u32 n = (u32)sqlite3_value_bytes(pValue);
       jsonAppendRaw(p, z, n);
-    } else {
-      jsonAppendString(p, z, n);
+      break;
     }
-    break;
-  }
-  default: {
-    JsonParse px;
-    memset(&px, 0, sizeof(px));
-    if (jsonArgIsJsonb(pValue, &px)) {
-      jsonTranslateBlobToText(&px, 0, p);
-    } else if (p->eErr == 0) {
-      sqlite3_result_error(p->pCtx, "JSON cannot hold BLOB values", -1);
-      p->eErr = 0x08;
-      jsonStringReset(p);
+    case 3: {
+      const char *z = (const char *)sqlite3_value_text(pValue);
+      u32 n = (u32)sqlite3_value_bytes(pValue);
+      if (sqlite3_value_subtype(pValue) == 74) {
+        jsonAppendRaw(p, z, n);
+      } else {
+        jsonAppendString(p, z, n);
+      }
+      break;
     }
-    break;
-  }
+    default: {
+      JsonParse px;
+      memset(&px, 0, sizeof(px));
+      if (jsonArgIsJsonb(pValue, &px)) {
+        jsonTranslateBlobToText(&px, 0, p);
+      } else if (p->eErr == 0) {
+        sqlite3_result_error(p->pCtx, "JSON cannot hold BLOB values", -1);
+        p->eErr = 0x08;
+        jsonStringReset(p);
+      }
+      break;
+    }
   }
 }
 
 void jsonReturnString(JsonString *p, JsonParse *pParse, sqlite3_context *ctx) {
-
   jsonStringTerminate(p);
   if (p->eErr == 0) {
     int flags = ((int)(intptr_t)(sqlite3_user_data(p->pCtx)));
     if (flags & 0x10) {
       jsonReturnStringAsBlob(p);
     } else if (p->bStatic) {
-      sqlite3_result_text64(p->pCtx, p->zBuf, p->nUsed, ((sqlite3_destructor_type)-1), 1);
+      sqlite3_result_text64(p->pCtx, p->zBuf, p->nUsed, ((sqlite3_destructor_type)-1), SQLITE_UTF8);
     } else {
       if (pParse && pParse->bJsonIsRCStr == 0 && pParse->nBlobAlloc > 0) {
         int rc;
@@ -288,18 +282,17 @@ void jsonReturnString(JsonString *p, JsonParse *pParse, sqlite3_context *ctx) {
         pParse->nJson = p->nUsed;
         pParse->bJsonIsRCStr = 1;
         rc = jsonCacheInsert(ctx, pParse);
-        if (rc == 7) {
+        if (rc == SQLITE_NOMEM) {
           sqlite3_result_error_nomem(ctx);
           jsonStringReset(p);
           return;
         }
       }
-      sqlite3_result_text64(p->pCtx, sqlite3RCStrRef(p->zBuf), p->nUsed, sqlite3RCStrUnref, 1);
+      sqlite3_result_text64(p->pCtx, sqlite3RCStrRef(p->zBuf), p->nUsed, sqlite3RCStrUnref, SQLITE_UTF8);
     }
   } else if (p->eErr & 0x01) {
     sqlite3_result_error_nomem(p->pCtx);
   } else if (p->eErr & 0x04) {
-
   } else if (p->eErr & 0x02) {
     sqlite3_result_error(p->pCtx, "malformed JSON", -1);
   }
@@ -318,14 +311,6 @@ void jsonReturnStringAsBlob(JsonString *pStr) {
     sqlite3DbFree(px.db, px.aBlob);
     sqlite3_result_error_nomem(pStr->pCtx);
   } else {
-
-    ((void)(0))
-
-        ;
-
-    ((void)(0))
-
-        ;
     sqlite3_result_blob(pStr->pCtx, px.aBlob, px.nBlob, ((sqlite3_destructor_type)sqlite3RowSetClear));
   }
 }

@@ -1,9 +1,6 @@
 #define _GNU_SOURCE 1
-
 #include <string.h>
-
 #include "sqlite/Select.h"
-
 #include "sqlite/AggInfo.h"
 #include "sqlite/Expr.h"
 #include "sqlite/ExprList.h"
@@ -63,18 +60,18 @@ Select *findRightmost(Select *p) {
 const char *sqlite3SelectOpName(int id) {
   char *z;
   switch (id) {
-  case 136:
-    z = "UNION ALL";
-    break;
-  case 138:
-    z = "INTERSECT";
-    break;
-  case 137:
-    z = "EXCEPT";
-    break;
-  default:
-    z = "UNION";
-    break;
+    case 136:
+      z = "UNION ALL";
+      break;
+    case 138:
+      z = "INTERSECT";
+      break;
+    case 137:
+      z = "EXCEPT";
+      break;
+    default:
+      z = "UNION";
+      break;
   }
   return z;
 }
@@ -88,7 +85,7 @@ int hasAnchor(Select *p) {
 
 void recomputeColumnsUsed(Select *pSelect, SrcItem *pSrcItem) {
   Walker w;
-  if ((pSrcItem->pSTab == 0))
+  if (pSrcItem->pSTab == 0)
     return;
   memset(&w, 0, sizeof(w));
   w.xExprCallback = recomputeColumnsUsedExpr;
@@ -114,23 +111,8 @@ int compoundHasDifferentAffinities(Select *p) {
     char aff;
     Select *pSub1;
 
-    ((void)(0))
-
-        ;
     aff = sqlite3ExprAffinity(pList->a[ii].pExpr);
     for (pSub1 = p->pPrior; pSub1; pSub1 = pSub1->pPrior) {
-
-      ((void)(0))
-
-          ;
-
-      ((void)(0))
-
-          ;
-
-      ((void)(0))
-
-          ;
       if (sqlite3ExprAffinity(pSub1->pEList->a[ii].pExpr) != aff) {
         return 1;
       }
@@ -143,7 +125,8 @@ Table *isSimpleCount(Select *p, AggInfo *pAggInfo) {
   Table *pTab;
   Expr *pExpr;
 
-  if (p->pWhere || p->pEList->nExpr != 1 || p->pSrc->nSrc != 1 || p->pSrc->a[0].fg.isSubquery || pAggInfo->nFunc != 1 || p->pHaving) {
+  if (p->pWhere || p->pEList->nExpr != 1 || p->pSrc->nSrc != 1 || p->pSrc->a[0].fg.isSubquery || pAggInfo->nFunc != 1 ||
+      p->pHaving) {
     return 0;
   }
   pTab = p->pSrc->a[0].pSTab;
@@ -159,8 +142,6 @@ Table *isSimpleCount(Select *p, AggInfo *pAggInfo) {
   if ((pAggInfo->aFunc[0].pFunc->funcFlags & 0x0100) == 0)
     return 0;
 
-  ;
-  ;
   if ((((pExpr)->flags & (u32)(0x000004 | 0x1000000)) != 0))
     return 0;
 

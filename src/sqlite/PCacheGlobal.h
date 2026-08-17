@@ -3,11 +3,9 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 #include "sqlite/PGroup.h"
 #include "sqlite/PgFreeslot.h"
 #include "sqlite/sqlite3_mutex.h"
-
 typedef struct PCacheGlobal PCacheGlobal;
 
 struct PCacheGlobal {

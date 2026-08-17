@@ -1,29 +1,22 @@
 #define _GNU_SOURCE 1
-
 #include <errno.h>
 #include <stddef.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <string.h>
 #include <sys/stat.h>
-
 #include "sqlite/DbPath.h"
-
 #include "sqlite/SqliteUnixSyscallIndex.h"
 #include "sqlite/sqlite3.h"
 #include "sqlite/sqlite3_syscall_ptr.h"
 #include "sqlite/unix_syscall.h"
+#include "sqlite/SqliteResultCode.h"
 void appendOnePathElement(DbPath *pPath, const char *zName, int nName) {
-
   if (zName[0] == '.') {
     if (nName == 1)
       return;
     if (zName[1] == '.' && nName == 2) {
       if (pPath->nUsed > 1) {
-
-        ((void)(0))
-
-            ;
         while (pPath->zOut[--pPath->nUsed] != '/') {
         }
       }
@@ -31,51 +24,31 @@ void appendOnePathElement(DbPath *pPath, const char *zName, int nName) {
     }
   }
   if (pPath->nUsed + nName + 2 >= pPath->nOut) {
-    pPath->rc = 1;
+    pPath->rc = SQLITE_ERROR;
     return;
   }
   pPath->zOut[pPath->nUsed++] = '/';
   memcpy(&pPath->zOut[pPath->nUsed], zName, nName);
   pPath->nUsed += nName;
 
-  if (pPath->rc == 0) {
+  if (pPath->rc == SQLITE_OK) {
     const char *zIn;
     struct stat buf;
     pPath->zOut[pPath->nUsed] = 0;
     zIn = pPath->zOut;
     if (((int (*)(const char *, struct stat *))aSyscall[SQLITE_SYSCALL_LSTAT].pCurrent)(zIn, &buf) != 0) {
-      if (
-
-          (*__errno_location())
-
-          !=
-
-          2
-
-      ) {
+      if ((*__errno_location()) != 2) {
         pPath->rc = unixLogErrorAtLine(sqlite3CantopenError(47152), "lstat", zIn, 47152);
       }
-    } else if (
-
-        ((((
-
-              buf.st_mode
-
-              )) &
-          0170000) == (0120000))
-
-    ) {
+    } else if (((((buf.st_mode)) & 0170000) == (0120000))) {
       ssize_t got;
-      char zLnk[
-
-          4096
-
-          + 2];
+      char zLnk[4096 + 2];
       if (pPath->nSymlink++ > 200) {
         pPath->rc = sqlite3CantopenError(47158);
         return;
       }
-      got = ((ssize_t (*)(const char *, char *, size_t))aSyscall[SQLITE_SYSCALL_READLINK].pCurrent)(zIn, zLnk, sizeof(zLnk) - 2);
+      got = ((ssize_t (*)(const char *, char *, size_t))aSyscall[SQLITE_SYSCALL_READLINK].pCurrent)(zIn, zLnk,
+                                                                                                    sizeof(zLnk) - 2);
       if (got <= 0 || got >= (ssize_t)sizeof(zLnk) - 2) {
         pPath->rc = unixLogErrorAtLine(sqlite3CantopenError(47163), "readlink", zIn, 47163);
         return;

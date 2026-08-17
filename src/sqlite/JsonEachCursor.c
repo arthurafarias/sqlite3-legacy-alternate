@@ -1,7 +1,5 @@
 #define _GNU_SOURCE 1
-
 #include "sqlite/JsonEachCursor.h"
-
 #include "sqlite/JsonParent.h"
 #include "sqlite/JsonParse.h"
 #include "sqlite/JsonString.h"
@@ -37,7 +35,6 @@ int jsonSkipLabel(JsonEachCursor *p) {
 }
 
 void jsonAppendPathName(JsonEachCursor *p) {
-
   if (p->eType == 11) {
     jsonPrintf(30, &p->path, "[%lld]", p->aParent[p->nParent - 1].iKey);
   } else {
@@ -76,9 +73,6 @@ int jsonEachPathLength(JsonEachCursor *p) {
         char cSaved = z[n];
         z[n] = 0;
 
-        ((void)(0))
-
-            ;
         x = jsonLookupStep(&p->sParse, 0, z + 1, 0);
         z[n] = cSaved;
         if (((x) >= 0xfffffffb))

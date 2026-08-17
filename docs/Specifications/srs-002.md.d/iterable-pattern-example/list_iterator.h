@@ -1,9 +1,7 @@
 #pragma once
-
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 typedef struct list list;
 typedef struct list_node list_node;
 

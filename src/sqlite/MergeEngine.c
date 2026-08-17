@@ -1,7 +1,5 @@
 #define _GNU_SOURCE 1
-
 #include "sqlite/MergeEngine.h"
-
 #include "sqlite/PmaReader.h"
 #include "sqlite/SortSubtask.h"
 #include "sqlite/SorterCompare.h"
@@ -9,6 +7,7 @@
 #include "sqlite/sqlite3.h"
 #include "sqlite/sqlite3_file.h"
 #include "sqlite/u8.h"
+#include "sqlite/SqliteResultCode.h"
 void vdbeMergeEngineFree(MergeEngine *pMerger) {
   int i;
   if (pMerger) {
@@ -26,7 +25,7 @@ int vdbeMergeEngineStep(MergeEngine *pMerger, int *pbEof) {
 
   rc = vdbePmaReaderNext(&pMerger->aReadr[iPrev]);
 
-  if (rc == 0) {
+  if (rc == SQLITE_OK) {
     int i;
     PmaReader *pReadr1;
     PmaReader *pReadr2;
@@ -36,7 +35,6 @@ int vdbeMergeEngineStep(MergeEngine *pMerger, int *pbEof) {
     pReadr2 = &pMerger->aReadr[(iPrev | 0x0001)];
 
     for (i = (pMerger->nTree + iPrev) / 2; i > 0; i = i / 2) {
-
       int iRes;
       if (pReadr1->pFd == 0) {
         iRes = +1;
@@ -60,7 +58,7 @@ int vdbeMergeEngineStep(MergeEngine *pMerger, int *pbEof) {
     *pbEof = (pMerger->aReadr[pMerger->aTree[1]].pFd == 0);
   }
 
-  return (rc == 0 ? pTask->pUnpacked->errCode : rc);
+  return (rc == SQLITE_OK ? pTask->pUnpacked->errCode : rc);
 }
 
 void vdbeMergeEngineCompare(MergeEngine *pMerger, int iOut) {
@@ -90,9 +88,6 @@ void vdbeMergeEngineCompare(MergeEngine *pMerger, int iOut) {
     int bCached = 0;
     int res;
 
-    ((void)(0))
-
-        ;
     res = pTask->xCompare(pTask, &bCached, p1->aKey, p1->nKey, p2->aKey, p2->nKey);
     if (res <= 0) {
       iRes = i1;

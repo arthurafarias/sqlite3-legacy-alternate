@@ -3,9 +3,7 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/u8.h"
-
 #include "sqlite/Walker.h"
   typedef struct Expr Expr;
   typedef struct Select Select;

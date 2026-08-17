@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/Mem.h"
 #include "sqlite/u16.h"
   typedef struct CheckOnCtx CheckOnCtx;

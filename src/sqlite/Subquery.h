@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
   typedef struct Select Select;
   typedef struct Subquery Subquery;
 

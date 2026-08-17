@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/u16.h"
 #include "sqlite/u32.h"
 #include "sqlite/u64.h"
@@ -45,7 +44,8 @@ extern C {
   __attribute__((noinline)) void jsonBlobExpandAndAppendOneByte(JsonParse * pParse, u8 c);
   void jsonBlobAppendOneByte(JsonParse * pParse, u8 c);
   void jsonBlobAppendNode(JsonParse *, u8, u64, const void *);
-  __attribute__((noinline)) void jsonBlobExpandAndAppendNode(JsonParse * pParse, u8 eType, u64 szPayload, const void *aPayload);
+  __attribute__((noinline)) void jsonBlobExpandAndAppendNode(JsonParse * pParse, u8 eType, u64 szPayload,
+                                                             const void *aPayload);
   int jsonBlobChangePayloadSize(JsonParse * pParse, u32 i, u32 szPayload);
   u32 jsonbValidityCheck(const JsonParse *pParse, u32 i, u32 iEnd, u32 iDepth);
   int jsonTranslateTextToBlob(JsonParse * pParse, u32 i);

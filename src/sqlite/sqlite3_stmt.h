@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/Vdbe.h"
 #include "sqlite/i64.h"
 #include "sqlite/sqlite3_int64.h"
@@ -72,7 +71,8 @@ extern C {
   int sqlite3_stmt_scanstatus(sqlite3_stmt * pStmt, int idx, int iScanStatusOp, void *pOut);
   int sqlite3_stmt_scanstatus_v2(sqlite3_stmt * pStmt, int idx, int iScanStatusOp, int flags, void *pOut);
   void sqlite3_stmt_scanstatus_reset(sqlite3_stmt *);
-  int sqlite3_carray_bind_v2(sqlite3_stmt * pStmt, int i, void *aData, int nData, int mFlags, void (*xDel)(void *), void *pDel);
+  int sqlite3_carray_bind_v2(sqlite3_stmt * pStmt, int i, void *aData, int nData, int mFlags, void (*xDel)(void *),
+                             void *pDel);
   int sqlite3_carray_bind(sqlite3_stmt * pStmt, int i, void *aData, int nData, int mFlags, void (*xDel)(void *));
 
   int sqlite3TransferBindings(sqlite3_stmt *, sqlite3_stmt *);

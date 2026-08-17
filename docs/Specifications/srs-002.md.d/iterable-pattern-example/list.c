@@ -1,9 +1,7 @@
 #include <stdlib.h>
-
 #include "list.h"
 #include "list_find_predicate.h"
 #include "list_node.h"
-
 list *list_alloc() { return NULL; }
 void list_dealloc(list *self) {}
 void list_construct(list *self) {}

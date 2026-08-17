@@ -1,9 +1,6 @@
 #define _GNU_SOURCE 1
-
 #include <string.h>
-
 #include "sqlite/Pager.h"
-
 #include "sqlite/Bitvec.h"
 #include "sqlite/DbPage.h"
 #include "sqlite/PCache.h"
@@ -25,6 +22,14 @@
 #include "sqlite/u32.h"
 #include "sqlite/u64.h"
 #include "sqlite/u8.h"
+#include "sqlite/SqliteAccessFlags.h"
+#include "sqlite/SqliteCheckpointMode.h"
+#include "sqlite/SqliteDbStatusParameter.h"
+#include "sqlite/SqliteFileControlOpcode.h"
+#include "sqlite/SqliteIoCap.h"
+#include "sqlite/SqliteOpenFlags.h"
+#include "sqlite/SqliteResultCode.h"
+#include "sqlite/SqliteSyncFlags.h"
 const unsigned char aJournalMagic[] = {
     0xd9, 0xd5, 0x05, 0xf9, 0x20, 0xa1, 0x63, 0xd7,
 };
@@ -35,9 +40,7 @@ void freeSuperJournal(char *zSuper) {
   }
 }
 
-
 int sqlite3PagerDirectReadOk(Pager *pPager, Pgno pgno) {
-
   if (pPager->fd->pMethods == 0)
     return 0;
   if (sqlite3PCacheIsDirty(pPager->pPCache))
@@ -50,7 +53,7 @@ int sqlite3PagerDirectReadOk(Pager *pPager, Pgno pgno) {
       return 0;
   }
 
-  if ((pPager->fd->pMethods->xDeviceCharacteristics(pPager->fd) & 0x00008000) == 0) {
+  if ((pPager->fd->pMethods->xDeviceCharacteristics(pPager->fd) & SQLITE_IOCAP_SUBPAGE_READ) == 0) {
     return 0;
   }
   return 1;
@@ -72,11 +75,7 @@ int pagerUnlockDb(Pager *pPager, int eLock) {
   int rc = 0;
 
   if (((pPager->fd)->pMethods != 0)) {
-
-    ((void)(0))
-
-        ;
-    rc = pPager->noLock ? 0 : sqlite3OsUnlock(pPager->fd, eLock);
+    rc = pPager->noLock ? SQLITE_OK : sqlite3OsUnlock(pPager->fd, eLock);
     if (pPager->eLock != (4 + 1)) {
       pPager->eLock = (u8)eLock;
     }
@@ -89,8 +88,8 @@ int pagerLockDb(Pager *pPager, int eLock) {
   int rc = 0;
 
   if (pPager->eLock < eLock || pPager->eLock == (4 + 1)) {
-    rc = pPager->noLock ? 0 : sqlite3OsLock(pPager->fd, eLock);
-    if (rc == 0 && (pPager->eLock != (4 + 1) || eLock == 4)) {
+    rc = pPager->noLock ? SQLITE_OK : sqlite3OsLock(pPager->fd, eLock);
+    if (rc == SQLITE_OK && (pPager->eLock != (4 + 1) || eLock == 4)) {
       pPager->eLock = (u8)eLock;
     }
   }
@@ -98,7 +97,6 @@ int pagerLockDb(Pager *pPager, int eLock) {
 }
 
 int jrnlBufferSize(Pager *pPager) {
-
   (void)(pPager);
 
   return 0;
@@ -126,14 +124,14 @@ int zeroJournalHdr(Pager *pPager, int doTruncate) {
       static const char zeroHdr[28] = {0};
       rc = sqlite3OsWrite(pPager->jfd, zeroHdr, sizeof(zeroHdr), 0);
     }
-    if (rc == 0 && !pPager->noSync) {
-      rc = sqlite3OsSync(pPager->jfd, 0x00010 | pPager->syncFlags);
+    if (rc == SQLITE_OK && !pPager->noSync) {
+      rc = sqlite3OsSync(pPager->jfd, SQLITE_SYNC_DATAONLY | pPager->syncFlags);
     }
 
-    if (rc == 0 && iLimit > 0) {
+    if (rc == SQLITE_OK && iLimit > 0) {
       i64 sz;
       rc = sqlite3OsFileSize(pPager->jfd, &sz);
-      if (rc == 0 && sz > iLimit) {
+      if (rc == SQLITE_OK && sz > iLimit) {
         rc = sqlite3OsTruncate(pPager->jfd, iLimit);
       }
     }
@@ -142,7 +140,7 @@ int zeroJournalHdr(Pager *pPager, int doTruncate) {
 }
 
 int writeJournalHdr(Pager *pPager) {
-  int rc = 0;
+  int rc = SQLITE_OK;
   char *zHeader = pPager->pTmpSpace;
   u32 nHeader = (u32)pPager->pageSize;
   u32 nWrite;
@@ -160,7 +158,8 @@ int writeJournalHdr(Pager *pPager) {
 
   pPager->journalHdr = pPager->journalOff = journalHdrOffset(pPager);
 
-  if (pPager->noSync || (pPager->journalMode == 4) || (sqlite3OsDeviceCharacteristics(pPager->fd) & 0x00000200)) {
+  if (pPager->noSync || (pPager->journalMode == 4) ||
+      (sqlite3OsDeviceCharacteristics(pPager->fd) & SQLITE_IOCAP_SAFE_APPEND)) {
     memcpy(zHeader, aJournalMagic, sizeof(aJournalMagic));
     sqlite3Put4byte((u8 *)&zHeader[sizeof(aJournalMagic)], 0xffffffff);
   } else {
@@ -181,13 +180,9 @@ int writeJournalHdr(Pager *pPager) {
 
   memset(&zHeader[sizeof(aJournalMagic) + 20], 0, nHeader - (sizeof(aJournalMagic) + 20));
 
-  for (nWrite = 0; rc == 0 && nWrite < (pPager->sectorSize); nWrite += nHeader) {
-
+  for (nWrite = 0; rc == SQLITE_OK && nWrite < (pPager->sectorSize); nWrite += nHeader) {
     rc = sqlite3OsWrite(pPager->jfd, zHeader, nHeader, pPager->journalOff);
 
-    ((void)(0))
-
-        ;
     pPager->journalOff += nHeader;
   }
 
@@ -201,7 +196,7 @@ int readJournalHdr(Pager *pPager, int isHot, i64 journalSize, u32 *pNRec, u32 *p
 
   pPager->journalOff = journalHdrOffset(pPager);
   if (pPager->journalOff + (pPager->sectorSize) > journalSize) {
-    return 101;
+    return SQLITE_DONE;
   }
   iHdrOff = pPager->journalOff;
 
@@ -211,11 +206,13 @@ int readJournalHdr(Pager *pPager, int isHot, i64 journalSize, u32 *pNRec, u32 *p
       return rc;
     }
     if (memcmp(aMagic, aJournalMagic, sizeof(aMagic)) != 0) {
-      return 101;
+      return SQLITE_DONE;
     }
   }
 
-  if (0 != (rc = read32bits(pPager->jfd, iHdrOff + 8, pNRec)) || 0 != (rc = read32bits(pPager->jfd, iHdrOff + 12, &pPager->cksumInit)) || 0 != (rc = read32bits(pPager->jfd, iHdrOff + 16, pDbSize))) {
+  if (SQLITE_OK != (rc = read32bits(pPager->jfd, iHdrOff + 8, pNRec)) ||
+      SQLITE_OK != (rc = read32bits(pPager->jfd, iHdrOff + 12, &pPager->cksumInit)) ||
+      SQLITE_OK != (rc = read32bits(pPager->jfd, iHdrOff + 16, pDbSize))) {
     return rc;
   }
 
@@ -223,7 +220,8 @@ int readJournalHdr(Pager *pPager, int isHot, i64 journalSize, u32 *pNRec, u32 *p
     u32 iPageSize;
     u32 iSectorSize;
 
-    if (0 != (rc = read32bits(pPager->jfd, iHdrOff + 20, &iSectorSize)) || 0 != (rc = read32bits(pPager->jfd, iHdrOff + 24, &iPageSize))) {
+    if (SQLITE_OK != (rc = read32bits(pPager->jfd, iHdrOff + 20, &iSectorSize)) ||
+        SQLITE_OK != (rc = read32bits(pPager->jfd, iHdrOff + 24, &iPageSize))) {
       return rc;
     }
 
@@ -231,13 +229,12 @@ int readJournalHdr(Pager *pPager, int isHot, i64 journalSize, u32 *pNRec, u32 *p
       iPageSize = pPager->pageSize;
     }
 
-    if (iPageSize < 512 || iSectorSize < 32 || iPageSize > 65536 || iSectorSize > 0x10000 || ((iPageSize - 1) & iPageSize) != 0 || ((iSectorSize - 1) & iSectorSize) != 0) {
-
-      return 101;
+    if (iPageSize < 512 || iSectorSize < 32 || iPageSize > 65536 || iSectorSize > 0x10000 ||
+        ((iPageSize - 1) & iPageSize) != 0 || ((iSectorSize - 1) & iSectorSize) != 0) {
+      return SQLITE_DONE;
     }
 
     rc = sqlite3PagerSetPagesize(pPager, &iPageSize, -1);
-    ;
 
     pPager->sectorSize = iSectorSize;
   }
@@ -254,7 +251,7 @@ int writeSuperJournal(Pager *pPager, const char *zSuper) {
   u32 cksum = 0;
 
   if (!zSuper || pPager->journalMode == 4 || !((pPager->jfd)->pMethods != 0)) {
-    return 0;
+    return SQLITE_OK;
   }
   pPager->setSuper = 1;
 
@@ -267,12 +264,16 @@ int writeSuperJournal(Pager *pPager, const char *zSuper) {
   }
   iHdrOff = pPager->journalOff;
 
-  if ((0 != (rc = write32bits(pPager->jfd, iHdrOff, ((pPager)->lckPgno)))) || (0 != (rc = sqlite3OsWrite(pPager->jfd, zSuper, nSuper, iHdrOff + 4))) || (0 != (rc = write32bits(pPager->jfd, iHdrOff + 4 + nSuper, nSuper))) || (0 != (rc = write32bits(pPager->jfd, iHdrOff + 4 + nSuper + 4, cksum))) || (0 != (rc = sqlite3OsWrite(pPager->jfd, aJournalMagic, 8, iHdrOff + 4 + nSuper + 8)))) {
+  if ((0 != (rc = write32bits(pPager->jfd, iHdrOff, ((pPager)->lckPgno)))) ||
+      (0 != (rc = sqlite3OsWrite(pPager->jfd, zSuper, nSuper, iHdrOff + 4))) ||
+      (0 != (rc = write32bits(pPager->jfd, iHdrOff + 4 + nSuper, nSuper))) ||
+      (0 != (rc = write32bits(pPager->jfd, iHdrOff + 4 + nSuper + 4, cksum))) ||
+      (0 != (rc = sqlite3OsWrite(pPager->jfd, aJournalMagic, 8, iHdrOff + 4 + nSuper + 8)))) {
     return rc;
   }
   pPager->journalOff += (nSuper + 20);
 
-  if (0 == (rc = sqlite3OsFileSize(pPager->jfd, &jrnlSize)) && jrnlSize > pPager->journalOff) {
+  if (SQLITE_OK == (rc = sqlite3OsFileSize(pPager->jfd, &jrnlSize)) && jrnlSize > pPager->journalOff) {
     rc = sqlite3OsTruncate(pPager->jfd, pPager->journalOff);
   }
   return rc;
@@ -284,7 +285,9 @@ void pager_reset(Pager *pPager) {
   sqlite3PcacheClear(pPager->pPCache);
 }
 
-u32 sqlite3PagerDataVersion(Pager *pPager) { return pPager->iDataVersion; }
+u32 sqlite3PagerDataVersion(Pager *pPager) {
+  return pPager->iDataVersion;
+}
 
 void releaseAllSavepoints(Pager *pPager) {
   int ii;
@@ -302,35 +305,24 @@ void releaseAllSavepoints(Pager *pPager) {
 
 int addToSavepointBitvecs(Pager *pPager, Pgno pgno) {
   int ii;
-  int rc = 0;
+  int rc = SQLITE_OK;
 
   for (ii = 0; ii < pPager->nSavepoint; ii++) {
     PagerSavepoint *p = &pPager->aSavepoint[ii];
     if (pgno <= p->nOrig) {
       rc |= sqlite3BitvecSet(p->pInSavepoint, pgno);
-      ;
-
-      ((void)(0))
-
-          ;
     }
   }
   return rc;
 }
 
 void pager_unlock(Pager *pPager) {
-
   sqlite3BitvecDestroy(pPager->pInJournal);
   pPager->pInJournal = 0;
   releaseAllSavepoints(pPager);
 
   if (((pPager)->pWal != 0)) {
-
-    ((void)(0))
-
-        ;
     if (pPager->eState == 6) {
-
       (void)sqlite3WalEndWriteTransaction(pPager->pWal);
     }
     sqlite3WalEndReadTransaction(pPager->pWal);
@@ -339,41 +331,15 @@ void pager_unlock(Pager *pPager) {
     int rc;
     int iDc = ((pPager->fd)->pMethods != 0) ? sqlite3OsDeviceCharacteristics(pPager->fd) : 0;
 
-    ((void)(0))
-
-        ;
-
-    ((void)(0))
-
-        ;
-
-    ((void)(0))
-
-        ;
-
-    ((void)(0))
-
-        ;
-
-    ((void)(0))
-
-        ;
-
-    ((void)(0))
-
-        ;
-    if (0 == (iDc & 0x00000800) || 1 != (pPager->journalMode & 5)) {
+    if (0 == (iDc & SQLITE_IOCAP_UNDELETABLE_WHEN_OPEN) || 1 != (pPager->journalMode & 5)) {
       sqlite3OsClose(pPager->jfd);
     }
 
     rc = pagerUnlockDb(pPager, 0);
-    if (rc != 0 && pPager->eState == 6) {
+    if (rc != SQLITE_OK && pPager->eState == 6) {
       pPager->eLock = (4 + 1);
     }
 
-    ((void)(0))
-
-        ;
     pPager->eState = 0;
   }
 
@@ -387,7 +353,7 @@ void pager_unlock(Pager *pPager) {
     }
     if (((pPager)->bUseFetch))
       sqlite3OsUnfetch(pPager->fd, 0, 0);
-    pPager->errCode = 0;
+    pPager->errCode = SQLITE_OK;
     setGetterMethod(pPager);
   }
 
@@ -399,7 +365,7 @@ void pager_unlock(Pager *pPager) {
 int pager_error(Pager *pPager, int rc) {
   int rc2 = rc & 0xff;
 
-  if (rc2 == 13 || rc2 == 10) {
+  if (rc2 == SQLITE_FULL || rc2 == SQLITE_IOERR) {
     pPager->errCode = rc;
     pPager->eState = 6;
     setGetterMethod(pPager);
@@ -418,31 +384,24 @@ int pagerFlushOnCommit(Pager *pPager, int bCommit) {
 }
 
 int pager_end_transaction(Pager *pPager, int hasSuper, int bCommit) {
-  int rc = 0;
+  int rc = SQLITE_OK;
   int rc2 = 0;
 
   if (pPager->eState < 2 && pPager->eLock < 2) {
-    return 0;
+    return SQLITE_OK;
   }
 
   releaseAllSavepoints(pPager);
 
   if (((pPager->jfd)->pMethods != 0)) {
-
-    ((void)(0))
-
-        ;
-
     if (sqlite3JournalIsInMemory(pPager->jfd)) {
-
       sqlite3OsClose(pPager->jfd);
     } else if (pPager->journalMode == 3) {
       if (pPager->journalOff == 0) {
-        rc = 0;
+        rc = SQLITE_OK;
       } else {
         rc = sqlite3OsTruncate(pPager->jfd, 0);
-        if (rc == 0 && pPager->fullSync) {
-
+        if (rc == SQLITE_OK && pPager->fullSync) {
           rc = sqlite3OsSync(pPager->jfd, pPager->syncFlags);
         }
       }
@@ -451,16 +410,8 @@ int pager_end_transaction(Pager *pPager, int hasSuper, int bCommit) {
       rc = zeroJournalHdr(pPager, hasSuper || pPager->tempFile);
       pPager->journalOff = 0;
     } else {
-
       int bDelete = !pPager->tempFile;
 
-      ((void)(0))
-
-          ;
-
-      ((void)(0))
-
-          ;
       sqlite3OsClose(pPager->jfd);
       if (bDelete) {
         rc = sqlite3OsDelete(pPager->pVfs, pPager->zJournal, pPager->extraSync);
@@ -471,7 +422,7 @@ int pager_end_transaction(Pager *pPager, int hasSuper, int bCommit) {
   sqlite3BitvecDestroy(pPager->pInJournal);
   pPager->pInJournal = 0;
   pPager->nRec = 0;
-  if (rc == 0) {
+  if (rc == SQLITE_OK) {
     if (pPager->memDb || pagerFlushOnCommit(pPager, bCommit)) {
       sqlite3PcacheCleanAll(pPager->pPCache);
     } else {
@@ -481,24 +432,16 @@ int pager_end_transaction(Pager *pPager, int hasSuper, int bCommit) {
   }
 
   if (((pPager)->pWal != 0)) {
-
     rc2 = sqlite3WalEndWriteTransaction(pPager->pWal);
 
-    ((void)(0))
-
-        ;
-  } else if (rc == 0 && bCommit && pPager->dbFileSize > pPager->dbSize) {
-
-    ((void)(0))
-
-        ;
+  } else if (rc == SQLITE_OK && bCommit && pPager->dbFileSize > pPager->dbSize) {
     rc = pager_truncate(pPager, pPager->dbSize);
   }
 
-  if (rc == 0 && bCommit) {
-    rc = sqlite3OsFileControl(pPager->fd, 22, 0);
-    if (rc == 12)
-      rc = 0;
+  if (rc == SQLITE_OK && bCommit) {
+    rc = sqlite3OsFileControl(pPager->fd, SQLITE_FCNTL_COMMIT_PHASETWO, 0);
+    if (rc == SQLITE_NOTFOUND)
+      rc = SQLITE_OK;
   }
 
   if (!pPager->exclusiveMode && (!((pPager)->pWal != 0) || sqlite3WalExclusiveMode(pPager->pWal, 0))) {
@@ -507,32 +450,23 @@ int pager_end_transaction(Pager *pPager, int hasSuper, int bCommit) {
   pPager->eState = 1;
   pPager->setSuper = 0;
 
-  return (rc == 0 ? rc2 : rc);
+  return (rc == SQLITE_OK ? rc2 : rc);
 }
 
 void pagerUnlockAndRollback(Pager *pPager) {
   if (pPager->eState != 6 && pPager->eState != 0) {
-
-    ((void)(0))
-
-        ;
     if (pPager->eState >= 2) {
       sqlite3BeginBenignMalloc();
       sqlite3PagerRollback(pPager);
       sqlite3EndBenignMalloc();
     } else if (!pPager->exclusiveMode) {
-
-      ((void)(0))
-
-          ;
       pager_end_transaction(pPager, 0, 0);
     }
   } else if (pPager->eState == 6 && pPager->journalMode == 4 && ((pPager->jfd)->pMethods != 0)) {
-
     int errCode = pPager->errCode;
     u8 eLock = pPager->eLock;
     pPager->eState = 0;
-    pPager->errCode = 0;
+    pPager->errCode = SQLITE_OK;
     pPager->eLock = 4;
     pager_playback(pPager, 1);
     pPager->errCode = errCode;
@@ -564,33 +498,29 @@ int pager_playback_one_page(Pager *pPager, i64 *pOffset, Bitvec *pDone, int isMa
 
   jfd = isMainJrnl ? pPager->jfd : pPager->sjfd;
   rc = read32bits(jfd, *pOffset, &pgno);
-  if (rc != 0)
+  if (rc != SQLITE_OK)
     return rc;
   rc = sqlite3OsRead(jfd, (u8 *)aData, pPager->pageSize, (*pOffset) + 4);
-  if (rc != 0)
+  if (rc != SQLITE_OK)
     return rc;
   *pOffset += pPager->pageSize + 4 + isMainJrnl * 4;
 
   if (pgno == 0 || pgno == ((pPager)->lckPgno)) {
-
-    ((void)(0))
-
-        ;
-    return 101;
+    return SQLITE_DONE;
   }
   if (pgno > (Pgno)pPager->dbSize || sqlite3BitvecTest(pDone, pgno)) {
-    return 0;
+    return SQLITE_OK;
   }
   if (isMainJrnl) {
     rc = read32bits(jfd, (*pOffset) - 4, &cksum);
     if (rc)
       return rc;
     if (!isSavepnt && pager_cksum(pPager, (u8 *)aData) != cksum) {
-      return 101;
+      return SQLITE_DONE;
     }
   }
 
-  if (pDone && (rc = sqlite3BitvecSet(pDone, pgno)) != 0) {
+  if (pDone && (rc = sqlite3BitvecSet(pDone, pgno)) != SQLITE_OK) {
     return rc;
   }
 
@@ -604,7 +534,6 @@ int pager_playback_one_page(Pager *pPager, i64 *pOffset, Bitvec *pDone, int isMa
     pPg = sqlite3PagerLookup(pPager, pgno);
   }
 
-  ;
   if (isMainJrnl) {
     isSynced = pPager->noSync || (*pOffset <= pPager->journalHdr);
   } else {
@@ -612,11 +541,6 @@ int pager_playback_one_page(Pager *pPager, i64 *pOffset, Bitvec *pDone, int isMa
   }
   if (((pPager->fd)->pMethods != 0) && (pPager->eState >= 4 || pPager->eState == 0) && isSynced) {
     i64 ofst = (pgno - 1) * (i64)pPager->pageSize;
-    ;
-
-    ((void)(0))
-
-        ;
 
     rc = sqlite3OsWrite(pPager->fd, (u8 *)aData, pPager->pageSize, ofst);
 
@@ -627,33 +551,19 @@ int pager_playback_one_page(Pager *pPager, i64 *pOffset, Bitvec *pDone, int isMa
       sqlite3BackupUpdate(pPager->pBackup, pgno, (u8 *)aData);
     }
   } else if (!isMainJrnl && pPg == 0) {
-
-    ((void)(0))
-
-        ;
-
-    ((void)(0))
-
-        ;
     pPager->doNotSpill |= 0x02;
     rc = sqlite3PagerGet(pPager, pgno, &pPg, 1);
 
-    ((void)(0))
-
-        ;
     pPager->doNotSpill &= ~0x02;
-    if (rc != 0)
+    if (rc != SQLITE_OK)
       return rc;
     sqlite3PcacheMakeDirty(pPg);
   }
   if (pPg) {
-
     void *pData;
     pData = pPg->pData;
     memcpy(pData, (u8 *)aData, pPager->pageSize);
     pPager->xReiniter(pPg);
-
-    ;
 
     if (pgno == 1) {
       memcpy(&pPager->dbFileVers, &((u8 *)pData)[24], sizeof(pPager->dbFileVers));
@@ -663,7 +573,7 @@ int pager_playback_one_page(Pager *pPager, i64 *pOffset, Bitvec *pDone, int isMa
   return rc;
 }
 
-int pagerIsSuperJrnlName(const char *zSuper) {
+static int pagerIsSuperJrnlName(const char *zSuper) {
   const int nSuper = sqlite3Strlen30(zSuper);
   int ii;
 
@@ -695,7 +605,7 @@ int pager_delsuper(Pager *pPager, const char *zSuper) {
   int bSeen = 0;
 
   if (pagerIsSuperJrnlName(zSuper) == 0) {
-    return 0;
+    return SQLITE_OK;
   }
 
   pSuper = (sqlite3_file *)sqlite3MallocZero(2 * (i64)pVfs->szOsFile);
@@ -703,15 +613,15 @@ int pager_delsuper(Pager *pPager, const char *zSuper) {
     rc = 7;
     pJournal = 0;
   } else {
-    const int flags = (0x00000001 | 0x00004000);
+    const int flags = (SQLITE_OPEN_READONLY | SQLITE_OPEN_SUPER_JOURNAL);
     rc = sqlite3OsOpen(pVfs, zSuper, pSuper, flags, 0);
     pJournal = (sqlite3_file *)(((u8 *)pSuper) + pVfs->szOsFile);
   }
-  if (rc != 0)
+  if (rc != SQLITE_OK)
     goto delsuper_out;
 
   rc = sqlite3OsFileSize(pSuper, &nSuperJournal);
-  if (rc != 0)
+  if (rc != SQLITE_OK)
     goto delsuper_out;
 
   zFree = sqlite3Malloc(4 + nSuperJournal + 2);
@@ -719,15 +629,11 @@ int pager_delsuper(Pager *pPager, const char *zSuper) {
     rc = 7;
     goto delsuper_out;
   } else {
-
-    ((void)(0))
-
-        ;
   }
   zFree[0] = zFree[1] = zFree[2] = zFree[3] = 0;
   zSuperJournal = &zFree[4];
   rc = sqlite3OsRead(pSuper, zSuperJournal, (int)nSuperJournal, 0);
-  if (rc != 0)
+  if (rc != SQLITE_OK)
     goto delsuper_out;
   zSuperJournal[nSuperJournal] = 0;
   zSuperJournal[nSuperJournal + 1] = 0;
@@ -738,34 +644,29 @@ int pager_delsuper(Pager *pPager, const char *zSuper) {
       bSeen = 1;
     } else {
       int exists;
-      rc = sqlite3OsAccess(pVfs, zJournal, 0, &exists);
-      if (rc != 0) {
+      rc = sqlite3OsAccess(pVfs, zJournal, SQLITE_ACCESS_EXISTS, &exists);
+      if (rc != SQLITE_OK) {
         goto delsuper_out;
       }
       if (exists) {
         char *zSuperPtr = 0;
 
         int c;
-        int flags = (0x00000001 | 0x00004000);
+        int flags = (SQLITE_OPEN_READONLY | SQLITE_OPEN_SUPER_JOURNAL);
         rc = sqlite3OsOpen(pVfs, zJournal, pJournal, flags, 0);
-        if (rc != 0) {
+        if (rc != SQLITE_OK) {
           goto delsuper_out;
         }
 
         rc = readSuperJournal(pJournal, 1 + (u64)pVfs->mxPathname, &zSuperPtr);
         sqlite3OsClose(pJournal);
-        if (rc != 0) {
-
-          ((void)(0))
-
-              ;
+        if (rc != SQLITE_OK) {
           goto delsuper_out;
         }
 
         c = zSuperPtr != 0 && strcmp(zSuperPtr, zSuper) == 0;
         freeSuperJournal(zSuperPtr);
         if (c) {
-
           goto delsuper_out;
         }
       }
@@ -775,7 +676,6 @@ int pager_delsuper(Pager *pPager, const char *zSuper) {
 
   sqlite3OsClose(pSuper);
   if (bSeen) {
-
     rc = sqlite3OsDelete(pVfs, zSuper, 0);
   }
 
@@ -784,9 +684,6 @@ delsuper_out:
   if (pSuper) {
     sqlite3OsClose(pSuper);
 
-    ((void)(0))
-
-        ;
     sqlite3_free(pSuper);
   }
   return rc;
@@ -795,30 +692,22 @@ delsuper_out:
 int pager_truncate(Pager *pPager, Pgno nPage) {
   int rc = 0;
 
-  ;
-
   if (((pPager->fd)->pMethods != 0) && (pPager->eState >= 4 || pPager->eState == 0)) {
     i64 currentSize, newSize;
     int szPage = pPager->pageSize;
 
-    ((void)(0))
-
-        ;
-
     rc = sqlite3OsFileSize(pPager->fd, &currentSize);
     newSize = szPage * (i64)nPage;
-    if (rc == 0 && currentSize != newSize) {
+    if (rc == SQLITE_OK && currentSize != newSize) {
       if (currentSize > newSize) {
         rc = sqlite3OsTruncate(pPager->fd, newSize);
       } else if ((currentSize + szPage) <= newSize) {
         char *pTmp = pPager->pTmpSpace;
         memset(pTmp, 0, szPage);
-        ;
-        ;
-        sqlite3OsFileControlHint(pPager->fd, 5, &newSize);
+        sqlite3OsFileControlHint(pPager->fd, SQLITE_FCNTL_SIZE_HINT, &newSize);
         rc = sqlite3OsWrite(pPager->fd, pTmp, szPage, newSize - szPage);
       }
-      if (rc == 0) {
+      if (rc == SQLITE_OK) {
         pPager->dbFileSize = nPage;
       }
     }
@@ -827,9 +716,7 @@ int pager_truncate(Pager *pPager, Pgno nPage) {
 }
 
 void setSectorSize(Pager *pPager) {
-
-  if (pPager->tempFile || (sqlite3OsDeviceCharacteristics(pPager->fd) & 0x00001000) != 0) {
-
+  if (pPager->tempFile || (sqlite3OsDeviceCharacteristics(pPager->fd) & SQLITE_IOCAP_POWERSAFE_OVERWRITE) != 0) {
     pPager->sectorSize = 512;
   } else {
     pPager->sectorSize = sqlite3SectorSize(pPager->fd);
@@ -850,35 +737,30 @@ int pager_playback(Pager *pPager, int isHot) {
   u32 savedPageSize = pPager->pageSize;
 
   rc = sqlite3OsFileSize(pPager->jfd, &szJ);
-  if (rc != 0) {
+  if (rc != SQLITE_OK) {
     goto end_playback;
   }
 
   rc = readSuperJournal(pPager->jfd, 1 + (i64)pPager->pVfs->mxPathname, &zSuper);
-  if (rc == 0 && zSuper) {
-    rc = sqlite3OsAccess(pVfs, zSuper, 0, &res);
+  if (rc == SQLITE_OK && zSuper) {
+    rc = sqlite3OsAccess(pVfs, zSuper, SQLITE_ACCESS_EXISTS, &res);
   }
-  if (rc != 0 || !res) {
+  if (rc != SQLITE_OK || !res) {
     goto end_playback;
   }
   pPager->journalOff = 0;
   needPagerReset = isHot;
 
   while (1) {
-
     rc = readJournalHdr(pPager, isHot, szJ, &nRec, &mxPg);
-    if (rc != 0) {
-      if (rc == 101) {
-        rc = 0;
+    if (rc != SQLITE_OK) {
+      if (rc == SQLITE_DONE) {
+        rc = SQLITE_OK;
       }
       goto end_playback;
     }
 
     if (nRec == 0xffffffff) {
-
-      ((void)(0))
-
-          ;
       nRec = (int)((szJ - (pPager->sectorSize)) / ((pPager->pageSize) + 8));
     }
 
@@ -888,7 +770,7 @@ int pager_playback(Pager *pPager, int isHot) {
 
     if (pPager->journalOff == (pPager->sectorSize)) {
       rc = pager_truncate(pPager, mxPg);
-      if (rc != 0) {
+      if (rc != SQLITE_OK) {
         goto end_playback;
       }
       pPager->dbSize = mxPg;
@@ -903,18 +785,16 @@ int pager_playback(Pager *pPager, int isHot) {
         needPagerReset = 0;
       }
       rc = pager_playback_one_page(pPager, &pPager->journalOff, 0, 1, 0);
-      if (rc == 0) {
+      if (rc == SQLITE_OK) {
         nPlayback++;
       } else {
-        if (rc == 101) {
+        if (rc == SQLITE_DONE) {
           pPager->journalOff = szJ;
           break;
         } else if (rc == (10 | (2 << 8))) {
-
-          rc = 0;
+          rc = SQLITE_OK;
           goto end_playback;
         } else {
-
           goto end_playback;
         }
       }
@@ -922,26 +802,20 @@ int pager_playback(Pager *pPager, int isHot) {
   }
 
 end_playback:
-  if (rc == 0) {
+  if (rc == SQLITE_OK) {
     rc = sqlite3PagerSetPagesize(pPager, &savedPageSize, -1);
   }
 
   pPager->changeCountDone = pPager->tempFile;
 
-  if (rc == 0 && (pPager->eState >= 4 || pPager->eState == 0)) {
+  if (rc == SQLITE_OK && (pPager->eState >= 4 || pPager->eState == 0)) {
     rc = sqlite3PagerSync(pPager, 0);
   }
-  if (rc == 0) {
+  if (rc == SQLITE_OK) {
     rc = pager_end_transaction(pPager, zSuper != 0, 0);
-    ;
   }
-  if (rc == 0 && zSuper && res) {
-
-    ((void)(0))
-
-        ;
+  if (rc == SQLITE_OK && zSuper && res) {
     rc = pager_delsuper(pPager, zSuper);
-    ;
   }
   if (isHot && nPlayback) {
     sqlite3_log((27 | (2 << 8)), "recovered %d pages from %s", nPlayback, pPager->zJournal);
@@ -952,8 +826,8 @@ end_playback:
   return rc;
 }
 
-int pagerUndoCallback(void *pCtx, Pgno iPg) {
-  int rc = 0;
+static int pagerUndoCallback(void *pCtx, Pgno iPg) {
+  int rc = SQLITE_OK;
   Pager *pPager = (Pager *)pCtx;
   PgHdr *pPg;
 
@@ -963,7 +837,7 @@ int pagerUndoCallback(void *pCtx, Pgno iPg) {
       sqlite3PcacheDrop(pPg);
     } else {
       rc = readDbPage(pPg);
-      if (rc == 0) {
+      if (rc == SQLITE_OK) {
         pPager->xReiniter(pPg);
       }
       sqlite3PagerUnrefNotNull(pPg);
@@ -982,7 +856,7 @@ int pagerRollbackWal(Pager *pPager) {
   pPager->dbSize = pPager->dbOrigSize;
   rc = sqlite3WalUndo(pPager->pWal, pagerUndoCallback, (void *)pPager);
   pList = sqlite3PcacheDirtyList(pPager->pPCache);
-  while (pList && rc == 0) {
+  while (pList && rc == SQLITE_OK) {
     PgHdr *pNext = pList->pDirty;
     rc = pagerUndoCallback((void *)pPager, pList->pgno);
     pList = pNext;
@@ -997,7 +871,6 @@ int pagerWalFrames(Pager *pPager, PgHdr *pList, Pgno nTruncate, int isCommit) {
   PgHdr *p;
 
   if (isCommit) {
-
     PgHdr **ppNext = &pList;
     nList = 0;
     for (p = pList; (*ppNext = p) != 0; p = p->pDirty) {
@@ -1007,9 +880,6 @@ int pagerWalFrames(Pager *pPager, PgHdr *pList, Pgno nTruncate, int isCommit) {
       }
     }
 
-    ((void)(0))
-
-        ;
   } else {
     nList = 1;
   }
@@ -1018,7 +888,7 @@ int pagerWalFrames(Pager *pPager, PgHdr *pList, Pgno nTruncate, int isCommit) {
   if (pList->pgno == 1)
     pager_write_changecounter(pList);
   rc = sqlite3WalFrames(pPager->pWal, pPager->pageSize, pList, nTruncate, isCommit, pPager->walSyncFlags);
-  if (rc == 0 && pPager->pBackup) {
+  if (rc == SQLITE_OK && pPager->pBackup) {
     for (p = pList; p; p = p->pDirty) {
       sqlite3BackupUpdate(pPager->pBackup, p->pgno, (u8 *)p->pData);
     }
@@ -1034,7 +904,7 @@ int pagerBeginReadTransaction(Pager *pPager) {
   sqlite3WalEndReadTransaction(pPager->pWal);
 
   rc = sqlite3WalBeginReadTransaction(pPager->pWal, &changed);
-  if (rc != 0 || changed) {
+  if (rc != SQLITE_OK || changed) {
     pager_reset(pPager);
     if (((pPager)->bUseFetch))
       sqlite3OsUnfetch(pPager->fd, 0, 0);
@@ -1051,7 +921,7 @@ int pagerPagecount(Pager *pPager, Pgno *pnPage) {
   if (nPage == 0 && (((pPager->fd)->pMethods != 0))) {
     i64 n = 0;
     int rc = sqlite3OsFileSize(pPager->fd, &n);
-    if (rc != 0) {
+    if (rc != SQLITE_OK) {
       return rc;
     }
     nPage = (Pgno)((n + pPager->pageSize - 1) / pPager->pageSize);
@@ -1062,7 +932,7 @@ int pagerPagecount(Pager *pPager, Pgno *pnPage) {
   }
 
   *pnPage = nPage;
-  return 0;
+  return SQLITE_OK;
 }
 
 int pagerOpenWalIfPresent(Pager *pPager) {
@@ -1070,8 +940,8 @@ int pagerOpenWalIfPresent(Pager *pPager) {
 
   if (!pPager->tempFile) {
     int isWal;
-    rc = sqlite3OsAccess(pPager->pVfs, pPager->zWal, 0, &isWal);
-    if (rc == 0) {
+    rc = sqlite3OsAccess(pPager->pVfs, pPager->zWal, SQLITE_ACCESS_EXISTS, &isWal);
+    if (rc == SQLITE_OK) {
       if (isWal) {
         Pgno nPage;
 
@@ -1081,7 +951,6 @@ int pagerOpenWalIfPresent(Pager *pPager) {
         if (nPage == 0) {
           rc = sqlite3OsDelete(pPager->pVfs, pPager->zWal, 0);
         } else {
-          ;
           rc = sqlite3PagerOpenWal(pPager, 0);
         }
       } else if (pPager->journalMode == 5) {
@@ -1095,7 +964,7 @@ int pagerOpenWalIfPresent(Pager *pPager) {
 int pagerPlaybackSavepoint(Pager *pPager, PagerSavepoint *pSavepoint) {
   i64 szJ;
   i64 iHdrOff;
-  int rc = 0;
+  int rc = SQLITE_OK;
   Bitvec *pDone = 0;
 
   if (pSavepoint) {
@@ -1117,37 +986,26 @@ int pagerPlaybackSavepoint(Pager *pPager, PagerSavepoint *pSavepoint) {
   if (pSavepoint && !((pPager)->pWal != 0)) {
     iHdrOff = pSavepoint->iHdrOffset ? pSavepoint->iHdrOffset : szJ;
     pPager->journalOff = pSavepoint->iOffset;
-    while (rc == 0 && pPager->journalOff < iHdrOff) {
+    while (rc == SQLITE_OK && pPager->journalOff < iHdrOff) {
       rc = pager_playback_one_page(pPager, &pPager->journalOff, pDone, 1, 1);
     }
 
-    ((void)(0))
-
-        ;
   } else {
     pPager->journalOff = 0;
   }
 
-  while (rc == 0 && pPager->journalOff < szJ) {
+  while (rc == SQLITE_OK && pPager->journalOff < szJ) {
     u32 ii;
     u32 nJRec = 0;
     u32 dummy;
     rc = readJournalHdr(pPager, 0, szJ, &nJRec, &dummy);
 
-    ((void)(0))
-
-        ;
-
     if (nJRec == 0 && pPager->journalHdr + (pPager->sectorSize) == pPager->journalOff) {
       nJRec = (u32)((szJ - pPager->journalOff) / ((pPager->pageSize) + 8));
     }
-    for (ii = 0; rc == 0 && ii < nJRec && pPager->journalOff < szJ; ii++) {
+    for (ii = 0; rc == SQLITE_OK && ii < nJRec && pPager->journalOff < szJ; ii++) {
       rc = pager_playback_one_page(pPager, &pPager->journalOff, pDone, 1, 1);
     }
-
-    ((void)(0))
-
-        ;
   }
 
   if (pSavepoint) {
@@ -1157,40 +1015,35 @@ int pagerPlaybackSavepoint(Pager *pPager, PagerSavepoint *pSavepoint) {
     if (((pPager)->pWal != 0)) {
       rc = sqlite3WalSavepointUndo(pPager->pWal, pSavepoint->aWalData);
     }
-    for (ii = pSavepoint->iSubRec; rc == 0 && ii < pPager->nSubRec; ii++) {
-
-      ((void)(0))
-
-          ;
+    for (ii = pSavepoint->iSubRec; rc == SQLITE_OK && ii < pPager->nSubRec; ii++) {
       rc = pager_playback_one_page(pPager, &offset, pDone, 0, 1);
     }
-
-    ((void)(0))
-
-        ;
   }
 
   sqlite3BitvecDestroy(pDone);
-  if (rc == 0) {
+  if (rc == SQLITE_OK) {
     pPager->journalOff = szJ;
   }
 
   return rc;
 }
 
-void sqlite3PagerSetCachesize(Pager *pPager, int mxPage) { sqlite3PcacheSetCachesize(pPager->pPCache, mxPage); }
+void sqlite3PagerSetCachesize(Pager *pPager, int mxPage) {
+  sqlite3PcacheSetCachesize(pPager->pPCache, mxPage);
+}
 
-int sqlite3PagerSetSpillsize(Pager *pPager, int mxPage) { return sqlite3PcacheSetSpillsize(pPager->pPCache, mxPage); }
+int sqlite3PagerSetSpillsize(Pager *pPager, int mxPage) {
+  return sqlite3PcacheSetSpillsize(pPager->pPCache, mxPage);
+}
 
 void pagerFixMaplimit(Pager *pPager) {
-
   sqlite3_file *fd = pPager->fd;
   if (((fd)->pMethods != 0) && fd->pMethods->iVersion >= 3) {
     sqlite3_int64 sz;
     sz = pPager->szMmap;
     pPager->bUseFetch = (sz > 0);
     setGetterMethod(pPager);
-    sqlite3OsFileControlHint(pPager->fd, 18, &sz);
+    sqlite3OsFileControlHint(pPager->fd, SQLITE_FCNTL_MMAP_SIZE, &sz);
   }
 }
 
@@ -1199,7 +1052,9 @@ void sqlite3PagerSetMmapLimit(Pager *pPager, sqlite3_int64 szMmap) {
   pagerFixMaplimit(pPager);
 }
 
-void sqlite3PagerShrink(Pager *pPager) { sqlite3PcacheShrink(pPager->pPCache); }
+void sqlite3PagerShrink(Pager *pPager) {
+  sqlite3PcacheShrink(pPager->pPCache);
+}
 
 void sqlite3PagerSetFlags(Pager *pPager, unsigned pgFlags) {
   unsigned level = pgFlags & 0x07;
@@ -1211,9 +1066,7 @@ void sqlite3PagerSetFlags(Pager *pPager, unsigned pgFlags) {
     pPager->noSync = 0;
     pPager->fullSync = level >= 0x03 ? 1 : 0;
 
-    if (level == 0x04
-
-    ) {
+    if (level == 0x04) {
       pPager->extraSync = 1;
     } else {
       pPager->extraSync = 0;
@@ -1222,16 +1075,16 @@ void sqlite3PagerSetFlags(Pager *pPager, unsigned pgFlags) {
   if (pPager->noSync) {
     pPager->syncFlags = 0;
   } else if (pgFlags & 0x08) {
-    pPager->syncFlags = 0x00003;
+    pPager->syncFlags = SQLITE_SYNC_FULL;
   } else {
-    pPager->syncFlags = 0x00002;
+    pPager->syncFlags = SQLITE_SYNC_NORMAL;
   }
   pPager->walSyncFlags = (pPager->syncFlags << 2);
   if (pPager->fullSync) {
     pPager->walSyncFlags |= pPager->syncFlags;
   }
   if ((pgFlags & 0x10) && !pPager->noSync) {
-    pPager->walSyncFlags |= (0x00003 << 2);
+    pPager->walSyncFlags |= (SQLITE_SYNC_FULL << 2);
   }
   if (pgFlags & 0x20) {
     pPager->doNotSpill &= ~0x01;
@@ -1243,7 +1096,7 @@ void sqlite3PagerSetFlags(Pager *pPager, unsigned pgFlags) {
 int pagerOpentemp(Pager *pPager, sqlite3_file *pFile, int vfsFlags) {
   int rc;
 
-  vfsFlags |= 0x00000002 | 0x00000004 | 0x00000010 | 0x00000008;
+  vfsFlags |= SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE | SQLITE_OPEN_EXCLUSIVE | SQLITE_OPEN_DELETEONCLOSE;
   rc = sqlite3OsOpen(pPager->pVfs, 0, pFile, vfsFlags, 0);
 
   return rc;
@@ -1255,27 +1108,23 @@ void sqlite3PagerSetBusyHandler(Pager *pPager, int (*xBusyHandler)(void *), void
   pPager->pBusyHandlerArg = pBusyHandlerArg;
   ap = (void **)&pPager->xBusyHandler;
 
-  sqlite3OsFileControlHint(pPager->fd, 15, (void *)ap);
+  sqlite3OsFileControlHint(pPager->fd, SQLITE_FCNTL_BUSYHANDLER, (void *)ap);
 }
 
 int sqlite3PagerSetPagesize(Pager *pPager, u32 *pPageSize, int nReserve) {
-  int rc = 0;
+  int rc = SQLITE_OK;
 
   u32 pageSize = *pPageSize;
 
-  if ((pPager->memDb == 0 || pPager->dbSize == 0) && sqlite3PcacheRefCount(pPager->pPCache) == 0 && pageSize && pageSize != (u32)pPager->pageSize) {
-    char *pNew =
-
-        ((void *)0)
-
-        ;
+  if ((pPager->memDb == 0 || pPager->dbSize == 0) && sqlite3PcacheRefCount(pPager->pPCache) == 0 && pageSize &&
+      pageSize != (u32)pPager->pageSize) {
+    char *pNew = ((void *)0);
     i64 nByte = 0;
 
     if (pPager->eState > 0 && ((pPager->fd)->pMethods != 0)) {
       rc = sqlite3OsFileSize(pPager->fd, &nByte);
     }
-    if (rc == 0) {
-
+    if (rc == SQLITE_OK) {
       pNew = (char *)sqlite3PageMalloc(pageSize + 8);
       if (!pNew) {
         rc = 7;
@@ -1284,11 +1133,11 @@ int sqlite3PagerSetPagesize(Pager *pPager, u32 *pPageSize, int nReserve) {
       }
     }
 
-    if (rc == 0) {
+    if (rc == SQLITE_OK) {
       pager_reset(pPager);
       rc = sqlite3PcacheSetPageSize(pPager->pPCache, pageSize);
     }
-    if (rc == 0) {
+    if (rc == SQLITE_OK) {
       sqlite3PageFree(pPager->pTmpSpace);
       pPager->pTmpSpace = pNew;
       pPager->dbSize = (Pgno)((nByte + pageSize - 1) / pageSize);
@@ -1300,20 +1149,19 @@ int sqlite3PagerSetPagesize(Pager *pPager, u32 *pPageSize, int nReserve) {
   }
 
   *pPageSize = pPager->pageSize;
-  if (rc == 0) {
+  if (rc == SQLITE_OK) {
     if (nReserve < 0)
       nReserve = pPager->nReserve;
 
-    ((void)(0))
-
-        ;
     pPager->nReserve = (i16)nReserve;
     pagerFixMaplimit(pPager);
   }
   return rc;
 }
 
-void *sqlite3PagerTempSpace(Pager *pPager) { return pPager->pTmpSpace; }
+void *sqlite3PagerTempSpace(Pager *pPager) {
+  return pPager->pTmpSpace;
+}
 
 Pgno sqlite3PagerMaxPageCount(Pager *pPager, Pgno mxPage) {
   if (mxPage > 0) {
@@ -1324,38 +1172,41 @@ Pgno sqlite3PagerMaxPageCount(Pager *pPager, Pgno mxPage) {
 }
 
 int sqlite3PagerReadFileheader(Pager *pPager, int N, unsigned char *pDest) {
-  int rc = 0;
+  int rc = SQLITE_OK;
   memset(pDest, 0, N);
 
   if (((pPager->fd)->pMethods != 0)) {
-
     rc = sqlite3OsRead(pPager->fd, pDest, N, 0);
     if (rc == (10 | (2 << 8))) {
-      rc = 0;
+      rc = SQLITE_OK;
     }
   }
   return rc;
 }
 
-void sqlite3PagerPagecount(Pager *pPager, int *pnPage) { *pnPage = (int)pPager->dbSize; }
+void sqlite3PagerPagecount(Pager *pPager, int *pnPage) {
+  *pnPage = (int)pPager->dbSize;
+}
 
 int pager_wait_on_lock(Pager *pPager, int locktype) {
   int rc;
 
   do {
     rc = pagerLockDb(pPager, locktype);
-  } while (rc == 5 && pPager->xBusyHandler(pPager->pBusyHandlerArg));
+  } while (rc == SQLITE_BUSY && pPager->xBusyHandler(pPager->pBusyHandlerArg));
   return rc;
 }
 
-void sqlite3PagerTruncateImage(Pager *pPager, Pgno nPage) { pPager->dbSize = nPage; }
+void sqlite3PagerTruncateImage(Pager *pPager, Pgno nPage) {
+  pPager->dbSize = nPage;
+}
 
 int pagerSyncHotJournal(Pager *pPager) {
-  int rc = 0;
+  int rc = SQLITE_OK;
   if (!pPager->noSync) {
-    rc = sqlite3OsSync(pPager->jfd, 0x00002);
+    rc = sqlite3OsSync(pPager->jfd, SQLITE_SYNC_NORMAL);
   }
-  if (rc == 0) {
+  if (rc == SQLITE_OK) {
     rc = sqlite3OsFileSize(pPager->jfd, &pPager->journalHdr);
   }
   return rc;
@@ -1369,9 +1220,6 @@ int pagerAcquireMapPage(Pager *pPager, Pgno pgno, void *pData, PgHdr **ppPage) {
     pPager->pMmapFreelist = p->pDirty;
     p->pDirty = 0;
 
-    ((void)(0))
-
-        ;
     memset(p->pExtra, 0, 8);
   } else {
     *ppPage = p = (PgHdr *)sqlite3MallocZero(sizeof(PgHdr) + pPager->nExtra);
@@ -1381,9 +1229,6 @@ int pagerAcquireMapPage(Pager *pPager, Pgno pgno, void *pData, PgHdr **ppPage) {
     }
     p->pExtra = (void *)&p[1];
 
-    ((void)(0))
-
-        ;
     p->flags = 0x020;
     p->nRef = 1;
     p->pPager = pPager;
@@ -1393,7 +1238,7 @@ int pagerAcquireMapPage(Pager *pPager, Pgno pgno, void *pData, PgHdr **ppPage) {
   p->pData = pData;
   pPager->nMmapOut++;
 
-  return 0;
+  return SQLITE_OK;
 }
 
 void pagerFreeMapHdrs(Pager *pPager) {
@@ -1410,15 +1255,14 @@ int databaseIsUnmoved(Pager *pPager) {
   int rc;
 
   if (pPager->tempFile)
-    return 0;
+    return SQLITE_OK;
   if (pPager->dbSize == 0)
     return 0;
 
-  rc = sqlite3OsFileControl(pPager->fd, 20, &bHasMoved);
-  if (rc == 12) {
-
-    rc = 0;
-  } else if (rc == 0 && bHasMoved) {
+  rc = sqlite3OsFileControl(pPager->fd, SQLITE_FCNTL_HAS_MOVED, &bHasMoved);
+  if (rc == SQLITE_NOTFOUND) {
+    rc = SQLITE_OK;
+  } else if (rc == SQLITE_OK && bHasMoved) {
     rc = (8 | (4 << 8));
   }
   return rc;
@@ -1427,7 +1271,6 @@ int databaseIsUnmoved(Pager *pPager) {
 int sqlite3PagerClose(Pager *pPager, sqlite3 *db) {
   u8 *pTmp = (u8 *)pPager->pTmpSpace;
 
-  ;
   sqlite3BeginBenignMalloc();
   pagerFreeMapHdrs(pPager);
 
@@ -1436,10 +1279,7 @@ int sqlite3PagerClose(Pager *pPager, sqlite3 *db) {
   {
     u8 *a = 0;
 
-    ((void)(0))
-
-        ;
-    if (db && 0 == (db->flags & 0x00000800) && 0 == databaseIsUnmoved(pPager)) {
+    if (db && 0 == (db->flags & 0x00000800) && SQLITE_OK == databaseIsUnmoved(pPager)) {
       a = pTmp;
     }
     sqlite3WalClose(pPager->pWal, db, pPager->walSyncFlags, pPager->pageSize, a);
@@ -1450,15 +1290,12 @@ int sqlite3PagerClose(Pager *pPager, sqlite3 *db) {
   if (pPager->memDb) {
     pager_unlock(pPager);
   } else {
-
     if (((pPager->jfd)->pMethods != 0)) {
       pager_error(pPager, pagerSyncHotJournal(pPager));
     }
     pagerUnlockAndRollback(pPager);
   }
   sqlite3EndBenignMalloc();
-  ;
-  ;
 
   sqlite3OsClose(pPager->jfd);
   sqlite3OsClose(pPager->fd);
@@ -1466,30 +1303,21 @@ int sqlite3PagerClose(Pager *pPager, sqlite3 *db) {
   sqlite3PcacheClose(pPager->pPCache);
 
   sqlite3_free(pPager);
-  return 0;
+  return SQLITE_OK;
 }
 
 int syncJournal(Pager *pPager, int newHdr) {
   int rc;
 
   rc = sqlite3PagerExclusiveLock(pPager);
-  if (rc != 0)
+  if (rc != SQLITE_OK)
     return rc;
 
   if (!pPager->noSync) {
-
-    ((void)(0))
-
-        ;
     if (((pPager->jfd)->pMethods != 0) && pPager->journalMode != 4) {
       const int iDc = sqlite3OsDeviceCharacteristics(pPager->fd);
 
-      ((void)(0))
-
-          ;
-
-      if (0 == (iDc & 0x00000200)) {
-
+      if (0 == (iDc & SQLITE_IOCAP_SAFE_APPEND)) {
         i64 iNextHdrOffset;
         u8 aMagic[8];
         u8 zHeader[sizeof(aJournalMagic) + 4];
@@ -1499,38 +1327,35 @@ int syncJournal(Pager *pPager, int newHdr) {
 
         iNextHdrOffset = journalHdrOffset(pPager);
         rc = sqlite3OsRead(pPager->jfd, aMagic, 8, iNextHdrOffset);
-        if (rc == 0 && 0 == memcmp(aMagic, aJournalMagic, 8)) {
+        if (rc == SQLITE_OK && 0 == memcmp(aMagic, aJournalMagic, 8)) {
           static const u8 zerobyte = 0;
           rc = sqlite3OsWrite(pPager->jfd, &zerobyte, 1, iNextHdrOffset);
         }
-        if (rc != 0 && rc != (10 | (2 << 8))) {
+        if (rc != SQLITE_OK && rc != (10 | (2 << 8))) {
           return rc;
         }
 
-        if (pPager->fullSync && 0 == (iDc & 0x00000400)) {
-          ;
-
+        if (pPager->fullSync && 0 == (iDc & SQLITE_IOCAP_SEQUENTIAL)) {
           rc = sqlite3OsSync(pPager->jfd, pPager->syncFlags);
-          if (rc != 0)
+          if (rc != SQLITE_OK)
             return rc;
         };
         rc = sqlite3OsWrite(pPager->jfd, zHeader, sizeof(zHeader), pPager->journalHdr);
-        if (rc != 0)
+        if (rc != SQLITE_OK)
           return rc;
       }
-      if (0 == (iDc & 0x00000400)) {
-        ;
-
-        rc = sqlite3OsSync(pPager->jfd, pPager->syncFlags | (pPager->syncFlags == 0x00003 ? 0x00010 : 0));
-        if (rc != 0)
+      if (0 == (iDc & SQLITE_IOCAP_SEQUENTIAL)) {
+        rc = sqlite3OsSync(pPager->jfd,
+                           pPager->syncFlags | (pPager->syncFlags == SQLITE_SYNC_FULL ? SQLITE_SYNC_DATAONLY : 0));
+        if (rc != SQLITE_OK)
           return rc;
       }
 
       pPager->journalHdr = pPager->journalOff;
-      if (newHdr && 0 == (iDc & 0x00000200)) {
+      if (newHdr && 0 == (iDc & SQLITE_IOCAP_SAFE_APPEND)) {
         pPager->nRec = 0;
         rc = writeJournalHdr(pPager);
-        if (rc != 0)
+        if (rc != SQLITE_OK)
           return rc;
       }
     } else {
@@ -1541,36 +1366,29 @@ int syncJournal(Pager *pPager, int newHdr) {
   sqlite3PcacheClearSyncFlags(pPager->pPCache);
   pPager->eState = 4;
 
-  return 0;
+  return SQLITE_OK;
 }
 
 int pager_write_pagelist(Pager *pPager, PgHdr *pList) {
-  int rc = 0;
+  int rc = SQLITE_OK;
 
   if (!((pPager->fd)->pMethods != 0)) {
-
-    ((void)(0))
-
-        ;
     rc = pagerOpentemp(pPager, pPager->fd, pPager->vfsFlags);
   }
 
-  if (rc == 0 && pPager->dbHintSize < pPager->dbSize && (pList->pDirty || pList->pgno > pPager->dbHintSize)) {
+  if (rc == SQLITE_OK && pPager->dbHintSize < pPager->dbSize && (pList->pDirty || pList->pgno > pPager->dbHintSize)) {
     sqlite3_int64 szFile = pPager->pageSize * (sqlite3_int64)pPager->dbSize;
-    sqlite3OsFileControlHint(pPager->fd, 5, &szFile);
+    sqlite3OsFileControlHint(pPager->fd, SQLITE_FCNTL_SIZE_HINT, &szFile);
     pPager->dbHintSize = pPager->dbSize;
   }
 
-  while (rc == 0 && pList) {
+  while (rc == SQLITE_OK && pList) {
     Pgno pgno = pList->pgno;
 
     if (pgno <= pPager->dbSize && 0 == (pList->flags & 0x010)) {
       i64 offset = (pgno - 1) * (i64)pPager->pageSize;
       char *pData;
 
-      ((void)(0))
-
-          ;
       if (pList->pgno == 1)
         pager_write_changecounter(pList);
 
@@ -1588,11 +1406,7 @@ int pager_write_pagelist(Pager *pPager, PgHdr *pList) {
 
       sqlite3BackupUpdate(pPager->pBackup, pgno, (u8 *)pList->pData);
 
-      ;
-      ;
-      ;
     } else {
-      ;
     };
     pList = pList->pDirty;
   }
@@ -1601,9 +1415,10 @@ int pager_write_pagelist(Pager *pPager, PgHdr *pList) {
 }
 
 int openSubJournal(Pager *pPager) {
-  int rc = 0;
+  int rc = SQLITE_OK;
   if (!((pPager->sjfd)->pMethods != 0)) {
-    const int flags = 0x00002000 | 0x00000002 | 0x00000004 | 0x00000010 | 0x00000008;
+    const int flags = SQLITE_OPEN_SUBJOURNAL | SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE | SQLITE_OPEN_EXCLUSIVE |
+                      SQLITE_OPEN_DELETEONCLOSE;
     int nStmtSpill = sqlite3Config.nStmtSpill;
     if (pPager->journalMode == 4 || pPager->subjInMemory) {
       nStmtSpill = -1;
@@ -1615,42 +1430,32 @@ int openSubJournal(Pager *pPager) {
 
 int pagerStress(void *p, PgHdr *pPg) {
   Pager *pPager = (Pager *)p;
-  int rc = 0;
+  int rc = SQLITE_OK;
 
   if ((pPager->errCode))
     return 0;
-  ;
-  ;
-  ;
   if (pPager->doNotSpill && ((pPager->doNotSpill & (0x02 | 0x01)) != 0 || (pPg->flags & 0x008) != 0)) {
-    return 0;
+    return SQLITE_OK;
   }
 
   pPager->aStat[3]++;
   pPg->pDirty = 0;
   if (((pPager)->pWal != 0)) {
-
     rc = subjournalPageIfRequired(pPg);
-    if (rc == 0) {
+    if (rc == SQLITE_OK) {
       rc = pagerWalFrames(pPager, pPg, 0, 0);
     }
   } else {
-
     if (pPg->flags & 0x008 || pPager->eState == 3) {
       rc = syncJournal(pPager, 1);
     }
 
-    if (rc == 0) {
-
-      ((void)(0))
-
-          ;
+    if (rc == SQLITE_OK) {
       rc = pager_write_pagelist(pPager, pPg);
     }
   }
 
-  if (rc == 0) {
-    ;
+  if (rc == SQLITE_OK) {
     sqlite3PcacheMakeClean(pPg);
   }
 
@@ -1662,10 +1467,7 @@ int sqlite3PagerFlush(Pager *pPager) {
   if (!pPager->memDb) {
     PgHdr *pList = sqlite3PcacheDirtyList(pPager->pPCache);
 
-    ((void)(0))
-
-        ;
-    while (rc == 0 && pList) {
+    while (rc == SQLITE_OK && pList) {
       PgHdr *pNext = pList->pDirty;
       if (pList->nRef == 0) {
         rc = pagerStress((void *)pPager, pList);
@@ -1679,55 +1481,49 @@ int sqlite3PagerFlush(Pager *pPager) {
 
 int hasHotJournal(Pager *pPager, int *pExists) {
   sqlite3_vfs *const pVfs = pPager->pVfs;
-  int rc = 0;
+  int rc = SQLITE_OK;
   int exists = 1;
   int jrnlOpen = !!((pPager->jfd)->pMethods != 0);
 
   *pExists = 0;
   if (!jrnlOpen) {
-    rc = sqlite3OsAccess(pVfs, pPager->zJournal, 0, &exists);
+    rc = sqlite3OsAccess(pVfs, pPager->zJournal, SQLITE_ACCESS_EXISTS, &exists);
   }
-  if (rc == 0 && exists) {
+  if (rc == SQLITE_OK && exists) {
     int locked = 0;
 
     rc = sqlite3OsCheckReservedLock(pPager->fd, &locked);
-    if (rc == 0 && !locked) {
+    if (rc == SQLITE_OK && !locked) {
       Pgno nPage;
 
-      ((void)(0))
-
-          ;
       rc = pagerPagecount(pPager, &nPage);
-      if (rc == 0) {
-
+      if (rc == SQLITE_OK) {
         if (nPage == 0 && !jrnlOpen) {
           sqlite3BeginBenignMalloc();
-          if (pagerLockDb(pPager, 2) == 0) {
+          if (pagerLockDb(pPager, 2) == SQLITE_OK) {
             sqlite3OsDelete(pVfs, pPager->zJournal, 0);
             if (!pPager->exclusiveMode)
               pagerUnlockDb(pPager, 1);
           }
           sqlite3EndBenignMalloc();
         } else {
-
           if (!jrnlOpen) {
-            int f = 0x00000001 | 0x00000800;
+            int f = SQLITE_OPEN_READONLY | SQLITE_OPEN_MAIN_JOURNAL;
             rc = sqlite3OsOpen(pVfs, pPager->zJournal, pPager->jfd, f, &f);
           }
-          if (rc == 0) {
+          if (rc == SQLITE_OK) {
             u8 first = 0;
             rc = sqlite3OsRead(pPager->jfd, (void *)&first, 1, 0);
             if (rc == (10 | (2 << 8))) {
-              rc = 0;
+              rc = SQLITE_OK;
             }
             if (!jrnlOpen) {
               sqlite3OsClose(pPager->jfd);
             }
             *pExists = (first != 0);
-          } else if (rc == 14) {
-
+          } else if (rc == SQLITE_CANTOPEN) {
             *pExists = 1;
-            rc = 0;
+            rc = SQLITE_OK;
           }
         }
       }
@@ -1743,27 +1539,15 @@ int sqlite3PagerSharedLock(Pager *pPager) {
   if (!((pPager)->pWal != 0) && pPager->eState == 0) {
     int bHotJournal = 1;
 
-    ((void)(0))
-
-        ;
-
-    ((void)(0))
-
-        ;
-
     rc = pager_wait_on_lock(pPager, 1);
-    if (rc != 0) {
-
-      ((void)(0))
-
-          ;
+    if (rc != SQLITE_OK) {
       goto failed;
     }
 
     if (pPager->eLock <= 1) {
       rc = hasHotJournal(pPager, &bHotJournal);
     }
-    if (rc != 0) {
+    if (rc != SQLITE_OK) {
       goto failed;
     }
     if (bHotJournal) {
@@ -1773,27 +1557,21 @@ int sqlite3PagerSharedLock(Pager *pPager) {
       }
 
       rc = pagerLockDb(pPager, 4);
-      if (rc != 0) {
+      if (rc != SQLITE_OK) {
         goto failed;
       }
 
       if (!((pPager->jfd)->pMethods != 0) && pPager->journalMode != 2) {
         sqlite3_vfs *const pVfs = pPager->pVfs;
         int bExists;
-        rc = sqlite3OsAccess(pVfs, pPager->zJournal, 0, &bExists);
-        if (rc == 0 && bExists) {
+        rc = sqlite3OsAccess(pVfs, pPager->zJournal, SQLITE_ACCESS_EXISTS, &bExists);
+        if (rc == SQLITE_OK && bExists) {
           int fout = 0;
-          int f = 0x00000002 | 0x00000800;
+          int f = SQLITE_OPEN_READWRITE | 0x00000800;
 
-          ((void)(0))
-
-              ;
           rc = sqlite3OsOpen(pVfs, pPager->zJournal, pPager->jfd, f, &fout);
 
-          ((void)(0))
-
-              ;
-          if (rc == 0 && fout & 0x00000001) {
+          if (rc == SQLITE_OK && fout & SQLITE_OPEN_READONLY) {
             rc = sqlite3CantopenError(65019);
             sqlite3OsClose(pPager->jfd);
           }
@@ -1801,12 +1579,8 @@ int sqlite3PagerSharedLock(Pager *pPager) {
       }
 
       if (((pPager->jfd)->pMethods != 0)) {
-
-        ((void)(0))
-
-            ;
         rc = pagerSyncHotJournal(pPager);
-        if (rc == 0) {
+        if (rc == SQLITE_OK) {
           rc = pager_playback(pPager, !pPager->tempFile);
           pPager->eState = 0;
         }
@@ -1814,28 +1588,17 @@ int sqlite3PagerSharedLock(Pager *pPager) {
         pagerUnlockDb(pPager, 1);
       }
 
-      if (rc != 0) {
-
+      if (rc != SQLITE_OK) {
         pager_error(pPager, rc);
         goto failed;
       }
-
-      ((void)(0))
-
-          ;
-
-      ((void)(0))
-
-          ;
     }
 
     if (!pPager->tempFile && pPager->hasHeldSharedLock) {
-
       char dbFileVers[sizeof(pPager->dbFileVers)];
 
-      ;
       rc = sqlite3OsRead(pPager->fd, &dbFileVers, sizeof(dbFileVers), 24);
-      if (rc != 0) {
+      if (rc != SQLITE_OK) {
         if (rc != (10 | (2 << 8))) {
           goto failed;
         }
@@ -1852,35 +1615,20 @@ int sqlite3PagerSharedLock(Pager *pPager) {
     }
 
     rc = pagerOpenWalIfPresent(pPager);
-
-    ((void)(0))
-
-        ;
   }
 
   if (((pPager)->pWal != 0)) {
-
-    ((void)(0))
-
-        ;
     rc = pagerBeginReadTransaction(pPager);
   }
 
-  if (pPager->tempFile == 0 && pPager->eState == 0 && rc == 0) {
+  if (pPager->tempFile == 0 && pPager->eState == 0 && rc == SQLITE_OK) {
     rc = pagerPagecount(pPager, &pPager->dbSize);
   }
 
 failed:
-  if (rc != 0) {
-
-    ((void)(0))
-
-        ;
+  if (rc != SQLITE_OK) {
     pager_unlock(pPager);
 
-    ((void)(0))
-
-        ;
   } else {
     pPager->eState = 1;
     pPager->hasHeldSharedLock = 1;
@@ -1890,16 +1638,12 @@ failed:
 
 void pagerUnlockIfUnused(Pager *pPager) {
   if (sqlite3PcacheRefCount(pPager->pPCache) == 0) {
-
-    ((void)(0))
-
-        ;
     pagerUnlockAndRollback(pPager);
   }
 }
 
 int getPageNormal(Pager *pPager, Pgno pgno, DbPage **ppPage, int flags) {
-  int rc = 0;
+  int rc = SQLITE_OK;
   PgHdr *pPg;
   u8 noContent;
   sqlite3_pcache_page *pBase;
@@ -1910,7 +1654,7 @@ int getPageNormal(Pager *pPager, Pgno pgno, DbPage **ppPage, int flags) {
   if (pBase == 0) {
     pPg = 0;
     rc = sqlite3PcacheFetchStress(pPager->pPCache, pgno, &pBase);
-    if (rc != 0)
+    if (rc != SQLITE_OK)
       goto pager_acquire_err;
     if (pBase == 0) {
       rc = 7;
@@ -1921,15 +1665,10 @@ int getPageNormal(Pager *pPager, Pgno pgno, DbPage **ppPage, int flags) {
 
   noContent = (flags & 0x01) != 0;
   if (pPg->pPager && !noContent) {
-
-    ((void)(0))
-
-        ;
     pPager->aStat[0]++;
-    return 0;
+    return SQLITE_OK;
 
   } else {
-
     if (pgno == ((pPager)->lckPgno)) {
       rc = sqlite3CorruptError(65264);
       goto pager_acquire_err;
@@ -1937,12 +1676,9 @@ int getPageNormal(Pager *pPager, Pgno pgno, DbPage **ppPage, int flags) {
 
     pPg->pPager = pPager;
 
-    ((void)(0))
-
-        ;
     if (!((pPager->fd)->pMethods != 0) || pPager->dbSize < pgno || noContent) {
       if (pgno > pPager->mxPgno) {
-        rc = 13;
+        rc = SQLITE_FULL;
         if (pgno <= pPager->dbSize) {
           sqlite3PcacheRelease(pPg);
           pPg = 0;
@@ -1950,34 +1686,25 @@ int getPageNormal(Pager *pPager, Pgno pgno, DbPage **ppPage, int flags) {
         goto pager_acquire_err;
       }
       if (noContent) {
-
         sqlite3BeginBenignMalloc();
         if (pgno <= pPager->dbOrigSize) {
           sqlite3BitvecSet(pPager->pInJournal, pgno);
-          ;
         }
         addToSavepointBitvecs(pPager, pgno);
-        ;
         sqlite3EndBenignMalloc();
       }
       memset(pPg->pData, 0, pPager->pageSize);
-      ;
     } else {
-
-      ((void)(0))
-
-          ;
       pPager->aStat[1]++;
       rc = readDbPage(pPg);
-      if (rc != 0) {
+      if (rc != SQLITE_OK) {
         goto pager_acquire_err;
       }
     };
   }
-  return 0;
+  return SQLITE_OK;
 
 pager_acquire_err:
-
   if (pPg) {
     sqlite3PcacheDrop(pPg);
   }
@@ -1987,7 +1714,7 @@ pager_acquire_err:
 }
 
 int getPageMMap(Pager *pPager, Pgno pgno, DbPage **ppPage, int flags) {
-  int rc = 0;
+  int rc = SQLITE_OK;
   PgHdr *pPg = 0;
   u32 iFrame = 0;
 
@@ -1999,7 +1726,7 @@ int getPageMMap(Pager *pPager, Pgno pgno, DbPage **ppPage, int flags) {
 
   if (bMmapOk && ((pPager)->pWal != 0)) {
     rc = sqlite3WalFindFrame(pPager->pWal, pgno, &iFrame);
-    if (rc != 0) {
+    if (rc != SQLITE_OK) {
       *ppPage = 0;
       return rc;
     }
@@ -2007,7 +1734,7 @@ int getPageMMap(Pager *pPager, Pgno pgno, DbPage **ppPage, int flags) {
   if (bMmapOk && iFrame == 0) {
     void *pData = 0;
     rc = sqlite3OsFetch(pPager->fd, (i64)(pgno - 1) * pPager->pageSize, pPager->pageSize, &pData);
-    if (rc == 0 && pData) {
+    if (rc == SQLITE_OK && pData) {
       if (pPager->eState > 1 || pPager->tempFile) {
         pPg = sqlite3PagerLookup(pPager, pgno);
       }
@@ -2017,15 +1744,11 @@ int getPageMMap(Pager *pPager, Pgno pgno, DbPage **ppPage, int flags) {
         sqlite3OsUnfetch(pPager->fd, (i64)(pgno - 1) * pPager->pageSize, pData);
       }
       if (pPg) {
-
-        ((void)(0))
-
-            ;
         *ppPage = pPg;
-        return 0;
+        return SQLITE_OK;
       }
     }
-    if (rc != 0) {
+    if (rc != SQLITE_OK) {
       *ppPage = 0;
       return rc;
     }
@@ -2041,7 +1764,9 @@ int getPageError(Pager *pPager, Pgno pgno, DbPage **ppPage, int flags) {
   return pPager->errCode;
 }
 
-int sqlite3PagerGet(Pager *pPager, Pgno pgno, DbPage **ppPage, int flags) { return pPager->xGet(pPager, pgno, ppPage, flags); }
+int sqlite3PagerGet(Pager *pPager, Pgno pgno, DbPage **ppPage, int flags) {
+  return pPager->xGet(pPager, pgno, ppPage, flags);
+}
 
 DbPage *sqlite3PagerLookup(Pager *pPager, Pgno pgno) {
   sqlite3_pcache_page *pPage;
@@ -2054,7 +1779,7 @@ DbPage *sqlite3PagerLookup(Pager *pPager, Pgno pgno) {
 }
 
 int pager_open_journal(Pager *pPager) {
-  int rc = 0;
+  int rc = SQLITE_OK;
   sqlite3_vfs *const pVfs = pPager->pVfs;
 
   if ((pPager->errCode))
@@ -2070,31 +1795,26 @@ int pager_open_journal(Pager *pPager) {
       if (pPager->journalMode == 4) {
         sqlite3MemJournalOpen(pPager->jfd);
       } else {
-        int flags = 0x00000002 | 0x00000004;
+        int flags = SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE;
         int nSpill;
 
         if (pPager->tempFile) {
-          flags |= (0x00000008 | 0x00001000);
-          flags |= 0x00000010;
+          flags |= (SQLITE_OPEN_DELETEONCLOSE | SQLITE_OPEN_TEMP_JOURNAL);
+          flags |= SQLITE_OPEN_EXCLUSIVE;
           nSpill = sqlite3Config.nStmtSpill;
         } else {
-          flags |= 0x00000800;
+          flags |= SQLITE_OPEN_MAIN_JOURNAL;
           nSpill = jrnlBufferSize(pPager);
         }
 
         rc = databaseIsUnmoved(pPager);
-        if (rc == 0) {
+        if (rc == SQLITE_OK) {
           rc = sqlite3JournalOpen(pVfs, pPager->zJournal, pPager->jfd, flags, nSpill);
         }
       }
-
-      ((void)(0))
-
-          ;
     }
 
-    if (rc == 0) {
-
+    if (rc == SQLITE_OK) {
       pPager->nRec = 0;
       pPager->journalOff = 0;
       pPager->setSuper = 0;
@@ -2103,15 +1823,11 @@ int pager_open_journal(Pager *pPager) {
     }
   }
 
-  if (rc != 0) {
+  if (rc != SQLITE_OK) {
     sqlite3BitvecDestroy(pPager->pInJournal);
     pPager->pInJournal = 0;
     pPager->journalOff = 0;
   } else {
-
-    ((void)(0))
-
-        ;
     pPager->eState = 3;
   }
 
@@ -2119,7 +1835,7 @@ int pager_open_journal(Pager *pPager) {
 }
 
 int sqlite3PagerBegin(Pager *pPager, int exFlag, int subjInMemory) {
-  int rc = 0;
+  int rc = SQLITE_OK;
 
   if (pPager->errCode)
     return pPager->errCode;
@@ -2127,16 +1843,10 @@ int sqlite3PagerBegin(Pager *pPager, int exFlag, int subjInMemory) {
   pPager->subjInMemory = (u8)subjInMemory;
 
   if (pPager->eState == 1) {
-
-    ((void)(0))
-
-        ;
-
     if (((pPager)->pWal != 0)) {
-
       if (pPager->exclusiveMode && sqlite3WalExclusiveMode(pPager->pWal, -1)) {
         rc = pagerLockDb(pPager, 4);
-        if (rc != 0) {
+        if (rc != SQLITE_OK) {
           return rc;
         }
         (void)sqlite3WalExclusiveMode(pPager->pWal, 1);
@@ -2144,78 +1854,50 @@ int sqlite3PagerBegin(Pager *pPager, int exFlag, int subjInMemory) {
 
       rc = sqlite3WalBeginWriteTransaction(pPager->pWal);
     } else {
-
       rc = pagerLockDb(pPager, 2);
-      if (rc == 0 && exFlag) {
+      if (rc == SQLITE_OK && exFlag) {
         rc = pager_wait_on_lock(pPager, 4);
       }
     }
 
-    if (rc == 0) {
-
+    if (rc == SQLITE_OK) {
       pPager->eState = 2;
       pPager->dbHintSize = pPager->dbSize;
       pPager->dbFileSize = pPager->dbSize;
       pPager->dbOrigSize = pPager->dbSize;
       pPager->journalOff = 0;
     }
-
-    ((void)(0))
-
-        ;
-
-    ((void)(0))
-
-        ;
-
-    ((void)(0))
-
-        ;
   }
 
-  ;
   return rc;
 }
 
 int pager_incr_changecounter(Pager *pPager, int isDirectMode) {
-  int rc = 0;
+  int rc = SQLITE_OK;
 
   (void)(isDirectMode);
 
   if (!pPager->changeCountDone && pPager->dbSize > 0) {
     PgHdr *pPgHdr;
 
-    ((void)(0))
-
-        ;
-
     rc = sqlite3PagerGet(pPager, 1, &pPgHdr, 0);
 
-    ((void)(0))
-
-        ;
-
-    if (!0 && (rc == 0)) {
+    if (!0 && (rc == SQLITE_OK)) {
       rc = sqlite3PagerWrite(pPgHdr);
     }
 
-    if (rc == 0) {
-
+    if (rc == SQLITE_OK) {
       pager_write_changecounter(pPgHdr);
 
       if (0) {
         const void *zBuf;
 
-        ((void)(0))
-
-            ;
         zBuf = pPgHdr->pData;
-        if (rc == 0) {
+        if (rc == SQLITE_OK) {
           rc = sqlite3OsWrite(pPager->fd, zBuf, pPager->pageSize, 0);
           pPager->aStat[2]++;
         }
-        if (rc == 0) {
-
+        if (rc == SQLITE_OK) {
           const void *pCopy = (const void *)&((const char *)zBuf)[24];
           memcpy(&pPager->dbFileVers, pCopy, sizeof(pPager->dbFileVers));
           pPager->changeCountDone = 1;
@@ -2231,16 +1913,12 @@ int pager_incr_changecounter(Pager *pPager, int isDirectMode) {
 }
 
 int sqlite3PagerSync(Pager *pPager, const char *zSuper) {
-  int rc = 0;
+  int rc = SQLITE_OK;
   void *pArg = (void *)zSuper;
-  rc = sqlite3OsFileControl(pPager->fd, 21, pArg);
-  if (rc == 12)
-    rc = 0;
-  if (rc == 0 && !pPager->noSync) {
-
-    ((void)(0))
-
-        ;
+  rc = sqlite3OsFileControl(pPager->fd, SQLITE_FCNTL_SYNC, pArg);
+  if (rc == SQLITE_NOTFOUND)
+    rc = SQLITE_OK;
+  if (rc == SQLITE_OK && !pPager->noSync) {
     rc = sqlite3OsSync(pPager->fd, pPager->syncFlags);
   }
   return rc;
@@ -2249,15 +1927,7 @@ int sqlite3PagerSync(Pager *pPager, const char *zSuper) {
 int sqlite3PagerExclusiveLock(Pager *pPager) {
   int rc = pPager->errCode;
 
-  if (rc == 0) {
-
-    ((void)(0))
-
-        ;
-
-    ((void)(0))
-
-        ;
+  if (rc == SQLITE_OK) {
     if (0 == ((pPager)->pWal != 0)) {
       rc = pager_wait_on_lock(pPager, 4);
     }
@@ -2266,21 +1936,18 @@ int sqlite3PagerExclusiveLock(Pager *pPager) {
 }
 
 int sqlite3PagerCommitPhaseOne(Pager *pPager, const char *zSuper, int noSync) {
-  int rc = 0;
+  int rc = SQLITE_OK;
 
   if ((pPager->errCode))
     return pPager->errCode;
 
   if (sqlite3FaultSim(400))
-    return 10;
-
-  ;
+    return SQLITE_IOERR;
 
   if (pPager->eState < 3)
     return 0;
 
   if (0 == pagerFlushOnCommit(pPager, 1)) {
-
     sqlite3BackupRestart(pPager->pBackup);
   } else {
     PgHdr *pList;
@@ -2288,35 +1955,30 @@ int sqlite3PagerCommitPhaseOne(Pager *pPager, const char *zSuper, int noSync) {
       PgHdr *pPageOne = 0;
       pList = sqlite3PcacheDirtyList(pPager->pPCache);
       if (pList == 0) {
-
         rc = sqlite3PagerGet(pPager, 1, &pPageOne, 0);
         pList = pPageOne;
         pList->pDirty = 0;
       }
 
-      ((void)(0))
-
-          ;
       if ((pList)) {
         rc = pagerWalFrames(pPager, pList, pPager->dbSize, 1);
       }
       sqlite3PagerUnref(pPageOne);
-      if (rc == 0) {
+      if (rc == SQLITE_OK) {
         sqlite3PcacheCleanAll(pPager->pPCache);
       }
     } else {
-
       rc = pager_incr_changecounter(pPager, 0);
 
-      if (rc != 0)
+      if (rc != SQLITE_OK)
         goto commit_phase_one_exit;
 
       rc = writeSuperJournal(pPager, zSuper);
-      if (rc != 0)
+      if (rc != SQLITE_OK)
         goto commit_phase_one_exit;
 
       rc = syncJournal(pPager, 0);
-      if (rc != 0)
+      if (rc != SQLITE_OK)
         goto commit_phase_one_exit;
 
       pList = sqlite3PcacheDirtyList(pPager->pPCache);
@@ -2324,11 +1986,7 @@ int sqlite3PagerCommitPhaseOne(Pager *pPager, const char *zSuper, int noSync) {
       if (0 == 0) {
         rc = pager_write_pagelist(pPager, pList);
       }
-      if (rc != 0) {
-
-        ((void)(0))
-
-            ;
+      if (rc != SQLITE_OK) {
         goto commit_phase_one_exit;
       }
       sqlite3PcacheCleanAll(pPager->pPCache);
@@ -2336,11 +1994,8 @@ int sqlite3PagerCommitPhaseOne(Pager *pPager, const char *zSuper, int noSync) {
       if (pPager->dbSize > pPager->dbFileSize) {
         Pgno nNew = pPager->dbSize - (pPager->dbSize == ((pPager)->lckPgno));
 
-        ((void)(0))
-
-            ;
         rc = pager_truncate(pPager, nNew);
-        if (rc != 0)
+        if (rc != SQLITE_OK)
           goto commit_phase_one_exit;
       }
 
@@ -2351,54 +2006,47 @@ int sqlite3PagerCommitPhaseOne(Pager *pPager, const char *zSuper, int noSync) {
   }
 
 commit_phase_one_exit:
-  if (rc == 0 && !((pPager)->pWal != 0)) {
+  if (rc == SQLITE_OK && !((pPager)->pWal != 0)) {
     pPager->eState = 5;
   }
   return rc;
 }
 
 int sqlite3PagerCommitPhaseTwo(Pager *pPager) {
-  int rc = 0;
+  int rc = SQLITE_OK;
 
   if ((pPager->errCode))
     return pPager->errCode;
   pPager->iDataVersion++;
 
   if (pPager->eState == 2 && pPager->exclusiveMode && pPager->journalMode == 1) {
-
-    ((void)(0))
-
-        ;
     pPager->eState = 1;
-    return 0;
+    return SQLITE_OK;
   }
 
-  ;
   rc = pager_end_transaction(pPager, pPager->setSuper, 1);
   return pager_error(pPager, rc);
 }
 
 int sqlite3PagerRollback(Pager *pPager) {
   int rc = 0;
-  ;
 
   if (pPager->eState == 6)
     return pPager->errCode;
   if (pPager->eState <= 1)
-    return 0;
+    return SQLITE_OK;
 
   if (((pPager)->pWal != 0)) {
     int rc2;
     rc = sqlite3PagerSavepoint(pPager, 2, -1);
     rc2 = pager_end_transaction(pPager, pPager->setSuper, 0);
-    if (rc == 0)
+    if (rc == SQLITE_OK)
       rc = rc2;
   } else if (!((pPager->jfd)->pMethods != 0) || pPager->eState == 2) {
     int eState = pPager->eState;
     rc = pager_end_transaction(pPager, 0, 0);
     if (!pPager->memDb && eState > 2) {
-
-      pPager->errCode = 4;
+      pPager->errCode = SQLITE_ABORT;
       pPager->eState = 6;
       setGetterMethod(pPager);
       return rc;
@@ -2410,7 +2058,9 @@ int sqlite3PagerRollback(Pager *pPager) {
   return pager_error(pPager, rc);
 }
 
-u8 sqlite3PagerIsreadonly(Pager *pPager) { return pPager->readOnly; }
+u8 sqlite3PagerIsreadonly(Pager *pPager) {
+  return pPager->readOnly;
+}
 
 int sqlite3PagerMemUsed(Pager *pPager) {
   int perPageSize = pPager->pageSize + pPager->nExtra + (int)(sizeof(PgHdr) + 5 * sizeof(void *));
@@ -2418,18 +2068,19 @@ int sqlite3PagerMemUsed(Pager *pPager) {
 }
 
 void sqlite3PagerCacheStat(Pager *pPager, int eStat, int reset, u64 *pnVal) {
-
-  eStat -= 7;
+  eStat -= SQLITE_DBSTATUS_CACHE_HIT;
   *pnVal += pPager->aStat[eStat];
   if (reset) {
     pPager->aStat[eStat] = 0;
   }
 }
 
-int sqlite3PagerIsMemdb(Pager *pPager) { return pPager->tempFile || pPager->memVfs; }
+int sqlite3PagerIsMemdb(Pager *pPager) {
+  return pPager->tempFile || pPager->memVfs;
+}
 
 __attribute__((noinline)) int pagerOpenSavepoint(Pager *pPager, int nSavepoint) {
-  int rc = 0;
+  int rc = SQLITE_OK;
   int nCurrent = pPager->nSavepoint;
   int ii;
   PagerSavepoint *aNew;
@@ -2460,23 +2111,21 @@ __attribute__((noinline)) int pagerOpenSavepoint(Pager *pPager, int nSavepoint) 
     pPager->nSavepoint = ii + 1;
   }
 
-  ;
   return rc;
 }
 
 int sqlite3PagerOpenSavepoint(Pager *pPager, int nSavepoint) {
-
   if (nSavepoint > pPager->nSavepoint && pPager->useJournal) {
     return pagerOpenSavepoint(pPager, nSavepoint);
   } else {
-    return 0;
+    return SQLITE_OK;
   }
 }
 
 int sqlite3PagerSavepoint(Pager *pPager, int op, int iSavepoint) {
   int rc = pPager->errCode;
 
-  if (rc == 0 && iSavepoint < pPager->nSavepoint) {
+  if (rc == SQLITE_OK && iSavepoint < pPager->nSavepoint) {
     int ii;
     int nNew;
 
@@ -2489,14 +2138,9 @@ int sqlite3PagerSavepoint(Pager *pPager, int op, int iSavepoint) {
     if (op == 1) {
       PagerSavepoint *pRel = &pPager->aSavepoint[nNew];
       if (pRel->bTruncateOnRelease && ((pPager->sjfd)->pMethods != 0)) {
-
         if (sqlite3JournalIsInMemory(pPager->sjfd)) {
           i64 sz = (pPager->pageSize + 4) * (i64)pRel->iSubRec;
           rc = sqlite3OsTruncate(pPager->sjfd, sz);
-
-          ((void)(0))
-
-              ;
         }
         pPager->nSubRec = pRel->iSubRec;
       }
@@ -2505,10 +2149,6 @@ int sqlite3PagerSavepoint(Pager *pPager, int op, int iSavepoint) {
     else if (((pPager)->pWal != 0) || ((pPager->jfd)->pMethods != 0)) {
       PagerSavepoint *pSavepoint = (nNew == 0) ? 0 : &pPager->aSavepoint[nNew - 1];
       rc = pagerPlaybackSavepoint(pPager, pSavepoint);
-
-      ((void)(0))
-
-          ;
     }
   }
 
@@ -2524,13 +2164,21 @@ const char *sqlite3PagerFilename(const Pager *pPager, int nullIfMemDb) {
   }
 }
 
-sqlite3_vfs *sqlite3PagerVfs(Pager *pPager) { return pPager->pVfs; }
+sqlite3_vfs *sqlite3PagerVfs(Pager *pPager) {
+  return pPager->pVfs;
+}
 
-sqlite3_file *sqlite3PagerFile(Pager *pPager) { return pPager->fd; }
+sqlite3_file *sqlite3PagerFile(Pager *pPager) {
+  return pPager->fd;
+}
 
-sqlite3_file *sqlite3PagerJrnlFile(Pager *pPager) { return pPager->pWal ? sqlite3WalFile(pPager->pWal) : pPager->jfd; }
+sqlite3_file *sqlite3PagerJrnlFile(Pager *pPager) {
+  return pPager->pWal ? sqlite3WalFile(pPager->pWal) : pPager->jfd;
+}
 
-const char *sqlite3PagerJournalname(Pager *pPager) { return pPager->zJournal; }
+const char *sqlite3PagerJournalname(Pager *pPager) {
+  return pPager->zJournal;
+}
 
 int sqlite3PagerMovepage(Pager *pPager, DbPage *pPg, Pgno pgno, int isCommit) {
   PgHdr *pPgOld;
@@ -2544,22 +2192,12 @@ int sqlite3PagerMovepage(Pager *pPager, DbPage *pPg, Pgno pgno, int isCommit) {
       return rc;
   }
 
-  if ((pPg->flags & 0x002) != 0 && 0 != (rc = subjournalPageIfRequired(pPg))) {
+  if ((pPg->flags & 0x002) != 0 && SQLITE_OK != (rc = subjournalPageIfRequired(pPg))) {
     return rc;
   }
 
-  ;
-
   if ((pPg->flags & 0x008) && !isCommit) {
     needSyncPgno = pPg->pgno;
-
-    ((void)(0))
-
-        ;
-
-    ((void)(0))
-
-        ;
   }
 
   pPg->flags &= ~0x008;
@@ -2572,7 +2210,6 @@ int sqlite3PagerMovepage(Pager *pPager, DbPage *pPg, Pgno pgno, int isCommit) {
     }
     pPg->flags |= (pPgOld->flags & 0x008);
     if (pPager->tempFile) {
-
       sqlite3PcacheMove(pPgOld, pPager->dbSize + 1);
     } else {
       sqlite3PcacheDrop(pPgOld);
@@ -2589,15 +2226,10 @@ int sqlite3PagerMovepage(Pager *pPager, DbPage *pPg, Pgno pgno, int isCommit) {
   }
 
   if (needSyncPgno) {
-
     PgHdr *pPgHdr;
     rc = sqlite3PagerGet(pPager, needSyncPgno, &pPgHdr, 0);
-    if (rc != 0) {
+    if (rc != SQLITE_OK) {
       if (needSyncPgno <= pPager->dbOrigSize) {
-
-        ((void)(0))
-
-            ;
         sqlite3BitvecClear(pPager->pInJournal, needSyncPgno, pPager->pTmpSpace);
       }
       return rc;
@@ -2607,11 +2239,10 @@ int sqlite3PagerMovepage(Pager *pPager, DbPage *pPg, Pgno pgno, int isCommit) {
     sqlite3PagerUnrefNotNull(pPgHdr);
   }
 
-  return 0;
+  return SQLITE_OK;
 }
 
 int sqlite3PagerLockingMode(Pager *pPager, int eMode) {
-
   if (eMode >= 0 && !pPager->tempFile && !sqlite3WalHeapMemory(pPager->pWal)) {
     pPager->exclusiveMode = (u8)eMode;
   }
@@ -2622,83 +2253,36 @@ int sqlite3PagerSetJournalMode(Pager *pPager, int eMode) {
   u8 eOld = pPager->journalMode;
 
   if (pPager->memDb) {
-
-    ((void)(0))
-
-        ;
     if (eMode != 4 && eMode != 2) {
       eMode = eOld;
     }
   }
 
   if (eMode != eOld) {
-
-    ((void)(0))
-
-        ;
     pPager->journalMode = (u8)eMode;
 
-    ((void)(0))
-
-        ;
-
-    ((void)(0))
-
-        ;
-
-    ((void)(0))
-
-        ;
-
-    ((void)(0))
-
-        ;
-
-    ((void)(0))
-
-        ;
-
-    ((void)(0))
-
-        ;
-
-    ((void)(0))
-
-        ;
     if (!pPager->exclusiveMode && (eOld & 5) == 1 && (eMode & 1) == 0) {
-
       sqlite3OsClose(pPager->jfd);
       if (pPager->eLock >= 2) {
         sqlite3OsDelete(pPager->pVfs, pPager->zJournal, 0);
       } else {
-        int rc = 0;
+        int rc = SQLITE_OK;
         int state = pPager->eState;
 
-        ((void)(0))
-
-            ;
         if (state == 0) {
           rc = sqlite3PagerSharedLock(pPager);
         }
         if (pPager->eState == 1) {
-
-          ((void)(0))
-
-              ;
           rc = pagerLockDb(pPager, 2);
         }
-        if (rc == 0) {
+        if (rc == SQLITE_OK) {
           sqlite3OsDelete(pPager->pVfs, pPager->zJournal, 0);
         }
-        if (rc == 0 && state == 1) {
+        if (rc == SQLITE_OK && state == 1) {
           pagerUnlockDb(pPager, 1);
         } else if (state == 0) {
           pager_unlock(pPager);
         }
-
-        ((void)(0))
-
-            ;
       }
     } else if (eMode == 2 || eMode == 4) {
       sqlite3OsClose(pPager->jfd);
@@ -2708,10 +2292,11 @@ int sqlite3PagerSetJournalMode(Pager *pPager, int eMode) {
   return (int)pPager->journalMode;
 }
 
-int sqlite3PagerGetJournalMode(Pager *pPager) { return (int)pPager->journalMode; }
+int sqlite3PagerGetJournalMode(Pager *pPager) {
+  return (int)pPager->journalMode;
+}
 
 int sqlite3PagerOkToChangeJournalMode(Pager *pPager) {
-
   if (pPager->eState >= 3)
     return 0;
   if ((((pPager->jfd)->pMethods != 0) && pPager->journalOff > 0))
@@ -2727,27 +2312,31 @@ i64 sqlite3PagerJournalSizeLimit(Pager *pPager, i64 iLimit) {
   return pPager->journalSizeLimit;
 }
 
-sqlite3_backup **sqlite3PagerBackupPtr(Pager *pPager) { return &pPager->pBackup; }
+sqlite3_backup **sqlite3PagerBackupPtr(Pager *pPager) {
+  return &pPager->pBackup;
+}
 
 void sqlite3PagerClearCache(Pager *pPager) {
-
   if (pPager->tempFile == 0)
     pager_reset(pPager);
 }
 
 int sqlite3PagerCheckpoint(Pager *pPager, sqlite3 *db, int eMode, int *pnLog, int *pnCkpt) {
-  int rc = 0;
+  int rc = SQLITE_OK;
   if (pPager->pWal == 0 && pPager->journalMode == 5) {
-
     sqlite3_exec(db, "PRAGMA table_list", 0, 0, 0);
   }
   if (pPager->pWal) {
-    rc = sqlite3WalCheckpoint(pPager->pWal, db, eMode, (eMode <= 0 ? 0 : pPager->xBusyHandler), pPager->pBusyHandlerArg, pPager->walSyncFlags, pPager->pageSize, (u8 *)pPager->pTmpSpace, pnLog, pnCkpt);
+    rc = sqlite3WalCheckpoint(pPager->pWal, db, eMode, (eMode <= SQLITE_CHECKPOINT_PASSIVE ? 0 : pPager->xBusyHandler),
+                              pPager->pBusyHandlerArg, pPager->walSyncFlags, pPager->pageSize, (u8 *)pPager->pTmpSpace,
+                              pnLog, pnCkpt);
   }
   return rc;
 }
 
-int sqlite3PagerWalCallback(Pager *pPager) { return sqlite3WalCallback(pPager->pWal); }
+int sqlite3PagerWalCallback(Pager *pPager) {
+  return sqlite3WalCallback(pPager->pWal);
+}
 
 int sqlite3PagerWalSupported(Pager *pPager) {
   const sqlite3_io_methods *pMethods = pPager->fd->pMethods;
@@ -2762,8 +2351,7 @@ int pagerExclusiveLock(Pager *pPager) {
 
   eOrigLock = pPager->eLock;
   rc = pagerLockDb(pPager, 4);
-  if (rc != 0) {
-
+  if (rc != SQLITE_OK) {
     pagerUnlockDb(pPager, eOrigLock);
   }
 
@@ -2771,14 +2359,15 @@ int pagerExclusiveLock(Pager *pPager) {
 }
 
 int pagerOpenWal(Pager *pPager) {
-  int rc = 0;
+  int rc = SQLITE_OK;
 
   if (pPager->exclusiveMode) {
     rc = pagerExclusiveLock(pPager);
   }
 
-  if (rc == 0) {
-    rc = sqlite3WalOpen(pPager->pVfs, pPager->fd, pPager->zWal, pPager->exclusiveMode, pPager->journalSizeLimit, &pPager->pWal);
+  if (rc == SQLITE_OK) {
+    rc = sqlite3WalOpen(pPager->pVfs, pPager->fd, pPager->zWal, pPager->exclusiveMode, pPager->journalSizeLimit,
+                        &pPager->pWal);
   }
   pagerFixMaplimit(pPager);
 
@@ -2790,12 +2379,12 @@ int sqlite3PagerOpenWal(Pager *pPager, int *pbOpen) {
 
   if (!pPager->tempFile && !pPager->pWal) {
     if (!sqlite3PagerWalSupported(pPager))
-      return 14;
+      return SQLITE_CANTOPEN;
 
     sqlite3OsClose(pPager->jfd);
 
     rc = pagerOpenWal(pPager);
-    if (rc == 0) {
+    if (rc == SQLITE_OK) {
       pPager->journalMode = 5;
       pPager->eState = 0;
     }
@@ -2807,22 +2396,22 @@ int sqlite3PagerOpenWal(Pager *pPager, int *pbOpen) {
 }
 
 int sqlite3PagerCloseWal(Pager *pPager, sqlite3 *db) {
-  int rc = 0;
+  int rc = SQLITE_OK;
 
   if (!pPager->pWal) {
     int logexists = 0;
     rc = pagerLockDb(pPager, 1);
-    if (rc == 0) {
-      rc = sqlite3OsAccess(pPager->pVfs, pPager->zWal, 0, &logexists);
+    if (rc == SQLITE_OK) {
+      rc = sqlite3OsAccess(pPager->pVfs, pPager->zWal, SQLITE_ACCESS_EXISTS, &logexists);
     }
-    if (rc == 0 && logexists) {
+    if (rc == SQLITE_OK && logexists) {
       rc = pagerOpenWal(pPager);
     }
   }
 
-  if (rc == 0 && pPager->pWal) {
+  if (rc == SQLITE_OK && pPager->pWal) {
     rc = pagerExclusiveLock(pPager);
-    if (rc == 0) {
+    if (rc == SQLITE_OK) {
       rc = sqlite3WalClose(pPager->pWal, db, pPager->walSyncFlags, pPager->pageSize, (u8 *)pPager->pTmpSpace);
       pPager->pWal = 0;
       pagerFixMaplimit(pPager);

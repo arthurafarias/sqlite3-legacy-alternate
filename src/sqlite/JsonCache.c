@@ -1,7 +1,5 @@
 #define _GNU_SOURCE 1
-
 #include "sqlite/JsonCache.h"
-
 #include "sqlite/JsonParse.h"
 #include "sqlite/sqlite3.h"
 void jsonCacheDelete(JsonCache *p) {
@@ -12,4 +10,6 @@ void jsonCacheDelete(JsonCache *p) {
   sqlite3DbFree(p->db, p);
 }
 
-void jsonCacheDeleteGeneric(void *p) { jsonCacheDelete((JsonCache *)p); }
+void jsonCacheDeleteGeneric(void *p) {
+  jsonCacheDelete((JsonCache *)p);
+}

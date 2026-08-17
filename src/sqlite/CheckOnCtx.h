@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
   typedef struct SrcList SrcList;
   typedef struct CheckOnCtx CheckOnCtx;
   struct CheckOnCtx {

@@ -3,10 +3,8 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/Pgno.h"
 #include "sqlite/WalIndexHdr.h"
-#include "sqlite/ht_slot.h"
 #include "sqlite/i16.h"
 #include "sqlite/i64.h"
 #include "sqlite/u32.h"
@@ -63,7 +61,8 @@ extern C {
   void sqlite3WalSavepoint(Wal * pWal, u32 * aWalData);
   int sqlite3WalSavepointUndo(Wal * pWal, u32 * aWalData);
   int sqlite3WalFrames(Wal * pWal, int, PgHdr *, Pgno, int, int);
-  int sqlite3WalCheckpoint(Wal * pWal, sqlite3 * db, int eMode, int (*xBusy)(void *), void *pBusyArg, int sync_flags, int nBuf, u8 *zBuf, int *pnLog, int *pnCkpt);
+  int sqlite3WalCheckpoint(Wal * pWal, sqlite3 * db, int eMode, int (*xBusy)(void *), void *pBusyArg, int sync_flags,
+                           int nBuf, u8 *zBuf, int *pnLog, int *pnCkpt);
   int sqlite3WalCallback(Wal * pWal);
   int sqlite3WalExclusiveMode(Wal * pWal, int op);
   int sqlite3WalHeapMemory(Wal * pWal);
@@ -72,7 +71,6 @@ extern C {
   int walIndexPage(Wal * pWal, int iPage, volatile u32 **ppPage);
   volatile WalCkptInfo *walCkptInfo(Wal * pWal);
   volatile WalIndexHdr *walIndexHdr(Wal * pWal);
-  void walChecksumBytes(int nativeCksum, u8 *a, int nByte, const u32 *aIn, u32 *aOut);
   void walShmBarrier(Wal * pWal);
   void walIndexWriteHdr(Wal * pWal);
   void walEncodeFrame(Wal * pWal, u32 iPage, u32 nTruncate, u8 * aData, u8 * aFrame);
@@ -81,22 +79,18 @@ extern C {
   void walUnlockShared(Wal * pWal, int lockIdx);
   int walLockExclusive(Wal * pWal, int lockIdx, int n);
   void walUnlockExclusive(Wal * pWal, int lockIdx, int n);
-  int walHash(u32 iPage);
-  int walNextHash(int iPriorHash);
   int walHashGet(Wal * pWal, int iHash, WalHashLoc *pLoc);
-  int walFramePage(u32 iFrame);
   u32 walFramePgno(Wal * pWal, u32 iFrame);
   void walCleanupHash(Wal * pWal);
   int walIndexAppend(Wal * pWal, u32 iFrame, u32 iPage);
   int walIndexRecover(Wal * pWal);
   void walIndexClose(Wal * pWal, int isDelete);
-  void walMerge(const u32 *aContent, ht_slot *aLeft, int nLeft, ht_slot **paRight, int *pnRight, ht_slot *aTmp);
-  void walMergesort(const u32 *aContent, ht_slot *aBuffer, ht_slot *aList, int *pnList);
   int walIteratorInit(Wal * pWal, u32 nBackfill, WalIterator * *pp);
   int walBusyLock(Wal * pWal, int (*xBusy)(void *), void *pBusyArg, int lockIdx, int n);
   int walPagesize(Wal * pWal);
   void walRestartHdr(Wal * pWal, u32 salt1);
-  int walCheckpoint(Wal * pWal, sqlite3 * db, int eMode, int (*xBusy)(void *), void *pBusyArg, int sync_flags, u8 *zBuf);
+  int walCheckpoint(Wal * pWal, sqlite3 * db, int eMode, int (*xBusy)(void *), void *pBusyArg, int sync_flags,
+                    u8 *zBuf);
   void walLimitSize(Wal * pWal, i64 nMax);
   int walIndexTryHdr(Wal * pWal, int *pChanged);
   int walIndexReadHdr(Wal * pWal, int *pChanged);

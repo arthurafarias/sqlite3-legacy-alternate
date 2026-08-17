@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/sqlite3_int64.h"
 #include "sqlite/u16.h"
   typedef struct BtCursor BtCursor;

@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/DbPage.h"
 #include "sqlite/InitData.h"
 #include "sqlite/StrAccum.h"
@@ -16,7 +15,6 @@ extern C {
 #include "sqlite/yDbMask.h"
 #include "sqlite/ynVar.h"
 #include "sqlite/u64.h"
-
   typedef struct FpDecode FpDecode;
 
   struct FpDecode {

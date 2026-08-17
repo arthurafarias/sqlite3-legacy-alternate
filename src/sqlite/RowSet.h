@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/i64.h"
 #include "sqlite/u16.h"
   typedef struct RowSetChunk RowSetChunk;

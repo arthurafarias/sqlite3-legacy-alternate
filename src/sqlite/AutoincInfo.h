@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
   typedef struct Table Table;
 
   typedef struct AutoincInfo AutoincInfo;

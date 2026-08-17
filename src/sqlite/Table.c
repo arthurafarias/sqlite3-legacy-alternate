@@ -1,7 +1,5 @@
 #define _GNU_SOURCE 1
-
 #include "sqlite/Table.h"
-
 #include "sqlite/Column.h"
 #include "sqlite/Expr.h"
 #include "sqlite/ExprList.h"
@@ -38,7 +36,7 @@ Expr *sqlite3ColumnExpr(Table *pTab, Column *pCol) {
     return 0;
   if (!((pTab)->eTabType == 0))
     return 0;
-  if ((pTab->u.tab.pDfltList == 0))
+  if (pTab->u.tab.pDfltList == 0)
     return 0;
   if ((pTab->u.tab.pDfltList->nExpr < pCol->iDflt))
     return 0;
@@ -74,10 +72,8 @@ i16 sqlite3TableColumnToStorage(Table *pTab, i16 iCol) {
       n++;
   }
   if (pTab->aCol[i].colFlags & 0x0020) {
-
     return pTab->nNVCol + i - n;
   } else {
-
     return n;
   }
 }
@@ -94,7 +90,9 @@ void estimateTableWidth(Table *pTab) {
   pTab->szTabRow = sqlite3LogEst(wTable * 4);
 }
 
-FKey *sqlite3FkReferences(Table *pTab) { return (FKey *)sqlite3HashFind(&pTab->pSchema->fkeyHash, pTab->zName); }
+FKey *sqlite3FkReferences(Table *pTab) {
+  return (FKey *)sqlite3HashFind(&pTab->pSchema->fkeyHash, pTab->zName);
+}
 
 int fkChildIsModified(Table *pTab, FKey *p, int *aChange, int bChngRowid) {
   int i;

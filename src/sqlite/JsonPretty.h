@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/u32.h"
   typedef struct JsonParse JsonParse;
   typedef struct JsonString JsonString;

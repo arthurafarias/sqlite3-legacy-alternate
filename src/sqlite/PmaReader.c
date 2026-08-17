@@ -1,9 +1,6 @@
 #define _GNU_SOURCE 1
-
 #include <string.h>
-
 #include "sqlite/PmaReader.h"
-
 #include "sqlite/IncrMerger.h"
 #include "sqlite/MergeEngine.h"
 #include "sqlite/SortSubtask.h"
@@ -16,6 +13,7 @@
 #include "sqlite/sqlite3_int64.h"
 #include "sqlite/u64.h"
 #include "sqlite/u8.h"
+#include "sqlite/SqliteResultCode.h"
 void vdbePmaReaderClear(PmaReader *pReadr) {
   sqlite3_free(pReadr->aAlloc);
   sqlite3_free(pReadr->aBuffer);
@@ -32,7 +30,7 @@ int vdbePmaReadBlob(PmaReader *p, int nByte, u8 **ppOut) {
   if (p->aMap) {
     *ppOut = &p->aMap[p->iReadOff];
     p->iReadOff += nByte;
-    return 0;
+    return SQLITE_OK;
   }
 
   iBuf = p->iReadOff % p->nBuffer;
@@ -46,26 +44,17 @@ int vdbePmaReadBlob(PmaReader *p, int nByte, u8 **ppOut) {
       nRead = (int)(p->iEof - p->iReadOff);
     }
 
-    ((void)(0))
-
-        ;
-
     rc = sqlite3OsRead(p->pFd, p->aBuffer, nRead, p->iReadOff);
 
-    ((void)(0))
-
-        ;
-    if (rc != 0)
+    if (rc != SQLITE_OK)
       return rc;
   }
   nAvail = p->nBuffer - iBuf;
 
   if (nByte <= nAvail) {
-
     *ppOut = &p->aBuffer[iBuf];
     p->iReadOff += nByte;
   } else {
-
     int nRem;
 
     if (p->nAlloc < nByte) {
@@ -93,16 +82,9 @@ int vdbePmaReadBlob(PmaReader *p, int nByte, u8 **ppOut) {
       if (nRem > p->nBuffer)
         nCopy = p->nBuffer;
       rc = vdbePmaReadBlob(p, nCopy, &aNext);
-      if (rc != 0)
+      if (rc != SQLITE_OK)
         return rc;
 
-      ((void)(0))
-
-          ;
-
-      ((void)(0))
-
-          ;
       memcpy(&p->aAlloc[nByte - nRem], aNext, nCopy);
       nRem -= nCopy;
     }
@@ -110,7 +92,7 @@ int vdbePmaReadBlob(PmaReader *p, int nByte, u8 **ppOut) {
     *ppOut = p->aAlloc;
   }
 
-  return 0;
+  return SQLITE_OK;
 }
 
 int vdbePmaReadVarint(PmaReader *p, u64 *pnOut) {
@@ -135,11 +117,11 @@ int vdbePmaReadVarint(PmaReader *p, u64 *pnOut) {
     }
   }
 
-  return 0;
+  return SQLITE_OK;
 }
 
 int vdbePmaReaderNext(PmaReader *pReadr) {
-  int rc = 0;
+  int rc = SQLITE_OK;
   u64 nRec = 0;
 
   if (pReadr->iReadOff >= pReadr->iEof) {
@@ -147,60 +129,51 @@ int vdbePmaReaderNext(PmaReader *pReadr) {
     int bEof = 1;
     if (pIncr) {
       rc = vdbeIncrSwap(pIncr);
-      if (rc == 0 && pIncr->bEof == 0) {
+      if (rc == SQLITE_OK && pIncr->bEof == 0) {
         rc = vdbePmaReaderSeek(pIncr->pTask, pReadr, &pIncr->aFile[0], pIncr->iStartOff);
         bEof = 0;
       }
     }
 
     if (bEof) {
-
       vdbePmaReaderClear(pReadr);
-      ;
       return rc;
     }
   }
 
-  if (rc == 0) {
+  if (rc == SQLITE_OK) {
     rc = vdbePmaReadVarint(pReadr, &nRec);
   }
-  if (rc == 0) {
+  if (rc == SQLITE_OK) {
     pReadr->nKey = (int)nRec;
     rc = vdbePmaReadBlob(pReadr, (int)nRec, &pReadr->aKey);
-    ;
   }
 
   return rc;
 }
 
 int vdbePmaReaderIncrMergeInit(PmaReader *pReadr, int eMode) {
-  int rc = 0;
+  int rc = SQLITE_OK;
   IncrMerger *pIncr = pReadr->pIncr;
   SortSubtask *pTask = pIncr->pTask;
   sqlite3 *db = pTask->pSorter->db;
 
   rc = vdbeMergeEngineInit(pTask, pIncr->pMerger, eMode);
 
-  if (rc == 0) {
+  if (rc == SQLITE_OK) {
     int mxSz = pIncr->mxSz;
 
     if (pIncr->bUseThread) {
       rc = vdbeSorterOpenTempFile(db, mxSz, &pIncr->aFile[0].pFd);
-      if (rc == 0) {
+      if (rc == SQLITE_OK) {
         rc = vdbeSorterOpenTempFile(db, mxSz, &pIncr->aFile[1].pFd);
       }
-    } else
-
-    {
+    } else {
       if (pTask->file2.pFd == 0) {
-
-        ((void)(0))
-
-            ;
         rc = vdbeSorterOpenTempFile(db, pTask->file2.iEof, &pTask->file2.pFd);
         pTask->file2.iEof = 0;
       }
-      if (rc == 0) {
+      if (rc == SQLITE_OK) {
         pIncr->aFile[1].pFd = pTask->file2.pFd;
         pIncr->iStartOff = pTask->file2.iEof;
         pTask->file2.iEof += mxSz;
@@ -208,15 +181,11 @@ int vdbePmaReaderIncrMergeInit(PmaReader *pReadr, int eMode) {
     }
   }
 
-  if (rc == 0 && pIncr->bUseThread) {
-
-    ((void)(0))
-
-        ;
+  if (rc == SQLITE_OK && pIncr->bUseThread) {
     rc = vdbeIncrPopulate(pIncr);
   }
 
-  if (rc == 0 && (8 == 0 || eMode != 1)) {
+  if (rc == SQLITE_OK && (8 == 0 || eMode != 1)) {
     rc = vdbePmaReaderNext(pReadr);
   }
 
@@ -225,18 +194,12 @@ int vdbePmaReaderIncrMergeInit(PmaReader *pReadr, int eMode) {
 
 int vdbePmaReaderIncrInit(PmaReader *pReadr, int eMode) {
   IncrMerger *pIncr = pReadr->pIncr;
-  int rc = 0;
+  int rc = SQLITE_OK;
   if (pIncr) {
-
-    ((void)(0))
-
-        ;
     if (pIncr->bUseThread) {
       void *pCtx = (void *)pReadr;
       rc = vdbeSorterCreateThread(pIncr->pTask, vdbePmaReaderBgIncrInit, pCtx);
-    } else
-
-    {
+    } else {
       rc = vdbePmaReaderIncrMergeInit(pReadr, eMode);
     }
   }

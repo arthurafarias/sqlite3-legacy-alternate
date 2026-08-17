@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/ht_slot.h"
 #include "sqlite/u32.h"
   typedef struct WalHashLoc WalHashLoc;

@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/u8.h"
   typedef struct Expr Expr;
   typedef struct ExprList ExprList;

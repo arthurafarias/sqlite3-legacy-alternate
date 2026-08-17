@@ -6,9 +6,7 @@ These are leftovers from macros (e.g. assert()/testcase()) that expand to
 nothing under the active build config, but were left behind spread across
 three lines by a previous refactor/preprocessing pass:
 
-    ((void)(0))
 
-        ;
 
 This script deletes each such block, then collapses any resulting run of
 3+ blank lines down to a single blank line so removal doesn't leave gaps.

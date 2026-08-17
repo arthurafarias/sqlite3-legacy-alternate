@@ -1,5 +1,4 @@
 #define _GNU_SOURCE 1
-
 #include <errno.h>
 #include <fcntl.h>
 #include <stddef.h>
@@ -8,9 +7,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/stat.h>
-
 #include "sqlite/unixFile.h"
-
 #include "sqlite/SqliteUnixSyscallIndex.h"
 #include "sqlite/Sqlite3Config.h"
 #include "sqlite/UnixUnusedFd.h"
@@ -29,13 +26,19 @@
 #include "sqlite/unixShm.h"
 #include "sqlite/unixShmNode.h"
 #include "sqlite/unix_syscall.h"
+#include "sqlite/SqliteIoCap.h"
+#include "sqlite/SqliteMutexType.h"
+#include "sqlite/SqliteResultCode.h"
+#include "sqlite/SqliteShmFlags.h"
 void robust_close(unixFile *pFile, int h, int lineno) {
   if (((int (*)(int))aSyscall[SQLITE_SYSCALL_CLOSE].pCurrent)(h)) {
     unixLogErrorAtLine((10 | (16 << 8)), "close", pFile ? pFile->zPath : 0, lineno);
   }
 }
 
-void storeLastErrno(unixFile *pFile, int error) { pFile->lastErrno = error; }
+void storeLastErrno(unixFile *pFile, int error) {
+  pFile->lastErrno = error;
+}
 
 void closePendingFds(unixFile *pFile) {
   unixInodeInfo *pInode = pFile->pInode;
@@ -56,31 +59,15 @@ void releaseInodeInfo(unixFile *pFile) {
   if ((pInode)) {
     pInode->nRef--;
     if (pInode->nRef == 0) {
-
-      ((void)(0))
-
-          ;
       sqlite3_mutex_enter(pInode->pLockMutex);
       closePendingFds(pFile);
       sqlite3_mutex_leave(pInode->pLockMutex);
       if (pInode->pPrev) {
-
-        ((void)(0))
-
-            ;
         pInode->pPrev->pNext = pInode->pNext;
       } else {
-
-        ((void)(0))
-
-            ;
         inodeList = pInode->pNext;
       }
       if (pInode->pNext) {
-
-        ((void)(0))
-
-            ;
         pInode->pNext->pPrev = pInode->pPrev;
       }
       sqlite3_mutex_free(pInode->pLockMutex);
@@ -99,13 +86,9 @@ int findInodeInfo(unixFile *pFile, unixInodeInfo **ppInode) {
   fd = pFile->h;
   rc = ((int (*)(int, struct stat *))aSyscall[SQLITE_SYSCALL_FSTAT].pCurrent)(fd, &statbuf);
   if (rc != 0) {
-    storeLastErrno(pFile,
+    storeLastErrno(pFile, (*__errno_location()));
 
-                   (*__errno_location())
-
-    );
-
-    return 10;
+    return SQLITE_IOERR;
   }
 
   memset(&fileId, 0, sizeof(fileId));
@@ -125,7 +108,7 @@ int findInodeInfo(unixFile *pFile, unixInodeInfo **ppInode) {
     memset(pInode, 0, sizeof(*pInode));
     memcpy(&pInode->fileId, &fileId, sizeof(fileId));
     if (sqlite3Config.bCoreMutex) {
-      pInode->pLockMutex = sqlite3_mutex_alloc(0);
+      pInode->pLockMutex = sqlite3_mutex_alloc(SQLITE_MUTEX_FAST);
       if (pInode->pLockMutex == 0) {
         sqlite3_free(pInode);
         return 7;
@@ -133,9 +116,6 @@ int findInodeInfo(unixFile *pFile, unixInodeInfo **ppInode) {
     }
     pInode->nRef = 1;
 
-    ((void)(0))
-
-        ;
     pInode->pNext = inodeList;
     pInode->pPrev = 0;
     if (inodeList)
@@ -145,13 +125,14 @@ int findInodeInfo(unixFile *pFile, unixInodeInfo **ppInode) {
     pInode->nRef++;
   }
   *ppInode = pInode;
-  return 0;
+  return SQLITE_OK;
 }
 
 int fileHasMoved(unixFile *pFile) {
-
   struct stat buf;
-  return pFile->pInode != 0 && (((int (*)(const char *, struct stat *))aSyscall[SQLITE_SYSCALL_STAT].pCurrent)(pFile->zPath, &buf) != 0 || (u64)buf.st_ino != pFile->pInode->fileId.ino);
+  return pFile->pInode != 0 &&
+         (((int (*)(const char *, struct stat *))aSyscall[SQLITE_SYSCALL_STAT].pCurrent)(pFile->zPath, &buf) != 0 ||
+          (u64)buf.st_ino != pFile->pInode->fileId.ino);
 }
 
 void verifyDbFile(unixFile *pFile) {
@@ -163,19 +144,19 @@ void verifyDbFile(unixFile *pFile) {
 
   rc = ((int (*)(int, struct stat *))aSyscall[SQLITE_SYSCALL_FSTAT].pCurrent)(pFile->h, &buf);
   if (rc != 0) {
-    sqlite3_log(28, "cannot fstat db file %s", pFile->zPath);
+    sqlite3_log(SQLITE_WARNING, "cannot fstat db file %s", pFile->zPath);
     return;
   }
   if (buf.st_nlink == 0) {
-    sqlite3_log(28, "file unlinked while open: %s", pFile->zPath);
+    sqlite3_log(SQLITE_WARNING, "file unlinked while open: %s", pFile->zPath);
     return;
   }
   if (buf.st_nlink > 1) {
-    sqlite3_log(28, "multiple links to file: %s", pFile->zPath);
+    sqlite3_log(SQLITE_WARNING, "multiple links to file: %s", pFile->zPath);
     return;
   }
   if (fileHasMoved(pFile)) {
-    sqlite3_log(28, "file renamed while open: %s", pFile->zPath);
+    sqlite3_log(SQLITE_WARNING, "file renamed while open: %s", pFile->zPath);
     return;
   }
 }
@@ -188,24 +169,11 @@ int unixFileLock(unixFile *pFile, struct flock *pLock) {
     if (pInode->bProcessLock == 0) {
       struct flock lock;
 
-      lock.l_whence =
-
-          0
-
-          ;
+      lock.l_whence = 0;
       lock.l_start = (sqlite3PendingByte + 2);
       lock.l_len = 510;
-      lock.l_type =
-
-          1
-
-          ;
-      rc = ((int (*)(int, int, ...))aSyscall[SQLITE_SYSCALL_FCNTL].pCurrent)(pFile->h,
-
-                                                          6
-
-                                                          ,
-                                                          &lock);
+      lock.l_type = 1;
+      rc = ((int (*)(int, int, ...))aSyscall[SQLITE_SYSCALL_FCNTL].pCurrent)(pFile->h, 6, &lock);
       if (rc < 0)
         return rc;
       pInode->bProcessLock = 1;
@@ -214,13 +182,7 @@ int unixFileLock(unixFile *pFile, struct flock *pLock) {
       rc = 0;
     }
   } else {
-
-    rc = ((int (*)(int, int, ...))aSyscall[SQLITE_SYSCALL_FCNTL].pCurrent)(pFile->h,
-
-                                                        6
-
-                                                        ,
-                                                        pLock);
+    rc = ((int (*)(int, int, ...))aSyscall[SQLITE_SYSCALL_FCNTL].pCurrent)(pFile->h, 6, pLock);
   }
   return rc;
 }
@@ -239,34 +201,19 @@ int seekAndRead(unixFile *id, sqlite3_int64 offset, void *pBuf, int cnt) {
   int got;
   int prior = 0;
 
-  ;
-
   do {
-
-    got = ((ssize_t (*)(int, void *, size_t, off64_t))aSyscall[SQLITE_SYSCALL_PREAD64].pCurrent)(id->h, pBuf, cnt, offset);
-    ;
+    got = ((ssize_t (*)(int, void *, size_t, off64_t))aSyscall[SQLITE_SYSCALL_PREAD64].pCurrent)(id->h, pBuf, cnt,
+                                                                                                 offset);
 
     if (got == cnt)
       break;
     if (got < 0) {
-      if (
-
-          (*__errno_location())
-
-          ==
-
-          4
-
-      ) {
+      if ((*__errno_location()) == 4) {
         got = 1;
         continue;
       }
       prior = 0;
-      storeLastErrno((unixFile *)id,
-
-                     (*__errno_location())
-
-      );
+      storeLastErrno((unixFile *)id, (*__errno_location()));
       break;
     } else if (got > 0) {
       cnt -= got;
@@ -275,13 +222,13 @@ int seekAndRead(unixFile *id, sqlite3_int64 offset, void *pBuf, int cnt) {
       pBuf = (void *)(got + (char *)pBuf);
     }
   } while (got > 0);
-  ;
 
-  ;
   return got + prior;
 }
 
-int seekAndWrite(unixFile *id, i64 offset, const void *pBuf, int cnt) { return seekAndWriteFd(id->h, offset, pBuf, cnt, &id->lastErrno); }
+int seekAndWrite(unixFile *id, i64 offset, const void *pBuf, int cnt) {
+  return seekAndWriteFd(id->h, offset, pBuf, cnt, &id->lastErrno);
+}
 
 int fcntlSizeHint(unixFile *pFile, i64 nByte) {
   if (pFile->szChunk > 0) {
@@ -294,20 +241,12 @@ int fcntlSizeHint(unixFile *pFile, i64 nByte) {
 
     nSize = ((nByte + pFile->szChunk - 1) / pFile->szChunk) * pFile->szChunk;
     if (nSize > (i64)buf.st_size) {
-
       int nBlk = buf.st_blksize;
       int nWrite = 0;
       i64 iWrite;
 
       iWrite = (buf.st_size / nBlk) * nBlk + nBlk - 1;
 
-      ((void)(0))
-
-          ;
-
-      ((void)(0))
-
-          ;
       for (; iWrite < nSize + nBlk - 1; iWrite += nBlk) {
         if (iWrite >= nSize)
           iWrite = nSize - 1;
@@ -322,11 +261,7 @@ int fcntlSizeHint(unixFile *pFile, i64 nByte) {
     int rc;
     if (pFile->szChunk <= 0) {
       if (robust_ftruncate(pFile->h, nByte)) {
-        storeLastErrno(pFile,
-
-                       (*__errno_location())
-
-        );
+        storeLastErrno(pFile, (*__errno_location()));
         return unixLogErrorAtLine((10 | (6 << 8)), "ftruncate", pFile->zPath, 44297);
       }
     }
@@ -335,7 +270,7 @@ int fcntlSizeHint(unixFile *pFile, i64 nByte) {
     return rc;
   }
 
-  return 0;
+  return SQLITE_OK;
 }
 
 void unixModeBit(unixFile *pFile, unsigned char mask, int *pArg) {
@@ -349,53 +284,34 @@ void unixModeBit(unixFile *pFile, unsigned char mask, int *pArg) {
 }
 
 void setDeviceCharacteristics(unixFile *pFd) {
-
   if (pFd->sectorSize == 0) {
-
     if (pFd->ctrlFlags & 0x10) {
-      pFd->deviceCharacteristics |= 0x00001000;
+      pFd->deviceCharacteristics |= SQLITE_IOCAP_POWERSAFE_OVERWRITE;
     }
-    pFd->deviceCharacteristics |= 0x00008000;
+    pFd->deviceCharacteristics |= SQLITE_IOCAP_SUBPAGE_READ;
 
     pFd->sectorSize = 4096;
   }
 }
 
 int unixFcntlExternalReader(unixFile *pFile, int *piOut) {
-  int rc = 0;
+  int rc = SQLITE_OK;
   *piOut = 0;
   if (pFile->pShm) {
     unixShmNode *pShmNode = pFile->pShm->pShmNode;
     struct flock f;
 
     memset(&f, 0, sizeof(f));
-    f.l_type =
-
-        1
-
-        ;
-    f.l_whence =
-
-        0
-
-        ;
+    f.l_type = 1;
+    f.l_whence = 0;
     f.l_start = ((22 + 8) * 4) + 3;
-    f.l_len = 8 - 3;
+    f.l_len = SQLITE_SHM_NLOCK - 3;
 
     sqlite3_mutex_enter(pShmNode->pShmMutex);
-    if (((int (*)(int, int, ...))aSyscall[SQLITE_SYSCALL_FCNTL].pCurrent)(pShmNode->hShm,
-
-                                                       5
-
-                                                       ,
-                                                       &f) < 0) {
+    if (((int (*)(int, int, ...))aSyscall[SQLITE_SYSCALL_FCNTL].pCurrent)(pShmNode->hShm, 5, &f) < 0) {
       rc = (10 | (15 << 8));
     } else {
-      *piOut = (f.l_type !=
-
-                2
-
-      );
+      *piOut = (f.l_type != 2);
     }
     sqlite3_mutex_leave(pShmNode->pShmMutex);
   }
@@ -413,77 +329,34 @@ int unixIsSharingShmNode(unixFile *pFile) {
   pShmNode = pFile->pShm->pShmNode;
 
   memset(&lock, 0, sizeof(lock));
-  lock.l_whence =
-
-      0
-
-      ;
+  lock.l_whence = 0;
   lock.l_start = (((22 + 8) * 4) + 8);
   lock.l_len = 1;
-  lock.l_type =
-
-      1
-
-      ;
-  ((int (*)(int, int, ...))aSyscall[SQLITE_SYSCALL_FCNTL].pCurrent)(pShmNode->hShm,
-
-                                                 5
-
-                                                 ,
-                                                 &lock);
-  return (lock.l_type !=
-
-          2
-
-  );
+  lock.l_type = 1;
+  ((int (*)(int, int, ...))aSyscall[SQLITE_SYSCALL_FCNTL].pCurrent)(pShmNode->hShm, 5, &lock);
+  return (lock.l_type != 2);
 }
 
 int unixShmSystemLock(unixFile *pFile, int lockType, int ofst, int n) {
   unixShmNode *pShmNode;
   struct flock f;
-  int rc = 0;
+  int rc = SQLITE_OK;
 
   pShmNode = pFile->pInode->pShmNode;
 
   if (ofst == (((22 + 8) * 4) + 8)) {
-
-    ((void)(0))
-
-        ;
-
-    ((void)(0))
-
-        ;
   } else {
-
-    ((void)(0))
-
-        ;
-
-    ((void)(0))
-
-        ;
   }
 
   if (pShmNode->hShm >= 0) {
     int res;
 
     f.l_type = lockType;
-    f.l_whence =
-
-        0
-
-        ;
+    f.l_whence = 0;
     f.l_start = ofst;
     f.l_len = n;
-    res = ((int (*)(int, int, ...))aSyscall[SQLITE_SYSCALL_FCNTL].pCurrent)(pShmNode->hShm,
-
-                                                         6
-
-                                                         ,
-                                                         &f);
+    res = ((int (*)(int, int, ...))aSyscall[SQLITE_SYSCALL_FCNTL].pCurrent)(pShmNode->hShm, 6, &f);
     if (res == -1) {
-
       rc = 5;
     }
   }
@@ -498,9 +371,6 @@ void unixShmPurge(unixFile *pFd) {
     int nShmPerMap = unixShmRegionPerMap();
     int i;
 
-    ((void)(0))
-
-        ;
     sqlite3_mutex_free(p->pShmMutex);
 
     for (i = 0; i < p->nRegion; i += nShmPerMap) {
@@ -522,67 +392,31 @@ void unixShmPurge(unixFile *pFd) {
 
 int unixLockSharedMemory(unixFile *pDbFd, unixShmNode *pShmNode) {
   struct flock lock;
-  int rc = 0;
+  int rc = SQLITE_OK;
 
-  lock.l_whence =
-
-      0
-
-      ;
+  lock.l_whence = 0;
   lock.l_start = (((22 + 8) * 4) + 8);
   lock.l_len = 1;
-  lock.l_type =
-
-      1
-
-      ;
-  if (((int (*)(int, int, ...))aSyscall[SQLITE_SYSCALL_FCNTL].pCurrent)(pShmNode->hShm,
-
-                                                     5
-
-                                                     ,
-                                                     &lock) != 0) {
+  lock.l_type = 1;
+  if (((int (*)(int, int, ...))aSyscall[SQLITE_SYSCALL_FCNTL].pCurrent)(pShmNode->hShm, 5, &lock) != 0) {
     rc = (10 | (15 << 8));
-  } else if (lock.l_type ==
-
-             2
-
-  ) {
+  } else if (lock.l_type == 2) {
     if (pShmNode->isReadonly) {
       pShmNode->isUnlocked = 1;
       rc = (8 | (5 << 8));
     } else {
+      rc = unixShmSystemLock(pDbFd, 1, (((22 + 8) * 4) + 8), 1);
 
-      rc = unixShmSystemLock(pDbFd,
-
-                             1
-
-                             ,
-                             (((22 + 8) * 4) + 8), 1);
-
-      if (rc == 0 && robust_ftruncate(pShmNode->hShm, 3)) {
+      if (rc == SQLITE_OK && robust_ftruncate(pShmNode->hShm, 3)) {
         rc = unixLogErrorAtLine((10 | (18 << 8)), "ftruncate", pShmNode->zFilename, 45100);
       }
     }
-  } else if (lock.l_type ==
-
-             1
-
-  ) {
-    rc = 5;
+  } else if (lock.l_type == 1) {
+    rc = SQLITE_BUSY;
   }
 
-  if (rc == 0) {
-
-    ((void)(0))
-
-        ;
-    rc = unixShmSystemLock(pDbFd,
-
-                           0
-
-                           ,
-                           (((22 + 8) * 4) + 8), 1);
+  if (rc == SQLITE_OK) {
+    rc = unixShmSystemLock(pDbFd, 0, (((22 + 8) * 4) + 8), 1);
   }
   return rc;
 }
@@ -590,7 +424,7 @@ int unixLockSharedMemory(unixFile *pDbFd, unixShmNode *pShmNode) {
 int unixOpenSharedMemory(unixFile *pDbFd) {
   struct unixShm *p = 0;
   struct unixShmNode *pShmNode;
-  int rc = 0;
+  int rc = SQLITE_OK;
   unixInodeInfo *pInode;
   char *zShm;
   int nShmFilename;
@@ -624,13 +458,12 @@ int unixOpenSharedMemory(unixFile *pDbFd) {
     zShm = pShmNode->zFilename = (char *)&pShmNode[1];
 
     sqlite3_snprintf(nShmFilename, zShm, "%s-shm", zBasePath);
-    ;
 
     pShmNode->hShm = -1;
     pDbFd->pInode->pShmNode = pShmNode;
     pShmNode->pInode = pDbFd->pInode;
     if (sqlite3Config.bCoreMutex) {
-      pShmNode->pShmMutex = sqlite3_mutex_alloc(0);
+      pShmNode->pShmMutex = sqlite3_mutex_alloc(SQLITE_MUTEX_FAST);
       if (pShmNode->pShmMutex == 0) {
         rc = 7;
         goto shm_open_err;
@@ -639,32 +472,10 @@ int unixOpenSharedMemory(unixFile *pDbFd) {
 
     if (pInode->bProcessLock == 0) {
       if (0 == sqlite3_uri_boolean(pDbFd->zPath, "readonly_shm", 0)) {
-        pShmNode->hShm = robust_open(zShm,
-
-                                     02
-
-                                         |
-
-                                         0100
-
-                                         |
-
-                                         0400000
-
-                                     ,
-                                     (sStat.st_mode & 0777));
+        pShmNode->hShm = robust_open(zShm, 02 | 0100 | 0400000, (sStat.st_mode & 0777));
       }
       if (pShmNode->hShm < 0) {
-        pShmNode->hShm = robust_open(zShm,
-
-                                     00
-
-                                         |
-
-                                         0400000
-
-                                     ,
-                                     (sStat.st_mode & 0777));
+        pShmNode->hShm = robust_open(zShm, 00 | 0400000, (sStat.st_mode & 0777));
         if (pShmNode->hShm < 0) {
           rc = unixLogErrorAtLine(sqlite3CantopenError(45237), "open", zShm, 45237);
           goto shm_open_err;
@@ -675,7 +486,7 @@ int unixOpenSharedMemory(unixFile *pDbFd) {
       robustFchown(pShmNode->hShm, sStat.st_uid, sStat.st_gid);
 
       rc = unixLockSharedMemory(pDbFd, pShmNode);
-      if (rc != 0 && rc != (8 | (5 << 8)))
+      if (rc != SQLITE_OK && rc != (8 | (5 << 8)))
         goto shm_open_err;
     }
   }
@@ -700,7 +511,6 @@ shm_open_err:
 }
 
 void unixUnmapfile(unixFile *pFd) {
-
   if (pFd->pMapRegion) {
     ((int (*)(void *, size_t))aSyscall[SQLITE_SYSCALL_MUNMAP].pCurrent)(pFd->pMapRegion, pFd->mmapSizeActual);
     pFd->pMapRegion = 0;
@@ -715,14 +525,9 @@ void unixRemapfile(unixFile *pFd, i64 nNew) {
   u8 *pOrig = (u8 *)pFd->pMapRegion;
   i64 nOrig = pFd->mmapSizeActual;
   u8 *pNew = 0;
-  int flags =
-
-      0x1
-
-      ;
+  int flags = 0x1;
 
   if (pOrig) {
-
     i64 nReuse = pFd->mmapSize;
 
     u8 *pReq = &pOrig[nReuse];
@@ -731,39 +536,24 @@ void unixRemapfile(unixFile *pFd, i64 nNew) {
       ((int (*)(void *, size_t))aSyscall[SQLITE_SYSCALL_MUNMAP].pCurrent)(pReq, nOrig - nReuse);
     }
 
-    pNew = ((void *(*)(void *, size_t, size_t, int, ...))aSyscall[SQLITE_SYSCALL_MREMAP].pCurrent)(pOrig, nReuse, nNew,
-
-                                                                                1
-
-    );
+    pNew =
+        ((void *(*)(void *, size_t, size_t, int, ...))aSyscall[SQLITE_SYSCALL_MREMAP].pCurrent)(pOrig, nReuse, nNew, 1);
     zErr = "mremap";
 
-    if (pNew ==
-
-            ((void *)-1)
-
-        || pNew == 0) {
+    if (pNew == ((void *)-1) || pNew == 0) {
       ((int (*)(void *, size_t))aSyscall[SQLITE_SYSCALL_MUNMAP].pCurrent)(pOrig, nReuse);
     }
   }
 
   if (pNew == 0) {
     pNew = ((void *(*)(void *, size_t, int, int, int, off_t))aSyscall[SQLITE_SYSCALL_MMAP].pCurrent)(0, nNew, flags,
-
-                                                                                    0x01
-
-                                                                                    ,
-                                                                                    h, 0);
+                                                                                                     0x01, h, 0);
   }
 
-  if (pNew ==
-
-      ((void *)-1)
-
-  ) {
+  if (pNew == ((void *)-1)) {
     pNew = 0;
     nNew = 0;
-    unixLogErrorAtLine(0, zErr, pFd->zPath, 45847);
+    unixLogErrorAtLine(SQLITE_OK, zErr, pFd->zPath, 45847);
 
     pFd->mmapSizeMax = 0;
   }
@@ -772,9 +562,8 @@ void unixRemapfile(unixFile *pFd, i64 nNew) {
 }
 
 int unixMapfile(unixFile *pFd, i64 nMap) {
-
   if (pFd->nFetchOut > 0)
-    return 0;
+    return SQLITE_OK;
 
   if (nMap < 0) {
     struct stat statbuf;
@@ -791,5 +580,5 @@ int unixMapfile(unixFile *pFd, i64 nMap) {
     unixRemapfile(pFd, nMap);
   }
 
-  return 0;
+  return SQLITE_OK;
 }

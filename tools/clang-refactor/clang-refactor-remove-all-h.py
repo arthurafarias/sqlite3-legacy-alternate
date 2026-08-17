@@ -319,8 +319,8 @@ def main():
             print(f"[{i+1}/{len(targets)}] {os.path.basename(cfile)}", file=sys.stderr)
 
     if all_unresolved:
-        print(f"\n{len(all_unresolved)} unresolved system symbols (not found in symbol table):", file=sys.stderr)
-        for name, paths in sorted(all_unresolved.items()):
+        print(f"\n{len(wall_unresolved)} unresolved system symbols (not found in symbol table):", file=sys.stderr)
+        for name, paths in sorted(wall_unresolved.items()):
             print(f"   {name}: {sorted(paths)[0]}", file=sys.stderr)
 
     if args.report:

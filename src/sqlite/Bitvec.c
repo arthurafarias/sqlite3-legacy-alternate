@@ -1,15 +1,13 @@
 #define _GNU_SOURCE 1
-
 #include <string.h>
-
 #include "sqlite/Bitvec.h"
-
 #include "sqlite/i64.h"
 #include "sqlite/sqlite3.h"
 #include "sqlite/sqlite3_uint64.h"
 #include "sqlite/u32.h"
 #include "sqlite/u64.h"
 #include "sqlite/u8.h"
+#include "sqlite/SqliteResultCode.h"
 Bitvec *sqlite3BitvecCreate(u32 iSize) {
   Bitvec *p;
 
@@ -21,7 +19,6 @@ Bitvec *sqlite3BitvecCreate(u32 iSize) {
 }
 
 int sqlite3BitvecTestNotNull(Bitvec *p, u32 i) {
-
   i--;
   if (i >= p->iSize)
     return 0;
@@ -46,7 +43,9 @@ int sqlite3BitvecTestNotNull(Bitvec *p, u32 i) {
   }
 }
 
-int sqlite3BitvecTest(Bitvec *p, u32 i) { return p != 0 && sqlite3BitvecTestNotNull(p, i); }
+int sqlite3BitvecTest(Bitvec *p, u32 i) {
+  return p != 0 && sqlite3BitvecTestNotNull(p, i);
+}
 
 int sqlite3BitvecSet(Bitvec *p, u32 i) {
   u32 h;
@@ -54,7 +53,8 @@ int sqlite3BitvecSet(Bitvec *p, u32 i) {
     return 0;
 
   i--;
-  while ((p->iSize > (((((512 - (3 * sizeof(u32))) / sizeof(Bitvec *)) * sizeof(Bitvec *)) / sizeof(u8)) * 8)) && p->iDivisor) {
+  while ((p->iSize > (((((512 - (3 * sizeof(u32))) / sizeof(Bitvec *)) * sizeof(Bitvec *)) / sizeof(u8)) * 8)) &&
+         p->iDivisor) {
     u32 bin = i / p->iDivisor;
     i = i % p->iDivisor;
     if (p->u.apSub[bin] == 0) {
@@ -66,7 +66,7 @@ int sqlite3BitvecSet(Bitvec *p, u32 i) {
   }
   if (p->iSize <= (((((512 - (3 * sizeof(u32))) / sizeof(Bitvec *)) * sizeof(Bitvec *)) / sizeof(u8)) * 8)) {
     p->u.aBitmap[i / 8] |= 1 << (i & (8 - 1));
-    return 0;
+    return SQLITE_OK;
   }
   h = (((i++) * 1) % ((((512 - (3 * sizeof(u32))) / sizeof(Bitvec *)) * sizeof(Bitvec *)) / sizeof(u32)));
 
@@ -80,7 +80,7 @@ int sqlite3BitvecSet(Bitvec *p, u32 i) {
 
   do {
     if (p->u.aHash[h] == i)
-      return 0;
+      return SQLITE_OK;
     h++;
     if (h >= ((((512 - (3 * sizeof(u32))) / sizeof(Bitvec *)) * sizeof(Bitvec *)) / sizeof(u32)))
       h = 0;
@@ -96,8 +96,10 @@ bitvec_set_rehash:
     } else {
       memcpy(aiValues, p->u.aHash, sizeof(p->u.aHash));
       memset(p->u.apSub, 0, sizeof(p->u.apSub));
-      p->iDivisor = p->iSize / ((u32)((((512 - (3 * sizeof(u32))) / sizeof(Bitvec *)) * sizeof(Bitvec *)) / sizeof(Bitvec *)));
-      if ((p->iSize % ((u32)((((512 - (3 * sizeof(u32))) / sizeof(Bitvec *)) * sizeof(Bitvec *)) / sizeof(Bitvec *)))) != 0)
+      p->iDivisor =
+          p->iSize / ((u32)((((512 - (3 * sizeof(u32))) / sizeof(Bitvec *)) * sizeof(Bitvec *)) / sizeof(Bitvec *)));
+      if ((p->iSize %
+           ((u32)((((512 - (3 * sizeof(u32))) / sizeof(Bitvec *)) * sizeof(Bitvec *)) / sizeof(Bitvec *)))) != 0)
         p->iDivisor++;
       if (p->iDivisor < (((((512 - (3 * sizeof(u32))) / sizeof(Bitvec *)) * sizeof(Bitvec *)) / sizeof(u8)) * 8))
         p->iDivisor = (((((512 - (3 * sizeof(u32))) / sizeof(Bitvec *)) * sizeof(Bitvec *)) / sizeof(u8)) * 8);
@@ -113,7 +115,7 @@ bitvec_set_rehash:
 bitvec_set_end:
   p->nSet++;
   p->u.aHash[h] = i;
-  return 0;
+  return SQLITE_OK;
 }
 
 void sqlite3BitvecClear(Bitvec *p, u32 i, void *pBuf) {
@@ -139,7 +141,8 @@ void sqlite3BitvecClear(Bitvec *p, u32 i, void *pBuf) {
     p->nSet = 0;
     for (j = 0; j < ((((512 - (3 * sizeof(u32))) / sizeof(Bitvec *)) * sizeof(Bitvec *)) / sizeof(u32)); j++) {
       if (aiValues[j] && aiValues[j] != (i + 1)) {
-        u32 h = (((aiValues[j] - 1) * 1) % ((((512 - (3 * sizeof(u32))) / sizeof(Bitvec *)) * sizeof(Bitvec *)) / sizeof(u32)));
+        u32 h = (((aiValues[j] - 1) * 1) %
+                 ((((512 - (3 * sizeof(u32))) / sizeof(Bitvec *)) * sizeof(Bitvec *)) / sizeof(u32)));
         p->nSet++;
         while (p->u.aHash[h]) {
           h++;
@@ -157,14 +160,17 @@ void sqlite3BitvecDestroy(Bitvec *p) {
     return;
   if (p->iDivisor) {
     unsigned int i;
-    for (i = 0; i < ((u32)((((512 - (3 * sizeof(u32))) / sizeof(Bitvec *)) * sizeof(Bitvec *)) / sizeof(Bitvec *))); i++) {
+    for (i = 0; i < ((u32)((((512 - (3 * sizeof(u32))) / sizeof(Bitvec *)) * sizeof(Bitvec *)) / sizeof(Bitvec *)));
+         i++) {
       sqlite3BitvecDestroy(p->u.apSub[i]);
     }
   }
   sqlite3_free(p);
 }
 
-u32 sqlite3BitvecSize(Bitvec *p) { return p->iSize; }
+u32 sqlite3BitvecSize(Bitvec *p) {
+  return p->iSize;
+}
 
 int sqlite3BitvecBuiltinTest(int sz, int *aOp) {
   Bitvec *pBitvec = 0;
@@ -190,26 +196,25 @@ int sqlite3BitvecBuiltinTest(int sz, int *aOp) {
   pc = i = 0;
   while ((op = aOp[pc]) != 0) {
     if (op >= 6) {
-
       pc++;
       continue;
     }
     switch (op) {
-    case 1:
-    case 2:
-    case 5: {
-      nx = 4;
-      i = aOp[pc + 2] - 1;
-      aOp[pc + 2] += aOp[pc + 3];
-      break;
-    }
-    case 3:
-    case 4:
-    default: {
-      nx = 2;
-      sqlite3_randomness(sizeof(i), &i);
-      break;
-    }
+      case 1:
+      case 2:
+      case 5: {
+        nx = 4;
+        i = aOp[pc + 2] - 1;
+        aOp[pc + 2] += aOp[pc + 3];
+        break;
+      }
+      case 3:
+      case 4:
+      default: {
+        nx = 2;
+        sqlite3_randomness(sizeof(i), &i);
+        break;
+      }
     }
     if ((--aOp[pc + 1]) > 0)
       nx = 0;
@@ -230,7 +235,8 @@ int sqlite3BitvecBuiltinTest(int sz, int *aOp) {
   }
 
   if (pV) {
-    rc = sqlite3BitvecTest(0, 0) + sqlite3BitvecTest(pBitvec, sz + 1) + sqlite3BitvecTest(pBitvec, 0) + (sqlite3BitvecSize(pBitvec) - sz);
+    rc = sqlite3BitvecTest(0, 0) + sqlite3BitvecTest(pBitvec, sz + 1) + sqlite3BitvecTest(pBitvec, 0) +
+         (sqlite3BitvecSize(pBitvec) - sz);
     for (i = 1; i <= sz; i++) {
       if (((pV[i >> 3] & (1 << (i & 7))) != 0) != sqlite3BitvecTest(pBitvec, i)) {
         rc = i;

@@ -1,7 +1,6 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 #include "sqlite/PgHdr.h"
 #include "sqlite/Pgno.h"
 #include "sqlite/u16.h"

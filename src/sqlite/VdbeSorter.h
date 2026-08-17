@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/SortSubtask.h"
 #include "sqlite/SorterCompare.h"
 #include "sqlite/SorterList.h"
@@ -39,7 +38,6 @@ extern C {
   SorterCompare vdbeSorterGetCompare(VdbeSorter * p);
   void *vdbeSorterFlushThread(void *pCtx);
   int vdbeSorterFlushPMA(VdbeSorter * pSorter);
-  int vdbeSorterTreeDepth(int nPMA);
   int vdbeSorterMergeTreeBuild(VdbeSorter * pSorter, MergeEngine * *ppOut);
   int vdbeSorterSetupMerge(VdbeSorter * pSorter);
   void *vdbeSorterRowkey(const VdbeSorter *pSorter, int *pnKey);

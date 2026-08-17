@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/DbPage.h"
 #include "sqlite/StrAccum.h"
 #include "sqlite/sqlite3_file.h"
@@ -14,7 +13,6 @@ extern C {
 #include "sqlite/sqlite3_sourceid.h"
 #include "sqlite/yDbMask.h"
 #include "sqlite/ynVar.h"
-
   typedef struct DbPath DbPath;
   struct DbPath {
     int rc;

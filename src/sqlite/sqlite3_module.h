@@ -3,9 +3,7 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/sqlite3_int64.h"
-
   typedef struct sqlite3_module sqlite3_module;
   typedef struct sqlite3 sqlite3;
   typedef struct sqlite3_vtab sqlite3_vtab;
@@ -33,7 +31,8 @@ extern C {
     int (*xSync)(sqlite3_vtab *pVTab);
     int (*xCommit)(sqlite3_vtab *pVTab);
     int (*xRollback)(sqlite3_vtab *pVTab);
-    int (*xFindFunction)(sqlite3_vtab *pVtab, int nArg, const char *zName, void (**pxFunc)(sqlite3_context *, int, sqlite3_value **), void **ppArg);
+    int (*xFindFunction)(sqlite3_vtab *pVtab, int nArg, const char *zName,
+                         void (**pxFunc)(sqlite3_context *, int, sqlite3_value **), void **ppArg);
     int (*xRename)(sqlite3_vtab *pVtab, const char *zNew);
 
     int (*xSavepoint)(sqlite3_vtab *pVTab, int);

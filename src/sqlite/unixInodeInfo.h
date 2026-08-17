@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/unixFileId.h"
   typedef struct UnixUnusedFd UnixUnusedFd;
   typedef struct sqlite3_mutex sqlite3_mutex;

@@ -1,9 +1,6 @@
 #define _GNU_SOURCE 1
-
 #include <string.h>
-
 #include "sqlite/CellArray.h"
-
 #include "sqlite/BtShared.h"
 #include "sqlite/MemPage.h"
 #include "sqlite/Pager.h"
@@ -12,22 +9,15 @@
 #include "sqlite/u32.h"
 #include "sqlite/u8.h"
 #include "sqlite/uptr.h"
+#include "sqlite/SqliteResultCode.h"
 void populateCellCache(CellArray *p, int idx, int N) {
   MemPage *pRef = p->pRef;
   u16 *szCell = p->szCell;
 
   while (N > 0) {
-
-    ((void)(0))
-
-        ;
     if (szCell[idx] == 0) {
       szCell[idx] = pRef->xCellSize(pRef, p->apCell[idx]);
     } else {
-
-      ((void)(0))
-
-          ;
     }
     idx++;
     N--;
@@ -35,13 +25,11 @@ void populateCellCache(CellArray *p, int idx, int N) {
 }
 
 __attribute__((noinline)) u16 computeCellSize(CellArray *p, int N) {
-
   p->szCell[N] = p->pRef->xCellSize(p->pRef, p->apCell[N]);
   return p->szCell[N];
 }
 
 u16 cachedCellSize(CellArray *p, int N) {
-
   if (p->szCell[N])
     return p->szCell[N];
   return computeCellSize(p, N);
@@ -76,9 +64,6 @@ int rebuildPage(CellArray *pCArray, int iFirst, int nCell, MemPage *pPg) {
     u8 *pCell = pCArray->apCell[i];
     u16 sz = pCArray->szCell[i];
 
-    ((void)(0))
-
-        ;
     if ((((uptr)(pCell) >= (uptr)(aData + j)) && ((uptr)(pCell) < (uptr)(pEnd)))) {
       if (((uptr)(pCell + sz)) > (uptr)pEnd)
         return sqlite3CorruptError(80904);
@@ -94,9 +79,6 @@ int rebuildPage(CellArray *pCArray, int iFirst, int nCell, MemPage *pPg) {
       return sqlite3CorruptError(80915);
     memmove(pData, pCell, sz);
 
-    ((void)(0))
-
-        ;
     i++;
     if (i >= iEnd)
       break;
@@ -113,5 +95,5 @@ int rebuildPage(CellArray *pCArray, int iFirst, int nCell, MemPage *pPg) {
   ((&aData[hdr + 3])[0] = (u8)((pPg->nCell) >> 8), (&aData[hdr + 3])[1] = (u8)(pPg->nCell));
   ((&aData[hdr + 5])[0] = (u8)((pData - aData) >> 8), (&aData[hdr + 5])[1] = (u8)(pData - aData));
   aData[hdr + 7] = 0x00;
-  return 0;
+  return SQLITE_OK;
 }

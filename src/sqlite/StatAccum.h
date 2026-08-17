@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/StatSample.h"
 #include "sqlite/tRowcnt.h"
 #include "sqlite/u8.h"

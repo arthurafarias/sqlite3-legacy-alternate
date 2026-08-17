@@ -3,12 +3,10 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/Pgno.h"
 #include "sqlite/sqlite3_int64.h"
 #include "sqlite/u32.h"
 #include "sqlite/u8.h"
-
 #include "sqlite/BtLock.h"
 #include "sqlite/i64.h"
   typedef struct Pager Pager;

@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/PragmaName.h"
 #include "sqlite/sqlite3_vtab.h"
 #include "sqlite/u8.h"

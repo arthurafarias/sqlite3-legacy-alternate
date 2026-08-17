@@ -1,7 +1,5 @@
 #define _GNU_SOURCE 1
-
 #include "sqlite/sqlite3_pcache.h"
-
 #include "sqlite/PCache1.h"
 #include "sqlite/PGroup.h"
 #include "sqlite/PgHdr1.h"
@@ -15,9 +13,6 @@ void pcache1Cachesize(sqlite3_pcache *p, int nMax) {
   if (pCache->bPurgeable) {
     PGroup *pGroup = pCache->pGroup;
 
-    ((void)(0))
-
-        ;
     n = (u32)nMax;
     if (n > 0x7fff0000 - pGroup->nMaxPage + pCache->nMax) {
       n = 0x7fff0000 - pGroup->nMaxPage + pCache->nMax;
@@ -27,10 +22,6 @@ void pcache1Cachesize(sqlite3_pcache *p, int nMax) {
     pCache->nMax = n;
     pCache->n90pct = pCache->nMax * 9 / 10;
     pcache1EnforceMaxPage(pCache);
-
-    ((void)(0))
-
-        ;
   }
 }
 
@@ -40,17 +31,10 @@ void pcache1Shrink(sqlite3_pcache *p) {
     PGroup *pGroup = pCache->pGroup;
     unsigned int savedMaxPage;
 
-    ((void)(0))
-
-        ;
     savedMaxPage = pGroup->nMaxPage;
     pGroup->nMaxPage = 0;
     pcache1EnforceMaxPage(pCache);
     pGroup->nMaxPage = savedMaxPage;
-
-    ((void)(0))
-
-        ;
   }
 }
 
@@ -79,7 +63,6 @@ PgHdr1 *pcache1FetchNoMutex(sqlite3_pcache *p, unsigned int iKey, int createFlag
       return pPage;
     }
   } else if (createFlag) {
-
     return pcache1FetchStage2(pCache, iKey, createFlag);
   } else {
     return 0;
@@ -87,7 +70,6 @@ PgHdr1 *pcache1FetchNoMutex(sqlite3_pcache *p, unsigned int iKey, int createFlag
 }
 
 sqlite3_pcache_page *pcache1Fetch(sqlite3_pcache *p, unsigned int iKey, int createFlag) {
-
   {
     return (sqlite3_pcache_page *)pcache1FetchNoMutex(p, iKey, createFlag);
   }
@@ -101,7 +83,6 @@ void pcache1Unpin(sqlite3_pcache *p, sqlite3_pcache_page *pPg, int reuseUnlikely
   if (reuseUnlikely || pGroup->nPurgeable > pGroup->nMaxPage) {
     pcache1RemoveFromHash(pPage, 1);
   } else {
-
     PgHdr1 **ppFirst = &pGroup->lru.pLruNext;
     pPage->pLruPrev = &pGroup->lru;
     (pPage->pLruNext = *ppFirst)->pLruPrev = pPage;

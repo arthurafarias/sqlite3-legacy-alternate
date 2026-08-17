@@ -1,7 +1,5 @@
 #define _GNU_SOURCE 1
-
 #include "sqlite/PCache1.h"
-
 #include "sqlite/PCacheGlobal.h"
 #include "sqlite/PGroup.h"
 #include "sqlite/PgFreeslot.h"
@@ -14,6 +12,7 @@
 #include "sqlite/u32.h"
 #include "sqlite/u64.h"
 #include "sqlite/u8.h"
+#include "sqlite/SqliteStatusParameter.h"
 void *pcache1Alloc(int nByte) {
   void *p = 0;
 
@@ -25,31 +24,24 @@ void *pcache1Alloc(int nByte) {
       (pcache1_g).nFreeSlot--;
       __atomic_store_n((&(pcache1_g).bUnderPressure), ((pcache1_g).nFreeSlot < (pcache1_g).nReserve), 0);
 
-      ((void)(0))
-
-          ;
-      sqlite3StatusHighwater(7, nByte);
-      sqlite3StatusUp(1, 1);
+      sqlite3StatusHighwater(SQLITE_STATUS_PAGECACHE_SIZE, nByte);
+      sqlite3StatusUp(SQLITE_STATUS_PAGECACHE_USED, 1);
     }
     sqlite3_mutex_leave((pcache1_g).mutex);
   }
   if (p == 0) {
-
     p = sqlite3Malloc(nByte);
 
     if (p) {
       int sz = sqlite3MallocSize(p);
       sqlite3_mutex_enter((pcache1_g).mutex);
-      sqlite3StatusHighwater(7, nByte);
-      sqlite3StatusUp(2, sz);
+      sqlite3StatusHighwater(SQLITE_STATUS_PAGECACHE_SIZE, nByte);
+      sqlite3StatusUp(SQLITE_STATUS_PAGECACHE_OVERFLOW, sz);
       sqlite3_mutex_leave((pcache1_g).mutex);
     }
-
-    ;
   }
   return p;
 }
-
 
 int pcache1InitBulk(PCache1 *pCache) {
   i64 szBulk;
@@ -78,9 +70,6 @@ int pcache1InitBulk(PCache1 *pCache) {
         pX->page.pBuf = zBulk;
         pX->page.pExtra = (u8 *)pX + (((sizeof(*pX)) + 7) & ~7);
 
-        ((void)(0))
-
-            ;
         pX->isBulkLocal = 1;
         pX->isAnchor = 0;
         pX->pNext = pCache->pFree;
@@ -98,15 +87,10 @@ PgHdr1 *pcache1AllocPage(PCache1 *pCache, int benignMalloc) {
   void *pPg;
 
   if (pCache->pFree || (pCache->nPage == 0 && pcache1InitBulk(pCache))) {
-
-    ((void)(0))
-
-        ;
     p = pCache->pFree;
     pCache->pFree = p->pNext;
     p->pNext = 0;
   } else {
-
     if (benignMalloc) {
       sqlite3BeginBenignMalloc();
     }
@@ -121,9 +105,6 @@ PgHdr1 *pcache1AllocPage(PCache1 *pCache, int benignMalloc) {
     p->page.pBuf = pPg;
     p->page.pExtra = (u8 *)p + (((sizeof(*p)) + 7) & ~7);
 
-    ((void)(0))
-
-        ;
     p->isBulkLocal = 0;
     p->isAnchor = 0;
     p->pLruPrev = 0;
@@ -180,14 +161,6 @@ void pcache1EnforceMaxPage(PCache1 *pCache) {
   PgHdr1 *p;
 
   while (pGroup->nPurgeable > pGroup->nMaxPage && (p = pGroup->lru.pLruPrev)->isAnchor == 0) {
-
-    ((void)(0))
-
-        ;
-
-    ((void)(0))
-
-        ;
     pcache1PinPage(p);
     pcache1RemoveFromHash(p, 1);
   }
@@ -198,16 +171,13 @@ void pcache1EnforceMaxPage(PCache1 *pCache) {
 }
 
 void pcache1TruncateUnsafe(PCache1 *pCache, unsigned int iLimit) {
-
   unsigned int h, iStop;
 
   if (pCache->iMaxKey - iLimit < pCache->nHash) {
-
     h = iLimit % pCache->nHash;
     iStop = pCache->iMaxKey % pCache->nHash;
 
   } else {
-
     h = pCache->nHash / 2;
     iStop = h - 1;
   }
@@ -215,9 +185,6 @@ void pcache1TruncateUnsafe(PCache1 *pCache, unsigned int iLimit) {
     PgHdr1 **pp;
     PgHdr1 *pPage;
 
-    ((void)(0))
-
-        ;
     pp = &pCache->apHash[h];
     while ((pPage = *pp) != 0) {
       if (pPage->iKey >= iLimit) {
@@ -243,20 +210,19 @@ __attribute__((noinline)) PgHdr1 *pcache1FetchStage2(PCache1 *pCache, unsigned i
 
   nPinned = pCache->nPage - pCache->nRecyclable;
 
-  if (createFlag == 1 && (nPinned >= pGroup->mxPinned || nPinned >= pCache->n90pct || (pcache1UnderMemoryPressure(pCache) && pCache->nRecyclable < nPinned))) {
+  if (createFlag == 1 && (nPinned >= pGroup->mxPinned || nPinned >= pCache->n90pct ||
+                          (pcache1UnderMemoryPressure(pCache) && pCache->nRecyclable < nPinned))) {
     return 0;
   }
 
   if (pCache->nPage >= pCache->nHash)
     pcache1ResizeHash(pCache);
 
-  if (pCache->bPurgeable && !pGroup->lru.pLruPrev->isAnchor && ((pCache->nPage + 1 >= pCache->nMax) || pcache1UnderMemoryPressure(pCache))) {
+  if (pCache->bPurgeable && !pGroup->lru.pLruPrev->isAnchor &&
+      ((pCache->nPage + 1 >= pCache->nMax) || pcache1UnderMemoryPressure(pCache))) {
     PCache1 *pOther;
     pPage = pGroup->lru.pLruPrev;
 
-    ((void)(0))
-
-        ;
     pcache1RemoveFromHash(pPage, 0);
     pcache1PinPage(pPage);
     pOther = pPage->pCache;

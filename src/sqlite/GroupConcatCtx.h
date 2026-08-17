@@ -3,9 +3,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 #include "sqlite/StrAccum.h"
-
 typedef struct {
   StrAccum str;
 

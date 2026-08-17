@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/u32.h"
   typedef struct SubProgram SubProgram;
   typedef struct Trigger Trigger;

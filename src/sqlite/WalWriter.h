@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 #include "sqlite/Wal.h"
 #include "sqlite/sqlite3_file.h"
 #include "sqlite/sqlite3_int64.h"

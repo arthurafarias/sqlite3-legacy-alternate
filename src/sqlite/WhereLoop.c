@@ -1,7 +1,5 @@
 #define _GNU_SOURCE 1
-
 #include "sqlite/WhereLoop.h"
-
 #include "sqlite/Index.h"
 #include "sqlite/LogEst.h"
 #include "sqlite/WhereTerm.h"
@@ -33,7 +31,8 @@ int whereLoopCheaperProperSubset(const WhereLoop *pX, const WhereLoop *pY) {
   if (pX->rRun > pY->rRun && pX->nOut > pY->nOut)
     return 0;
 
-  if (pX->u.btree.nEq < pY->u.btree.nEq && pX->u.btree.pIndex == pY->u.btree.pIndex && pX->nSkip == 0 && pY->nSkip == 0) {
+  if (pX->u.btree.nEq < pY->u.btree.nEq && pX->u.btree.pIndex == pY->u.btree.pIndex && pX->nSkip == 0 &&
+      pY->nSkip == 0) {
     return 1;
   }
   if (pX->nLTerm - pX->nSkip >= pY->nLTerm - pY->nSkip) {
@@ -66,13 +65,9 @@ void whereLoopAdjustCost(const WhereLoop *p, WhereLoop *pTemplate) {
     if ((p->wsFlags & 0x00000200) == 0)
       continue;
     if (whereLoopCheaperProperSubset(p, pTemplate)) {
-
-      ;
       pTemplate->rRun = ((p->rRun) < (pTemplate->rRun) ? (p->rRun) : (pTemplate->rRun));
       pTemplate->nOut = ((p->nOut - 1) < (pTemplate->nOut) ? (p->nOut - 1) : (pTemplate->nOut));
     } else if (whereLoopCheaperProperSubset(pTemplate, p)) {
-
-      ;
       pTemplate->rRun = ((p->rRun) > (pTemplate->rRun) ? (p->rRun) : (pTemplate->rRun));
       pTemplate->nOut = ((p->nOut + 1) > (pTemplate->nOut) ? (p->nOut + 1) : (pTemplate->nOut));
     }
@@ -83,31 +78,21 @@ WhereLoop **whereLoopFindLesser(WhereLoop **ppPrev, const WhereLoop *pTemplate) 
   WhereLoop *p;
   for (p = (*ppPrev); p; ppPrev = &p->pNextLoop, p = *ppPrev) {
     if (p->iTab != pTemplate->iTab || p->iSortIdx != pTemplate->iSortIdx) {
-
       continue;
     }
 
-    ((void)(0))
-
-        ;
-
-    ((void)(0))
-
-        ;
-
-    if ((p->wsFlags & 0x00004000) != 0 && (pTemplate->nSkip) == 0 && (pTemplate->wsFlags & 0x00000200) != 0 && (pTemplate->wsFlags & 0x00000001) != 0 && (p->prereq & pTemplate->prereq) == pTemplate->prereq) {
+    if ((p->wsFlags & 0x00004000) != 0 && (pTemplate->nSkip) == 0 && (pTemplate->wsFlags & 0x00000200) != 0 &&
+        (pTemplate->wsFlags & 0x00000001) != 0 && (p->prereq & pTemplate->prereq) == pTemplate->prereq) {
       break;
     }
 
-    if ((p->prereq & pTemplate->prereq) == p->prereq && p->rSetup <= pTemplate->rSetup && p->rRun <= pTemplate->rRun && p->nOut <= pTemplate->nOut) {
+    if ((p->prereq & pTemplate->prereq) == p->prereq && p->rSetup <= pTemplate->rSetup && p->rRun <= pTemplate->rRun &&
+        p->nOut <= pTemplate->nOut) {
       return 0;
     }
 
-    if ((p->prereq & pTemplate->prereq) == pTemplate->prereq && p->rRun >= pTemplate->rRun && p->nOut >= pTemplate->nOut) {
-
-      ((void)(0))
-
-          ;
+    if ((p->prereq & pTemplate->prereq) == pTemplate->prereq && p->rRun >= pTemplate->rRun &&
+        p->nOut >= pTemplate->nOut) {
       break;
     }
   }

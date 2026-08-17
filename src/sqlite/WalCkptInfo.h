@@ -3,10 +3,8 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/u32.h"
 #include "sqlite/u8.h"
-
   typedef struct WalCkptInfo WalCkptInfo;
   struct WalCkptInfo {
     u32 nBackfill;

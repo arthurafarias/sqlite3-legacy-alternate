@@ -1,5 +1,4 @@
 #define _GNU_SOURCE 1
-
 #include "sqlite/BusyHandler.h"
 int sqlite3InvokeBusyHandler(BusyHandler *p) {
   int rc;

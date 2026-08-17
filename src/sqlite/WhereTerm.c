@@ -1,7 +1,5 @@
 #define _GNU_SOURCE 1
-
 #include "sqlite/WhereTerm.h"
-
 #include "sqlite/Column.h"
 #include "sqlite/Expr.h"
 #include "sqlite/LogEst.h"
@@ -12,6 +10,7 @@
 #include "sqlite/u16.h"
 #include "sqlite/u32.h"
 #include "sqlite/u8.h"
+#include "sqlite/SqliteIndexConstraintOp.h"
 WhereTerm *whereNthSubterm(WhereTerm *pTerm, int N) {
   if (pTerm->eOperator != 0x0400) {
     return N == 0 ? pTerm : 0;
@@ -23,11 +22,6 @@ WhereTerm *whereNthSubterm(WhereTerm *pTerm, int N) {
 }
 
 int constraintCompatibleWithOuterJoin(const WhereTerm *pTerm, const SrcItem *pSrc) {
-
-  ;
-  ;
-
-  ;
   if (!(((pTerm->pExpr)->flags & (u32)(0x000001 | 0x000002)) != 0) || pTerm->pExpr->w.iJoin != pSrc->iCursor) {
     return 0;
   }
@@ -58,7 +52,6 @@ int termCanDriveIndex(const WhereTerm *pTerm, const SrcItem *pSrc, const Bitmask
   aff = pSrc->pSTab->aCol[leftCol].affinity;
   if (!sqlite3IndexAffinityOk(pTerm->pExpr, aff))
     return 0;
-  ;
   return columnIsGoodIndexCandidate(pSrc->pSTab, leftCol);
 }
 
@@ -69,13 +62,11 @@ LogEst whereRangeAdjust(WhereTerm *pTerm, LogEst nNew) {
       nRet += pTerm->truthProb;
     } else if ((pTerm->wtFlags & 0x0080) == 0) {
       nRet -= 20;
-
-      ((void)(0))
-
-          ;
     }
   }
   return nRet;
 }
 
-int isLimitTerm(WhereTerm *pTerm) { return pTerm->eMatchOp >= 73 && pTerm->eMatchOp <= 74; }
+int isLimitTerm(WhereTerm *pTerm) {
+  return pTerm->eMatchOp >= SQLITE_INDEX_CONSTRAINT_LIMIT && pTerm->eMatchOp <= SQLITE_INDEX_CONSTRAINT_OFFSET;
+}

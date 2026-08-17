@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/BitMask.h"
 #include "sqlite/u32.h"
 #include "sqlite/u8.h"

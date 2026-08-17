@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/Hash.h"
 #include "sqlite/u16.h"
 #include "sqlite/u8.h"

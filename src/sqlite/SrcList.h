@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/SrcItem.h"
 #include "sqlite/u32.h"
   typedef struct Expr Expr;
@@ -18,7 +17,8 @@ extern C {
     SrcItem a[];
   };
 
-  int tableAndColumnIndex(SrcList * pSrc, int iStart, int iEnd, const char *zCol, int *piTab, int *piCol, int bIgnoreHidden);
+  int tableAndColumnIndex(SrcList * pSrc, int iStart, int iEnd, const char *zCol, int *piTab, int *piCol,
+                          int bIgnoreHidden);
   SrcItem *isSelfJoinView(SrcList * pTabList, SrcItem * pThis, int iFirst, int iEnd);
   void sqlite3WhereExprAnalyze(SrcList *, WhereClause *);
   void exprAnalyze(SrcList *, WhereClause *, int);

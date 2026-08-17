@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/AggInfo.h"
 #include "sqlite/DbPage.h"
 #include "sqlite/FuncDef.h"
@@ -17,7 +16,6 @@ extern C {
 #include "sqlite/sqlite3_sourceid.h"
 #include "sqlite/yDbMask.h"
 #include "sqlite/ynVar.h"
-
   typedef struct FuncDefHash FuncDefHash;
 
   struct FuncDefHash {

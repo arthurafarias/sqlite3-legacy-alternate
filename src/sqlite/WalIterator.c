@@ -1,7 +1,5 @@
 #define _GNU_SOURCE 1
-
 #include "sqlite/WalIterator.h"
-
 #include "sqlite/ht_slot.h"
 #include "sqlite/sqlite3.h"
 #include "sqlite/u32.h"
@@ -31,4 +29,6 @@ int walIteratorNext(WalIterator *p, u32 *piPage, u32 *piFrame) {
   return (iRet == 0xFFFFFFFF);
 }
 
-void walIteratorFree(WalIterator *p) { sqlite3_free(p); }
+void walIteratorFree(WalIterator *p) {
+  sqlite3_free(p);
+}

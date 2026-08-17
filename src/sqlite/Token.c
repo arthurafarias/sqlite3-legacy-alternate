@@ -1,7 +1,5 @@
 #define _GNU_SOURCE 1
-
 #include "sqlite/Token.h"
-
 #include "sqlite/sqlite3.h"
 void sqlite3DequoteToken(Token *p) {
   unsigned int i;

@@ -122,7 +122,7 @@
   },
   "collationMatch": {
     "category": "single",
-    "decl_text": "int collationMatch(const char *zColl, Index *pIndex);",
+    "decl_text": "int collationMatch(const char *zColl, sqlite3_index*pIndex);",
     "definition_files": [
       "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/Parse.c"
     ],
@@ -146,7 +146,7 @@
   },
   "copyPayload": {
     "category": "single",
-    "decl_text": "int copyPayload(void *pPayload, void *pBuf, int nByte, int eOp, DbPage *pDbPage);",
+    "decl_text": "int copyPayload(void *pPayload, void *pBuf, int nByte, int eOp, db_page *pdb_page);",
     "definition_files": [
       "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/BtCursor.c"
     ],
@@ -183,7 +183,7 @@
   },
   "decodeIntArray": {
     "category": "single",
-    "decl_text": "void decodeIntArray(char *zIntArray, int nOut, tRowcnt *aOut, LogEst *aLog, Index *pIndex);",
+    "decl_text": "void decodeIntArray(char *zIntArray, int nOut, tRowcnt *aOut, LogEst *aLog, sqlite3_index*pIndex);",
     "definition_files": [
       "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/sqlite3.c"
     ],
@@ -817,12 +817,12 @@
     "category": "single",
     "decl_text": "void *parserStackRealloc(void *pOld, sqlite3_uint64 newSize, Parse *pParse);",
     "definition_files": [
-      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/yyParser.c"
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/yy_parser.c"
     ],
     "header_line_end": 194,
     "header_line_start": 194,
     "using_files": [
-      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/yyParser.c"
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/yy_parser.c"
     ]
   },
   "patternCompare": {
@@ -1364,12 +1364,12 @@
     "category": "single",
     "decl_text": "unsigned short int yy_find_reduce_action(unsigned short int stateno, unsigned short int iLookAhead);",
     "definition_files": [
-      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/yyParser.c"
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/yy_parser.c"
     ],
     "header_line_end": 197,
     "header_line_start": 197,
     "using_files": [
-      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/yyParser.c"
+      "/home/arthur/Downloads/sqlite-cpp/libraries/libsqlite3-legacy-amalgamation/src/sqlite/yy_parser.c"
     ]
   },
   "yy_find_shift_action": {

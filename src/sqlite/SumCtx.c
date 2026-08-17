@@ -1,9 +1,6 @@
 #define _GNU_SOURCE 1
-
 #include <math.h>
-
 #include "sqlite/SumCtx.h"
-
 #include "sqlite/i64.h"
 void kahanBabuskaNeumaierStep(volatile SumCtx *pSum, volatile double r) {
   volatile double s = pSum->rSum;

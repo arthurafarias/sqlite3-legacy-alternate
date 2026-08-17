@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
   typedef struct HashElem HashElem;
 
   struct HashElem {

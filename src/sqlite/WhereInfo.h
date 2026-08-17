@@ -3,7 +3,6 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/BitMask.h"
 #include "sqlite/LogEst.h"
 #include "sqlite/WhereClause.h"
@@ -76,11 +75,15 @@ extern C {
   void *sqlite3WhereRealloc(WhereInfo * pWInfo, void *pOld, u64 nByte);
   __attribute__((noinline)) void sqlite3WhereRightJoinLoop(WhereInfo * pWInfo, int iLevel, WhereLevel *pLevel);
   void codeDeferredSeek(WhereInfo * pWInfo, Index * pIdx, int iCur, int iIdxCur);
-  __attribute__((noinline)) void sqlite3ConstructBloomFilter(WhereInfo * pWInfo, int iLevel, WhereLevel *pLevel, Bitmask notReady);
-  sqlite3_index_info *allocateIndexInfo(WhereInfo * pWInfo, WhereClause * pWC, Bitmask mUnusable, SrcItem * pSrc, u16 * pmNoOmit);
+  __attribute__((noinline)) void sqlite3ConstructBloomFilter(WhereInfo * pWInfo, int iLevel, WhereLevel *pLevel,
+                                                             Bitmask notReady);
+  sqlite3_index_info *allocateIndexInfo(WhereInfo * pWInfo, WhereClause * pWC, Bitmask mUnusable, SrcItem * pSrc,
+                                        u16 * pmNoOmit);
   __attribute__((noinline)) u32 whereIsCoveringIndex(WhereInfo * pWInfo, Index * pIdx, int iTabCur);
-  __attribute__((noinline)) int wherePathMatchSubqueryOB(WhereInfo * pWInfo, WhereLoop * pLoop, int iLoop, int iCur, ExprList *pOrderBy, Bitmask *pRevMask, Bitmask *pOBSat);
-  i8 wherePathSatisfiesOrderBy(WhereInfo * pWInfo, ExprList * pOrderBy, WherePath * pPath, u16 wctrlFlags, u16 nLoop, WhereLoop * pLast, Bitmask * pRevMask);
+  __attribute__((noinline)) int wherePathMatchSubqueryOB(WhereInfo * pWInfo, WhereLoop * pLoop, int iLoop, int iCur,
+                                                         ExprList *pOrderBy, Bitmask *pRevMask, Bitmask *pOBSat);
+  i8 wherePathSatisfiesOrderBy(WhereInfo * pWInfo, ExprList * pOrderBy, WherePath * pPath, u16 wctrlFlags, u16 nLoop,
+                               WhereLoop * pLast, Bitmask * pRevMask);
   LogEst whereSortingCost(WhereInfo * pWInfo, LogEst nRow, int nOrderBy, int nSorted);
   int computeMxChoice(WhereInfo * pWInfo);
   int wherePathSolver(WhereInfo * pWInfo, LogEst nRowEst);

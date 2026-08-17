@@ -3,12 +3,10 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/Bitvec.h"
 #include "sqlite/sqlite3_libversion.h"
 #include "sqlite/sqlite3_libversion_number.h"
 #include "sqlite/sqlite3_sourceid.h"
-
 #include "sqlite/Pgno.h"
 #include "sqlite/i64.h"
 #include "sqlite/u16.h"

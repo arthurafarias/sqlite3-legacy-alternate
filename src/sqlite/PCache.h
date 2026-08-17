@@ -4,12 +4,10 @@
 #ifdef __cplusplus
 extern C {
 #endif
-
 #include "sqlite/Pgno.h"
 #include "sqlite/i64.h"
 #include "sqlite/sqlite3_pcache.h"
 #include "sqlite/u8.h"
-
   typedef struct PCache PCache;
 
   typedef struct sqlite3_pcache_page sqlite3_pcache_page;
