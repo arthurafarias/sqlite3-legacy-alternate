@@ -114,9 +114,7 @@ __attribute__((noinline)) int sqlite3VdbeMemTranslate(Mem *pMem, u8 desiredEnc) 
     rc = sqlite3VdbeMemMakeWriteable(pMem);
     if (rc != 0) {
 
-      ((void)(0))
 
-          ;
       return 7;
     }
     zIn = (u8 *)pMem->z;
@@ -176,9 +174,7 @@ __attribute__((noinline)) int sqlite3VdbeMemTranslate(Mem *pMem, u8 desiredEnc) 
       }
     } else {
 
-      ((void)(0))
 
-          ;
 
       while (zIn < zTerm) {
         c = *(zIn++);
@@ -208,9 +204,7 @@ __attribute__((noinline)) int sqlite3VdbeMemTranslate(Mem *pMem, u8 desiredEnc) 
     *z++ = 0;
   } else {
 
-    ((void)(0))
 
-        ;
     if (pMem->enc == 2) {
 
       while (zIn < zTerm) {
@@ -369,16 +363,12 @@ __attribute__((noinline)) int sqlite3VdbeMemGrow(Mem *pMem, int n, int bPreserve
 
   if (bPreserve && pMem->z) {
 
-    ((void)(0))
 
-        ;
     memcpy(pMem->zMalloc, pMem->z, pMem->n);
   }
   if ((pMem->flags & 0x1000) != 0) {
 
-    ((void)(0))
 
-        ;
     pMem->xDel((void *)(pMem->z));
   }
 
@@ -540,16 +530,12 @@ __attribute__((noinline)) void vdbeMemClearExternAndSetNull(Mem *p) {
   if (p->flags & 0x8000) {
     sqlite3VdbeMemFinalize(p, p->u.pDef);
 
-    ((void)(0))
 
-        ;
     ;
   }
   if (p->flags & 0x1000) {
 
-    ((void)(0))
 
-        ;
     p->xDel((void *)p->z);
   }
   p->flags = 0x0001;
@@ -634,9 +620,7 @@ __attribute__((noinline)) int sqlite3MemRealValueRCSlowPath(Mem *pMem, double *p
         }
       }
 
-      ((void)(0))
 
-          ;
       zCopy[j] = 0;
       rc = sqlite3AtoF(zCopy, pValue);
       if (i < n)
@@ -731,13 +715,9 @@ int sqlite3VdbeMemNumerify(Mem *pMem) {
     int rc;
     sqlite3_int64 ix;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     rc = sqlite3MemRealValueRC(pMem, &pMem->u.r);
     if (((rc & 2) == 0 && sqlite3Atoi64(pMem->z, &ix, pMem->n, pMem->enc) < 2) || sqlite3RealSameAsInt(pMem->u.r, (ix = sqlite3RealToI64(pMem->u.r)))) {
       pMem->u.i = ix;
@@ -759,9 +739,7 @@ int sqlite3VdbeMemCast(Mem *pMem, u8 aff, u8 encoding) {
     if ((pMem->flags & 0x0010) == 0) {
       sqlite3ValueApplyAffinity(pMem, 0x42, encoding);
 
-      ((void)(0))
 
-          ;
       if (pMem->flags & 0x0002)
         ((pMem)->flags = ((pMem)->flags & ~(0x0dbf | 0x0400)) | 0x0010);
     } else {
@@ -784,19 +762,13 @@ int sqlite3VdbeMemCast(Mem *pMem, u8 aff, u8 encoding) {
   default: {
     int rc;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     pMem->flags |= (pMem->flags & 0x0010) >> 3;
     sqlite3ValueApplyAffinity(pMem, 0x42, encoding);
 
-    ((void)(0))
 
-        ;
     pMem->flags &= ~(0x0004 | 0x0008 | 0x0020 | 0x0010 | 0x0400);
     if (encoding != 1)
       pMem->n &= ~1;
@@ -922,9 +894,7 @@ void sqlite3VdbeMemShallowCopy(Mem *pTo, const Mem *pFrom, int srcType) {
   if ((pFrom->flags & 0x2000) == 0) {
     pTo->flags &= ~(0x1000 | 0x2000 | 0x4000);
 
-    ((void)(0))
 
-        ;
     pTo->flags |= srcType;
   }
 }
@@ -983,9 +953,7 @@ int sqlite3VdbeMemSetStr(Mem *pMem, const char *z, i64 n, u8 enc, void (*xDel)(v
   }
   if (nByte < 0) {
 
-    ((void)(0))
 
-        ;
     if (enc == 1) {
       nByte = strlen(z);
     } else {
@@ -1022,9 +990,7 @@ int sqlite3VdbeMemSetStr(Mem *pMem, const char *z, i64 n, u8 enc, void (*xDel)(v
       return 7;
     }
 
-    ((void)(0))
 
-        ;
     memcpy(pMem->z, z, nAlloc);
   } else {
     sqlite3VdbeMemRelease(pMem);
@@ -1084,9 +1050,7 @@ int sqlite3VdbeMemSetText(Mem *pMem, const char *z, i64 n, void (*xDel)(void *))
       return 7;
     }
 
-    ((void)(0))
 
-        ;
     memcpy(pMem->z, z, nByte);
     pMem->z[nByte] = 0;
   } else {
@@ -1128,9 +1092,7 @@ void releaseMemArray(Mem *p, int N) {
     Mem *pEnd = &p[N];
     sqlite3 *db = p->db;
 
-    ((void)(0))
 
-        ;
     if (db->pnBytesFreed) {
       do {
         if (p->szMalloc)
@@ -1140,13 +1102,9 @@ void releaseMemArray(Mem *p, int N) {
     }
     do {
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
 
       ;
       ;
@@ -1287,17 +1245,11 @@ int sqlite3MemCompare(const Mem *pMem1, const Mem *pMem2, const CollSeq *pColl) 
       return -1;
     }
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
 
     if (pColl) {
       return vdbeCompareMemString(pMem1, pMem2, pColl, 0);
@@ -1339,9 +1291,7 @@ void applyNumericAffinity(Mem *pRec, int bTryForInt) {
 void applyAffinity(Mem *pRec, char affinity, u8 enc) {
   if (affinity >= 0x43) {
 
-    ((void)(0))
 
-        ;
     if ((pRec->flags & 0x0004) == 0) {
       if ((pRec->flags & (0x0008 | 0x0020)) == 0) {
         if (pRec->flags & 0x0002)

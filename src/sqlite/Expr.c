@@ -81,74 +81,48 @@ char sqlite3ExprAffinity(const Expr *pExpr) {
   while (1) {
     if (op == 168 || (op == 170 && pExpr->y.pTab != 0)) {
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
       return sqlite3TableColumnAffinity(pExpr->y.pTab, pExpr->iColumn);
     }
     if (op == 139) {
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
       return sqlite3ExprAffinity(pExpr->x.pSelect->pEList->a[0].pExpr);
     }
 
     if (op == 36) {
 
-      ((void)(0))
 
-          ;
       return sqlite3AffinityType(pExpr->u.zToken, 0);
     }
 
     if (op == 178) {
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
       return sqlite3ExprAffinity(pExpr->pLeft->x.pSelect->pEList->a[pExpr->iColumn].pExpr);
     }
     if (op == 177 || (op == 172 && pExpr->affExpr == 0x58)) {
 
-      ((void)(0))
 
-          ;
       return sqlite3ExprAffinity(pExpr->x.pList->a[0].pExpr);
     }
     if ((((pExpr)->flags & (u32)(0x002000 | 0x040000)) != 0)) {
 
-      ((void)(0))
 
-          ;
       pExpr = pExpr->pLeft;
       op = pExpr->op;
       continue;
@@ -207,13 +181,9 @@ int sqlite3ExprDataType(const Expr *pExpr) {
       int ii;
       ExprList *pList = pExpr->x.pList;
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
       for (ii = 1; ii < pList->nExpr; ii += 2) {
         res |= sqlite3ExprDataType(pList->a[ii].pExpr);
       }
@@ -233,9 +203,7 @@ int sqlite3ExprDataType(const Expr *pExpr) {
 Expr *sqlite3ExprSkipCollate(Expr *pExpr) {
   while (pExpr && (((pExpr)->flags & (u32)(0x002000)) != 0)) {
 
-    ((void)(0))
 
-        ;
     pExpr = pExpr->pLeft;
   }
   return pExpr;
@@ -245,17 +213,11 @@ Expr *sqlite3ExprSkipCollateAndLikely(Expr *pExpr) {
   while (pExpr && (((pExpr)->flags & (u32)(0x002000 | 0x080000)) != 0)) {
     if ((((pExpr)->flags & (u32)(0x080000)) != 0)) {
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
       pExpr = pExpr->x.pList->a[0].pExpr;
     } else if (pExpr->op == 114) {
       pExpr = pExpr->pLeft;
@@ -277,9 +239,7 @@ char sqlite3CompareAffinity(const Expr *pExpr, char aff2) {
     }
   } else {
 
-    ((void)(0))
 
-        ;
     return (aff1 <= 0x40 ? aff2 : aff1) | 0x40;
   }
 }
@@ -323,15 +283,11 @@ int sqlite3ExprVectorSize(const Expr *pExpr) {
     op = pExpr->op2;
   if (op == 177) {
 
-    ((void)(0))
 
-        ;
     return pExpr->x.pList->nExpr;
   } else if (op == 139) {
 
-    ((void)(0))
 
-        ;
     return pExpr->x.pSelect->pEList->nExpr;
   } else {
     return 1;
@@ -342,20 +298,14 @@ Expr *sqlite3VectorFieldSubexpr(Expr *pVector, int i) {
 
   if (sqlite3ExprIsVector(pVector)) {
 
-    ((void)(0))
 
-        ;
     if (pVector->op == 139 || pVector->op2 == 139) {
 
-      ((void)(0))
 
-          ;
       return pVector->x.pSelect->pEList->a[i].pExpr;
     } else {
 
-      ((void)(0))
 
-          ;
       return pVector->x.pList->a[i].pExpr;
     }
   }
@@ -431,17 +381,11 @@ int dupedExprStructSize(const Expr *p, int flags) {
     nSize = sizeof(Expr);
   } else {
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     if (p->pLeft || p->x.pList) {
       nSize =
 
@@ -458,9 +402,7 @@ int dupedExprStructSize(const Expr *p, int flags) {
           | 0x004000;
     } else {
 
-      ((void)(0))
 
-          ;
       nSize =
 
           __builtin_offsetof(
@@ -602,9 +544,7 @@ int sqlite3ExprIsInteger(const Expr *p, int *pValue, Parse *pParse) {
     int v = 0;
     if (sqlite3ExprIsInteger(p->pLeft, &v, 0)) {
 
-      ((void)(0))
 
-          ;
       *pValue = -v;
       rc = 1;
     }
@@ -644,9 +584,7 @@ int sqlite3ExprCanBeNull(const Expr *p) {
   while (p->op == 173 || p->op == 174) {
     p = p->pLeft;
 
-    ((void)(0))
 
-        ;
   }
   op = p->op;
   if (op == 176)
@@ -659,9 +597,7 @@ int sqlite3ExprCanBeNull(const Expr *p) {
     return 0;
   case 168:
 
-    ((void)(0))
 
-        ;
     return (((p)->flags & (u32)(0x200000)) != 0) || (p->y.pTab == 0)
 
            || (p->iColumn >= 0 && p->y.pTab->aCol != 0 && (p->iColumn < p->y.pTab->nCol) && p->y.pTab->aCol[p->iColumn].notNull == 0);
@@ -698,9 +634,7 @@ int sqlite3ExprNeedsNoAffinityChange(const Expr *p, char aff) {
   }
   case 168: {
 
-    ((void)(0))
 
-        ;
     return aff >= 0x43 && p->iColumn < 0;
   }
   default: {
@@ -749,9 +683,7 @@ Select *isCandidateForInOpt(const Expr *pX) {
     if (pRes->op != 168)
       return 0;
 
-    ((void)(0))
 
-        ;
   }
   return p;
 }
@@ -762,9 +694,7 @@ void sqlite3ExprToRegister(Expr *pExpr, int iReg) {
     return;
   if (p->op == 176) {
 
-    ((void)(0))
 
-        ;
   } else {
     p->op2 = p->op;
     p->op = 176;
@@ -853,9 +783,7 @@ void sqlite3SetJoinExpr(Expr *p, int iTable, u32 joinFlag) {
   while (p) {
     (p)->flags |= (u32)(joinFlag);
 
-    ((void)(0))
 
-        ;
     ;
     p->w.iJoin = iTable;
     if ((((p)->flags & 0x001000) == 0)) {
@@ -883,13 +811,9 @@ void unsetJoinExpr(Expr *p, int iTable, int nullable) {
     }
     if (p->op == 172) {
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
       if (p->x.pList) {
         int i;
         for (i = 0; i < p->x.pList->nExpr; i++) {

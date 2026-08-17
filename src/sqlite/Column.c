@@ -14,9 +14,7 @@ char *sqlite3ColumnType(Column *pCol, char *zDflt) {
     return pCol->zCnName + strlen(pCol->zCnName) + 1;
   } else if (pCol->eCType) {
 
-    ((void)(0))
 
-        ;
     return (char *)sqlite3StdType[pCol->eCType - 1];
   } else {
     return zDflt;

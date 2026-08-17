@@ -18,16 +18,12 @@ void populateCellCache(CellArray *p, int idx, int N) {
 
   while (N > 0) {
 
-    ((void)(0))
 
-        ;
     if (szCell[idx] == 0) {
       szCell[idx] = pRef->xCellSize(pRef, p->apCell[idx]);
     } else {
 
-      ((void)(0))
 
-          ;
     }
     idx++;
     N--;
@@ -76,9 +72,7 @@ int rebuildPage(CellArray *pCArray, int iFirst, int nCell, MemPage *pPg) {
     u8 *pCell = pCArray->apCell[i];
     u16 sz = pCArray->szCell[i];
 
-    ((void)(0))
 
-        ;
     if ((((uptr)(pCell) >= (uptr)(aData + j)) && ((uptr)(pCell) < (uptr)(pEnd)))) {
       if (((uptr)(pCell + sz)) > (uptr)pEnd)
         return sqlite3CorruptError(80904);
@@ -94,9 +88,7 @@ int rebuildPage(CellArray *pCArray, int iFirst, int nCell, MemPage *pPg) {
       return sqlite3CorruptError(80915);
     memmove(pData, pCell, sz);
 
-    ((void)(0))
 
-        ;
     i++;
     if (i >= iEnd)
       break;

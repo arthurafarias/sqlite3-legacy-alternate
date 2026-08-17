@@ -22,9 +22,7 @@ int blobSeekToRow(Incrblob *p, sqlite3_int64 iRow, char **pzErr) {
   if (v->pc > 4) {
     v->pc = 4;
 
-    ((void)(0))
 
-        ;
     rc = sqlite3VdbeExec(v);
   } else {
     rc = sqlite3_step(p->pStmt);
@@ -33,13 +31,9 @@ int blobSeekToRow(Incrblob *p, sqlite3_int64 iRow, char **pzErr) {
     VdbeCursor *pC = v->apCsr[0];
     u32 type;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     type = pC->nHdrParsed > p->iCol ? pC->aType[p->iCol] : 0;
     ;
     ;

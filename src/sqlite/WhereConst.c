@@ -24,9 +24,7 @@ void constInsert(WhereConst *pConst, Expr *pColumn, Expr *pValue, Expr *pExpr) {
   for (i = 0; i < pConst->nConst; i++) {
     const Expr *pE2 = pConst->apExpr[i * 2];
 
-    ((void)(0))
 
-        ;
     if (pE2->iTable == pColumn->iTable && pE2->iColumn == pColumn->iColumn) {
       return;
     }
@@ -94,9 +92,7 @@ int propagateConstantExprRewriteOne(WhereConst *pConst, Expr *pExpr, int bIgnore
     if (pColumn->iColumn != pExpr->iColumn)
       continue;
 
-    ((void)(0))
 
-        ;
     if (bIgnoreAffBlob && sqlite3ExprAffinity(pColumn) <= 0x41) {
       break;
     }
@@ -105,9 +101,7 @@ int propagateConstantExprRewriteOne(WhereConst *pConst, Expr *pExpr, int bIgnore
     (pExpr)->flags &= ~(u32)(0x800000);
     (pExpr)->flags |= (u32)(0x000020);
 
-    ((void)(0))
 
-        ;
     pExpr->pLeft = sqlite3ExprDup(pConst->pParse->db, pConst->apExpr[i * 2 + 1], 0);
     if (pConst->pParse->db->mallocFailed)
       return 1;

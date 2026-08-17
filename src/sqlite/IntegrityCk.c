@@ -35,9 +35,7 @@ void checkProgress(IntegrityCk *pCheck) {
 
   if (db->xProgress) {
 
-    ((void)(0))
 
-        ;
     pCheck->nStep++;
     if ((pCheck->nStep % db->nProgressOps) == 0 && db->xProgress(db->pProgressArg)) {
       pCheck->rc = 9;
@@ -221,17 +219,13 @@ int checkTreePage(IntegrityCk *pCheck, Pgno iPage, i64 *piMinKey, i64 maxKey) {
   pPage->isInit = 0;
   if ((rc = btreeInitPage(pPage)) != 0) {
 
-    ((void)(0))
 
-        ;
     checkAppendMsg(pCheck, "btreeInitPage() returns error code %d", rc);
     goto end_of_check;
   }
   if ((rc = btreeComputeFreeSpace(pPage)) != 0) {
 
-    ((void)(0))
 
-        ;
     checkAppendMsg(pCheck, "free space corruption", rc);
     goto end_of_check;
   }
@@ -273,9 +267,7 @@ int checkTreePage(IntegrityCk *pCheck, Pgno iPage, i64 *piMinKey, i64 maxKey) {
 
     pCheck->v2 = i;
 
-    ((void)(0))
 
-        ;
     pc = __builtin_bswap16(*(u16 *)(pCellIdx));
     pCellIdx -= 2;
     if (pc < contentOffset || pc > usableSize - 4) {
@@ -303,9 +295,7 @@ int checkTreePage(IntegrityCk *pCheck, Pgno iPage, i64 *piMinKey, i64 maxKey) {
       u32 nPage;
       Pgno pgnoOvfl;
 
-      ((void)(0))
 
-          ;
       nPage = (info.nPayload - info.nLocal + usableSize - 5) / (usableSize - 4);
       pgnoOvfl = sqlite3Get4byte(&pCell[info.nSize - 4]);
 
@@ -332,9 +322,7 @@ int checkTreePage(IntegrityCk *pCheck, Pgno iPage, i64 *piMinKey, i64 maxKey) {
       }
     } else {
 
-      ((void)(0))
 
-          ;
       btreeHeapInsert(heap, (pc << 16) | (pc + info.nSize - 1));
     }
   }
@@ -351,44 +339,30 @@ int checkTreePage(IntegrityCk *pCheck, Pgno iPage, i64 *piMinKey, i64 maxKey) {
         pc = __builtin_bswap16(*(u16 *)(&data[cellStart + i * 2]));
         size = pPage->xCellSize(pPage, &data[pc]);
 
-        ((void)(0))
 
-            ;
         btreeHeapInsert(heap, (pc << 16) | (pc + size - 1));
       }
     }
 
-    ((void)(0))
 
-        ;
 
     i = ((&data[hdr + 1])[0] << 8 | (&data[hdr + 1])[1]);
     while (i > 0) {
       int size, j;
 
-      ((void)(0))
 
-          ;
       size = ((&data[i + 2])[0] << 8 | (&data[i + 2])[1]);
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
       btreeHeapInsert(heap, (((u32)i) << 16) | (i + size - 1));
 
       j = ((&data[i])[0] << 8 | (&data[i])[1]);
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
       i = j;
     }
 

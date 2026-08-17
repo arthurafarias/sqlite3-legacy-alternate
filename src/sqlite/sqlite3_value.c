@@ -32,9 +32,7 @@ __attribute__((noinline)) const void *valueToText(sqlite3_value *pVal, u8 enc) {
     }
     if ((enc & 8) != 0 && 1 == (1 & ((int)(intptr_t)(pVal->z)))) {
 
-      ((void)(0))
 
-          ;
       if (sqlite3VdbeMemMakeWriteable(pVal) != 0) {
         return 0;
       }
@@ -43,16 +41,12 @@ __attribute__((noinline)) const void *valueToText(sqlite3_value *pVal, u8 enc) {
   } else {
     sqlite3VdbeMemStringify(pVal, enc, 0);
 
-    ((void)(0))
 
-        ;
   }
 
   if (pVal->enc == (enc & ~8)) {
 
-    ((void)(0))
 
-        ;
     return pVal->z;
   } else {
     return 0;
@@ -65,9 +59,7 @@ const void *sqlite3ValueText(sqlite3_value *pVal, u8 enc) {
 
   if ((pVal->flags & (0x0002 | 0x0200)) == (0x0002 | 0x0200) && pVal->enc == enc) {
 
-    ((void)(0))
 
-        ;
     return pVal->z;
   }
   if (pVal->flags & 0x0001) {
@@ -124,9 +116,7 @@ const void *sqlite3_value_blob(sqlite3_value *pVal) {
   if (p->flags & (0x0010 | 0x0002)) {
     if ((((p)->flags & 0x0400) ? sqlite3VdbeMemExpandBlob(p) : 0) != 0) {
 
-      ((void)(0))
 
-          ;
       return 0;
     }
     p->flags |= 0x0010;
@@ -232,17 +222,11 @@ int valueFromValueList(sqlite3_value *pVal, sqlite3_value **ppOut, int bNext) {
     return 1;
   } else {
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     pRhs = (ValueList *)pVal->z;
   }
   if (bNext) {
@@ -251,9 +235,7 @@ int valueFromValueList(sqlite3_value *pVal, sqlite3_value **ppOut, int bNext) {
     int dummy = 0;
     rc = sqlite3BtreeFirst(pRhs->pCsr, &dummy);
 
-    ((void)(0))
 
-        ;
     if (sqlite3BtreeEof(pRhs->pCsr))
       rc = 101;
   }
@@ -290,9 +272,7 @@ int sqlite3_value_numeric_type(sqlite3_value *pVal) {
   if (eType == 3) {
     Mem *pMem = (Mem *)pVal;
 
-    ((void)(0))
 
-        ;
     sqlite3_mutex_enter(pMem->db->mutex);
     applyNumericAffinity(pMem, 0);
     sqlite3_mutex_leave(pMem->db->mutex);

@@ -48,9 +48,7 @@ static u16 operatorMask(int op) {
 
   if (op >= 54) {
 
-    ((void)(0))
 
-        ;
     c = (u16)(0x0002 << (op - 54));
   } else if (op == 50) {
     c = 0x0001;
@@ -58,9 +56,7 @@ static u16 operatorMask(int op) {
     c = 0x0100;
   } else {
 
-    ((void)(0))
 
-        ;
     c = 0x0080;
   }
 
@@ -104,13 +100,9 @@ SrcItem *isSelfJoinView(SrcList *pTabList, SrcItem *pThis, int iFirst, int iEnd)
     if (pItem->zName == 0)
       continue;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     if (pItem->pSTab->pSchema != pThis->pSTab->pSchema)
       continue;
     if (sqlite3_stricmp(pItem->zName, pThis->zName) != 0)
@@ -161,9 +153,7 @@ void whereCombineDisjuncts(SrcList *pSrc, WhereClause *pWC, WhereTerm *pOne, Whe
       eOp = (0x0002 << (56 - 54));
     } else {
 
-      ((void)(0))
 
-          ;
       eOp = (0x0002 << (58 - 54));
     }
   }
@@ -173,9 +163,7 @@ void whereCombineDisjuncts(SrcList *pSrc, WhereClause *pWC, WhereTerm *pOne, Whe
     return;
   for (op = 54; eOp != (0x0002 << (op - 54)); op++) {
 
-    ((void)(0))
 
-        ;
   }
   pNew->op = op;
   idxNew = whereClauseInsert(pWC, pNew, 0x0002 | 0x0001);
@@ -213,9 +201,7 @@ void exprAnalyzeOrTerm(SrcList *pSrc, WhereClause *pWC, int idxTerm) {
     if ((pOrTerm->eOperator & 0x01ff) == 0) {
       WhereAndInfo *pAndInfo;
 
-      ((void)(0))
 
-          ;
       chngToIN = 0;
       pAndInfo = sqlite3DbMallocRawNN(db, sizeof(*pAndInfo));
       if (pAndInfo) {
@@ -236,9 +222,7 @@ void exprAnalyzeOrTerm(SrcList *pSrc, WhereClause *pWC, int idxTerm) {
         if (!db->mallocFailed) {
           for (j = 0, pAndTerm = pAndWC->a; j < pAndWC->nTerm; j++, pAndTerm++) {
 
-            ((void)(0))
 
-                ;
             if (allowedOp(pAndTerm->pExpr->op) || pAndTerm->eOperator == 0x0040) {
               b |= sqlite3WhereGetMask(&pWInfo->sMaskSet, pAndTerm->leftCursor);
             }
@@ -294,15 +278,11 @@ void exprAnalyzeOrTerm(SrcList *pSrc, WhereClause *pWC, int idxTerm) {
       pOrTerm = pOrWc->a;
       for (i = pOrWc->nTerm - 1; i >= 0; i--, pOrTerm++) {
 
-        ((void)(0))
 
-            ;
         pOrTerm->wtFlags &= ~0x0040;
         if (pOrTerm->leftCursor == iCursor) {
 
-          ((void)(0))
 
-              ;
           continue;
         }
         if ((chngToIN & sqlite3WhereGetMask(&pWInfo->sMaskSet, pOrTerm->leftCursor)) == 0) {
@@ -310,15 +290,11 @@ void exprAnalyzeOrTerm(SrcList *pSrc, WhereClause *pWC, int idxTerm) {
           ;
           ;
 
-          ((void)(0))
 
-              ;
           continue;
         }
 
-        ((void)(0))
 
-            ;
         iColumn = pOrTerm->u.x.leftColumn;
         iCursor = pOrTerm->leftCursor;
         pLeft = pOrTerm->pExpr->pLeft;
@@ -326,30 +302,20 @@ void exprAnalyzeOrTerm(SrcList *pSrc, WhereClause *pWC, int idxTerm) {
       }
       if (i < 0) {
 
-        ((void)(0))
 
-            ;
 
-        ((void)(0))
 
-            ;
 
-        ((void)(0))
 
-            ;
         break;
       };
 
       okToChngToIN = 1;
       for (; i >= 0 && okToChngToIN; i--, pOrTerm++) {
 
-        ((void)(0))
 
-            ;
 
-        ((void)(0))
 
-            ;
         if (pOrTerm->leftCursor != iCursor) {
           pOrTerm->wtFlags &= ~0x0040;
         } else if (pOrTerm->u.x.leftColumn != iColumn || (iColumn == (-2) && sqlite3ExprCompare(pParse, pOrTerm->pExpr->pLeft, pLeft, -1))) {
@@ -378,38 +344,26 @@ void exprAnalyzeOrTerm(SrcList *pSrc, WhereClause *pWC, int idxTerm) {
         if ((pOrTerm->wtFlags & 0x0040) == 0)
           continue;
 
-        ((void)(0))
 
-            ;
 
-        ((void)(0))
 
-            ;
 
-        ((void)(0))
 
-            ;
 
-        ((void)(0))
 
-            ;
         pDup = sqlite3ExprDup(db, pOrTerm->pExpr->pRight, 0);
         pList = sqlite3ExprListAppend(pWInfo->pParse, pList, pDup);
         pLeft = pOrTerm->pExpr->pLeft;
       }
 
-      ((void)(0))
 
-          ;
       pDup = sqlite3ExprDup(db, pLeft, 0);
       pNew = sqlite3PExpr(pParse, 50, pDup, 0);
       if (pNew) {
         int idxNew;
         transferJoinMarkings(pNew, pExpr);
 
-        ((void)(0))
 
-            ;
         pNew->x.pList = pList;
         idxNew = whereClauseInsert(pWC, pNew, 0x0002 | 0x0001);
         ;
@@ -436,9 +390,7 @@ __attribute__((noinline)) int exprMightBeIndexed2(SrcList *pFrom, int *aiCurCol,
         if (pIdx->aiColumn[i] != (-2))
           continue;
 
-        ((void)(0))
 
-            ;
         if (sqlite3ExprCompareSkip(pExpr, pIdx->aColExpr->a[i].pExpr, iCur) == 0 && !sqlite3ExprIsConstant(0, pIdx->aColExpr->a[i].pExpr)) {
           aiCurCol[0] = iCur;
           aiCurCol[1] = (-2);
@@ -455,9 +407,7 @@ int exprMightBeIndexed(SrcList *pFrom, int *aiCurCol, Expr *pExpr, int op) {
 
   if (pExpr->op == 177 && (op >= 55 && (op <= 58))) {
 
-    ((void)(0))
 
-        ;
     pExpr = pExpr->x.pList->a[0].pExpr;
   }
 
@@ -509,9 +459,7 @@ void exprAnalyze(SrcList *pSrc, WhereClause *pWC, int idxTerm) {
   op = pExpr->op;
   if (op == 50) {
 
-    ((void)(0))
 
-        ;
     if (sqlite3ExprCheckIN(pParse, pExpr))
       return;
     if ((((pExpr)->flags & 0x001000) != 0)) {
@@ -553,26 +501,18 @@ void exprAnalyze(SrcList *pSrc, WhereClause *pWC, int idxTerm) {
 
     if (pTerm->u.x.iField > 0) {
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
       pLeft = pLeft->x.pList->a[pTerm->u.x.iField - 1].pExpr;
     }
 
     if (exprMightBeIndexed(pSrc, aiCurCol, pLeft, op)) {
       pTerm->leftCursor = aiCurCol[0];
 
-      ((void)(0))
 
-          ;
       pTerm->u.x.leftColumn = aiCurCol[1];
       pTerm->eOperator = operatorMask(op) & opMask;
     }
@@ -583,9 +523,7 @@ void exprAnalyze(SrcList *pSrc, WhereClause *pWC, int idxTerm) {
       Expr *pDup;
       u16 eExtraOp = 0;
 
-      ((void)(0))
 
-          ;
       if (pTerm->leftCursor >= 0) {
         int idxNew;
         pDup = sqlite3ExprDup(db, pExpr, 0);
@@ -603,9 +541,7 @@ void exprAnalyze(SrcList *pSrc, WhereClause *pWC, int idxTerm) {
         pTerm = &pWC->a[idxTerm];
         pTerm->wtFlags |= 0x0008;
 
-        ((void)(0))
 
-            ;
         if (termIsEquivalence(pParse, pDup, pWInfo->pTabList)) {
           pTerm->eOperator |= 0x0800;
           eExtraOp = 0x0800;
@@ -617,9 +553,7 @@ void exprAnalyze(SrcList *pSrc, WhereClause *pWC, int idxTerm) {
       pNew->wtFlags |= exprCommute(pParse, pDup);
       pNew->leftCursor = aiCurCol[0];
 
-      ((void)(0))
 
-          ;
       pNew->u.x.leftColumn = aiCurCol[1];
       ;
       pNew->prereqRight = prereqLeft | extraRight;
@@ -627,9 +561,7 @@ void exprAnalyze(SrcList *pSrc, WhereClause *pWC, int idxTerm) {
       pNew->eOperator = (operatorMask(pDup->op) + eExtraOp) & opMask;
     } else if (op == 51 && !(((pExpr)->flags & (u32)(0x000001)) != 0) && 0 == sqlite3ExprCanBeNull(pLeft)) {
 
-      ((void)(0))
 
-          ;
       pExpr->op = 171;
       pExpr->u.zToken = "false";
       (pExpr)->flags |= (u32)(0x20000000);
@@ -643,22 +575,14 @@ void exprAnalyze(SrcList *pSrc, WhereClause *pWC, int idxTerm) {
     int i;
     static const u8 ops[] = {58, 56};
 
-    ((void)(0))
 
-        ;
     pList = pExpr->x.pList;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     for (i = 0; i < 2; i++) {
       Expr *pNewExpr;
       int idxNew;
@@ -674,9 +598,7 @@ void exprAnalyze(SrcList *pSrc, WhereClause *pWC, int idxTerm) {
 
   else if (pExpr->op == 43 && !(((pExpr)->flags & (u32)(0x000200)) != 0)) {
 
-    ((void)(0))
 
-        ;
     exprAnalyzeOrTerm(pSrc, pWC, idxTerm);
     pTerm = &pWC->a[idxTerm];
   }
@@ -715,19 +637,13 @@ void exprAnalyze(SrcList *pSrc, WhereClause *pWC, int idxTerm) {
     const char *zCollSeqName;
     const u16 wtFlags = 0x0100 | 0x0002 | 0x0001;
 
-    ((void)(0))
 
-        ;
     pLeft = pExpr->x.pList->a[1].pExpr;
     pStr2 = sqlite3ExprDup(db, pStr1, 0);
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
 
     if (noCase && !pParse->db->mallocFailed) {
       int i;
@@ -754,9 +670,7 @@ void exprAnalyze(SrcList *pSrc, WhereClause *pWC, int idxTerm) {
         pC--;
       }
 
-      ((void)(0))
 
-          ;
       (*pC)++;
     }
     zCollSeqName = noCase ? "NOCASE" : sqlite3StrBINARY;
@@ -806,9 +720,7 @@ void exprAnalyze(SrcList *pSrc, WhereClause *pWC, int idxTerm) {
   ) {
     int i;
 
-    ((void)(0))
 
-        ;
     for (i = 0; i < sqlite3ExprVectorSize(pExpr->pLeft); i++) {
       int idxNew;
       idxNew = whereClauseInsert(pWC, pExpr, 0x0002 | 0x8000);

@@ -123,9 +123,7 @@ int sqlite3_backup_step(sqlite3_backup *p, int nPage) {
 
     nSrcPage = (int)sqlite3BtreeLastPage(p->pSrc);
 
-    ((void)(0))
 
-        ;
     for (ii = 0; (nPage < 0 || ii < nPage) && p->iNext <= (Pgno)nSrcPage && !rc; ii++) {
       const Pgno iSrcPg = p->iNext;
       if (iSrcPg != ((Pgno)((sqlite3PendingByte / ((p->pSrc->pBt)->pageSize)) + 1))) {
@@ -167,13 +165,9 @@ int sqlite3_backup_step(sqlite3_backup *p, int nPage) {
       if (rc == 0) {
         int nDestTruncate;
 
-        ((void)(0))
 
-            ;
 
-        ((void)(0))
 
-            ;
         if (pgszSrc < pgszDest) {
           int ratio = pgszDest / pgszSrc;
           nDestTruncate = (nSrcPage + ratio - 1) / ratio;
@@ -184,9 +178,7 @@ int sqlite3_backup_step(sqlite3_backup *p, int nPage) {
           nDestTruncate = nSrcPage * (pgszSrc / pgszDest);
         }
 
-        ((void)(0))
 
-            ;
 
         if (pgszSrc < pgszDest) {
 
@@ -197,13 +189,9 @@ int sqlite3_backup_step(sqlite3_backup *p, int nPage) {
           i64 iOff;
           i64 iEnd;
 
-          ((void)(0))
 
-              ;
 
-          ((void)(0))
 
-              ;
 
           sqlite3PagerPagecount(pDestPager, &nDstPage);
           for (iPg = nDestTruncate; rc == 0 && iPg <= (Pgno)nDstPage; iPg++) {
@@ -254,9 +242,7 @@ int sqlite3_backup_step(sqlite3_backup *p, int nPage) {
       sqlite3BtreeCommitPhaseOne(p->pSrc, 0);
       sqlite3BtreeCommitPhaseTwo(p->pSrc, 0);
 
-      ((void)(0))
 
-          ;
     }
 
     if (rc == (10 | (12 << 8))) {
@@ -292,15 +278,11 @@ int sqlite3_backup_finish(sqlite3_backup *p) {
   if (p->isAttached) {
     pp = sqlite3PagerBackupPtr(sqlite3BtreePager(p->pSrc));
 
-    ((void)(0))
 
-        ;
     while (*pp != p) {
       pp = &(*pp)->pNext;
 
-      ((void)(0))
 
-          ;
     }
     *pp = p->pNext;
   }
@@ -332,23 +314,17 @@ __attribute__((noinline)) void backupUpdate(sqlite3_backup *p, Pgno iPage, const
 
   do {
 
-    ((void)(0))
 
-        ;
     if (!isFatalError(p->rc) && iPage < p->iNext) {
 
       int rc;
 
-      ((void)(0))
 
-          ;
       sqlite3_mutex_enter(p->pDestDb->mutex);
       rc = backupOnePage(p, iPage, aData, 1);
       sqlite3_mutex_leave(p->pDestDb->mutex);
 
-      ((void)(0))
 
-          ;
       if (rc != 0) {
         p->rc = rc;
       }
@@ -365,9 +341,7 @@ void sqlite3BackupRestart(sqlite3_backup *pBackup) {
   sqlite3_backup *p;
   for (p = pBackup; p; p = p->pNext) {
 
-    ((void)(0))
 
-        ;
     p->iNext = 1;
   }
 }

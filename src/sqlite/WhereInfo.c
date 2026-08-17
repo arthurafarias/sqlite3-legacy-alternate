@@ -64,9 +64,7 @@ void codeDeferredSeek(WhereInfo *pWInfo, Index *pIdx, int iCur, int iIdxCur) {
       for (i = 0; i < pIdx->nColumn - 1; i++) {
         int x1, x2;
 
-        ((void)(0))
 
-            ;
         x1 = pIdx->aiColumn[i];
         x2 = sqlite3TableColumnToStorage(pTab, x1);
         ;
@@ -114,22 +112,16 @@ __attribute__((noinline)) void sqlite3WhereRightJoinLoop(WhereInfo *pWInfo, int 
     int iIdxCur;
     SrcItem *pRight;
 
-    ((void)(0))
 
-        ;
     pRight = &pWInfo->pTabList->a[pWInfo->a[k].iFrom];
     mAll |= pWInfo->a[k].pWLoop->maskSelf;
     if (pRight->fg.viaCoroutine) {
       Subquery *pSubq;
 
-      ((void)(0))
 
-          ;
       pSubq = pRight->u4.pSubq;
 
-      ((void)(0))
 
-          ;
       sqlite3VdbeAddOp3(v, 77, 0, pSubq->regResult, pSubq->regResult + pSubq->pSelect->pEList->nExpr - 1);
     }
     sqlite3VdbeAddOp1(v, 138, pWInfo->a[k].iTabCur);
@@ -245,9 +237,7 @@ void *sqlite3WhereRealloc(WhereInfo *pWInfo, void *pOld, u64 nByte) {
     WhereMemBlock *pOldBlk = (WhereMemBlock *)pOld;
     pOldBlk--;
 
-    ((void)(0))
 
-        ;
     memcpy(pNew, pOld, pOldBlk->sz);
   }
   return pNew;
@@ -288,14 +278,10 @@ __attribute__((noinline)) void sqlite3ConstructBloomFilter(WhereInfo *pWInfo, in
     iSrc = pLevel->iFrom;
     pItem = &pTabList->a[iSrc];
 
-    ((void)(0))
 
-        ;
     pTab = pItem->pSTab;
 
-    ((void)(0))
 
-        ;
     sz = sqlite3LogEstToInt(pTab->nRowLogEst);
     if (sz < 10000) {
       sz = 10000;
@@ -325,9 +311,7 @@ __attribute__((noinline)) void sqlite3ConstructBloomFilter(WhereInfo *pWInfo, in
       int jj;
       for (jj = 0; jj < n; jj++) {
 
-        ((void)(0))
 
-            ;
         sqlite3ExprCodeLoadIndexColumn(pParse, pIdx, iCur, jj, r1 + jj);
       }
       sqlite3VdbeAddOp4Int(v, 185, pLevel->regFilter, 0, r1, n);
@@ -389,9 +373,7 @@ sqlite3_index_info *allocateIndexInfo(WhereInfo *pWInfo, WhereClause *pWC, Bitma
       if (pTerm->prereqRight & mUnusable)
         continue;
 
-      ((void)(0))
 
-          ;
       ;
       ;
       ;
@@ -401,17 +383,11 @@ sqlite3_index_info *allocateIndexInfo(WhereInfo *pWInfo, WhereClause *pWC, Bitma
       if (pTerm->wtFlags & 0x0080)
         continue;
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
       if ((pSrc->fg.jointype & (0x08 | 0x40 | 0x10)) != 0 && !constraintCompatibleWithOuterJoin(pTerm, pSrc)) {
         continue;
       }
@@ -436,26 +412,18 @@ sqlite3_index_info *allocateIndexInfo(WhereInfo *pWInfo, WhereClause *pWC, Bitma
 
       if (pExpr->op == 168 && pExpr->iTable == pSrc->iCursor) {
 
-        ((void)(0))
 
-            ;
         continue;
       }
 
       if (pExpr->op == 114 && (pE2 = pExpr->pLeft)->op == 168 && pE2->iTable == pSrc->iCursor) {
         const char *zColl;
 
-        ((void)(0))
 
-            ;
 
-        ((void)(0))
 
-            ;
 
-        ((void)(0))
 
-            ;
         pExpr->iColumn = pE2->iColumn;
         if (pE2->iColumn < 0)
           continue;
@@ -511,15 +479,11 @@ sqlite3_index_info *allocateIndexInfo(WhereInfo *pWInfo, WhereClause *pWC, Bitma
 
     Index *pPk = sqlite3PrimaryKeyIndex((Table *)pTab);
 
-    ((void)(0))
 
-        ;
     for (i = 0; i < pPk->nKeyCol; i++) {
       int iCol = pPk->aiColumn[i];
 
-      ((void)(0))
 
-          ;
       if (iCol >= ((int)(sizeof(Bitmask) * 8)) - 1)
         iCol = ((int)(sizeof(Bitmask) * 8)) - 1;
       pIdxInfo->colUsed |= (((Bitmask)1) << (iCol));
@@ -556,29 +520,17 @@ sqlite3_index_info *allocateIndexInfo(WhereInfo *pWInfo, WhereClause *pWC, Bitma
       } else {
         pIdxCons[j].op = (u8)op;
 
-        ((void)(0))
 
-            ;
 
-        ((void)(0))
 
-            ;
 
-        ((void)(0))
 
-            ;
 
-        ((void)(0))
 
-            ;
 
-        ((void)(0))
 
-            ;
 
-        ((void)(0))
 
-            ;
 
         if (op & ((0x0002 << (57 - 54)) | (0x0002 << (56 - 54)) | (0x0002 << (55 - 54)) | (0x0002 << (58 - 54))) && sqlite3ExprIsVector(pTerm->pExpr->pRight)) {
           ;
@@ -601,9 +553,7 @@ sqlite3_index_info *allocateIndexInfo(WhereInfo *pWInfo, WhereClause *pWC, Bitma
     if (sqlite3ExprIsConstant(0, pExpr))
       continue;
 
-    ((void)(0))
 
-        ;
     pIdxOrderBy[j].iColumn = pExpr->iColumn;
     pIdxOrderBy[j].desc = pOrderBy->a[i].fg.sortFlags & 0x01;
     j++;
@@ -777,9 +727,7 @@ i8 wherePathSatisfiesOrderBy(WhereInfo *pWInfo, ExprList *pOrderBy, WherePath *p
         continue;
       if (pTerm->eOperator == 0x0001) {
 
-        ((void)(0))
 
-            ;
         for (j = 0; j < pLoop->nLTerm && pTerm != pLoop->aLTerm[j]; j++) {
         }
         if (j >= pLoop->nLTerm)
@@ -790,9 +738,7 @@ i8 wherePathSatisfiesOrderBy(WhereInfo *pWInfo, ExprList *pOrderBy, WherePath *p
         CollSeq *pColl1 = sqlite3ExprNNCollSeq(pParse, pOrderBy->a[i].pExpr);
         CollSeq *pColl2 = sqlite3ExprCompareCollSeq(pParse, pTerm->pExpr);
 
-        ((void)(0))
 
-            ;
         if (pColl2 == 0 || sqlite3StrICmp(pColl1->zName, pColl2->zName)) {
           continue;
         };
@@ -816,13 +762,9 @@ i8 wherePathSatisfiesOrderBy(WhereInfo *pWInfo, ExprList *pOrderBy, WherePath *p
         nKeyCol = pIndex->nKeyCol;
         nColumn = pIndex->nColumn;
 
-        ((void)(0))
 
-            ;
 
-        ((void)(0))
 
-            ;
 
         isOrderDistinct = ((pIndex)->onError != 0) && (pLoop->wsFlags & 0x00008000) == 0;
       }
@@ -832,9 +774,7 @@ i8 wherePathSatisfiesOrderBy(WhereInfo *pWInfo, ExprList *pOrderBy, WherePath *p
       for (j = 0; j < nColumn; j++) {
         u8 bOnce = 1;
 
-        ((void)(0))
 
-            ;
         if (j < pLoop->u.btree.nEq && j >= pLoop->nSkip) {
           u16 eOp = pLoop->aLTerm[j]->eOperator;
 
@@ -852,9 +792,7 @@ i8 wherePathSatisfiesOrderBy(WhereInfo *pWInfo, ExprList *pOrderBy, WherePath *p
             for (i = j + 1; i < pLoop->u.btree.nEq; i++) {
               if (pLoop->aLTerm[i]->pExpr == pX) {
 
-                ((void)(0))
 
-                    ;
                 bOnce = 0;
                 break;
               }
@@ -1013,9 +951,7 @@ LogEst whereSortingCost(WhereInfo *pWInfo, LogEst nRow, int nOrderBy, int nSorte
     if (nRow > 10) {
       nRow -= 10;
 
-      ((void)(0))
 
-          ;
     }
   }
   rSortCost += estLog(nRow);
@@ -1035,9 +971,7 @@ int computeMxChoice(WhereInfo *pWInfo) {
 
     pWInfo->bStarDone = 1;
 
-    ((void)(0))
 
-        ;
     aFromTabs = pWInfo->pTabList->a;
     pStart = pWInfo->pLoops;
     for (iFromIdx = 0, m = 1; iFromIdx < nLoop; iFromIdx++, m <<= 1) {
@@ -1188,9 +1122,7 @@ int wherePathSolver(WhereInfo *pWInfo, LogEst nRowEst) {
           continue;
         if ((pWLoop->wsFlags & 0x00004000) != 0 && pFrom->nRow < 3) {
 
-          ((void)(0))
 
-              ;
           continue;
         }
 
@@ -1311,9 +1243,7 @@ int wherePathSolver(WhereInfo *pWInfo, LogEst nRowEst) {
         pWInfo->eDistinct = 2;
       }
 
-      ((void)(0))
 
-          ;
     } else {
       pWInfo->revMask = pFrom->revLoop;
       if (pWInfo->nOBSat <= 0) {
@@ -1339,9 +1269,7 @@ int wherePathSolver(WhereInfo *pWInfo, LogEst nRowEst) {
       Bitmask revMask = 0;
       int nOrder = wherePathSatisfiesOrderBy(pWInfo, pWInfo->pOrderBy, pFrom, 0, nLoop - 1, pFrom->aLoop[nLoop - 1], &revMask);
 
-      ((void)(0))
 
-          ;
       if (nOrder == pWInfo->pOrderBy->nExpr) {
         pWInfo->sorted = 1;
         pWInfo->revMask = revMask;
@@ -1439,9 +1367,7 @@ __attribute__((noinline)) Bitmask whereOmitNoopJoin(WhereInfo *pWInfo, Bitmask n
     }
     pWInfo->nLevel--;
 
-    ((void)(0))
 
-        ;
   }
   return notReady;
 }
@@ -1567,9 +1493,7 @@ void sqlite3WhereEnd(WhereInfo *pWInfo) {
       sqlite3VdbeResolveLabel(v, pLevel->addrNxt);
       for (j = pLevel->u.in.nIn, pIn = &pLevel->u.in.aInLoop[j - 1]; j > 0; j--, pIn--) {
 
-        ((void)(0))
 
-            ;
         sqlite3VdbeJumpHere(v, pIn->addrInTop + 1);
         if (pIn->eEndLoopOp != 189) {
           if (pIn->nPrefix) {
@@ -1616,26 +1540,18 @@ void sqlite3WhereEnd(WhereInfo *pWInfo) {
       addr = sqlite3VdbeAddOp1(v, 61, pLevel->iLeftJoin);
       ;
 
-      ((void)(0))
 
-          ;
       if ((ws & 0x00000040) == 0) {
         SrcItem *pSrc = &pTabList->a[pLevel->iFrom];
 
-        ((void)(0))
 
-            ;
         if (pSrc->fg.viaCoroutine) {
           int m, n;
 
-          ((void)(0))
 
-              ;
           n = pSrc->u4.pSubq->regResult;
 
-          ((void)(0))
 
-              ;
           m = pSrc->pSTab->nCol;
           sqlite3VdbeAddOp3(v, 77, 0, n, n + m - 1);
         }
@@ -1668,9 +1584,7 @@ void sqlite3WhereEnd(WhereInfo *pWInfo) {
     SrcItem *pTabItem = &pTabList->a[pLevel->iFrom];
     Table *pTab = pTabItem->pSTab;
 
-    ((void)(0))
 
-        ;
     pLoop = pLevel->pWLoop;
 
     if (pLevel->pRJ) {
@@ -1681,13 +1595,9 @@ void sqlite3WhereEnd(WhereInfo *pWInfo) {
     if (pTabItem->fg.viaCoroutine) {
       ;
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
       translateColumnToCopy(pParse, pLevel->addrBody, pLevel->iTabCur, pTabItem->u4.pSubq->regResult, 0);
       continue;
     }
@@ -1719,9 +1629,7 @@ void sqlite3WhereEnd(WhereInfo *pWInfo) {
       pOp = sqlite3VdbeGetOp(v, k);
       pLastOp = pOp + (last - k);
 
-      ((void)(0))
 
-          ;
       do {
         if (pOp->p1 != pLevel->iTabCur) {
 
@@ -1730,17 +1638,13 @@ void sqlite3WhereEnd(WhereInfo *pWInfo) {
         ) {
           int x = pOp->p2;
 
-          ((void)(0))
 
-              ;
 
           if (!(((pTab)->tabFlags & 0x00000080) == 0)) {
             Index *pPk = sqlite3PrimaryKeyIndex(pTab);
             x = pPk->aiColumn[x];
 
-            ((void)(0))
 
-                ;
           } else {
             ;
             x = sqlite3StorageColumnToTable(pTab, x);

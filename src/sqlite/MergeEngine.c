@@ -90,9 +90,7 @@ void vdbeMergeEngineCompare(MergeEngine *pMerger, int iOut) {
     int bCached = 0;
     int res;
 
-    ((void)(0))
 
-        ;
     res = pTask->xCompare(pTask, &bCached, p1->aKey, p1->nKey, p2->aKey, p2->nKey);
     if (res <= 0) {
       iRes = i1;

@@ -62,17 +62,11 @@ void __attribute__((noinline)) btreeLockCarefully(Btree *p) {
 
   for (pLater = p->pNext; pLater; pLater = pLater->pNext) {
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     if (pLater->locked) {
       unlockBtreeMutex(pLater);
     }
@@ -89,9 +83,7 @@ void sqlite3BtreeLeave(Btree *p) {
 
   if (p->sharable) {
 
-    ((void)(0))
 
-        ;
     p->wantToLock--;
     if (p->wantToLock == 0) {
       unlockBtreeMutex(p);
@@ -114,20 +106,14 @@ int querySharedCacheTableLock(Btree *p, Pgno iTab, u8 eLock) {
 
   for (pIter = pBt->pLock; pIter; pIter = pIter->pNext) {
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     if (pIter->pBtree != p && pIter->iTable == iTab && pIter->eLock != eLock) {
       ;
       if (eLock == 2) {
 
-        ((void)(0))
 
-            ;
         pBt->btsFlags |= 0x0080;
       }
       return (6 | (1 << 8));
@@ -177,19 +163,13 @@ void clearAllSharedCacheTableLocks(Btree *p) {
   while (*ppIter) {
     BtLock *pLock = *ppIter;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     if (pLock->pBtree == p) {
       *ppIter = pLock->pNext;
 
-      ((void)(0))
 
-          ;
       if (pLock->iTable != 1) {
         sqlite3_free(pLock);
       }
@@ -218,9 +198,7 @@ void downgradeAllSharedCacheTableLocks(Btree *p) {
     pBt->btsFlags &= ~(0x0040 | 0x0080);
     for (pLock = pBt->pLock; pLock; pLock = pLock->pNext) {
 
-      ((void)(0))
 
-          ;
       pLock->eLock = 1;
     }
   }
@@ -264,9 +242,7 @@ int sqlite3BtreeClose(Btree *p) {
 
   if (!p->sharable || removeFromSharingList(pBt)) {
 
-    ((void)(0))
 
-        ;
     sqlite3PagerClose(pBt->pPager, p->db);
     if (pBt->xFreeSchema && pBt->pSchema) {
       pBt->xFreeSchema(pBt->pSchema);
@@ -343,13 +319,9 @@ int sqlite3BtreeSetPageSize(Btree *p, int pageSize, int nReserve, int iFix) {
 
   if (pageSize >= 512 && pageSize <= 65536 && ((pageSize - 1) & pageSize) == 0) {
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     if (nReserve > 32 && pageSize == 512)
       pageSize = 1024;
     pBt->pageSize = (u32)pageSize;
@@ -523,9 +495,7 @@ __attribute__((noinline)) int btreeBeginTrans(Btree *p, int wrflag, int *pSchema
 
       if (p->sharable) {
 
-        ((void)(0))
 
-            ;
         p->lock.eLock = 1;
         p->lock.pNext = pBt->pLock;
         pBt->pLock = &p->lock;
@@ -538,9 +508,7 @@ __attribute__((noinline)) int btreeBeginTrans(Btree *p, int wrflag, int *pSchema
     if (wrflag) {
       MemPage *pPage1 = pBt->pPage1;
 
-      ((void)(0))
 
-          ;
       pBt->pWriter = p;
       pBt->btsFlags &= ~0x0040;
       if (wrflag > 1)
@@ -753,13 +721,9 @@ int sqlite3BtreeCommitPhaseTwo(Btree *p, int bCleanup) {
     int rc;
     BtShared *pBt = p->pBt;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     rc = sqlite3PagerCommitPhaseTwo(pBt->pPager);
     if (rc != 0 && bCleanup == 0) {
       sqlite3BtreeLeave(p);
@@ -829,9 +793,7 @@ int sqlite3BtreeRollback(Btree *p, int tripCode, int writeOnly) {
   if (tripCode) {
     int rc2 = sqlite3BtreeTripAllCursors(p, tripCode, writeOnly);
 
-    ((void)(0))
 
-        ;
     if (rc2 != 0)
       rc = rc2;
   }
@@ -841,9 +803,7 @@ int sqlite3BtreeRollback(Btree *p, int tripCode, int writeOnly) {
   if (p->inTrans == 2) {
     int rc2;
 
-    ((void)(0))
 
-        ;
     rc2 = sqlite3PagerRollback(pBt->pPager);
     if (rc2 != 0) {
       rc = rc2;
@@ -854,9 +814,7 @@ int sqlite3BtreeRollback(Btree *p, int tripCode, int writeOnly) {
       releasePageOne(pPage1);
     }
 
-    ((void)(0))
 
-        ;
     pBt->inTransaction = 1;
     btreeClearHasContent(pBt);
   }
@@ -881,13 +839,9 @@ int sqlite3BtreeSavepoint(Btree *p, int op, int iSavepoint) {
   if (p && p->inTrans == 2) {
     BtShared *pBt = p->pBt;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     sqlite3BtreeEnter(p);
     if (op == 2) {
       rc = saveAllCursors(pBt, 0, 0);
@@ -902,9 +856,7 @@ int sqlite3BtreeSavepoint(Btree *p, int op, int iSavepoint) {
       rc = newDatabase(pBt);
       btreeSetNPage(pBt, pBt->pPage1);
 
-      ((void)(0))
 
-          ;
     }
     sqlite3BtreeLeave(p);
   }
@@ -920,9 +872,7 @@ int btreeCursor(Btree *p, Pgno iTable, int wrFlag, struct KeyInfo *pKeyInfo, BtC
       return sqlite3CorruptError(77946);
     } else if (btreePagecount(pBt) == 0) {
 
-      ((void)(0))
 
-          ;
       iTable = 0;
     }
   }
@@ -995,9 +945,7 @@ int btreeCreateTable(Btree *p, Pgno *piTable, int createTabFlags) {
       pgnoRoot++;
     }
 
-    ((void)(0))
 
-        ;
 
     rc = allocateBtreePage(pBt, &pPageMove, &pgnoMove, pgnoRoot, 1);
     if (rc != 0) {
@@ -1028,13 +976,9 @@ int btreeCreateTable(Btree *p, Pgno *piTable, int createTabFlags) {
         return rc;
       }
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
       rc = relocatePage(pBt, pRoot, eType, iPtrPage, pgnoMove, 0);
       releasePage(pRoot);
 
@@ -1060,9 +1004,7 @@ int btreeCreateTable(Btree *p, Pgno *piTable, int createTabFlags) {
       return rc;
     }
 
-    ((void)(0))
 
-        ;
     rc = sqlite3BtreeUpdateMeta(p, 4, pgnoRoot);
     if ((rc)) {
       releasePage(pRoot);
@@ -1172,9 +1114,7 @@ int btreeDropTable(Btree *p, Pgno iTable, int *piMoved) {
       maxRootPgno--;
     }
 
-    ((void)(0))
 
-        ;
 
     rc = sqlite3BtreeUpdateMeta(p, 4, maxRootPgno);
   } else {
@@ -1221,13 +1161,9 @@ int sqlite3BtreeUpdateMeta(Btree *p, int idx, u32 iMeta) {
 
     if (idx == 7) {
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
       pBt->incrVacuum = (u8)iMeta;
     }
   }
@@ -1324,13 +1260,9 @@ int sqlite3BtreeLockTable(Btree *p, int iTab, u8 isWriteLock) {
   if (p->sharable) {
     u8 lockType = 1 + isWriteLock;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
 
     sqlite3BtreeEnter(p);
     rc = querySharedCacheTableLock(p, iTab, lockType);

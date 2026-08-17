@@ -46,15 +46,11 @@ int vdbePmaReadBlob(PmaReader *p, int nByte, u8 **ppOut) {
       nRead = (int)(p->iEof - p->iReadOff);
     }
 
-    ((void)(0))
 
-        ;
 
     rc = sqlite3OsRead(p->pFd, p->aBuffer, nRead, p->iReadOff);
 
-    ((void)(0))
 
-        ;
     if (rc != 0)
       return rc;
   }
@@ -96,13 +92,9 @@ int vdbePmaReadBlob(PmaReader *p, int nByte, u8 **ppOut) {
       if (rc != 0)
         return rc;
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
       memcpy(&p->aAlloc[nByte - nRem], aNext, nCopy);
       nRem -= nCopy;
     }
@@ -194,9 +186,7 @@ int vdbePmaReaderIncrMergeInit(PmaReader *pReadr, int eMode) {
     {
       if (pTask->file2.pFd == 0) {
 
-        ((void)(0))
 
-            ;
         rc = vdbeSorterOpenTempFile(db, pTask->file2.iEof, &pTask->file2.pFd);
         pTask->file2.iEof = 0;
       }
@@ -210,9 +200,7 @@ int vdbePmaReaderIncrMergeInit(PmaReader *pReadr, int eMode) {
 
   if (rc == 0 && pIncr->bUseThread) {
 
-    ((void)(0))
 
-        ;
     rc = vdbeIncrPopulate(pIncr);
   }
 
@@ -228,9 +216,7 @@ int vdbePmaReaderIncrInit(PmaReader *pReadr, int eMode) {
   int rc = 0;
   if (pIncr) {
 
-    ((void)(0))
 
-        ;
     if (pIncr->bUseThread) {
       void *pCtx = (void *)pReadr;
       rc = vdbeSorterCreateThread(pIncr->pTask, vdbePmaReaderBgIncrInit, pCtx);

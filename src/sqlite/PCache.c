@@ -69,9 +69,7 @@ static sqlite3_pcache *pcache1Create(int szPage, int szExtra, int bPurgeable) {
       pGroup = &(pcache1_g).grp;
     }
 
-    ((void)(0))
 
-        ;
     if (pGroup->lru.isAnchor == 0) {
       pGroup->lru.isAnchor = 1;
       pGroup->lru.pLruPrev = pGroup->lru.pLruNext = &pGroup->lru;
@@ -91,9 +89,7 @@ static sqlite3_pcache *pcache1Create(int szPage, int szExtra, int bPurgeable) {
       pCache->pnPurgeable = &pCache->nPurgeableDummy;
     }
 
-    ((void)(0))
 
-        ;
     if (pCache->nHash == 0) {
       pcache1Destroy((sqlite3_pcache *)pCache);
       pCache = 0;
@@ -254,14 +250,10 @@ void sqlite3PcacheTruncate(PCache *pCache, Pgno pgno) {
     for (p = pCache->pDirty; p; p = pNext) {
       pNext = p->pDirtyNext;
 
-      ((void)(0))
 
-          ;
       if (p->pgno > pgno) {
 
-        ((void)(0))
 
-            ;
         sqlite3PcacheMakeClean(p);
       }
     }

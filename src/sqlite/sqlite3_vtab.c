@@ -43,9 +43,7 @@ int pragmaVtabBestIndex(sqlite3_vtab *tab, sqlite3_index_info *pIdxInfo) {
       return 19;
     j = pConstraint->iColumn - pTab->iHidden;
 
-    ((void)(0))
 
-        ;
     seen[j] = i + 1;
   }
   if (seen[0] == 0) {
@@ -116,9 +114,7 @@ int jsonEachBestIndex(sqlite3_vtab *tab, sqlite3_index_info *pIdxInfo) {
       continue;
     iCol = pConstraint->iColumn - 8;
 
-    ((void)(0))
 
-        ;
     ;
     iMask = 1 << iCol;
     if (pConstraint->usable == 0) {

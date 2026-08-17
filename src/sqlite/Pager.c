@@ -73,9 +73,7 @@ int pagerUnlockDb(Pager *pPager, int eLock) {
 
   if (((pPager->fd)->pMethods != 0)) {
 
-    ((void)(0))
 
-        ;
     rc = pPager->noLock ? 0 : sqlite3OsUnlock(pPager->fd, eLock);
     if (pPager->eLock != (4 + 1)) {
       pPager->eLock = (u8)eLock;
@@ -185,9 +183,7 @@ int writeJournalHdr(Pager *pPager) {
 
     rc = sqlite3OsWrite(pPager->jfd, zHeader, nHeader, pPager->journalOff);
 
-    ((void)(0))
 
-        ;
     pPager->journalOff += nHeader;
   }
 
@@ -310,9 +306,7 @@ int addToSavepointBitvecs(Pager *pPager, Pgno pgno) {
       rc |= sqlite3BitvecSet(p->pInSavepoint, pgno);
       ;
 
-      ((void)(0))
 
-          ;
     }
   }
   return rc;
@@ -326,9 +320,7 @@ void pager_unlock(Pager *pPager) {
 
   if (((pPager)->pWal != 0)) {
 
-    ((void)(0))
 
-        ;
     if (pPager->eState == 6) {
 
       (void)sqlite3WalEndWriteTransaction(pPager->pWal);
@@ -339,29 +331,17 @@ void pager_unlock(Pager *pPager) {
     int rc;
     int iDc = ((pPager->fd)->pMethods != 0) ? sqlite3OsDeviceCharacteristics(pPager->fd) : 0;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     if (0 == (iDc & 0x00000800) || 1 != (pPager->journalMode & 5)) {
       sqlite3OsClose(pPager->jfd);
     }
@@ -371,9 +351,7 @@ void pager_unlock(Pager *pPager) {
       pPager->eLock = (4 + 1);
     }
 
-    ((void)(0))
 
-        ;
     pPager->eState = 0;
   }
 
@@ -429,9 +407,7 @@ int pager_end_transaction(Pager *pPager, int hasSuper, int bCommit) {
 
   if (((pPager->jfd)->pMethods != 0)) {
 
-    ((void)(0))
 
-        ;
 
     if (sqlite3JournalIsInMemory(pPager->jfd)) {
 
@@ -454,13 +430,9 @@ int pager_end_transaction(Pager *pPager, int hasSuper, int bCommit) {
 
       int bDelete = !pPager->tempFile;
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
       sqlite3OsClose(pPager->jfd);
       if (bDelete) {
         rc = sqlite3OsDelete(pPager->pVfs, pPager->zJournal, pPager->extraSync);
@@ -484,14 +456,10 @@ int pager_end_transaction(Pager *pPager, int hasSuper, int bCommit) {
 
     rc2 = sqlite3WalEndWriteTransaction(pPager->pWal);
 
-    ((void)(0))
 
-        ;
   } else if (rc == 0 && bCommit && pPager->dbFileSize > pPager->dbSize) {
 
-    ((void)(0))
 
-        ;
     rc = pager_truncate(pPager, pPager->dbSize);
   }
 
@@ -513,18 +481,14 @@ int pager_end_transaction(Pager *pPager, int hasSuper, int bCommit) {
 void pagerUnlockAndRollback(Pager *pPager) {
   if (pPager->eState != 6 && pPager->eState != 0) {
 
-    ((void)(0))
 
-        ;
     if (pPager->eState >= 2) {
       sqlite3BeginBenignMalloc();
       sqlite3PagerRollback(pPager);
       sqlite3EndBenignMalloc();
     } else if (!pPager->exclusiveMode) {
 
-      ((void)(0))
 
-          ;
       pager_end_transaction(pPager, 0, 0);
     }
   } else if (pPager->eState == 6 && pPager->journalMode == 4 && ((pPager->jfd)->pMethods != 0)) {
@@ -573,9 +537,7 @@ int pager_playback_one_page(Pager *pPager, i64 *pOffset, Bitvec *pDone, int isMa
 
   if (pgno == 0 || pgno == ((pPager)->lckPgno)) {
 
-    ((void)(0))
 
-        ;
     return 101;
   }
   if (pgno > (Pgno)pPager->dbSize || sqlite3BitvecTest(pDone, pgno)) {
@@ -614,9 +576,7 @@ int pager_playback_one_page(Pager *pPager, i64 *pOffset, Bitvec *pDone, int isMa
     i64 ofst = (pgno - 1) * (i64)pPager->pageSize;
     ;
 
-    ((void)(0))
 
-        ;
 
     rc = sqlite3OsWrite(pPager->fd, (u8 *)aData, pPager->pageSize, ofst);
 
@@ -628,19 +588,13 @@ int pager_playback_one_page(Pager *pPager, i64 *pOffset, Bitvec *pDone, int isMa
     }
   } else if (!isMainJrnl && pPg == 0) {
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     pPager->doNotSpill |= 0x02;
     rc = sqlite3PagerGet(pPager, pgno, &pPg, 1);
 
-    ((void)(0))
 
-        ;
     pPager->doNotSpill &= ~0x02;
     if (rc != 0)
       return rc;
@@ -720,9 +674,7 @@ int pager_delsuper(Pager *pPager, const char *zSuper) {
     goto delsuper_out;
   } else {
 
-    ((void)(0))
 
-        ;
   }
   zFree[0] = zFree[1] = zFree[2] = zFree[3] = 0;
   zSuperJournal = &zFree[4];
@@ -756,9 +708,7 @@ int pager_delsuper(Pager *pPager, const char *zSuper) {
         sqlite3OsClose(pJournal);
         if (rc != 0) {
 
-          ((void)(0))
 
-              ;
           goto delsuper_out;
         }
 
@@ -784,9 +734,7 @@ delsuper_out:
   if (pSuper) {
     sqlite3OsClose(pSuper);
 
-    ((void)(0))
 
-        ;
     sqlite3_free(pSuper);
   }
   return rc;
@@ -801,9 +749,7 @@ int pager_truncate(Pager *pPager, Pgno nPage) {
     i64 currentSize, newSize;
     int szPage = pPager->pageSize;
 
-    ((void)(0))
 
-        ;
 
     rc = sqlite3OsFileSize(pPager->fd, &currentSize);
     newSize = szPage * (i64)nPage;
@@ -876,9 +822,7 @@ int pager_playback(Pager *pPager, int isHot) {
 
     if (nRec == 0xffffffff) {
 
-      ((void)(0))
 
-          ;
       nRec = (int)((szJ - (pPager->sectorSize)) / ((pPager->pageSize) + 8));
     }
 
@@ -937,9 +881,7 @@ end_playback:
   }
   if (rc == 0 && zSuper && res) {
 
-    ((void)(0))
 
-        ;
     rc = pager_delsuper(pPager, zSuper);
     ;
   }
@@ -1007,9 +949,7 @@ int pagerWalFrames(Pager *pPager, PgHdr *pList, Pgno nTruncate, int isCommit) {
       }
     }
 
-    ((void)(0))
 
-        ;
   } else {
     nList = 1;
   }
@@ -1121,9 +1061,7 @@ int pagerPlaybackSavepoint(Pager *pPager, PagerSavepoint *pSavepoint) {
       rc = pager_playback_one_page(pPager, &pPager->journalOff, pDone, 1, 1);
     }
 
-    ((void)(0))
 
-        ;
   } else {
     pPager->journalOff = 0;
   }
@@ -1134,9 +1072,7 @@ int pagerPlaybackSavepoint(Pager *pPager, PagerSavepoint *pSavepoint) {
     u32 dummy;
     rc = readJournalHdr(pPager, 0, szJ, &nJRec, &dummy);
 
-    ((void)(0))
 
-        ;
 
     if (nJRec == 0 && pPager->journalHdr + (pPager->sectorSize) == pPager->journalOff) {
       nJRec = (u32)((szJ - pPager->journalOff) / ((pPager->pageSize) + 8));
@@ -1145,9 +1081,7 @@ int pagerPlaybackSavepoint(Pager *pPager, PagerSavepoint *pSavepoint) {
       rc = pager_playback_one_page(pPager, &pPager->journalOff, pDone, 1, 1);
     }
 
-    ((void)(0))
 
-        ;
   }
 
   if (pSavepoint) {
@@ -1159,15 +1093,11 @@ int pagerPlaybackSavepoint(Pager *pPager, PagerSavepoint *pSavepoint) {
     }
     for (ii = pSavepoint->iSubRec; rc == 0 && ii < pPager->nSubRec; ii++) {
 
-      ((void)(0))
 
-          ;
       rc = pager_playback_one_page(pPager, &offset, pDone, 0, 1);
     }
 
-    ((void)(0))
 
-        ;
   }
 
   sqlite3BitvecDestroy(pDone);
@@ -1304,9 +1234,7 @@ int sqlite3PagerSetPagesize(Pager *pPager, u32 *pPageSize, int nReserve) {
     if (nReserve < 0)
       nReserve = pPager->nReserve;
 
-    ((void)(0))
 
-        ;
     pPager->nReserve = (i16)nReserve;
     pagerFixMaplimit(pPager);
   }
@@ -1369,9 +1297,7 @@ int pagerAcquireMapPage(Pager *pPager, Pgno pgno, void *pData, PgHdr **ppPage) {
     pPager->pMmapFreelist = p->pDirty;
     p->pDirty = 0;
 
-    ((void)(0))
 
-        ;
     memset(p->pExtra, 0, 8);
   } else {
     *ppPage = p = (PgHdr *)sqlite3MallocZero(sizeof(PgHdr) + pPager->nExtra);
@@ -1381,9 +1307,7 @@ int pagerAcquireMapPage(Pager *pPager, Pgno pgno, void *pData, PgHdr **ppPage) {
     }
     p->pExtra = (void *)&p[1];
 
-    ((void)(0))
 
-        ;
     p->flags = 0x020;
     p->nRef = 1;
     p->pPager = pPager;
@@ -1436,9 +1360,7 @@ int sqlite3PagerClose(Pager *pPager, sqlite3 *db) {
   {
     u8 *a = 0;
 
-    ((void)(0))
 
-        ;
     if (db && 0 == (db->flags & 0x00000800) && 0 == databaseIsUnmoved(pPager)) {
       a = pTmp;
     }
@@ -1478,15 +1400,11 @@ int syncJournal(Pager *pPager, int newHdr) {
 
   if (!pPager->noSync) {
 
-    ((void)(0))
 
-        ;
     if (((pPager->jfd)->pMethods != 0) && pPager->journalMode != 4) {
       const int iDc = sqlite3OsDeviceCharacteristics(pPager->fd);
 
-      ((void)(0))
 
-          ;
 
       if (0 == (iDc & 0x00000200)) {
 
@@ -1549,9 +1467,7 @@ int pager_write_pagelist(Pager *pPager, PgHdr *pList) {
 
   if (!((pPager->fd)->pMethods != 0)) {
 
-    ((void)(0))
 
-        ;
     rc = pagerOpentemp(pPager, pPager->fd, pPager->vfsFlags);
   }
 
@@ -1568,9 +1484,7 @@ int pager_write_pagelist(Pager *pPager, PgHdr *pList) {
       i64 offset = (pgno - 1) * (i64)pPager->pageSize;
       char *pData;
 
-      ((void)(0))
 
-          ;
       if (pList->pgno == 1)
         pager_write_changecounter(pList);
 
@@ -1642,9 +1556,7 @@ int pagerStress(void *p, PgHdr *pPg) {
 
     if (rc == 0) {
 
-      ((void)(0))
 
-          ;
       rc = pager_write_pagelist(pPager, pPg);
     }
   }
@@ -1662,9 +1574,7 @@ int sqlite3PagerFlush(Pager *pPager) {
   if (!pPager->memDb) {
     PgHdr *pList = sqlite3PcacheDirtyList(pPager->pPCache);
 
-    ((void)(0))
 
-        ;
     while (rc == 0 && pList) {
       PgHdr *pNext = pList->pDirty;
       if (pList->nRef == 0) {
@@ -1694,9 +1604,7 @@ int hasHotJournal(Pager *pPager, int *pExists) {
     if (rc == 0 && !locked) {
       Pgno nPage;
 
-      ((void)(0))
 
-          ;
       rc = pagerPagecount(pPager, &nPage);
       if (rc == 0) {
 
@@ -1743,20 +1651,14 @@ int sqlite3PagerSharedLock(Pager *pPager) {
   if (!((pPager)->pWal != 0) && pPager->eState == 0) {
     int bHotJournal = 1;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
 
     rc = pager_wait_on_lock(pPager, 1);
     if (rc != 0) {
 
-      ((void)(0))
 
-          ;
       goto failed;
     }
 
@@ -1785,14 +1687,10 @@ int sqlite3PagerSharedLock(Pager *pPager) {
           int fout = 0;
           int f = 0x00000002 | 0x00000800;
 
-          ((void)(0))
 
-              ;
           rc = sqlite3OsOpen(pVfs, pPager->zJournal, pPager->jfd, f, &fout);
 
-          ((void)(0))
 
-              ;
           if (rc == 0 && fout & 0x00000001) {
             rc = sqlite3CantopenError(65019);
             sqlite3OsClose(pPager->jfd);
@@ -1802,9 +1700,7 @@ int sqlite3PagerSharedLock(Pager *pPager) {
 
       if (((pPager->jfd)->pMethods != 0)) {
 
-        ((void)(0))
 
-            ;
         rc = pagerSyncHotJournal(pPager);
         if (rc == 0) {
           rc = pager_playback(pPager, !pPager->tempFile);
@@ -1820,13 +1716,9 @@ int sqlite3PagerSharedLock(Pager *pPager) {
         goto failed;
       }
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
     }
 
     if (!pPager->tempFile && pPager->hasHeldSharedLock) {
@@ -1853,16 +1745,12 @@ int sqlite3PagerSharedLock(Pager *pPager) {
 
     rc = pagerOpenWalIfPresent(pPager);
 
-    ((void)(0))
 
-        ;
   }
 
   if (((pPager)->pWal != 0)) {
 
-    ((void)(0))
 
-        ;
     rc = pagerBeginReadTransaction(pPager);
   }
 
@@ -1873,14 +1761,10 @@ int sqlite3PagerSharedLock(Pager *pPager) {
 failed:
   if (rc != 0) {
 
-    ((void)(0))
 
-        ;
     pager_unlock(pPager);
 
-    ((void)(0))
 
-        ;
   } else {
     pPager->eState = 1;
     pPager->hasHeldSharedLock = 1;
@@ -1891,9 +1775,7 @@ failed:
 void pagerUnlockIfUnused(Pager *pPager) {
   if (sqlite3PcacheRefCount(pPager->pPCache) == 0) {
 
-    ((void)(0))
 
-        ;
     pagerUnlockAndRollback(pPager);
   }
 }
@@ -1922,9 +1804,7 @@ int getPageNormal(Pager *pPager, Pgno pgno, DbPage **ppPage, int flags) {
   noContent = (flags & 0x01) != 0;
   if (pPg->pPager && !noContent) {
 
-    ((void)(0))
 
-        ;
     pPager->aStat[0]++;
     return 0;
 
@@ -1937,9 +1817,7 @@ int getPageNormal(Pager *pPager, Pgno pgno, DbPage **ppPage, int flags) {
 
     pPg->pPager = pPager;
 
-    ((void)(0))
 
-        ;
     if (!((pPager->fd)->pMethods != 0) || pPager->dbSize < pgno || noContent) {
       if (pgno > pPager->mxPgno) {
         rc = 13;
@@ -1964,9 +1842,7 @@ int getPageNormal(Pager *pPager, Pgno pgno, DbPage **ppPage, int flags) {
       ;
     } else {
 
-      ((void)(0))
 
-          ;
       pPager->aStat[1]++;
       rc = readDbPage(pPg);
       if (rc != 0) {
@@ -2018,9 +1894,7 @@ int getPageMMap(Pager *pPager, Pgno pgno, DbPage **ppPage, int flags) {
       }
       if (pPg) {
 
-        ((void)(0))
 
-            ;
         *ppPage = pPg;
         return 0;
       }
@@ -2088,9 +1962,7 @@ int pager_open_journal(Pager *pPager) {
         }
       }
 
-      ((void)(0))
 
-          ;
     }
 
     if (rc == 0) {
@@ -2109,9 +1981,7 @@ int pager_open_journal(Pager *pPager) {
     pPager->journalOff = 0;
   } else {
 
-    ((void)(0))
 
-        ;
     pPager->eState = 3;
   }
 
@@ -2128,9 +1998,7 @@ int sqlite3PagerBegin(Pager *pPager, int exFlag, int subjInMemory) {
 
   if (pPager->eState == 1) {
 
-    ((void)(0))
 
-        ;
 
     if (((pPager)->pWal != 0)) {
 
@@ -2160,17 +2028,11 @@ int sqlite3PagerBegin(Pager *pPager, int exFlag, int subjInMemory) {
       pPager->journalOff = 0;
     }
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
   }
 
   ;
@@ -2185,15 +2047,11 @@ int pager_incr_changecounter(Pager *pPager, int isDirectMode) {
   if (!pPager->changeCountDone && pPager->dbSize > 0) {
     PgHdr *pPgHdr;
 
-    ((void)(0))
 
-        ;
 
     rc = sqlite3PagerGet(pPager, 1, &pPgHdr, 0);
 
-    ((void)(0))
 
-        ;
 
     if (!0 && (rc == 0)) {
       rc = sqlite3PagerWrite(pPgHdr);
@@ -2206,9 +2064,7 @@ int pager_incr_changecounter(Pager *pPager, int isDirectMode) {
       if (0) {
         const void *zBuf;
 
-        ((void)(0))
 
-            ;
         zBuf = pPgHdr->pData;
         if (rc == 0) {
           rc = sqlite3OsWrite(pPager->fd, zBuf, pPager->pageSize, 0);
@@ -2238,9 +2094,7 @@ int sqlite3PagerSync(Pager *pPager, const char *zSuper) {
     rc = 0;
   if (rc == 0 && !pPager->noSync) {
 
-    ((void)(0))
 
-        ;
     rc = sqlite3OsSync(pPager->fd, pPager->syncFlags);
   }
   return rc;
@@ -2251,13 +2105,9 @@ int sqlite3PagerExclusiveLock(Pager *pPager) {
 
   if (rc == 0) {
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     if (0 == ((pPager)->pWal != 0)) {
       rc = pager_wait_on_lock(pPager, 4);
     }
@@ -2294,9 +2144,7 @@ int sqlite3PagerCommitPhaseOne(Pager *pPager, const char *zSuper, int noSync) {
         pList->pDirty = 0;
       }
 
-      ((void)(0))
 
-          ;
       if ((pList)) {
         rc = pagerWalFrames(pPager, pList, pPager->dbSize, 1);
       }
@@ -2326,9 +2174,7 @@ int sqlite3PagerCommitPhaseOne(Pager *pPager, const char *zSuper, int noSync) {
       }
       if (rc != 0) {
 
-        ((void)(0))
 
-            ;
         goto commit_phase_one_exit;
       }
       sqlite3PcacheCleanAll(pPager->pPCache);
@@ -2336,9 +2182,7 @@ int sqlite3PagerCommitPhaseOne(Pager *pPager, const char *zSuper, int noSync) {
       if (pPager->dbSize > pPager->dbFileSize) {
         Pgno nNew = pPager->dbSize - (pPager->dbSize == ((pPager)->lckPgno));
 
-        ((void)(0))
 
-            ;
         rc = pager_truncate(pPager, nNew);
         if (rc != 0)
           goto commit_phase_one_exit;
@@ -2366,9 +2210,7 @@ int sqlite3PagerCommitPhaseTwo(Pager *pPager) {
 
   if (pPager->eState == 2 && pPager->exclusiveMode && pPager->journalMode == 1) {
 
-    ((void)(0))
 
-        ;
     pPager->eState = 1;
     return 0;
   }
@@ -2494,9 +2336,7 @@ int sqlite3PagerSavepoint(Pager *pPager, int op, int iSavepoint) {
           i64 sz = (pPager->pageSize + 4) * (i64)pRel->iSubRec;
           rc = sqlite3OsTruncate(pPager->sjfd, sz);
 
-          ((void)(0))
 
-              ;
         }
         pPager->nSubRec = pRel->iSubRec;
       }
@@ -2506,9 +2346,7 @@ int sqlite3PagerSavepoint(Pager *pPager, int op, int iSavepoint) {
       PagerSavepoint *pSavepoint = (nNew == 0) ? 0 : &pPager->aSavepoint[nNew - 1];
       rc = pagerPlaybackSavepoint(pPager, pSavepoint);
 
-      ((void)(0))
 
-          ;
     }
   }
 
@@ -2553,13 +2391,9 @@ int sqlite3PagerMovepage(Pager *pPager, DbPage *pPg, Pgno pgno, int isCommit) {
   if ((pPg->flags & 0x008) && !isCommit) {
     needSyncPgno = pPg->pgno;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
   }
 
   pPg->flags &= ~0x008;
@@ -2595,9 +2429,7 @@ int sqlite3PagerMovepage(Pager *pPager, DbPage *pPg, Pgno pgno, int isCommit) {
     if (rc != 0) {
       if (needSyncPgno <= pPager->dbOrigSize) {
 
-        ((void)(0))
 
-            ;
         sqlite3BitvecClear(pPager->pInJournal, needSyncPgno, pPager->pTmpSpace);
       }
       return rc;
@@ -2623,9 +2455,7 @@ int sqlite3PagerSetJournalMode(Pager *pPager, int eMode) {
 
   if (pPager->memDb) {
 
-    ((void)(0))
 
-        ;
     if (eMode != 4 && eMode != 2) {
       eMode = eOld;
     }
@@ -2633,38 +2463,22 @@ int sqlite3PagerSetJournalMode(Pager *pPager, int eMode) {
 
   if (eMode != eOld) {
 
-    ((void)(0))
 
-        ;
     pPager->journalMode = (u8)eMode;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     if (!pPager->exclusiveMode && (eOld & 5) == 1 && (eMode & 1) == 0) {
 
       sqlite3OsClose(pPager->jfd);
@@ -2674,17 +2488,13 @@ int sqlite3PagerSetJournalMode(Pager *pPager, int eMode) {
         int rc = 0;
         int state = pPager->eState;
 
-        ((void)(0))
 
-            ;
         if (state == 0) {
           rc = sqlite3PagerSharedLock(pPager);
         }
         if (pPager->eState == 1) {
 
-          ((void)(0))
 
-              ;
           rc = pagerLockDb(pPager, 2);
         }
         if (rc == 0) {
@@ -2696,9 +2506,7 @@ int sqlite3PagerSetJournalMode(Pager *pPager, int eMode) {
           pager_unlock(pPager);
         }
 
-        ((void)(0))
 
-            ;
       }
     } else if (eMode == 2 || eMode == 4) {
       sqlite3OsClose(pPager->jfd);

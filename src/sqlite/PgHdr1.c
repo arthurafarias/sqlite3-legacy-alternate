@@ -23,15 +23,11 @@ void pcache1Free(void *p) {
     (pcache1_g).nFreeSlot++;
     __atomic_store_n((&(pcache1_g).bUnderPressure), ((pcache1_g).nFreeSlot < (pcache1_g).nReserve), 0);
 
-    ((void)(0))
 
-        ;
     sqlite3_mutex_leave((pcache1_g).mutex);
   } else {
 
-    ((void)(0))
 
-        ;
     ;
 
     {

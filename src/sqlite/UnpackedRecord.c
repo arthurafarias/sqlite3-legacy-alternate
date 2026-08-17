@@ -34,9 +34,7 @@ RecordCompare sqlite3VdbeFindCompare(UnpackedRecord *p) {
     ;
     if ((flags & (0x0008 | 0x0020 | 0x0001 | 0x0010)) == 0 && p->pKeyInfo->aColl[0] == 0) {
 
-      ((void)(0))
 
-          ;
       p->u.z = p->aMem[0].z;
       p->n = p->aMem[0].n;
       return vdbeRecordCompareString;

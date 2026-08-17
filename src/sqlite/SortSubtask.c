@@ -136,13 +136,9 @@ int vdbeSorterCompareText(SortSubtask *pTask, int *pbKey2Cached, const void *pKe
     }
   } else {
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     if (pTask->pSorter->pKeyInfo->aSortFlags[0]) {
       res = res * -1;
     }
@@ -185,9 +181,7 @@ int vdbeSorterCompareInt(SortSubtask *pTask, int *pbKey2Cached, const void *pKey
       res = s1 - s2;
     }
 
-    ((void)(0))
 
-        ;
 
     if (res > 0) {
       if (*v1 & 0x80)
@@ -204,9 +198,7 @@ int vdbeSorterCompareInt(SortSubtask *pTask, int *pbKey2Cached, const void *pKey
     }
   } else if (pTask->pSorter->pKeyInfo->aSortFlags[0]) {
 
-    ((void)(0))
 
-        ;
     res = res * -1;
   }
 
@@ -223,9 +215,7 @@ int vdbeSorterJoinThread(SortSubtask *pTask) {
     ;
     rc = ((int)(intptr_t)(pRet));
 
-    ((void)(0))
 
-        ;
     pTask->bDone = 0;
     pTask->pThread = 0;
   }
@@ -297,9 +287,7 @@ int vdbeSorterSort(SortSubtask *pTask, SorterList *pList) {
         pNext = 0;
       } else {
 
-        ((void)(0))
 
-            ;
         pNext = (SorterRecord *)&pList->aMemory[p->u.iNext];
       }
     } else {
@@ -310,9 +298,7 @@ int vdbeSorterSort(SortSubtask *pTask, SorterList *pList) {
     for (i = 0; aSlot[i]; i++) {
       p = vdbeSorterMerge(pTask, p, aSlot[i]);
 
-      ((void)(0))
 
-          ;
       aSlot[i] = 0;
     }
     aSlot[i] = p;
@@ -341,17 +327,11 @@ int vdbeSorterListToPMA(SortSubtask *pTask, SorterList *pList) {
   if (pTask->file.pFd == 0) {
     rc = vdbeSorterOpenTempFile(db, 0, &pTask->file.pFd);
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
   }
 
   if (rc == 0) {

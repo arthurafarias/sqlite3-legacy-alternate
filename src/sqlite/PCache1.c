@@ -25,9 +25,7 @@ void *pcache1Alloc(int nByte) {
       (pcache1_g).nFreeSlot--;
       __atomic_store_n((&(pcache1_g).bUnderPressure), ((pcache1_g).nFreeSlot < (pcache1_g).nReserve), 0);
 
-      ((void)(0))
 
-          ;
       sqlite3StatusHighwater(7, nByte);
       sqlite3StatusUp(1, 1);
     }
@@ -78,9 +76,7 @@ int pcache1InitBulk(PCache1 *pCache) {
         pX->page.pBuf = zBulk;
         pX->page.pExtra = (u8 *)pX + (((sizeof(*pX)) + 7) & ~7);
 
-        ((void)(0))
 
-            ;
         pX->isBulkLocal = 1;
         pX->isAnchor = 0;
         pX->pNext = pCache->pFree;
@@ -99,9 +95,7 @@ PgHdr1 *pcache1AllocPage(PCache1 *pCache, int benignMalloc) {
 
   if (pCache->pFree || (pCache->nPage == 0 && pcache1InitBulk(pCache))) {
 
-    ((void)(0))
 
-        ;
     p = pCache->pFree;
     pCache->pFree = p->pNext;
     p->pNext = 0;
@@ -121,9 +115,7 @@ PgHdr1 *pcache1AllocPage(PCache1 *pCache, int benignMalloc) {
     p->page.pBuf = pPg;
     p->page.pExtra = (u8 *)p + (((sizeof(*p)) + 7) & ~7);
 
-    ((void)(0))
 
-        ;
     p->isBulkLocal = 0;
     p->isAnchor = 0;
     p->pLruPrev = 0;
@@ -181,13 +173,9 @@ void pcache1EnforceMaxPage(PCache1 *pCache) {
 
   while (pGroup->nPurgeable > pGroup->nMaxPage && (p = pGroup->lru.pLruPrev)->isAnchor == 0) {
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     pcache1PinPage(p);
     pcache1RemoveFromHash(p, 1);
   }
@@ -215,9 +203,7 @@ void pcache1TruncateUnsafe(PCache1 *pCache, unsigned int iLimit) {
     PgHdr1 **pp;
     PgHdr1 *pPage;
 
-    ((void)(0))
 
-        ;
     pp = &pCache->apHash[h];
     while ((pPage = *pp) != 0) {
       if (pPage->iKey >= iLimit) {
@@ -254,9 +240,7 @@ __attribute__((noinline)) PgHdr1 *pcache1FetchStage2(PCache1 *pCache, unsigned i
     PCache1 *pOther;
     pPage = pGroup->lru.pLruPrev;
 
-    ((void)(0))
 
-        ;
     pcache1RemoveFromHash(pPage, 0);
     pcache1PinPage(pPage);
     pOther = pPage->pCache;

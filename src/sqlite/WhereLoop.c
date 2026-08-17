@@ -87,13 +87,9 @@ WhereLoop **whereLoopFindLesser(WhereLoop **ppPrev, const WhereLoop *pTemplate) 
       continue;
     }
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
 
     if ((p->wsFlags & 0x00004000) != 0 && (pTemplate->nSkip) == 0 && (pTemplate->wsFlags & 0x00000200) != 0 && (pTemplate->wsFlags & 0x00000001) != 0 && (p->prereq & pTemplate->prereq) == pTemplate->prereq) {
       break;
@@ -105,9 +101,7 @@ WhereLoop **whereLoopFindLesser(WhereLoop **ppPrev, const WhereLoop *pTemplate) 
 
     if ((p->prereq & pTemplate->prereq) == pTemplate->prereq && p->rRun >= pTemplate->rRun && p->nOut >= pTemplate->nOut) {
 
-      ((void)(0))
 
-          ;
       break;
     }
   }

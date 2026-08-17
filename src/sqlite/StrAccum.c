@@ -60,9 +60,7 @@ int sqlite3StrAccumEnlarge(StrAccum *p, i64 N) {
     }
     if (zNew) {
 
-      ((void)(0))
 
-          ;
       if (!(((p)->printfFlags & 0x04) != 0) && p->nChar > 0)
         memcpy(zNew, p->zText, p->nChar);
       p->zText = zNew;
@@ -174,9 +172,7 @@ void sqlite3QuoteValue(StrAccum *pStr, sqlite3_value *pValue, int bEscape) {
     char const *zBlob = sqlite3_value_blob(pValue);
     i64 nBlob = sqlite3_value_bytes(pValue);
 
-    ((void)(0))
 
-        ;
     sqlite3StrAccumEnlarge(pStr, nBlob * 2 + 4);
     if (pStr->accError == 0) {
       char *zText = pStr->zText;
@@ -200,9 +196,7 @@ void sqlite3QuoteValue(StrAccum *pStr, sqlite3_value *pValue, int bEscape) {
   }
   default: {
 
-    ((void)(0))
 
-        ;
     sqlite3_str_append(pStr, "NULL", 4);
     break;
   }

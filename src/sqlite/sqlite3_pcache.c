@@ -15,9 +15,7 @@ void pcache1Cachesize(sqlite3_pcache *p, int nMax) {
   if (pCache->bPurgeable) {
     PGroup *pGroup = pCache->pGroup;
 
-    ((void)(0))
 
-        ;
     n = (u32)nMax;
     if (n > 0x7fff0000 - pGroup->nMaxPage + pCache->nMax) {
       n = 0x7fff0000 - pGroup->nMaxPage + pCache->nMax;
@@ -28,9 +26,7 @@ void pcache1Cachesize(sqlite3_pcache *p, int nMax) {
     pCache->n90pct = pCache->nMax * 9 / 10;
     pcache1EnforceMaxPage(pCache);
 
-    ((void)(0))
 
-        ;
   }
 }
 
@@ -40,17 +36,13 @@ void pcache1Shrink(sqlite3_pcache *p) {
     PGroup *pGroup = pCache->pGroup;
     unsigned int savedMaxPage;
 
-    ((void)(0))
 
-        ;
     savedMaxPage = pGroup->nMaxPage;
     pGroup->nMaxPage = 0;
     pcache1EnforceMaxPage(pCache);
     pGroup->nMaxPage = savedMaxPage;
 
-    ((void)(0))
 
-        ;
   }
 }
 

@@ -57,30 +57,22 @@ void releaseInodeInfo(unixFile *pFile) {
     pInode->nRef--;
     if (pInode->nRef == 0) {
 
-      ((void)(0))
 
-          ;
       sqlite3_mutex_enter(pInode->pLockMutex);
       closePendingFds(pFile);
       sqlite3_mutex_leave(pInode->pLockMutex);
       if (pInode->pPrev) {
 
-        ((void)(0))
 
-            ;
         pInode->pPrev->pNext = pInode->pNext;
       } else {
 
-        ((void)(0))
 
-            ;
         inodeList = pInode->pNext;
       }
       if (pInode->pNext) {
 
-        ((void)(0))
 
-            ;
         pInode->pNext->pPrev = pInode->pPrev;
       }
       sqlite3_mutex_free(pInode->pLockMutex);
@@ -133,9 +125,7 @@ int findInodeInfo(unixFile *pFile, unixInodeInfo **ppInode) {
     }
     pInode->nRef = 1;
 
-    ((void)(0))
 
-        ;
     pInode->pNext = inodeList;
     pInode->pPrev = 0;
     if (inodeList)
@@ -301,13 +291,9 @@ int fcntlSizeHint(unixFile *pFile, i64 nByte) {
 
       iWrite = (buf.st_size / nBlk) * nBlk + nBlk - 1;
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
       for (; iWrite < nSize + nBlk - 1; iWrite += nBlk) {
         if (iWrite >= nSize)
           iWrite = nSize - 1;
@@ -447,22 +433,14 @@ int unixShmSystemLock(unixFile *pFile, int lockType, int ofst, int n) {
 
   if (ofst == (((22 + 8) * 4) + 8)) {
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
   } else {
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
   }
 
   if (pShmNode->hShm >= 0) {
@@ -498,9 +476,7 @@ void unixShmPurge(unixFile *pFd) {
     int nShmPerMap = unixShmRegionPerMap();
     int i;
 
-    ((void)(0))
 
-        ;
     sqlite3_mutex_free(p->pShmMutex);
 
     for (i = 0; i < p->nRegion; i += nShmPerMap) {
@@ -574,9 +550,7 @@ int unixLockSharedMemory(unixFile *pDbFd, unixShmNode *pShmNode) {
 
   if (rc == 0) {
 
-    ((void)(0))
 
-        ;
     rc = unixShmSystemLock(pDbFd,
 
                            0

@@ -70,9 +70,7 @@ LogEst whereRangeAdjust(WhereTerm *pTerm, LogEst nNew) {
     } else if ((pTerm->wtFlags & 0x0080) == 0) {
       nRet -= 20;
 
-      ((void)(0))
 
-          ;
     }
   }
   return nRet;

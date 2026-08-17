@@ -22,9 +22,7 @@ void disableTerm(WhereLevel *pLevel, WhereTerm *pTerm) {
       break;
     pTerm = &pTerm->pWC->a[pTerm->iParent];
 
-    ((void)(0))
 
-        ;
     pTerm->nChild--;
     if (pTerm->nChild != 0)
       break;

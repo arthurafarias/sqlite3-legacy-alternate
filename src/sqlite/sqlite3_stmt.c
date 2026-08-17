@@ -71,9 +71,7 @@ int sqlite3_finalize(sqlite3_stmt *pStmt) {
       invokeProfileCallback(db, v);
     };
 
-    ((void)(0))
 
-        ;
     rc = sqlite3VdbeReset(v);
     sqlite3VdbeDelete(v);
     rc = sqlite3ApiExit(db, rc);
@@ -96,9 +94,7 @@ int sqlite3_reset(sqlite3_stmt *pStmt) {
     rc = sqlite3VdbeReset(v);
     sqlite3VdbeRewind(v);
 
-    ((void)(0))
 
-        ;
     rc = sqlite3ApiExit(db, rc);
     sqlite3_mutex_leave(db->mutex);
   }
@@ -160,9 +156,7 @@ int sqlite3_step(sqlite3_stmt *pStmt) {
       v->minWriteFileFormat = 254;
     }
 
-    ((void)(0))
 
-        ;
   }
   sqlite3_mutex_leave(db->mutex);
   return rc;
@@ -205,13 +199,9 @@ void columnMallocFailure(sqlite3_stmt *pStmt) {
   Vdbe *p = (Vdbe *)pStmt;
   if (p) {
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     p->rc = sqlite3ApiExit(p->db, p->rc);
     sqlite3_mutex_leave(p->db->mutex);
   }
@@ -324,9 +314,7 @@ const void *columnName(sqlite3_stmt *pStmt, int N, int useUtf16, int useType) {
       ret = sqlite3_value_text((sqlite3_value *)&p->aColName[N]);
     }
 
-    ((void)(0))
 
-        ;
     if (db->mallocFailed > prior_mallocFailed) {
       sqlite3OomClear(db);
       ret = 0;
@@ -353,18 +341,14 @@ int bindText(sqlite3_stmt *pStmt, int i, const void *zData, i64 nData, void (*xD
   rc = vdbeUnbind(p, (u32)(i - 1));
   if (rc == 0) {
 
-    ((void)(0))
 
-        ;
     if (zData != 0) {
       pVar = &p->aVar[i - 1];
       if (encoding == 1) {
         rc = sqlite3VdbeMemSetText(pVar, zData, nData, xDel);
       } else if (encoding == 16) {
 
-        ((void)(0))
 
-            ;
         rc = sqlite3VdbeMemSetText(pVar, zData, nData, xDel);
         pVar->flags |= 0x0200;
       } else {
@@ -397,9 +381,7 @@ int sqlite3_bind_double(sqlite3_stmt *pStmt, int i, double rValue) {
   rc = vdbeUnbind(p, (u32)(i - 1));
   if (rc == 0) {
 
-    ((void)(0))
 
-        ;
     sqlite3VdbeMemSetDouble(&p->aVar[i - 1], rValue);
     sqlite3_mutex_leave(p->db->mutex);
   }
@@ -414,9 +396,7 @@ int sqlite3_bind_int64(sqlite3_stmt *pStmt, int i, sqlite_int64 iValue) {
   rc = vdbeUnbind(p, (u32)(i - 1));
   if (rc == 0) {
 
-    ((void)(0))
 
-        ;
     sqlite3VdbeMemSetInt64(&p->aVar[i - 1], iValue);
     sqlite3_mutex_leave(p->db->mutex);
   }
@@ -429,9 +409,7 @@ int sqlite3_bind_null(sqlite3_stmt *pStmt, int i) {
   rc = vdbeUnbind(p, (u32)(i - 1));
   if (rc == 0) {
 
-    ((void)(0))
 
-        ;
     sqlite3_mutex_leave(p->db->mutex);
   }
   return rc;
@@ -443,9 +421,7 @@ int sqlite3_bind_pointer(sqlite3_stmt *pStmt, int i, void *pPtr, const char *zPT
   rc = vdbeUnbind(p, (u32)(i - 1));
   if (rc == 0) {
 
-    ((void)(0))
 
-        ;
     sqlite3VdbeMemSetPointer(&p->aVar[i - 1], pPtr, zPTtype, xDestructor);
     sqlite3_mutex_leave(p->db->mutex);
   } else if (xDestructor) {
@@ -477,9 +453,7 @@ int sqlite3_bind_value(sqlite3_stmt *pStmt, int i, const sqlite3_value *pValue) 
   }
   case 2: {
 
-    ((void)(0))
 
-        ;
     rc = sqlite3_bind_double(pStmt, i, (pValue->flags & 0x0008) ? pValue->u.r : (double)pValue->u.i);
     break;
   }
@@ -509,9 +483,7 @@ int sqlite3_bind_zeroblob(sqlite3_stmt *pStmt, int i, int n) {
   rc = vdbeUnbind(p, (u32)(i - 1));
   if (rc == 0) {
 
-    ((void)(0))
 
-        ;
 
     sqlite3VdbeMemSetZeroBlob(&p->aVar[i - 1], n);
 
@@ -529,9 +501,7 @@ int sqlite3_bind_zeroblob64(sqlite3_stmt *pStmt, int i, sqlite3_uint64 n) {
     rc = 18;
   } else {
 
-    ((void)(0))
 
-        ;
     rc = sqlite3_bind_zeroblob(pStmt, i, n);
   }
   rc = sqlite3ApiExit(p->db, rc);
@@ -635,9 +605,7 @@ int sqlite3_stmt_status(sqlite3_stmt *pStmt, int op, int resetFlag) {
     v = 0;
     db->pnBytesFreed = (int *)&v;
 
-    ((void)(0))
 
-        ;
     db->lookaside.pEnd = db->lookaside.pStart;
     sqlite3VdbeDelete(pVdbe);
     db->pnBytesFreed = 0;

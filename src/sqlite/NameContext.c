@@ -120,13 +120,9 @@ int sqlite3ResolveExprListNames(NameContext *pNC, ExprList *pList) {
 
     w.pParse->nHeight -= pExpr->nHeight;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     ;
     ;
     if (pNC->ncFlags & (0x000010 | 0x001000 | 0x008000 | 0x8000000)) {
@@ -210,9 +206,7 @@ const char *columnTypeImpl(NameContext *pNC,
       break;
     }
 
-    ((void)(0))
 
-        ;
     if (pS) {
 
       if (iCol < pS->pEList->nExpr && (!0 || iCol >= 0)) {
@@ -226,13 +220,9 @@ const char *columnTypeImpl(NameContext *pNC,
       }
     } else {
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
       if (iCol < 0) {
         zType = "INTEGER";
       } else {
@@ -248,9 +238,7 @@ const char *columnTypeImpl(NameContext *pNC,
     Select *pS;
     Expr *p;
 
-    ((void)(0))
 
-        ;
     pS = pExpr->x.pSelect;
     p = pS->pEList->a[0].pExpr;
     sNC.pSrcList = pS->pSrc;

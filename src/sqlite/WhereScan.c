@@ -31,19 +31,13 @@ WhereTerm *whereScanNext(WhereScan *pScan) {
     iColumn = pScan->aiColumn[pScan->iEquiv - 1];
     iCur = pScan->aiCur[pScan->iEquiv - 1];
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     do {
       for (pTerm = pWC->a + k; k < pWC->nTerm; k++, pTerm++) {
 
-        ((void)(0))
 
-            ;
         if (pTerm->leftCursor == iCur && pTerm->u.x.leftColumn == iColumn && (iColumn != (-2) || sqlite3ExprCompareSkip(pTerm->pExpr->pLeft, pScan->pIdxExpr, iCur) == 0) && (pScan->iEquiv <= 1 || !(((pTerm->pExpr)->flags & (u32)(0x000001)) != 0))) {
           if ((pTerm->eOperator & 0x0800) != 0 && pScan->nEquiv < ((int)(sizeof(pScan->aiCur) / sizeof(pScan->aiCur[0]))) && (pX = whereRightSubexprIsColumn(pTerm->pExpr)) != 0) {
             int j;
@@ -75,9 +69,7 @@ WhereTerm *whereScanNext(WhereScan *pScan) {
                   continue;
                 }
 
-                ((void)(0))
 
-                    ;
                 pColl = sqlite3ExprCompareCollSeq(pParse, pX);
                 zCollName = pColl ? pColl->zName : sqlite3StrBINARY;
               }

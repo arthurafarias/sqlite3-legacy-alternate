@@ -102,24 +102,18 @@ __attribute__((noinline)) int sqlite3WalkExprNN(Walker *pWalker, Expr *pExpr) {
       return rc & 2;
     if (!(((pExpr)->flags & (u32)((0x010000 | 0x800000))) != 0)) {
 
-      ((void)(0))
 
-          ;
       if (pExpr->pLeft && sqlite3WalkExprNN(pWalker, pExpr->pLeft)) {
         return 2;
       }
       if (pExpr->pRight) {
 
-        ((void)(0))
 
-            ;
         pExpr = pExpr->pRight;
         continue;
       } else if ((((pExpr)->flags & 0x001000) != 0)) {
 
-        ((void)(0))
 
-            ;
         if (sqlite3WalkSelect(pWalker, pExpr->x.pSelect))
           return 2;
       } else {
@@ -269,15 +263,11 @@ int resolveExprStep(Walker *pWalker, Expr *pExpr) {
     SrcList *pSrcList = pNC->pSrcList;
     SrcItem *pItem;
 
-    ((void)(0))
 
-        ;
     pItem = pSrcList->a;
     pExpr->op = 168;
 
-    ((void)(0))
 
-        ;
     pExpr->y.pTab = pItem->pSTab;
     pExpr->iTable = pItem->iCursor;
     pExpr->iColumn--;
@@ -307,9 +297,7 @@ int resolveExprStep(Walker *pWalker, Expr *pExpr) {
       }
     };
 
-    ((void)(0))
 
-        ;
 
     pExpr->u.iValue = (pExpr->op == 52);
     pExpr->flags |= 0x000800;
@@ -332,18 +320,14 @@ int resolveExprStep(Walker *pWalker, Expr *pExpr) {
       zDb = 0;
       zTable = 0;
 
-      ((void)(0))
 
-          ;
       pRight = pExpr;
     } else {
       Expr *pLeft = pExpr->pLeft;
       ;
       ;
 
-      ((void)(0))
 
-          ;
       if (((pNC)->ncFlags & (0x000020 | 0x000008)) != 0)
         notValidImpl(pParse, pNC, "the \".\" operator", 0, pExpr);
       ;
@@ -352,26 +336,18 @@ int resolveExprStep(Walker *pWalker, Expr *pExpr) {
         zDb = 0;
       } else {
 
-        ((void)(0))
 
-            ;
 
-        ((void)(0))
 
-            ;
         zDb = pLeft->u.zToken;
         pLeft = pRight->pLeft;
         pRight = pRight->pRight;
       }
 
-      ((void)(0))
 
-          ;
       zTable = pLeft->u.zToken;
 
-      ((void)(0))
 
-          ;
       if ((pParse->eParseMode >= 2)) {
         sqlite3RenameTokenRemap(pParse, (void *)pExpr, (void *)pRight);
         sqlite3RenameTokenRemap(pParse, (void *)&pExpr->y.pTab, (void *)pLeft);
@@ -393,13 +369,9 @@ int resolveExprStep(Walker *pWalker, Expr *pExpr) {
 
     Window *pWin = ((((((pExpr))->flags & (u32)(0x1000000)) != 0) && pExpr->y.pWin->eFrmType != 167) ? pExpr->y.pWin : 0);
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     pList = pExpr->x.pList;
     n = pList ? pList->nExpr : 0;
     zId = pExpr->u.zToken;
@@ -452,17 +424,13 @@ int resolveExprStep(Walker *pWalker, Expr *pExpr) {
       }
       if ((pDef->funcFlags & 0x0800) == 0) {
 
-        ((void)(0))
 
-            ;
         if (((pNC)->ncFlags & (0x000020 | 0x000002 | 0x000008)) != 0)
           notValidImpl(pParse, pNC, "non-deterministic functions", 0, pExpr);
         ;
       } else {
 
-        ((void)(0))
 
-            ;
         pExpr->op2 = pNC->ncFlags & 0x00002e;
       }
       if ((pDef->funcFlags & 0x00040000) != 0 && pParse->nested == 0 && (pParse->db->mDbFlags & 0x0020) == 0) {
@@ -478,9 +446,7 @@ int resolveExprStep(Walker *pWalker, Expr *pExpr) {
 
     if (0 == (pParse->eParseMode >= 2)) {
 
-      ((void)(0))
 
-          ;
       if (pDef && pDef->xValue == 0 && pWin) {
         sqlite3ErrorMsg(pParse, "%#T() may not be used as a window function", pExpr);
         pNC->nNcErr++;
@@ -526,22 +492,16 @@ int resolveExprStep(Walker *pWalker, Expr *pExpr) {
     if (is_agg) {
       if (pExpr->pLeft) {
 
-        ((void)(0))
 
-            ;
 
-        ((void)(0))
 
-            ;
         sqlite3WalkExprList(pWalker, pExpr->pLeft->x.pList);
       }
 
       if (pWin && pParse->nErr == 0) {
         Select *pSel = pNC->pWinSelect;
 
-        ((void)(0))
 
-            ;
         if ((pParse->eParseMode >= 2) == 0) {
           sqlite3WindowUpdate(pParse, pSel ? pSel->pWinDefn : 0, pWin, pDef);
           if (pParse->db->mallocFailed)
@@ -569,19 +529,13 @@ int resolveExprStep(Walker *pWalker, Expr *pExpr) {
           pNC2 = pNC2->pNext;
         }
 
-        ((void)(0))
 
-            ;
         if (pNC2 && pDef) {
           pExpr->op2 += pNC2->nNestedSelect;
 
-          ((void)(0))
 
-              ;
 
-          ((void)(0))
 
-              ;
           ;
           ;
           pNC2->ncFlags |= 0x000010 | ((pDef->funcFlags ^ 0x08000000) & (0x1000 | 0x08000000));
@@ -607,9 +561,7 @@ int resolveExprStep(Walker *pWalker, Expr *pExpr) {
       ;
       ;
 
-      ((void)(0))
 
-          ;
       if (pExpr->op == 20)
         pParse->bHasExists = 1;
       if (pNC->ncFlags & 0x00002e) {
@@ -618,9 +570,7 @@ int resolveExprStep(Walker *pWalker, Expr *pExpr) {
         sqlite3WalkSelect(pWalker, pExpr->x.pSelect);
       }
 
-      ((void)(0))
 
-          ;
       if (nRef != pNC->nRef) {
         (pExpr)->flags |= (u32)(0x000040);
         pExpr->x.pSelect->selFlags |= 0x20000000;
@@ -635,9 +585,7 @@ int resolveExprStep(Walker *pWalker, Expr *pExpr) {
     ;
     ;
 
-    ((void)(0))
 
-        ;
     if (((pNC)->ncFlags & (0x000004 | 0x000002 | 0x000020 | 0x000008)) != 0)
       notValidImpl(pParse, pNC, "parameters", pExpr, pExpr);
     ;
@@ -647,9 +595,7 @@ int resolveExprStep(Walker *pWalker, Expr *pExpr) {
   case 46: {
     Expr *pRight = sqlite3ExprSkipCollateAndLikely(pExpr->pRight);
 
-    ((void)(0))
 
-        ;
 
     if ((pRight) && (pRight->op == 60 || pRight->op == 171)) {
       int rc = resolveExprStep(pWalker, pRight);
@@ -674,24 +620,18 @@ int resolveExprStep(Walker *pWalker, Expr *pExpr) {
     if (pParse->db->mallocFailed)
       break;
 
-    ((void)(0))
 
-        ;
     nLeft = sqlite3ExprVectorSize(pExpr->pLeft);
     if (pExpr->op == 49) {
 
-      ((void)(0))
 
-          ;
       nRight = sqlite3ExprVectorSize(pExpr->x.pList->a[0].pExpr);
       if (nRight == nLeft) {
         nRight = sqlite3ExprVectorSize(pExpr->x.pList->a[1].pExpr);
       }
     } else {
 
-      ((void)(0))
 
-          ;
       nRight = sqlite3ExprVectorSize(pExpr->pRight);
     }
     if (nLeft != nRight) {
@@ -751,13 +691,9 @@ int resolveSelectStep(Walker *pWalker, Select *p) {
   pLeftmost = p;
   while (p) {
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     p->selFlags |= 0x0000004;
 
     memset(&sNC, 0, sizeof(sNC));
@@ -770,26 +706,16 @@ int resolveSelectStep(Walker *pWalker, Select *p) {
     if (p->selFlags & 0x0010000) {
       Select *pSub;
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
       pSub = p->pSrc->a[0].u4.pSubq->pSelect;
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
       pSub->pOrderBy = p->pOrderBy;
       p->pOrderBy = 0;
     }
@@ -799,9 +725,7 @@ int resolveSelectStep(Walker *pWalker, Select *p) {
     for (i = 0; i < p->pSrc->nSrc; i++) {
       SrcItem *pItem = &p->pSrc->a[i];
 
-      ((void)(0))
 
-          ;
       if (pItem->fg.isSubquery && (pItem->u4.pSubq->pSelect->selFlags & 0x0000004) == 0) {
         int nRef = pOuterNC ? pOuterNC->nRef : 0;
         const char *zSavedContext = pParse->zAuthContext;
@@ -813,15 +737,11 @@ int resolveSelectStep(Walker *pWalker, Select *p) {
         if (pParse->nErr)
           return 2;
 
-        ((void)(0))
 
-            ;
 
         if (pOuterNC) {
 
-          ((void)(0))
 
-              ;
           pItem->fg.isCorrelated = (pOuterNC->nRef > nRef);
         }
       }
@@ -838,27 +758,19 @@ int resolveSelectStep(Walker *pWalker, Select *p) {
       return 2;
     sNC.ncFlags &= ~0x004000;
 
-    ((void)(0))
 
-        ;
     pGroupBy = p->pGroupBy;
     if (pGroupBy || (sNC.ncFlags & 0x000010) != 0) {
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
       p->selFlags |= 0x0000008 | (sNC.ncFlags & (0x001000 | 0x8000000));
     } else {
       sNC.ncFlags &= ~0x000001;
     }
 
-    ((void)(0))
 
-        ;
     sNC.uNC.pEList = p->pEList;
     sNC.ncFlags |= 0x000080;
     if (p->pHaving) {
@@ -895,14 +807,10 @@ int resolveSelectStep(Walker *pWalker, Select *p) {
     if (p->selFlags & 0x0010000) {
       Select *pSub;
 
-      ((void)(0))
 
-          ;
       pSub = p->pSrc->a[0].u4.pSubq->pSelect;
 
-      ((void)(0))
 
-          ;
       p->pOrderBy = pSub->pOrderBy;
       pSub->pOrderBy = 0;
     }
@@ -957,17 +865,11 @@ int gatherSelectWindowsCallback(Walker *pWalker, Expr *pExpr) {
     Select *pSelect = pWalker->u.pSelect;
     Window *pWin = pExpr->y.pWin;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     sqlite3WindowLink(pSelect, pWin);
   }
   return 0;
@@ -1182,13 +1084,9 @@ int impliesNotNullRow(Walker *pWalker, Expr *pExpr) {
 
   case 49:
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     sqlite3WalkExpr(pWalker, pExpr->pLeft);
     bothImplyNotNullRow(pWalker, pExpr->x.pList->a[0].pExpr, pExpr->x.pList->a[1].pExpr);
     return 1;
@@ -1208,13 +1106,9 @@ int impliesNotNullRow(Walker *pWalker, Expr *pExpr) {
     ;
     ;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     if ((pLeft->op == 168 && (pLeft->y.pTab != 0) && ((pLeft->y.pTab)->eTabType == 1)) || (pRight->op == 168 && (pRight->y.pTab != 0) && ((pRight->y.pTab)->eTabType == 1))) {
       return 1;
     }
@@ -1260,9 +1154,7 @@ void selectRefLeave(Walker *pWalker, Select *pSelect) {
   SrcList *pSrc = pSelect->pSrc;
   if (p->nExclude) {
 
-    ((void)(0))
 
-        ;
     p->nExclude -= pSrc->nSrc;
   }
 }
@@ -1295,9 +1187,7 @@ int agginfoPersistExprCb(Walker *pWalker, Expr *pExpr) {
     Parse *pParse = pWalker->pParse;
     sqlite3 *db = pParse->db;
 
-    ((void)(0))
 
-        ;
     if (pExpr->op != 169) {
       if (iAgg < pAggInfo->nColumn && pAggInfo->aCol[iAgg].pCExpr == pExpr) {
         pExpr = sqlite3ExprDup(db, pExpr, 0);
@@ -1307,9 +1197,7 @@ int agginfoPersistExprCb(Walker *pWalker, Expr *pExpr) {
       }
     } else {
 
-      ((void)(0))
 
-          ;
       if ((iAgg < pAggInfo->nFunc) && pAggInfo->aFunc[iAgg].pFExpr == pExpr) {
         pExpr = sqlite3ExprDup(db, pExpr, 0);
         if (pExpr && !sqlite3ExprDeferredDelete(pParse, pExpr)) {
@@ -1340,9 +1228,7 @@ int analyzeAggregate(Walker *pWalker, Expr *pExpr) {
     IndexedExpr *pIEpr;
     Expr tmp;
 
-    ((void)(0))
 
-        ;
     if ((pNC->ncFlags & 0x020000) == 0)
       break;
     if (pParse->pIdxEpr == 0)
@@ -1381,13 +1267,9 @@ int analyzeAggregate(Walker *pWalker, Expr *pExpr) {
       return 2;
     }
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     pAggInfo->aCol[tmp.iAgg].pCExpr = pExpr;
     pExpr->pAggInfo = pAggInfo;
     pExpr->iAgg = tmp.iAgg;
@@ -1404,9 +1286,7 @@ int analyzeAggregate(Walker *pWalker, Expr *pExpr) {
       SrcItem *pItem = pSrcList->a;
       for (i = 0; i < pSrcList->nSrc; i++, pItem++) {
 
-        ((void)(0))
 
-            ;
         if (pExpr->iTable == pItem->iCursor) {
           findOrCreateAggInfoColumn(pParse, pAggInfo, pExpr);
           break;
@@ -1421,9 +1301,7 @@ int analyzeAggregate(Walker *pWalker, Expr *pExpr) {
       struct AggInfo_func *pItem = pAggInfo->aFunc;
       int mxTerm = pParse->db->aLimit[2];
 
-      ((void)(0))
 
-          ;
       for (i = 0; i < pAggInfo->nFunc; i++, pItem++) {
         if ((pItem->pFExpr == pExpr))
           break;
@@ -1435,9 +1313,7 @@ int analyzeAggregate(Walker *pWalker, Expr *pExpr) {
         sqlite3ErrorMsg(pParse, "more than %d aggregate terms", mxTerm);
         i = mxTerm;
 
-        ((void)(0))
 
-            ;
       } else if (i >= pAggInfo->nFunc) {
 
         u8 enc = ((pParse->db)->enc);
@@ -1445,46 +1321,30 @@ int analyzeAggregate(Walker *pWalker, Expr *pExpr) {
         if (i >= 0) {
           int nArg;
 
-          ((void)(0))
 
-              ;
           pItem = &pAggInfo->aFunc[i];
           pItem->pFExpr = pExpr;
 
-          ((void)(0))
 
-              ;
           nArg = pExpr->x.pList ? pExpr->x.pList->nExpr : 0;
           pItem->pFunc = sqlite3FindFunction(pParse->db, pExpr->u.zToken, nArg, enc, 0);
 
-          ((void)(0))
 
-              ;
           if (pExpr->pLeft && (pItem->pFunc->funcFlags & 0x0020) == 0) {
 
             ExprList *pOBList;
 
-            ((void)(0))
 
-                ;
 
-            ((void)(0))
 
-                ;
 
-            ((void)(0))
 
-                ;
             pItem->iOBTab = pParse->nTab++;
             pOBList = pExpr->pLeft->x.pList;
 
-            ((void)(0))
 
-                ;
 
-            ((void)(0))
 
-                ;
             if (pOBList->nExpr == 1 && nArg == 1 && sqlite3ExprCompare(0, pOBList->a[0].pExpr, pExpr->x.pList->a[0].pExpr, 0) == 0) {
               pItem->bOBPayload = 0;
               pItem->bOBUnique = (((pExpr)->flags & (u32)(0x000004)) != 0);
@@ -1503,14 +1363,10 @@ int analyzeAggregate(Walker *pWalker, Expr *pExpr) {
         }
       }
 
-      ((void)(0))
 
-          ;
       ;
 
-      ((void)(0))
 
-          ;
       pExpr->iAgg = (i16)i;
       pExpr->pAggInfo = pAggInfo;
       return 1;
@@ -1538,9 +1394,7 @@ void renameWalkWith(Walker *pWalker, Select *pSelect) {
     int i;
     With *pCopy = 0;
 
-    ((void)(0))
 
-        ;
     if ((pWith->a[0].pSelect->selFlags & 0x0000040) == 0) {
 
       pCopy = sqlite3WithDup(pParse->db, pWith);
@@ -1640,9 +1494,7 @@ void renameWalkTrigger(Walker *pWalker, Trigger *pTrigger) {
       for (i = 0; i < pSrc->nSrc; i++) {
         if (pSrc->a[i].fg.isSubquery) {
 
-          ((void)(0))
 
-              ;
           sqlite3WalkSelect(pWalker, pSrc->a[i].u4.pSubq->pSelect);
         }
       }
@@ -1669,9 +1521,7 @@ int renameTableSelectCb(Walker *pWalker, Select *pSelect) {
   }
   if ((pSrc == 0)) {
 
-    ((void)(0))
 
-        ;
     return 2;
   }
   for (i = 0; i < pSrc->nSrc; i++) {
@@ -1750,9 +1600,7 @@ int fixSelectCb(Walker *p, Select *pSelect) {
 int exprColumnFlagUnion(Walker *pWalker, Expr *pExpr) {
   if (pExpr->op == 168 && pExpr->iColumn >= 0) {
 
-    ((void)(0))
 
-        ;
     pWalker->eCode |= pWalker->u.pTab->aCol[pExpr->iColumn].colFlags;
   }
   return 0;
@@ -1761,9 +1609,7 @@ int exprColumnFlagUnion(Walker *pWalker, Expr *pExpr) {
 int checkConstraintExprNode(Walker *pWalker, Expr *pExpr) {
   if (pExpr->op == 168) {
 
-    ((void)(0))
 
-        ;
     if (pExpr->iColumn >= 0) {
       if (pWalker->u.aiCol[pExpr->iColumn] >= 0) {
         pWalker->eCode |= 0x01;
@@ -1894,9 +1740,7 @@ void sqlite3SelectPopWith(Walker *pWalker, Select *p) {
     With *pWith = findRightmost(p)->pWith;
     if (pWith != 0) {
 
-      ((void)(0))
 
-          ;
       pParse->pWith = pWith->pOuter;
     }
   }
@@ -1955,31 +1799,21 @@ int selectExpander(Walker *pWalker, Select *p) {
   for (i = 0, pFrom = pTabList->a; i < pTabList->nSrc; i++, pFrom++) {
     Table *pTab;
 
-    ((void)(0))
 
-        ;
     if (pFrom->pSTab)
       continue;
 
-    ((void)(0))
 
-        ;
     if (pFrom->zName == 0) {
 
       Select *pSel;
 
-      ((void)(0))
 
-          ;
       pSel = pFrom->u4.pSubq->pSelect;
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
       if (sqlite3WalkSelect(pWalker, pSel))
         return 2;
       if (sqlite3ExpandSubquery(pParse, pFrom))
@@ -1990,15 +1824,11 @@ int selectExpander(Walker *pWalker, Select *p) {
         return 2;
       pTab = pFrom->pSTab;
 
-      ((void)(0))
 
-          ;
 
     } else {
 
-      ((void)(0))
 
-          ;
       pFrom->pSTab = pTab = sqlite3LocateTableItem(pParse, 0, pFrom);
       if (pTab == 0)
         return 2;
@@ -2018,9 +1848,7 @@ int selectExpander(Walker *pWalker, Select *p) {
         if (sqlite3ViewGetColumnNames(pParse, pTab))
           return 2;
 
-        ((void)(0))
 
-            ;
         if (((pTab)->eTabType == 2)) {
           if ((db->flags & 0x80000000) == 0 && pTab->pSchema != db->aDb[1].pSchema) {
             sqlite3ErrorMsg(pParse, "access to view \"%s\" prohibited", pTab->zName);
@@ -2032,9 +1860,7 @@ int selectExpander(Walker *pWalker, Select *p) {
           sqlite3ErrorMsg(pParse, "unsafe use of virtual table \"%s\"", pTab->zName);
         }
 
-        ((void)(0))
 
-            ;
 
         nCol = pTab->nCol;
         pTab->nCol = -1;
@@ -2061,13 +1887,9 @@ int selectExpander(Walker *pWalker, Select *p) {
     if (pE->op == 180)
       break;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     if (pE->op == 142 && pE->pRight->op == 180)
       break;
     elistFlags |= pE->flags;
@@ -2084,9 +1906,7 @@ int selectExpander(Walker *pWalker, Select *p) {
       elistFlags |= pE->flags;
       pRight = pE->pRight;
 
-      ((void)(0))
 
-          ;
       if (pE->op != 180 && (pE->op != 142 || pRight->op != 180)) {
 
         pNew = sqlite3ExprListAppend(pParse, pNew, a[k].pExpr);
@@ -2103,28 +1923,18 @@ int selectExpander(Walker *pWalker, Select *p) {
         int iErrOfst;
         if (pE->op == 142) {
 
-          ((void)(0))
 
-              ;
 
-          ((void)(0))
 
-              ;
 
-          ((void)(0))
 
-              ;
           zTName = pE->pLeft->u.zToken;
 
-          ((void)(0))
 
-              ;
           iErrOfst = pE->pRight->w.iOfst;
         } else {
 
-          ((void)(0))
 
-              ;
           iErrOfst = pE->w.iOfst;
         }
         for (i = 0, pFrom = pTabList->a; i < pTabList->nSrc; i++, pFrom++) {
@@ -2142,31 +1952,19 @@ int selectExpander(Walker *pWalker, Select *p) {
           if (db->mallocFailed)
             break;
 
-          ((void)(0))
 
-              ;
           if (pFrom->fg.isNestedFrom) {
 
-            ((void)(0))
 
-                ;
 
-            ((void)(0))
 
-                ;
             pNestedFrom = pFrom->u4.pSubq->pSelect->pEList;
 
-            ((void)(0))
 
-                ;
 
-            ((void)(0))
 
-                ;
 
-            ((void)(0))
 
-                ;
           } else {
             if (zTName && sqlite3StrICmp(zTName, zTabName) != 0) {
               continue;
@@ -2186,9 +1984,7 @@ int selectExpander(Walker *pWalker, Select *p) {
               if (pNew) {
                 struct ExprList_item *pX = &pNew->a[pNew->nExpr - 1];
 
-                ((void)(0))
 
-                    ;
                 pX->zEName = sqlite3MPrintf(db, "..%s", zUName);
                 pX->fg.eEName = 2;
                 pX->fg.bUsingTerm = 1;
@@ -2228,9 +2024,7 @@ int selectExpander(Walker *pWalker, Select *p) {
               }
             }
 
-            ((void)(0))
 
-                ;
             tableSeen = 1;
 
             if (i > 0 && zTName == 0 && (selFlags & 0x0000800) == 0) {
@@ -2261,15 +2055,11 @@ int selectExpander(Walker *pWalker, Select *p) {
             }
             pX = &pNew->a[pNew->nExpr - 1];
 
-            ((void)(0))
 
-                ;
             if ((selFlags & 0x0000800) != 0 && !(pParse->eParseMode >= 2)) {
               if (pNestedFrom && (!0 || j < pNestedFrom->nExpr)) {
 
-                ((void)(0))
 
-                    ;
                 pX->zEName = sqlite3DbStrDup(db, pNestedFrom->a[j].zEName);
                 ;
               } else {
@@ -2329,9 +2119,7 @@ void selectAddSubqueryTypeInfo(Walker *pWalker, Select *p) {
   for (i = 0, pFrom = pTabList->a; i < pTabList->nSrc; i++, pFrom++) {
     Table *pTab = pFrom->pSTab;
 
-    ((void)(0))
 
-        ;
     if ((pTab->tabFlags & 0x00004000) != 0 && pFrom->fg.isSubquery) {
 
       Select *pSel = pFrom->u4.pSubq->pSelect;
@@ -2393,9 +2181,7 @@ int selectCheckOnClausesExpr(Walker *pWalker, Expr *pExpr) {
 
   if (((((pExpr)->flags & (u32)(0x000001)) != 0)) || ((((pExpr)->flags & (u32)(0x000002)) != 0) && (((pCtx->pSrc)->a[0].fg.jointype & 0x40) != 0))) {
 
-    ((void)(0))
 
-        ;
     if (pCtx->iJoin == 0) {
       pCtx->iJoin = pExpr->w.iJoin;
       sqlite3WalkExprNN(pWalker, pExpr);
@@ -2566,9 +2352,7 @@ int selectWindowRewriteExprCb(Walker *pWalker, Expr *pExpr) {
       for (pWin = p->pWin; pWin; pWin = pWin->pNextWin) {
         if (pExpr->y.pWin == pWin) {
 
-          ((void)(0))
 
-              ;
           return 1;
         }
       }
@@ -2599,9 +2383,7 @@ int selectWindowRewriteExprCb(Walker *pWalker, Expr *pExpr) {
     if (p->pSub) {
       int f = pExpr->flags & 0x000200;
 
-      ((void)(0))
 
-          ;
       (pExpr)->flags |= (u32)(0x8000000);
       sqlite3ExprDelete(pParse->db, pExpr);
       (pExpr)->flags &= ~(u32)(0x8000000);
@@ -2648,9 +2430,7 @@ int sqlite3WindowExtraAggFuncDepth(Walker *pWalker, Expr *pExpr) {
 int disallowAggregatesInOrderByCb(Walker *pWalker, Expr *pExpr) {
   if (pExpr->op == 169 && pExpr->pAggInfo == 0) {
 
-    ((void)(0))
 
-        ;
     sqlite3ErrorMsg(pWalker->pParse, "misuse of aggregate: %s()", pExpr->u.zToken);
   }
   return 0;

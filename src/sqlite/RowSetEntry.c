@@ -13,13 +13,9 @@ struct RowSetEntry *rowSetEntryMerge(struct RowSetEntry *pA, struct RowSetEntry 
 
   for (;;) {
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     if (pA->v <= pB->v) {
       if (pA->v < pB->v)
         pTail = pTail->pRight = pA;

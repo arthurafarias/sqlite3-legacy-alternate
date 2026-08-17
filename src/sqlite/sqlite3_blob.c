@@ -48,9 +48,7 @@ int blobReadWrite(sqlite3_blob *pBlob, void *z, int n, int iOffset, int (*xCall)
     rc = 4;
   } else {
 
-    ((void)(0))
 
-        ;
     sqlite3BtreeEnterCursor(p->pCsr);
 
     rc = xCall(p->pCsr, iOffset + p->iOffset, n, z);
@@ -100,9 +98,7 @@ int sqlite3_blob_reopen(sqlite3_blob *pBlob, sqlite3_int64 iRow) {
       sqlite3DbFree(db, zErr);
     }
 
-    ((void)(0))
 
-        ;
   }
 
   rc = sqlite3ApiExit(db, rc);

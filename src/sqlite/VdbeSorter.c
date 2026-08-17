@@ -76,21 +76,13 @@ int vdbeSorterFlushPMA(VdbeSorter *pSorter) {
       u8 *aMem;
       void *pCtx;
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
 
       aMem = pTask->list.aMemory;
       pCtx = (void *)pTask;
@@ -138,9 +130,7 @@ int vdbeSorterMergeTreeBuild(VdbeSorter *pSorter, MergeEngine **ppOut) {
   for (iTask = 0; rc == 0 && iTask < pSorter->nTask; iTask++) {
     SortSubtask *pTask = &pSorter->aTask[iTask];
 
-    ((void)(0))
 
-        ;
     if (8 == 0 || pTask->nPMA) {
       MergeEngine *pRoot = 0;
       int nDepth = vdbeSorterTreeDepth(pTask->nPMA);
@@ -174,9 +164,7 @@ int vdbeSorterMergeTreeBuild(VdbeSorter *pSorter, MergeEngine **ppOut) {
 
         {
 
-          ((void)(0))
 
-              ;
           pMain = pRoot;
         }
       } else {
@@ -208,9 +196,7 @@ int vdbeSorterSetupMerge(VdbeSorter *pSorter) {
   rc = vdbeSorterMergeTreeBuild(pSorter, &pMain);
   if (rc == 0) {
 
-    ((void)(0))
 
-        ;
     if (pSorter->bUseThreads) {
       int iTask;
       PmaReader *pReadr = 0;
@@ -231,18 +217,14 @@ int vdbeSorterSetupMerge(VdbeSorter *pSorter) {
             if ((pIncr = pMain->aReadr[iTask].pIncr)) {
               vdbeIncrMergerSetThreads(pIncr);
 
-              ((void)(0))
 
-                  ;
             }
           }
           for (iTask = 0; rc == 0 && iTask < pSorter->nTask; iTask++) {
 
             PmaReader *p = &pMain->aReadr[iTask];
 
-            ((void)(0))
 
-                ;
             rc = vdbePmaReaderIncrInit(p, 1);
           }
         }

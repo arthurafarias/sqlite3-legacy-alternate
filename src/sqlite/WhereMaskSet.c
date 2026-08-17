@@ -47,9 +47,7 @@ __attribute__((noinline)) Bitmask sqlite3WhereExprUsageFull(WhereMaskSet *pMaskS
   if (p->pRight) {
     mask |= sqlite3WhereExprUsageNN(pMaskSet, p->pRight);
 
-    ((void)(0))
 
-        ;
   } else if ((((p)->flags & 0x001000) != 0)) {
     if ((((p)->flags & (u32)(0x000040)) != 0))
       pMaskSet->bVarSelect = 1;
@@ -60,9 +58,7 @@ __attribute__((noinline)) Bitmask sqlite3WhereExprUsageFull(WhereMaskSet *pMaskS
 
   if ((p->op == 172 || p->op == 169) && (((p)->flags & 0x1000000) != 0)) {
 
-    ((void)(0))
 
-        ;
     mask |= sqlite3WhereExprListUsage(pMaskSet, p->y.pWin->pPartition);
     mask |= sqlite3WhereExprListUsage(pMaskSet, p->y.pWin->pOrderBy);
     mask |= sqlite3WhereExprUsage(pMaskSet, p->y.pWin->pFilter);
@@ -76,9 +72,7 @@ Bitmask sqlite3WhereExprUsageNN(WhereMaskSet *pMaskSet, Expr *p) {
     return sqlite3WhereGetMask(pMaskSet, p->iTable);
   } else if ((((p)->flags & (u32)(0x010000 | 0x800000)) != 0)) {
 
-    ((void)(0))
 
-        ;
     return 0;
   }
   return sqlite3WhereExprUsageFull(pMaskSet, p);

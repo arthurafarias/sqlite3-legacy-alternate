@@ -42,13 +42,9 @@ void windowAggStep(WindowCodeArg *p, Window *pMWin, int csr, int bInverse, int r
     int i;
     int addrIf = 0;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
 
     for (i = 0; i < nArg; i++) {
       if (i != 1 || pFunc->zName != nth_valueName) {
@@ -62,17 +58,11 @@ void windowAggStep(WindowCodeArg *p, Window *pMWin, int csr, int bInverse, int r
     if (pWin->pFilter) {
       int regTmp;
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
       regTmp = sqlite3GetTempReg(pParse);
       sqlite3VdbeAddOp3(v, 96, csr, pWin->iArgCol + nArg, regTmp);
       addrIf = sqlite3VdbeAddOp3(v, 17, regTmp, 0, 1);
@@ -97,26 +87,18 @@ void windowAggStep(WindowCodeArg *p, Window *pMWin, int csr, int bInverse, int r
       sqlite3VdbeJumpHere(v, addrIsNull);
     } else if (pWin->regApp) {
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
       sqlite3VdbeAddOp2(v, 88, pWin->regApp + 1 - bInverse, 1);
     } else if (pFunc->xSFunc != noopStepFunc) {
       if (pWin->bExprArgs) {
         int iOp = sqlite3VdbeCurrentAddr(v);
         int iEnd;
 
-        ((void)(0))
 
-            ;
         nArg = pWin->pOwner->x.pList->nExpr;
         regArg = sqlite3GetTempRange(pParse, nArg);
         sqlite3ExprCodeExprList(pParse, pWin->pOwner->x.pList, regArg, 0, 0);
@@ -131,13 +113,9 @@ void windowAggStep(WindowCodeArg *p, Window *pMWin, int csr, int bInverse, int r
       if (pFunc->funcFlags & 0x0020) {
         CollSeq *pColl;
 
-        ((void)(0))
 
-            ;
 
-        ((void)(0))
 
-            ;
         pColl = sqlite3ExprNNCollSeq(pParse, pWin->pOwner->x.pList->a[0].pExpr);
         sqlite3VdbeAddOp4(v, 87, 0, 0, 0, (const char *)pColl, (-2));
       }
@@ -169,9 +147,7 @@ void windowAggFinal(WindowCodeArg *p, int bFin) {
       sqlite3VdbeJumpHere(v, sqlite3VdbeCurrentAddr(v) - 2);
     } else if (pWin->regApp) {
 
-      ((void)(0))
 
-          ;
     } else {
       int nArg = windowArgCount(pWin);
       if (bFin) {
@@ -293,9 +269,7 @@ void windowReturnOneRow(WindowCodeArg *p) {
     for (pWin = pMWin; pWin; pWin = pWin->pNextWin) {
       FuncDef *pFunc = pWin->pWFunc;
 
-      ((void)(0))
 
-          ;
       if (pFunc->zName == nth_valueName || pFunc->zName == first_valueName) {
         int csr = pWin->csrApp;
         int lbl = sqlite3VdbeMakeLabel(pParse);
@@ -376,9 +350,7 @@ void windowCodeRangeTest(WindowCodeArg *p, int op, int csr1, int regVal, int csr
       break;
     default:
 
-      ((void)(0))
 
-          ;
       op = 58;
       break;
     }
@@ -405,9 +377,7 @@ void windowCodeRangeTest(WindowCodeArg *p, int op, int csr1, int regVal, int csr
       break;
     default:
 
-      ((void)(0))
 
-          ;
       break;
     }
     sqlite3VdbeAddOp2(v, 9, 0, addrDone);
@@ -462,9 +432,7 @@ int windowCodeOp(WindowCodeArg *p, int op, int regCountdown, int jumpOnEof) {
 
   if (op == 2 && pMWin->eStart == 91) {
 
-    ((void)(0))
 
-        ;
     return 0;
   }
 
@@ -472,9 +440,7 @@ int windowCodeOp(WindowCodeArg *p, int op, int regCountdown, int jumpOnEof) {
     if (pMWin->eFrmType == 90) {
       addrNextRange = sqlite3VdbeCurrentAddr(v);
 
-      ((void)(0))
 
-          ;
       if (op == 2) {
         if (pMWin->eStart == 87) {
           windowCodeRangeTest(p, 56, p->current.csr, regCountdown, p->start.csr, lblDone);
@@ -511,9 +477,7 @@ int windowCodeOp(WindowCodeArg *p, int op, int regCountdown, int jumpOnEof) {
     sqlite3ReleaseTempReg(pParse, regRowid1);
     sqlite3ReleaseTempReg(pParse, regRowid2);
 
-    ((void)(0))
 
-        ;
   }
 
   switch (op) {
@@ -528,9 +492,7 @@ int windowCodeOp(WindowCodeArg *p, int op, int regCountdown, int jumpOnEof) {
     reg = p->start.reg;
     if (pMWin->regStartRowid) {
 
-      ((void)(0))
 
-          ;
       sqlite3VdbeAddOp2(v, 88, pMWin->regStartRowid, 1);
     } else {
       windowAggStep(p, pMWin, csr, 1, p->regArg);
@@ -539,16 +501,12 @@ int windowCodeOp(WindowCodeArg *p, int op, int regCountdown, int jumpOnEof) {
 
   default:
 
-    ((void)(0))
 
-        ;
     csr = p->end.csr;
     reg = p->end.reg;
     if (pMWin->regStartRowid) {
 
-      ((void)(0))
 
-          ;
       sqlite3VdbeAddOp2(v, 88, pMWin->regEndRowid, 1);
     } else {
       windowAggStep(p, pMWin, csr, 0, p->regArg);

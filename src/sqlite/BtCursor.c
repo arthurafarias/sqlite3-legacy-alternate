@@ -148,9 +148,7 @@ int btreeMoveto(BtCursor *pCur, const void *pKey, i64 nKey, int bias, int *pRes)
   if (pKey) {
     KeyInfo *pKeyInfo = pCur->pKeyInfo;
 
-    ((void)(0))
 
-        ;
     pIdxKey = sqlite3VdbeAllocUnpackedRecord(pKeyInfo);
     if (pIdxKey == 0)
       return 7;
@@ -185,9 +183,7 @@ int btreeRestoreCursorPosition(BtCursor *pCur) {
     sqlite3_free(pCur->pKey);
     pCur->pKey = 0;
 
-    ((void)(0))
 
-        ;
     if (skipNext)
       pCur->skipNext = skipNext;
     if (pCur->skipNext && pCur->eState == 0) {
@@ -239,9 +235,7 @@ int sqlite3BtreeCloseCursor(BtCursor *pCur) {
     BtShared *pBt = pCur->pBt;
     sqlite3BtreeEnter(pBtree);
 
-    ((void)(0))
 
-        ;
     if (pBt->pCursor == pCur) {
       pBt->pCursor = pCur->pNext;
     } else {
@@ -260,9 +254,7 @@ int sqlite3BtreeCloseCursor(BtCursor *pCur) {
     sqlite3_free(pCur->pKey);
     if ((pBt->openFlags & 4) && pBt->pCursor == 0) {
 
-      ((void)(0))
 
-          ;
       sqlite3BtreeClose(pBtree);
     } else {
       sqlite3BtreeLeave(pBtree);
@@ -368,13 +360,9 @@ int accessPayload(BtCursor *pCur, u32 offset, u32 amt, unsigned char *pBuf, int 
       pCur->curFlags |= 0x04;
     } else {
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
 
       if (pCur->aOverflow[offset / ovflSize]) {
         iIdx = (offset / ovflSize);
@@ -383,28 +371,20 @@ int accessPayload(BtCursor *pCur, u32 offset, u32 amt, unsigned char *pBuf, int 
       }
     }
 
-    ((void)(0))
 
-        ;
     while (nextPage) {
 
       if (nextPage > pBt->nPage)
         return sqlite3CorruptError(78458);
 
-      ((void)(0))
 
-          ;
       pCur->aOverflow[iIdx] = nextPage;
 
       if (offset >= ovflSize) {
 
-        ((void)(0))
 
-            ;
 
-        ((void)(0))
 
-            ;
         if (pCur->aOverflow[iIdx + 1]) {
           nextPage = pCur->aOverflow[iIdx + 1];
         } else {
@@ -423,9 +403,7 @@ int accessPayload(BtCursor *pCur, u32 offset, u32 amt, unsigned char *pBuf, int 
           u8 aSave[4];
           u8 *aWrite = &pBuf[-4];
 
-          ((void)(0))
 
-              ;
           memcpy(aSave, aWrite, 4);
           rc = sqlite3OsRead(fd, aWrite, a + 4, (i64)pBt->pageSize * (nextPage - 1));
           nextPage = sqlite3Get4byte(aWrite);
@@ -480,9 +458,7 @@ __attribute__((noinline)) int accessPayloadChecked(BtCursor *pCur, u32 offset, u
 int sqlite3BtreePayloadChecked(BtCursor *pCur, u32 offset, u32 amt, void *pBuf) {
   if (pCur->eState == 0) {
 
-    ((void)(0))
 
-        ;
     return accessPayload(pCur, offset, amt, pBuf, 0);
   } else {
     return accessPayloadChecked(pCur, offset, amt, pBuf);
@@ -495,9 +471,7 @@ const void *fetchPayload(BtCursor *pCur, u32 *pAmt) {
   amt = pCur->info.nLocal;
   if (amt > (int)(pCur->pPage->aDataEnd - pCur->info.pPayload)) {
 
-    ((void)(0))
 
-        ;
     amt = ((0) > ((int)(pCur->pPage->aDataEnd - pCur->info.pPayload)) ? (0) : ((int)(pCur->pPage->aDataEnd - pCur->info.pPayload)));
   }
   *pAmt = (u32)amt;
@@ -561,15 +535,11 @@ int moveToRoot(BtCursor *pCur) {
     return 16;
   } else {
 
-    ((void)(0))
 
-        ;
     if (pCur->eState >= 3) {
       if (pCur->eState == 4) {
 
-        ((void)(0))
 
-            ;
         return pCur->skipNext;
       }
       sqlite3BtreeClearCursor(pCur);
@@ -616,9 +586,7 @@ int moveToLeftmost(BtCursor *pCur) {
 
   while (rc == 0 && !(pPage = pCur->pPage)->leaf) {
 
-    ((void)(0))
 
-        ;
     pgno = sqlite3Get4byte(((pPage)->aData + ((pPage)->maskPage & __builtin_bswap16(*(u16 *)(&(pPage)->aCellIdx[2 * (pCur->ix)])))));
     rc = moveToChild(pCur, pgno);
   }
@@ -648,16 +616,12 @@ int sqlite3BtreeFirst(BtCursor *pCur, int *pRes) {
   rc = moveToRoot(pCur);
   if (rc == 0) {
 
-    ((void)(0))
 
-        ;
     *pRes = 0;
     rc = moveToLeftmost(pCur);
   } else if (rc == 16) {
 
-    ((void)(0))
 
-        ;
     *pRes = 1;
     rc = 0;
   }
@@ -685,9 +649,7 @@ __attribute__((noinline)) int btreeLast(BtCursor *pCur, int *pRes) {
   int rc = moveToRoot(pCur);
   if (rc == 0) {
 
-    ((void)(0))
 
-        ;
     *pRes = 0;
     rc = moveToRightmost(pCur);
     if (rc == 0) {
@@ -697,9 +659,7 @@ __attribute__((noinline)) int btreeLast(BtCursor *pCur, int *pRes) {
     }
   } else if (rc == 16) {
 
-    ((void)(0))
 
-        ;
     *pRes = 1;
     rc = 0;
   }
@@ -710,9 +670,7 @@ int sqlite3BtreeLast(BtCursor *pCur, int *pRes) {
 
   if (0 == pCur->eState && (pCur->curFlags & 0x08) != 0) {
 
-    ((void)(0))
 
-        ;
     *pRes = 0;
     return 0;
   }
@@ -730,9 +688,7 @@ int sqlite3BtreeTableMoveto(BtCursor *pCur, i64 intKey, int biasRight, int *pRes
     if (pCur->info.nKey < intKey) {
       if ((pCur->curFlags & 0x08) != 0) {
 
-        ((void)(0))
 
-            ;
         *pRes = -1;
         return 0;
       }
@@ -756,9 +712,7 @@ int sqlite3BtreeTableMoveto(BtCursor *pCur, i64 intKey, int biasRight, int *pRes
   if (rc) {
     if (rc == 16) {
 
-      ((void)(0))
 
-          ;
       *pRes = -1;
       return 0;
     }
@@ -771,19 +725,13 @@ int sqlite3BtreeTableMoveto(BtCursor *pCur, i64 intKey, int biasRight, int *pRes
     MemPage *pPage = pCur->pPage;
     u8 *pCell;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     lwr = 0;
     upr = pPage->nCell - 1;
 
-    ((void)(0))
 
-        ;
     idx = upr >> (1 - biasRight);
     for (;;) {
       i64 nCellKey;
@@ -810,9 +758,7 @@ int sqlite3BtreeTableMoveto(BtCursor *pCur, i64 intKey, int biasRight, int *pRes
         }
       } else {
 
-        ((void)(0))
 
-            ;
         pCur->ix = (u16)idx;
         if (!pPage->leaf) {
           lwr = idx;
@@ -826,24 +772,16 @@ int sqlite3BtreeTableMoveto(BtCursor *pCur, i64 intKey, int biasRight, int *pRes
         }
       }
 
-      ((void)(0))
 
-          ;
       idx = (lwr + upr) >> 1;
     }
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     if (pPage->leaf) {
 
-      ((void)(0))
 
-          ;
       pCur->ix = (u16)idx;
       *pRes = c;
       rc = 0;
@@ -904,9 +842,7 @@ int sqlite3BtreeIndexMoveto(BtCursor *pCur, UnpackedRecord *pIdxKey, int *pRes) 
   if (rc) {
     if (rc == 16) {
 
-      ((void)(0))
 
-          ;
       *pRes = -1;
       return 0;
     }
@@ -921,13 +857,9 @@ bypass_moveto_root:
     MemPage *pPage = pCur->pPage;
     u8 *pCell;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     lwr = 0;
     upr = pPage->nCell - 1;
     idx = upr >> 1;
@@ -978,18 +910,14 @@ bypass_moveto_root:
         sqlite3_free(pCellKey);
       }
 
-      ((void)(0))
 
-          ;
       if (c < 0) {
         lwr = idx + 1;
       } else if (c > 0) {
         upr = idx - 1;
       } else {
 
-        ((void)(0))
 
-            ;
         *pRes = 0;
         rc = 0;
         pCur->ix = (u16)idx;
@@ -1000,24 +928,16 @@ bypass_moveto_root:
       if (lwr > upr)
         break;
 
-      ((void)(0))
 
-          ;
       idx = (lwr + upr) >> 1;
     }
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     if (pPage->leaf) {
 
-      ((void)(0))
 
-          ;
       pCur->ix = (u16)idx;
       *pRes = c;
       rc = 0;
@@ -1079,9 +999,7 @@ __attribute__((noinline)) int btreeNext(BtCursor *pCur) {
 
   if (pCur->eState != 0) {
 
-    ((void)(0))
 
-        ;
     rc = (pCur->eState >= 3 ? btreeRestoreCursorPosition(pCur) : 0);
     if (rc != 0) {
       return rc;
@@ -1192,13 +1110,9 @@ __attribute__((noinline)) int btreePrevious(BtCursor *pCur) {
       moveToParent(pCur);
     }
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
 
     pCur->ix--;
     pPage = pCur->pPage;
@@ -1253,9 +1167,7 @@ int balance(BtCursor *pCur) {
     } else if ((iPage = pCur->iPage) == 0) {
       if (pPage->nOverflow && (rc = anotherValidCursor(pCur)) == 0) {
 
-        ((void)(0))
 
-            ;
         ;
         rc = balance_deeper(pPage, &pCur->apPage[1]);
         if (rc == 0) {
@@ -1265,9 +1177,7 @@ int balance(BtCursor *pCur) {
           pCur->apPage[0] = pPage;
           pCur->pPage = pCur->apPage[1];
 
-          ((void)(0))
 
-              ;
         }
       } else {
         break;
@@ -1287,9 +1197,7 @@ int balance(BtCursor *pCur) {
 
         if (pPage->intKeyLeaf && pPage->nOverflow == 1 && pPage->aiOvfl[0] == pPage->nCell && pParent->pgno != 1 && pParent->nCell == iIdx) {
 
-          ((void)(0))
 
-              ;
           ;
           rc = balance_quick(pParent, pPage, aBalanceQuickSpace);
         } else
@@ -1312,9 +1220,7 @@ int balance(BtCursor *pCur) {
       releasePage(pPage);
       pCur->iPage--;
 
-      ((void)(0))
 
-          ;
       pCur->pPage = pCur->apPage[pCur->iPage];
     }
   } while (rc == 0);
@@ -1411,9 +1317,7 @@ int sqlite3BtreeInsert(BtCursor *pCur, const BtreePayload *pX, int flags, int se
 
   if (pCur->pKeyInfo == 0) {
 
-    ((void)(0))
 
-        ;
 
     if (p->hasIncrblobCur) {
       invalidateIncrblobCursors(p, pCur->pgnoRoot, pX->nKey, 0);
@@ -1421,17 +1325,13 @@ int sqlite3BtreeInsert(BtCursor *pCur, const BtreePayload *pX, int flags, int se
 
     if ((pCur->curFlags & 0x02) != 0 && pX->nKey == pCur->info.nKey) {
 
-      ((void)(0))
 
-          ;
       if (pCur->info.nSize != 0 && pCur->info.nPayload == (u32)pX->nData + pX->nZero) {
 
         return btreeOverwriteCell(pCur, pX);
       }
 
-      ((void)(0))
 
-          ;
     } else if (loc == 0) {
 
       rc = sqlite3BtreeTableMoveto(pCur, pX->nKey, (flags & 0x08) != 0, &loc);
@@ -1440,9 +1340,7 @@ int sqlite3BtreeInsert(BtCursor *pCur, const BtreePayload *pX, int flags, int se
     }
   } else {
 
-    ((void)(0))
 
-        ;
 
     if (loc == 0 && (flags & 0x02) == 0) {
       if (pX->nMem) {
@@ -1467,9 +1365,7 @@ int sqlite3BtreeInsert(BtCursor *pCur, const BtreePayload *pX, int flags, int se
         x2.pData = pX->pKey;
         x2.nData = (int)pX->nKey;
 
-        ((void)(0))
 
-            ;
         x2.nZero = 0;
         return btreeOverwriteCell(pCur, &x2);
       }
@@ -1521,9 +1417,7 @@ int sqlite3BtreeInsert(BtCursor *pCur, const BtreePayload *pX, int flags, int se
   if (loc == 0) {
     CellInfo info;
 
-    ((void)(0))
 
-        ;
     if (idx >= pPage->nCell) {
       return sqlite3CorruptError(82837);
     }
@@ -1545,9 +1439,7 @@ int sqlite3BtreeInsert(BtCursor *pCur, const BtreePayload *pX, int flags, int se
     (pCur->curFlags &= ~0x04);
     if (info.nSize == szNew && info.nLocal == info.nPayload && (!(p->pBt->autoVacuum) || szNew < pPage->minLocal)) {
 
-      ((void)(0))
 
-          ;
       if (oldCell < pPage->aData + pPage->hdrOffset + 10) {
         return sqlite3CorruptError(82864);
       }
@@ -1562,24 +1454,18 @@ int sqlite3BtreeInsert(BtCursor *pCur, const BtreePayload *pX, int flags, int se
       goto end_insert;
   } else if (loc < 0 && pPage->nCell > 0) {
 
-    ((void)(0))
 
-        ;
     idx = ++pCur->ix;
     pCur->curFlags &= ~(0x02 | 0x04);
   } else {
 
-    ((void)(0))
 
-        ;
   }
   rc = insertCellFast(pPage, idx, newCell, szNew);
 
   if (pPage->nOverflow) {
 
-    ((void)(0))
 
-        ;
     pCur->curFlags &= ~(0x02 | 0x04);
     rc = balance(pCur);
 
@@ -1589,9 +1475,7 @@ int sqlite3BtreeInsert(BtCursor *pCur, const BtreePayload *pX, int flags, int se
       btreeReleaseAllCursorPages(pCur);
       if (pCur->pKeyInfo) {
 
-        ((void)(0))
 
-            ;
         pCur->pKey = sqlite3Malloc(pX->nKey);
         if (pCur->pKey == 0) {
           rc = 7;
@@ -1660,9 +1544,7 @@ int sqlite3BtreeTransferRow(BtCursor *pDest, BtCursor *pSrc, i64 iKey) {
       nRem -= nOut;
       do {
 
-        ((void)(0))
 
-            ;
         if (nIn > 0) {
           int nCopy = ((nOut) < (nIn) ? (nOut) : (nIn));
           memcpy(aOut, aIn, nCopy);
@@ -1724,9 +1606,7 @@ int sqlite3BtreeDelete(BtCursor *pCur, u8 flags) {
     if (pCur->eState >= 3) {
       rc = btreeRestoreCursorPosition(pCur);
 
-      ((void)(0))
 
-          ;
       if (rc || pCur->eState != 0)
         return rc;
     } else {
@@ -1763,9 +1643,7 @@ int sqlite3BtreeDelete(BtCursor *pCur, u8 flags) {
   if (!pPage->leaf) {
     rc = sqlite3BtreePrevious(pCur, 0);
 
-    ((void)(0))
 
-        ;
     if (rc)
       return rc;
   }
@@ -1814,14 +1692,10 @@ int sqlite3BtreeDelete(BtCursor *pCur, u8 flags) {
       return sqlite3CorruptError(83197);
     nCell = pLeaf->xCellSize(pLeaf, pCell);
 
-    ((void)(0))
 
-        ;
     pTmp = pBt->pTmpSpace;
 
-    ((void)(0))
 
-        ;
     rc = sqlite3PagerWrite(pLeaf->pDbPage);
     if (rc == 0) {
       rc = insertCell(pPage, iCellIdx, pCell - 4, nCell + 4, pTmp, n);
@@ -1850,17 +1724,11 @@ int sqlite3BtreeDelete(BtCursor *pCur, u8 flags) {
   if (rc == 0) {
     if (bPreserve > 1) {
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
       pCur->eState = 2;
       if (iCellIdx >= pPage->nCell) {
         pCur->skipNext = -1;
@@ -2053,9 +1921,7 @@ int sqlite3VdbeFindIndexKey(BtCursor *pCur, Index *pIdx, UnpackedRecord *p, int 
       if (rc == 101) {
         rc = 0;
 
-        ((void)(0))
 
-            ;
       }
       if (nStep < 0 || rc != 0 || res == 0 || bIntegrity)
         break;

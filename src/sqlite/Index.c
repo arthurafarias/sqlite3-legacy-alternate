@@ -36,9 +36,7 @@ void estimateIndexWidth(Index *pIdx) {
   for (i = 0; i < pIdx->nColumn; i++) {
     i16 x = pIdx->aiColumn[i];
 
-    ((void)(0))
 
-        ;
     wIndex += x < 0 ? 1 : aCol[x].szEst;
   }
   pIdx->szIdxRow = sqlite3LogEst(wIndex * 4);
@@ -52,9 +50,7 @@ int isDupColumn(Index *pIdx, int nKey, Index *pPk, int iCol) {
 
   for (i = 0; i < nKey; i++) {
 
-    ((void)(0))
 
-        ;
     if (pIdx->aiColumn[i] == j && sqlite3StrICmp(pIdx->azColl[i], pPk->azColl[iCol]) == 0) {
       return 1;
     }
@@ -94,9 +90,7 @@ void sqlite3DefaultRowEst(Index *pIdx) {
   if (pIdx->pPartIdxWhere != 0) {
     x -= 10;
 
-    ((void)(0))
 
-        ;
   }
   a[0] = x;
 
@@ -104,9 +98,7 @@ void sqlite3DefaultRowEst(Index *pIdx) {
   for (i = nCopy + 1; i <= pIdx->nKeyCol; i++) {
     a[i] = 23;
 
-    ((void)(0))
 
-        ;
   }
 
   if (((pIdx)->onError != 0))
@@ -128,9 +120,7 @@ int xferCompatibleIndex(Index *pDest, Index *pSrc) {
     }
     if (pSrc->aiColumn[i] == (-2)) {
 
-      ((void)(0))
 
-          ;
       if (sqlite3ExprCompare(0, pSrc->aColExpr->a[i].pExpr, pDest->aColExpr->a[i].pExpr, -1) != 0) {
         return 0;
       }
@@ -193,9 +183,7 @@ int indexColumnNotNull(Index *pIdx, int iCol) {
     return 1;
   } else {
 
-    ((void)(0))
 
-        ;
     return 0;
   }
 }

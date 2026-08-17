@@ -257,9 +257,7 @@ int unixGetTempname(int nBuf, char *zBuf) {
       u64 r;
       sqlite3_randomness(sizeof(r), &r);
 
-      ((void)(0))
 
-          ;
       zBuf[nBuf - 2] = 0;
       sqlite3_snprintf(nBuf, zBuf,
                        "%s/"

@@ -27,13 +27,9 @@ void pcacheManageDirtyList(PgHdr *pPage, u8 addRemove) {
   ;
   if (addRemove & 1) {
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
 
     if (p->pSynced == pPage) {
       p->pSynced = pPage->pDirtyPrev;
@@ -43,28 +39,20 @@ void pcacheManageDirtyList(PgHdr *pPage, u8 addRemove) {
       pPage->pDirtyNext->pDirtyPrev = pPage->pDirtyPrev;
     } else {
 
-      ((void)(0))
 
-          ;
       p->pDirtyTail = pPage->pDirtyPrev;
     }
     if (pPage->pDirtyPrev) {
       pPage->pDirtyPrev->pDirtyNext = pPage->pDirtyNext;
     } else {
 
-      ((void)(0))
 
-          ;
       p->pDirty = pPage->pDirtyNext;
 
-      ((void)(0))
 
-          ;
       if (p->pDirty == 0) {
 
-        ((void)(0))
 
-            ;
         p->eCreate = 2;
       }
     }
@@ -74,17 +62,13 @@ void pcacheManageDirtyList(PgHdr *pPage, u8 addRemove) {
     pPage->pDirtyNext = p->pDirty;
     if (pPage->pDirtyNext) {
 
-      ((void)(0))
 
-          ;
       pPage->pDirtyNext->pDirtyPrev = pPage;
     } else {
       p->pDirtyTail = pPage;
       if (p->bPurgeable) {
 
-        ((void)(0))
 
-            ;
         p->eCreate = 1;
       }
     }
@@ -113,9 +97,7 @@ void __attribute__((noinline)) sqlite3PcacheRelease(PgHdr *p) {
     } else {
       pcacheManageDirtyList(p, 3);
 
-      ((void)(0))
 
-          ;
     }
   }
 }
@@ -143,19 +125,13 @@ void sqlite3PcacheMakeDirty(PgHdr *p) {
       p->flags ^= (0x002 | 0x001);
       ;
 
-      ((void)(0))
 
-          ;
       pcacheManageDirtyList(p, 2);
 
-      ((void)(0))
 
-          ;
     }
 
-    ((void)(0))
 
-        ;
   }
 }
 
@@ -180,9 +156,7 @@ void sqlite3PcacheMove(PgHdr *p, Pgno newPgno) {
   if (pOther) {
     PgHdr *pXPage = (PgHdr *)pOther->pExtra;
 
-    ((void)(0))
 
-        ;
     pXPage->nRef++;
     pCache->nRefSum++;
     sqlite3PcacheDrop(pXPage);
@@ -192,9 +166,7 @@ void sqlite3PcacheMove(PgHdr *p, Pgno newPgno) {
   if ((p->flags & 0x002) && (p->flags & 0x008)) {
     pcacheManageDirtyList(p, 3);
 
-    ((void)(0))
 
-        ;
   }
 }
 
@@ -340,21 +312,13 @@ int subjournalPage(PgHdr *pPg) {
   Pager *pPager = pPg->pPager;
   if (pPager->journalMode != 2) {
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     rc = openSubJournal(pPager);
 
     if (rc == 0) {
@@ -372,9 +336,7 @@ int subjournalPage(PgHdr *pPg) {
   if (rc == 0) {
     pPager->nSubRec++;
 
-    ((void)(0))
 
-        ;
     rc = addToSavepointBitvecs(pPager, pPg->pgno);
   }
   return rc;
@@ -442,9 +404,7 @@ int pager_write(PgHdr *pPg) {
 
   if (pPager->pInJournal != 0 && sqlite3BitvecTestNotNull(pPager->pInJournal, pPg->pgno) == 0) {
 
-    ((void)(0))
 
-        ;
     if (pPg->pgno <= pPager->dbOrigSize) {
       rc = pagerAddPageToRollbackJournal(pPg);
       if (rc != 0) {
@@ -518,9 +478,7 @@ __attribute__((noinline)) int pagerWriteLargeSector(PgHdr *pPg) {
 
   if (rc == 0 && needSync) {
 
-    ((void)(0))
 
-        ;
     for (ii = 0; ii < nPage; ii++) {
       PgHdr *pPage = sqlite3PagerLookup(pPager, pg1 + ii);
       if (pPage) {
@@ -545,9 +503,7 @@ int sqlite3PagerWrite(PgHdr *pPg) {
     return pPager->errCode;
   } else if (pPager->sectorSize > (u32)pPager->pageSize) {
 
-    ((void)(0))
 
-        ;
     return pagerWriteLargeSector(pPg);
   } else {
     return pager_write(pPg);

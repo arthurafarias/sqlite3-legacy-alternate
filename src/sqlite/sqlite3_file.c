@@ -263,17 +263,11 @@ int unixLock(sqlite3_file *id, int eFileLock) {
 
   if (eFileLock == 1 && (pInode->eFileLock == 1 || pInode->eFileLock == 2)) {
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     pFile->eFileLock = 1;
     pInode->nShared++;
     pInode->nLock++;
@@ -316,17 +310,11 @@ int unixLock(sqlite3_file *id, int eFileLock) {
 
   if (eFileLock == 1) {
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
 
     lock.l_start = (sqlite3PendingByte + 2);
     lock.l_len = 510;
@@ -374,18 +362,14 @@ int unixLock(sqlite3_file *id, int eFileLock) {
     rc = 5;
   } else {
 
-    ((void)(0))
 
-        ;
     lock.l_type =
 
         1
 
         ;
 
-    ((void)(0))
 
-        ;
     if (eFileLock == 2) {
       lock.l_start = (sqlite3PendingByte + 1);
       lock.l_len = 1L;
@@ -435,17 +419,13 @@ int posixUnlock(sqlite3_file *id, int eFileLock, int handleNFSUnlock) {
 
   if (pFile->eFileLock > 1) {
 
-    ((void)(0))
 
-        ;
 
     if (eFileLock == 1) {
 
       (void)handleNFSUnlock;
 
-      ((void)(0))
 
-          ;
 
       {
         lock.l_type =
@@ -485,9 +465,7 @@ int posixUnlock(sqlite3_file *id, int eFileLock, int handleNFSUnlock) {
     lock.l_start = sqlite3PendingByte;
     lock.l_len = 2L;
 
-    ((void)(0))
 
-        ;
     if (unixFileLock(pFile, &lock) == 0) {
       pInode->eFileLock = 1;
     } else {
@@ -531,9 +509,7 @@ int posixUnlock(sqlite3_file *id, int eFileLock, int handleNFSUnlock) {
 
     pInode->nLock--;
 
-    ((void)(0))
 
-        ;
     if (pInode->nLock == 0)
       closePendingFds(pFile);
   }
@@ -819,9 +795,7 @@ int unixSync(sqlite3_file *id, int flags) {
       robust_close(pFile, dirfd, 44145);
     } else {
 
-      ((void)(0))
 
-          ;
       rc = 0;
     }
     pFile->ctrlFlags &= ~0x08;
@@ -1024,9 +998,7 @@ int unixShmMap(sqlite3_file *fd, int iRegion, int szRegion, int bExtend, void vo
           static const int pgsz = 4096;
           i64 iPg;
 
-          ((void)(0))
 
-              ;
           for (iPg = (sStat.st_size / pgsz); iPg < (nByte / pgsz); iPg++) {
             int x = 0;
             if (seekAndWriteFd(pShmNode->hShm, iPg * pgsz + pgsz - 1, "", 1, &x) != 1) {
@@ -1130,27 +1102,17 @@ int unixShmLock(sqlite3_file *fd, int ofst, int n, int flags) {
 
         int bUnlock = 1;
 
-        ((void)(0))
 
-            ;
 
-        ((void)(0))
 
-            ;
 
-        ((void)(0))
 
-            ;
 
         if (flags & 4) {
 
-          ((void)(0))
 
-              ;
 
-          ((void)(0))
 
-              ;
           if (aLock[ofst] > 1) {
             bUnlock = 0;
             aLock[ofst]--;
@@ -1193,17 +1155,11 @@ int unixShmLock(sqlite3_file *fd, int ofst, int n, int flags) {
 
         int ii;
 
-        ((void)(0))
 
-            ;
 
-        ((void)(0))
 
-            ;
 
-        ((void)(0))
 
-            ;
 
         for (ii = ofst; ii < ofst + n; ii++) {
           if (aLock[ii]) {
@@ -1228,9 +1184,7 @@ int unixShmLock(sqlite3_file *fd, int ofst, int n, int flags) {
         }
       }
 
-      ((void)(0))
 
-          ;
     }
 
     sqlite3_mutex_leave(pShmNode->pShmMutex);
@@ -1439,9 +1393,7 @@ int memdbLock(sqlite3_file *pFile, int eLock) {
     switch (eLock) {
     case 1: {
 
-      ((void)(0))
 
-          ;
       if (p->nWrLock > 0) {
         rc = 5;
       } else {
@@ -1453,9 +1405,7 @@ int memdbLock(sqlite3_file *pFile, int eLock) {
     case 2:
     case 3: {
 
-      ((void)(0))
 
-          ;
       if ((pThis->eLock == 1)) {
         if (p->nWrLock > 0) {
           rc = 5;
@@ -1468,13 +1418,9 @@ int memdbLock(sqlite3_file *pFile, int eLock) {
 
     default: {
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
       if (p->nRdLock > 1) {
         rc = 5;
       } else if (pThis->eLock == 1) {
@@ -1623,9 +1569,7 @@ int sqlite3SectorSize(sqlite3_file *pFile) {
     iRet = 512;
   } else if (iRet > 0x10000) {
 
-    ((void)(0))
 
-        ;
     iRet = 0x10000;
   }
   return iRet;
@@ -1672,9 +1616,7 @@ int memjrnlRead(sqlite3_file *pJfd, void *zBuf, int iAmt, sqlite_int64 iOfst) {
   } else {
     pChunk = p->readpoint.pChunk;
 
-    ((void)(0))
 
-        ;
   }
 
   iChunkOffset = (int)(iOfst % p->nChunkSize);
@@ -1707,17 +1649,13 @@ int memjrnlWrite(sqlite3_file *pJfd, const void *zBuf, int iAmt, sqlite_int64 iO
 
   else {
 
-    ((void)(0))
 
-        ;
     if (iOfst > 0 && iOfst != p->endpoint.iOffset) {
       memjrnlTruncate(pJfd, iOfst);
     }
     if (iOfst == 0 && p->pFirst) {
 
-      ((void)(0))
 
-          ;
       memcpy((u8 *)p->pFirst->zChunk, zBuf, iAmt);
     } else {
       while (nWrite > 0) {
@@ -1725,9 +1663,7 @@ int memjrnlWrite(sqlite3_file *pJfd, const void *zBuf, int iAmt, sqlite_int64 iO
         int iChunkOffset = (int)(p->endpoint.iOffset % p->nChunkSize);
         int iSpace = ((nWrite) < (p->nChunkSize - iChunkOffset) ? (nWrite) : (p->nChunkSize - iChunkOffset));
 
-        ((void)(0))
 
-            ;
         if (iChunkOffset == 0) {
 
           FileChunk *pNew = sqlite3_malloc((sizeof(FileChunk) + ((p->nChunkSize) - 8)));
@@ -1737,23 +1673,17 @@ int memjrnlWrite(sqlite3_file *pJfd, const void *zBuf, int iAmt, sqlite_int64 iO
           pNew->pNext = 0;
           if (pChunk) {
 
-            ((void)(0))
 
-                ;
             pChunk->pNext = pNew;
           } else {
 
-            ((void)(0))
 
-                ;
             p->pFirst = pNew;
           }
           pChunk = p->endpoint.pChunk = pNew;
         }
 
-        ((void)(0))
 
-            ;
         memcpy((u8 *)pChunk->zChunk + iChunkOffset, zWrite, iSpace);
         zWrite += iSpace;
         nWrite -= iSpace;

@@ -16,9 +16,7 @@ void sqlite3PagerUnrefNotNull(DbPage *pPg) {
 
   if (pPg->flags & 0x020) {
 
-    ((void)(0))
 
-        ;
     pagerReleaseMapPage(pPg);
   } else {
     sqlite3PcacheRelease(pPg);
@@ -69,9 +67,7 @@ void pageReinit(DbPage *pData) {
 
   if (pPage->isInit) {
 
-    ((void)(0))
 
-        ;
     pPage->isInit = 0;
     if (sqlite3PagerPageRefcount(pData) > 1) {
 

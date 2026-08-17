@@ -76,9 +76,7 @@ int jsonEachPathLength(JsonEachCursor *p) {
         char cSaved = z[n];
         z[n] = 0;
 
-        ((void)(0))
 
-            ;
         x = jsonLookupStep(&p->sParse, 0, z + 1, 0);
         z[n] = cSaved;
         if (((x) >= 0xfffffffb))

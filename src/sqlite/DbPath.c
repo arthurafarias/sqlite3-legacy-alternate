@@ -21,9 +21,7 @@ void appendOnePathElement(DbPath *pPath, const char *zName, int nName) {
     if (zName[1] == '.' && nName == 2) {
       if (pPath->nUsed > 1) {
 
-        ((void)(0))
 
-            ;
         while (pPath->zOut[--pPath->nUsed] != '/') {
         }
       }

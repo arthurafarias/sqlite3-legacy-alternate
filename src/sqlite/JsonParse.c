@@ -404,9 +404,7 @@ static __attribute__((noinline)) int jsonLabelCompareEscaped(const char *zLeft, 
       u32 n = jsonUnescapeOneChar(zLeft, nLeft, &cLeft);
       zLeft += n;
 
-      ((void)(0))
 
-          ;
       nLeft -= n;
     }
     if (nRight == 0) {
@@ -425,9 +423,7 @@ static __attribute__((noinline)) int jsonLabelCompareEscaped(const char *zLeft, 
       u32 n = jsonUnescapeOneChar(zRight, nRight, &cRight);
       zRight += n;
 
-      ((void)(0))
 
-          ;
       nRight -= n;
     }
     if (cLeft != cRight)
@@ -521,9 +517,7 @@ __attribute__((noinline)) void jsonBlobExpandAndAppendOneByte(JsonParse *pParse,
   jsonBlobExpand(pParse, pParse->nBlob + 1);
   if (pParse->oom == 0) {
 
-    ((void)(0))
 
-        ;
     pParse->aBlob[pParse->nBlob++] = c;
   }
 }
@@ -853,9 +847,7 @@ u32 jsonbValidityCheck(const JsonParse *pParse, u32 i, u32 iEnd, u32 iDepth) {
       j += n + sz;
     }
 
-    ((void)(0))
 
-        ;
     return 0;
   }
   case 12: {
@@ -882,9 +874,7 @@ u32 jsonbValidityCheck(const JsonParse *pParse, u32 i, u32 iEnd, u32 iDepth) {
       j += n + sz;
     }
 
-    ((void)(0))
 
-        ;
     if ((cnt & 1) != 0)
       return j + 1;
     return 0;
@@ -932,9 +922,7 @@ json_parse_restart:
             k++;
           }
 
-          ((void)(0))
 
-              ;
           jsonBlobAppendNode(pParse, op, k - j, &z[j]);
           pParse->hasNonstd = 1;
           x = k;
@@ -1015,9 +1003,7 @@ json_parse_restart:
 
     iThis = pParse->nBlob;
 
-    ((void)(0))
 
-        ;
     jsonBlobAppendNode(pParse, 11, pParse->nJson - i, 0);
     iStart = pParse->nBlob;
     if (pParse->oom)
@@ -1179,26 +1165,18 @@ json_parse_restart:
   parse_number:
     seenE = 0;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     c = z[i];
 
     if (c <= '0') {
       if (c == '0') {
         if ((z[i + 1] == 'x' || z[i + 1] == 'X') && (sqlite3CtypeMap[(unsigned char)(z[i + 2])] & 0x08)) {
 
-          ((void)(0))
 
-              ;
           pParse->hasNonstd = 1;
           t = 0x01;
           for (j = i + 3; (sqlite3CtypeMap[(unsigned char)(z[j])] & 0x08); j++) {
@@ -1296,17 +1274,11 @@ json_parse_restart:
     }
   parse_number_finish:
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     if (z[i] == '+')
       i++;
     jsonBlobAppendNode(pParse, 3 + t, j - i, &z[i]);
@@ -1590,13 +1562,9 @@ u32 jsonTranslateBlobToText(JsonParse *pParse, u32 i, JsonString *pOut) {
         continue;
       }
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
       if (sz2 < 2) {
         pOut->eErr |= 0x02;
         break;
@@ -1645,9 +1613,7 @@ u32 jsonTranslateBlobToText(JsonParse *pParse, u32 i, JsonString *pOut) {
         break;
       }
 
-      ((void)(0))
 
-          ;
       zIn += 2;
       sz2 -= 2;
     }
@@ -1899,9 +1865,7 @@ u32 jsonLookupStep(JsonParse *pParse, u32 iRoot, const char *zPath, u32 iLabel) 
         if (n == 0 || v + n + sz > iEnd)
           return 0xffffffff;
 
-        ((void)(0))
 
-            ;
         if (++pParse->iDepth >= 1000) {
           return 0xfffffffc;
         }
@@ -1938,20 +1902,14 @@ u32 jsonLookupStep(JsonParse *pParse, u32 iRoot, const char *zPath, u32 iLabel) 
       rc = jsonCreateEditSubstructure(pParse, &v, &zPath[i]);
       if (!((rc) >= 0xfffffffb) && jsonBlobMakeEditable(pParse, ix.nBlob + nKey + v.nBlob)) {
 
-        ((void)(0))
 
-            ;
         nIns = ix.nBlob + nKey + v.nBlob;
         jsonBlobEdit(pParse, j, 0, 0, nIns);
         if (!pParse->oom) {
 
-          ((void)(0))
 
-              ;
 
-          ((void)(0))
 
-              ;
           memcpy(&pParse->aBlob[j], ix.aBlob, ix.nBlob);
           k = j + ix.nBlob;
           memcpy(&pParse->aBlob[k], zKey, nKey);
@@ -2033,9 +1991,7 @@ u32 jsonLookupStep(JsonParse *pParse, u32 iRoot, const char *zPath, u32 iLabel) 
       rc = jsonCreateEditSubstructure(pParse, &v, &zPath[i + 1]);
       if (!((rc) >= 0xfffffffb) && jsonBlobMakeEditable(pParse, v.nBlob)) {
 
-        ((void)(0))
 
-            ;
         jsonBlobEdit(pParse, j, 0, v.aBlob, v.nBlob);
       }
       jsonParseReset(&v);
@@ -2163,16 +2119,12 @@ void jsonReturnFromBlob(JsonParse *pParse, u32 i, sqlite3_context *pCtx, int eMo
           zOut[iOut++] = (char)v;
         } else if (v <= 0x7ff) {
 
-          ((void)(0))
 
-              ;
           zOut[iOut++] = (char)(0xc0 | (v >> 6));
           zOut[iOut++] = 0x80 | (v & 0x3f);
         } else if (v < 0x10000) {
 
-          ((void)(0))
 
-              ;
           zOut[iOut++] = 0xe0 | (v >> 12);
           zOut[iOut++] = 0x80 | ((v >> 6) & 0x3f);
           zOut[iOut++] = 0x80 | (v & 0x3f);
@@ -2180,9 +2132,7 @@ void jsonReturnFromBlob(JsonParse *pParse, u32 i, sqlite3_context *pCtx, int eMo
 
         } else {
 
-          ((void)(0))
 
-              ;
           zOut[iOut++] = 0xf0 | (v >> 18);
           zOut[iOut++] = 0x80 | ((v >> 12) & 0x3f);
           zOut[iOut++] = 0x80 | ((v >> 6) & 0x3f);
@@ -2194,9 +2144,7 @@ void jsonReturnFromBlob(JsonParse *pParse, u32 i, sqlite3_context *pCtx, int eMo
       }
     }
 
-    ((void)(0))
 
-        ;
     zOut[iOut] = 0;
     sqlite3_result_text(pCtx, zOut, iOut, ((sqlite3_destructor_type)sqlite3RowSetClear));
     break;

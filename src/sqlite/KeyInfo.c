@@ -25,13 +25,9 @@ UnpackedRecord *sqlite3VdbeAllocUnpackedRecord(KeyInfo *pKeyInfo) {
 void sqlite3KeyInfoUnref(KeyInfo *p) {
   if (p) {
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     p->nRef--;
     if (p->nRef == 0)
       sqlite3DbNNFreeNN(p->db, p);
@@ -41,9 +37,7 @@ void sqlite3KeyInfoUnref(KeyInfo *p) {
 KeyInfo *sqlite3KeyInfoRef(KeyInfo *p) {
   if (p) {
 
-    ((void)(0))
 
-        ;
     p->nRef++;
   }
   return p;

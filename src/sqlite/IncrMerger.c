@@ -56,9 +56,7 @@ int vdbeIncrPopulate(IncrMerger *pIncr) {
     vdbePmaWriteVarint(&writer, nKey);
     vdbePmaWriteBlob(&writer, pReader->aKey, nKey);
 
-    ((void)(0))
 
-        ;
     rc = vdbeMergeEngineStep(pIncr->pMerger, &dummy);
   }
 

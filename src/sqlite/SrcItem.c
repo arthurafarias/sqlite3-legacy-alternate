@@ -19,26 +19,16 @@ void sqlite3SrcItemColumnUsed(SrcItem *pItem, int iCol) {
   if (pItem->fg.isNestedFrom) {
     ExprList *pResults;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     pResults = pItem->u4.pSubq->pSelect->pEList;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     pResults->a[iCol].fg.bUsed = 1;
   }
 }

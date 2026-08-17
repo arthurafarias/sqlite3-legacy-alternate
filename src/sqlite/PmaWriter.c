@@ -26,9 +26,7 @@ void vdbePmaWriteBlob(PmaWriter *p, u8 *pData, int nData) {
       p->iWriteOff += p->nBuffer;
     }
 
-    ((void)(0))
 
-        ;
 
     nRem -= nCopy;
   }

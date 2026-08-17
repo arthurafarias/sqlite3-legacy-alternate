@@ -218,9 +218,7 @@ void yy_shift(yyParser *yypParser, unsigned short int yyNewState, unsigned short
     }
     yytos = yypParser->yytos;
 
-    ((void)(0))
 
-        ;
   }
   if (yyNewState > 599) {
     yyNewState += 1282 - 867;
@@ -363,25 +361,19 @@ unsigned short int yy_reduce(yyParser *yypParser, unsigned int yyruleno, int yyL
   } break;
   case 30: {
 
-    ((void)(0))
 
-        ;
     yymsp[1].minor.yy168 = yyLookaheadToken.z;
   } break;
   case 31: {
 
-    ((void)(0))
 
-        ;
     yymsp[1].minor.yy0 = yyLookaheadToken;
   } break;
   case 32:
   case 67:;
     {
 
-      ((void)(0))
 
-          ;
       pParse->u1.cr.constraintName = yymsp[0].minor.yy0;
     }
     break;
@@ -497,9 +489,7 @@ unsigned short int yy_reduce(yyParser *yypParser, unsigned int yyruleno, int yyL
   } break;
   case 66: {
 
-    ((void)(0))
 
-        ;
     pParse->u1.cr.constraintName.n = 0;
   } break;
   case 68: {
@@ -697,23 +687,17 @@ unsigned short int yy_reduce(yyParser *yypParser, unsigned int yyruleno, int yyL
         SrcItem *pNew = &yymsp[-5].minor.yy203->a[yymsp[-5].minor.yy203->nSrc - 1];
         SrcItem *pOld = yymsp[-3].minor.yy203->a;
 
-        ((void)(0))
 
-            ;
         pNew->zName = pOld->zName;
 
-        ((void)(0))
 
-            ;
         if (pOld->fg.isSubquery) {
           pNew->fg.isSubquery = 1;
           pNew->u4.pSubq = pOld->u4.pSubq;
           pOld->u4.pSubq = 0;
           pOld->fg.isSubquery = 0;
 
-          ((void)(0))
 
-              ;
           if ((pNew->u4.pSubq->pSelect->selFlags & 0x0000800) != 0) {
             pNew->fg.isNestedFrom = 1;
           }
@@ -1015,9 +999,7 @@ unsigned short int yy_reduce(yyParser *yypParser, unsigned int yyruleno, int yyL
 
       Token t = yymsp[0].minor.yy0;
 
-      ((void)(0))
 
-          ;
       if (pParse->nested == 0) {
         parserSyntaxError(pParse, &t);
         yymsp[0].minor.yy454 = 0;
@@ -1083,9 +1065,7 @@ unsigned short int yy_reduce(yyParser *yypParser, unsigned int yyruleno, int yyL
       yymsp[-4].minor.yy454->x.pList = pList;
       for (i = 0; i < pList->nExpr; i++) {
 
-        ((void)(0))
 
-            ;
         yymsp[-4].minor.yy454->flags |= pList->a[i].pExpr->flags & (0x000200 | 0x400000 | 0x000008);
       }
     } else {
@@ -1163,13 +1143,9 @@ unsigned short int yy_reduce(yyParser *yypParser, unsigned int yyruleno, int yyL
     Expr *p = yymsp[0].minor.yy454;
     u8 op = yymsp[-1].major + (173 - 107);
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     if (p && p->op == 173) {
       p->op = op;
       yymsp[-1].minor.yy454 = p;
@@ -1546,9 +1522,7 @@ unsigned short int yy_reduce(yyParser *yypParser, unsigned int yyruleno, int yyL
   } break;
   case 318: {
 
-    ((void)(0))
 
-        ;
     sqlite3WindowChain(pParse, yymsp[0].minor.yy211, yymsp[-2].minor.yy211);
     yymsp[0].minor.yy211->pNextWin = yymsp[-2].minor.yy211;
     yylhsminor.yy211 = yymsp[0].minor.yy211;
@@ -1666,9 +1640,7 @@ unsigned short int yy_reduce(yyParser *yypParser, unsigned int yyruleno, int yyL
   case 344: {
     yymsp[-3].minor.yy211 = yymsp[-1].minor.yy211;
 
-    ((void)(0))
 
-        ;
   } break;
   case 345: {
     yymsp[-1].minor.yy211 = (Window *)sqlite3DbMallocZero(pParse->db, sizeof(Window));
@@ -1688,15 +1660,11 @@ unsigned short int yy_reduce(yyParser *yypParser, unsigned int yyruleno, int yyL
   default:;
     ;
 
-    ((void)(0))
 
-        ;
     ;
     ;
 
-    ((void)(0))
 
-        ;
     ;
     ;
     ;
@@ -1704,9 +1672,7 @@ unsigned short int yy_reduce(yyParser *yypParser, unsigned int yyruleno, int yyL
     ;
     ;
 
-    ((void)(0))
 
-        ;
     ;
     ;
     ;
@@ -1714,13 +1680,9 @@ unsigned short int yy_reduce(yyParser *yypParser, unsigned int yyruleno, int yyL
     ;
     ;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     ;
     ;
     ;
@@ -1729,45 +1691,29 @@ unsigned short int yy_reduce(yyParser *yypParser, unsigned int yyruleno, int yyL
     ;
     ;
 
-    ((void)(0))
 
-        ;
     ;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     ;
     ;
     ;
 
-    ((void)(0))
 
-        ;
     ;
 
-    ((void)(0))
 
-        ;
     ;
     ;
     ;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     ;
     ;
     ;
@@ -1787,13 +1733,9 @@ unsigned short int yy_reduce(yyParser *yypParser, unsigned int yyruleno, int yyL
     ;
     ;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     break;
   };
 

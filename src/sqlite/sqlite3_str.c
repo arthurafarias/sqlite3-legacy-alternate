@@ -274,9 +274,7 @@ void sqlite3_str_vappendf(sqlite3_str *pAccum, const char *fmt, va_list ap) {
       }
     } while (!done && (c = (*++fmt)) != 0);
 
-    ((void)(0))
 
-        ;
     idx = ((unsigned)c) % 23;
     if (fmtinfo[idx].fmttype == c || fmtinfo[idx = fmtinfo[idx].iNxt].fmttype == c) {
       infop = &fmtinfo[idx];
@@ -286,13 +284,9 @@ void sqlite3_str_vappendf(sqlite3_str *pAccum, const char *fmt, va_list ap) {
       xtype = 17;
     }
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     switch (xtype) {
     case 13:
       flag_long = sizeof(char *) == sizeof(i64) ? 2 : sizeof(char *) == sizeof(long int) ? 1 : 0;
@@ -560,9 +554,7 @@ void sqlite3_str_vappendf(sqlite3_str *pAccum, const char *fmt, va_list ap) {
 
       if (xtype == 3) {
 
-        ((void)(0))
 
-            ;
         precision--;
         flag_rtz = !flag_alternateform;
         if (exp < -4 || exp > precision) {
@@ -611,9 +603,7 @@ void sqlite3_str_vappendf(sqlite3_str *pAccum, const char *fmt, va_list ap) {
 
       j = 0;
 
-      ((void)(0))
 
-          ;
       if (e2 < 0) {
         *(bufpt++) = '0';
       } else if (cThousand) {
@@ -668,9 +658,7 @@ void sqlite3_str_vappendf(sqlite3_str *pAccum, const char *fmt, va_list ap) {
         while (bufpt[-1] == '0')
           *(--bufpt) = 0;
 
-        ((void)(0))
 
-            ;
         if (bufpt[-1] == '.') {
           if (flag_altform2) {
             *(bufpt++) = '0';
@@ -699,9 +687,7 @@ void sqlite3_str_vappendf(sqlite3_str *pAccum, const char *fmt, va_list ap) {
 
       length = (int)(bufpt - zOut);
 
-      ((void)(0))
 
-          ;
       if (length < width) {
         i64 nPad = width - length;
         if (flag_leftjustify) {
@@ -832,9 +818,7 @@ void sqlite3_str_vappendf(sqlite3_str *pAccum, const char *fmt, va_list ap) {
       } else if (xtype == 6) {
         if (pAccum->nChar == 0 && pAccum->mxAlloc && width == 0 && precision < 0 && pAccum->accError == 0) {
 
-          ((void)(0))
 
-              ;
           pAccum->zText = bufpt;
           pAccum->nAlloc = sqlite3DbMallocSize(pAccum->db, bufpt);
           pAccum->nChar = 0x7fffffff & (int)strlen(bufpt);
@@ -1031,9 +1015,7 @@ void sqlite3_str_vappendf(sqlite3_str *pAccum, const char *fmt, va_list ap) {
 
             ;
 
-        ((void)(0))
 
-            ;
         if (pToken && pToken->n) {
           sqlite3_str_append(pAccum, (const char *)pToken->z, pToken->n);
           sqlite3RecordErrorByteOffset(pAccum->db, pToken->z);
@@ -1060,9 +1042,7 @@ void sqlite3_str_vappendf(sqlite3_str *pAccum, const char *fmt, va_list ap) {
 
           ;
 
-      ((void)(0))
 
-          ;
       if (pItem->zAlias && !flag_altform2) {
         sqlite3_str_appendall(pAccum, pItem->zAlias);
       } else if (pItem->zName) {
@@ -1076,16 +1056,12 @@ void sqlite3_str_vappendf(sqlite3_str *pAccum, const char *fmt, va_list ap) {
       } else if ((pItem->fg.isSubquery)) {
         Select *pSel = pItem->u4.pSubq->pSelect;
 
-        ((void)(0))
 
-            ;
         if (pSel->selFlags & 0x0000800) {
           sqlite3_str_appendf(pAccum, "(join-%u)", pSel->selId);
         } else if (pSel->selFlags & 0x0000400) {
 
-          ((void)(0))
 
-              ;
           sqlite3_str_appendf(pAccum, "%u-ROW VALUES CLAUSE", pItem->u1.nRow);
         } else {
           sqlite3_str_appendf(pAccum, "(subquery-%u)", pSel->selId);
@@ -1096,9 +1072,7 @@ void sqlite3_str_vappendf(sqlite3_str *pAccum, const char *fmt, va_list ap) {
     }
     default: {
 
-      ((void)(0))
 
-          ;
       return;
     }
     }
@@ -1136,9 +1110,7 @@ void sqlite3_str_append(sqlite3_str *p, const char *z, int N) {
     enlargeAndAppend(p, z, N);
   } else if (N) {
 
-    ((void)(0))
 
-        ;
     p->nChar += N;
     memcpy(&p->zText[p->nChar - N], z, N);
   }

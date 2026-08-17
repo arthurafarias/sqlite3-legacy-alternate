@@ -62,13 +62,9 @@ int pragmaVtabFilter(sqlite3_vtab_cursor *pVtabCursor, int idxNum, const char *i
   for (i = 0; i < argc; i++, j++) {
     const char *zText = (const char *)sqlite3_value_text(argv[i]);
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     if (zText) {
       pCsr->azArg[j] = sqlite3_mprintf("%s", zText);
       if (pCsr->azArg[j] == 0) {
@@ -225,9 +221,7 @@ int jsonEachColumn(sqlite3_vtab_cursor *cur, sqlite3_context *ctx, int iColumn) 
       jsonReturnFromBlob(&p->sParse, p->i, ctx, 1);
     } else {
 
-      ((void)(0))
 
-          ;
       sqlite3_result_int64(ctx, p->aParent[p->nParent - 1].iKey);
     }
     break;

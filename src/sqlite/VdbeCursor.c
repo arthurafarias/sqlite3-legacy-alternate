@@ -95,9 +95,7 @@ __attribute__((noinline)) int vdbeColumnFromOverflow(VdbeCursor *pC, int iCol, u
       pBuf = pCache->pCValue;
     }
 
-    ((void)(0))
 
-        ;
     sqlite3RCStrRef(pBuf);
     if (t & 1) {
       rc = sqlite3VdbeMemSetStr(pDest, pBuf, len, encoding, sqlite3RCStrUnref);
@@ -153,9 +151,7 @@ int sqlite3VdbeSorterWrite(const VdbeCursor *pCsr, Mem *pVal) {
       pSorter->list.szPMA = 0;
       pSorter->iMemory = 0;
 
-      ((void)(0))
 
-          ;
     }
   }
 

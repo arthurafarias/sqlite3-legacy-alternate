@@ -21,22 +21,16 @@ __attribute__((noinline)) void resolveSetExprSubtypeArg(ExprList *pList) {
       (pExpr)->flags |= (u32)(0x80000000);
       if (pExpr->op == 139) {
 
-        ((void)(0))
 
-            ;
 
-        ((void)(0))
 
-            ;
         resolveSetExprSubtypeArg(pExpr->x.pSelect->pEList);
         break;
       }
       if (pExpr->op == 173) {
         pExpr = pExpr->pLeft;
 
-        ((void)(0))
 
-            ;
       } else {
         break;
       }
@@ -80,9 +74,7 @@ u32 sqlite3ExprListFlags(const ExprList *pList) {
   for (i = 0; i < pList->nExpr; i++) {
     Expr *pExpr = pList->a[i].pExpr;
 
-    ((void)(0))
 
-        ;
     m |= pExpr->flags;
   }
   return m;
@@ -114,9 +106,7 @@ void renameSetENames(ExprList *pEList, int val) {
     int i;
     for (i = 0; i < pEList->nExpr; i++) {
 
-      ((void)(0))
 
-          ;
       pEList->a[i].fg.eEName = val & 0x3;
     }
   }

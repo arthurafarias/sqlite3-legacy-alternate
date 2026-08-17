@@ -36,9 +36,7 @@ int btreeSetHasContent(BtShared *pBt, Pgno pgno) {
   int rc = 0;
   if (!pBt->pHasContent) {
 
-    ((void)(0))
 
-        ;
     pBt->pHasContent = sqlite3BitvecCreate(pBt->nPage);
     if (!pBt->pHasContent) {
       rc = 7;
@@ -350,9 +348,7 @@ int lockBtree(BtShared *pBt) {
       goto page1_init_failed;
     }
 
-    ((void)(0))
 
-        ;
 
     usableSize = pageSize - page1[20];
     if ((u32)pageSize != pBt->pageSize) {
@@ -410,13 +406,9 @@ void unlockBtreeIfUnused(BtShared *pBt) {
   if (pBt->inTransaction == 0 && pBt->pPage1 != 0) {
     MemPage *pPage1 = pBt->pPage1;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     pBt->pPage1 = 0;
     releasePageOne(pPage1);
   }
@@ -540,9 +532,7 @@ int incrVacuumStep(BtShared *pBt, Pgno nFin, Pgno iLastPg, int bCommit) {
           return rc;
         }
 
-        ((void)(0))
 
-            ;
         releasePage(pFreePg);
       }
     } else {
@@ -575,9 +565,7 @@ int incrVacuumStep(BtShared *pBt, Pgno nFin, Pgno iLastPg, int bCommit) {
         }
       } while (bCommit && iFreePg > nFin);
 
-      ((void)(0))
 
-          ;
 
       rc = relocatePage(pBt, pLastPg, eType, iPtrPage, iFreePg, bCommit);
       releasePage(pLastPg);
@@ -650,9 +638,7 @@ int getOverflowPage(BtShared *pBt, Pgno ovfl, MemPage **ppPage, Pgno *pPgnoNext)
   if (rc == 0) {
     rc = btreeGetPage(pBt, ovfl, &pPage, (ppPage == 0) ? 0x02 : 0);
 
-    ((void)(0))
 
-        ;
     if (rc == 0) {
       next = sqlite3Get4byte(pPage->aData);
     }
@@ -694,13 +680,9 @@ int allocateBtreePage(BtShared *pBt, MemPage **ppPage, Pgno *pPgno, Pgno nearby,
       if (nearby <= mxPage) {
         u8 eType;
 
-        ((void)(0))
 
-            ;
 
-        ((void)(0))
 
-            ;
         rc = ptrmapGet(pBt, nearby, &eType, 0);
         if (rc)
           return rc;
@@ -736,20 +718,14 @@ int allocateBtreePage(BtShared *pBt, MemPage **ppPage, Pgno *pPgno, Pgno nearby,
         goto end_allocate_page;
       }
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
 
       k = sqlite3Get4byte(&pTrunk->aData[4]);
       if (k == 0 && !searchList) {
 
-        ((void)(0))
 
-            ;
         rc = sqlite3PagerWrite(pTrunk->pDbPage);
         if (rc) {
           goto end_allocate_page;
@@ -806,9 +782,7 @@ int allocateBtreePage(BtShared *pBt, MemPage **ppPage, Pgno *pPgno, Pgno nearby,
           releasePage(pNewTrunk);
           if (!pPrevTrunk) {
 
-            ((void)(0))
 
-                ;
             sqlite3Put4byte(&pPage1->aData[32], iNewTrunk);
           } else {
             rc = sqlite3PagerWrite(pPrevTrunk->pDbPage);
@@ -901,9 +875,7 @@ int allocateBtreePage(BtShared *pBt, MemPage **ppPage, Pgno *pPgno, Pgno nearby,
       MemPage *pPg = 0;
       ;
 
-      ((void)(0))
 
-          ;
       rc = btreeGetUnusedPage(pBt, pBt->nPage, &pPg, bNoContent);
       if (rc == 0) {
         rc = sqlite3PagerWrite(pPg->pDbPage);
@@ -920,9 +892,7 @@ int allocateBtreePage(BtShared *pBt, MemPage **ppPage, Pgno *pPgno, Pgno nearby,
     sqlite3Put4byte(28 + (u8 *)pBt->pPage1->aData, pBt->nPage);
     *pPgno = pBt->nPage;
 
-    ((void)(0))
 
-        ;
     rc = btreeGetUnusedPage(pBt, *pPgno, ppPage, bNoContent);
     if (rc)
       return rc;
@@ -993,9 +963,7 @@ int freePage2(BtShared *pBt, MemPage *pMemPage, Pgno iPage) {
 
     nLeaf = sqlite3Get4byte(&pTrunk->aData[4]);
 
-    ((void)(0))
 
-        ;
     if (nLeaf > (u32)pBt->usableSize / 4 - 2) {
       rc = sqlite3CorruptError(80132);
       goto freepage_out;

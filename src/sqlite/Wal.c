@@ -48,9 +48,7 @@ __attribute__((noinline)) int walIndexPageRealloc(Wal *pWal, int iPage, volatile
   } else {
     rc = sqlite3OsShmMap(pWal->pDbFd, iPage, (sizeof(ht_slot) * (4096 * 2) + 4096 * sizeof(u32)), pWal->writeLock, (void volatile **)&pWal->apWiData[iPage]);
 
-    ((void)(0))
 
-        ;
     ;
     if (rc == 0) {
       if (iPage > 0 && sqlite3FaultSim(600))
@@ -339,25 +337,19 @@ int walIndexAppend(Wal *pWal, u32 iFrame, u32 iPage) {
 
     idx = iFrame - sLoc.iZero;
 
-    ((void)(0))
 
-        ;
 
     if (idx == 1) {
       int nByte = (int)((u8 *)&sLoc.aHash[(4096 * 2)] - (u8 *)sLoc.aPgno);
 
-      ((void)(0))
 
-          ;
       memset((void *)sLoc.aPgno, 0, nByte);
     }
 
     if (sLoc.aPgno[idx - 1]) {
       walCleanupHash(pWal);
 
-      ((void)(0))
 
-          ;
     }
 
     nCollide = idx;
@@ -451,9 +443,7 @@ int walIndexRecover(Wal *pWal) {
       u32 nHdr, nHdr32;
       rc = walIndexPage(pWal, iPg, (volatile u32 **)&aShare);
 
-      ((void)(0))
 
-          ;
       if (aShare == 0)
         break;
       ;
@@ -491,9 +481,7 @@ int walIndexRecover(Wal *pWal) {
 
       memcpy(&aShare[nHdr32], &aPrivate[nHdr32], (sizeof(ht_slot) * (4096 * 2) + 4096 * sizeof(u32)) - nHdr);
 
-      ((void)(0))
 
-          ;
       ;
       if (iFrame <= iLast)
         break;
@@ -524,9 +512,7 @@ finished:
           pInfo->aReadMark[i] = 0xffffffff;
         }
 
-        ((void)(0))
 
-            ;
         ;
         walUnlockExclusive(pWal, (3 + (i)), 1);
       } else if (rc != 5) {
@@ -584,13 +570,9 @@ void walMerge(const u32 *aContent, ht_slot *aLeft, int nLeft, ht_slot **paRight,
     if (iLeft < nLeft && aContent[aLeft[iLeft]] == dbpage)
       iLeft++;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
   }
 
   *paRight = aLeft;
@@ -619,18 +601,12 @@ void walMergesort(const u32 *aContent, ht_slot *aBuffer, ht_slot *aList, int *pn
     for (iSub = 0; iList & (1 << iSub); iSub++) {
       struct Sublist *p;
 
-      ((void)(0))
 
-          ;
       p = &aSub[iSub];
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
       walMerge(aContent, p->aList, p->nList, &aMerge, &nMerge, aBuffer);
     }
     aSub[iSub].aList = aMerge;
@@ -641,18 +617,12 @@ void walMergesort(const u32 *aContent, ht_slot *aBuffer, ht_slot *aList, int *pn
     if (nList & (1 << iSub)) {
       struct Sublist *p;
 
-      ((void)(0))
 
-          ;
       p = &aSub[iSub];
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
       walMerge(aContent, p->aList, p->nList, &aMerge, &nMerge, aBuffer);
     }
   }
@@ -774,32 +744,24 @@ int walCheckpoint(Wal *pWal, sqlite3 *db, int eMode, int (*xBusy)(void *), void 
   pInfo = walCkptInfo(pWal);
   if (pInfo->nBackfill < pWal->hdr.mxFrame) {
 
-    ((void)(0))
 
-        ;
 
     mxSafeFrame = pWal->hdr.mxFrame;
     mxPage = pWal->hdr.nPage;
     for (i = 1; i < (8 - 3); i++) {
       u32 y = __atomic_load_n((pInfo->aReadMark + i), 0);
 
-      ((void)(0))
 
-          ;
       ;
       if (mxSafeFrame > y) {
 
-        ((void)(0))
 
-            ;
         rc = walBusyLock(pWal, xBusy, pBusyArg, (3 + (i)), 1);
         if (rc == 0) {
           u32 iMark = (i == 1 ? mxSafeFrame : 0xffffffff);
           __atomic_store_n((pInfo->aReadMark + i), (iMark), 0);
 
-          ((void)(0))
 
-              ;
           ;
           walUnlockExclusive(pWal, (3 + (i)), 1);
         } else if (rc == 5) {
@@ -814,9 +776,7 @@ int walCheckpoint(Wal *pWal, sqlite3 *db, int eMode, int (*xBusy)(void *), void 
     if (pInfo->nBackfill < mxSafeFrame) {
       rc = walIteratorInit(pWal, pInfo->nBackfill, &pIter);
 
-      ((void)(0))
 
-          ;
     }
 
     if (pIter && (rc = walBusyLock(pWal, xBusy, pBusyArg, (3 + (0)), 1)) == 0) {
@@ -827,9 +787,7 @@ int walCheckpoint(Wal *pWal, sqlite3 *db, int eMode, int (*xBusy)(void *), void 
       if (0 == bChg) {
         pInfo->nBackfillAttempted = mxSafeFrame;
 
-        ((void)(0))
 
-            ;
         ;
 
         rc = sqlite3OsSync(pWal->pWalFd, (((sync_flags) >> 2) & 0x03));
@@ -852,13 +810,9 @@ int walCheckpoint(Wal *pWal, sqlite3 *db, int eMode, int (*xBusy)(void *), void 
         while (rc == 0 && 0 == walIteratorNext(pIter, &iDbpage, &iFrame)) {
           i64 iOffset;
 
-          ((void)(0))
 
-              ;
 
-          ((void)(0))
 
-              ;
           ;
           if (__atomic_load_n((&db->u1.isInterrupted), 0)) {
             rc = db->mallocFailed ? 7 : 9;
@@ -892,9 +846,7 @@ int walCheckpoint(Wal *pWal, sqlite3 *db, int eMode, int (*xBusy)(void *), void 
           if (rc == 0) {
             __atomic_store_n((&pInfo->nBackfill), (mxSafeFrame), 0);
 
-            ((void)(0))
 
-                ;
             ;
           }
         }
@@ -911,13 +863,9 @@ int walCheckpoint(Wal *pWal, sqlite3 *db, int eMode, int (*xBusy)(void *), void 
 
   if (rc == 0 && eMode != 0) {
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     ;
     if (pInfo->nBackfill < pWal->hdr.mxFrame) {
       rc = 5;
@@ -925,9 +873,7 @@ int walCheckpoint(Wal *pWal, sqlite3 *db, int eMode, int (*xBusy)(void *), void 
       u32 salt1;
       sqlite3_randomness(4, &salt1);
 
-      ((void)(0))
 
-          ;
       rc = walBusyLock(pWal, xBusy, pBusyArg, (3 + (1)), (8 - 3) - 1);
       if (rc == 0) {
         if (eMode == 3) {
@@ -964,9 +910,7 @@ int sqlite3WalClose(Wal *pWal, sqlite3 *db, int sync_flags, int nBuf, u8 *zBuf) 
   if (pWal) {
     int isDelete = 0;
 
-    ((void)(0))
 
-        ;
 
     if (zBuf != 0 && 0 == (rc = sqlite3OsLock(pWal->pDbFd, 4))) {
       if (pWal->exclusiveMode == 0) {
@@ -1039,22 +983,14 @@ int walIndexReadHdr(Wal *pWal, int *pChanged) {
   rc = walIndexPage(pWal, 0, &page0);
   if (rc != 0) {
 
-    ((void)(0))
 
-        ;
     if (rc == (8 | (5 << 8))) {
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
       pWal->bShmUnreliable = 1;
       pWal->exclusiveMode = 2;
       *pChanged = 1;
@@ -1105,9 +1041,7 @@ int walIndexReadHdr(Wal *pWal, int *pChanged) {
       walIndexClose(pWal, 0);
       pWal->bShmUnreliable = 0;
 
-      ((void)(0))
 
-          ;
 
       if (rc == (10 | (2 << 8)))
         rc = (-1);
@@ -1231,9 +1165,7 @@ int walTryBeginRead(Wal *pWal, int *pChanged, int useWal, int *pCnt) {
 
   if (!useWal) {
 
-    ((void)(0))
 
-        ;
     if (pWal->bShmUnreliable == 0) {
       rc = walIndexReadHdr(pWal, pChanged);
     }
@@ -1292,15 +1224,11 @@ int walTryBeginRead(Wal *pWal, int *pChanged, int useWal, int *pCnt) {
     for (i = 1; i < (8 - 3); i++) {
       u32 thisMark = __atomic_load_n((pInfo->aReadMark + i), 0);
 
-      ((void)(0))
 
-          ;
       ;
       if (mxReadMark <= thisMark && thisMark <= mxFrame) {
 
-        ((void)(0))
 
-            ;
         mxReadMark = thisMark;
         mxI = i;
       }
@@ -1321,9 +1249,7 @@ int walTryBeginRead(Wal *pWal, int *pChanged, int useWal, int *pCnt) {
     }
     if (mxI == 0) {
 
-      ((void)(0))
 
-          ;
       return rc == 5 ? (-1) : (8 | (5 << 8));
     }
 
@@ -1332,21 +1258,15 @@ int walTryBeginRead(Wal *pWal, int *pChanged, int useWal, int *pCnt) {
     ;
     if (rc) {
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
       return (rc & 0xFF) == 5 ? (-1) : rc;
     }
 
     pWal->minFrame = __atomic_load_n((&pInfo->nBackfill), 0) + 1;
 
-    ((void)(0))
 
-        ;
     ;
     walShmBarrier(pWal);
     if (__atomic_load_n((pInfo->aReadMark + mxI), 0) != mxReadMark || memcmp((void *)walIndexHdr(pWal), &pWal->hdr, sizeof(WalIndexHdr))) {
@@ -1354,9 +1274,7 @@ int walTryBeginRead(Wal *pWal, int *pChanged, int useWal, int *pCnt) {
       return (-1);
     } else {
 
-      ((void)(0))
 
-          ;
       pWal->readLock = (i16)mxI;
     }
   }
@@ -1423,17 +1341,13 @@ int walFindFrame(Wal *pWal, Pgno pgno, u32 *piRead) {
     nCollide = (4096 * 2);
     iKey = walHash(pgno);
 
-    ((void)(0))
 
-        ;
     ;
     while ((iH = __atomic_load_n((&sLoc.aHash[iKey]), 0)) != 0) {
       u32 iFrame = iH + sLoc.iZero;
       if (iFrame <= iLast && iFrame >= pWal->minFrame && sLoc.aPgno[(iH - 1) & (4096 - 1)] == pgno) {
 
-        ((void)(0))
 
-            ;
         iRead = iFrame;
       }
       if ((nCollide--) == 0) {
@@ -1529,18 +1443,14 @@ int sqlite3WalUndo(Wal *pWal, int (*xUndo)(void *, Pgno), void *pUndoCtx) {
 
       for (iFrame = pWal->hdr.mxFrame + 1; (rc == 0) && iFrame <= iMax; iFrame++) {
 
-        ((void)(0))
 
-            ;
         rc = xUndo(pUndoCtx, walFramePgno(pWal, iFrame));
       }
       if (iMax != pWal->hdr.mxFrame)
         walCleanupHash(pWal);
     };
 
-    ((void)(0))
 
-        ;
     pWal->iReCksum = 0;
   }
   return rc;
@@ -1572,9 +1482,7 @@ int sqlite3WalSavepointUndo(Wal *pWal, u32 *aWalData) {
       walCleanupHash(pWal);
     };
 
-    ((void)(0))
 
-        ;
     if (pWal->iReCksum > pWal->hdr.mxFrame) {
       pWal->iReCksum = 0;
     }
@@ -1590,9 +1498,7 @@ int walRestartLog(Wal *pWal) {
   if (pWal->readLock == 0) {
     volatile WalCkptInfo *pInfo = walCkptInfo(pWal);
 
-    ((void)(0))
 
-        ;
     if (pInfo->nBackfill > 0) {
       u32 salt1;
       sqlite3_randomness(4, &salt1);
@@ -1613,9 +1519,7 @@ int walRestartLog(Wal *pWal) {
       rc = walTryBeginRead(pWal, &notUsed, 1, &cnt);
     } while (rc == (-1));
 
-    ((void)(0))
 
-        ;
     ;
     ;
     ;
@@ -1737,9 +1641,7 @@ int walFrames(Wal *pWal, int szPage, PgHdr *pList, Pgno nTruncate, int isCommit,
       u32 iWrite = 0;
       walFindFrame(pWal, p->pgno, &iWrite);
 
-      ((void)(0))
 
-          ;
       if (iWrite >= iFirst) {
         i64 iOff = (32 + ((iWrite)-1) * (i64)((szPage) + 24)) + 24;
         void *pData;
@@ -1757,9 +1659,7 @@ int walFrames(Wal *pWal, int szPage, PgHdr *pList, Pgno nTruncate, int isCommit,
 
     iFrame++;
 
-    ((void)(0))
 
-        ;
     nDbSize = (isCommit && p->pDirty == 0) ? nTruncate : 0;
     rc = walWriteOneFrame(&w, p, nDbSize, iOffset);
     if (rc)
@@ -1789,16 +1689,12 @@ int walFrames(Wal *pWal, int szPage, PgHdr *pList, Pgno nTruncate, int isCommit,
         iOffset += szFrame;
         nExtra++;
 
-        ((void)(0))
 
-            ;
       }
     }
     if (bSync) {
 
-      ((void)(0))
 
-          ;
       rc = sqlite3OsSync(w.pFd, ((sync_flags) & 0x03));
     }
   }
@@ -1918,9 +1814,7 @@ int sqlite3WalCheckpoint(Wal *pWal, sqlite3 *db, int eMode, int (*xBusy)(void *)
         if (pnLog)
           *pnLog = (int)pWal->hdr.mxFrame;
 
-        ((void)(0))
 
-            ;
         ;
         if (pnCkpt)
           *pnCkpt = (int)(walCkptInfo(pWal)->nBackfill);
@@ -1970,13 +1864,9 @@ int sqlite3WalExclusiveMode(Wal *pWal, int op) {
     }
   } else if (op > 0) {
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     walUnlockShared(pWal, (3 + (pWal->readLock)));
     pWal->exclusiveMode = 1;
     rc = 1;

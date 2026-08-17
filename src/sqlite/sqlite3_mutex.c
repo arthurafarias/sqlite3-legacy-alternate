@@ -21,9 +21,7 @@ sqlite3_mutex *sqlite3_mutex_alloc(int id) {
 void sqlite3_mutex_free(sqlite3_mutex *p) {
   if (p) {
 
-    ((void)(0))
 
-        ;
     sqlite3Config.mutex.xMutexFree(p);
   }
 }
@@ -31,9 +29,7 @@ void sqlite3_mutex_free(sqlite3_mutex *p) {
 void sqlite3_mutex_enter(sqlite3_mutex *p) {
   if (p) {
 
-    ((void)(0))
 
-        ;
     sqlite3Config.mutex.xMutexEnter(p);
   }
 }
@@ -42,9 +38,7 @@ int sqlite3_mutex_try(sqlite3_mutex *p) {
   int rc = 0;
   if (p) {
 
-    ((void)(0))
 
-        ;
     return sqlite3Config.mutex.xMutexTry(p);
   }
   return rc;
@@ -53,9 +47,7 @@ int sqlite3_mutex_try(sqlite3_mutex *p) {
 void sqlite3_mutex_leave(sqlite3_mutex *p) {
   if (p) {
 
-    ((void)(0))
 
-        ;
     sqlite3Config.mutex.xMutexLeave(p);
   }
 }

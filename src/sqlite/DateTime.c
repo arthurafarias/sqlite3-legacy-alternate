@@ -36,9 +36,7 @@ int getDigits(const char *zDate, const char *zFormat, ...) {
     int val = 0;
     u16 max;
 
-    ((void)(0))
 
-        ;
     max = aMx[zFormat[2] - 'a'];
     nextC = zFormat[3];
     val = 0;

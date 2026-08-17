@@ -133,13 +133,9 @@ void __attribute__((noinline)) sqlite3WhereAddLimit(WhereClause *pWC, Select *p)
     for (ii = 0; ii < pWC->nTerm; ii++) {
       if (pWC->a[ii].wtFlags & 0x0004) {
 
-        ((void)(0))
 
-            ;
 
-        ((void)(0))
 
-            ;
         continue;
       }
       if (pWC->a[ii].nChild) {
@@ -171,9 +167,7 @@ void __attribute__((noinline)) sqlite3WhereAddLimit(WhereClause *pWC, Select *p)
       }
     }
 
-    ((void)(0))
 
-        ;
     if (p->iOffset != 0 && (p->selFlags & 0x0000100) == 0) {
       whereAddLimitExpr(pWC, p->iOffset, p->pLimit->pRight, iCsr, 74);
     }
@@ -202,24 +196,18 @@ void sqlite3WhereClauseClear(WhereClause *pWC) {
 
     while (1) {
 
-      ((void)(0))
 
-          ;
       if (a->wtFlags & 0x0001) {
         sqlite3ExprDelete(db, a->pExpr);
       }
       if (a->wtFlags & (0x0010 | 0x0020)) {
         if (a->wtFlags & 0x0010) {
 
-          ((void)(0))
 
-              ;
           whereOrInfoDelete(db, a->u.pOrInfo);
         } else {
 
-          ((void)(0))
 
-              ;
           whereAndInfoDelete(db, a->u.pAndInfo);
         }
       }
@@ -269,9 +257,7 @@ void whereLoopOutputAdjust(WhereClause *pWC, WhereLoop *pLoop, LogEst nRow) {
 
   for (i = pWC->nBase, pTerm = pWC->a; i > 0; i--, pTerm++) {
 
-    ((void)(0))
 
-        ;
     if ((pTerm->prereqAll & notAllowed) != 0)
       continue;
     if ((pTerm->prereqAll & pLoop->maskSelf) == 0)
@@ -318,13 +304,9 @@ void whereLoopOutputAdjust(WhereClause *pWC, WhereLoop *pLoop, LogEst nRow) {
         } else if ((((pOpExpr)->flags & (u32)(0x000100)) != 0) && pOpExpr->op == 172) {
           int eOp;
 
-          ((void)(0))
 
-              ;
 
-          ((void)(0))
 
-              ;
           eOp = sqlite3ExprIsLikeOperator(pOpExpr);
           if ((eOp > 0)) {
             int szPattern;

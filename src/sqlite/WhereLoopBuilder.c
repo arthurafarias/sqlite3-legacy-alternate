@@ -173,9 +173,7 @@ int whereLoopAddBtreeIndex(WhereLoopBuilder *pBuilder, SrcItem *pSrc, Index *pPr
     opMask = (0x0002 << (57 - 54)) | (0x0002 << (56 - 54));
   } else {
 
-    ((void)(0))
 
-        ;
     opMask = 0x0002 | 0x0001 | (0x0002 << (55 - 54)) | (0x0002 << (58 - 54)) | (0x0002 << (57 - 54)) | (0x0002 << (56 - 54)) | 0x0100 | 0x0080;
   }
   if (pProbe->bUnordered) {
@@ -228,9 +226,7 @@ int whereLoopAddBtreeIndex(WhereLoopBuilder *pBuilder, SrcItem *pSrc, Index *pPr
     pNew->aLTerm[pNew->nLTerm++] = pTerm;
     pNew->prereq = (saved_prereq | pTerm->prereqRight) & ~pNew->maskSelf;
 
-    ((void)(0))
 
-        ;
 
     if (eOp & 0x0001) {
       Expr *pExpr = pTerm->pExpr;
@@ -240,9 +236,7 @@ int whereLoopAddBtreeIndex(WhereLoopBuilder *pBuilder, SrcItem *pSrc, Index *pPr
         int bRedundant = 0;
         nIn = 46;
 
-        ((void)(0))
 
-            ;
 
         for (i = 0; i < pNew->nLTerm - 1; i++) {
           if (pNew->aLTerm[i] && pNew->aLTerm[i]->pExpr == pExpr) {
@@ -286,9 +280,7 @@ int whereLoopAddBtreeIndex(WhereLoopBuilder *pBuilder, SrcItem *pSrc, Index *pPr
       int iCol = pProbe->aiColumn[saved_nEq];
       pNew->wsFlags |= 0x00000001;
 
-      ((void)(0))
 
-          ;
       if (iCol == (-1) || (iCol >= 0 && nInMul == 0 && saved_nEq == pProbe->nKeyCol - 1)) {
         if (iCol == (-1) || pProbe->uniqNotNull || (pProbe->nKeyCol == 1 && pProbe->onError && (eOp & 0x0002))) {
           pNew->wsFlags |= 0x00001000;
@@ -313,17 +305,11 @@ int whereLoopAddBtreeIndex(WhereLoopBuilder *pBuilder, SrcItem *pSrc, Index *pPr
 
           pTop = &pTerm[1];
 
-          ((void)(0))
 
-              ;
 
-          ((void)(0))
 
-              ;
 
-          ((void)(0))
 
-              ;
           if (whereLoopResize(db, pNew, pNew->nLTerm + 1))
             break;
           pNew->aLTerm[pNew->nLTerm++] = pTop;
@@ -332,9 +318,7 @@ int whereLoopAddBtreeIndex(WhereLoopBuilder *pBuilder, SrcItem *pSrc, Index *pPr
         }
       } else {
 
-        ((void)(0))
 
-            ;
         ;
         ;
         pNew->wsFlags |= 0x00000002 | 0x00000010;
@@ -344,27 +328,19 @@ int whereLoopAddBtreeIndex(WhereLoopBuilder *pBuilder, SrcItem *pSrc, Index *pPr
       }
     }
 
-    ((void)(0))
 
-        ;
     if (pNew->wsFlags & 0x00000002) {
 
       whereRangeScanEst(pParse, pBuilder, pBtm, pTop, pNew);
     } else {
       int nEq = ++pNew->u.btree.nEq;
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
       if (pTerm->truthProb <= 0 && pProbe->aiColumn[saved_nEq] >= 0) {
 
-        ((void)(0))
 
-            ;
         ;
         pNew->nOut += pTerm->truthProb;
         pNew->nOut -= nIn;
@@ -380,9 +356,7 @@ int whereLoopAddBtreeIndex(WhereLoopBuilder *pBuilder, SrcItem *pSrc, Index *pPr
       }
     }
 
-    ((void)(0))
 
-        ;
     if (pProbe->idxType == 3) {
 
       rCostIdx = pNew->nOut + 16;
@@ -506,9 +480,7 @@ int whereLoopAddBtree(WhereLoopBuilder *pBuilder, Bitmask mPrereq) {
 
   if (pSrc->fg.isIndexedBy) {
 
-    ((void)(0))
 
-        ;
 
     pProbe = pSrc->u2.pIBIndex;
   } else if (!(((pTab)->tabFlags & 0x00000080) == 0)) {
@@ -563,9 +535,7 @@ int whereLoopAddBtree(WhereLoopBuilder *pBuilder, Bitmask mPrereq) {
 
         pNew->nOut = 43;
 
-        ((void)(0))
 
-            ;
         pNew->rRun = sqlite3LogEstAdd(rLogSize, pNew->nOut);
         pNew->wsFlags = 0x00004000;
         pNew->prereq = mPrereq | pTerm->prereqRight;
@@ -596,9 +566,7 @@ int whereLoopAddBtree(WhereLoopBuilder *pBuilder, Bitmask mPrereq) {
     pNew->u.btree.pOrderBy = 0;
     b = indexMightHelpWithOrderBy(pBuilder, pProbe, pSrc->iCursor);
 
-    ((void)(0))
 
-        ;
     if (pProbe->idxType == 3) {
 
       pNew->wsFlags = 0x00000100;
@@ -640,9 +608,7 @@ int whereLoopAddBtree(WhereLoopBuilder *pBuilder, Bitmask mPrereq) {
 
             ;
 
-            ((void)(0))
 
-                ;
           } else {
             m = 0;
             pNew->wsFlags |= isCov;
@@ -651,9 +617,7 @@ int whereLoopAddBtree(WhereLoopBuilder *pBuilder, Bitmask mPrereq) {
               ;
             } else {
 
-              ((void)(0))
 
-                  ;
 
               ;
             }
@@ -781,9 +745,7 @@ int whereLoopAddVirtualOne(WhereLoopBuilder *pBuilder, Bitmask mPrereq, Bitmask 
       ;
       pNew->prereq |= pTerm->prereqRight;
 
-      ((void)(0))
 
-          ;
       pNew->aLTerm[iTerm] = pTerm;
       if (iTerm > mxTerm)
         mxTerm = iTerm;
@@ -808,22 +770,14 @@ int whereLoopAddVirtualOne(WhereLoopBuilder *pBuilder, Bitmask mPrereq, Bitmask 
         pIdxInfo->idxFlags &= ~0x00000001;
         *pbIn = 1;
 
-        ((void)(0))
 
-            ;
       }
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
 
       if (isLimitTerm(pTerm) && (*pbIn || !allConstraintsUsed(pUsage, i))) {
 
@@ -908,9 +862,7 @@ int whereLoopAddVirtual(WhereLoopBuilder *pBuilder, Bitmask mPrereq, Bitmask mUn
   rc = whereLoopAddVirtualOne(pBuilder, mPrereq, ((Bitmask)-1), 0, p, mNoOmit, &bIn, &bRetry);
   if (bRetry) {
 
-    ((void)(0))
 
-        ;
     rc = whereLoopAddVirtualOne(pBuilder, mPrereq, ((Bitmask)-1), 0, p, mNoOmit, &bIn, 0);
   }
 
@@ -924,9 +876,7 @@ int whereLoopAddVirtual(WhereLoopBuilder *pBuilder, Bitmask mPrereq, Bitmask mUn
       ;
       rc = whereLoopAddVirtualOne(pBuilder, mPrereq, ((Bitmask)-1), 0x0001, p, mNoOmit, &bIn, 0);
 
-      ((void)(0))
 
-          ;
       mBestNoIn = pNew->prereq & ~mPrereq;
       if (mBestNoIn == 0) {
         seenZero = 1;
@@ -938,9 +888,7 @@ int whereLoopAddVirtual(WhereLoopBuilder *pBuilder, Bitmask mPrereq, Bitmask mUn
       int i;
       Bitmask mNext = ((Bitmask)-1);
 
-      ((void)(0))
 
-          ;
       for (i = 0; i < nConstraint; i++) {
         int iTerm = p->aConstraint[i].iTermOffset;
         Bitmask mThis = termFromWhereClause(pWC, iTerm)->prereqRight & ~mPrereq;
@@ -1198,9 +1146,7 @@ int whereShortCut(WhereLoopBuilder *pBuilder) {
     for (pIdx = pTab->pIndex; pIdx; pIdx = pIdx->pNext) {
       int opMask;
 
-      ((void)(0))
 
-          ;
       if (!((pIdx)->onError != 0) || pIdx->pPartIdxWhere != 0 || pIdx->nKeyCol > ((int)(sizeof(pLoop->aLTermSpace) / sizeof(pLoop->aLTermSpace[0]))))
         continue;
       opMask = pIdx->uniqNotNull ? (0x0002 | 0x0080) : 0x0002;
@@ -1231,9 +1177,7 @@ int whereShortCut(WhereLoopBuilder *pBuilder) {
     pLoop->nOut = (LogEst)1;
     pWInfo->a[0].pWLoop = pLoop;
 
-    ((void)(0))
 
-        ;
     pLoop->maskSelf = 1;
     pWInfo->a[0].iTabCur = iCur;
     pWInfo->nRowOut = 1;

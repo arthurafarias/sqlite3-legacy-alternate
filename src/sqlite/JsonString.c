@@ -121,9 +121,7 @@ void jsonAppendChar(JsonString *p, char c) {
 void jsonStringTrimOneChar(JsonString *p) {
   if (p->eErr == 0) {
 
-    ((void)(0))
 
-        ;
     p->nUsed--;
   }
 }
@@ -319,13 +317,9 @@ void jsonReturnStringAsBlob(JsonString *pStr) {
     sqlite3_result_error_nomem(pStr->pCtx);
   } else {
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
     sqlite3_result_blob(pStr->pCtx, px.aBlob, px.nBlob, ((sqlite3_destructor_type)sqlite3RowSetClear));
   }
 }

@@ -191,9 +191,7 @@ int patternCompare(const u8 *zPattern, const u8 *zString, const struct compareIn
             return 2;
         } else {
 
-          ((void)(0))
 
-              ;
           while (*zString) {
             int bMatch = patternCompare(&zPattern[-1], zString, pInfo, matchOther);
             if (bMatch != 1)
@@ -633,9 +631,7 @@ int parseModifier(sqlite3_context *pCtx, const char *z, int n, DateTime *p, int 
     sqlite3DbFree(db, zCopy);
     if (rx) {
 
-      ((void)(0))
 
-          ;
       break;
     }
     if (z[n] == '-') {
@@ -647,9 +643,7 @@ int parseModifier(sqlite3_context *pCtx, const char *z, int n, DateTime *p, int 
           break;
       } else {
 
-        ((void)(0))
 
-            ;
         if (getDigits(&z[1], "50f-20a-20d", &Y, &M, &D) != 3)
           break;
         z++;
@@ -719,9 +713,7 @@ int parseModifier(sqlite3_context *pCtx, const char *z, int n, DateTime *p, int 
       n--;
     computeJD(p);
 
-    ((void)(0))
 
-        ;
     rRounder = r < 0 ? -0.5 : +0.5;
     p->nFloor = 0;
     for (i = 0; i < ((int)(sizeof(aXformType) / sizeof(aXformType[0]))); i++) {
@@ -729,9 +721,7 @@ int parseModifier(sqlite3_context *pCtx, const char *z, int n, DateTime *p, int 
         switch (i) {
         case 4: {
 
-          ((void)(0))
 
-              ;
           computeYMD_HMS(p);
           p->M += (int)r;
           x = p->M > 0 ? (p->M - 1) / 12 : (p->M - 12) / 12;
@@ -745,14 +735,10 @@ int parseModifier(sqlite3_context *pCtx, const char *z, int n, DateTime *p, int 
         case 5: {
           int y = (int)r;
 
-          ((void)(0))
 
-              ;
           computeYMD_HMS(p);
 
-          ((void)(0))
 
-              ;
           p->Y += y;
           computeFloor(p);
           p->validJD = 0;
@@ -805,9 +791,7 @@ int isDate(sqlite3_context *context, int argc, sqlite3_value **argv, DateTime *p
     return 1;
   if (argc == 1 && p->validYMD && p->D > 28) {
 
-    ((void)(0))
 
-        ;
     p->validYMD = 0;
   }
   return 0;
@@ -994,9 +978,7 @@ void strftimeFunc(sqlite3_context *context, int argc, sqlite3_value **argv) {
     case 'g': {
       DateTime y = x;
 
-      ((void)(0))
 
-          ;
 
       y.iJD += (3 - daysAfterMonday(&x)) * 86400000;
       y.validYMD = 0;
@@ -1084,9 +1066,7 @@ void strftimeFunc(sqlite3_context *context, int argc, sqlite3_value **argv) {
     case 'V': {
       DateTime y = x;
 
-      ((void)(0))
 
-          ;
       y.iJD += (3 - daysAfterMonday(&x)) * 86400000;
       y.validYMD = 0;
       computeYMD(&y);
@@ -1262,9 +1242,7 @@ void setResultStrOrError(sqlite3_context *pCtx, const char *z, int n, u8 enc, vo
     rc = sqlite3VdbeMemSetText(pOut, z, n, xDel);
   } else if (enc == 16) {
 
-    ((void)(0))
 
-        ;
     rc = sqlite3VdbeMemSetText(pOut, z, n, xDel);
     pOut->flags |= 0x0200;
   } else {
@@ -1275,9 +1253,7 @@ void setResultStrOrError(sqlite3_context *pCtx, const char *z, int n, u8 enc, vo
       sqlite3_result_error_toobig(pCtx);
     } else {
 
-      ((void)(0))
 
-          ;
       sqlite3_result_error_nomem(pCtx);
     }
     return;
@@ -1572,15 +1548,11 @@ int renameEditSql(sqlite3_context *pCtx, RenameCtx *pRename, const char *zSql, c
       nQuot = sqlite3Strlen30(zQuot) - 1;
     }
 
-    ((void)(0))
 
-        ;
     zOut = sqlite3DbMallocZero(db, (u64)nSql + pRename->nList * (u64)nQuot + 1);
   } else {
 
-    ((void)(0))
 
-        ;
     zOut = (char *)sqlite3DbMallocZero(db, (2 * (u64)nSql + 1) * 3);
     if (zOut) {
       zBuf1 = &zOut[nSql * 2 + 1];
@@ -1591,9 +1563,7 @@ int renameEditSql(sqlite3_context *pCtx, RenameCtx *pRename, const char *zSql, c
   if (zOut) {
     i64 nOut = nSql;
 
-    ((void)(0))
 
-        ;
     memcpy(zOut, zSql, (size_t)nSql);
     while (pRename->pList) {
       int iOff;
@@ -1617,9 +1587,7 @@ int renameEditSql(sqlite3_context *pCtx, RenameCtx *pRename, const char *zSql, c
         zBuf1[pBest->t.n] = 0;
         sqlite3Dequote(zBuf1);
 
-        ((void)(0))
 
-            ;
         sqlite3_snprintf((int)(nSql * 2), zBuf2, "%Q%s", zBuf1, pBest->t.z[pBest->t.n] == '\'' ? " " : "");
         zReplace = zBuf2;
         nReplace = sqlite3Strlen30(zReplace);
@@ -1735,9 +1703,7 @@ void renameColumnFunc(sqlite3_context *context, int NotUsed, sqlite3_value **arg
         }
       }
 
-      ((void)(0))
 
-          ;
       for (pFKey = sParse.pNewTable->u.tab.pFKey; pFKey; pFKey = pFKey->pNextFrom) {
         for (i = 0; i < pFKey->nCol; i++) {
           if (bFKOnly == 0 && pFKey->aCol[i].iFrom == iCol) {
@@ -1844,9 +1810,7 @@ void renameTableFunc(sqlite3_context *context, int NotUsed, sqlite3_value **argv
             memset(&sNC, 0, sizeof(sNC));
             sNC.pParse = &sParse;
 
-            ((void)(0))
 
-                ;
             pSelect->selFlags &= ~(u32)0x0200000;
             sqlite3SelectPrep(&sParse, pTab->u.view.pSelect, &sNC);
             if (sParse.nErr) {
@@ -1860,9 +1824,7 @@ void renameTableFunc(sqlite3_context *context, int NotUsed, sqlite3_value **argv
           if ((isLegacy == 0 || (db->flags & 0x00004000)) && !((pTab)->eTabType == 1)) {
             FKey *pFKey;
 
-            ((void)(0))
 
-                ;
             for (pFKey = pTab->u.tab.pFKey; pFKey; pFKey = pFKey->pNextFrom) {
               if (sqlite3_stricmp(pFKey->zTo, zOld) == 0) {
                 renameTokenFind(&sParse, &sCtx, (void *)pFKey->zTo);
@@ -2105,13 +2067,9 @@ void dropColumnFunc(sqlite3_context *context, int NotUsed, sqlite3_value **argv)
   } else {
     int eTok;
 
-    ((void)(0))
 
-        ;
 
-    ((void)(0))
 
-        ;
 
     pCol = renameTokenFind(&sParse, 0, (void *)pTab->aCol[iCol - 1].zCnName);
     do {
@@ -2467,9 +2425,7 @@ void attachFunc(sqlite3_context *context, int NotUsed, sqlite3_value **argv) {
 
     pNew = &db->aDb[db->init.iDb];
 
-    ((void)(0))
 
-        ;
     if (sqlite3BtreeTxnState(pNew->pBt) != 0 || sqlite3BtreeIsInBackup(pNew->pBt)) {
       rc = 5;
       goto attach_error;
@@ -2501,9 +2457,7 @@ void attachFunc(sqlite3_context *context, int NotUsed, sqlite3_value **argv) {
     }
     for (i = 0; i < db->nDb; i++) {
 
-      ((void)(0))
 
-          ;
       if (sqlite3DbIsNamed(db, i, zName)) {
         zErrDyn = sqlite3MPrintf(db, "database %s is already in use", zName);
         goto attach_error;
@@ -2540,9 +2494,7 @@ void attachFunc(sqlite3_context *context, int NotUsed, sqlite3_value **argv) {
       flags &= ~0x00000004;
     }
 
-    ((void)(0))
 
-        ;
     flags |= 0x00000100;
     rc = sqlite3BtreeOpen(pVfs, zPath, db, &pNew->pBt, 0, flags);
     db->nDb++;
@@ -2586,17 +2538,13 @@ void attachFunc(sqlite3_context *context, int NotUsed, sqlite3_value **argv) {
     }
     sqlite3BtreeLeaveAll(db);
 
-    ((void)(0))
 
-        ;
   }
   if (rc) {
     if ((!(db->init.reopenMemdb))) {
       int iDb = db->nDb - 1;
 
-      ((void)(0))
 
-          ;
       if (db->aDb[iDb].pBt) {
         sqlite3BtreeClose(db->aDb[iDb].pBt);
         db->aDb[iDb].pBt = 0;
@@ -2934,9 +2882,7 @@ void substrFunc(sqlite3_context *context, int argc, sqlite3_value **argv) {
     if (z == 0)
       return;
 
-    ((void)(0))
 
-        ;
   } else {
     z = sqlite3_value_text(argv[0]);
     if (z == 0)
@@ -3017,9 +2963,7 @@ void substrFunc(sqlite3_context *context, int argc, sqlite3_value **argv) {
     } else if (p2 > len - p1) {
       p2 = len - p1;
 
-      ((void)(0))
 
-          ;
     }
     sqlite3_result_blob64(context, (char *)&z[p1], (u64)p2, ((sqlite3_destructor_type)-1));
   }
@@ -3449,9 +3393,7 @@ void unhexFunc(sqlite3_context *pCtx, int argc, sqlite3_value **argv) {
       while (!(sqlite3CtypeMap[(unsigned char)(c)] & 0x08)) {
         u32 ch = (zHex[0] < 0x80 ? *(zHex++) : sqlite3Utf8Read(&zHex));
 
-        ((void)(0))
 
-            ;
         if (!strContainsChar(zPass, nPass, ch))
           goto unhex_null;
         c = *zHex;
@@ -3460,13 +3402,9 @@ void unhexFunc(sqlite3_context *pCtx, int argc, sqlite3_value **argv) {
       }
       zHex++;
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
       d = *(zHex++);
       if (!(sqlite3CtypeMap[(unsigned char)(d)] & 0x08))
         goto unhex_null;
@@ -3520,16 +3458,12 @@ void replaceFunc(sqlite3_context *context, int argc, sqlite3_value **argv) {
   zPattern = sqlite3_value_text(argv[1]);
   if (zPattern == 0) {
 
-    ((void)(0))
 
-        ;
     return;
   }
   if (zPattern[0] == 0) {
 
-    ((void)(0))
 
-        ;
     sqlite3_result_text(context, (const char *)zStr, nStr, ((sqlite3_destructor_type)-1));
     return;
   }
@@ -3793,9 +3727,7 @@ void sumInverse(sqlite3_context *context, int argc, sqlite3_value **argv) {
 
   if ((p) && type != 5) {
 
-    ((void)(0))
 
-        ;
     p->cnt--;
     if (!p->approx) {
       i64 x = p->iSum;
@@ -4025,9 +3957,7 @@ void groupConcatInverse(sqlite3_context *context, int argc, sqlite3_value **argv
     pGCC->nAccum -= 1;
     if (pGCC->pnSepLengths != 0) {
 
-      ((void)(0))
 
-          ;
       if (pGCC->nAccum > 0) {
         nVS += *pGCC->pnSepLengths;
         memmove(pGCC->pnSepLengths, pGCC->pnSepLengths + 1, (pGCC->nAccum - 1) * sizeof(int));
@@ -4323,9 +4253,7 @@ void percentInverse(sqlite3_context *pCtx, int argc, sqlite3_value **argv) {
   }
   if (p->bSorted == 0) {
 
-    ((void)(0))
 
-        ;
     percentSort(p->a, p->nUsed);
     p->bSorted = 1;
   }
@@ -4354,9 +4282,7 @@ void percentCompute(sqlite3_context *pCtx, int bIsFinal) {
   if (p->nUsed) {
     if (p->bSorted == 0) {
 
-      ((void)(0))
 
-          ;
       percentSort(p->a, p->nUsed);
       p->bSorted = 1;
     }
@@ -4611,9 +4537,7 @@ void ntileValueFunc(sqlite3_context *pCtx) {
       i64 iSmall = nLarge * (nSize + 1);
       i64 iRow = p->iRow;
 
-      ((void)(0))
 
-          ;
 
       if (iRow < iSmall) {
         sqlite3_result_int64(pCtx, 1 + iRow / (nSize + 1));
@@ -4756,9 +4680,7 @@ JsonParse *jsonCacheSearch(sqlite3_context *ctx, sqlite3_value *pArg) {
       i = p->nUsed - 1;
     }
 
-    ((void)(0))
 
-        ;
     return p->a[i];
   } else {
     return 0;
@@ -5183,9 +5105,7 @@ void jsonExtractFunc(sqlite3_context *ctx, int argc, sqlite3_value **argv) {
           jsonReturnString(&jx, 0, 0);
           jsonStringReset(&jx);
 
-          ((void)(0))
 
-              ;
           sqlite3_result_subtype(ctx, 74);
         } else {
           jsonReturnFromBlob(p, j, ctx, 0);
@@ -5491,9 +5411,7 @@ void jsonErrorFunc(sqlite3_context *ctx, int argc, sqlite3_value **argv) {
 
         u32 k;
 
-        ((void)(0))
 
-            ;
         for (k = 0; k < s.iErr && (s.zJson[k]); k++) {
           if ((s.zJson[k] & 0xc0) != 0x80)
             iErrPos++;
@@ -5669,9 +5587,7 @@ void jsonObjectCompute(sqlite3_context *ctx, int isFinal) {
           pStr->zBuf[j++] = pStr->zBuf[++i];
         } else if (c == '@' && !inStr) {
 
-          ((void)(0))
 
-              ;
           if (pStr->zBuf[i + 1] == ',') {
             i++;
           } else if (pStr->zBuf[j - 1] == ',') {

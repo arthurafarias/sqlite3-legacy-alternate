@@ -20,9 +20,7 @@ int walWriteToLog(WalWriter *p, void *pContent, int iAmt, sqlite3_int64 iOffset)
     iAmt -= iFirstAmt;
     pContent = (void *)(iFirstAmt + (char *)pContent);
 
-    ((void)(0))
 
-        ;
     rc = sqlite3OsSync(p->pFd, ((p->syncFlags) & 0x03));
     if (iAmt == 0 || rc)
       return rc;

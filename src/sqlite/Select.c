@@ -114,23 +114,15 @@ int compoundHasDifferentAffinities(Select *p) {
     char aff;
     Select *pSub1;
 
-    ((void)(0))
 
-        ;
     aff = sqlite3ExprAffinity(pList->a[ii].pExpr);
     for (pSub1 = p->pPrior; pSub1; pSub1 = pSub1->pPrior) {
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
       if (sqlite3ExprAffinity(pSub1->pEList->a[ii].pExpr) != aff) {
         return 1;
       }

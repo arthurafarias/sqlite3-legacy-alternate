@@ -33,17 +33,11 @@ Expr *substExpr(SubstContext *pSubst, Expr *pExpr) {
       Expr ifNullRow;
       iColumn = pExpr->iColumn;
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
 
-      ((void)(0))
 
-          ;
       pCopy = pSubst->pEList->a[iColumn].pExpr;
       if (sqlite3ExprIsVector(pCopy)) {
         sqlite3VectorErrorMsg(pSubst->pParse, pCopy);
@@ -136,9 +130,7 @@ void substSelect(SubstContext *pSubst, Select *p, int doPrior) {
     p->pWhere = substExpr(pSubst, p->pWhere);
     pSrc = p->pSrc;
 
-    ((void)(0))
 
-        ;
     for (i = pSrc->nSrc, pItem = pSrc->a; i > 0; i--, pItem++) {
       if (pItem->fg.isSubquery) {
         substSelect(pSubst, pItem->u4.pSubq->pSelect, 1);
