@@ -17,3 +17,4 @@ struct sqlite3PrngType {
 #ifdef __cplusplus
 }
 #endif
+
