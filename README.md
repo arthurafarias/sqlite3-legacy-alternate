@@ -1,11 +1,11 @@
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="docs/logo/mark-dark.svg">
-    <img src="docs/logo/mark-light.svg" alt="sqlite3-alt" width="200">
+    <img src="docs/logo/mark-light.svg" alt="sqlite-legacy-alternate" width="200">
   </picture>
 </p>
 
-<h1 align="center">sqlite3-alt</h1>
+<h1 align="center">sqlite-legacy-alternate</h1>
 <p align="center"><em>SQLite's under strict C architectural patterns.</em></p>
 
 ## What this is
