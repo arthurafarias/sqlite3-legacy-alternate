@@ -1,7 +1,7 @@
 
 #pragma once
 #ifdef __cplusplus
-extern C {
+extern "C" {
 #endif
 #include "sqlite/LogEst.h"
 #include "sqlite/u8.h"

@@ -2,7 +2,7 @@
 #pragma once
 #include "sqlite/PagerSavepoint.h"
 #ifdef __cplusplus
-extern C {
+extern "C" {
 #endif
 #include "sqlite/DbPage.h"
 #include "sqlite/Pgno.h"

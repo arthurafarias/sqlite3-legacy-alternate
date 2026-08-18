@@ -1,7 +1,7 @@
 
 #pragma once
 #ifdef __cplusplus
-extern C {
+extern "C" {
 #endif
 #include "sqlite/PragmaName.h"
 #include "sqlite/sqlite3_vtab.h"

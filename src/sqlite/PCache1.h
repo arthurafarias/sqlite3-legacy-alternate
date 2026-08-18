@@ -1,7 +1,7 @@
 
 #pragma once
 #ifdef __cplusplus
-extern C {
+extern "C" {
 #endif
   typedef struct PGroup PGroup;
   typedef struct PgHdr1 PgHdr1;

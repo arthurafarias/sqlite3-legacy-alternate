@@ -1,7 +1,7 @@
 
 #pragma once
 #ifdef __cplusplus
-extern C {
+extern "C" {
 #endif
 #include "sqlite/DbPage.h"
 #include "sqlite/InitData.h"

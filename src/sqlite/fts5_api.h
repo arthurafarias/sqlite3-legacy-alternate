@@ -1,7 +1,7 @@
 
 #pragma once
 #ifdef __cplusplus
-extern C {
+extern "C" {
 #endif
 #include "sqlite/fts5_extension_function.h"
 #include "sqlite/fts5_tokenizer.h"

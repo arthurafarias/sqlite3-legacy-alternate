@@ -2,7 +2,7 @@
 #pragma once
 #include "sqlite/Pgno.h"
 #ifdef __cplusplus
-extern C {
+extern "C" {
 #endif
 #include "sqlite/StrAccum.h"
 #include "sqlite/i64.h"

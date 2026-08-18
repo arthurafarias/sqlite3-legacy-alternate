@@ -1,7 +1,7 @@
 
 #pragma once
 #ifdef __cplusplus
-extern C {
+extern "C" {
 #endif
 #include "sqlite/Bitvec.h"
 #include "sqlite/sqlite3_libversion.h"

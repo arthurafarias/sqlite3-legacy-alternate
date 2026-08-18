@@ -2,7 +2,7 @@
 #pragma once
 #include "sqlite/PgHdr.h"
 #ifdef __cplusplus
-extern C {
+extern "C" {
 #endif
 #include "sqlite/Pgno.h"
 #include "sqlite/i64.h"

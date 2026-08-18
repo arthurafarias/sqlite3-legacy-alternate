@@ -1,7 +1,7 @@
 
 #pragma once
 #ifdef __cplusplus
-extern C {
+extern "C" {
 #endif
 #include <stdarg.h>
 #include "sqlite/sqlite3_int64.h"

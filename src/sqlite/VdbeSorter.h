@@ -1,7 +1,7 @@
 
 #pragma once
 #ifdef __cplusplus
-extern C {
+extern "C" {
 #endif
 #include "sqlite/SortSubtask.h"
 #include "sqlite/SorterCompare.h"

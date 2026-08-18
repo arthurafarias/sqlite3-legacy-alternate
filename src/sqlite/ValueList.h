@@ -1,7 +1,7 @@
 
 #pragma once
 #ifdef __cplusplus
-extern C {
+extern "C" {
 #endif
   typedef struct BtCursor BtCursor;
   typedef struct sqlite3_value sqlite3_value;

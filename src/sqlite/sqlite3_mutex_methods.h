@@ -1,7 +1,7 @@
 
 #pragma once
 #ifdef __cplusplus
-extern C {
+extern "C" {
 #endif
   typedef struct sqlite3_mutex_methods sqlite3_mutex_methods;
   typedef struct sqlite3_mutex sqlite3_mutex;

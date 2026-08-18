@@ -1,7 +1,7 @@
 
 #pragma once
 #ifdef __cplusplus
-extern C {
+extern "C" {
 #endif
 #include "sqlite/sqlite_int64.h"
   typedef struct sqlite3_context sqlite3_context;

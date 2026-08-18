@@ -1,7 +1,7 @@
 
 #pragma once
 #ifdef __cplusplus
-extern C {
+extern "C" {
 #endif
 #include "sqlite/u32.h"
   typedef struct sqlite3AutoExtList sqlite3AutoExtList;

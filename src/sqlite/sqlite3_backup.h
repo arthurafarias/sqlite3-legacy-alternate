@@ -2,7 +2,7 @@
 #pragma once
 #include "sqlite/Btree.h"
 #ifdef __cplusplus
-extern C {
+extern "C" {
 #endif
 #include "sqlite/Pgno.h"
 #include "sqlite/u32.h"

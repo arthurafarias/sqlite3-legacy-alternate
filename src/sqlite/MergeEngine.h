@@ -1,7 +1,7 @@
 
 #pragma once
 #ifdef __cplusplus
-extern C {
+extern "C" {
 #endif
   typedef struct PmaReader PmaReader;
   typedef struct SortSubtask SortSubtask;

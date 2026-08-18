@@ -9,7 +9,7 @@ typedef struct IdList IdList;
 typedef struct SrcList SrcList;
 typedef struct Upsert Upsert;
 #ifdef __cplusplus
-extern C {
+extern "C" {
 #endif
   typedef struct TriggerStep TriggerStep;
 

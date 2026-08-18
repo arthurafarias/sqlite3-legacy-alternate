@@ -1,7 +1,7 @@
 
 #pragma once
 #ifdef __cplusplus
-extern C {
+extern "C" {
 #endif
   typedef struct sqlite3_index_info sqlite3_index_info;
   typedef struct sqlite3_vtab_cursor sqlite3_vtab_cursor;

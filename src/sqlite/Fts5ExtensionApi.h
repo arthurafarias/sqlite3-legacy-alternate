@@ -1,7 +1,7 @@
 
 #pragma once
 #ifdef __cplusplus
-extern C {
+extern "C" {
 #endif
 #include "sqlite/Fts5Context.h"
 #include "sqlite/Fts5PhraseIter.h"
