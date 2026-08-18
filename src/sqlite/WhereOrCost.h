@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/BitMask.h"
 #include "sqlite/LogEst.h"
   typedef struct WhereOrCost WhereOrCost;
@@ -12,6 +10,4 @@ extern "C" {
     LogEst nOut;
   };
 
-#ifdef __cplusplus
-}
-#endif
+

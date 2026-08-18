@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
   typedef struct RenameToken RenameToken;
   typedef struct Table Table;
   typedef struct RenameCtx RenameCtx;
@@ -16,6 +14,4 @@ extern "C" {
 
   RenameToken *renameColumnTokenNext(RenameCtx * pCtx);
 
-#ifdef __cplusplus
-}
-#endif
+

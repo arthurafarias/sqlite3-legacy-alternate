@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
   typedef struct Returning Returning;
 
 #include "sqlite/Trigger.h"
@@ -21,6 +19,4 @@ extern "C" {
     char zName[40];
   };
 
-#ifdef __cplusplus
-}
-#endif
+

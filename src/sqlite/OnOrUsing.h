@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
   typedef struct Expr Expr;
   typedef struct IdList IdList;
   typedef struct OnOrUsing OnOrUsing;
@@ -12,6 +10,4 @@ extern "C" {
     IdList *pUsing;
   };
 
-#ifdef __cplusplus
-}
-#endif
+

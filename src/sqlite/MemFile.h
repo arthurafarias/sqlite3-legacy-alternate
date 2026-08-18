@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/MemStore.h"
 #include "sqlite/sqlite3_file.h"
   typedef struct MemFile MemFile;
@@ -13,6 +11,4 @@ extern "C" {
     int eLock;
   };
 
-#ifdef __cplusplus
-}
-#endif
+

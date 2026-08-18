@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/BitMask.h"
 #include "sqlite/InLoop.h"
 #include "sqlite/u32.h"
@@ -48,6 +46,4 @@ struct WhereLevel {
 
 void disableTerm(WhereLevel *pLevel, WhereTerm *pTerm);
 
-#ifdef __cplusplus
-}
-#endif
+

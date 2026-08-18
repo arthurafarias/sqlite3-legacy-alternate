@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/Fts5Tokenizer.h"
   typedef struct fts5_tokenizer fts5_tokenizer;
 
@@ -13,6 +11,4 @@ extern "C" {
                      int (*xToken)(void *pCtx, int tflags, const char *pToken, int nToken, int iStart, int iEnd));
   };
 
-#ifdef __cplusplus
-}
-#endif
+

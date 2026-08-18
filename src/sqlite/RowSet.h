@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/i64.h"
 #include "sqlite/u16.h"
   typedef struct RowSetChunk RowSetChunk;
@@ -29,6 +27,4 @@ extern "C" {
   int sqlite3RowSetNext(RowSet *, i64 *);
   struct RowSetEntry *rowSetEntryAlloc(RowSet * p);
 
-#ifdef __cplusplus
-}
-#endif
+

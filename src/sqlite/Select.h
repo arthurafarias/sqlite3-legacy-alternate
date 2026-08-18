@@ -1,9 +1,7 @@
 
 #pragma once
 #include "sqlite/i16.h"
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/ExprList.h"
 #include "sqlite/LogEst.h"
 #include "sqlite/With.h"
@@ -52,6 +50,4 @@ extern "C" {
   int compoundHasDifferentAffinities(Select * p);
   Table *isSimpleCount(Select * p, AggInfo * pAggInfo);
 
-#ifdef __cplusplus
-}
-#endif
+

@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 /* Testing Interface Operation Codes (from sqlite3.h) */
 enum {
   SQLITE_TESTCTRL_FIRST = 5,
@@ -44,6 +42,4 @@ enum {
   SQLITE_TESTCTRL_LAST = 34, /* Largest TESTCTRL */
 };
 
-#ifdef __cplusplus
-}
-#endif
+

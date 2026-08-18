@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/u64.h"
 #include "sqlite/u8.h"
 typedef struct PragmaName {
@@ -13,6 +11,3 @@ typedef struct PragmaName {
   u64 iArg;
 } PragmaName;
 
-#ifdef __cplusplus
-}
-#endif

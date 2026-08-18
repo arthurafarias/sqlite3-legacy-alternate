@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/i64.h"
 #include "sqlite/u64.h"
 #include "sqlite/u8.h"
@@ -31,6 +29,4 @@ extern "C" {
   int vdbePmaReaderIncrInit(PmaReader * pReadr, int eMode);
   int vdbePmaReaderIncrMergeInit(PmaReader * pReadr, int eMode);
 
-#ifdef __cplusplus
-}
-#endif
+

@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 /* Result Codes (from sqlite3.h) */
 enum {
   SQLITE_OK = 0,          /* Successful result */
@@ -37,6 +35,4 @@ enum {
   SQLITE_DONE = 101,      /* sqlite3_step() has finished executing */
 };
 
-#ifdef __cplusplus
-}
-#endif
+

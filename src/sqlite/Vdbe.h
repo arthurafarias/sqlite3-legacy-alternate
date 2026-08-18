@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/BitMask.h"
 #include "sqlite/Mem.h"
 #include "sqlite/Op.h"
@@ -214,6 +212,4 @@ extern "C" {
 
   extern const char *const pragCName[57];
 
-#ifdef __cplusplus
-}
-#endif
+

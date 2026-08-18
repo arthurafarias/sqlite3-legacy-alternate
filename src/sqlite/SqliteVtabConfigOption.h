@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 /* Virtual Table Configuration Options (from sqlite3.h) */
 enum {
   SQLITE_VTAB_CONSTRAINT_SUPPORT = 1,
@@ -10,6 +8,4 @@ enum {
   SQLITE_VTAB_USES_ALL_SCHEMAS = 4,
 };
 
-#ifdef __cplusplus
-}
-#endif
+

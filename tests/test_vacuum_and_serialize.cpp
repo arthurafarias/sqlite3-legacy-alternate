@@ -60,7 +60,7 @@ int main(void) {
 
   /* Copy the buffer since deserialize (without FREEONCLOSE) doesn't take
    * ownership, and src is closed independently below. */
-  unsigned char *owned = sqlite3_malloc64(size);
+  unsigned char *owned = (unsigned char *) sqlite3_malloc64(size);
   TEST_ASSERT(owned != NULL);
   memcpy(owned, blob, size);
   sqlite3_free(blob);

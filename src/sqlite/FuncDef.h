@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/i16.h"
 #include "sqlite/u32.h"
 #include "sqlite/u8.h"
@@ -33,6 +31,4 @@ extern "C" {
   extern const FuncDef statGetFuncdef;
   int matchQuality(FuncDef * p, int nArg, u8 enc);
 
-#ifdef __cplusplus
-}
-#endif
+

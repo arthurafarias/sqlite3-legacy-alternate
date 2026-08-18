@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/SortSubtask.h"
 #include "sqlite/SorterCompare.h"
 #include "sqlite/SorterList.h"
@@ -42,6 +40,4 @@ extern "C" {
   int vdbeSorterSetupMerge(VdbeSorter * pSorter);
   void *vdbeSorterRowkey(const VdbeSorter *pSorter, int *pnKey);
 
-#ifdef __cplusplus
-}
-#endif
+

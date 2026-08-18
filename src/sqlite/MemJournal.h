@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/FilePoint.h"
   typedef struct FileChunk FileChunk;
   typedef struct sqlite3_io_methods sqlite3_io_methods;
@@ -26,6 +24,4 @@ extern "C" {
 
   int memjrnlCreateFile(MemJournal * p);
 
-#ifdef __cplusplus
-}
-#endif
+

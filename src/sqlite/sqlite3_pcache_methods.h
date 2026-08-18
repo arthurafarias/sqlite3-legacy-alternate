@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
   typedef struct sqlite3_pcache sqlite3_pcache;
 
   typedef struct sqlite3_pcache_methods sqlite3_pcache_methods;
@@ -21,6 +19,4 @@ extern "C" {
     void (*xDestroy)(sqlite3_pcache *);
   };
 
-#ifdef __cplusplus
-}
-#endif
+

@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/Mem.h"
 #include "sqlite/compareInfo.h"
 #include "sqlite/i64.h"
@@ -237,6 +235,4 @@ extern "C" {
 
   int patternCompare(const u8 *zPattern, const u8 *zString, const struct compareInfo *pInfo, u32 matchOther);
 
-#ifdef __cplusplus
-}
-#endif
+

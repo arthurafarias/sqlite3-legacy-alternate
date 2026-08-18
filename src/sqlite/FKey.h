@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/Trigger.h"
 #include "sqlite/sColMap.h"
 #include "sqlite/u8.h"
@@ -23,6 +21,4 @@ struct FKey {
   sColMap aCol[1];
 };
 
-#ifdef __cplusplus
-}
-#endif
+

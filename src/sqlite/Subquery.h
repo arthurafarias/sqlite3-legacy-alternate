@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
   typedef struct Select Select;
   typedef struct Subquery Subquery;
 
@@ -13,6 +11,4 @@ extern "C" {
     int regResult;
   };
 
-#ifdef __cplusplus
-}
-#endif
+

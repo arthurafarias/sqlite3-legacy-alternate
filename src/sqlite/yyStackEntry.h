@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/YYMINORTYPE.h"
   typedef struct yyStackEntry yyStackEntry;
 
@@ -13,6 +11,4 @@ extern "C" {
     YYMINORTYPE minor;
   };
 
-#ifdef __cplusplus
-}
-#endif
+

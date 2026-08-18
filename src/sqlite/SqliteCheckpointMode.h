@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 /* Checkpoint Mode Values (from sqlite3.h) */
 enum {
   SQLITE_CHECKPOINT_NOOP = -1,    /* Do no work at all */
@@ -11,6 +9,4 @@ enum {
   SQLITE_CHECKPOINT_TRUNCATE = 3, /* Like RESTART but also truncate WAL */
 };
 
-#ifdef __cplusplus
-}
-#endif
+

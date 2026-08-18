@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/FileChunk.h"
 #include "sqlite/sqlite3_int64.h"
   typedef struct FilePoint FilePoint;
@@ -12,6 +10,4 @@ extern "C" {
     FileChunk *pChunk;
   };
 
-#ifdef __cplusplus
-}
-#endif
+

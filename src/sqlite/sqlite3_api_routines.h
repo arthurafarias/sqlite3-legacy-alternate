@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/sqlite3_callback.h"
 #include "sqlite/sqlite3_int64.h"
 #include "sqlite/sqlite3_stmt.h"
@@ -355,6 +353,4 @@ extern "C" {
 
   extern const sqlite3_api_routines sqlite3Apis;
 
-#ifdef __cplusplus
-}
-#endif
+

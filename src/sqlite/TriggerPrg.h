@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/u32.h"
   typedef struct SubProgram SubProgram;
   typedef struct Trigger Trigger;
@@ -16,6 +14,4 @@ extern "C" {
     u32 aColmask[2];
   };
 
-#ifdef __cplusplus
-}
-#endif
+

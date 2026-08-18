@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
   typedef struct BenignMallocHooks BenignMallocHooks;
 
   struct BenignMallocHooks {
@@ -14,6 +12,4 @@ extern "C" {
 
   void sqlite3BenignMallocHooks(void (*)(void), void (*)(void));
 
-#ifdef __cplusplus
-}
-#endif
+

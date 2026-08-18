@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 /* Fundamental Datatypes (from sqlite3.h) */
 enum {
   SQLITE_INTEGER = 1,
@@ -11,6 +9,4 @@ enum {
   SQLITE3_TEXT = 3,
 };
 
-#ifdef __cplusplus
-}
-#endif
+

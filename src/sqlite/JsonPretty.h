@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/u32.h"
   typedef struct JsonParse JsonParse;
   typedef struct JsonString JsonString;
@@ -19,6 +17,4 @@ extern "C" {
   void jsonPrettyIndent(JsonPretty * pPretty);
   u32 jsonTranslateBlobToPrettyText(JsonPretty * pPretty, u32 i);
 
-#ifdef __cplusplus
-}
-#endif
+

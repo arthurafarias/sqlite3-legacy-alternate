@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
   typedef struct sqlite3_pcache sqlite3_pcache;
   typedef struct sqlite3_pcache_page sqlite3_pcache_page;
 
@@ -23,6 +21,4 @@ extern "C" {
     void (*xShrink)(sqlite3_pcache *);
   };
 
-#ifdef __cplusplus
-}
-#endif
+

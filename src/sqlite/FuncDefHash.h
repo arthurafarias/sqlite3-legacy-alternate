@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/AggInfo.h"
 #include "sqlite/DbPage.h"
 #include "sqlite/FuncDef.h"
@@ -24,6 +22,4 @@ extern "C" {
 
   extern FuncDefHash sqlite3BuiltinFunctions;
 
-#ifdef __cplusplus
-}
-#endif
+

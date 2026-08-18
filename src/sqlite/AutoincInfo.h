@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
   typedef struct Table Table;
 
   typedef struct AutoincInfo AutoincInfo;
@@ -14,6 +12,4 @@ extern "C" {
     int regCtr;
   };
 
-#ifdef __cplusplus
-}
-#endif
+

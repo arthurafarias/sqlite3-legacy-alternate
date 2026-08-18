@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/AggInfo.h"
 #include "sqlite/BitMask.h"
 #include "sqlite/i16.h"
@@ -117,6 +115,4 @@ extern "C" {
   int exprIsCoveredByIndex(const Expr *pExpr, const Index *pIdx, int iTabCur);
   int exprIsDeterministic(Expr * p);
 
-#ifdef __cplusplus
-}
-#endif
+

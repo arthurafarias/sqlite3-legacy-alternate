@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/i64.h"
 #include "sqlite/u32.h"
 typedef struct CollSeq CollSeq;
@@ -35,6 +33,4 @@ union p4union {
   Index *pIdx;
 };
 
-#ifdef __cplusplus
-}
-#endif
+

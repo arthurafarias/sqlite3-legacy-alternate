@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 /* Run-Time Limit Categories (from sqlite3.h) */
 enum {
   SQLITE_LIMIT_LENGTH = 0,
@@ -19,6 +17,4 @@ enum {
   SQLITE_LIMIT_PARSER_DEPTH = 12,
 };
 
-#ifdef __cplusplus
-}
-#endif
+

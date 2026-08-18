@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
   typedef struct ExprList ExprList;
   typedef struct Select Select;
   typedef struct SrcList SrcList;
@@ -17,6 +15,4 @@ extern "C" {
     Select *pSubSelect;
   };
 
-#ifdef __cplusplus
-}
-#endif
+

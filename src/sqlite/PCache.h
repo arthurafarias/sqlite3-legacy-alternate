@@ -1,9 +1,7 @@
 
 #pragma once
 #include "sqlite/PgHdr.h"
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/Pgno.h"
 #include "sqlite/i64.h"
 #include "sqlite/sqlite3_pcache.h"
@@ -52,6 +50,4 @@ extern "C" {
   int numberOfCachePages(PCache * p);
   __attribute__((noinline)) PgHdr *pcacheFetchFinishWithInit(PCache * pCache, Pgno pgno, sqlite3_pcache_page * pPage);
 
-#ifdef __cplusplus
-}
-#endif
+

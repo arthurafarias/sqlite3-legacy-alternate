@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 /* Flags For File Open Operations (from sqlite3.h) */
 enum {
   SQLITE_OPEN_READONLY = 0x00000001,       /* Ok for sqlite3_open_v2() */
@@ -29,6 +27,4 @@ enum {
   SQLITE_OPEN_MASTER_JOURNAL = 0x00004000, /* VFS only */
 };
 
-#ifdef __cplusplus
-}
-#endif
+

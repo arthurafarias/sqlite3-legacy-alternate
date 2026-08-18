@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/u16.h"
 #include "sqlite/u8.h"
   typedef struct unixShmNode unixShmNode;
@@ -18,6 +16,4 @@ extern "C" {
 
   int unixShmRegionPerMap(void);
 
-#ifdef __cplusplus
-}
-#endif
+

@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/Vdbe.h"
 #include "sqlite/i64.h"
 #include "sqlite/sqlite3_int64.h"
@@ -81,6 +79,4 @@ extern "C" {
   const void *columnName(sqlite3_stmt * pStmt, int N, int useUtf16, int useType);
   int bindText(sqlite3_stmt * pStmt, int i, const void *zData, i64 nData, void (*xDel)(void *), u8 encoding);
 
-#ifdef __cplusplus
-}
-#endif
+

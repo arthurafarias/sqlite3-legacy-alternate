@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 /* SrcItem.fg.jointype Bit Values (from the sqlite3 amalgamation's
    sqliteInt.h, internal/private - not part of the public sqlite3.h API
    and not guaranteed stable across versions). */
@@ -16,6 +14,4 @@ enum {
   JT_ERROR = 0x80,    /* unknown or unsupported join type */
 };
 
-#ifdef __cplusplus
-}
-#endif
+

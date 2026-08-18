@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/u32.h"
 #include "sqlite/u8.h"
 #include "sqlite/AutoincInfo.h"
@@ -600,6 +598,4 @@ extern "C" {
   const PragmaName *pragmaLocate(const char *zName);
   void sqlite3ParserInit(void *yypRawParser, Parse *pParse);
 
-#ifdef __cplusplus
-}
-#endif
+

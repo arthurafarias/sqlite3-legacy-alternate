@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/tRowcnt.h"
   typedef struct IndexSample IndexSample;
 
@@ -14,6 +12,4 @@ extern "C" {
     tRowcnt *anDLt;
   };
 
-#ifdef __cplusplus
-}
-#endif
+

@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/u8.h"
   typedef struct Expr Expr;
   typedef struct IndexedExpr IndexedExpr;
@@ -17,6 +15,4 @@ extern "C" {
     IndexedExpr *pIENext;
   };
 
-#ifdef __cplusplus
-}
-#endif
+

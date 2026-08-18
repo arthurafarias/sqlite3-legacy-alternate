@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/u8.h"
   typedef struct Module Module;
   typedef struct sqlite3 sqlite3;
@@ -25,6 +23,4 @@ extern "C" {
   void sqlite3VtabLock(VTable *);
   void sqlite3VtabUnlock(VTable *);
 
-#ifdef __cplusplus
-}
-#endif
+

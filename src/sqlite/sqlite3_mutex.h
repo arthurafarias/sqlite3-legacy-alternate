@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include <pthread.h>
   typedef struct sqlite3_mutex sqlite3_mutex;
 
@@ -30,6 +28,4 @@ extern "C" {
   void pthreadMutexLeave(sqlite3_mutex * p);
   extern sqlite3_mutex *unixBigLock;
 
-#ifdef __cplusplus
-}
-#endif
+

@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/DbPage.h"
 #include "sqlite/Pgno.h"
 #include "sqlite/RecordCompare.h"
@@ -89,6 +87,4 @@ extern "C" {
   int balance_deeper(MemPage * pRoot, MemPage * *ppChild);
   int btreeOverwriteContent(MemPage * pPage, u8 * pDest, const BtreePayload *pX, int iOffset, int iAmt);
 
-#ifdef __cplusplus
-}
-#endif
+

@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/sqlite3_int64.h"
 #include "sqlite/sqlite3_value.h"
 #include "sqlite/u16.h"
@@ -18,6 +16,4 @@ extern "C" {
     int nZero;
   };
 
-#ifdef __cplusplus
-}
-#endif
+

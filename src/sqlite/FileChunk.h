@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/u8.h"
   typedef struct FileChunk FileChunk;
   struct FileChunk {
@@ -12,6 +10,4 @@ extern "C" {
 
   void memjrnlFreeChunks(FileChunk * pFirst);
 
-#ifdef __cplusplus
-}
-#endif
+

@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/Wal.h"
 #include "sqlite/sqlite3_file.h"
 #include "sqlite/sqlite3_int64.h"
@@ -21,6 +19,4 @@ struct WalWriter {
 int walWriteToLog(WalWriter *p, void *pContent, int iAmt, sqlite3_int64 iOffset);
 int walWriteOneFrame(WalWriter *p, PgHdr *pPage, int nTruncate, sqlite3_int64 iOffset);
 
-#ifdef __cplusplus
-}
-#endif
+

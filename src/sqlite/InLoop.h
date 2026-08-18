@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/u8.h"
 typedef struct InLoop InLoop;
 struct InLoop {
@@ -12,6 +10,4 @@ struct InLoop {
   u8 eEndLoopOp;
 };
 
-#ifdef __cplusplus
-}
-#endif
+

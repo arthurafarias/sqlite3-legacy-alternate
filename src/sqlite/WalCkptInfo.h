@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/u32.h"
 #include "sqlite/u8.h"
   typedef struct WalCkptInfo WalCkptInfo;
@@ -14,6 +12,4 @@ extern "C" {
     u32 notUsed0;
   };
 
-#ifdef __cplusplus
-}
-#endif
+

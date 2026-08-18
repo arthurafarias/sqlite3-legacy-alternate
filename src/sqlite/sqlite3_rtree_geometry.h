@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/sqlite3_rtree_dbl.h"
   typedef struct sqlite3_rtree_geometry sqlite3_rtree_geometry;
 
@@ -14,6 +12,4 @@ extern "C" {
     void (*xDelUser)(void *);
   };
 
-#ifdef __cplusplus
-}
-#endif
+

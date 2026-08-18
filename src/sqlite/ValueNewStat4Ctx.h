@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/Index.h"
 #include "sqlite/Parse.h"
 #include "sqlite/UnpackedRecord.h"
@@ -15,6 +13,4 @@ struct ValueNewStat4Ctx {
   int iVal;
 };
 
-#ifdef __cplusplus
-}
-#endif
+

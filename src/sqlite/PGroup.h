@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/PgHdr1.h"
   typedef struct sqlite3_mutex sqlite3_mutex;
 
@@ -16,6 +14,4 @@ extern "C" {
     PgHdr1 lru;
   };
 
-#ifdef __cplusplus
-}
-#endif
+

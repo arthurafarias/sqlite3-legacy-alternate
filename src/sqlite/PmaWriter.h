@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/i64.h"
 #include "sqlite/u64.h"
 #include "sqlite/u8.h"
@@ -23,6 +21,4 @@ extern "C" {
   int vdbePmaWriterFinish(PmaWriter * p, i64 * piEof, u64 * pnSpill);
   void vdbePmaWriteVarint(PmaWriter * p, u64 iVal);
 
-#ifdef __cplusplus
-}
-#endif
+

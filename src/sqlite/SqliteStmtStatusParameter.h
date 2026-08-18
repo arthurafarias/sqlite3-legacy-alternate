@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 /* Status Parameters for prepared statements (from sqlite3.h) */
 enum {
   SQLITE_STMTSTATUS_FULLSCAN_STEP = 1,
@@ -15,6 +13,4 @@ enum {
   SQLITE_STMTSTATUS_MEMUSED = 99,
 };
 
-#ifdef __cplusplus
-}
-#endif
+

@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 /* Standard File Control Opcodes (from sqlite3.h) */
 enum {
   SQLITE_FCNTL_LOCKSTATE = 1,
@@ -53,6 +51,4 @@ enum {
   SQLITE_LAST_ERRNO = SQLITE_FCNTL_LAST_ERRNO,
 };
 
-#ifdef __cplusplus
-}
-#endif
+

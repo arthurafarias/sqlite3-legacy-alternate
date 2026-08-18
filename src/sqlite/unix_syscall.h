@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/sqlite3_syscall_ptr.h"
 #include "sqlite/i64.h"
 #include "sqlite/sqlite3_int64.h"
@@ -27,6 +25,4 @@ int seekAndWriteFd(int fd, i64 iOff, const void *pBuf, int nBuf, int *piErrno);
 int full_fsync(int fd, int fullSync, int dataOnly);
 int unixGetTempname(int nBuf, char *zBuf);
 
-#ifdef __cplusplus
-}
-#endif
+

@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/Token.h"
 #include "sqlite/yyStackEntry.h"
   typedef struct Parse Parse;
@@ -30,6 +28,4 @@ extern "C" {
 
   extern const signed char yyRuleInfoNRhs[412];
 
-#ifdef __cplusplus
-}
-#endif
+

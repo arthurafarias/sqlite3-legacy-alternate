@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "Expr.h"
 typedef struct Expr Expr;
 
@@ -12,6 +10,4 @@ struct FrameBound {
   Expr *pExpr;
 };
 
-#ifdef __cplusplus
-}
-#endif
+

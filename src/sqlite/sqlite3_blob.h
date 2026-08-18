@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/sqlite3_int64.h"
 #include "sqlite/u32.h"
   typedef struct BtCursor BtCursor;
@@ -17,6 +15,4 @@ extern "C" {
 
   int blobReadWrite(sqlite3_blob * pBlob, void *z, int n, int iOffset, int (*xCall)(BtCursor *, u32, u32, void *));
 
-#ifdef __cplusplus
-}
-#endif
+

@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/sqlite_int64.h"
   typedef struct sqlite3_context sqlite3_context;
   typedef struct sqlite3_value sqlite3_value;
@@ -28,6 +26,4 @@ extern "C" {
   int jsonEachRowid(sqlite3_vtab_cursor * cur, sqlite_int64 * pRowid);
   int jsonEachFilter(sqlite3_vtab_cursor * cur, int idxNum, const char *idxStr, int argc, sqlite3_value **argv);
 
-#ifdef __cplusplus
-}
-#endif
+

@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/u8.h"
   typedef struct RowLoadInfo RowLoadInfo;
 
@@ -11,6 +9,4 @@ extern "C" {
     u8 ecelFlags;
   };
 
-#ifdef __cplusplus
-}
-#endif
+

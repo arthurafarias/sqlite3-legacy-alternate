@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/p4union.h"
 #include "sqlite/u16.h"
 #include "sqlite/u8.h"
@@ -17,6 +15,4 @@ struct VdbeOp {
   p4union p4;
 };
 
-#ifdef __cplusplus
-}
-#endif
+

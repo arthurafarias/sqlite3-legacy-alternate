@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/u32.h"
   typedef struct Parse Parse;
   typedef struct WhereClause WhereClause;
@@ -18,6 +16,4 @@ extern "C" {
     sqlite3_value *aRhs[1];
   };
 
-#ifdef __cplusplus
-}
-#endif
+

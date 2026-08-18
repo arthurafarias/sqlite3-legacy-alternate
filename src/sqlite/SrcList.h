@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/SrcItem.h"
 #include "sqlite/u32.h"
   typedef struct Expr Expr;
@@ -27,6 +25,4 @@ extern "C" {
   __attribute__((noinline)) int exprMightBeIndexed2(SrcList * pFrom, int *aiCurCol, Expr *pExpr, int j);
   int exprMightBeIndexed(SrcList * pFrom, int *aiCurCol, Expr *pExpr, int op);
 
-#ifdef __cplusplus
-}
-#endif
+

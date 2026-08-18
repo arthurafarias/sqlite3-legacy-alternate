@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/Btree.h"
 #include "sqlite/Pager.h"
 #include "sqlite/i64.h"
@@ -100,6 +98,4 @@ int memdbCurrentTimeInt64(sqlite3_vfs *, sqlite3_int64 *);
 extern sqlite3_vfs memdb_vfs;
 int sqlite3WalOpen(sqlite3_vfs *, sqlite3_file *, const char *, int, i64, Wal **);
 
-#ifdef __cplusplus
-}
-#endif
+

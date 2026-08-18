@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 /*
 ** Index of each entry in aSyscall[] (unix_syscall.c). Restores the
 ** naming scheme of the original os_unix.c function-call-style macros
@@ -40,6 +38,4 @@ enum {
   SQLITE_SYSCALL_IOCTL = 28,         /* osIoctl */
 };
 
-#ifdef __cplusplus
-}
-#endif
+

@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/LogEst.h"
 #include "sqlite/Pgno.h"
 #include "sqlite/i16.h"
@@ -73,6 +71,4 @@ extern "C" {
   int tableSkipIntegrityCheck(const Table *pTab, const Table *pObjTab);
   __attribute__((noinline)) int columnIsGoodIndexCandidate(const Table *pTab, int iCol);
 
-#ifdef __cplusplus
-}
-#endif
+

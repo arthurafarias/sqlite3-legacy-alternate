@@ -24,7 +24,7 @@ static int seriesInit(sqlite3 *db, void *aux, int argc, const char *const *argv,
       db, "CREATE TABLE x(value INTEGER, start HIDDEN, stop HIDDEN)");
   if (rc != SQLITE_OK)
     return rc;
-  series_vtab *vtab = sqlite3_malloc(sizeof(series_vtab));
+  series_vtab *vtab = (series_vtab *) sqlite3_malloc(sizeof(series_vtab));
   if (!vtab)
     return SQLITE_NOMEM;
   memset(vtab, 0, sizeof(*vtab));
@@ -66,7 +66,7 @@ static int seriesBestIndex(sqlite3_vtab *tab, sqlite3_index_info *info) {
 
 static int seriesOpen(sqlite3_vtab *pVtab, sqlite3_vtab_cursor **ppCursor) {
   (void)pVtab;
-  series_cursor *c = sqlite3_malloc(sizeof(series_cursor));
+  series_cursor *c = (series_cursor *) sqlite3_malloc(sizeof(series_cursor));
   if (!c)
     return SQLITE_NOMEM;
   memset(c, 0, sizeof(*c));

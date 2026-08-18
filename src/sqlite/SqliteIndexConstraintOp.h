@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 /* Virtual Table Constraint Operator Codes (from sqlite3.h) */
 enum {
   SQLITE_INDEX_CONSTRAINT_EQ = 2,
@@ -23,6 +21,4 @@ enum {
   SQLITE_INDEX_CONSTRAINT_FUNCTION = 150,
 };
 
-#ifdef __cplusplus
-}
-#endif
+

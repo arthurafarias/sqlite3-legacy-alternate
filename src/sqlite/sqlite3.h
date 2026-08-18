@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/Db.h"
 #include "sqlite/Hash.h"
 #include "sqlite/Lookaside.h"
@@ -758,6 +756,3 @@ int sqlite3_get_table_cb(void *pArg, int nCol, char **argv, char **colv);
 
 void sqlite3ParserFinalize(void *p);
 
-#ifdef __cplusplus
-}
-#endif

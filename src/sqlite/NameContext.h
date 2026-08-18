@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/u32.h"
   typedef struct AggInfo AggInfo;
   typedef struct Expr Expr;
@@ -38,6 +36,4 @@ extern "C" {
   int resolveAttachExpr(NameContext * pName, Expr * pExpr);
   const char *columnTypeImpl(NameContext * pNC, Expr * pExpr);
 
-#ifdef __cplusplus
-}
-#endif
+

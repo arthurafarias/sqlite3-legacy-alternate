@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 /* Device Characteristics (from sqlite3.h) */
 enum {
   SQLITE_IOCAP_ATOMIC = 0x00000001,
@@ -22,6 +20,4 @@ enum {
   SQLITE_IOCAP_SUBPAGE_READ = 0x00008000,
 };
 
-#ifdef __cplusplus
-}
-#endif
+

@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/u8.h"
   typedef struct VdbeOpList VdbeOpList;
 
@@ -13,6 +11,4 @@ extern "C" {
     signed char p3;
   };
 
-#ifdef __cplusplus
-}
-#endif
+

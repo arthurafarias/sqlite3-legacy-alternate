@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/u8.h"
   typedef struct CteUse CteUse;
   typedef struct ExprList ExprList;
@@ -19,6 +17,4 @@ extern "C" {
     u8 eM10d;
   };
 
-#ifdef __cplusplus
-}
-#endif
+

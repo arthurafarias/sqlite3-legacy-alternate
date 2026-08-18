@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/BitMask.h"
   typedef struct Expr Expr;
   typedef struct ExprList ExprList;
@@ -23,6 +21,4 @@ extern "C" {
   __attribute__((noinline)) Bitmask sqlite3WhereExprUsageFull(WhereMaskSet * pMaskSet, Expr * p);
   void createMask(WhereMaskSet * pMaskSet, int iCursor);
 
-#ifdef __cplusplus
-}
-#endif
+

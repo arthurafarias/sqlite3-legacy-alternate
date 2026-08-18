@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/sqlite3_int64.h"
 #include "sqlite/sqlite3_rtree_dbl.h"
 #include "sqlite/sqlite3_value.h"
@@ -28,6 +26,4 @@ extern "C" {
     sqlite3_value **apSqlParam;
   };
 
-#ifdef __cplusplus
-}
-#endif
+

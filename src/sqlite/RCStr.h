@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/u64.h"
   typedef struct RCStr RCStr;
 
@@ -15,6 +13,4 @@ extern "C" {
   char *sqlite3RCStrNew(u64);
   char *sqlite3RCStrResize(char *, u64);
 
-#ifdef __cplusplus
-}
-#endif
+

@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/fts5_extension_function.h"
 #include "sqlite/fts5_tokenizer.h"
 #include "sqlite/fts5_tokenizer_v2.h"
@@ -25,6 +23,4 @@ extern "C" {
     int (*xFindTokenizer_v2)(fts5_api *pApi, const char *zName, void **ppUserData, fts5_tokenizer_v2 **ppTokenizer);
   };
 
-#ifdef __cplusplus
-}
-#endif
+

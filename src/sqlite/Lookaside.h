@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/u16.h"
 #include "sqlite/u32.h"
 #include "sqlite/u8.h"
@@ -28,6 +26,4 @@ extern "C" {
     void *pTrueEnd;            /* True value of pEnd, when db->pnBytesFreed!=0 */
   };
 
-#ifdef __cplusplus
-}
-#endif
+

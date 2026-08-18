@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 /* Configuration Options (from sqlite3.h) */
 enum {
   SQLITE_CONFIG_SINGLETHREAD = 1,         /* nil */
@@ -35,6 +33,4 @@ enum {
   SQLITE_CONFIG_ROWID_IN_VIEW = 30,       /* int* */
 };
 
-#ifdef __cplusplus
-}
-#endif
+

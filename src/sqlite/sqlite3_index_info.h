@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/sqlite3_index_constraint.h"
 #include "sqlite/sqlite3_index_constraint_usage.h"
 #include "sqlite/sqlite3_index_orderby.h"
@@ -38,6 +36,4 @@ extern "C" {
 
   void freeIdxStr(sqlite3_index_info * pIdxInfo);
 
-#ifdef __cplusplus
-}
-#endif
+

@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/sqlite3_int64.h"
   typedef const char *sqlite3_filename;
 
@@ -17,6 +15,4 @@ extern "C" {
                                            const char **azParam);
   void sqlite3_free_filename(sqlite3_filename);
 
-#ifdef __cplusplus
-}
-#endif
+

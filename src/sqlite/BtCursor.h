@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/CellInfo.h"
 #include "sqlite/Pgno.h"
 #include "sqlite/i64.h"
@@ -114,6 +112,4 @@ extern "C" {
   int btreeOverwriteCell(BtCursor * pCur, const BtreePayload *pX);
   int vdbeIsMatchingIndexKey(BtCursor * pCur, int bInt, Bitmask mask, UnpackedRecord *p, int *piRes);
 
-#ifdef __cplusplus
-}
-#endif
+

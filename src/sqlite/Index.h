@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/BitMask.h"
 #include "sqlite/LogEst.h"
 #include "sqlite/Pgno.h"
@@ -59,6 +57,4 @@ extern "C" {
   const char *explainIndexColumnName(Index * pIdx, int i);
   int indexColumnNotNull(Index * pIdx, int iCol);
 
-#ifdef __cplusplus
-}
-#endif
+

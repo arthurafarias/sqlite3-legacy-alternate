@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/TriggerStep.h"
 #include "sqlite/u8.h"
   typedef struct Table Table;
@@ -29,6 +27,4 @@ extern "C" {
 
   Table *tableOfTrigger(Trigger * pTrigger);
 
-#ifdef __cplusplus
-}
-#endif
+

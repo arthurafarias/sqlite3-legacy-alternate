@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/BitMask.h"
 #include "sqlite/u32.h"
 #include "sqlite/u8.h"
@@ -70,6 +68,4 @@ extern "C" {
   int disableUnusedSubqueryResultColumns(SrcItem * pItem);
   int sameSrcAlias(SrcItem * p0, SrcList * pSrc);
 
-#ifdef __cplusplus
-}
-#endif
+

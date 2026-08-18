@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/ExprList_item.h"
 #include "sqlite/u32.h"
 typedef struct Table Table;
@@ -27,6 +25,4 @@ int sqlite3CopySortOrder(ExprList *p1, ExprList *p2);
 void sqlite3ProcessReturningSubqueries(ExprList *pEList, Table *pTab);
 void adjustOrderByCol(ExprList *pOrderBy, ExprList *pEList);
 
-#ifdef __cplusplus
-}
-#endif
+

@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/i64.h"
 typedef struct FuncDef FuncDef;
 
@@ -14,6 +12,4 @@ union MemValue {
   FuncDef *pDef;
 };
 
-#ifdef __cplusplus
-}
-#endif
+

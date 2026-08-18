@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/Mem.h"
 #include "sqlite/u16.h"
   typedef struct CheckOnCtx CheckOnCtx;
@@ -127,6 +125,4 @@ extern "C" {
   int sqlite3WindowExtraAggFuncDepth(Walker * pWalker, Expr * pExpr);
   int disallowAggregatesInOrderByCb(Walker * pWalker, Expr * pExpr);
 
-#ifdef __cplusplus
-}
-#endif
+

@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/Pgno.h"
 #include "sqlite/u8.h"
   typedef struct BtLock BtLock;
@@ -15,6 +13,4 @@ extern "C" {
     BtLock *pNext;
   };
 
-#ifdef __cplusplus
-}
-#endif
+

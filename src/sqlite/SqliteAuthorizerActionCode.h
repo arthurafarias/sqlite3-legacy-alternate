@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 /* Authorizer Action Codes (from sqlite3.h) */
 enum {
   SQLITE_CREATE_INDEX = 1,        /* Index Name      Table Name      */
@@ -40,6 +38,4 @@ enum {
   SQLITE_RECURSIVE = 33,          /* NULL            NULL            */
 };
 
-#ifdef __cplusplus
-}
-#endif
+

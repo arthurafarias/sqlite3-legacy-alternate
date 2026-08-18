@@ -1,9 +1,7 @@
 
 #pragma once
 #include "sqlite/Btree.h"
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/Pgno.h"
 #include "sqlite/u32.h"
 #include "sqlite/u8.h"
@@ -43,6 +41,4 @@ extern "C" {
   void attachBackupObject(sqlite3_backup * p);
   __attribute__((noinline)) void backupUpdate(sqlite3_backup * p, Pgno iPage, const u8 *aData);
 
-#ifdef __cplusplus
-}
-#endif
+

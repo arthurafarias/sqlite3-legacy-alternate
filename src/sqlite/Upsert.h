@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/u8.h"
   typedef struct Expr Expr;
   typedef struct ExprList ExprList;
@@ -31,6 +29,4 @@ extern "C" {
   Upsert *sqlite3UpsertOfIndex(Upsert *, Index *);
   int sqlite3UpsertNextIsIPK(Upsert *);
 
-#ifdef __cplusplus
-}
-#endif
+

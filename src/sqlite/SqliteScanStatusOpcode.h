@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 /* Prepared Statement Scan Status Opcodes (from sqlite3.h) */
 enum {
   SQLITE_SCANSTAT_NLOOP = 0,
@@ -14,6 +12,4 @@ enum {
   SQLITE_SCANSTAT_NCYCLE = 7,
 };
 
-#ifdef __cplusplus
-}
-#endif
+

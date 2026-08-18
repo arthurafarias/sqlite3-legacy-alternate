@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/JsonParse.h"
 #include "sqlite/JsonString.h"
 #include "sqlite/sqlite3_vtab_cursor.h"
@@ -34,6 +32,4 @@ extern "C" {
   void jsonAppendPathName(JsonEachCursor * p);
   int jsonEachPathLength(JsonEachCursor * p);
 
-#ifdef __cplusplus
-}
-#endif
+

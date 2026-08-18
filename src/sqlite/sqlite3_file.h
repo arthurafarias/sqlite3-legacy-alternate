@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/i64.h"
 #include "sqlite/sqlite3_int64.h"
 #include "sqlite/sqlite_int64.h"
@@ -94,6 +92,3 @@ int memjrnlClose(sqlite3_file *pJfd);
 int memjrnlSync(sqlite3_file *pJfd, int flags);
 int memjrnlFileSize(sqlite3_file *pJfd, sqlite_int64 *pSize);
 
-#ifdef __cplusplus
-}
-#endif

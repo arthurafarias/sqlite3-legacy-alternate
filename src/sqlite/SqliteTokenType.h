@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 /* Parser Token Codes (from the sqlite3 amalgamation's parse.h, internal/private -
    not part of the public sqlite3.h API and not guaranteed stable across
    versions). This is the subset referenced by this library's sources. */
@@ -34,6 +32,4 @@ enum {
   TK_IF_NULL_ROW = 179,
 };
 
-#ifdef __cplusplus
-}
-#endif
+

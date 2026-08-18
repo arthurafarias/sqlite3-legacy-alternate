@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 /* Column/Expression Affinity Codes (from the sqlite3 amalgamation's
    sqliteInt.h, internal/private - not part of the public sqlite3.h API
    and not guaranteed stable across versions). */
@@ -17,6 +15,4 @@ enum {
   SQLITE_AFF_MASK = 0x47,
 };
 
-#ifdef __cplusplus
-}
-#endif
+

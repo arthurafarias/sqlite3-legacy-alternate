@@ -1,7 +1,5 @@
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/i64.h"
 #include "sqlite/sqlite3_str.h"
 #include "sqlite/u8.h"
@@ -25,6 +23,3 @@ void explainIndexRange(StrAccum *pStr, WhereLoop *pLoop);
 
 extern const char hexdigits[16];
 
-#ifdef __cplusplus
-}
-#endif

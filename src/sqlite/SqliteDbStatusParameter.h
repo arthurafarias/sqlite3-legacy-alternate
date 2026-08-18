@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 /* Status Parameters for database connections (from sqlite3.h) */
 enum {
   SQLITE_DBSTATUS_LOOKASIDE_USED = 0,
@@ -21,6 +19,4 @@ enum {
   SQLITE_DBSTATUS_MAX = 13, /* Largest defined DBSTATUS */
 };
 
-#ifdef __cplusplus
-}
-#endif
+

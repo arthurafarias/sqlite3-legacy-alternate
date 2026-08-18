@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/u32.h"
   typedef struct LookasideSlot LookasideSlot;
 
@@ -12,6 +10,4 @@ extern "C" {
 
   u32 countLookasideSlots(LookasideSlot * p);
 
-#ifdef __cplusplus
-}
-#endif
+

@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 typedef struct Table Table;
 typedef struct Expr Expr;
 
@@ -14,6 +12,4 @@ struct AggInfo_col {
   int iSorterColumn;
 };
 
-#ifdef __cplusplus
-}
-#endif
+

@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/BitMask.h"
 #include "sqlite/LogEst.h"
 #include "sqlite/u16.h"
@@ -43,6 +41,4 @@ extern "C" {
   LogEst whereRangeAdjust(WhereTerm * pTerm, LogEst nNew);
   int isLimitTerm(WhereTerm * pTerm);
 
-#ifdef __cplusplus
-}
-#endif
+

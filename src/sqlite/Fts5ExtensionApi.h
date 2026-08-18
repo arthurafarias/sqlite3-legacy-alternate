@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/Fts5Context.h"
 #include "sqlite/Fts5PhraseIter.h"
 #include "sqlite/sqlite3_int64.h"
@@ -49,6 +47,4 @@ extern "C" {
                         int (*xToken)(void *, int, const char *, int, int, int));
   };
 
-#ifdef __cplusplus
-}
-#endif
+

@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/u16.h"
 #include "sqlite/u32.h"
 #include "sqlite/u64.h"
@@ -62,6 +60,4 @@ extern "C" {
   extern const char jsonIsOk[256];
   void jsonPrintf(int N, JsonString *p, const char *zFormat, ...);
 
-#ifdef __cplusplus
-}
-#endif
+

@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/u16.h"
 #include "sqlite/u8.h"
   typedef struct sqlite3_value Mem;
@@ -25,6 +23,4 @@ extern "C" {
   const Mem *columnNullValue(void);
   char sqlite3AffinityType(const char *, Column *);
 
-#ifdef __cplusplus
-}
-#endif
+

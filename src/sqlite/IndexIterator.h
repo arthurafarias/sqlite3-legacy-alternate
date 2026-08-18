@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
   typedef struct Index Index;
   typedef struct IndexListTerm IndexListTerm;
   typedef struct IndexIterator IndexIterator;
@@ -23,6 +21,4 @@ extern "C" {
   Index *indexIteratorFirst(IndexIterator * pIter, int *pIx);
   Index *indexIteratorNext(IndexIterator * pIter, int *pIx);
 
-#ifdef __cplusplus
-}
-#endif
+

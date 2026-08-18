@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/u8.h"
   typedef struct SubrtnSig SubrtnSig;
 
@@ -15,6 +13,4 @@ extern "C" {
     int regReturn;
   };
 
-#ifdef __cplusplus
-}
-#endif
+

@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/BitMask.h"
 #include "sqlite/LogEst.h"
 #include "sqlite/i8.h"
@@ -19,6 +17,4 @@ extern "C" {
     WhereLoop **aLoop;
   };
 
-#ifdef __cplusplus
-}
-#endif
+

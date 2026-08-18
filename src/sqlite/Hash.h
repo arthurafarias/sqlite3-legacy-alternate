@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/_ht.h"
 typedef struct HashElem HashElem;
 typedef struct Hash Hash;
@@ -23,6 +21,4 @@ int rehash(Hash *pH, unsigned int new_size);
 HashElem *findElementWithHash(const Hash *pH, const char *pKey, unsigned int *pHash);
 void removeElement(Hash *pH, HashElem *elem);
 
-#ifdef __cplusplus
-}
-#endif
+

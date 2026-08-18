@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/i64.h"
 #include "sqlite/sqlite3_int64.h"
   typedef struct UnixUnusedFd UnixUnusedFd;
@@ -61,6 +59,4 @@ extern "C" {
   int unixOpenSharedMemory(unixFile * pDbFd);
   void unixRemapfile(unixFile * pFd, i64 nNew);
 
-#ifdef __cplusplus
-}
-#endif
+

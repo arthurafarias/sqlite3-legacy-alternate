@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/sqlite3_int64.h"
   typedef struct sqlite3_mutex sqlite3_mutex;
   typedef struct MemStore MemStore;
@@ -24,6 +22,4 @@ extern "C" {
   void memdbLeave(MemStore * p);
   int memdbEnlarge(MemStore * p, sqlite3_int64 newSz);
 
-#ifdef __cplusplus
-}
-#endif
+

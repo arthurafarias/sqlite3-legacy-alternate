@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/Cte.h"
 #include "sqlite/Expr.h"
 #include "sqlite/ExprList.h"
@@ -46,6 +44,3 @@ union YYMINORTYPE {
   Select *yy555;
 };
 
-#ifdef __cplusplus
-}
-#endif

@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/sqlite3_pcache_page.h"
 #include "sqlite/u16.h"
   typedef struct PCache1 PCache1;
@@ -25,6 +23,4 @@ extern "C" {
 
   void pcache1Free(void *p);
 
-#ifdef __cplusplus
-}
-#endif
+

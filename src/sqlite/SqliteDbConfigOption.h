@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 /* Database Connection Configuration Options (from sqlite3.h) */
 enum {
   SQLITE_DBCONFIG_MAINDBNAME = 1000,            /* const char* */
@@ -31,6 +29,4 @@ enum {
   SQLITE_DBCONFIG_MAX = 1023,                   /* Largest DBCONFIG */
 };
 
-#ifdef __cplusplus
-}
-#endif
+

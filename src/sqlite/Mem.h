@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/i64.h"
 #include "sqlite/CollSeq.h"
 #include "sqlite/sqlite3_value.h"
@@ -80,6 +78,4 @@ const char *vdbeMemTypeName(Mem *pMem);
 
 int isAllZero(const char *z, int n);
 
-#ifdef __cplusplus
-}
-#endif
+

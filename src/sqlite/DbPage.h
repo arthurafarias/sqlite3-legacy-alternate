@@ -1,6 +1,4 @@
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/PgHdr.h"
 #include "sqlite/Pgno.h"
 #include "sqlite/u16.h"
@@ -24,6 +22,4 @@ void *sqlite3PagerGetExtra(DbPage *);
 MemPage *btreePageFromDbPage(DbPage *pDbPage, Pgno pgno, BtShared *pBt);
 void pageReinit(DbPage *pData);
 
-#ifdef __cplusplus
-}
-#endif
+

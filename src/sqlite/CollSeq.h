@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/u8.h"
   typedef struct CollSeq CollSeq;
 
@@ -18,6 +16,4 @@ extern "C" {
 
   int binCollFunc(void *NotUsed, int nKey1, const void *pKey1, int nKey2, const void *pKey2);
 
-#ifdef __cplusplus
-}
-#endif
+

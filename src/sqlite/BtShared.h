@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/Bitvec.h"
 #include "sqlite/sqlite3_libversion.h"
 #include "sqlite/sqlite3_libversion_number.h"
@@ -90,6 +88,4 @@ extern "C" {
   int freePage2(BtShared * pBt, MemPage * pMemPage, Pgno iPage);
   int clearDatabasePage(BtShared * pBt, Pgno pgno, int freePageFlag, i64 *pnChange);
 
-#ifdef __cplusplus
-}
-#endif
+

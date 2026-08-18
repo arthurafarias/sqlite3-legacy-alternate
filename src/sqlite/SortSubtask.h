@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/SorterCompare.h"
 #include "sqlite/SorterFile.h"
 #include "sqlite/SorterList.h"
@@ -53,6 +51,4 @@ extern "C" {
   int vdbeMergeEngineLevel0(SortSubtask * pTask, int nPMA, i64 *piOffset, MergeEngine **ppOut);
   int vdbeSorterAddToTree(SortSubtask * pTask, int nDepth, int iSeq, MergeEngine *pRoot, MergeEngine *pLeaf);
 
-#ifdef __cplusplus
-}
-#endif
+

@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/PGroup.h"
 #include "sqlite/PgFreeslot.h"
 #include "sqlite/sqlite3_mutex.h"
@@ -27,6 +25,4 @@ struct PCacheGlobal {
 
 extern struct PCacheGlobal pcache1_g;
 
-#ifdef __cplusplus
-}
-#endif
+

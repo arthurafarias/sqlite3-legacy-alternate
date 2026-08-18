@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/sqlite3_vtab_cursor.h"
 #include "sqlite/sqlite_int64.h"
   typedef struct sqlite3_stmt sqlite3_stmt;
@@ -17,6 +15,4 @@ extern "C" {
 
   void pragmaVtabCursorClear(PragmaVtabCursor * pCsr);
 
-#ifdef __cplusplus
-}
-#endif
+

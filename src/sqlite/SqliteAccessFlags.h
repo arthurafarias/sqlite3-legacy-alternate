@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 /* Flags for the xAccess VFS method (from sqlite3.h) */
 enum {
   SQLITE_ACCESS_EXISTS = 0,
@@ -9,6 +7,4 @@ enum {
   SQLITE_ACCESS_READ = 2,      /* Unused */
 };
 
-#ifdef __cplusplus
-}
-#endif
+

@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
   typedef struct UnixUnusedFd UnixUnusedFd;
 
   struct UnixUnusedFd {
@@ -11,6 +9,4 @@ extern "C" {
     UnixUnusedFd *pNext;
   };
 
-#ifdef __cplusplus
-}
-#endif
+

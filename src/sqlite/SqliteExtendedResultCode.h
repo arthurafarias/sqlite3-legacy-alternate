@@ -1,8 +1,6 @@
 #pragma once
 #include "sqlite/SqliteResultCode.h"
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 /* Extended Result Codes (from sqlite3.h) */
 enum {
   SQLITE_ERROR_MISSING_COLLSEQ = (SQLITE_ERROR | (1 << 8)),
@@ -89,6 +87,4 @@ enum {
   SQLITE_OK_SYMLINK = (SQLITE_OK | (2 << 8)), /* internal only */
 };
 
-#ifdef __cplusplus
-}
-#endif
+

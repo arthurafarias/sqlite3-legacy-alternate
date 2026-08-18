@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/Pgno.h"
 #include "sqlite/WalIndexHdr.h"
 #include "sqlite/i16.h"
@@ -102,6 +100,4 @@ extern "C" {
   int walRewriteChecksums(Wal * pWal, u32 iLast);
   int walFrames(Wal * pWal, int szPage, PgHdr *pList, Pgno nTruncate, int isCommit, int sync_flags);
 
-#ifdef __cplusplus
-}
-#endif
+

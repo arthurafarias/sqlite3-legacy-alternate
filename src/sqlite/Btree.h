@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/Pgno.h"
 #include "sqlite/sqlite3_int64.h"
 #include "sqlite/u32.h"
@@ -103,6 +101,4 @@ extern "C" {
   int btreeHeapPull(u32 * aHeap, u32 * pOut);
   int setDestPgsz(Btree * pDest, Btree * pSrc);
 
-#ifdef __cplusplus
-}
-#endif
+

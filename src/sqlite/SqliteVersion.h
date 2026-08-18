@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 /* Compile-Time Library Version Numbers (from sqlite3.h) */
 static const char *const SQLITE_VERSION = "3.53.4";
 static const int SQLITE_VERSION_NUMBER = 3053004;
@@ -11,6 +9,4 @@ static const char *const SQLITE_SCM_BRANCH = "branch-3.53";
 static const char *const SQLITE_SCM_TAGS = "release version-3.53.4";
 static const char *const SQLITE_SCM_DATETIME = "2026-07-24T19:02:57.525Z";
 
-#ifdef __cplusplus
-}
-#endif
+

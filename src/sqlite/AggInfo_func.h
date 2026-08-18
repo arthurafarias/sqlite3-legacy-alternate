@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/u8.h"
 typedef struct Expr Expr;
 typedef struct FuncDef FuncDef;
@@ -18,6 +16,4 @@ struct AggInfo_func {
   u8 bUseSubtype;
 };
 
-#ifdef __cplusplus
-}
-#endif
+

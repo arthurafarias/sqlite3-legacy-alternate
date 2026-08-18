@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/BitMask.h"
 #include "sqlite/LogEst.h"
 #include "sqlite/WhereClause.h"
@@ -94,6 +92,4 @@ extern "C" {
 
   LogEst estLog(LogEst N);
 
-#ifdef __cplusplus
-}
-#endif
+

@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/Mem.h"
 #include "sqlite/Op.h"
 #include "sqlite/i64.h"
@@ -37,6 +35,4 @@ extern "C" {
   void sqlite3VdbeFrameDelete(VdbeFrame *);
   int sqlite3VdbeFrameRestore(VdbeFrame *);
 
-#ifdef __cplusplus
-}
-#endif
+

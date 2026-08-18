@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/DbPage.h"
 #include "sqlite/StrAccum.h"
 #include "sqlite/sqlite3_file.h"
@@ -25,6 +23,4 @@ extern "C" {
   void appendAllPathElements(DbPath *, const char *);
   void appendOnePathElement(DbPath * pPath, const char *zName, int nName);
 
-#ifdef __cplusplus
-}
-#endif
+

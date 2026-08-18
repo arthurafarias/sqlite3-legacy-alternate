@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/sqlite3_int64.h"
 #include "sqlite/u16.h"
   typedef struct BtCursor BtCursor;
@@ -23,6 +21,4 @@ extern "C" {
 
   int blobSeekToRow(Incrblob * p, sqlite3_int64 iRow, char **pzErr);
 
-#ifdef __cplusplus
-}
-#endif
+

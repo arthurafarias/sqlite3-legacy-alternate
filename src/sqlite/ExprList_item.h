@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/u16.h"
 #include "sqlite/u8.h"
 typedef struct Expr Expr;
@@ -32,6 +30,4 @@ struct ExprList_item {
   } u;
 };
 
-#ifdef __cplusplus
-}
-#endif
+

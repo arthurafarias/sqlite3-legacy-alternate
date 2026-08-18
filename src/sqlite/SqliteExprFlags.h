@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 /* Expr.flags Bit Values (from the sqlite3 amalgamation's sqliteInt.h,
    internal/private - not part of the public sqlite3.h API and not
    guaranteed stable across versions). This is the subset referenced by
@@ -29,6 +27,4 @@ enum {
   EP_IsFalse = 0x20000000, /* Always has boolean value of FALSE */
 };
 
-#ifdef __cplusplus
-}
-#endif
+

@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/u8.h"
   typedef struct VdbeOp VdbeOp;
   typedef struct SubProgram SubProgram;
@@ -17,6 +15,4 @@ extern "C" {
     SubProgram *pNext;
   };
 
-#ifdef __cplusplus
-}
-#endif
+

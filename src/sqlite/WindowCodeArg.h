@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/WindowCsrAndReg.h"
   typedef struct Parse Parse;
   typedef struct Vdbe Vdbe;
@@ -33,6 +31,4 @@ extern "C" {
   void windowCodeRangeTest(WindowCodeArg * p, int op, int csr1, int regVal, int csr2, int lbl);
   int windowCodeOp(WindowCodeArg * p, int op, int regCountdown, int jumpOnEof);
 
-#ifdef __cplusplus
-}
-#endif
+

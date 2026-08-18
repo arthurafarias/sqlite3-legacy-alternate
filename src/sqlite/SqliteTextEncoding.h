@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 /* Text Encodings (from sqlite3.h) */
 enum {
   SQLITE_UTF8 = 1,          /* IMP: R-37514-35566 */
@@ -13,6 +11,4 @@ enum {
   SQLITE_UTF8_ZT = 16,      /* Zero-terminated UTF8 */
 };
 
-#ifdef __cplusplus
-}
-#endif
+

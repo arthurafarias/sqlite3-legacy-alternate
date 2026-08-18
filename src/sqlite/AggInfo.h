@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/AggInfo_col.h"
 #include "sqlite/AggInfo_func.h"
 #include "sqlite/u32.h"
@@ -33,6 +31,4 @@ struct AggInfo {
 void analyzeAggFuncArgs(AggInfo *pAggInfo, NameContext *pNC);
 void aggregateConvertIndexedExprRefToColumn(AggInfo *pAggInfo);
 
-#ifdef __cplusplus
-}
-#endif
+

@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/u8.h"
 #include "sqlite/Walker.h"
   typedef struct Expr Expr;
@@ -32,6 +30,4 @@ extern "C" {
   int sqlite3FixExpr(DbFixer *, Expr *);
   int sqlite3FixTriggerStep(DbFixer *, TriggerStep *);
 
-#ifdef __cplusplus
-}
-#endif
+

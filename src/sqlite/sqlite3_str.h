@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include <stdarg.h>
 #include "sqlite/sqlite3_int64.h"
 #include "sqlite/u32.h"
@@ -36,6 +34,4 @@ extern "C" {
   char *printfTempBuf(sqlite3_str * pAccum, sqlite3_int64 n);
   extern sqlite3_str sqlite3OomStr;
 
-#ifdef __cplusplus
-}
-#endif
+

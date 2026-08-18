@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/sqlite3_int64.h"
 #include "sqlite/u8.h"
 typedef struct ReusableSpace ReusableSpace;
@@ -15,6 +13,4 @@ struct ReusableSpace {
 
 void *allocSpace(struct ReusableSpace *p, void *pBuf, sqlite3_int64 nByte);
 
-#ifdef __cplusplus
-}
-#endif
+

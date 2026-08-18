@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
   typedef struct PGroup PGroup;
   typedef struct PgHdr1 PgHdr1;
   typedef struct PCache1 PCache1;
@@ -37,6 +35,4 @@ extern "C" {
 
   void *pcache1Alloc(int nByte);
 
-#ifdef __cplusplus
-}
-#endif
+

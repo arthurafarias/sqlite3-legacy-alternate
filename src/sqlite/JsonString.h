@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/u32.h"
 #include "sqlite/u64.h"
 #include "sqlite/u8.h"
@@ -41,6 +39,4 @@ extern "C" {
   void jsonAppendSqlValue(JsonString * p, sqlite3_value * pValue);
   void jsonReturnString(JsonString * p, JsonParse * pParse, sqlite3_context * ctx);
 
-#ifdef __cplusplus
-}
-#endif
+

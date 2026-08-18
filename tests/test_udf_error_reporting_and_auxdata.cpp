@@ -35,7 +35,7 @@ static void cached_upper(sqlite3_context *ctx, int argc, sqlite3_value **argv) {
     g_recompute_count++;
     const unsigned char *in = sqlite3_value_text(argv[0]);
     size_t n = in ? strlen((const char *)in) : 0;
-    cached = sqlite3_malloc((int)n + 1);
+    cached = (char*)sqlite3_malloc((int)n + 1);
     for (size_t i = 0; i < n; i++)
       cached[i] = (char)toupper(in[i]);
     cached[n] = '\0';

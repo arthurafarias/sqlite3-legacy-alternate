@@ -1,9 +1,7 @@
 
 #pragma once
 #include "sqlite/Pgno.h"
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/StrAccum.h"
 #include "sqlite/i64.h"
 #include "sqlite/u32.h"
@@ -42,6 +40,4 @@ extern "C" {
   void checkList(IntegrityCk * pCheck, int isFreeList, Pgno iPage, u32 N);
   int checkTreePage(IntegrityCk * pCheck, Pgno iPage, i64 * piMinKey, i64 maxKey);
 
-#ifdef __cplusplus
-}
-#endif
+

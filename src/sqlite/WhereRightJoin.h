@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
   typedef struct WhereRightJoin WhereRightJoin;
   struct WhereRightJoin {
     int iMatch;
@@ -12,6 +10,4 @@ extern "C" {
     int endSubrtn;
   };
 
-#ifdef __cplusplus
-}
-#endif
+

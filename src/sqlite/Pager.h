@@ -1,9 +1,7 @@
 
 #pragma once
 #include "sqlite/PagerSavepoint.h"
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/DbPage.h"
 #include "sqlite/Pgno.h"
 #include "sqlite/i16.h"
@@ -198,6 +196,4 @@ extern "C" {
   extern const unsigned char aJournalMagic[8];
   void freeSuperJournal(char *zSuper);
 
-#ifdef __cplusplus
-}
-#endif
+

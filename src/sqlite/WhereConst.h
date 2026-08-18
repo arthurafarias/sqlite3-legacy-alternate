@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/u32.h"
 #include "sqlite/u8.h"
   typedef struct Expr Expr;
@@ -23,6 +21,4 @@ extern "C" {
   void findConstInWhere(WhereConst * pConst, Expr * pExpr);
   int propagateConstantExprRewriteOne(WhereConst * pConst, Expr * pExpr, int bIgnoreAffBlob);
 
-#ifdef __cplusplus
-}
-#endif
+

@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/Pgno.h"
 #include "sqlite/u32.h"
 typedef struct sqlite3 sqlite3;
@@ -19,6 +17,3 @@ struct InitData {
 
 void corruptSchema(InitData *pData, char **azObj, const char *zExtra);
 
-#ifdef __cplusplus
-}
-#endif

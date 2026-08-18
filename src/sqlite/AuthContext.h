@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
   typedef struct Parse Parse;
 
   typedef struct AuthContext AuthContext;
@@ -14,6 +12,4 @@ extern "C" {
 
   void sqlite3AuthContextPop(AuthContext *);
 
-#ifdef __cplusplus
-}
-#endif
+

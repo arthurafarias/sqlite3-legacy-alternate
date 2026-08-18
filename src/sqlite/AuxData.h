@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
   typedef struct AuxData AuxData;
 
   struct AuxData {
@@ -13,6 +11,4 @@ extern "C" {
     AuxData *pNextAux;
   };
 
-#ifdef __cplusplus
-}
-#endif
+

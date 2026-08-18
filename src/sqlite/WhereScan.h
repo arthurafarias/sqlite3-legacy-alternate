@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/i16.h"
 #include "sqlite/u32.h"
   typedef struct Expr Expr;
@@ -28,6 +26,4 @@ extern "C" {
   __attribute__((noinline)) WhereTerm *whereScanInitIndexExpr(WhereScan * pScan);
   WhereTerm *whereScanInit(WhereScan * pScan, WhereClause * pWC, int iCur, int iColumn, u32 opMask, Index *pIdx);
 
-#ifdef __cplusplus
-}
-#endif
+

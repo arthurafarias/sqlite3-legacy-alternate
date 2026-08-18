@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 /* Prepare Flags (from sqlite3.h) */
 enum {
   SQLITE_PREPARE_PERSISTENT = 0x01,
@@ -11,6 +9,4 @@ enum {
   SQLITE_PREPARE_FROM_DDL = 0x20,
 };
 
-#ifdef __cplusplus
-}
-#endif
+

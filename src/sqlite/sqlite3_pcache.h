@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
   typedef struct PgHdr1 PgHdr1;
   typedef struct sqlite3_pcache_page sqlite3_pcache_page;
 
@@ -18,6 +16,4 @@ extern "C" {
   void pcache1Rekey(sqlite3_pcache * p, sqlite3_pcache_page * pPg, unsigned int iOld, unsigned int iNew);
   void pcache1Truncate(sqlite3_pcache * p, unsigned int iLimit);
 
-#ifdef __cplusplus
-}
-#endif
+

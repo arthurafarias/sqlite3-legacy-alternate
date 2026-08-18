@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/ExprList.h"
 #include "sqlite/Parse.h"
 typedef struct Expr Expr;
@@ -24,6 +22,4 @@ void substExprList(SubstContext *, ExprList *);
 void substSelect(SubstContext *, Select *, int);
 Expr *substExpr(SubstContext *pSubst, Expr *pExpr);
 
-#ifdef __cplusplus
-}
-#endif
+

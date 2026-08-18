@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 /* Flags for the xShmLock VFS method / Maximum xShmLock index (from sqlite3.h) */
 enum {
   SQLITE_SHM_UNLOCK = 1,
@@ -11,6 +9,4 @@ enum {
   SQLITE_SHM_NLOCK = 8,
 };
 
-#ifdef __cplusplus
-}
-#endif
+

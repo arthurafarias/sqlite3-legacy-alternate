@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 typedef union sqlite3DigitPairs_t sqlite3DigitPairs_t;
 
 union sqlite3DigitPairs_t {
@@ -9,6 +7,4 @@ union sqlite3DigitPairs_t {
   short int forceAlignment;
 };
 
-#ifdef __cplusplus
-}
-#endif
+

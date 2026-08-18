@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/Pgno.h"
 #include "sqlite/i64.h"
 #include "sqlite/u16.h"
@@ -51,6 +49,4 @@ extern "C" {
   int pager_write(PgHdr * pPg);
   __attribute__((noinline)) int pagerWriteLargeSector(PgHdr * pPg);
 
-#ifdef __cplusplus
-}
-#endif
+

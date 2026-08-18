@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/KeyInfo.h"
 #include "sqlite/Mem.h"
 #include "sqlite/i64.h"
@@ -38,6 +36,4 @@ extern "C" {
     } uKey;
   };
 
-#ifdef __cplusplus
-}
-#endif
+

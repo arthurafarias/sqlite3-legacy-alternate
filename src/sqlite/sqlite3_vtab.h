@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
   typedef struct sqlite3_index_info sqlite3_index_info;
   typedef struct sqlite3_vtab_cursor sqlite3_vtab_cursor;
   typedef struct sqlite3_vtab sqlite3_vtab;
@@ -21,6 +19,4 @@ extern "C" {
   int jsonEachOpen(sqlite3_vtab * p, sqlite3_vtab_cursor * *ppCursor);
   int jsonEachBestIndex(sqlite3_vtab * tab, sqlite3_index_info * pIdxInfo);
 
-#ifdef __cplusplus
-}
-#endif
+

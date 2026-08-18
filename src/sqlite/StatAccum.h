@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/StatSample.h"
 #include "sqlite/tRowcnt.h"
 #include "sqlite/u8.h"
@@ -24,6 +22,4 @@ extern "C" {
 
   void statAccumDestructor(void *pOld);
 
-#ifdef __cplusplus
-}
-#endif
+

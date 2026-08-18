@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/u16.h"
 #include "sqlite/u32.h"
 #include "sqlite/u8.h"
@@ -25,6 +23,4 @@ extern "C" {
   void sqlite3KeyInfoUnref(KeyInfo *);
   KeyInfo *sqlite3KeyInfoRef(KeyInfo *);
 
-#ifdef __cplusplus
-}
-#endif
+

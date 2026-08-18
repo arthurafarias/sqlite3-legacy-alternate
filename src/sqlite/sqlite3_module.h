@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/sqlite3_int64.h"
   typedef struct sqlite3_module sqlite3_module;
   typedef struct sqlite3 sqlite3;
@@ -47,6 +45,4 @@ extern "C" {
   extern const sqlite3_module pragmaVtabModule;
   extern sqlite3_module jsonEachModule;
 
-#ifdef __cplusplus
-}
-#endif
+

@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/i64.h"
 #include "sqlite/u32.h"
   typedef struct VdbeTxtBlbCache VdbeTxtBlbCache;
@@ -14,6 +12,4 @@ extern "C" {
     u32 colCacheCtr;
   };
 
-#ifdef __cplusplus
-}
-#endif
+

@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
   typedef struct BusyHandler BusyHandler;
 
   struct BusyHandler {
@@ -13,6 +11,4 @@ extern "C" {
 
   int sqlite3InvokeBusyHandler(BusyHandler *);
 
-#ifdef __cplusplus
-}
-#endif
+

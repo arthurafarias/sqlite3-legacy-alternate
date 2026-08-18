@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/StrAccum.h"
 typedef struct {
   StrAccum str;
@@ -14,6 +12,4 @@ typedef struct {
 
 } GroupConcatCtx;
 
-#ifdef __cplusplus
-}
-#endif
+

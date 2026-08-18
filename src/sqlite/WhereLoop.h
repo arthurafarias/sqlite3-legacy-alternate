@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/BitMask.h"
 #include "sqlite/LogEst.h"
 #include "sqlite/i8.h"
@@ -62,6 +60,4 @@ extern "C" {
   WhereLoop **whereLoopFindLesser(WhereLoop * *ppPrev, const WhereLoop *pTemplate);
   __attribute__((noinline)) int whereLoopIsNoBetter(const WhereLoop *pCandidate, const WhereLoop *pBaseline);
 
-#ifdef __cplusplus
-}
-#endif
+

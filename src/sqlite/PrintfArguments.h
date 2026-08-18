@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/sqlite3_int64.h"
 #include "sqlite/sqlite3_value.h"
   typedef struct PrintfArguments PrintfArguments;
@@ -17,6 +15,4 @@ extern "C" {
   double getDoubleArg(PrintfArguments * p);
   char *getTextArg(PrintfArguments * p);
 
-#ifdef __cplusplus
-}
-#endif
+

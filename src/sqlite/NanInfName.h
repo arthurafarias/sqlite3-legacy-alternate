@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 typedef struct NanInfName NanInfName;
 
 struct NanInfName {
@@ -15,6 +13,4 @@ struct NanInfName {
   char *zRepl;
 };
 
-#ifdef __cplusplus
-}
-#endif
+

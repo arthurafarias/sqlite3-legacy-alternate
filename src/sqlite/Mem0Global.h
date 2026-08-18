@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/sqlite3_int64.h"
 #include "sqlite/sqlite3_mutex.h"
 typedef struct Mem0Global Mem0Global;
@@ -17,6 +15,4 @@ struct Mem0Global {
 
 extern struct Mem0Global mem0;
 
-#ifdef __cplusplus
-}
-#endif
+

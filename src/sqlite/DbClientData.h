@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
   typedef struct DbClientData DbClientData;
 
   struct DbClientData {
@@ -12,6 +10,4 @@ extern "C" {
     char zName[1];
   };
 
-#ifdef __cplusplus
-}
-#endif
+

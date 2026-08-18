@@ -3,8 +3,8 @@
 # pass/fail/timing granularity meaningful and keeps failures easy to isolate.
 
 function(add_sqlite_test name)
-  add_executable(${name} ${name}.c)
-  target_link_libraries(${name} PRIVATE sqlite3)
+  add_executable(${name} ${name}.cpp)
+  target_link_libraries(${name} PRIVATE sqlite3-legacy-alternate)
   target_include_directories(${name} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/support)
   add_test(NAME ${name} COMMAND ${name})
   set_tests_properties(${name} PROPERTIES TIMEOUT 60 LABELS "unit")
@@ -112,14 +112,14 @@ add_sqlite_test(test_value_subtype_and_dup)
 # Runtime extension loading: built as a real shared object so
 # sqlite3_load_extension()'s dlopen/dlsym path is genuinely exercised.
 add_library(sample_extension MODULE extensions/sample_extension.c)
-target_link_libraries(sample_extension PRIVATE sqlite3)
+target_link_libraries(sample_extension PRIVATE sqlite3-legacy-alternate)
 set_target_properties(sample_extension PROPERTIES
   PREFIX ""
   POSITION_INDEPENDENT_CODE ON
 )
 
-add_executable(test_load_extension test_load_extension.c)
-target_link_libraries(test_load_extension PRIVATE sqlite3)
+add_executable(test_load_extension test_load_extension.cpp)
+target_link_libraries(test_load_extension PRIVATE sqlite3-legacy-alternate)
 target_include_directories(test_load_extension PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/support)
 add_dependencies(test_load_extension sample_extension)
 target_compile_definitions(test_load_extension PRIVATE

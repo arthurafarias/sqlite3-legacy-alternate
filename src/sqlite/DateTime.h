@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/sqlite3_int64.h"
   typedef struct sqlite3_context sqlite3_context;
 
@@ -41,6 +39,4 @@ extern "C" {
   int getDigits(const char *zDate, const char *zFormat, ...);
   int validJulianDay(sqlite3_int64 iJD);
 
-#ifdef __cplusplus
-}
-#endif
+

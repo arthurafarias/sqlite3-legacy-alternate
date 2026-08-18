@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/BitMask.h"
 #include "sqlite/WhereClause.h"
   typedef struct WhereOrInfo WhereOrInfo;
@@ -11,6 +9,4 @@ extern "C" {
     Bitmask indexable;
   };
 
-#ifdef __cplusplus
-}
-#endif
+

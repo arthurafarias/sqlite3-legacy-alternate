@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 /* Status Parameters (from sqlite3.h) */
 enum {
   SQLITE_STATUS_MEMORY_USED = 0,
@@ -16,6 +14,4 @@ enum {
   SQLITE_STATUS_MALLOC_COUNT = 9,
 };
 
-#ifdef __cplusplus
-}
-#endif
+

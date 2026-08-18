@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/u16.h"
 #include "sqlite/u8.h"
   typedef struct MemPage MemPage;
@@ -22,6 +20,4 @@ extern "C" {
   u16 cachedCellSize(CellArray * p, int N);
   int rebuildPage(CellArray * pCArray, int iFirst, int nCell, MemPage *pPg);
 
-#ifdef __cplusplus
-}
-#endif
+

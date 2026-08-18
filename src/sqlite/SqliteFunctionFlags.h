@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 /* Function Flags (from sqlite3.h) */
 enum {
   SQLITE_DETERMINISTIC = 0x000000800,
@@ -12,6 +10,4 @@ enum {
   SQLITE_SELFORDER1 = 0x002000000,
 };
 
-#ifdef __cplusplus
-}
-#endif
+

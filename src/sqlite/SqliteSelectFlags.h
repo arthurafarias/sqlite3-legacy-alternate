@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 /* Select.selFlags Bit Values (from the sqlite3 amalgamation's sqliteInt.h,
    internal/private - not part of the public sqlite3.h API and not
    guaranteed stable across versions). Only the subset referenced by this
@@ -11,6 +9,4 @@ enum {
   SF_Aggregate = 0x0000008, /* Contains agg functions or a GROUP BY */
 };
 
-#ifdef __cplusplus
-}
-#endif
+

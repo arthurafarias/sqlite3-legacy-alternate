@@ -8,9 +8,7 @@ typedef struct ExprList ExprList;
 typedef struct IdList IdList;
 typedef struct SrcList SrcList;
 typedef struct Upsert Upsert;
-#ifdef __cplusplus
-extern "C" {
-#endif
+
   typedef struct TriggerStep TriggerStep;
 
   struct TriggerStep {
@@ -29,6 +27,4 @@ extern "C" {
     TriggerStep *pLast;
   };
 
-#ifdef __cplusplus
-}
-#endif
+

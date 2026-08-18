@@ -7,7 +7,7 @@
  * dependency on platform wchar_t, which is 4 bytes wide on Linux. */
 static uint16_t *ascii_to_utf16(const char *ascii) {
   size_t n = strlen(ascii);
-  uint16_t *buf = malloc((n + 1) * sizeof(uint16_t));
+  uint16_t *buf = (uint16_t*) malloc((n + 1) * sizeof(uint16_t));
   for (size_t i = 0; i <= n; i++)
     buf[i] = (uint16_t)(unsigned char)ascii[i];
   return buf;

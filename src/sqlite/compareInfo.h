@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/u8.h"
 typedef struct compareInfo compareInfo;
 
@@ -17,6 +15,4 @@ extern const struct compareInfo globInfo;
 extern const struct compareInfo likeInfoNorm;
 extern const struct compareInfo likeInfoAlt;
 
-#ifdef __cplusplus
-}
-#endif
+

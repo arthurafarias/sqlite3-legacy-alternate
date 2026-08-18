@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/u8.h"
   typedef struct ExprList ExprList;
   typedef struct SelectDest SelectDest;
@@ -19,6 +17,4 @@ extern "C" {
 
   void sqlite3SelectDestInit(SelectDest *, int, int);
 
-#ifdef __cplusplus
-}
-#endif
+

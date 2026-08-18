@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/FuncDef.h"
 #include "sqlite/MemValue.h"
 #include "sqlite/i64.h"
@@ -64,6 +62,4 @@ __attribute__((noinline)) int valueBytes(sqlite3_value *pVal, u8 enc);
 int valueFromValueList(sqlite3_value *pVal, sqlite3_value **ppOut, int bNext);
 int jsonArgIsJsonb(sqlite3_value *pJson, JsonParse *p);
 
-#ifdef __cplusplus
-}
-#endif
+

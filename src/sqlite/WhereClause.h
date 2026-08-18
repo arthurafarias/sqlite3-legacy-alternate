@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/BitMask.h"
 #include "sqlite/LogEst.h"
 #include "sqlite/WhereTerm.h"
@@ -39,6 +37,4 @@ extern "C" {
   WhereTerm *termFromWhereClause(WhereClause * pWC, int iTerm);
   void whereLoopOutputAdjust(WhereClause * pWC, WhereLoop * pLoop, LogEst nRow);
 
-#ifdef __cplusplus
-}
-#endif
+

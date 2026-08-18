@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/DbPage.h"
 #include "sqlite/InitData.h"
 #include "sqlite/StrAccum.h"
@@ -22,6 +20,4 @@ extern "C" {
     void *pUserData;
   };
 
-#ifdef __cplusplus
-}
-#endif
+

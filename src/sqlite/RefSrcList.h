@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/SrcList.h"
 #include "sqlite/i64.h"
 #include "sqlite/sqlite3.h"
@@ -15,6 +13,4 @@ struct RefSrcList {
   int *aiExclude;
 };
 
-#ifdef __cplusplus
-}
-#endif
+

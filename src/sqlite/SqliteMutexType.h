@@ -1,7 +1,5 @@
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 /* Mutex Types (from sqlite3.h) */
 enum {
   SQLITE_MUTEX_FAST = 0,
@@ -25,6 +23,4 @@ enum {
   SQLITE_MUTEX_STATIC_TEMPDIR = SQLITE_MUTEX_STATIC_VFS1,
 };
 
-#ifdef __cplusplus
-}
-#endif
+

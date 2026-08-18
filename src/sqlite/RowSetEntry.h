@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/i64.h"
 typedef struct RowSetEntry RowSetEntry;
 
@@ -18,6 +16,4 @@ void rowSetTreeToList(struct RowSetEntry *pIn, struct RowSetEntry **ppFirst, str
 struct RowSetEntry *rowSetNDeepTree(struct RowSetEntry **ppList, int iDepth);
 struct RowSetEntry *rowSetListToTree(struct RowSetEntry *pList);
 
-#ifdef __cplusplus
-}
-#endif
+

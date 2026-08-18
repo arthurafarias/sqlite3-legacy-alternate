@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/Mem.h"
 #include "sqlite/RecordCompare.h"
 #include "sqlite/i64.h"
@@ -31,6 +29,4 @@ extern "C" {
 
   RecordCompare sqlite3VdbeFindCompare(UnpackedRecord *);
 
-#ifdef __cplusplus
-}
-#endif
+

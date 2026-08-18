@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/u8.h"
   typedef struct Expr Expr;
   typedef struct ExprList ExprList;
@@ -50,6 +48,4 @@ extern "C" {
   int windowArgCount(Window * pWin);
   int windowCacheFrame(Window * pMWin);
 
-#ifdef __cplusplus
-}
-#endif
+

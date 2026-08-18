@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/SorterFile.h"
 #include "sqlite/i64.h"
   typedef struct MergeEngine MergeEngine;
@@ -25,6 +23,4 @@ extern "C" {
   int vdbeIncrBgPopulate(IncrMerger * pIncr);
   void vdbeIncrMergerSetThreads(IncrMerger * pIncr);
 
-#ifdef __cplusplus
-}
-#endif
+

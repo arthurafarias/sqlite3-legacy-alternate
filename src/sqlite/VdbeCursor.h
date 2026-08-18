@@ -1,8 +1,6 @@
 
 #pragma once
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 #include "sqlite/Bool.h"
 #include "sqlite/Pgno.h"
 #include "sqlite/i16.h"
@@ -73,6 +71,4 @@ extern "C" {
   __attribute__((noinline)) int vdbeColumnFromOverflow(VdbeCursor * pC, int iCol, u32 t, i64 iOffset, u32 cacheStatus,
                                                        u32 colCacheCtr, Mem *pDest);
 
-#ifdef __cplusplus
-}
-#endif
+
