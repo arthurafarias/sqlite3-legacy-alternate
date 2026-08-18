@@ -1,0 +1,5 @@
+{
+  "name": "Remove Duplicate Struct Declarations",
+  "description": "Uses clang's AST (-ast-dump=json) to find redundant struct/class/union/enum forward declarations - e.g. 'struct Table; struct Table;' - and removes the redundant ones. Prompts for current file vs. whole workspace.",
+  "category": "Clang"
+}
