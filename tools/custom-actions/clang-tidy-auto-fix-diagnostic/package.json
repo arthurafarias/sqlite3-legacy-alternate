@@ -1,0 +1,8 @@
+{
+  "name": "clang-tidy-auto-fix-diagnostic",
+  "private": true,
+  "description": "Local dependency for the Clang Tidy Auto Fix Diagnostics custom action.",
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  }
+}

@@ -1,0 +1,35 @@
+---
+Checks: >
+  -*,
+  readability-identifier-naming,
+  readability-container-*,
+  readability-use-anyofallof,
+  modernize-*
+
+CheckOptions:
+  # Enforce STL snake_case (lower_case in clang-tidy) globally
+  readability-identifier-naming.DefaultCase: lower_case
+  
+  # Standard STL exceptions (e.g., Template parameters in CamelCase, Macros in UPPER_CASE)
+  readability-identifier-naming.TemplateParameterCase: CamelCase
+  readability-identifier-naming.MacroCase: UPPER_CASE
+
+WarningsAsErrors: ''
+HeaderFileExtensions:
+  - ''
+  - h
+  - hh
+  - hpp
+  - hxx
+ImplementationFileExtensions:
+  - c
+  - cc
+  - cpp
+  - cxx
+HeaderFilterRegex: '.*'
+ExcludeHeaderFilterRegex: ''
+FormatStyle:     Google
+User:            arthur
+SystemHeaders:   false
+...
+

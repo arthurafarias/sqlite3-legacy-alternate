@@ -1,0 +1,5 @@
+{
+  "name": "Clang Tidy Auto Fix Diagnostics",
+  "description": "Uses clang-tidy to fix diagnostics by providing a custom fix for the selected algorithm for the workspace.",
+  "category": "Clang"
+}

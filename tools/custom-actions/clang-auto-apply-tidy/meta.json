@@ -1,0 +1,5 @@
+{
+  "name": "Clang Tidy Auto Apply",
+  "description": "Auto-applies the preferred quick fix VS Code already suggests for every diagnostic in the active editor or across all files with existing problems - no clang-tidy invocation of its own.",
+  "category": "Clang"
+}
