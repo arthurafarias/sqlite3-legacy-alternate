@@ -1,9 +1,9 @@
 #pragma once
 
-typedef struct Table Table;
-typedef struct Expr Expr;
+struct Table;
+struct Expr;
 
-typedef struct AggInfo_col AggInfo_col;
+struct AggInfo_col;
 struct AggInfo_col {
   Table *pTab;
   Expr *pCExpr;

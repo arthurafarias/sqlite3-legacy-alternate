@@ -4,9 +4,9 @@
 #include "sqlite/Hash.h"
 #include "sqlite/u16.h"
 #include "sqlite/u8.h"
-  typedef struct Table Table;
+  struct Table;
 
-  typedef struct Schema Schema;
+  struct Schema;
 
   struct Schema {
     int schema_cookie;

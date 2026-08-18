@@ -2,11 +2,11 @@
 #pragma once
 
 #include "sqlite/u8.h"
-  typedef struct CteUse CteUse;
-  typedef struct ExprList ExprList;
-  typedef struct Select Select;
+  struct CteUse;
+  struct ExprList;
+  struct Select;
 
-  typedef struct Cte Cte;
+  struct Cte;
 
   struct Cte {
     char *zName;

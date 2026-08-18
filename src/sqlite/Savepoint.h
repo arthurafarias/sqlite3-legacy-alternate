@@ -2,7 +2,7 @@
 #pragma once
 
 #include "sqlite/i64.h"
-  typedef struct Savepoint Savepoint;
+  struct Savepoint;
 
   struct Savepoint {
     char *zName;

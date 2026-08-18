@@ -1,9 +1,9 @@
 
 #pragma once
 
-  typedef struct PGroup PGroup;
-  typedef struct PgHdr1 PgHdr1;
-  typedef struct PCache1 PCache1;
+  struct PGroup;
+  struct PgHdr1;
+  struct PCache1;
   struct PCache1 {
     PGroup *pGroup;
     unsigned int *pnPurgeable;

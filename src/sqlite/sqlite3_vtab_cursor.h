@@ -2,11 +2,11 @@
 #pragma once
 
 #include "sqlite/sqlite_int64.h"
-  typedef struct sqlite3_context sqlite3_context;
-  typedef struct sqlite3_value sqlite3_value;
+  struct sqlite3_context;
+  struct sqlite3_value;
 
-  typedef struct sqlite3_vtab_cursor sqlite3_vtab_cursor;
-  typedef struct sqlite3_vtab sqlite3_vtab;
+  struct sqlite3_vtab_cursor;
+  struct sqlite3_vtab;
 
   struct sqlite3_vtab_cursor {
     sqlite3_vtab *pVtab;

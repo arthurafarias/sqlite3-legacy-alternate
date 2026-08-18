@@ -1,7 +1,7 @@
 
 #pragma once
 
-  typedef struct BusyHandler BusyHandler;
+  struct BusyHandler;
 
   struct BusyHandler {
     int (*xBusyHandler)(void *, int);

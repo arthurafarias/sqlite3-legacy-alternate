@@ -4,11 +4,10 @@
 #include "sqlite/StatSample.h"
 #include "sqlite/tRowcnt.h"
 #include "sqlite/u8.h"
-  typedef struct sqlite3 sqlite3;
+  struct sqlite3;
 
-  typedef struct StatAccum StatAccum;
+  struct StatAccum;
 
-  typedef struct StatAccum StatAccum;
   struct StatAccum {
     sqlite3 *db;
     tRowcnt nEst;

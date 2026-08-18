@@ -4,9 +4,9 @@
 #include "sqlite/BitMask.h"
 #include "sqlite/LogEst.h"
 #include "sqlite/i8.h"
-  typedef struct WhereLoop WhereLoop;
+  struct WhereLoop;
 
-  typedef struct WherePath WherePath;
+  struct WherePath;
   struct WherePath {
     Bitmask maskLoop;
     Bitmask revLoop;

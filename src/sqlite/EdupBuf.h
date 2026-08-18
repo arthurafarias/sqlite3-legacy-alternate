@@ -13,7 +13,7 @@
 #include "sqlite/u8.h"
 #include "sqlite/yDbMask.h"
 #include "sqlite/ynVar.h"
-  typedef struct EdupBuf EdupBuf;
+  struct EdupBuf;
   struct EdupBuf {
     u8 *zAlloc;
   };

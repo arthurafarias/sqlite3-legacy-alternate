@@ -5,11 +5,11 @@
 #include "sqlite/Op.h"
 #include "sqlite/i64.h"
 #include "sqlite/u8.h"
-  typedef struct AuxData AuxData;
-  typedef struct Vdbe Vdbe;
-  typedef struct VdbeCursor VdbeCursor;
+  struct AuxData;
+  struct Vdbe;
+  struct VdbeCursor;
 
-  typedef struct VdbeFrame VdbeFrame;
+  struct VdbeFrame;
   struct VdbeFrame {
     Vdbe *v;
     VdbeFrame *pParent;

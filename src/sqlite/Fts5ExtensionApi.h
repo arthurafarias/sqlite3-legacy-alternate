@@ -4,7 +4,7 @@
 #include "sqlite/Fts5Context.h"
 #include "sqlite/Fts5PhraseIter.h"
 #include "sqlite/sqlite3_int64.h"
-  typedef struct Fts5ExtensionApi Fts5ExtensionApi;
+  struct Fts5ExtensionApi;
 
   struct Fts5ExtensionApi {
     int iVersion;

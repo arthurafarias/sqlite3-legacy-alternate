@@ -1,7 +1,7 @@
 
 #pragma once
 
-  typedef struct WindowCsrAndReg WindowCsrAndReg;
+  struct WindowCsrAndReg;
 
   struct WindowCsrAndReg {
     int csr;

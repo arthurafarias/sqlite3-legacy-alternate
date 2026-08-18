@@ -1,10 +1,10 @@
 #pragma once
 
 #include "sqlite/u8.h"
-typedef struct Expr Expr;
-typedef struct FuncDef FuncDef;
+struct Expr;
+struct FuncDef;
 
-typedef struct AggInfo_func AggInfo_func;
+struct AggInfo_func;
 struct AggInfo_func {
   Expr *pFExpr;
   FuncDef *pFunc;

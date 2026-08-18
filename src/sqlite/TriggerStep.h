@@ -1,15 +1,12 @@
 
 #pragma once
 #include "sqlite/Select.h"
-typedef struct Trigger Trigger;
+struct Trigger;
 #include "sqlite/u8.h"
-typedef struct Expr Expr;
-typedef struct ExprList ExprList;
-typedef struct IdList IdList;
-typedef struct SrcList SrcList;
-typedef struct Upsert Upsert;
+struct IdList;
+struct Upsert;
 
-  typedef struct TriggerStep TriggerStep;
+  struct TriggerStep;
 
   struct TriggerStep {
     u8 op;

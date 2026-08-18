@@ -2,8 +2,8 @@
 #pragma once
 
 #include "sqlite/sqlite3_int64.h"
-  typedef struct sqlite3_mutex sqlite3_mutex;
-  typedef struct MemStore MemStore;
+  struct sqlite3_mutex;
+  struct MemStore;
   struct MemStore {
     sqlite3_int64 sz;
     sqlite3_int64 szAlloc;

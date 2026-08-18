@@ -8,19 +8,15 @@
 #include "sqlite/sqlite_int64.h"
 #include "sqlite/sqlite_uint64.h"
 #include <stdarg.h>
-  typedef struct sqlite3 sqlite3;
-  typedef struct sqlite3_backup sqlite3_backup;
-  typedef struct sqlite3_blob sqlite3_blob;
-  typedef struct sqlite3_context sqlite3_context;
-  typedef struct sqlite3_file sqlite3_file;
-  typedef struct sqlite3_index_info sqlite3_index_info;
-  typedef struct sqlite3_module sqlite3_module;
-  typedef struct sqlite3_mutex sqlite3_mutex;
-  typedef struct sqlite3_str sqlite3_str;
-  typedef struct sqlite3_value sqlite3_value;
-  typedef struct sqlite3_vfs sqlite3_vfs;
+  struct sqlite3_backup;
+  struct sqlite3_blob;
+  struct sqlite3_index_info;
+  struct sqlite3_module;
+  struct sqlite3_mutex;
+  struct sqlite3_str;
+  struct sqlite3_vfs;
 
-  typedef struct sqlite3_api_routines sqlite3_api_routines;
+  struct sqlite3_api_routines;
 
   struct sqlite3_api_routines {
     void *(*aggregate_context)(sqlite3_context *, int nBytes);

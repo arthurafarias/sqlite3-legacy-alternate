@@ -3,11 +3,11 @@
 
 #include "sqlite/sqlite3_int64.h"
 #include "sqlite/u16.h"
-  typedef struct BtCursor BtCursor;
-  typedef struct Table Table;
-  typedef struct sqlite3 sqlite3;
-  typedef struct sqlite3_stmt sqlite3_stmt;
-  typedef struct Incrblob Incrblob;
+  struct BtCursor;
+  struct Table;
+  struct sqlite3;
+  struct sqlite3_stmt;
+  struct Incrblob;
   struct Incrblob {
     int nByte;
     int iOffset;

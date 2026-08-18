@@ -3,7 +3,7 @@
 
 #include "sqlite/i64.h"
 #include "sqlite/u32.h"
-  typedef struct JsonParent JsonParent;
+  struct JsonParent;
   struct JsonParent {
     u32 iHead;
     u32 iValue;

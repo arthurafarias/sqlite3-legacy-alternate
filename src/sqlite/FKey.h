@@ -4,8 +4,7 @@
 #include "sqlite/Trigger.h"
 #include "sqlite/sColMap.h"
 #include "sqlite/u8.h"
-typedef struct Table Table;
-typedef struct FKey FKey;
+struct FKey;
 
 struct FKey {
   Table *pFrom;

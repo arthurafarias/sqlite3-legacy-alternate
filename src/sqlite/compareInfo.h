@@ -2,7 +2,7 @@
 #pragma once
 
 #include "sqlite/u8.h"
-typedef struct compareInfo compareInfo;
+struct compareInfo;
 
 struct compareInfo {
   u8 matchAll;

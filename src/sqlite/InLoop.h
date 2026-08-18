@@ -1,7 +1,7 @@
 #pragma once
 
 #include "sqlite/u8.h"
-typedef struct InLoop InLoop;
+struct InLoop;
 struct InLoop {
   int iCur;
   int addrInTop;

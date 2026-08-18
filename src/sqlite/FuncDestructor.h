@@ -12,7 +12,7 @@
 #include "sqlite/sqlite3_sourceid.h"
 #include "sqlite/yDbMask.h"
 #include "sqlite/ynVar.h"
-  typedef struct FuncDestructor FuncDestructor;
+  struct FuncDestructor;
 
   struct FuncDestructor {
     int nRef;

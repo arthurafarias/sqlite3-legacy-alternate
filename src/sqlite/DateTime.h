@@ -2,9 +2,9 @@
 #pragma once
 
 #include "sqlite/sqlite3_int64.h"
-  typedef struct sqlite3_context sqlite3_context;
+  struct sqlite3_context;
 
-  typedef struct DateTime DateTime;
+  struct DateTime;
   struct DateTime {
     sqlite3_int64 iJD;
     int Y, M, D;

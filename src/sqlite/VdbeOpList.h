@@ -2,7 +2,7 @@
 #pragma once
 
 #include "sqlite/u8.h"
-  typedef struct VdbeOpList VdbeOpList;
+  struct VdbeOpList;
 
   struct VdbeOpList {
     u8 opcode;

@@ -2,7 +2,7 @@
 #pragma once
 
 #include "sqlite/LogEst.h"
-  typedef struct ScanStatus ScanStatus;
+  struct ScanStatus;
   struct ScanStatus {
     int addrExplain;
     int aAddrRange[6];

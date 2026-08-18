@@ -1,7 +1,7 @@
 
 #pragma once
 
-  typedef struct DbClientData DbClientData;
+  struct DbClientData;
 
   struct DbClientData {
     DbClientData *pNext;

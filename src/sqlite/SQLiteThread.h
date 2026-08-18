@@ -2,7 +2,7 @@
 #pragma once
 
 #include <pthread.h>
-  typedef struct SQLiteThread SQLiteThread;
+  struct SQLiteThread;
 
   struct SQLiteThread {
     pthread_t tid;

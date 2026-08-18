@@ -2,7 +2,7 @@
 #pragma once
 
 #include "sqlite/u32.h"
-  typedef struct LookasideSlot LookasideSlot;
+  struct LookasideSlot;
 
   struct LookasideSlot {
     LookasideSlot *pNext;

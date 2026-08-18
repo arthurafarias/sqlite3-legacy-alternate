@@ -2,9 +2,9 @@
 #pragma once
 
 #include "sqlite/u8.h"
-  typedef struct Index Index;
+  struct Index;
 
-  typedef struct CoveringIndexCheck CoveringIndexCheck;
+  struct CoveringIndexCheck;
   struct CoveringIndexCheck {
     Index *pIdx;
     int iTabCur;

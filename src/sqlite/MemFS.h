@@ -1,11 +1,12 @@
 #pragma once
 
-typedef struct MemStore MemStore;
+struct MemStore;
 
-typedef struct sqlite3_vfs MemVfs;
-typedef struct MemFile MemFile;
+struct sqlite3_vfs;
+struct MemVfs;
+struct MemFile;
 
-typedef struct MemFS MemFS;
+struct MemFS;
 
 struct MemFS {
   int nMemStore;

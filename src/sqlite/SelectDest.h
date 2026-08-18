@@ -2,8 +2,8 @@
 #pragma once
 
 #include "sqlite/u8.h"
-  typedef struct ExprList ExprList;
-  typedef struct SelectDest SelectDest;
+  struct ExprList;
+  struct SelectDest;
 
   struct SelectDest {
     u8 eDest;

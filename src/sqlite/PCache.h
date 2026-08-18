@@ -6,10 +6,7 @@
 #include "sqlite/i64.h"
 #include "sqlite/sqlite3_pcache.h"
 #include "sqlite/u8.h"
-  typedef struct PCache PCache;
 
-  typedef struct sqlite3_pcache_page sqlite3_pcache_page;
-  typedef struct PgHdr PgHdr;
 
   struct PCache {
     PgHdr *pDirty, *pDirtyTail;      /* List of dirty pages in LRU order */

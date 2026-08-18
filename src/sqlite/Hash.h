@@ -2,8 +2,8 @@
 #pragma once
 
 #include "sqlite/_ht.h"
-typedef struct HashElem HashElem;
-typedef struct Hash Hash;
+#include "sqlite/HashElem.h"
+
 struct Hash {
   unsigned int htsize;
   unsigned int count;
@@ -20,5 +20,3 @@ void insertElement(Hash *pH, struct _ht *pEntry, HashElem *pNew);
 int rehash(Hash *pH, unsigned int new_size);
 HashElem *findElementWithHash(const Hash *pH, const char *pKey, unsigned int *pHash);
 void removeElement(Hash *pH, HashElem *elem);
-
-

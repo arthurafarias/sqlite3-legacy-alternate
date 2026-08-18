@@ -4,7 +4,7 @@
 #include "sqlite/fts5_extension_function.h"
 #include "sqlite/fts5_tokenizer.h"
 #include "sqlite/fts5_tokenizer_v2.h"
-  typedef struct fts5_api fts5_api;
+  struct fts5_api;
 
   struct fts5_api {
     int iVersion;

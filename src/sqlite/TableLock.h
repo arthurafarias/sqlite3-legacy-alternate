@@ -3,7 +3,7 @@
 
 #include "sqlite/Pgno.h"
 #include "sqlite/u8.h"
-  typedef struct TableLock TableLock;
+  struct TableLock;
   struct TableLock {
     int iDb;
     Pgno iTab;

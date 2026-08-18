@@ -6,17 +6,17 @@
 #include "sqlite/i16.h"
 #include "sqlite/u32.h"
 #include "sqlite/u8.h"
-  typedef struct Column Column;
-  typedef struct Expr Expr;
-  typedef struct ExprList ExprList;
-  typedef struct FKey FKey;
-  typedef struct Index Index;
-  typedef struct Schema Schema;
-  typedef struct Select Select;
-  typedef struct Trigger Trigger;
-  typedef struct VTable VTable;
+  struct Column;
+  struct Expr;
+  struct ExprList;
+  struct FKey;
+  struct Index;
+  struct Schema;
+  struct Select;
+  struct Trigger;
+  struct VTable;
 
-  typedef struct Table Table;
+  struct Table;
 
   struct Table {
     char *zName;

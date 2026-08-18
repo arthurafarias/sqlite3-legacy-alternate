@@ -2,7 +2,7 @@
 #pragma once
 
 #include "sqlite/sqlite3StatValueType.h"
-  typedef struct sqlite3StatType sqlite3StatType;
+  struct sqlite3StatType;
 
   struct sqlite3StatType {
     sqlite3StatValueType nowValue[10];

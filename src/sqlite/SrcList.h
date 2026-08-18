@@ -3,11 +3,9 @@
 
 #include "sqlite/SrcItem.h"
 #include "sqlite/u32.h"
-  typedef struct Expr Expr;
-  typedef struct WhereClause WhereClause;
-  typedef struct WhereTerm WhereTerm;
+  struct WhereClause;
+  struct WhereTerm;
 
-  typedef struct SrcList SrcList;
 
   struct SrcList {
     int nSrc;

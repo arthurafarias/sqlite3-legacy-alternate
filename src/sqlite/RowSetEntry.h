@@ -2,7 +2,7 @@
 #pragma once
 
 #include "sqlite/i64.h"
-typedef struct RowSetEntry RowSetEntry;
+struct RowSetEntry;
 
 struct RowSetEntry {
   i64 v;

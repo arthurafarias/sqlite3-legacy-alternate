@@ -3,26 +3,26 @@
 
 #include "sqlite/Mem.h"
 #include "sqlite/u16.h"
-  typedef struct CheckOnCtx CheckOnCtx;
-  typedef struct CoveringIndexCheck CoveringIndexCheck;
-  typedef struct DbFixer DbFixer;
-  typedef struct Expr Expr;
-  typedef struct ExprList ExprList;
-  typedef struct IdxCover IdxCover;
-  typedef struct NameContext NameContext;
-  typedef struct Parse Parse;
-  typedef struct RefSrcList RefSrcList;
-  typedef struct RenameCtx RenameCtx;
-  typedef struct Select Select;
-  typedef struct SrcItem SrcItem;
-  typedef struct SrcList SrcList;
-  typedef struct Table Table;
-  typedef struct Trigger Trigger;
-  typedef struct WhereConst WhereConst;
-  typedef struct Window Window;
-  typedef struct WindowRewrite WindowRewrite;
+  struct CheckOnCtx;
+  struct CoveringIndexCheck;
+  struct DbFixer;
+  struct Expr;
+  struct ExprList;
+  struct IdxCover;
+  struct NameContext;
+  struct Parse;
+  struct RefSrcList;
+  struct RenameCtx;
+  struct Select;
+  struct SrcItem;
+  struct SrcList;
+  struct Table;
+  struct Trigger;
+  struct WhereConst;
+  struct Window;
+  struct WindowRewrite;
 
-  typedef struct Walker Walker;
+  struct Walker;
 
   struct Walker {
     Parse *pParse;

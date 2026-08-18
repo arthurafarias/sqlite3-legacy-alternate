@@ -2,11 +2,11 @@
 #pragma once
 
 #include "sqlite/u8.h"
-  typedef struct Expr Expr;
-  typedef struct ExprList ExprList;
-  typedef struct Index Index;
-  typedef struct SrcList SrcList;
-  typedef struct Upsert Upsert;
+  struct Expr;
+  struct ExprList;
+  struct Index;
+  struct SrcList;
+  struct Upsert;
 
   struct Upsert {
     ExprList *pUpsertTarget;

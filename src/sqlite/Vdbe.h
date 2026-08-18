@@ -14,26 +14,20 @@
 #include "sqlite/u8.h"
 #include "sqlite/yDbMask.h"
 #include "sqlite/ynVar.h"
-  typedef struct AuxData AuxData;
-  typedef struct FuncDef FuncDef;
-  typedef struct MergeEngine MergeEngine;
-  typedef struct PragmaName PragmaName;
-  typedef struct SubProgram SubProgram;
-  typedef struct Table Table;
-  typedef struct UnpackedRecord UnpackedRecord;
-  typedef struct VdbeCursor VdbeCursor;
-  typedef struct VdbeFrame VdbeFrame;
-  typedef struct WhereInfo WhereInfo;
-  typedef struct WhereLevel WhereLevel;
-  typedef struct WhereTerm WhereTerm;
-  typedef struct sqlite3_vtab sqlite3_vtab;
+  struct AuxData;
+  struct MergeEngine;
+  struct PragmaName;
+  struct UnpackedRecord;
+  struct VdbeCursor;
+  struct VdbeFrame;
+  struct WhereInfo;
+  struct WhereLevel;
+  struct WhereTerm;
+  struct sqlite3_vtab;
 
-  typedef struct Vdbe Vdbe;
-  typedef struct Parse Parse;
-  typedef struct VdbeOp VdbeOp;
-  typedef struct sqlite3 sqlite3;
-  typedef struct sqlite3_value sqlite3_value;
-  typedef struct sqlite3_file sqlite3_file;
+  struct Vdbe;
+  struct Parse;
+  struct sqlite3_file;
 
   struct Vdbe {
     sqlite3 *db;

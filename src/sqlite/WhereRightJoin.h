@@ -1,7 +1,7 @@
 
 #pragma once
 
-  typedef struct WhereRightJoin WhereRightJoin;
+  struct WhereRightJoin;
   struct WhereRightJoin {
     int iMatch;
     int regBloom;

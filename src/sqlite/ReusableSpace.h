@@ -3,7 +3,7 @@
 
 #include "sqlite/sqlite3_int64.h"
 #include "sqlite/u8.h"
-typedef struct ReusableSpace ReusableSpace;
+struct ReusableSpace;
 
 struct ReusableSpace {
   u8 *pSpace;

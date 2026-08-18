@@ -2,7 +2,7 @@
 #pragma once
 
 #include "sqlite/u32.h"
-typedef struct TabResult TabResult;
+struct TabResult;
 
 struct TabResult {
   char **azResult;

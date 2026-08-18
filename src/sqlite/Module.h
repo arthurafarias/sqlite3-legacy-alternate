@@ -1,9 +1,9 @@
 
 #pragma once
 
-  typedef struct Table Table;
-  typedef struct sqlite3_module sqlite3_module;
-  typedef struct Module Module;
+  struct Table;
+  struct sqlite3_module;
+  struct Module;
 
   struct Module {
     const sqlite3_module *pModule;

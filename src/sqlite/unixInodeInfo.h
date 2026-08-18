@@ -2,11 +2,11 @@
 #pragma once
 
 #include "sqlite/unixFileId.h"
-  typedef struct UnixUnusedFd UnixUnusedFd;
-  typedef struct sqlite3_mutex sqlite3_mutex;
-  typedef struct unixShmNode unixShmNode;
+  struct UnixUnusedFd;
+  struct sqlite3_mutex;
+  struct unixShmNode;
 
-  typedef struct unixInodeInfo unixInodeInfo;
+  struct unixInodeInfo;
 
   struct unixInodeInfo {
     struct unixFileId fileId;

@@ -1,7 +1,7 @@
 
 #pragma once
 
-  typedef struct BenignMallocHooks BenignMallocHooks;
+  struct BenignMallocHooks;
 
   struct BenignMallocHooks {
     void (*xBenignBegin)(void);

@@ -5,7 +5,7 @@
 #include "sqlite/LogEst.h"
 #include "sqlite/WhereOrCost.h"
 #include "sqlite/u16.h"
-  typedef struct WhereOrSet WhereOrSet;
+  struct WhereOrSet;
   struct WhereOrSet {
     u16 n;
     WhereOrCost a[3];

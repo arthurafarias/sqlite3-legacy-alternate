@@ -2,7 +2,7 @@
 #pragma once
 
 #include "sqlite/RowSetEntry.h"
-typedef struct RowSetChunk RowSetChunk;
+struct RowSetChunk;
 
 struct RowSetChunk {
   struct RowSetChunk *pNextChunk;

@@ -2,9 +2,9 @@
 #pragma once
 
 #include "sqlite/u32.h"
-  typedef struct SubProgram SubProgram;
-  typedef struct Trigger Trigger;
-  typedef struct TriggerPrg TriggerPrg;
+  struct SubProgram;
+  struct Trigger;
+  struct TriggerPrg;
 
   struct TriggerPrg {
     Trigger *pTrigger;

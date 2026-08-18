@@ -7,10 +7,9 @@
 #include "sqlite/sqlite3_uint64.h"
 #include "sqlite/sqlite3_value.h"
 #include "sqlite/u8.h"
-  typedef struct sqlite3_value Mem;
 
-  typedef struct sqlite3 sqlite3;
-  typedef struct sqlite3_stmt sqlite3_stmt;
+
+  struct sqlite3_stmt;
 
   const char *sqlite3_sql(sqlite3_stmt * pStmt);
   char *sqlite3_expanded_sql(sqlite3_stmt * pStmt);

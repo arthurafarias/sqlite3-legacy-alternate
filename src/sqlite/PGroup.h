@@ -2,9 +2,9 @@
 #pragma once
 
 #include "sqlite/PgHdr1.h"
-  typedef struct sqlite3_mutex sqlite3_mutex;
+  struct sqlite3_mutex;
 
-  typedef struct PGroup PGroup;
+  struct PGroup;
   struct PGroup {
     sqlite3_mutex *mutex;
     unsigned int nMaxPage;

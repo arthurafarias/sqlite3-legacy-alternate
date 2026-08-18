@@ -2,7 +2,7 @@
 #pragma once
 
 #include "sqlite/i64.h"
-typedef struct NtileCtx NtileCtx;
+struct NtileCtx;
 
 struct NtileCtx {
   i64 nTotal;

@@ -1,8 +1,8 @@
 
 #pragma once
 
-  typedef struct sqlite3 sqlite3;
-  typedef struct analysisInfo analysisInfo;
+  struct sqlite3;
+  struct analysisInfo;
 
   struct analysisInfo {
     sqlite3 *db;

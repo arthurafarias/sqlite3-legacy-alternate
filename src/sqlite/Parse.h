@@ -18,56 +18,40 @@
 #include "sqlite/yDbMask.h"
 #include "sqlite/ynVar.h"
 #include "sqlite/PragmaName.h"
-  typedef struct AggInfo AggInfo;
-  typedef struct AuthContext AuthContext;
-  typedef struct CollSeq CollSeq;
-  typedef struct Column Column;
-  typedef struct Cte Cte;
-  typedef struct DateTime DateTime;
-  typedef struct DistinctCtx DistinctCtx;
-  typedef struct Expr Expr;
-  typedef struct FKey FKey;
-  typedef struct FuncDef FuncDef;
-  typedef struct IdList IdList;
-  typedef struct Index Index;
-  typedef struct KeyInfo KeyInfo;
-  typedef struct Module Module;
-  typedef struct NameContext NameContext;
-  typedef struct OnOrUsing OnOrUsing;
-  typedef struct ParseCleanup ParseCleanup;
-  typedef struct RenameCtx RenameCtx;
-  typedef struct RenameToken RenameToken;
-  typedef struct RowLoadInfo RowLoadInfo;
-  typedef struct Schema Schema;
-  typedef struct Select Select;
-  typedef struct SelectDest SelectDest;
-  typedef struct SortCtx SortCtx;
-  typedef struct SrcItem SrcItem;
-  typedef struct SrcList SrcList;
-  typedef struct SubrtnSig SubrtnSig;
-  typedef struct Trigger Trigger;
-  typedef struct TriggerStep TriggerStep;
-  typedef struct Upsert Upsert;
-  typedef struct Walker Walker;
-  typedef struct WhereClause WhereClause;
-  typedef struct WhereInfo WhereInfo;
-  typedef struct WhereLevel WhereLevel;
-  typedef struct WhereLoop WhereLoop;
-  typedef struct WhereLoopBuilder WhereLoopBuilder;
-  typedef struct WhereTerm WhereTerm;
-  typedef struct Window Window;
-  typedef struct With With;
-  typedef struct sqlite3_index_info sqlite3_index_info;
-  typedef struct sqlite3_vfs sqlite3_vfs;
+  struct AuthContext;
+  struct CollSeq;
+  struct Column;
+  struct DateTime;
+  struct DistinctCtx;
+  struct FKey;
+  struct FuncDef;
+  struct Index;
+  struct KeyInfo;
+  struct Module;
+  struct NameContext;
+  struct OnOrUsing;
+  struct ParseCleanup;
+  struct RenameCtx;
+  struct RenameToken;
+  struct RowLoadInfo;
+  struct SelectDest;
+  struct SortCtx;
+  struct SubrtnSig;
+  struct Walker;
+  struct WhereClause;
+  struct WhereInfo;
+  struct WhereLevel;
+  struct WhereLoop;
+  struct WhereLoopBuilder;
+  struct WhereTerm;
+  struct sqlite3_index_info;
+  struct sqlite3_vfs;
 
-  typedef struct sqlite3 sqlite3;
-  typedef struct Vdbe Vdbe;
-  typedef struct Parse Parse;
+  struct sqlite3;
+  struct Vdbe;
 
-  typedef struct ExprList ExprList;
-  typedef struct IndexedExpr IndexedExpr;
-  typedef struct TableLock TableLock;
-  typedef struct Table Table;
+  struct IndexedExpr;
+  struct TableLock;
 
   struct Parse {
     sqlite3 *db;

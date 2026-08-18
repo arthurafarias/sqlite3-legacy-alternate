@@ -2,11 +2,11 @@
 #pragma once
 
 #include "sqlite/BitMask.h"
-  typedef struct Expr Expr;
-  typedef struct ExprList ExprList;
-  typedef struct Select Select;
+  struct Expr;
+  struct ExprList;
+  struct Select;
 
-  typedef struct WhereMaskSet WhereMaskSet;
+  struct WhereMaskSet;
   struct WhereMaskSet {
     int bVarSelect;
     int n;

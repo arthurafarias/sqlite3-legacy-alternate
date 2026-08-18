@@ -2,7 +2,7 @@
 #pragma once
 
 #include "sqlite/u8.h"
-  typedef struct FileChunk FileChunk;
+  struct FileChunk;
   struct FileChunk {
     FileChunk *pNext;
     u8 zChunk[8];

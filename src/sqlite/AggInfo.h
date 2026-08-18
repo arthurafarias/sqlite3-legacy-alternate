@@ -5,9 +5,9 @@
 #include "sqlite/AggInfo_func.h"
 #include "sqlite/u32.h"
 #include "sqlite/u8.h"
-typedef struct NameContext NameContext;
-typedef struct AggInfo AggInfo;
-typedef struct ExprList ExprList;
+struct NameContext;
+struct AggInfo;
+struct ExprList;
 
 struct AggInfo {
   u8 directMode;

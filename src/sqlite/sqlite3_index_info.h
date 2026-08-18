@@ -7,7 +7,7 @@
 #include "sqlite/sqlite3_int64.h"
 #include "sqlite/sqlite3_uint64.h"
 #include "sqlite/sqlite3_value.h"
-  typedef struct sqlite3_index_info sqlite3_index_info;
+  struct sqlite3_index_info;
 
   struct sqlite3_index_info {
     int nConstraint;

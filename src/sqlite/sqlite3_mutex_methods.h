@@ -1,8 +1,8 @@
 
 #pragma once
 
-  typedef struct sqlite3_mutex_methods sqlite3_mutex_methods;
-  typedef struct sqlite3_mutex sqlite3_mutex;
+  struct sqlite3_mutex_methods;
+  struct sqlite3_mutex;
 
   struct sqlite3_mutex_methods {
     int (*xMutexInit)(void);

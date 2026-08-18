@@ -4,9 +4,9 @@
 #include "sqlite/Pgno.h"
 #include "sqlite/i64.h"
 #include "sqlite/u32.h"
-  typedef struct Bitvec Bitvec;
+  struct Bitvec;
 
-  typedef struct PagerSavepoint PagerSavepoint;
+  struct PagerSavepoint;
   struct PagerSavepoint {
     i64 iOffset;
     i64 iHdrOffset;

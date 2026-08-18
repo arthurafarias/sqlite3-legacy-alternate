@@ -6,11 +6,10 @@
 #include "sqlite/i64.h"
 #include "sqlite/u32.h"
 #include "sqlite/u8.h"
-  typedef struct BtShared BtShared;
-  typedef struct Pager Pager;
-  typedef struct sqlite3 sqlite3;
+  struct BtShared;
+  struct Pager;
 
-  typedef struct IntegrityCk IntegrityCk;
+  struct IntegrityCk;
   struct IntegrityCk {
     BtShared *pBt;
     Pager *pPager;

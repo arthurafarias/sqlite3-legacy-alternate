@@ -7,11 +7,11 @@
 #include "sqlite/u16.h"
 #include "sqlite/u32.h"
 #include "sqlite/u8.h"
-  typedef struct ExprList ExprList;
-  typedef struct Index Index;
-  typedef struct WhereTerm WhereTerm;
+  struct ExprList;
+  struct Index;
+  struct WhereTerm;
 
-  typedef struct WhereLoop WhereLoop;
+  struct WhereLoop;
 
   struct WhereLoop {
     Bitmask prereq;

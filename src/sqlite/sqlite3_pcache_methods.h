@@ -1,9 +1,9 @@
 
 #pragma once
 
-  typedef struct sqlite3_pcache sqlite3_pcache;
+  struct sqlite3_pcache;
 
-  typedef struct sqlite3_pcache_methods sqlite3_pcache_methods;
+  struct sqlite3_pcache_methods;
 
   struct sqlite3_pcache_methods {
     void *pArg;

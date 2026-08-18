@@ -2,11 +2,11 @@
 #pragma once
 
 #include "sqlite/WindowCsrAndReg.h"
-  typedef struct Parse Parse;
-  typedef struct Vdbe Vdbe;
-  typedef struct Window Window;
+  struct Parse;
+  struct Vdbe;
+  struct Window;
 
-  typedef struct WindowCodeArg WindowCodeArg;
+  struct WindowCodeArg;
 
   struct WindowCodeArg {
     Parse *pParse;

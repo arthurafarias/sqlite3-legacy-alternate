@@ -1,9 +1,9 @@
 
 #pragma once
 
-  typedef struct Table Table;
-  typedef struct VTable VTable;
-  typedef struct VtabCtx VtabCtx;
+  struct Table;
+  struct VTable;
+  struct VtabCtx;
   struct VtabCtx {
     VTable *pVTable;
     Table *pTab;

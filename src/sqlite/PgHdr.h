@@ -5,11 +5,11 @@
 #include "sqlite/i64.h"
 #include "sqlite/u16.h"
 #include "sqlite/u8.h"
-  typedef struct PgHdr PgHdr;
+  struct PgHdr;
 
-  typedef struct sqlite3_pcache_page sqlite3_pcache_page;
-  typedef struct PCache PCache;
-  typedef struct Pager Pager;
+  struct sqlite3_pcache_page;
+  struct PCache;
+  struct Pager;
 
   struct PgHdr {
     sqlite3_pcache_page *pPage;

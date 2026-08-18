@@ -4,10 +4,10 @@
 #include "sqlite/u16.h"
 #include "sqlite/u32.h"
 #include "sqlite/u8.h"
-  typedef struct CollSeq CollSeq;
-  typedef struct UnpackedRecord UnpackedRecord;
-  typedef struct sqlite3 sqlite3;
-  typedef struct KeyInfo KeyInfo;
+  struct CollSeq;
+  struct UnpackedRecord;
+  struct sqlite3;
+  struct KeyInfo;
 
   struct KeyInfo {
     u32 nRef;

@@ -1,8 +1,8 @@
 #pragma once
 
-typedef struct HashElem HashElem;
+struct HashElem;
 
-typedef struct _ht _ht;
+struct _ht;
 struct _ht {
   unsigned int count;
   HashElem *chain;

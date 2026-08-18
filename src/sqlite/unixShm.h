@@ -3,8 +3,8 @@
 
 #include "sqlite/u16.h"
 #include "sqlite/u8.h"
-  typedef struct unixShmNode unixShmNode;
-  typedef struct unixShm unixShm;
+  struct unixShmNode;
+  struct unixShm;
   struct unixShm {
     unixShmNode *pShmNode;
     unixShm *pNext;

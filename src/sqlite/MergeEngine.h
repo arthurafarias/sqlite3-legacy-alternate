@@ -1,9 +1,9 @@
 
 #pragma once
 
-  typedef struct PmaReader PmaReader;
-  typedef struct SortSubtask SortSubtask;
-  typedef struct MergeEngine MergeEngine;
+  struct PmaReader;
+  struct SortSubtask;
+  struct MergeEngine;
   struct MergeEngine {
     int nTree;
     SortSubtask *pTask;

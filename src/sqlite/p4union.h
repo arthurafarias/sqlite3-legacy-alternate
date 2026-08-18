@@ -2,16 +2,18 @@
 
 #include "sqlite/i64.h"
 #include "sqlite/u32.h"
-typedef struct CollSeq CollSeq;
-typedef struct FuncDef FuncDef;
-typedef struct Index Index;
-typedef struct KeyInfo KeyInfo;
+struct CollSeq;
+struct FuncDef;
+struct Index;
+struct KeyInfo;
+struct sqlite3_value;
+
+struct SubProgram;
+struct SubrtnSig;
+struct Table;
+struct VTable;
+struct sqlite3_context;
 typedef struct sqlite3_value Mem;
-typedef struct SubProgram SubProgram;
-typedef struct SubrtnSig SubrtnSig;
-typedef struct Table Table;
-typedef struct VTable VTable;
-typedef struct sqlite3_context sqlite3_context;
 
 typedef union p4union p4union;
 union p4union {
@@ -32,5 +34,3 @@ union p4union {
   SubrtnSig *pSubrtnSig;
   Index *pIdx;
 };
-
-

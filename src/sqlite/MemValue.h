@@ -1,7 +1,7 @@
 #pragma once
 
 #include "sqlite/i64.h"
-typedef struct FuncDef FuncDef;
+struct FuncDef;
 
 typedef union MemValue MemValue;
 union MemValue {

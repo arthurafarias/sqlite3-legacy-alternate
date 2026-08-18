@@ -2,8 +2,8 @@
 #pragma once
 
 #include "sqlite/IdList_item.h"
-typedef struct ExprList ExprList;
-typedef struct IdList IdList;
+struct ExprList;
+struct IdList;
 
 struct IdList {
   int nId;

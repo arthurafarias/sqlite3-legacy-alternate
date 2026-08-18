@@ -1,10 +1,9 @@
 
 #pragma once
 
-  typedef struct fts5_tokenizer_v2 fts5_tokenizer_v2;
+  struct fts5_tokenizer_v2;
 
 #include "sqlite/Fts5Tokenizer.h"
-  typedef struct fts5_tokenizer_v2 fts5_tokenizer_v2;
   struct fts5_tokenizer_v2 {
     int iVersion;
 

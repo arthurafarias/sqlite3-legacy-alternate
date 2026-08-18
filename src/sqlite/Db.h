@@ -2,10 +2,10 @@
 #pragma once
 
 #include "sqlite/u8.h"
-  typedef struct Btree Btree;
-  typedef struct Schema Schema;
+  struct Btree;
+  struct Schema;
 
-  typedef struct Db Db;
+  struct Db;
 
   struct Db {
     char *zDbSName;

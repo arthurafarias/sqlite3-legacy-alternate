@@ -7,9 +7,8 @@
 #include "sqlite/i8.h"
 #include "sqlite/u16.h"
 #include "sqlite/u8.h"
-  typedef struct KeyInfo KeyInfo;
+  struct KeyInfo;
 
-  typedef struct UnpackedRecord UnpackedRecord;
 
   struct UnpackedRecord {
     KeyInfo *pKeyInfo;

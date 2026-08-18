@@ -2,11 +2,11 @@
 #pragma once
 
 #include "sqlite/u32.h"
-  typedef struct Parse Parse;
-  typedef struct WhereClause WhereClause;
-  typedef struct sqlite3_value sqlite3_value;
+  struct Parse;
+  struct WhereClause;
+  struct sqlite3_value;
 
-  typedef struct HiddenIndexInfo HiddenIndexInfo;
+  struct HiddenIndexInfo;
   struct HiddenIndexInfo {
     WhereClause *pWC;
     Parse *pParse;

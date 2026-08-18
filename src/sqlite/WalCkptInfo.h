@@ -3,7 +3,7 @@
 
 #include "sqlite/u32.h"
 #include "sqlite/u8.h"
-  typedef struct WalCkptInfo WalCkptInfo;
+  struct WalCkptInfo;
   struct WalCkptInfo {
     u32 nBackfill;
     u32 aReadMark[(8 - 3)];

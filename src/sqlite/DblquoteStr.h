@@ -12,7 +12,7 @@
 #include "sqlite/sqlite3_sourceid.h"
 #include "sqlite/yDbMask.h"
 #include "sqlite/ynVar.h"
-  typedef struct DblquoteStr DblquoteStr;
+  struct DblquoteStr;
   struct DblquoteStr {
     DblquoteStr *pNextStr;
     char z[8];

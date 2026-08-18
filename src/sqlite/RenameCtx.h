@@ -1,9 +1,9 @@
 
 #pragma once
 
-  typedef struct RenameToken RenameToken;
-  typedef struct Table Table;
-  typedef struct RenameCtx RenameCtx;
+  struct RenameToken;
+  struct Table;
+  struct RenameCtx;
   struct RenameCtx {
     RenameToken *pList;
     int nList;

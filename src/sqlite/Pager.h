@@ -11,16 +11,12 @@
 #include "sqlite/u32.h"
 #include "sqlite/u64.h"
 #include "sqlite/u8.h"
-  typedef struct PCache PCache;
-  typedef struct PgHdr PgHdr;
-  typedef struct Wal Wal;
+  struct Wal;
 
-  typedef struct sqlite3_backup sqlite3_backup;
-  typedef struct sqlite3 sqlite3;
-  typedef struct Pager Pager;
-  typedef struct sqlite3_vfs sqlite3_vfs;
-  typedef struct sqlite3_file sqlite3_file;
-  typedef struct Bitvec Bitvec;
+  struct sqlite3_backup;
+  struct sqlite3;
+  struct sqlite3_vfs;
+  struct sqlite3_file;
 
   struct Pager {
     sqlite3_vfs *pVfs;

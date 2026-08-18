@@ -4,7 +4,7 @@
 #include "sqlite/PGroup.h"
 #include "sqlite/PgFreeslot.h"
 #include "sqlite/sqlite3_mutex.h"
-typedef struct PCacheGlobal PCacheGlobal;
+struct PCacheGlobal;
 
 struct PCacheGlobal {
   PGroup grp;

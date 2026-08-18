@@ -1,12 +1,12 @@
 
 #pragma once
 
-  typedef struct ExprList ExprList;
-  typedef struct Select Select;
-  typedef struct SrcList SrcList;
-  typedef struct Table Table;
-  typedef struct Window Window;
-  typedef struct WindowRewrite WindowRewrite;
+  struct ExprList;
+  struct Select;
+  struct SrcList;
+  struct Table;
+  struct Window;
+  struct WindowRewrite;
   struct WindowRewrite {
     Window *pWin;
     SrcList *pSrc;

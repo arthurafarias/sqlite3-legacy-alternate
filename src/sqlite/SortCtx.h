@@ -2,9 +2,9 @@
 #pragma once
 
 #include "sqlite/u8.h"
-  typedef struct ExprList ExprList;
-  typedef struct RowLoadInfo RowLoadInfo;
-  typedef struct SortCtx SortCtx;
+  struct ExprList;
+  struct RowLoadInfo;
+  struct SortCtx;
   struct SortCtx {
     ExprList *pOrderBy;
     int nOBSat;

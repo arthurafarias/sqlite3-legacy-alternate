@@ -3,8 +3,8 @@
 
 #include "sqlite/Pgno.h"
 #include "sqlite/u8.h"
-  typedef struct BtLock BtLock;
-  typedef struct Btree Btree;
+  struct BtLock;
+  struct Btree;
 
   struct BtLock {
     Btree *pBtree;

@@ -1,7 +1,7 @@
 
 #pragma once
 
-  typedef struct UnixUnusedFd UnixUnusedFd;
+  struct UnixUnusedFd;
 
   struct UnixUnusedFd {
     int fd;

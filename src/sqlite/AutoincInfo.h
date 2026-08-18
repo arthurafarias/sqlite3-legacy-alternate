@@ -1,9 +1,9 @@
 
 #pragma once
 
-  typedef struct Table Table;
+  struct Table;
 
-  typedef struct AutoincInfo AutoincInfo;
+  struct AutoincInfo;
 
   struct AutoincInfo {
     AutoincInfo *pNext;

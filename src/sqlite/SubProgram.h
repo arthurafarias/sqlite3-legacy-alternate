@@ -2,8 +2,8 @@
 #pragma once
 
 #include "sqlite/u8.h"
-  typedef struct VdbeOp VdbeOp;
-  typedef struct SubProgram SubProgram;
+  struct VdbeOp;
+  struct SubProgram;
 
   struct SubProgram {
     VdbeOp *aOp;

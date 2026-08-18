@@ -3,8 +3,8 @@
 
 #include "sqlite/i64.h"
 #include "sqlite/u8.h"
-  typedef struct SorterRecord SorterRecord;
-  typedef struct SorterList SorterList;
+  struct SorterRecord;
+  struct SorterList;
 
   struct SorterList {
     SorterRecord *pList;

@@ -2,11 +2,10 @@
 #pragma once
 
 #include "sqlite/FilePoint.h"
-  typedef struct FileChunk FileChunk;
-  typedef struct sqlite3_io_methods sqlite3_io_methods;
-  typedef struct sqlite3_vfs sqlite3_vfs;
+  struct sqlite3_io_methods;
+  struct sqlite3_vfs;
 
-  typedef struct MemJournal MemJournal;
+  struct MemJournal;
 
   struct MemJournal {
     const sqlite3_io_methods *pMethod;

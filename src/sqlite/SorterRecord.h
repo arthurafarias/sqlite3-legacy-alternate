@@ -1,7 +1,7 @@
 
 #pragma once
 
-  typedef struct SorterRecord SorterRecord;
+  struct SorterRecord;
 
   struct SorterRecord {
     int nVal;

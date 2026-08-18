@@ -2,7 +2,7 @@
 #pragma once
 
 #include "sqlite/u8.h"
-  typedef struct RowLoadInfo RowLoadInfo;
+  struct RowLoadInfo;
 
   struct RowLoadInfo {
     int regResult;

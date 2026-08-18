@@ -2,9 +2,9 @@
 #pragma once
 
 #include "sqlite/Cte.h"
-  typedef struct SrcItem SrcItem;
+  struct SrcItem;
 
-  typedef struct With With;
+  struct With;
 
   struct With {
     int nCte;

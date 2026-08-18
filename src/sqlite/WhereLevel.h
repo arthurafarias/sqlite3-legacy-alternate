@@ -5,12 +5,12 @@
 #include "sqlite/InLoop.h"
 #include "sqlite/u32.h"
 #include "sqlite/u8.h"
-typedef struct Index Index;
-typedef struct WhereLoop WhereLoop;
-typedef struct WhereRightJoin WhereRightJoin;
-typedef struct WhereTerm WhereTerm;
+struct Index;
+struct WhereLoop;
+struct WhereRightJoin;
+struct WhereTerm;
 
-typedef struct WhereLevel WhereLevel;
+struct WhereLevel;
 struct WhereLevel {
   int iLeftJoin;
   int iTabCur;

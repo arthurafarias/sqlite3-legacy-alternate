@@ -5,7 +5,7 @@
 #include "sqlite/u16.h"
 #include "sqlite/u32.h"
 #include "sqlite/u8.h"
-  typedef struct CellInfo CellInfo;
+  struct CellInfo;
 
   struct CellInfo {
     i64 nKey;

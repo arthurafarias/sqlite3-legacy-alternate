@@ -3,9 +3,9 @@
 
 #include "sqlite/ExprList_item.h"
 #include "sqlite/u32.h"
-typedef struct Table Table;
+struct Table;
 
-typedef struct ExprList ExprList;
+struct ExprList;
 
 struct ExprList {
   int nExpr;

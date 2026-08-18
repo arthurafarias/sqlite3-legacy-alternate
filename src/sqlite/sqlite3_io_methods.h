@@ -1,8 +1,8 @@
 #pragma once
 
-typedef struct sqlite3_io_methods sqlite3_io_methods;
-typedef struct sqlite3_file sqlite3_file;
-typedef struct sqlite3_filetypedef sqlite3_filetypedef;
+struct sqlite3_io_methods;
+struct sqlite3_file;
+struct sqlite3_filetypedef;
 
 #include "sqlite/sqlite3_int64.h"
 struct sqlite3_io_methods {

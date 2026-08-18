@@ -2,7 +2,7 @@
 #pragma once
 
 #include "sqlite/Fts5Tokenizer.h"
-  typedef struct fts5_tokenizer fts5_tokenizer;
+  struct fts5_tokenizer;
 
   struct fts5_tokenizer {
     int (*xCreate)(void *, const char **azArg, int nArg, Fts5Tokenizer **ppOut);

@@ -2,7 +2,7 @@
 #pragma once
 
 #include "sqlite/u64.h"
-  typedef struct RCStr RCStr;
+  struct RCStr;
 
   struct RCStr {
     u64 nRCRef;

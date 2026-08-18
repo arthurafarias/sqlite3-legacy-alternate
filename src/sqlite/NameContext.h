@@ -2,14 +2,14 @@
 #pragma once
 
 #include "sqlite/u32.h"
-  typedef struct AggInfo AggInfo;
-  typedef struct Expr Expr;
-  typedef struct ExprList ExprList;
-  typedef struct Parse Parse;
-  typedef struct Select Select;
-  typedef struct SrcList SrcList;
-  typedef struct Upsert Upsert;
-  typedef struct NameContext NameContext;
+  struct AggInfo;
+  struct Expr;
+  struct ExprList;
+  struct Parse;
+  struct Select;
+  struct SrcList;
+  struct Upsert;
+  struct NameContext;
 
   struct NameContext {
     Parse *pParse;

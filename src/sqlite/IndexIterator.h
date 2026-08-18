@@ -1,9 +1,9 @@
 
 #pragma once
 
-  typedef struct Index Index;
-  typedef struct IndexListTerm IndexListTerm;
-  typedef struct IndexIterator IndexIterator;
+  struct Index;
+  struct IndexListTerm;
+  struct IndexIterator;
   struct IndexIterator {
     int eType;
     int i;

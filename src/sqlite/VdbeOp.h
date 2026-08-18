@@ -3,7 +3,7 @@
 #include "sqlite/p4union.h"
 #include "sqlite/u16.h"
 #include "sqlite/u8.h"
-typedef struct VdbeOp VdbeOp;
+struct VdbeOp;
 
 struct VdbeOp {
   u8 opcode;

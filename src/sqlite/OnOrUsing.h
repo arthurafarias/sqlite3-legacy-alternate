@@ -1,9 +1,9 @@
 
 #pragma once
 
-  typedef struct Expr Expr;
-  typedef struct IdList IdList;
-  typedef struct OnOrUsing OnOrUsing;
+  struct Expr;
+  struct IdList;
+  struct OnOrUsing;
 
   struct OnOrUsing {
     Expr *pOn;

@@ -3,16 +3,10 @@
 
 #include "sqlite/u8.h"
 #include "sqlite/Walker.h"
-  typedef struct Expr Expr;
-  typedef struct Select Select;
-  typedef struct SrcList SrcList;
-  typedef struct TriggerStep TriggerStep;
+  struct TriggerStep;
 
-  typedef struct DbFixer DbFixer;
-  typedef struct Parse Parse;
-  typedef struct Walker Walker;
-  typedef struct Schema Schema;
-  typedef struct Token Token;
+  struct Schema;
+  struct Token;
 
   struct DbFixer {
     Parse *pParse;

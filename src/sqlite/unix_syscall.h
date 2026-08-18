@@ -5,7 +5,7 @@
 #include "sqlite/i64.h"
 #include "sqlite/sqlite3_int64.h"
 #include <sys/types.h>
-typedef struct unix_syscall unix_syscall;
+struct unix_syscall;
 
 struct unix_syscall {
   const char *zName;

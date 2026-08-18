@@ -4,7 +4,7 @@
 #include "sqlite/SrcList.h"
 #include "sqlite/i64.h"
 #include "sqlite/sqlite3.h"
-typedef struct RefSrcList RefSrcList;
+struct RefSrcList;
 
 struct RefSrcList {
   sqlite3 *db;

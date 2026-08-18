@@ -1,6 +1,6 @@
 #pragma once
 
-typedef struct SortSubtask SortSubtask;
+struct SortSubtask;
 
 typedef int (*SorterCompare)(SortSubtask *, int *, const void *, int, const void *, int);
 

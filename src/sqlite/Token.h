@@ -1,7 +1,7 @@
 
 #pragma once
 
-  typedef struct Token Token;
+  struct Token;
 
   struct Token {
     const char *z;

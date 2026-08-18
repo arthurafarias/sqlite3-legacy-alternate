@@ -3,10 +3,9 @@
 #include "sqlite/i64.h"
 #include "sqlite/sqlite3_str.h"
 #include "sqlite/u8.h"
-typedef struct Index Index;
-typedef struct WhereLoop WhereLoop;
-typedef struct sqlite3 sqlite3;
-typedef struct sqlite3_value sqlite3_value;
+struct Index;
+struct WhereLoop;
+struct sqlite3_value;
 
 typedef struct sqlite3_str StrAccum;
 

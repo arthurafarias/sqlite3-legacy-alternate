@@ -1,7 +1,7 @@
 
 #pragma once
 
-  typedef struct sqlite3_mem_methods sqlite3_mem_methods;
+  struct sqlite3_mem_methods;
 
   struct sqlite3_mem_methods {
     void *(*xMalloc)(int);

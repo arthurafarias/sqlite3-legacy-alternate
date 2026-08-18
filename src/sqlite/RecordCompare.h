@@ -1,6 +1,6 @@
 #pragma once
 
-typedef struct UnpackedRecord UnpackedRecord;
+struct UnpackedRecord;
 
 typedef int (*RecordCompare)(int, const void *, UnpackedRecord *);
 

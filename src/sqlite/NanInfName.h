@@ -1,7 +1,7 @@
 
 #pragma once
 
-typedef struct NanInfName NanInfName;
+struct NanInfName;
 
 struct NanInfName {
   char c1;

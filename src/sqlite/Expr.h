@@ -8,18 +8,15 @@
 #include "sqlite/u32.h"
 #include "sqlite/u8.h"
 #include "sqlite/ynVar.h"
-  typedef struct Parse Parse;
-  typedef struct Table Table;
-  typedef struct WhereClause WhereClause;
+  struct Parse;
+  struct WhereClause;
 
-  typedef struct ExprList ExprList;
-  typedef struct Select Select;
+  struct Select;
 
-  typedef struct Expr Expr;
 
-  typedef struct Window Window;
-  typedef struct Index Index;
-  typedef struct SrcList SrcList;
+  struct Window;
+  struct Index;
+  struct SrcList;
 
   struct Expr {
     u8 op;

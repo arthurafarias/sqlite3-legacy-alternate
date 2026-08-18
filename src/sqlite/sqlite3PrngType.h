@@ -2,7 +2,7 @@
 
 #include "sqlite/u32.h"
 #include "sqlite/u8.h"
-typedef struct sqlite3PrngType sqlite3PrngType;
+struct sqlite3PrngType;
 
 struct sqlite3PrngType {
   u32 s[16];

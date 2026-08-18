@@ -7,15 +7,13 @@
 #include "sqlite/i64.h"
 #include "sqlite/u64.h"
 #include "sqlite/u8.h"
-  typedef struct IncrMerger IncrMerger;
-  typedef struct MergeEngine MergeEngine;
-  typedef struct PmaReader PmaReader;
-  typedef struct SQLiteThread SQLiteThread;
-  typedef struct SorterRecord SorterRecord;
-  typedef struct UnpackedRecord UnpackedRecord;
-  typedef struct VdbeSorter VdbeSorter;
+  struct IncrMerger;
+  struct MergeEngine;
+  struct PmaReader;
+  struct SQLiteThread;
+  struct UnpackedRecord;
+  struct VdbeSorter;
 
-  typedef struct SortSubtask SortSubtask;
   struct SortSubtask {
     SQLiteThread *pThread;
     int bDone;

@@ -6,6 +6,7 @@
 #include "sqlite/u16.h"
 #include "sqlite/u64.h"
 #include "sqlite/u8.h"
+
 typedef struct FuncDef FuncDef;
 typedef struct VdbeOp Op;
 typedef struct sqlite3 sqlite3;
@@ -77,5 +78,3 @@ u64 filterHash(const Mem *aMem, const Op *pOp);
 const char *vdbeMemTypeName(Mem *pMem);
 
 int isAllZero(const char *z, int n);
-
-

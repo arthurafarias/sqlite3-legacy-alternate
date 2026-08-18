@@ -111,7 +111,7 @@ add_sqlite_test(test_value_subtype_and_dup)
 
 # Runtime extension loading: built as a real shared object so
 # sqlite3_load_extension()'s dlopen/dlsym path is genuinely exercised.
-add_library(sample_extension MODULE extensions/sample_extension.c)
+add_library(sample_extension MODULE extensions/sample_extension.cpp)
 target_link_libraries(sample_extension PRIVATE sqlite3-legacy-alternate)
 set_target_properties(sample_extension PROPERTIES
   PREFIX ""

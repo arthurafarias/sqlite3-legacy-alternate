@@ -3,7 +3,7 @@
 
 #include "sqlite/i64.h"
 #include "sqlite/u8.h"
-  typedef struct SumCtx SumCtx;
+  struct SumCtx;
   struct SumCtx {
     double rSum;
     double rErr;

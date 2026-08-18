@@ -7,12 +7,10 @@
 #include "sqlite/u16.h"
 #include "sqlite/u32.h"
 #include "sqlite/u8.h"
-  typedef struct Expr Expr;
-  typedef struct Index Index;
-  typedef struct Select Select;
-  typedef struct WhereInfo WhereInfo;
-  typedef struct WhereLoop WhereLoop;
-  typedef struct WhereClause WhereClause;
+  struct Index;
+  struct Select;
+  struct WhereInfo;
+  struct WhereLoop;
   struct WhereClause {
     WhereInfo *pWInfo;
     WhereClause *pOuter;

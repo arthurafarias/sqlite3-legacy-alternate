@@ -7,11 +7,7 @@
 #include "sqlite/sqlite3_filename.h"
 #include "sqlite/sqlite3_int64.h"
 #include "sqlite/sqlite3_syscall_ptr.h"
-typedef struct Wal Wal;
 
-typedef struct sqlite3_vfs sqlite3_vfs;
-typedef struct sqlite3_file sqlite3_file;
-typedef struct sqlite3 sqlite3;
 typedef struct PgHdr DbPage;
 
 struct sqlite3_vfs {
@@ -97,5 +93,3 @@ int memdbGetLastError(sqlite3_vfs *, int, char *);
 int memdbCurrentTimeInt64(sqlite3_vfs *, sqlite3_int64 *);
 extern sqlite3_vfs memdb_vfs;
 int sqlite3WalOpen(sqlite3_vfs *, sqlite3_file *, const char *, int, i64, Wal **);
-
-

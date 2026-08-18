@@ -2,7 +2,7 @@
 #pragma once
 
 #include "sqlite/u8.h"
-  typedef struct SubrtnSig SubrtnSig;
+  struct SubrtnSig;
 
   struct SubrtnSig {
     int selId;

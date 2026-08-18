@@ -2,12 +2,12 @@
 #pragma once
 
 #include "sqlite/u8.h"
-  typedef struct Expr Expr;
-  typedef struct ExprList ExprList;
-  typedef struct FuncDef FuncDef;
-  typedef struct Parse Parse;
-  typedef struct Select Select;
-  typedef struct Window Window;
+  struct Expr;
+  struct ExprList;
+  struct FuncDef;
+  struct Parse;
+  struct Select;
+  struct Window;
 
   struct Window {
     char *zName;

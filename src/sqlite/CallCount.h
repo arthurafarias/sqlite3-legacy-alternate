@@ -2,7 +2,7 @@
 #pragma once
 
 #include "sqlite/i64.h"
-typedef struct CallCount CallCount;
+struct CallCount;
 
 struct CallCount {
   i64 nValue;

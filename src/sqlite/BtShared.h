@@ -10,17 +10,16 @@
 #include "sqlite/u16.h"
 #include "sqlite/u32.h"
 #include "sqlite/u8.h"
-  typedef struct BtLock BtLock;
-  typedef struct Btree Btree;
+  struct BtLock;
+  struct Btree;
 
-  typedef struct Pager Pager;
-  typedef struct sqlite3 sqlite3;
-  typedef struct BtCursor BtCursor;
-  typedef struct MemPage MemPage;
+  struct Pager;
+  struct sqlite3;
+  struct BtCursor;
+  struct MemPage;
 
-  typedef struct BtShared BtShared;
-  typedef struct sqlite3_mutex sqlite3_mutex;
-  typedef struct Bitvec Bitvec;
+  struct BtShared;
+  struct sqlite3_mutex;
 
   struct BtShared {
     Pager *pPager;

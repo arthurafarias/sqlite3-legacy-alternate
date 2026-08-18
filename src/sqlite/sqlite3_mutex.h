@@ -2,7 +2,7 @@
 #pragma once
 
 #include <pthread.h>
-  typedef struct sqlite3_mutex sqlite3_mutex;
+  struct sqlite3_mutex;
 
   struct sqlite3_mutex {
     pthread_mutex_t mutex;

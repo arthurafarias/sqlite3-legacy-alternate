@@ -1,8 +1,8 @@
 
 #pragma once
 
-  typedef struct sqlite3 sqlite3;
-  typedef struct ParseCleanup ParseCleanup;
+  struct sqlite3;
+  struct ParseCleanup;
 
   struct ParseCleanup {
     ParseCleanup *pNext;

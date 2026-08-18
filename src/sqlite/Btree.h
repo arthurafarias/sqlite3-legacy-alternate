@@ -7,13 +7,12 @@
 #include "sqlite/u8.h"
 #include "sqlite/BtLock.h"
 #include "sqlite/i64.h"
-  typedef struct Pager Pager;
+  struct Pager;
 
-  typedef struct BtCursor BtCursor;
-  typedef struct Btree Btree;
-  typedef struct sqlite3 sqlite3;
-  typedef struct BtShared BtShared;
-  typedef struct KeyInfo KeyInfo;
+  struct BtCursor;
+  struct sqlite3;
+  struct BtShared;
+  struct KeyInfo;
 
   struct Btree {
     sqlite3 *db;

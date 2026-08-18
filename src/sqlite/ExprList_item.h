@@ -2,9 +2,9 @@
 
 #include "sqlite/u16.h"
 #include "sqlite/u8.h"
-typedef struct Expr Expr;
+struct Expr;
 
-typedef struct ExprList_item ExprList_item;
+struct ExprList_item;
 struct ExprList_item {
   Expr *pExpr;
   char *zEName;

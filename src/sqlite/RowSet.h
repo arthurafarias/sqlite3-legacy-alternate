@@ -3,10 +3,10 @@
 
 #include "sqlite/i64.h"
 #include "sqlite/u16.h"
-  typedef struct RowSetChunk RowSetChunk;
-  typedef struct RowSetEntry RowSetEntry;
-  typedef struct sqlite3 sqlite3;
-  typedef struct RowSet RowSet;
+  struct RowSetChunk;
+  struct RowSetEntry;
+  struct sqlite3;
+  struct RowSet;
 
   struct RowSet {
     struct RowSetChunk *pChunk;

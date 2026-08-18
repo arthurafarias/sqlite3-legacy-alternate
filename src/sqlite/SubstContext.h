@@ -3,10 +3,8 @@
 
 #include "sqlite/ExprList.h"
 #include "sqlite/Parse.h"
-typedef struct Expr Expr;
-typedef struct Select Select;
 
-typedef struct SubstContext SubstContext;
+struct SubstContext;
 
 struct SubstContext {
   Parse *pParse;

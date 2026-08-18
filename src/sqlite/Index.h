@@ -7,12 +7,12 @@
 #include "sqlite/i16.h"
 #include "sqlite/u16.h"
 #include "sqlite/u8.h"
-  typedef struct Expr Expr;
-  typedef struct ExprList ExprList;
-  typedef struct Schema Schema;
-  typedef struct Table Table;
+  struct Expr;
+  struct ExprList;
+  struct Schema;
+  struct Table;
 
-  typedef struct Index Index;
+  struct Index;
 
   struct Index {
     char *zName;

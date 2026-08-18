@@ -2,7 +2,7 @@
 #pragma once
 
 #include "sqlite/u8.h"
-  typedef struct CollSeq CollSeq;
+  struct CollSeq;
 
   struct CollSeq {
     char *zName;

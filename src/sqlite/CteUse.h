@@ -3,7 +3,7 @@
 
 #include "sqlite/LogEst.h"
 #include "sqlite/u8.h"
-  typedef struct CteUse CteUse;
+  struct CteUse;
 
   struct CteUse {
     int nUse;

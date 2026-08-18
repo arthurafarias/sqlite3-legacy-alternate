@@ -2,8 +2,8 @@
 #pragma once
 
 #include "sqlite/u8.h"
-  typedef struct Expr Expr;
-  typedef struct IndexedExpr IndexedExpr;
+  struct Expr;
+  struct IndexedExpr;
 
   struct IndexedExpr {
     Expr *pExpr;

@@ -2,13 +2,13 @@
 #pragma once
 
 #include "sqlite/sqlite3_int64.h"
-  typedef struct sqlite3_module sqlite3_module;
-  typedef struct sqlite3 sqlite3;
-  typedef struct sqlite3_vtab sqlite3_vtab;
-  typedef struct sqlite3_index_info sqlite3_index_info;
-  typedef struct sqlite3_vtab_cursor sqlite3_vtab_cursor;
-  typedef struct sqlite3_context sqlite3_context;
-  typedef struct sqlite3_value sqlite3_value;
+  struct sqlite3_module;
+  struct sqlite3;
+  struct sqlite3_vtab;
+  struct sqlite3_index_info;
+  struct sqlite3_vtab_cursor;
+  struct sqlite3_context;
+  struct sqlite3_value;
 
   struct sqlite3_module {
     int iVersion;

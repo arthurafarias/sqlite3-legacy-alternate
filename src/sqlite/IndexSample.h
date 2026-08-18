@@ -2,7 +2,7 @@
 #pragma once
 
 #include "sqlite/tRowcnt.h"
-  typedef struct IndexSample IndexSample;
+  struct IndexSample;
 
   struct IndexSample {
     void *p;

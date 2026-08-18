@@ -2,7 +2,7 @@
 #pragma once
 
 #include "sqlite/YYMINORTYPE.h"
-  typedef struct yyStackEntry yyStackEntry;
+  struct yyStackEntry;
 
   struct yyStackEntry {
     unsigned short int stateno;

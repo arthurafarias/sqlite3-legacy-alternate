@@ -6,10 +6,9 @@
 #include "sqlite/sqlite3_vtab_cursor.h"
 #include "sqlite/u32.h"
 #include "sqlite/u8.h"
-  typedef struct JsonParent JsonParent;
-  typedef struct sqlite3 sqlite3;
+  struct JsonParent;
 
-  typedef struct JsonEachCursor JsonEachCursor;
+  struct JsonEachCursor;
   struct JsonEachCursor {
     sqlite3_vtab_cursor base;
     u32 iRowid;

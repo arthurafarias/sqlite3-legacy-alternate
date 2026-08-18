@@ -1,12 +1,11 @@
 
 #pragma once
 
-  typedef struct Returning Returning;
+  struct Returning;
 
 #include "sqlite/Trigger.h"
 #include "sqlite/TriggerStep.h"
-  typedef struct ExprList ExprList;
-  typedef struct Parse Parse;
+  struct Parse;
 
   struct Returning {
     Parse *pParse;

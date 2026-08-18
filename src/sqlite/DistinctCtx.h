@@ -13,7 +13,7 @@
 #include "sqlite/u8.h"
 #include "sqlite/yDbMask.h"
 #include "sqlite/ynVar.h"
-  typedef struct DistinctCtx DistinctCtx;
+  struct DistinctCtx;
   struct DistinctCtx {
     u8 isTnct;
     u8 eTnctType;

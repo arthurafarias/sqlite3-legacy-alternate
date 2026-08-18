@@ -3,7 +3,7 @@
 
 #include "sqlite/BitMask.h"
 #include "sqlite/LogEst.h"
-  typedef struct WhereOrCost WhereOrCost;
+  struct WhereOrCost;
   struct WhereOrCost {
     Bitmask prereq;
     LogEst rRun;

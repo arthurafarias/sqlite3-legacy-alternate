@@ -3,9 +3,9 @@
 
 #include "sqlite/u32.h"
 #include "sqlite/u8.h"
-  typedef struct Expr Expr;
-  typedef struct Parse Parse;
-  typedef struct WhereConst WhereConst;
+  struct Expr;
+  struct Parse;
+  struct WhereConst;
   struct WhereConst {
     Parse *pParse;
     u8 *pOomFault;

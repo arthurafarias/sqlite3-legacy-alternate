@@ -1,9 +1,9 @@
 
 #pragma once
 
-  typedef struct Parse Parse;
+  struct Parse;
 
-  typedef struct AuthContext AuthContext;
+  struct AuthContext;
 
   struct AuthContext {
     const char *zAuthContext;

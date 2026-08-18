@@ -3,10 +3,9 @@
 
 #include "sqlite/Token.h"
 #include "sqlite/yyStackEntry.h"
-  typedef struct Parse Parse;
   typedef union YYMINORTYPE YYMINORTYPE;
 
-  typedef struct yyParser yyParser;
+  struct yyParser;
   struct yyParser {
     yyStackEntry *yytos;
 

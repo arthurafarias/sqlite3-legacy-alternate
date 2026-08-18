@@ -1,8 +1,8 @@
 
 #pragma once
 
-  typedef struct Select Select;
-  typedef struct Subquery Subquery;
+  struct Select;
+  struct Subquery;
 
   struct Subquery {
     Select *pSelect;

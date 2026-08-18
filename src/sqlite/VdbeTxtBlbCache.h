@@ -3,7 +3,7 @@
 
 #include "sqlite/i64.h"
 #include "sqlite/u32.h"
-  typedef struct VdbeTxtBlbCache VdbeTxtBlbCache;
+  struct VdbeTxtBlbCache;
   struct VdbeTxtBlbCache {
     char *pCValue;
     i64 iOffset;

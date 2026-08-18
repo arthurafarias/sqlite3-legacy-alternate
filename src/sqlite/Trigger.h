@@ -3,12 +3,8 @@
 
 #include "sqlite/TriggerStep.h"
 #include "sqlite/u8.h"
-  typedef struct Table Table;
 
-  typedef struct Expr Expr;
-  typedef struct IdList IdList;
-  typedef struct Schema Schema;
-  typedef struct Trigger Trigger;
+  struct Schema;
 
   struct Trigger {
     char *zName;

@@ -3,7 +3,7 @@
 
 #include "sqlite/sqlite3_int64.h"
 #include "sqlite/sqlite3_value.h"
-  typedef struct PrintfArguments PrintfArguments;
+  struct PrintfArguments;
 
   struct PrintfArguments {
     int nArg;

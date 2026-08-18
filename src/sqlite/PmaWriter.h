@@ -4,8 +4,8 @@
 #include "sqlite/i64.h"
 #include "sqlite/u64.h"
 #include "sqlite/u8.h"
-  typedef struct sqlite3_file sqlite3_file;
-  typedef struct PmaWriter PmaWriter;
+  struct sqlite3_file;
+  struct PmaWriter;
   struct PmaWriter {
     int eFWErr;
     u8 *aBuffer;

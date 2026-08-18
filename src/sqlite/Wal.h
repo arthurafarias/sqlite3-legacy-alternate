@@ -7,16 +7,16 @@
 #include "sqlite/i64.h"
 #include "sqlite/u32.h"
 #include "sqlite/u8.h"
-  typedef struct PgHdr PgHdr;
-  typedef struct WalCkptInfo WalCkptInfo;
-  typedef struct WalHashLoc WalHashLoc;
-  typedef struct WalIterator WalIterator;
-  typedef struct sqlite3 sqlite3;
-  typedef struct sqlite3_vfs sqlite3_vfs;
+  struct PgHdr;
+  struct WalCkptInfo;
+  struct WalHashLoc;
+  struct WalIterator;
+  struct sqlite3;
+  struct sqlite3_vfs;
 
-  typedef struct Wal Wal;
+  struct Wal;
 
-  typedef struct sqlite3_file sqlite3_file;
+  struct sqlite3_file;
 
   struct Wal {
     sqlite3_vfs *pVfs;

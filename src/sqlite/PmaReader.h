@@ -4,10 +4,10 @@
 #include "sqlite/i64.h"
 #include "sqlite/u64.h"
 #include "sqlite/u8.h"
-  typedef struct IncrMerger IncrMerger;
-  typedef struct sqlite3_file sqlite3_file;
+  struct IncrMerger;
+  struct sqlite3_file;
 
-  typedef struct PmaReader PmaReader;
+  struct PmaReader;
   struct PmaReader {
     i64 iReadOff;
     i64 iEof;

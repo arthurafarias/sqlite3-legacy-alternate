@@ -2,9 +2,9 @@
 #pragma once
 
 #include "sqlite/u32.h"
-  typedef struct JsonParse JsonParse;
-  typedef struct JsonString JsonString;
-  typedef struct JsonPretty JsonPretty;
+  struct JsonParse;
+  struct JsonString;
+  struct JsonPretty;
 
   struct JsonPretty {
     JsonParse *pParse;

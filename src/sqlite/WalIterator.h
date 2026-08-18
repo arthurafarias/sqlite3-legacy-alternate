@@ -3,7 +3,7 @@
 
 #include "sqlite/WalSegment.h"
 #include "sqlite/u32.h"
-typedef struct WalIterator WalIterator;
+struct WalIterator;
 struct WalIterator {
   u32 iPrior;
   int nSegment;

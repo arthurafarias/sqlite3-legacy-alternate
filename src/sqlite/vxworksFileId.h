@@ -1,7 +1,7 @@
 
 #pragma once
 
-typedef struct vxworksFileId vxworksFileId;
+struct vxworksFileId;
 
 struct vxworksFileId {
   struct vxworksFileId *pNext;

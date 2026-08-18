@@ -1,7 +1,7 @@
 
 #pragma once
 
-  typedef struct AuxData AuxData;
+  struct AuxData;
 
   struct AuxData {
     int iAuxOp;

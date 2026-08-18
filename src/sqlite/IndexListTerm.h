@@ -1,8 +1,8 @@
 
 #pragma once
 
-  typedef struct Index Index;
-  typedef struct IndexListTerm IndexListTerm;
+  struct Index;
+  struct IndexListTerm;
   struct IndexListTerm {
     Index *p;
     int ix;

@@ -14,7 +14,7 @@
 #include "sqlite/sqlite3_sourceid.h"
 #include "sqlite/yDbMask.h"
 #include "sqlite/ynVar.h"
-  typedef struct FuncDefHash FuncDefHash;
+  struct FuncDefHash;
 
   struct FuncDefHash {
     FuncDef *a[23];

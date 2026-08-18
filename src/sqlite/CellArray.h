@@ -3,9 +3,9 @@
 
 #include "sqlite/u16.h"
 #include "sqlite/u8.h"
-  typedef struct MemPage MemPage;
+  struct MemPage;
 
-  typedef struct CellArray CellArray;
+  struct CellArray;
   struct CellArray {
     int nCell;
     MemPage *pRef;

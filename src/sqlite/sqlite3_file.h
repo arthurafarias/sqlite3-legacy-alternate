@@ -5,10 +5,10 @@
 #include "sqlite/sqlite_int64.h"
 #include "sqlite/u32.h"
 #include "sqlite/u64.h"
-typedef struct PmaWriter PmaWriter;
+struct PmaWriter;
 
-typedef struct sqlite3_file sqlite3_file;
-typedef struct sqlite3_io_methods sqlite3_io_methods;
+struct sqlite3_file;
+struct sqlite3_io_methods;
 
 struct sqlite3_file {
   const struct sqlite3_io_methods *pMethods;

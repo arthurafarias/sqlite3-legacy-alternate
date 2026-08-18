@@ -3,9 +3,9 @@
 
 #include "sqlite/sqlite3_vtab.h"
 #include "sqlite/u8.h"
-  typedef struct sqlite3 sqlite3;
+  struct sqlite3;
 
-  typedef struct JsonEachConnection JsonEachConnection;
+  struct JsonEachConnection;
   struct JsonEachConnection {
     sqlite3_vtab base;
     sqlite3 *db;

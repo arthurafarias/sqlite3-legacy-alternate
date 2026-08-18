@@ -3,7 +3,7 @@
 
 #include "sqlite/u32.h"
 #include "sqlite/u8.h"
-  typedef struct Bitvec Bitvec;
+  struct Bitvec;
   struct Bitvec {
     u32 iSize;
     u32 nSet;

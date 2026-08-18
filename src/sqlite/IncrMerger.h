@@ -3,10 +3,10 @@
 
 #include "sqlite/SorterFile.h"
 #include "sqlite/i64.h"
-  typedef struct MergeEngine MergeEngine;
-  typedef struct SortSubtask SortSubtask;
+  struct MergeEngine;
+  struct SortSubtask;
 
-  typedef struct IncrMerger IncrMerger;
+  struct IncrMerger;
   struct IncrMerger {
     SortSubtask *pTask;
     MergeEngine *pMerger;

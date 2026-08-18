@@ -11,18 +11,12 @@
 #include "sqlite/u32.h"
 #include "sqlite/u64.h"
 #include "sqlite/u8.h"
-  typedef struct ExprList ExprList;
-  typedef struct Index Index;
-  typedef struct Parse Parse;
-  typedef struct Select Select;
-  typedef struct SrcItem SrcItem;
-  typedef struct SrcList SrcList;
-  typedef struct WhereLoop WhereLoop;
-  typedef struct WhereMemBlock WhereMemBlock;
-  typedef struct WherePath WherePath;
-  typedef struct sqlite3_index_info sqlite3_index_info;
+  struct Parse;
+  struct SrcList;
+  struct WhereMemBlock;
+  struct WherePath;
+  struct sqlite3_index_info;
 
-  typedef struct WhereInfo WhereInfo;
 
   struct WhereInfo {
     Parse *pParse;

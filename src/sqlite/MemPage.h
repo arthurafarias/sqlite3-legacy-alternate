@@ -7,13 +7,10 @@
 #include "sqlite/i64.h"
 #include "sqlite/u16.h"
 #include "sqlite/u8.h"
-  typedef struct BtShared BtShared;
-  typedef struct BtreePayload BtreePayload;
-  typedef struct CellArray CellArray;
-  typedef struct CellInfo CellInfo;
-  typedef struct UnpackedRecord UnpackedRecord;
+  struct BtreePayload;
+  struct CellArray;
+  struct CellInfo;
 
-  typedef struct MemPage MemPage;
 
   struct MemPage {
     u8 isInit;
