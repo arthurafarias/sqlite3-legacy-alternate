@@ -11,7 +11,7 @@ int sqlite3ThreadCreate(SQLiteThread **ppThread, void *(*xTask)(void *), void *p
   int rc;
 
   *ppThread = 0;
-  p = sqlite3Malloc(sizeof(*p));
+  p = (SQLiteThread*)(sqlite3Malloc(sizeof(*p)));
   if (p == 0)
     return 7;
   memset(p, 0, sizeof(*p));

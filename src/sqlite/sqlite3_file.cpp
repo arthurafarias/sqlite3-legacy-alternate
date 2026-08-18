@@ -446,7 +446,7 @@ int dotlockLock(sqlite3_file *id, int eFileLock) {
   if (pFile->eFileLock > 0) {
     pFile->eFileLock = eFileLock;
 
-    utime(zLockFile, ((void *)0));
+    utime(zLockFile, (const utimbuf*)(((void *)0)));
 
     return SQLITE_OK;
   }
@@ -668,7 +668,7 @@ int unixFileControl(sqlite3_file *id, int op, void *pArg) {
       return SQLITE_OK;
     }
     case SQLITE_FCNTL_TEMPFILENAME: {
-      char *zTFile = sqlite3_malloc64(pFile->pVfs->mxPathname);
+      char *zTFile = (char*)(sqlite3_malloc64(pFile->pVfs->mxPathname));
       if (zTFile) {
         unixGetTempname(pFile->pVfs->mxPathname, zTFile);
         *(char **)pArg = zTFile;
@@ -1298,7 +1298,7 @@ void vdbePmaWriterInit(sqlite3_file *pFd, PmaWriter *p, int nBuf, i64 iStart) {
 
 int memjrnlRead(sqlite3_file *pJfd, void *zBuf, int iAmt, sqlite_int64 iOfst) {
   MemJournal *p = (MemJournal *)pJfd;
-  u8 *zOut = zBuf;
+  u8 *zOut = (u8*)(zBuf);
   int nRead = iAmt;
   int iChunkOffset;
   FileChunk *pChunk;
@@ -1357,7 +1357,7 @@ int memjrnlWrite(sqlite3_file *pJfd, const void *zBuf, int iAmt, sqlite_int64 iO
         int iSpace = ((nWrite) < (p->nChunkSize - iChunkOffset) ? (nWrite) : (p->nChunkSize - iChunkOffset));
 
         if (iChunkOffset == 0) {
-          FileChunk *pNew = sqlite3_malloc((sizeof(FileChunk) + ((p->nChunkSize) - 8)));
+          FileChunk *pNew = (FileChunk*)(sqlite3_malloc((sizeof(FileChunk) + ((p->nChunkSize) - 8))));
           if (!pNew) {
             return (10 | (12 << 8));
           }

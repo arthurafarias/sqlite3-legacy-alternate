@@ -125,7 +125,7 @@ int unixLogErrorAtLine(int errcode, const char *zFunc, const char *zPath, int iL
   char *zErr;
   int iErrno = errno;
 
-  zErr = "";
+  zErr = (char*)("");
 
   if (zPath == 0)
     zPath = "";

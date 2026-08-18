@@ -1367,7 +1367,7 @@ int walRewriteChecksums(Wal *pWal, u32 iLast) {
   u32 iRead;
   i64 iCksumOff;
 
-  aBuf = sqlite3_malloc(szPage + 24);
+  aBuf = (u8*)(sqlite3_malloc(szPage + 24));
   if (aBuf == 0)
     return 7;
 

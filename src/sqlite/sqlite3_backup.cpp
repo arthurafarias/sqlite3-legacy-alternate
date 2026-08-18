@@ -39,7 +39,7 @@ int backupOnePage(sqlite3_backup *p, Pgno iSrcPg, const u8 *zSrcData, int bUpdat
     if (SQLITE_OK == (rc = sqlite3PagerGet(pDestPager, iDest, &pDestPg, 0)) &&
         SQLITE_OK == (rc = sqlite3PagerWrite(pDestPg))) {
       const u8 *zIn = &zSrcData[iOff % nSrcPgsz];
-      u8 *zDestData = sqlite3PagerGetData(pDestPg);
+      u8 *zDestData = (u8*)(sqlite3PagerGetData(pDestPg));
       u8 *zOut = &zDestData[iOff % nDestPgsz];
 
       memcpy(zOut, zIn, nCopy);
@@ -131,7 +131,7 @@ int sqlite3_backup_step(sqlite3_backup *p, int nPage) {
         DbPage *pSrcPg;
         rc = sqlite3PagerGet(pSrcPager, iSrcPg, &pSrcPg, 0x02);
         if (rc == SQLITE_OK) {
-          rc = backupOnePage(p, iSrcPg, sqlite3PagerGetData(pSrcPg), 0);
+          rc = backupOnePage(p, iSrcPg, (const u8*)(sqlite3PagerGetData(pSrcPg)), 0);
           sqlite3PagerUnref(pSrcPg);
         }
       }
@@ -205,7 +205,7 @@ int sqlite3_backup_step(sqlite3_backup *p, int nPage) {
             const Pgno iSrcPg = (Pgno)((iOff / pgszSrc) + 1);
             rc = sqlite3PagerGet(pSrcPager, iSrcPg, &pSrcPg, 0);
             if (rc == SQLITE_OK) {
-              u8 *zData = sqlite3PagerGetData(pSrcPg);
+              u8 *zData = (u8*)(sqlite3PagerGetData(pSrcPg));
               rc = sqlite3OsWrite(pFile, zData, pgszSrc, iOff);
             }
             sqlite3PagerUnref(pSrcPg);

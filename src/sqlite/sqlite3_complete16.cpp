@@ -15,7 +15,7 @@ int sqlite3_complete16(const void *zSql) {
 
   pVal = sqlite3ValueNew(0);
   sqlite3ValueSetStr(pVal, -1, zSql, 2, ((sqlite3_destructor_type)0));
-  zSql8 = sqlite3ValueText(pVal, SQLITE_UTF8);
+  zSql8 = (const char*)(sqlite3ValueText(pVal, SQLITE_UTF8));
   if (zSql8) {
     rc = sqlite3_complete(zSql8);
   } else {

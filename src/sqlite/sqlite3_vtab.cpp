@@ -84,7 +84,7 @@ int jsonEachOpen(sqlite3_vtab *p, sqlite3_vtab_cursor **ppCursor) {
   JsonEachCursor *pCur;
 
   (void)(p);
-  pCur = sqlite3DbMallocZero(pVtab->db, sizeof(*pCur));
+  pCur = (JsonEachCursor*)(sqlite3DbMallocZero(pVtab->db, sizeof(*pCur)));
   if (pCur == 0)
     return SQLITE_NOMEM;
   pCur->db = pVtab->db;

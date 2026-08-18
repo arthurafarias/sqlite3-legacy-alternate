@@ -31,7 +31,7 @@ int walWriteOneFrame(WalWriter *p, PgHdr *pPage, int nTruncate, sqlite3_int64 iO
   void *pData;
   u8 aFrame[24];
   pData = pPage->pData;
-  walEncodeFrame(p->pWal, pPage->pgno, nTruncate, pData, aFrame);
+  walEncodeFrame(p->pWal, pPage->pgno, nTruncate, (u8*)(pData), aFrame);
   rc = walWriteToLog(p, aFrame, sizeof(aFrame), iOffset);
   if (rc)
     return rc;

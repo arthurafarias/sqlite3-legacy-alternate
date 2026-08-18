@@ -388,7 +388,7 @@ int accessPayload(BtCursor *pCur, u32 offset, u32 amt, unsigned char *pBuf, int 
               sqlite3PagerUnref(pDbPage);
               return sqlite3CorruptError(78528);
             }
-            aPayload = sqlite3PagerGetData(pDbPage);
+            aPayload = (unsigned char*)(sqlite3PagerGetData(pDbPage));
             nextPage = sqlite3Get4byte(aPayload);
             rc = copyPayload(&aPayload[offset + 4], pBuf, a, eOp, pDbPage);
             sqlite3PagerUnref(pDbPage);
@@ -423,12 +423,12 @@ __attribute__((noinline)) int accessPayloadChecked(BtCursor *pCur, u32 offset, u
   }
 
   rc = btreeRestoreCursorPosition(pCur);
-  return rc ? rc : accessPayload(pCur, offset, amt, pBuf, 0);
+  return rc ? rc : accessPayload(pCur, offset, amt, (unsigned char*)(pBuf), 0);
 }
 
 int sqlite3BtreePayloadChecked(BtCursor *pCur, u32 offset, u32 amt, void *pBuf) {
   if (pCur->eState == 0) {
-    return accessPayload(pCur, offset, amt, pBuf, 0);
+    return accessPayload(pCur, offset, amt, (unsigned char*)(pBuf), 0);
   } else {
     return accessPayloadChecked(pCur, offset, amt, pBuf);
   }
@@ -1105,7 +1105,7 @@ int balance(BtCursor *pCur) {
             pParent->nCell == iIdx) {
           rc = balance_quick(pParent, pPage, aBalanceQuickSpace);
         } else {
-          u8 *pSpace = sqlite3PageMalloc(pCur->pBt->pageSize);
+          u8 *pSpace = (u8*)(sqlite3PageMalloc(pCur->pBt->pageSize));
           rc = balance_nonroot(pParent, iIdx, pSpace, iPage == 1, pCur->hints & 0x00000001);
           if (pFree) {
             sqlite3PageFree(pFree);
@@ -1691,7 +1691,7 @@ int vdbeIsMatchingIndexKey(BtCursor *pCur, int bInt, Bitmask mask, UnpackedRecor
     return sqlite3CorruptError(93335);
   }
 
-  aRec = sqlite3MallocZero(nRec + 5);
+  aRec = (u8*)(sqlite3MallocZero(nRec + 5));
   if (aRec == 0) {
     rc = 7;
   } else {

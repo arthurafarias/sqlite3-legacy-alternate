@@ -357,7 +357,7 @@ int defragmentPage(MemPage *pPage, int nMaxFrag) {
   iCellLast = usableSize - 4;
   iCellStart = ((&data[hdr + 5])[0] << 8 | (&data[hdr + 5])[1]);
   if (nCell > 0) {
-    temp = sqlite3PagerTempSpace(pPage->pBt->pPager);
+    temp = (unsigned char*)(sqlite3PagerTempSpace(pPage->pBt->pPager));
     memcpy(temp, data, usableSize);
     src = temp;
     for (i = 0; i < nCell; i++) {
@@ -946,7 +946,7 @@ int fillInCell(MemPage *pPage, unsigned char *pCell, const BtreePayload *pX, int
   nHeader = pPage->childPtrSize;
   if (pPage->intKey) {
     nPayload = pX->nData + pX->nZero;
-    pSrc = pX->pData;
+    pSrc = (const u8*)(pX->pData);
     nSrc = pX->nData;
 
     nHeader += (u8)(((u32)(nPayload) < (u32)0x80) ? (*(&pCell[nHeader]) = (unsigned char)(nPayload)),
@@ -954,7 +954,7 @@ int fillInCell(MemPage *pPage, unsigned char *pCell, const BtreePayload *pX, int
     nHeader += sqlite3PutVarint(&pCell[nHeader], *(u64 *)&pX->nKey);
   } else {
     nSrc = nPayload = (int)pX->nKey;
-    pSrc = pX->pKey;
+    pSrc = (const u8*)(pX->pKey);
     nHeader += (u8)(((u32)(nPayload) < (u32)0x80) ? (*(&pCell[nHeader]) = (unsigned char)(nPayload)),
                     1                             : sqlite3PutVarint((&pCell[nHeader]), (nPayload)));
   }
@@ -1548,7 +1548,7 @@ int balance_nonroot(MemPage *pParent, int iParentIdx, u8 *aOvflSpace, int isRoot
 
   szScratch = nMaxCells * sizeof(u8 *) + nMaxCells * sizeof(u16) + pBt->pageSize;
 
-  b.apCell = sqlite3DbMallocRaw(0, szScratch);
+  b.apCell = (u8**)(sqlite3DbMallocRaw(0, szScratch));
   if (b.apCell == 0) {
     rc = 7;
     goto balance_cleanup;

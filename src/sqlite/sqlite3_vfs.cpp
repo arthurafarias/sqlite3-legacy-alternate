@@ -462,7 +462,7 @@ int unixOpen(sqlite3_vfs *pVfs, const char *zPath, sqlite3_file *pFile, int flag
     if (pUnused) {
       fd = pUnused->fd;
     } else {
-      pUnused = sqlite3_malloc64(sizeof(*pUnused));
+      pUnused = (UnixUnusedFd*)(sqlite3_malloc64(sizeof(*pUnused)));
       if (!pUnused) {
         return 7;
       }
@@ -688,7 +688,7 @@ int unixSleep(sqlite3_vfs *NotUsed, int microseconds) {
   sp.tv_sec = microseconds / 1000000;
   sp.tv_nsec = (microseconds % 1000000) * 1000;
 
-  nanosleep(&sp, ((void *)0));
+  nanosleep(&sp, (timespec*)(((void *)0)));
 
   (void)(NotUsed);
   return microseconds;
@@ -769,12 +769,12 @@ int memdbOpen(sqlite3_vfs *pVfs, const char *zName, sqlite3_file *pFd, int flags
     }
     if (p == 0) {
       MemStore **apNew;
-      p = sqlite3Malloc(sizeof(*p) + (i64)szName + 3);
+      p = (MemStore*)(sqlite3Malloc(sizeof(*p) + (i64)szName + 3));
       if (p == 0) {
         sqlite3_mutex_leave(pVfsMutex);
         return SQLITE_NOMEM;
       }
-      apNew = sqlite3Realloc(memdb_g.apMemStore, sizeof(apNew[0]) * (1 + (i64)memdb_g.nMemStore));
+      apNew = (MemStore**)(sqlite3Realloc(memdb_g.apMemStore, sizeof(apNew[0]) * (1 + (i64)memdb_g.nMemStore)));
       if (apNew == 0) {
         sqlite3_free(p);
         sqlite3_mutex_leave(pVfsMutex);
@@ -802,7 +802,7 @@ int memdbOpen(sqlite3_vfs *pVfs, const char *zName, sqlite3_file *pFd, int flags
     }
     sqlite3_mutex_leave(pVfsMutex);
   } else {
-    p = sqlite3Malloc(sizeof(*p));
+    p = (MemStore*)(sqlite3Malloc(sizeof(*p)));
     if (p == 0) {
       return SQLITE_NOMEM;
     }
@@ -905,7 +905,7 @@ int sqlite3PagerOpen(sqlite3_vfs *pVfs, Pager **ppPager, const char *zFilename, 
   if (zFilename && zFilename[0]) {
     const char *z;
     nPathname = pVfs->mxPathname + 1;
-    zPathname = sqlite3DbMallocRaw(0, 2 * (i64)nPathname);
+    zPathname = (char*)(sqlite3DbMallocRaw(0, 2 * (i64)nPathname));
     if (zPathname == 0) {
       return 7;
     }
@@ -1147,7 +1147,7 @@ int sqlite3BtreeOpen(sqlite3_vfs *pVfs, const char *zFilename, sqlite3 *db, Btre
   if ((vfsFlags & SQLITE_OPEN_MAIN_DB) != 0 && (isMemdb || isTempDb)) {
     vfsFlags = (vfsFlags & ~SQLITE_OPEN_MAIN_DB) | SQLITE_OPEN_TEMP_DB;
   }
-  p = sqlite3MallocZero(sizeof(Btree));
+  p = (Btree*)(sqlite3MallocZero(sizeof(Btree)));
   if (!p) {
     return 7;
   }
@@ -1161,7 +1161,7 @@ int sqlite3BtreeOpen(sqlite3_vfs *pVfs, const char *zFilename, sqlite3 *db, Btre
     if (vfsFlags & SQLITE_OPEN_SHAREDCACHE) {
       int nFilename = sqlite3Strlen30(zFilename) + 1;
       int nFullPathname = pVfs->mxPathname + 1;
-      char *zFullPathname = sqlite3Malloc(((nFullPathname) > (nFilename) ? (nFullPathname) : (nFilename)));
+      char *zFullPathname = (char*)(sqlite3Malloc(((nFullPathname) > (nFilename) ? (nFullPathname) : (nFilename))));
       sqlite3_mutex *mutexShared;
 
       p->sharable = 1;
@@ -1215,7 +1215,7 @@ int sqlite3BtreeOpen(sqlite3_vfs *pVfs, const char *zFilename, sqlite3 *db, Btre
   if (pBt == 0) {
     memset(&zDbHeader[16], 0, 8);
 
-    pBt = sqlite3MallocZero(sizeof(*pBt));
+    pBt = (BtShared*)(sqlite3MallocZero(sizeof(*pBt)));
     if (pBt == 0) {
       rc = 7;
       goto btree_open_out;

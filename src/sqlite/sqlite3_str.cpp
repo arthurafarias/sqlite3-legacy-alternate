@@ -40,7 +40,7 @@ char *printfTempBuf(sqlite3_str *pAccum, sqlite3_int64 n) {
     sqlite3StrAccumSetError(pAccum, SQLITE_TOOBIG);
     return 0;
   }
-  z = sqlite3_malloc(n);
+  z = (char*)(sqlite3_malloc(n));
   if (z == 0) {
     sqlite3StrAccumSetError(pAccum, SQLITE_NOMEM);
   }
@@ -89,7 +89,7 @@ void sqlite3_str_vappendf(sqlite3_str *pAccum, const char *fmt, va_list ap) {
     if (c != '%') {
       bufpt = (char *)fmt;
 
-      fmt = _Generic(0 ? (fmt) : (void *)1, const void *: (const char *)(strchr(fmt, '%')), default: strchr(fmt, '%'));
+      fmt = strchr(fmt, '%');
       if (fmt == 0) {
         fmt = bufpt + strlen(bufpt);
       }
@@ -368,7 +368,7 @@ void sqlite3_str_vappendf(sqlite3_str *pAccum, const char *fmt, va_list ap) {
         sqlite3FpDecode(&s, realvalue, iRound, flag_altform2 ? 20 : 16);
         if (s.isSpecial) {
           if (s.isSpecial == 2) {
-            bufpt = flag_zeropad ? "null" : "NaN";
+            bufpt = (char *)(flag_zeropad ? "null" : "NaN");
             length = sqlite3Strlen30(bufpt);
             break;
           } else if (flag_zeropad) {
@@ -423,7 +423,7 @@ void sqlite3_str_vappendf(sqlite3_str *pAccum, const char *fmt, va_list ap) {
           szBufNeeded += (e2 + 2) / 3;
         if (szBufNeeded + pAccum->nChar >= pAccum->nAlloc) {
           if (pAccum->mxAlloc == 0 && pAccum->accError == 0) {
-            bufpt = sqlite3_malloc(szBufNeeded);
+            bufpt = (char*)(sqlite3_malloc(szBufNeeded));
             if (bufpt == 0) {
               sqlite3StrAccumSetError(pAccum, SQLITE_NOMEM);
               return;
@@ -618,7 +618,7 @@ void sqlite3_str_vappendf(sqlite3_str *pAccum, const char *fmt, va_list ap) {
           bufpt = va_arg(ap, char *);
         }
         if (bufpt == 0) {
-          bufpt = "";
+          bufpt = (char*)("");
         } else if (xtype == 6) {
           if (pAccum->nChar == 0 && pAccum->mxAlloc && width == 0 && precision < 0 && pAccum->accError == 0) {
             pAccum->zText = bufpt;
@@ -673,7 +673,7 @@ void sqlite3_str_vappendf(sqlite3_str *pAccum, const char *fmt, va_list ap) {
           escarg = va_arg(ap, char *);
         }
         if (escarg == 0) {
-          escarg = (xtype == 10 ? "NULL" : "(NULL)");
+          escarg = (char *)(xtype == 10 ? "NULL" : "(NULL)");
         } else if (xtype == 10) {
           needQuote = 1;
         }

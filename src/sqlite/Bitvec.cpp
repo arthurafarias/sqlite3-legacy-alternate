@@ -11,7 +11,7 @@
 Bitvec *sqlite3BitvecCreate(u32 iSize) {
   Bitvec *p;
 
-  p = sqlite3MallocZero(sizeof(*p));
+  p = (Bitvec*)(sqlite3MallocZero(sizeof(*p)));
   if (p) {
     p->iSize = iSize;
   }
@@ -90,7 +90,7 @@ bitvec_set_rehash:
   if (p->nSet >= (((((512 - (3 * sizeof(u32))) / sizeof(Bitvec *)) * sizeof(Bitvec *)) / sizeof(u32)) / 2)) {
     unsigned int j;
     int rc;
-    u32 *aiValues = sqlite3DbMallocRaw(0, sizeof(p->u.aHash));
+    u32 *aiValues = (u32*)(sqlite3DbMallocRaw(0, sizeof(p->u.aHash)));
     if (aiValues == 0) {
       return 7;
     } else {
@@ -135,7 +135,7 @@ void sqlite3BitvecClear(Bitvec *p, u32 i, void *pBuf) {
     p->u.aBitmap[i / 8] &= ~(u8)(1 << (i & (8 - 1)));
   } else {
     unsigned int j;
-    u32 *aiValues = pBuf;
+    u32 *aiValues = (u32*)(pBuf);
     memcpy(aiValues, p->u.aHash, sizeof(p->u.aHash));
     memset(p->u.aHash, 0, sizeof(p->u.aHash));
     p->nSet = 0;
@@ -184,7 +184,7 @@ int sqlite3BitvecBuiltinTest(int sz, int *aOp) {
     pV = 0;
   } else {
     pBitvec = sqlite3BitvecCreate(sz);
-    pV = sqlite3MallocZero((7 + (i64)sz) / 8 + 1);
+    pV = (unsigned char*)(sqlite3MallocZero((7 + (i64)sz) / 8 + 1));
   }
   pTmpSpace = sqlite3_malloc64(512);
   if (pBitvec == 0 || pTmpSpace == 0 || (pV == 0 && sz > 0))

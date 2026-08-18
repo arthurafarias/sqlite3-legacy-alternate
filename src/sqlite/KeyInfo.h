@@ -18,7 +18,7 @@ extern "C" {
     u16 nAllField;
     sqlite3 *db;
     u8 *aSortFlags;
-    CollSeq *aColl[];
+    CollSeq *aColl[1];
   };
 
   UnpackedRecord *sqlite3VdbeAllocUnpackedRecord(KeyInfo *);

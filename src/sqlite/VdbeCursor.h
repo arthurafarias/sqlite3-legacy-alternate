@@ -60,7 +60,7 @@ extern "C" {
 
     VdbeTxtBlbCache *pCache;
 
-    u32 aType[];
+    u32 aType[1];
   };
 
   int __attribute__((noinline)) sqlite3VdbeHandleMovedCursor(VdbeCursor * p);

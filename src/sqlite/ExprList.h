@@ -12,7 +12,7 @@ typedef struct ExprList ExprList;
 struct ExprList {
   int nExpr;
   int nAlloc;
-  ExprList_item a[];
+  ExprList_item a[1];
 };
 
 void sqlite3ExprListSetSortOrder(ExprList *, int, int);

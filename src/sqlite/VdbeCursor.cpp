@@ -68,7 +68,7 @@ __attribute__((noinline)) int vdbeColumnFromOverflow(VdbeCursor *pC, int iCol, u
     VdbeTxtBlbCache *pCache;
     char *pBuf;
     if (pC->colCache == 0) {
-      pC->pCache = sqlite3DbMallocZero(db, sizeof(VdbeTxtBlbCache));
+      pC->pCache = (VdbeTxtBlbCache*)(sqlite3DbMallocZero(db, sizeof(VdbeTxtBlbCache)));
       if (pC->pCache == 0)
         return SQLITE_NOMEM;
       pC->colCache = 1;
@@ -174,7 +174,7 @@ int sqlite3VdbeSorterWrite(const VdbeCursor *pCsr, Mem *pVal) {
         nNew = pSorter->mxPmaSize;
       if (nNew < nMin)
         nNew = nMin;
-      aNew = sqlite3Realloc(pSorter->list.aMemory, nNew);
+      aNew = (u8*)(sqlite3Realloc(pSorter->list.aMemory, nNew));
       if (!aNew)
         return 7;
       if (iListOff >= 0) {

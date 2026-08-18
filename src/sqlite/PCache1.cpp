@@ -61,7 +61,7 @@ int pcache1InitBulk(PCache1 *pCache) {
     szBulk = pCache->szAlloc * (i64)pCache->nMax;
   }
   if (szBulk >= pCache->szAlloc) {
-    zBulk = pCache->pBulk = sqlite3Malloc(szBulk);
+    zBulk = (char*)(pCache->pBulk = sqlite3Malloc(szBulk));
     sqlite3EndBenignMalloc();
     if (zBulk) {
       int nBulk = sqlite3MallocSize(zBulk) / pCache->szAlloc;

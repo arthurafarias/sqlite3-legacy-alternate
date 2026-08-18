@@ -107,7 +107,7 @@ int whereLoopInsert(WhereLoopBuilder *pBuilder, WhereLoop *pTemplate) {
   }
 
   if (p == 0) {
-    *ppPrev = p = sqlite3DbMallocRawNN(db, sizeof(WhereLoop));
+    *ppPrev = p = (WhereLoop*)(sqlite3DbMallocRawNN(db, sizeof(WhereLoop)));
     if (p == 0)
       return 7;
     whereLoopInit(p);

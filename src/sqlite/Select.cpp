@@ -61,16 +61,16 @@ const char *sqlite3SelectOpName(int id) {
   char *z;
   switch (id) {
     case 136:
-      z = "UNION ALL";
+      z = (char*)("UNION ALL");
       break;
     case 138:
-      z = "INTERSECT";
+      z = (char*)("INTERSECT");
       break;
     case 137:
-      z = "EXCEPT";
+      z = (char*)("EXCEPT");
       break;
     default:
-      z = "UNION";
+      z = (char*)("UNION");
       break;
   }
   return z;

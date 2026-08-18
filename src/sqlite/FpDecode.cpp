@@ -25,7 +25,7 @@ void sqlite3FpDecode(FpDecode *p, double r, int iRound, int mxRound) {
     p->sign = '+';
     p->n = 1;
     p->iDP = 1;
-    p->z = "0";
+    p->z = (char*)("0");
     return;
   } else {
     p->sign = '+';

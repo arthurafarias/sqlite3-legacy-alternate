@@ -169,7 +169,7 @@ void exprAnalyzeOrTerm(SrcList *pSrc, WhereClause *pWC, int idxTerm) {
   Bitmask chngToIN;
   Bitmask indexable;
 
-  pTerm->u.pOrInfo = pOrInfo = sqlite3DbMallocZero(db, sizeof(*pOrInfo));
+  pTerm->u.pOrInfo = pOrInfo = (WhereOrInfo*)(sqlite3DbMallocZero(db, sizeof(*pOrInfo)));
   if (pOrInfo == 0)
     return;
   pTerm->wtFlags |= 0x0010;
@@ -188,7 +188,7 @@ void exprAnalyzeOrTerm(SrcList *pSrc, WhereClause *pWC, int idxTerm) {
       WhereAndInfo *pAndInfo;
 
       chngToIN = 0;
-      pAndInfo = sqlite3DbMallocRawNN(db, sizeof(*pAndInfo));
+      pAndInfo = (WhereAndInfo*)(sqlite3DbMallocRawNN(db, sizeof(*pAndInfo)));
       if (pAndInfo) {
         WhereClause *pAndWC;
         WhereTerm *pAndTerm;
@@ -499,7 +499,7 @@ void exprAnalyze(SrcList *pSrc, WhereClause *pWC, int idxTerm) {
       pNew->eOperator = (operatorMask(pDup->op) + eExtraOp) & opMask;
     } else if (op == 51 && !(((pExpr)->flags & (u32)(0x000001)) != 0) && 0 == sqlite3ExprCanBeNull(pLeft)) {
       pExpr->op = 171;
-      pExpr->u.zToken = "false";
+      pExpr->u.zToken = (char*)("false");
       (pExpr)->flags |= (u32)(0x20000000);
       pTerm->prereqAll = 0;
       pTerm->eOperator = 0;

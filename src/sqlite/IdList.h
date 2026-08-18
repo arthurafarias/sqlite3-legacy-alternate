@@ -9,7 +9,7 @@ typedef struct IdList IdList;
 
 struct IdList {
   int nId;
-  IdList_item a[];
+  IdList_item a[1];
 };
 
 int sqlite3IdListIndex(IdList *, const char *);

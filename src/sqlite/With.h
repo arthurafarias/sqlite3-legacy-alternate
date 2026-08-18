@@ -12,7 +12,7 @@ extern "C" {
     int nCte;
     int bView;
     With *pOuter;
-    Cte a[];
+    Cte a[1];
   };
 
   struct Cte *searchWith(With * pWith, SrcItem * pItem, With * *ppContext);

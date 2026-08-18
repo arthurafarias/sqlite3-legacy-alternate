@@ -37,7 +37,7 @@ int isAllZero(const char *z, int n) {
 void *sqlite3MemMalloc(int nByte) {
   sqlite3_int64 *p;
 
-  p = malloc(nByte + 8);
+  p = (sqlite3_int64*)(malloc(nByte + 8));
   if (p) {
     p[0] = nByte;
     p++;
@@ -66,7 +66,7 @@ void *sqlite3MemRealloc(void *pPrior, int nByte) {
   sqlite3_int64 *p = (sqlite3_int64 *)pPrior;
 
   p--;
-  p = realloc((p), (nByte + 8));
+  p = (sqlite3_int64*)(realloc((p), (nByte + 8)));
   if (p) {
     p[0] = nByte;
     p++;
@@ -133,7 +133,7 @@ __attribute__((noinline)) int sqlite3VdbeMemTranslate(Mem *pMem, u8 desiredEnc) 
 
   zIn = (u8 *)pMem->z;
   zTerm = &zIn[pMem->n];
-  zOut = sqlite3DbMallocRaw(pMem->db, len);
+  zOut = (unsigned char*)(sqlite3DbMallocRaw(pMem->db, len));
   if (!zOut) {
     return 7;
   }
@@ -315,9 +315,9 @@ int sqlite3VdbeChangeEncoding(Mem *pMem, int desiredEnc) {
 __attribute__((noinline)) int sqlite3VdbeMemGrow(Mem *pMem, int n, int bPreserve) {
   if (pMem->szMalloc > 0 && bPreserve && pMem->z == pMem->zMalloc) {
     if (pMem->db) {
-      pMem->z = pMem->zMalloc = sqlite3DbReallocOrFree(pMem->db, pMem->z, n);
+      pMem->z = pMem->zMalloc = (char*)(sqlite3DbReallocOrFree(pMem->db, pMem->z, n));
     } else {
-      pMem->zMalloc = sqlite3Realloc(pMem->z, n);
+      pMem->zMalloc = (char*)(sqlite3Realloc(pMem->z, n));
       if (pMem->zMalloc == 0)
         sqlite3_free(pMem->z);
       pMem->z = pMem->zMalloc;
@@ -326,7 +326,7 @@ __attribute__((noinline)) int sqlite3VdbeMemGrow(Mem *pMem, int n, int bPreserve
   } else {
     if (pMem->szMalloc > 0)
       sqlite3DbFreeNN(pMem->db, pMem->zMalloc);
-    pMem->zMalloc = sqlite3DbMallocRaw(pMem->db, n);
+    pMem->zMalloc = (char*)(sqlite3DbMallocRaw(pMem->db, n));
   }
   if (pMem->zMalloc == 0) {
     sqlite3VdbeMemSetNull(pMem);
@@ -557,7 +557,7 @@ __attribute__((noinline)) int sqlite3MemRealValueRCSlowPath(Mem *pMem, double *p
     const char *z;
 
     n = pMem->n & ~1;
-    zCopy = sqlite3DbMallocRaw(pMem->db, n / 2 + 2);
+    zCopy = (char*)(sqlite3DbMallocRaw(pMem->db, n / 2 + 2));
     if (zCopy) {
       z = pMem->z;
       if (pMem->enc == SQLITE_UTF16LE) {
@@ -757,7 +757,7 @@ void sqlite3VdbeMemSetInt64(Mem *pMem, i64 val) {
 void sqlite3VdbeMemSetPointer(Mem *pMem, void *pPtr, const char *zPType, void (*xDestructor)(void *)) {
   vdbeMemClear(pMem);
   pMem->u.zPType = zPType ? zPType : "";
-  pMem->z = pPtr;
+  pMem->z = (char*)(pPtr);
   pMem->flags = 0x0001 | 0x1000 | 0x0800 | 0x0200;
   pMem->eSubtype = 'p';
   pMem->xDel = xDestructor ? xDestructor : sqlite3NoopDestructor;

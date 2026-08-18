@@ -26,7 +26,7 @@ void sqlite3SchemaClear(void *p) {
   sqlite3HashClear(&temp2);
   sqlite3HashInit(&pSchema->tblHash);
   for (pElem = ((&temp1)->first); pElem; pElem = ((pElem)->next)) {
-    Table *pTab = ((pElem)->data);
+    Table *pTab = (Table*)(((pElem)->data));
     sqlite3DeleteTable(&xdb, pTab);
   }
   sqlite3HashClear(&temp1);

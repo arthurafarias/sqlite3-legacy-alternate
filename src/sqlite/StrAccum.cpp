@@ -48,9 +48,9 @@ int sqlite3StrAccumEnlarge(StrAccum *p, i64 N) {
       p->nAlloc = (int)szNew;
     }
     if (p->db) {
-      zNew = sqlite3DbRealloc(p->db, zOld, p->nAlloc);
+      zNew = (char*)(sqlite3DbRealloc(p->db, zOld, p->nAlloc));
     } else {
-      zNew = sqlite3Realloc(zOld, p->nAlloc);
+      zNew = (char*)(sqlite3Realloc(zOld, p->nAlloc));
     }
     if (zNew) {
       if (!(((p)->printfFlags & 0x04) != 0) && p->nChar > 0)
@@ -86,7 +86,7 @@ void __attribute__((noinline)) enlargeAndAppend(StrAccum *p, const char *z, int 
 __attribute__((noinline)) char *strAccumFinishRealloc(StrAccum *p) {
   char *zText;
 
-  zText = sqlite3DbMallocRaw(p->db, 1 + (u64)p->nChar);
+  zText = (char*)(sqlite3DbMallocRaw(p->db, 1 + (u64)p->nChar));
   if (zText) {
     memcpy(zText, p->zText, p->nChar + 1);
     p->printfFlags |= 0x04;
@@ -147,7 +147,7 @@ void sqlite3QuoteValue(StrAccum *pStr, sqlite3_value *pValue, int bEscape) {
       break;
     }
     case SQLITE_BLOB: {
-      char const *zBlob = sqlite3_value_blob(pValue);
+      char const *zBlob = (const char*)(sqlite3_value_blob(pValue));
       i64 nBlob = sqlite3_value_bytes(pValue);
 
       sqlite3StrAccumEnlarge(pStr, nBlob * 2 + 4);

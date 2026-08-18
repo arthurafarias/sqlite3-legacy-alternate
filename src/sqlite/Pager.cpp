@@ -624,7 +624,7 @@ int pager_delsuper(Pager *pPager, const char *zSuper) {
   if (rc != SQLITE_OK)
     goto delsuper_out;
 
-  zFree = sqlite3Malloc(4 + nSuperJournal + 2);
+  zFree = (char*)(sqlite3Malloc(4 + nSuperJournal + 2));
   if (!zFree) {
     rc = 7;
     goto delsuper_out;
@@ -1118,7 +1118,7 @@ int sqlite3PagerSetPagesize(Pager *pPager, u32 *pPageSize, int nReserve) {
 
   if ((pPager->memDb == 0 || pPager->dbSize == 0) && sqlite3PcacheRefCount(pPager->pPCache) == 0 && pageSize &&
       pageSize != (u32)pPager->pageSize) {
-    char *pNew = ((void *)0);
+    char *pNew = nullptr;
     i64 nByte = 0;
 
     if (pPager->eState > 0 && ((pPager->fd)->pMethods != 0)) {
@@ -1392,7 +1392,7 @@ int pager_write_pagelist(Pager *pPager, PgHdr *pList) {
       if (pList->pgno == 1)
         pager_write_changecounter(pList);
 
-      pData = pList->pData;
+      pData = (char*)(pList->pData);
 
       rc = sqlite3OsWrite(pPager->fd, pData, pPager->pageSize, offset);
 

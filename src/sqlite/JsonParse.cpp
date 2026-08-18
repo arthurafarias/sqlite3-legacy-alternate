@@ -182,18 +182,12 @@ whitespace_done:
   return n;
 }
 
-static const struct NanInfName {
-  char c1;
-  char c2;
-  char n;
-  char eType;
-  char nRepl;
-  char *zMatch;
-  char *zRepl;
-} aNanInfName[] = {
-    {'i', 'I', 3, 5, 7, "inf", "9.0e999"}, {'i', 'I', 8, 5, 7, "infinity", "9.0e999"},
-    {'n', 'N', 3, 0, 4, "NaN", "null"},    {'q', 'Q', 4, 0, 4, "QNaN", "null"},
-    {'s', 'S', 4, 0, 4, "SNaN", "null"},
+static const NanInfName aNanInfName[] = {
+    {'i', 'I', 3, 5, 7, (char *)"inf", (char *)"9.0e999"},
+    {'i', 'I', 8, 5, 7, (char *)"infinity", (char *)"9.0e999"},
+    {'n', 'N', 3, 0, 4, (char *)"NaN", (char *)"null"},
+    {'q', 'Q', 4, 0, 4, (char *)"QNaN", (char *)"null"},
+    {'s', 'S', 4, 0, 4, (char *)"SNaN", (char *)"null"},
 };
 
 static int jsonIs4HexB(const char *z, int *pOp) {
@@ -473,7 +467,7 @@ int jsonBlobExpand(JsonParse *pParse, u32 N) {
   }
   if (t < N)
     t = N + 100;
-  aNew = sqlite3DbRealloc(pParse->db, pParse->aBlob, t);
+  aNew = (u8*)(sqlite3DbRealloc(pParse->db, pParse->aBlob, t));
   if (aNew == 0) {
     pParse->oom = 1;
     return 1;
@@ -766,9 +760,7 @@ u32 jsonbValidityCheck(const JsonParse *pParse, u32 i, u32 iEnd, u32 iDepth) {
               return j + 1;
           } else if ((z[j] != '\\') || j + 1 >= k) {
             return j + 1;
-          } else if (_Generic(0 ? ("\"\\/bfnrt") : (void *)1,
-                         const void *: (const char *)(strchr("\"\\/bfnrt", z[j + 1])),
-                         default: strchr("\"\\/bfnrt", z[j + 1])) != 0) {
+          } else if (strchr("\"\\/bfnrt", z[j + 1]) != 0) {
             j++;
           } else if (z[j + 1] == 'u') {
             if (j + 5 >= k)
@@ -1726,9 +1718,7 @@ u32 jsonLookupStep(JsonParse *pParse, u32 iRoot, const char *zPath, u32 iLabel) 
       } else {
         return 0xfffffffb;
       };
-      rawKey = _Generic(0 ? (zKey) : (void *)1,
-                   const void *: (const void *)(memchr(zKey, '\\', nKey)),
-                   default: memchr(zKey, '\\', nKey)) == 0;
+      rawKey = memchr(zKey, '\\', nKey) == 0;
     } else {
       zKey = zPath;
       for (i = 0; zPath[i] && zPath[i] != '.' && zPath[i] != '['; i++) {
@@ -1990,7 +1980,7 @@ void jsonReturnFromBlob(JsonParse *pParse, u32 i, sqlite3_context *pCtx, int eMo
       char *zOut;
       u32 nOut = sz;
       z = (const char *)&pParse->aBlob[i + n];
-      zOut = sqlite3DbMallocRaw(db, ((u64)nOut) + 1);
+      zOut = (char*)(sqlite3DbMallocRaw(db, ((u64)nOut) + 1));
       if (zOut == 0)
         goto returnfromblob_oom;
       for (iIn = iOut = 0; iIn < sz; iIn++) {

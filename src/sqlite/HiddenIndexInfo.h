@@ -15,7 +15,7 @@ extern "C" {
     int eDistinct;
     u32 mIn;
     u32 mHandleIn;
-    sqlite3_value *aRhs[];
+    sqlite3_value *aRhs[1];
   };
 
 #ifdef __cplusplus

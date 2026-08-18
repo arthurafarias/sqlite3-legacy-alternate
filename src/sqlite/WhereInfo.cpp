@@ -213,7 +213,7 @@ int sqlite3WhereUsesDeferredSeek(WhereInfo *pWInfo) {
 
 void *sqlite3WhereMalloc(WhereInfo *pWInfo, u64 nByte) {
   WhereMemBlock *pBlock;
-  pBlock = sqlite3DbMallocRawNN(pWInfo->pParse->db, nByte + sizeof(*pBlock));
+  pBlock = (WhereMemBlock*)(sqlite3DbMallocRawNN(pWInfo->pParse->db, nByte + sizeof(*pBlock)));
   if (pBlock) {
     pBlock->pNext = pWInfo->pMemToFree;
     pBlock->sz = nByte;
@@ -417,9 +417,10 @@ sqlite3_index_info *allocateIndexInfo(WhereInfo *pWInfo, WhereClause *pWC, Bitma
     }
   }
 
-  pIdxInfo = sqlite3DbMallocZero(pParse->db, sizeof(*pIdxInfo) + (sizeof(*pIdxCons) + sizeof(*pUsage)) * nTerm +
+  pIdxInfo = (sqlite3_index_info *)(sqlite3DbMallocZero(
+      pParse->db, sizeof(*pIdxInfo) + (sizeof(*pIdxCons) + sizeof(*pUsage)) * nTerm +
                                                  sizeof(*pIdxOrderBy) * nOrderBy +
-                                                 (offsetof(HiddenIndexInfo, aRhs) + (nTerm) * sizeof(sqlite3_value *)));
+                                                 (offsetof(HiddenIndexInfo, aRhs) + (nTerm) * sizeof(sqlite3_value *))));
   if (pIdxInfo == 0) {
     sqlite3ErrorMsg(pParse, "out of memory");
     return 0;
@@ -989,7 +990,7 @@ int wherePathSolver(WhereInfo *pWInfo, LogEst nRowEst) {
 
   nSpace = (sizeof(WherePath) + sizeof(WhereLoop *) * nLoop) * mxChoice * 2;
   nSpace += sizeof(LogEst) * nOrderBy;
-  pSpace = sqlite3DbMallocRawNN(pParse->db, nSpace);
+  pSpace = (char*)(sqlite3DbMallocRawNN(pParse->db, nSpace));
   if (pSpace == 0)
     return 7;
   aTo = (WherePath *)pSpace;

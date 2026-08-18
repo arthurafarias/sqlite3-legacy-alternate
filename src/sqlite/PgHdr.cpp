@@ -220,7 +220,7 @@ int readDbPage(PgHdr *pPg) {
       return rc;
   }
   if (iFrame) {
-    rc = sqlite3WalReadFrame(pPager->pWal, iFrame, pPager->pageSize, pPg->pData);
+    rc = sqlite3WalReadFrame(pPager->pWal, iFrame, pPager->pageSize, (u8*)(pPg->pData));
   } else {
     i64 iOffset = (pPg->pgno - 1) * (i64)pPager->pageSize;
     rc = sqlite3OsRead(pPager->fd, pPg->pData, pPager->pageSize, iOffset);
@@ -272,7 +272,7 @@ int subjournalPage(PgHdr *pPg) {
       void *pData = pPg->pData;
       i64 offset = (i64)pPager->nSubRec * (4 + pPager->pageSize);
       char *pData2;
-      pData2 = pData;
+      pData2 = (char*)(pData);
       rc = write32bits(pPager->sjfd, offset, pPg->pgno);
       if (rc == SQLITE_OK) {
         rc = sqlite3OsWrite(pPager->sjfd, pData2, pPager->pageSize, offset + 4);
@@ -302,7 +302,7 @@ __attribute__((noinline)) int pagerAddPageToRollbackJournal(PgHdr *pPg) {
   char *pData2;
   i64 iOff = pPager->journalOff;
 
-  pData2 = pPg->pData;
+  pData2 = (char*)(pPg->pData);
   cksum = pager_cksum(pPager, (u8 *)pData2);
 
   pPg->flags |= 0x008;

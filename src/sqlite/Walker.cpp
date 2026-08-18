@@ -989,7 +989,7 @@ int selectRefEnter(Walker *pWalker, Select *pSelect) {
     return 0;
   j = p->nExclude;
   p->nExclude += pSrc->nSrc;
-  piNew = sqlite3DbRealloc(p->db, p->aiExclude, p->nExclude * sizeof(int));
+  piNew = (int*)(sqlite3DbRealloc(p->db, p->aiExclude, p->nExclude * sizeof(int)));
   if (piNew == 0) {
     p->nExclude = 0;
     return 2;
@@ -1505,7 +1505,7 @@ int convertCompoundSelectToSubquery(Walker *pWalker, Select *p) {
 
   pParse = pWalker->pParse;
   db = pParse->db;
-  pNew = sqlite3DbMallocZero(db, sizeof(*pNew));
+  pNew = (Select*)(sqlite3DbMallocZero(db, sizeof(*pNew)));
   if (pNew == 0)
     return 2;
   memset(&dummy, 0, sizeof(dummy));

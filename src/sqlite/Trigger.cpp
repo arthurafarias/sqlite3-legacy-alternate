@@ -4,5 +4,5 @@
 #include "sqlite/Schema.h"
 #include "sqlite/Table.h"
 Table *tableOfTrigger(Trigger *pTrigger) {
-  return sqlite3HashFind(&pTrigger->pTabSchema->tblHash, pTrigger->table);
+  return (Table*)(sqlite3HashFind(&pTrigger->pTabSchema->tblHash, pTrigger->table));
 }

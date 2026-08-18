@@ -32,7 +32,7 @@ void constInsert(WhereConst *pConst, Expr *pColumn, Expr *pValue, Expr *pExpr) {
   }
 
   pConst->nConst++;
-  pConst->apExpr = sqlite3DbReallocOrFree(pConst->pParse->db, pConst->apExpr, pConst->nConst * 2 * sizeof(Expr *));
+  pConst->apExpr = (Expr**)(sqlite3DbReallocOrFree(pConst->pParse->db, pConst->apExpr, pConst->nConst * 2 * sizeof(Expr *)));
   if (pConst->apExpr == 0) {
     pConst->nConst = 0;
   } else {

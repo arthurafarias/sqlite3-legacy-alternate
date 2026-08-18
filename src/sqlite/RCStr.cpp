@@ -23,7 +23,7 @@ void sqlite3RCStrUnref(void *z) {
 }
 
 char *sqlite3RCStrNew(u64 N) {
-  RCStr *p = sqlite3_malloc64(N + sizeof(*p) + 1);
+  RCStr *p = (RCStr*)(sqlite3_malloc64(N + sizeof(*p) + 1));
   if (p == 0)
     return 0;
   p->nRCRef = 1;
@@ -36,7 +36,7 @@ char *sqlite3RCStrResize(char *z, u64 N) {
 
   p--;
 
-  pNew = sqlite3_realloc64(p, N + sizeof(RCStr) + 1);
+  pNew = (RCStr*)(sqlite3_realloc64(p, N + sizeof(RCStr) + 1));
   if (pNew == 0) {
     sqlite3_free(p);
     return 0;

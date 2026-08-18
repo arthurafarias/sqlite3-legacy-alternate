@@ -2,13 +2,14 @@
 #include <math.h>
 #include "sqlite/SumCtx.h"
 #include "sqlite/i64.h"
-void kahanBabuskaNeumaierStep(volatile SumCtx *pSum, volatile double r) {
+void kahanBabuskaNeumaierStep(volatile SumCtx *pSum, double r) {
   volatile double s = pSum->rSum;
-  volatile double t = s + r;
-  if (fabs(s) > fabs(r)) {
-    pSum->rErr += (s - t) + r;
+  volatile double vr = r;
+  volatile double t = s + vr;
+  if (fabs(s) > fabs(vr)) {
+    pSum->rErr += (s - t) + vr;
   } else {
-    pSum->rErr += (r - t) + s;
+    pSum->rErr += (vr - t) + s;
   }
   pSum->rSum = t;
 }

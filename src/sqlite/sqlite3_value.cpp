@@ -74,7 +74,7 @@ int sqlite3ValueIsOfClass(const sqlite3_value *pVal, void (*xFree)(void *)) {
 
 void sqlite3ValueSetStr(sqlite3_value *v, int n, const void *z, u8 enc, void (*xDel)(void *)) {
   if (v)
-    sqlite3VdbeMemSetStr((Mem *)v, z, n, enc, xDel);
+    sqlite3VdbeMemSetStr((Mem *)v, (const char*)(z), n, enc, xDel);
 }
 
 void sqlite3ValueFree(sqlite3_value *v) {
@@ -198,7 +198,7 @@ sqlite3_value *sqlite3_value_dup(const sqlite3_value *pOrig) {
   sqlite3_value *pNew;
   if (pOrig == 0)
     return 0;
-  pNew = sqlite3_malloc(sizeof(*pNew));
+  pNew = (sqlite3_value*)(sqlite3_malloc(sizeof(*pNew)));
   if (pNew == 0)
     return 0;
   memset(pNew, 0, sizeof(*pNew));

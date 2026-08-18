@@ -58,7 +58,7 @@ extern "C" {
     Bitmask revMask;
     WhereClause sWC;
     WhereMaskSet sMaskSet;
-    WhereLevel a[];
+    WhereLevel a[1];
   };
 
   void sqlite3WhereEnd(WhereInfo *);

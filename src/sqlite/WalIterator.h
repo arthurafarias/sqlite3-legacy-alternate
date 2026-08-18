@@ -9,7 +9,7 @@ typedef struct WalIterator WalIterator;
 struct WalIterator {
   u32 iPrior;
   int nSegment;
-  WalSegment aSegment[];
+  WalSegment aSegment[1];
 };
 
 int walIteratorNext(WalIterator *p, u32 *piPage, u32 *piFrame);

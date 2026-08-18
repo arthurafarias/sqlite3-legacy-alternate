@@ -101,7 +101,7 @@ int findInodeInfo(unixFile *pFile, unixInodeInfo **ppInode) {
     pInode = pInode->pNext;
   }
   if (pInode == 0) {
-    pInode = sqlite3_malloc64(sizeof(*pInode));
+    pInode = (unixInodeInfo*)(sqlite3_malloc64(sizeof(*pInode)));
     if (pInode == 0) {
       return 7;
     }
@@ -429,7 +429,7 @@ int unixOpenSharedMemory(unixFile *pDbFd) {
   char *zShm;
   int nShmFilename;
 
-  p = sqlite3_malloc64(sizeof(*p));
+  p = (unixShm*)(sqlite3_malloc64(sizeof(*p)));
   if (p == 0)
     return 7;
   memset(p, 0, sizeof(*p));
@@ -449,7 +449,7 @@ int unixOpenSharedMemory(unixFile *pDbFd) {
 
     nShmFilename = 6 + (int)strlen(zBasePath);
 
-    pShmNode = sqlite3_malloc64(sizeof(*pShmNode) + nShmFilename);
+    pShmNode = (unixShmNode*)(sqlite3_malloc64(sizeof(*pShmNode) + nShmFilename));
     if (pShmNode == 0) {
       rc = 7;
       goto shm_open_err;
@@ -537,7 +537,7 @@ void unixRemapfile(unixFile *pFd, i64 nNew) {
     }
 
     pNew =
-        ((void *(*)(void *, size_t, size_t, int, ...))aSyscall[SQLITE_SYSCALL_MREMAP].pCurrent)(pOrig, nReuse, nNew, 1);
+        (u8*)(((void *(*)(void *, size_t, size_t, int, ...))aSyscall[SQLITE_SYSCALL_MREMAP].pCurrent)(pOrig, nReuse, nNew, 1));
     zErr = "mremap";
 
     if (pNew == ((void *)-1) || pNew == 0) {
@@ -546,8 +546,8 @@ void unixRemapfile(unixFile *pFd, i64 nNew) {
   }
 
   if (pNew == 0) {
-    pNew = ((void *(*)(void *, size_t, int, int, int, off_t))aSyscall[SQLITE_SYSCALL_MMAP].pCurrent)(0, nNew, flags,
-                                                                                                     0x01, h, 0);
+    pNew = (u8 *)(((void *(*)(void *, size_t, int, int, int, off_t))aSyscall[SQLITE_SYSCALL_MMAP].pCurrent)(
+        0, nNew, flags, 0x01, h, 0));
   }
 
   if (pNew == ((void *)-1)) {

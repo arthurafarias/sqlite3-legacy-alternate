@@ -517,16 +517,16 @@ int parseModifier(sqlite3_context *pCtx, const char *z, int n, DateTime *p, int 
           iGuess = iOrigJD = p->iJD;
           iErr = 0;
           do {
-            DateTime new;
-            memset(&new, 0, sizeof(new));
+            DateTime newDt;
+            memset(&newDt, 0, sizeof(newDt));
             iGuess -= iErr;
-            new.iJD = iGuess;
-            new.validJD = 1;
-            rc = toLocaltime(&new, pCtx);
+            newDt.iJD = iGuess;
+            newDt.validJD = 1;
+            rc = toLocaltime(&newDt, pCtx);
             if (rc)
               return rc;
-            computeJD(&new);
-            iErr = new.iJD - iOrigJD;
+            computeJD(&newDt);
+            iErr = newDt.iJD - iOrigJD;
           } while (iErr && cnt++ < 3);
           memset(p, 0, sizeof(*p));
           p->iJD = iGuess;
@@ -1241,14 +1241,14 @@ void setResultStrOrError(sqlite3_context *pCtx, const char *z, int n, u8 enc, vo
 }
 
 void sqlite3_result_blob(sqlite3_context *pCtx, const void *z, int n, void (*xDel)(void *)) {
-  setResultStrOrError(pCtx, z, n, 0, xDel);
+  setResultStrOrError(pCtx, (const char*)(z), n, 0, xDel);
 }
 
 void sqlite3_result_blob64(sqlite3_context *pCtx, const void *z, sqlite3_uint64 n, void (*xDel)(void *)) {
   if (n > 0x7fffffff) {
     (void)invokeValueDestructor(z, xDel, pCtx);
   } else {
-    setResultStrOrError(pCtx, z, (int)n, 0, xDel);
+    setResultStrOrError(pCtx, (const char*)(z), (int)n, 0, xDel);
   }
 }
 
@@ -1263,7 +1263,7 @@ void sqlite3_result_error(sqlite3_context *pCtx, const char *z, int n) {
 
 void sqlite3_result_error16(sqlite3_context *pCtx, const void *z, int n) {
   pCtx->isError = SQLITE_ERROR;
-  sqlite3VdbeMemSetStr(pCtx->pOut, z, n, 2, ((sqlite3_destructor_type)-1));
+  sqlite3VdbeMemSetStr(pCtx->pOut, (const char*)(z), n, 2, ((sqlite3_destructor_type)-1));
 }
 
 void sqlite3_result_int(sqlite3_context *pCtx, int iVal) {
@@ -1317,15 +1317,15 @@ void sqlite3_result_text64(sqlite3_context *pCtx, const char *z, sqlite3_uint64 
 }
 
 void sqlite3_result_text16(sqlite3_context *pCtx, const void *z, int n, void (*xDel)(void *)) {
-  setResultStrOrError(pCtx, z, n & ~(u64)1, 2, xDel);
+  setResultStrOrError(pCtx, (const char*)(z), n & ~(u64)1, 2, xDel);
 }
 
 void sqlite3_result_text16be(sqlite3_context *pCtx, const void *z, int n, void (*xDel)(void *)) {
-  setResultStrOrError(pCtx, z, n & ~(u64)1, SQLITE_UTF16BE, xDel);
+  setResultStrOrError(pCtx, (const char*)(z), n & ~(u64)1, SQLITE_UTF16BE, xDel);
 }
 
 void sqlite3_result_text16le(sqlite3_context *pCtx, const void *z, int n, void (*xDel)(void *)) {
-  setResultStrOrError(pCtx, z, n & ~(u64)1, SQLITE_UTF16LE, xDel);
+  setResultStrOrError(pCtx, (const char*)(z), n & ~(u64)1, SQLITE_UTF16LE, xDel);
 }
 
 void sqlite3_result_value(sqlite3_context *pCtx, sqlite3_value *pValue) {
@@ -1457,7 +1457,7 @@ void sqlite3_set_auxdata(sqlite3_context *pCtx, int iArg, void *pAux, void (*xDe
     }
   }
   if (pAuxData == 0) {
-    pAuxData = sqlite3DbMallocZero(pVdbe->db, sizeof(AuxData));
+    pAuxData = (AuxData*)(sqlite3DbMallocZero(pVdbe->db, sizeof(AuxData)));
     if (!pAuxData)
       goto failed;
     pAuxData->iAuxOp = pCtx->iOp;
@@ -1531,7 +1531,7 @@ int renameEditSql(sqlite3_context *pCtx, RenameCtx *pRename, const char *zSql, c
       nQuot = sqlite3Strlen30(zQuot) - 1;
     }
 
-    zOut = sqlite3DbMallocZero(db, (u64)nSql + pRename->nList * (u64)nQuot + 1);
+    zOut = (char*)(sqlite3DbMallocZero(db, (u64)nSql + pRename->nList * (u64)nQuot + 1));
   } else {
     zOut = (char *)sqlite3DbMallocZero(db, (2 * (u64)nSql + 1) * 3);
     if (zOut) {
@@ -2063,7 +2063,7 @@ int quotedCompare(sqlite3_context *ctx, int t, const u8 *zQuote, int nQuote, con
     *pRes = 1;
     return SQLITE_OK;
   }
-  zCopy = sqlite3MallocZero(nQuote + 1);
+  zCopy = (char*)(sqlite3MallocZero(nQuote + 1));
   if (zCopy == 0) {
     sqlite3_result_error_nomem(ctx);
     return 7;
@@ -2289,7 +2289,7 @@ void statInit(sqlite3_context *context, int argc, sqlite3_value **argv) {
 
   n = sizeof(*p) + sizeof(tRowcnt) * nColUp;
 
-  p = sqlite3DbMallocZero(db, n);
+  p = (StatAccum*)(sqlite3DbMallocZero(db, n));
   if (p == 0) {
     sqlite3_result_error_nomem(context);
     return;
@@ -2415,12 +2415,12 @@ void attachFunc(sqlite3_context *context, int NotUsed, sqlite3_value **argv) {
     }
 
     if (db->aDb == db->aDbStatic) {
-      aNew = sqlite3DbMallocRawNN(db, sizeof(db->aDb[0]) * 3);
+      aNew = (Db*)(sqlite3DbMallocRawNN(db, sizeof(db->aDb[0]) * 3));
       if (aNew == 0)
         return;
       memcpy(aNew, db->aDb, sizeof(db->aDb[0]) * 2);
     } else {
-      aNew = sqlite3DbRealloc(db, db->aDb, sizeof(db->aDb[0]) * (1 + (i64)db->nDb));
+      aNew = (Db*)(sqlite3DbRealloc(db, db->aDb, sizeof(db->aDb[0]) * (1 + (i64)db->nDb)));
       if (aNew == 0)
         return;
     }
@@ -2733,8 +2733,8 @@ void instrFunc(sqlite3_context *context, int argc, sqlite3_value **argv) {
   nNeedle = sqlite3_value_bytes(argv[1]);
   if (nNeedle > 0) {
     if (typeHaystack == SQLITE_BLOB && typeNeedle == SQLITE_BLOB) {
-      zHaystack = sqlite3_value_blob(argv[0]);
-      zNeedle = sqlite3_value_blob(argv[1]);
+      zHaystack = (const unsigned char*)(sqlite3_value_blob(argv[0]));
+      zNeedle = (const unsigned char*)(sqlite3_value_blob(argv[1]));
       isText = 0;
     } else if (typeHaystack != SQLITE_BLOB && typeNeedle != SQLITE_BLOB) {
       zHaystack = sqlite3_value_text(argv[0]);
@@ -2815,7 +2815,7 @@ void substrFunc(sqlite3_context *context, int argc, sqlite3_value **argv) {
   p1 = sqlite3_value_int64(argv[1]);
   if (p0type == SQLITE_BLOB) {
     len = sqlite3_value_bytes(argv[0]);
-    z = sqlite3_value_blob(argv[0]);
+    z = (const unsigned char*)(sqlite3_value_blob(argv[0]));
     if (z == 0)
       return;
 
@@ -2943,7 +2943,7 @@ void *contextMalloc(sqlite3_context *context, i64 nByte) {
     sqlite3_result_error_toobig(context);
     z = 0;
   } else {
-    z = sqlite3Malloc(nByte);
+    z = (char*)(sqlite3Malloc(nByte));
     if (!z) {
       sqlite3_result_error_nomem(context);
     }
@@ -2960,7 +2960,7 @@ void upperFunc(sqlite3_context *context, int argc, sqlite3_value **argv) {
   n = sqlite3_value_bytes(argv[0]);
 
   if (z2) {
-    z1 = contextMalloc(context, ((i64)n) + 1);
+    z1 = (char*)(contextMalloc(context, ((i64)n) + 1));
     if (z1) {
       for (i = 0; i < n; i++) {
         z1[i] = (char)((z2[i]) & ~(sqlite3CtypeMap[(unsigned char)(z2[i])] & 0x20));
@@ -2979,7 +2979,7 @@ void lowerFunc(sqlite3_context *context, int argc, sqlite3_value **argv) {
   n = sqlite3_value_bytes(argv[0]);
 
   if (z2) {
-    z1 = contextMalloc(context, ((i64)n) + 1);
+    z1 = (char*)(contextMalloc(context, ((i64)n) + 1));
     if (z1) {
       for (i = 0; i < n; i++) {
         z1[i] = (sqlite3UpperToLower[(unsigned char)(z2[i])]);
@@ -3008,7 +3008,7 @@ void randomBlob(sqlite3_context *context, int argc, sqlite3_value **argv) {
   if (n < 1) {
     n = 1;
   }
-  p = contextMalloc(context, n);
+  p = (unsigned char*)(contextMalloc(context, n));
   if (p) {
     sqlite3_randomness(n, p);
     sqlite3_result_blob(context, (char *)p, n, sqlite3_free);
@@ -3040,7 +3040,7 @@ void likeFunc(sqlite3_context *context, int argc, sqlite3_value **argv) {
   u32 escape;
   int nPat;
   sqlite3 *db = sqlite3_context_db_handle(context);
-  struct compareInfo *pInfo = sqlite3_user_data(context);
+  struct compareInfo *pInfo = (compareInfo*)(sqlite3_user_data(context));
   struct compareInfo backupInfo;
 
   nPat = sqlite3_value_bytes(argv[0]);
@@ -3132,16 +3132,14 @@ void unistrFunc(sqlite3_context *context, int argc, sqlite3_value **argv) {
   if (zIn == 0)
     return;
   nIn = sqlite3_value_bytes(argv[0]);
-  zOut = sqlite3_malloc64(nIn + 1);
+  zOut = (char*)(sqlite3_malloc64(nIn + 1));
   if (zOut == 0) {
     sqlite3_result_error_nomem(context);
     return;
   }
   i = j = 0;
   while (i < nIn) {
-    const char *z = _Generic(0 ? (&zIn[i]) : (void *)1,
-        const void *: (const char *)(strchr(&zIn[i], '\\')),
-        default: strchr(&zIn[i], '\\'));
+    const char *z = strchr(&zIn[i], '\\');
     if (z == 0) {
       n = nIn - i;
       memmove(&zOut[j], &zIn[i], n);
@@ -3215,7 +3213,7 @@ void unicodeFunc(sqlite3_context *context, int argc, sqlite3_value **argv) {
 void charFunc(sqlite3_context *context, int argc, sqlite3_value **argv) {
   unsigned char *z, *zOut;
   int i;
-  zOut = z = sqlite3_malloc64(argc * 4 + 1);
+  zOut = z = (unsigned char*)(sqlite3_malloc64(argc * 4 + 1));
   if (z == 0) {
     sqlite3_result_error_nomem(context);
     return;
@@ -3253,10 +3251,10 @@ void hexFunc(sqlite3_context *context, int argc, sqlite3_value **argv) {
   char *zHex, *z;
 
   (void)(argc);
-  pBlob = sqlite3_value_blob(argv[0]);
+  pBlob = (const unsigned char*)(sqlite3_value_blob(argv[0]));
   n = sqlite3_value_bytes(argv[0]);
 
-  z = zHex = contextMalloc(context, ((i64)n) * 2 + 1);
+  z = zHex = (char*)(contextMalloc(context, ((i64)n) * 2 + 1));
   if (zHex) {
     for (i = 0; i < n; i++, pBlob++) {
       unsigned char c = *pBlob;
@@ -3284,7 +3282,7 @@ void unhexFunc(sqlite3_context *pCtx, int argc, sqlite3_value **argv) {
   if (!zHex || !zPass)
     return;
 
-  p = pBlob = contextMalloc(pCtx, (nHex / 2) + 1);
+  p = pBlob = (u8*)(contextMalloc(pCtx, (nHex / 2) + 1));
   if (pBlob) {
     u8 c;
     u8 d;
@@ -3368,7 +3366,7 @@ void replaceFunc(sqlite3_context *context, int argc, sqlite3_value **argv) {
 
   nOut = nStr + 1;
 
-  zOut = contextMalloc(context, nOut);
+  zOut = (unsigned char*)(contextMalloc(context, nOut));
   if (zOut == 0) {
     return;
   }
@@ -3389,7 +3387,7 @@ void replaceFunc(sqlite3_context *context, int argc, sqlite3_value **argv) {
         if ((cntExpand & (cntExpand - 1)) == 0) {
           u8 *zOld;
           zOld = zOut;
-          zOut = sqlite3Realloc(zOut, (int)nOut + (nOut - nStr - 1));
+          zOut = (unsigned char*)(sqlite3Realloc(zOut, (int)nOut + (nOut - nStr - 1)));
           if (zOut == 0) {
             sqlite3_result_error_nomem(context);
             sqlite3_free(zOld);
@@ -3449,7 +3447,7 @@ void trimFunc(sqlite3_context *context, int argc, sqlite3_value **argv) {
       };
     }
     if (nChar > 0) {
-      azChar = contextMalloc(context, ((i64)nChar) * (sizeof(char *) + sizeof(unsigned)));
+      azChar = (unsigned char**)(contextMalloc(context, ((i64)nChar) * (sizeof(char *) + sizeof(unsigned))));
       if (azChar == 0) {
         return;
       }
@@ -3512,7 +3510,7 @@ void concatFuncCore(sqlite3_context *context, int argc, sqlite3_value **argv, in
     n += sqlite3_value_bytes(argv[i]);
   }
   n += (argc - 1) * (i64)nSep;
-  z = sqlite3_malloc64(n + 1);
+  z = (char*)(sqlite3_malloc64(n + 1));
   if (z == 0) {
     sqlite3_result_error_nomem(context);
     return;
@@ -3577,7 +3575,7 @@ void sumStep(sqlite3_context *context, int argc, sqlite3_value **argv) {
   int type;
 
   (void)(argc);
-  p = sqlite3_aggregate_context(context, sizeof(*p));
+  p = (SumCtx*)(sqlite3_aggregate_context(context, sizeof(*p)));
   type = sqlite3_value_numeric_type(argv[0]);
   if (p && type != SQLITE_NULL) {
     p->cnt++;
@@ -3613,7 +3611,7 @@ void sumInverse(sqlite3_context *context, int argc, sqlite3_value **argv) {
   int type;
 
   (void)(argc);
-  p = sqlite3_aggregate_context(context, sizeof(*p));
+  p = (SumCtx*)(sqlite3_aggregate_context(context, sizeof(*p)));
   type = sqlite3_value_numeric_type(argv[0]);
 
   if ((p) && type != SQLITE_NULL) {
@@ -3644,7 +3642,7 @@ void sumInverse(sqlite3_context *context, int argc, sqlite3_value **argv) {
 
 void sumFinalize(sqlite3_context *context) {
   SumCtx *p;
-  p = sqlite3_aggregate_context(context, 0);
+  p = (SumCtx*)(sqlite3_aggregate_context(context, 0));
   if (p && p->cnt > 0) {
     if (p->approx) {
       if (p->ovrfl) {
@@ -3662,7 +3660,7 @@ void sumFinalize(sqlite3_context *context) {
 
 void avgFinalize(sqlite3_context *context) {
   SumCtx *p;
-  p = sqlite3_aggregate_context(context, 0);
+  p = (SumCtx*)(sqlite3_aggregate_context(context, 0));
   if (p && p->cnt > 0) {
     double r;
     if (p->approx) {
@@ -3679,7 +3677,7 @@ void avgFinalize(sqlite3_context *context) {
 void totalFinalize(sqlite3_context *context) {
   SumCtx *p;
   double r = 0.0;
-  p = sqlite3_aggregate_context(context, 0);
+  p = (SumCtx*)(sqlite3_aggregate_context(context, 0));
   if (p) {
     if (p->approx) {
       r = p->rSum;
@@ -3694,7 +3692,7 @@ void totalFinalize(sqlite3_context *context) {
 
 void countStep(sqlite3_context *context, int argc, sqlite3_value **argv) {
   CountCtx *p;
-  p = sqlite3_aggregate_context(context, sizeof(*p));
+  p = (CountCtx*)(sqlite3_aggregate_context(context, sizeof(*p)));
   if ((argc == 0 || SQLITE_NULL != sqlite3_value_type(argv[0])) && p) {
     p->n++;
   }
@@ -3702,13 +3700,13 @@ void countStep(sqlite3_context *context, int argc, sqlite3_value **argv) {
 
 void countFinalize(sqlite3_context *context) {
   CountCtx *p;
-  p = sqlite3_aggregate_context(context, 0);
+  p = (CountCtx*)(sqlite3_aggregate_context(context, 0));
   sqlite3_result_int64(context, p ? p->n : 0);
 }
 
 void countInverse(sqlite3_context *ctx, int argc, sqlite3_value **argv) {
   CountCtx *p;
-  p = sqlite3_aggregate_context(ctx, sizeof(*p));
+  p = (CountCtx*)(sqlite3_aggregate_context(ctx, sizeof(*p)));
 
   if ((argc == 0 || SQLITE_NULL != sqlite3_value_type(argv[0])) && (p)) {
     p->n--;
@@ -4072,7 +4070,7 @@ void percentStep(sqlite3_context *pCtx, int argc, sqlite3_value **argv) {
 
   if (p->nUsed >= p->nAlloc) {
     u64 n = p->nAlloc * 2 + 250;
-    double *a = sqlite3_realloc64(p->a, sizeof(double) * n);
+    double *a = (double*)(sqlite3_realloc64(p->a, sizeof(double) * n));
     if (a == 0) {
       sqlite3_free(p->a);
       memset(p, 0, sizeof(*p));
@@ -4485,15 +4483,15 @@ void sqlite3InvalidFunction(sqlite3_context *context, int NotUsed, sqlite3_value
 int jsonCacheInsert(sqlite3_context *ctx, JsonParse *pParse) {
   JsonCache *p;
 
-  p = sqlite3_get_auxdata(ctx, (-429938));
+  p = (JsonCache*)(sqlite3_get_auxdata(ctx, (-429938)));
   if (p == 0) {
     sqlite3 *db = sqlite3_context_db_handle(ctx);
-    p = sqlite3DbMallocZero(db, sizeof(*p));
+    p = (JsonCache*)(sqlite3DbMallocZero(db, sizeof(*p)));
     if (p == 0)
       return SQLITE_NOMEM;
     p->db = db;
     sqlite3_set_auxdata(ctx, (-429938), p, jsonCacheDeleteGeneric);
-    p = sqlite3_get_auxdata(ctx, (-429938));
+    p = (JsonCache*)(sqlite3_get_auxdata(ctx, (-429938)));
     if (p == 0)
       return SQLITE_NOMEM;
   }
@@ -4525,7 +4523,7 @@ JsonParse *jsonCacheSearch(sqlite3_context *ctx, sqlite3_value *pArg) {
     return 0;
   nJson = sqlite3_value_bytes(pArg);
 
-  p = sqlite3_get_auxdata(ctx, (-429938));
+  p = (JsonCache*)(sqlite3_get_auxdata(ctx, (-429938)));
   if (p == 0) {
     return 0;
   }
@@ -4746,7 +4744,7 @@ JsonParse *jsonParseFuncArg(sqlite3_context *ctx, sqlite3_value *pArg, u32 flgs)
   }
   db = sqlite3_context_db_handle(ctx);
 rebuild_from_cache:
-  p = sqlite3DbMallocZero(db, sizeof(*p));
+  p = (JsonParse*)(sqlite3DbMallocZero(db, sizeof(*p)));
   if (p == 0)
     goto json_pfa_oom;
   memset(p, 0, sizeof(*p));
@@ -4754,7 +4752,7 @@ rebuild_from_cache:
   p->nJPRef = 1;
   if (pFromCache != 0) {
     u32 nBlob = pFromCache->nBlob;
-    p->aBlob = sqlite3DbMallocRaw(db, nBlob);
+    p->aBlob = (u8*)(sqlite3DbMallocRaw(db, nBlob));
     if (p->aBlob == 0)
       goto json_pfa_oom;
     memcpy(p->aBlob, pFromCache->aBlob, nBlob);

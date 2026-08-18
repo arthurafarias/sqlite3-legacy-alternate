@@ -35,7 +35,7 @@ extern "C" {
     u8 enc;
     u8 skipFlag;
     u16 argc;
-    sqlite3_value *argv[];
+    sqlite3_value *argv[1];
   };
 
   int sqlite3_aggregate_count(sqlite3_context *);

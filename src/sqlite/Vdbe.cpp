@@ -231,7 +231,7 @@ int growOpArray(Vdbe *v, int nOp) {
     return SQLITE_NOMEM;
   }
 
-  pNew = sqlite3DbRealloc(p->db, v->aOp, nNew * sizeof(Op));
+  pNew = (VdbeOp*)(sqlite3DbRealloc(p->db, v->aOp, nNew * sizeof(Op)));
   if (pNew) {
     p->szOpAlloc = sqlite3DbMallocSize(p->db, pNew);
     v->nOpAlloc = p->szOpAlloc / sizeof(Op);
@@ -351,7 +351,7 @@ int sqlite3VdbeAddOp4(Vdbe *p, int op, int p1, int p2, int p3, const char *zP4, 
 }
 
 int sqlite3VdbeAddOp4Dup8(Vdbe *p, int op, int p1, int p2, int p3, const u8 *zP4, int p4type) {
-  char *p4copy = sqlite3DbMallocRawNN(sqlite3VdbeDb(p), 8);
+  char *p4copy = (char*)(sqlite3DbMallocRawNN(sqlite3VdbeDb(p), 8));
   if (p4copy)
     memcpy(p4copy, zP4, 8);
   return sqlite3VdbeAddOp4(p, op, p1, p2, p3, p4copy, p4type);
@@ -890,18 +890,18 @@ void sqlite3VdbeMakeReady(Vdbe *p, Parse *pParse) {
   p->expired = 0;
 
   x.nNeeded = 0;
-  p->aMem = allocSpace(&x, 0, nMem * sizeof(Mem));
-  p->aVar = allocSpace(&x, 0, nVar * sizeof(Mem));
-  p->apArg = allocSpace(&x, 0, nArg * sizeof(Mem *));
-  p->apCsr = allocSpace(&x, 0, nCursor * sizeof(VdbeCursor *));
+  p->aMem = (Mem*)(allocSpace(&x, 0, nMem * sizeof(Mem)));
+  p->aVar = (Mem*)(allocSpace(&x, 0, nVar * sizeof(Mem)));
+  p->apArg = (Mem**)(allocSpace(&x, 0, nArg * sizeof(Mem *)));
+  p->apCsr = (VdbeCursor**)(allocSpace(&x, 0, nCursor * sizeof(VdbeCursor *)));
   if (x.nNeeded) {
-    x.pSpace = p->pFree = sqlite3DbMallocRawNN(db, x.nNeeded);
+    x.pSpace = (u8*)(p->pFree = sqlite3DbMallocRawNN(db, x.nNeeded));
     x.nFree = x.nNeeded;
     if (!db->mallocFailed) {
-      p->aMem = allocSpace(&x, p->aMem, nMem * sizeof(Mem));
-      p->aVar = allocSpace(&x, p->aVar, nVar * sizeof(Mem));
-      p->apArg = allocSpace(&x, p->apArg, nArg * sizeof(Mem *));
-      p->apCsr = allocSpace(&x, p->apCsr, nCursor * sizeof(VdbeCursor *));
+      p->aMem = (Mem*)(allocSpace(&x, p->aMem, nMem * sizeof(Mem)));
+      p->aVar = (Mem*)(allocSpace(&x, p->aVar, nVar * sizeof(Mem)));
+      p->apArg = (Mem**)(allocSpace(&x, p->apArg, nArg * sizeof(Mem *)));
+      p->apCsr = (VdbeCursor**)(allocSpace(&x, p->apCsr, nCursor * sizeof(VdbeCursor *)));
     }
   }
 
@@ -2048,7 +2048,7 @@ VdbeCursor *allocateCursor(Vdbe *p, int iCur, int nField, u8 eCurType) {
     if (pMem->szMalloc > 0) {
       sqlite3DbFreeNN(pMem->db, pMem->zMalloc);
     }
-    pMem->z = pMem->zMalloc = sqlite3DbMallocRaw(pMem->db, nByte);
+    pMem->z = pMem->zMalloc = (char*)(sqlite3DbMallocRaw(pMem->db, nByte));
     if (pMem->zMalloc == 0) {
       pMem->szMalloc = 0;
       return 0;
@@ -2254,7 +2254,7 @@ int sqlite3VdbeExec(Vdbe *p) {
           if (pOp->p3 > 0 && pOp->p4type == 0) {
             const char *zErr;
 
-            zErr = sqlite3ValueText(&aMem[pOp->p3], SQLITE_UTF8);
+            zErr = (const char*)(sqlite3ValueText(&aMem[pOp->p3], SQLITE_UTF8));
             sqlite3VdbeError(p, "%s", zErr);
           } else if (pOp->p5) {
             static const char *const azType[] = {"NOT NULL", "UNIQUE", "CHECK", "FOREIGN KEY"};
@@ -3125,7 +3125,7 @@ int sqlite3VdbeExec(Vdbe *p) {
             }
 
             pC->payloadSize = sqlite3BtreePayloadSize(pCrsr);
-            pC->aRow = sqlite3BtreePayloadFetch(pCrsr, &pC->szRow);
+            pC->aRow = (const u8*)(sqlite3BtreePayloadFetch(pCrsr, &pC->szRow));
           }
           pC->cacheStatus = p->cacheCtr;
           if ((aOffset[0] = pC->aRow[0]) < 0x80) {
@@ -3640,7 +3640,7 @@ int sqlite3VdbeExec(Vdbe *p) {
             if (rc != SQLITE_OK)
               goto abort_due_to_error;
 
-            pNew = sqlite3DbMallocRawNN(db, sizeof(Savepoint) + nName + 1);
+            pNew = (Savepoint*)(sqlite3DbMallocRawNN(db, sizeof(Savepoint) + nName + 1));
             if (pNew) {
               pNew->zName = (char *)&pNew[1];
               memcpy(pNew->zName, zName, nName + 1);
@@ -4002,7 +4002,7 @@ int sqlite3VdbeExec(Vdbe *p) {
 
         if (pOp->p3 > 0) {
           aMem[pOp->p3].n = 0;
-          aMem[pOp->p3].z = "";
+          aMem[pOp->p3].z = (char*)("");
         }
         pCx = p->apCsr[pOp->p1];
         if (pCx && !pCx->noReuse && (pOp->p2 <= pCx->nField)) {
@@ -5373,7 +5373,7 @@ int sqlite3VdbeExec(Vdbe *p) {
             nMem++;
           nByte = (((sizeof(VdbeFrame)) + 7) & ~7) + nMem * sizeof(Mem) + pProgram->nCsr * sizeof(VdbeCursor *) +
                   (7 + (i64)pProgram->nOp) / 8;
-          pFrame = sqlite3DbMallocZero(db, nByte);
+          pFrame = (VdbeFrame*)(sqlite3DbMallocZero(db, nByte));
           if (!pFrame) {
             goto no_mem;
           }
@@ -5535,7 +5535,7 @@ int sqlite3VdbeExec(Vdbe *p) {
         n = pOp->p5;
 
         nAlloc = ((offsetof(sqlite3_context, argv) + (n) * sizeof(sqlite3_value *)));
-        pCtx = sqlite3DbMallocRawNN(db, nAlloc + sizeof(Mem));
+        pCtx = (sqlite3_context*)(sqlite3DbMallocRawNN(db, nAlloc + sizeof(Mem)));
         if (pCtx == 0)
           goto no_mem;
         pCtx->pOut = (Mem *)((u8 *)pCtx + nAlloc);
@@ -5878,7 +5878,7 @@ int sqlite3VdbeExec(Vdbe *p) {
         ValueList *pRhs;
 
         pC = p->apCsr[pOp->p1];
-        pRhs = sqlite3_malloc64(sizeof(*pRhs));
+        pRhs = (ValueList*)(sqlite3_malloc64(sizeof(*pRhs)));
         if (pRhs == 0)
           goto no_mem;
         pRhs->pCsr = pC->uc.pCursor;

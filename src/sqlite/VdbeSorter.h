@@ -31,7 +31,7 @@ extern "C" {
     u8 iPrev;
     u8 nTask;
     u8 typeMask;
-    SortSubtask aTask[];
+    SortSubtask aTask[1];
   };
 
   int vdbeSorterJoinAll(VdbeSorter * pSorter, int rcin);

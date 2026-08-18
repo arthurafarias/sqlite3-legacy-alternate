@@ -9,7 +9,7 @@ extern "C" {
     DbClientData *pNext;
     void *pData;
     void (*xDestructor)(void *);
-    char zName[];
+    char zName[1];
   };
 
 #ifdef __cplusplus

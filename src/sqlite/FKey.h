@@ -20,7 +20,7 @@ struct FKey {
   u8 isDeferred;
   u8 aAction[2];
   Trigger *apTrigger[2];
-  sColMap aCol[];
+  sColMap aCol[1];
 };
 
 #ifdef __cplusplus

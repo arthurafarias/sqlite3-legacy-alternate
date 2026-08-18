@@ -332,7 +332,7 @@ int vdbeSorterListToPMA(SortSubtask *pTask, SorterList *pList) {
     for (p = pList->pList; p; p = pNext) {
       pNext = p->u.pNext;
       vdbePmaWriteVarint(&writer, p->nVal);
-      vdbePmaWriteBlob(&writer, ((void *)((SorterRecord *)(p) + 1)), p->nVal);
+      vdbePmaWriteBlob(&writer, (u8*)(((void *)((SorterRecord *)(p) + 1))), p->nVal);
       if (pList->aMemory == 0)
         sqlite3_free(p);
     }

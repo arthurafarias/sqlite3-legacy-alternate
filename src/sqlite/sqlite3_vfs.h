@@ -1,6 +1,6 @@
 #pragma once
 #ifdef __cplusplus
-#extern "C" {
+extern "C" {
 #endif
 #include "sqlite/Btree.h"
 #include "sqlite/Pager.h"

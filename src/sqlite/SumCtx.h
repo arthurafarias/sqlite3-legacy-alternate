@@ -15,7 +15,7 @@ extern "C" {
     u8 ovrfl;
   };
 
-  void kahanBabuskaNeumaierStep(volatile SumCtx * pSum, volatile double r);
+  void kahanBabuskaNeumaierStep(volatile SumCtx * pSum, double r);
   void kahanBabuskaNeumaierStepInt64(volatile SumCtx * pSum, i64 iVal);
   void kahanBabuskaNeumaierInit(volatile SumCtx * p, i64 iVal);
 

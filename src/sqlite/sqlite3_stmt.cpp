@@ -316,7 +316,7 @@ columnName_end:
 }
 
 const char *sqlite3_column_name(sqlite3_stmt *pStmt, int N) {
-  return columnName(pStmt, N, 0, 0);
+  return (const char*)(columnName(pStmt, N, 0, 0));
 }
 
 const void *sqlite3_column_name16(sqlite3_stmt *pStmt, int N) {
@@ -324,7 +324,7 @@ const void *sqlite3_column_name16(sqlite3_stmt *pStmt, int N) {
 }
 
 const char *sqlite3_column_decltype(sqlite3_stmt *pStmt, int N) {
-  return columnName(pStmt, N, 0, 1);
+  return (const char*)(columnName(pStmt, N, 0, 1));
 }
 
 const void *sqlite3_column_decltype16(sqlite3_stmt *pStmt, int N) {
@@ -341,12 +341,12 @@ int bindText(sqlite3_stmt *pStmt, int i, const void *zData, i64 nData, void (*xD
     if (zData != 0) {
       pVar = &p->aVar[i - 1];
       if (encoding == SQLITE_UTF8) {
-        rc = sqlite3VdbeMemSetText(pVar, zData, nData, xDel);
+        rc = sqlite3VdbeMemSetText(pVar, (const char*)(zData), nData, xDel);
       } else if (encoding == SQLITE_UTF8_ZT) {
-        rc = sqlite3VdbeMemSetText(pVar, zData, nData, xDel);
+        rc = sqlite3VdbeMemSetText(pVar, (const char*)(zData), nData, xDel);
         pVar->flags |= 0x0200;
       } else {
-        rc = sqlite3VdbeMemSetStr(pVar, zData, nData, encoding, xDel);
+        rc = sqlite3VdbeMemSetStr(pVar, (const char*)(zData), nData, encoding, xDel);
         if (encoding == 0)
           pVar->enc = ((p->db)->enc);
       }

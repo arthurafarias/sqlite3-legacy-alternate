@@ -14,7 +14,7 @@ extern "C" {
   struct SrcList {
     int nSrc;
     u32 nAlloc;
-    SrcItem a[];
+    SrcItem a[1];
   };
 
   int tableAndColumnIndex(SrcList * pSrc, int iStart, int iEnd, const char *zCol, int *piTab, int *piCol,

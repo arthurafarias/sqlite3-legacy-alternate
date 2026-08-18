@@ -44,7 +44,7 @@ int rebuildPage(CellArray *pCArray, int iFirst, int nCell, MemPage *pPg) {
   u32 j;
   int iEnd = i + nCell;
   u8 *pCellptr = pPg->aCellIdx;
-  u8 *pTmp = sqlite3PagerTempSpace(pPg->pBt->pPager);
+  u8 *pTmp = (u8*)(sqlite3PagerTempSpace(pPg->pBt->pPager));
   u8 *pData;
   int k;
   u8 *pSrcEnd;

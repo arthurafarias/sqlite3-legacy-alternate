@@ -135,12 +135,12 @@ int yyGrowStack(yyParser *p) {
 
   idx = (int)(p->yytos - p->yystack);
   if (p->yystack == p->yystk0) {
-    pNew = parserStackRealloc(0, newSize * sizeof(pNew[0]), ((p)->pParse));
+    pNew = (yyStackEntry*)(parserStackRealloc(0, newSize * sizeof(pNew[0]), ((p)->pParse)));
     if (pNew == 0)
       return 1;
     memcpy(pNew, p->yystack, oldSize * sizeof(pNew[0]));
   } else {
-    pNew = parserStackRealloc(p->yystack, newSize * sizeof(pNew[0]), ((p)->pParse));
+    pNew = (yyStackEntry*)(parserStackRealloc(p->yystack, newSize * sizeof(pNew[0]), ((p)->pParse)));
     if (pNew == 0)
       return 1;
   }

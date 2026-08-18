@@ -50,7 +50,7 @@ static void chacha_block(u32 *out, const u32 *in) {
 }
 
 void sqlite3_randomness(int N, void *pBuf) {
-  unsigned char *zBuf = pBuf;
+  unsigned char *zBuf = (unsigned char*)(pBuf);
 
   sqlite3_mutex *mutex;
 

@@ -30,7 +30,7 @@ void sqlite3RowSetDelete(void *pArg) {
 struct RowSetEntry *rowSetEntryAlloc(RowSet *p) {
   if (p->nFresh == 0) {
     struct RowSetChunk *pNew;
-    pNew = sqlite3DbMallocRawNN(p->db, sizeof(*pNew));
+    pNew = (RowSetChunk*)(sqlite3DbMallocRawNN(p->db, sizeof(*pNew)));
     if (pNew == 0) {
       return 0;
     }

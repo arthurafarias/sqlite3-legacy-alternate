@@ -25,7 +25,7 @@ int memdbEnlarge(MemStore *p, sqlite3_int64 newSz) {
   newSz *= 2;
   if (newSz > p->szMax)
     newSz = p->szMax;
-  pNew = sqlite3Realloc(p->aData, newSz);
+  pNew = (unsigned char*)(sqlite3Realloc(p->aData, newSz));
   if (pNew == 0)
     return (10 | (12 << 8));
   p->aData = pNew;

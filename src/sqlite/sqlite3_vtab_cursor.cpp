@@ -141,7 +141,7 @@ int jsonEachNext(sqlite3_vtab_cursor *cur) {
         JsonParent *pNew;
         u64 nNew;
         nNew = p->nParentAlloc * 2 + 3;
-        pNew = sqlite3DbRealloc(p->db, p->aParent, sizeof(JsonParent) * nNew);
+        pNew = (JsonParent*)(sqlite3DbRealloc(p->db, p->aParent, sizeof(JsonParent) * nNew));
         if (pNew == 0)
           return SQLITE_NOMEM;
         p->nParentAlloc = (u32)nNew;
@@ -364,7 +364,7 @@ int jsonEachFilter(sqlite3_vtab_cursor *cur, int idxNum, const char *idxStr, int
   if ((p->sParse.aBlob[i] & 0x0f) >= 11 && !p->bRecursive) {
     p->i = i + n;
     p->eType = p->sParse.aBlob[i] & 0x0f;
-    p->aParent = sqlite3DbMallocZero(p->db, sizeof(JsonParent));
+    p->aParent = (JsonParent*)(sqlite3DbMallocZero(p->db, sizeof(JsonParent)));
     if (p->aParent == 0)
       return SQLITE_NOMEM;
     p->nParent = 1;

@@ -30,7 +30,7 @@ int whereClauseInsert(WhereClause *pWC, Expr *p, u16 wtFlags) {
   if (pWC->nTerm >= pWC->nSlot) {
     WhereTerm *pOld = pWC->a;
     sqlite3 *db = pWC->pWInfo->pParse->db;
-    pWC->a = sqlite3WhereMalloc(pWC->pWInfo, sizeof(pWC->a[0]) * pWC->nSlot * 2);
+    pWC->a = (WhereTerm*)(sqlite3WhereMalloc(pWC->pWInfo, sizeof(pWC->a[0]) * pWC->nSlot * 2));
     if (pWC->a == 0) {
       if (wtFlags & 0x0001) {
         sqlite3ExprDelete(db, p);

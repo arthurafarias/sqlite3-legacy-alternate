@@ -62,7 +62,7 @@ int vdbePmaReadBlob(PmaReader *p, int nByte, u8 **ppOut) {
       sqlite3_int64 nNew = ((128) > (2 * (sqlite3_int64)p->nAlloc) ? (128) : (2 * (sqlite3_int64)p->nAlloc));
       while (nByte > nNew)
         nNew = nNew * 2;
-      aNew = sqlite3Realloc(p->aAlloc, nNew);
+      aNew = (u8*)(sqlite3Realloc(p->aAlloc, nNew));
       if (!aNew)
         return 7;
       p->nAlloc = nNew;

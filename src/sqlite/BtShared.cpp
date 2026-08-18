@@ -256,7 +256,7 @@ int removeFromSharingList(BtShared *pBt) {
 }
 
 __attribute__((noinline)) int allocateTempSpace(BtShared *pBt) {
-  pBt->pTmpSpace = sqlite3PageMalloc(pBt->pageSize);
+  pBt->pTmpSpace = (u8*)(sqlite3PageMalloc(pBt->pageSize));
   if (pBt->pTmpSpace == 0) {
     BtCursor *pCur = pBt->pCursor;
     pBt->pCursor = pCur->pNext;
