@@ -64,6 +64,26 @@ extern "C" {
 #include "sqlite/SqliteScanStatusFlags.h"
 #include "sqlite/SqliteSerializeFlags.h"
 #include "sqlite/SqliteDeserializeFlags.h"
+#include "sqlite/sqlite3_compileoption_used.h"
+#include "sqlite/sqlite3_compileoption_get.h"
+#include "sqlite/sqlite3_threadsafe.h"
+#include "sqlite/sqlite3_complete.h"
+#include "sqlite/sqlite3_complete16.h"
+#include "sqlite/sqlite3_free_table.h"
+#include "sqlite/sqlite3_mprintf.h"
+#include "sqlite/sqlite3_vmprintf.h"
+#include "sqlite/sqlite3_snprintf.h"
+#include "sqlite/sqlite3_vsnprintf.h"
+#include "sqlite/sqlite3_malloc.h"
+#include "sqlite/sqlite3_malloc64.h"
+#include "sqlite/sqlite3_realloc.h"
+#include "sqlite/sqlite3_realloc64.h"
+#include "sqlite/sqlite3_free.h"
+#include "sqlite/sqlite3_msize.h"
+#include "sqlite/sqlite3_memory_used.h"
+#include "sqlite/sqlite3_memory_highwater.h"
+#include "sqlite/sqlite3_randomness.h"
+
 typedef struct AggInfo AggInfo;
 typedef struct AuxData AuxData;
 typedef struct BtCursor BtCursor;
@@ -616,26 +636,6 @@ int sqlite3_open(const char *filename, sqlite3 **ppDb);
 int sqlite3_open16(const void *filename, sqlite3 **ppDb);
 int sqlite3_open_v2(const char *filename, sqlite3 **ppDb, int flags, const char *zVfs);
 int sqlite3TempInMemory(const sqlite3 *);
-
-#include "sqlite/sqlite3_compileoption_used.h"
-#include "sqlite/sqlite3_compileoption_get.h"
-#include "sqlite/sqlite3_threadsafe.h"
-#include "sqlite/sqlite3_complete.h"
-#include "sqlite/sqlite3_complete16.h"
-#include "sqlite/sqlite3_free_table.h"
-#include "sqlite/sqlite3_mprintf.h"
-#include "sqlite/sqlite3_vmprintf.h"
-#include "sqlite/sqlite3_snprintf.h"
-#include "sqlite/sqlite3_vsnprintf.h"
-#include "sqlite/sqlite3_malloc.h"
-#include "sqlite/sqlite3_malloc64.h"
-#include "sqlite/sqlite3_realloc.h"
-#include "sqlite/sqlite3_realloc64.h"
-#include "sqlite/sqlite3_free.h"
-#include "sqlite/sqlite3_msize.h"
-#include "sqlite/sqlite3_memory_used.h"
-#include "sqlite/sqlite3_memory_highwater.h"
-#include "sqlite/sqlite3_randomness.h"
 const char *sqlite3_errstr(int);
 int sqlite3_global_recover(void);
 void sqlite3_thread_cleanup(void);
