@@ -21,5 +21,11 @@ add_executable(${PROJECT_NAME}-verify verify/main.c)
 target_compile_options(${PROJECT_NAME}-verify PRIVATE -Wall -pedantic -Werror)
 target_link_libraries(${PROJECT_NAME}-verify PRIVATE ${PROJECT_NAME})
 
+# tests/ is written against a generic "sqlite3" target/header name; this
+# alias lets it link against the real library without rewriting every
+# add_sqlite_test() call.
+add_library(sqlite3 ALIAS ${PROJECT_NAME})
+
 enable_testing()
 add_test(NAME ${PROJECT_NAME}-verify COMMAND ${PROJECT_NAME}-verify)
+add_subdirectory(tests)
