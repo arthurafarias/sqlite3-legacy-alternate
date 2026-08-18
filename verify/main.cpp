@@ -1,8 +1,9 @@
 /* Verification executable for SRS-003: a minimal sqlite3 application built
- * against nothing but the public sqlite3 C API, linked against the
+ * against nothing but the public sqlite3 API, linked against the
  * srs-003-organized libsqlite3-legacy-alternate. Proves the façade
  * visibility pass (one type per header, static-vs-public function
  * placement, extern-const scoping) still produces a working library. */
+ 
 #include <stdio.h>
 #include <string.h>
 #include "sqlite/sqlite3.h"

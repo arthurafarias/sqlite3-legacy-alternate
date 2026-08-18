@@ -15,9 +15,12 @@ find_library(SQLITE3_LEGACY_AMALGAMATION_MATH_LIB m)
 target_link_libraries(${PROJECT_NAME} PRIVATE Threads::Threads ${SQLITE3_LEGACY_AMALGAMATION_MATH_LIB})
 
 # SRS-003 verification executable: a minimal sqlite3 application built
-# against nothing but the public sqlite3 C API, proving the façade
-# visibility pass still produces a working, linkable library.
-add_executable(${PROJECT_NAME}-verify verify/main.c)
+# against nothing but the public sqlite3 API, proving the façade
+# visibility pass still produces a working, linkable library. Built as
+# C++ (matching the library's own translation units) so linking doesn't
+# depend on the library exporting a C ABI.
+add_executable(${PROJECT_NAME}-verify verify/main.cpp)
+target_compile_features(${PROJECT_NAME}-verify PRIVATE cxx_std_23)
 target_compile_options(${PROJECT_NAME}-verify PRIVATE -Wall -pedantic -Werror)
 target_link_libraries(${PROJECT_NAME}-verify PRIVATE ${PROJECT_NAME})
 
