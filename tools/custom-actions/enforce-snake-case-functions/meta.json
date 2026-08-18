@@ -1,0 +1,5 @@
+{
+  "name": "Enforce Snake Case Function Names",
+  "description": "Uses clang-tidy's readability-identifier-naming check to rename every non-snake_case function to snake_case, across declarations, definitions, and call sites. Dry-runs first to report collisions before writing anything; prompts for current file vs. whole compile database.",
+  "category": "Clang"
+}
